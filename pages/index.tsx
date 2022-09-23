@@ -1,11 +1,10 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import SocialMediaLink from '../components/socialMediaLinks/socialMediaLinks';
+import SocialMediaLink from '../components/socialMediaLinks/socialMediaLink';
 import { SocialMedia } from '../enum/SocialMedia.enum';
 
 const Home: NextPage = ({}) => {
   const linkTypes: SocialMedia[] = Object.values(SocialMedia);
-  console.log(linkTypes, '8rm');
   return (
     <div>
       <Head>
@@ -15,8 +14,7 @@ const Home: NextPage = ({}) => {
       </Head>
       <h1>Home Page - Hello world!</h1>
       <div>
-        <h2>Test</h2>
-        <div>
+        <div className="flex">
           {linkTypes.map((t) => {
             const type = t as SocialMedia;
             return <SocialMediaLink domain={type} />;
