@@ -10,7 +10,7 @@ const Navbar: NextPage = ({}) => {
   return (
     <>
       <nav className='flex flex-wrap items-center p-3'>
-        <Link href='/find-a-mentor'>
+        <Link href='/'>
           <a className='inline-flex items-center p-2 mr-4 '>
             <svg
               viewBox='0 0 24 24'
