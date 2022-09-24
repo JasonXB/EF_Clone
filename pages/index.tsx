@@ -1,7 +1,32 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
+import CheckboxFilter from '../components/checkboxFilter/checkbox-filter';
+import { FilterOption } from '../components/checkboxFilter/filter-option.interface';
+
 const Home: NextPage = ({}) => {
+  const sections: FilterOption[] = [
+    {
+      title: 'Gender',
+      options: ['Male', 'Female'],
+    },
+    {
+      title: 'Skills',
+      options: ['Design', 'Business', 'Management', 'Other'],
+    },
+    {
+      title: 'Goals',
+      options: ['Job Advancement', 'Job Search Help', 'Networking', 'Other'],
+    },
+    {
+      title: 'Geographic Location',
+      options: ['Canada', 'United States', 'Other'],
+    },
+    {
+      title: 'Company',
+      options: ['Microsoft', 'Google', 'Netflix', 'Salesforce'],
+    },
+  ];
   return (
     <div>
       <Head>
@@ -10,6 +35,9 @@ const Home: NextPage = ({}) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1>Home Page - Hello world!</h1>
+      <div>
+        <CheckboxFilter sections={sections} />
+      </div>
     </div>
   );
 };
