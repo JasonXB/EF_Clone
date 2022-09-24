@@ -3,7 +3,7 @@ import Image, { StaticImageData } from 'next/image';
 
 interface ImagePath {
   imgLocation: StaticImageData | string;
-  displaySize: 'large' | 'mediumLarge' | 'medium';
+  displaySize: 'large' | 'mediumLarge' | 'medium' | 'small';
   personsName: string;
 }
 
