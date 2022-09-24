@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import SocialMediaLink from '../components/socialMediaLinks/socialMediaLink';
+import SocialMediaLink from '../components/socialMediaLinks/social-media-link';
 import { SocialMedia } from '../enum/SocialMedia.enum';
 
 const Home: NextPage = ({}) => {

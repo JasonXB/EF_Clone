@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import Image from 'next/image';
-// import {from 'next';
 
 import RedditImg from '../../assets/icons8-reddit-50.png';
 import LinkedInImg from '../../assets/icons8-linkedin-circled-50.png';
