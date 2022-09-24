@@ -1,6 +1,8 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
+import PercentageBar from '../components/percentBar/percent-bar';
+
 const Home: NextPage = ({}) => {
   return (
     <div>
@@ -10,6 +12,9 @@ const Home: NextPage = ({}) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1>Home Page - Hello world!</h1>
+      <div>
+        <PercentageBar percentage={80} color="pink" />
+      </div>
     </div>
   );
 };
