@@ -8,23 +8,42 @@ const Home: NextPage = ({}) => {
   const sections: FilterOption[] = [
     {
       title: 'Gender',
-      options: ['Male', 'Female'],
+      options: [{ text: 'Male' }, { text: 'Female' }],
     },
     {
       title: 'Skills',
-      options: ['Design', 'Business', 'Management', 'Other'],
+      options: [
+        { text: 'Design' },
+        { text: 'Business' },
+        { text: 'Management' },
+        { text: 'Other' },
+      ],
     },
     {
       title: 'Goals',
-      options: ['Job Advancement', 'Job Search Help', 'Networking', 'Other'],
+      options: [
+        { text: 'Job Advancement' },
+        { text: 'Job Search Help' },
+        { text: 'Networking' },
+        { text: 'Other' },
+      ],
     },
     {
       title: 'Geographic Location',
-      options: ['Canada', 'United States', 'Other'],
+      options: [
+        { text: 'Canada' },
+        { text: 'United States' },
+        { text: 'Other' },
+      ],
     },
     {
       title: 'Company',
-      options: ['Microsoft', 'Google', 'Netflix', 'Salesforce'],
+      options: [
+        { text: 'Microsoft' },
+        { text: 'Google' },
+        { text: 'Netflix' },
+        { text: 'Salesforce' },
+      ],
     },
   ];
   return (

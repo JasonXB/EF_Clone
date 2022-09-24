@@ -5,8 +5,9 @@ import { FilterOption } from './filter-option.interface';
 import styles from './filter-section.module.css';
 
 const FilterSection: FC<FilterOption> = ({ title, options }: FilterOption) => {
+  // note: "checked" is "bg-black" for now
   return (
-    <div className="border-red-900 border-2">
+    <div>
       <div className="mb-4">
         <h2 className="text-4xl">{title}</h2>
       </div>
@@ -14,8 +15,9 @@ const FilterSection: FC<FilterOption> = ({ title, options }: FilterOption) => {
         {options.map((text, i) => {
           return (
             <div key={i} className="mb-4 flex">
-              <div className="mx-2 flex flex-col justify-center items-center">
-                <label>
+              <div>
+                <label className="mr-4 flex items-center text-2xl font-light">
+                  <span className={`${styles.checkmark} mr-3`}></span>
                   <input
                     type="checkbox"
                     className={`${styles.hideRealCheckbox}`}
@@ -23,9 +25,6 @@ const FilterSection: FC<FilterOption> = ({ title, options }: FilterOption) => {
                   {text}
                 </label>
               </div>
-              {/* <div>
-                <p className="text-2xl font-light">{text}</p>
-              </div> */}
             </div>
           );
         })}
