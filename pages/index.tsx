@@ -1,8 +1,10 @@
+import React, { useState } from 'react';
+
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
 import CheckboxFilter from '../components/checkboxFilter/checkbox-filter';
-import { FilterOption } from '../components/checkboxFilter/filter-option.interface';
+import { FilterOption } from '../interface/filter-option.interface';
 
 const Home: NextPage = ({}) => {
   const sections: FilterOption[] = [
@@ -46,6 +48,9 @@ const Home: NextPage = ({}) => {
       ],
     },
   ];
+
+  const [checkboxState, setCheckboxState] = useState<FilterOption[]>(sections);
+
   return (
     <div>
       <Head>
@@ -55,7 +60,10 @@ const Home: NextPage = ({}) => {
       </Head>
       <h1>Home Page - Hello world!</h1>
       <div>
-        <CheckboxFilter sections={sections} />
+        <CheckboxFilter
+          sections={checkboxState}
+          reportToState={setCheckboxState}
+        />
       </div>
     </div>
   );

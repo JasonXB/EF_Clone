@@ -1,30 +1,24 @@
 import React, { FC } from 'react';
+import FilterEntry from './filter-entry';
 
-import { FilterOption } from './filter-option.interface';
+import { FilterOption } from '../../interface/filter-option.interface';
 
-import styles from './filter-section.module.css';
-
-const FilterSection: FC<FilterOption> = ({ title, options }: FilterOption) => {
-  // note: "checked" is "bg-black" for now
+const FilterSection: FC<FilterOption> = ({
+  title,
+  options,
+  toggleFilter,
+}: FilterOption) => {
+  console.log(options, '11rm');
   return (
     <div>
       <div className="mb-4">
         <h2 className="text-4xl">{title}</h2>
       </div>
       <div>
-        {options.map((text, i) => {
+        {options.map((option, i) => {
           return (
             <div key={i} className="mb-4 flex">
-              <div>
-                <label className="mr-4 flex items-center text-2xl font-light">
-                  <span className={`${styles.checkmark} mr-3`}></span>
-                  <input
-                    type="checkbox"
-                    className={`${styles.hideRealCheckbox}`}
-                  />
-                  {text}
-                </label>
-              </div>
+              <FilterEntry option={option} toggleFilter={toggleFilter} />
             </div>
           );
         })}
