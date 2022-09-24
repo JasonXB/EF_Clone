@@ -18,7 +18,11 @@ const FilterSection: FC<FilterOption> = ({
         {options.map((option, i) => {
           return (
             <div key={i} className="mb-4 flex">
-              <FilterEntry option={option} toggleFilter={toggleFilter} />
+              <FilterEntry
+                sectionTitle={title}
+                option={option}
+                toggleFilter={toggleFilter}
+              />
             </div>
           );
         })}

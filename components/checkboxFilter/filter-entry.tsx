@@ -5,11 +5,13 @@ import { OptionStatus } from '../../interface/option-status.interface';
 import styles from './filter-section.module.css';
 
 interface FilterEntryProps {
+  sectionTitle: string;
   option: OptionStatus;
   toggleFilter: Function | undefined;
 }
 
 const FilterEntry: FC<FilterEntryProps> = ({
+  sectionTitle, // passed down and up so the state change function can distinguish between selections titled "other"
   option,
   toggleFilter,
 }: FilterEntryProps) => {
@@ -23,14 +25,14 @@ const FilterEntry: FC<FilterEntryProps> = ({
         }`}
         onClick={() => {
           if (toggleFilter) {
-            toggleFilter(option);
+            toggleFilter(option, sectionTitle);
           }
         }}
       ></span>
       <span
         onClick={() => {
           if (toggleFilter) {
-            toggleFilter(option);
+            toggleFilter(option, sectionTitle);
           }
         }}
       >

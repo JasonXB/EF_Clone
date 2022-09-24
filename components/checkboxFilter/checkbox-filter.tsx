@@ -13,29 +13,31 @@ const CheckboxFilter: FC<CheckboxFilterProps> = ({
   sections,
   reportToState,
 }: CheckboxFilterProps) => {
-  function updateCheckedStatus(target: OptionStatus) {
-    let newStatus = target.isChecked ? false : true;
+  function updateCheckedStatus(
+    target: OptionStatus,
+    targetSectionTitle: string
+  ) {
+    const newStatus = target.isChecked ? false : true;
     const updatedTarget: OptionStatus = {
       text: target.text,
       isChecked: newStatus,
     };
-    const updatedSections: FilterOption[] = sections.map(
-      (section: FilterOption) => {
-        const updated: FilterOption = {
-          title: section.title,
-          options: section.options.map((originalOption, index) => {
-            if (originalOption.text === target.text) {
-              return updatedTarget;
-            } else {
-              return originalOption;
-            }
-          }),
-        };
-        return updated;
+    const updatedSections = [...sections];
+    for (let i = 0; i < updatedSections.length; i++) {
+      const section = updatedSections[i];
+      const isTargetSection = updatedSections[i].title === targetSectionTitle;
+      if (isTargetSection) {
+        for (let j = 0; j < section.options.length; j++) {
+          if (section.options[j].text === target.text) {
+            updatedSections[i].options[j] = updatedTarget;
+          }
+        }
+        break;
       }
-    );
+    }
     reportToState(updatedSections);
   }
+
   return (
     <div className="w-90 py-7 px-6 border-green-900 border-4">
       <div>
