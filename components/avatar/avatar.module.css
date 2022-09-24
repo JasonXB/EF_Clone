@@ -1,0 +1,14 @@
+.largeAvatar {
+  height: 20.875rem;
+  width: 20.875rem;
+}
+
+.mediumAvatar {
+  height: 9.375rem;
+  width: 9.25rem;
+}
+
+.smallAvatar {
+  height: 9.25rem;
+  width: 8.75rem;
+}

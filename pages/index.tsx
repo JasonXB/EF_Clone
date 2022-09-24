@@ -1,6 +1,10 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
+import Avatar from '../components/avatar/avatar';
+
+import Cat from '../assets/Cat.jpeg';
+
 const Home: NextPage = ({}) => {
   return (
     <div>
@@ -10,6 +14,9 @@ const Home: NextPage = ({}) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1>Home Page - Hello world!</h1>
+      <div>
+        <Avatar imgLocation={Cat} displaySize="large" personsName="Elon Musk" />
+      </div>
     </div>
   );
 };
