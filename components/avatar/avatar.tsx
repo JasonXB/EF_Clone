@@ -1,11 +1,9 @@
 import React, { FC } from 'react';
 import Image, { StaticImageData } from 'next/image';
 
-import styles from './avatar.module.css';
-
 interface ImagePath {
   imgLocation: StaticImageData | string;
-  displaySize: 'large' | 'medium';
+  displaySize: 'large' | 'mediumLarge' | 'medium';
   personsName: string;
 }
 
@@ -16,13 +14,42 @@ const Avatar: FC<ImagePath> = ({
 }: ImagePath) => {
   const altText = 'A picture of ' + personsName;
 
-  const selectedClass =
-    displaySize === 'large' ? styles.largeAvatar : styles.mediumAvatar;
+  const largeSizing = {
+    height: '357px',
+    width: '334px',
+  };
+  const mediumLargeSizing = {
+    height: '180px',
+    width: '158px',
+  };
+  const mediumSizing = {
+    height: '150px',
+    width: '140px',
+  };
+  const smallSizing = {
+    height: '148px',
+    width: '148px',
+  };
+
+  function chooseSizing(choice: string) {
+    if (choice === 'large') {
+      return largeSizing;
+    } else if (choice === 'mediumLarge') {
+      return mediumLargeSizing;
+    } else if (choice === 'medium') {
+      return mediumSizing;
+    } else {
+      return smallSizing;
+    }
+  }
 
   return (
-    <div className={`${selectedClass}`}>
-      <Image src={imgLocation} alt={altText} />
-    </div>
+    <Image
+      src={imgLocation}
+      alt={altText}
+      height={chooseSizing(displaySize).height}
+      width={chooseSizing(displaySize).width}
+    />
   );
 };
 
