@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+
 import FilterEntry from './filter-entry';
 
 import { FilterOption } from '../../interface/filter-option.interface';
@@ -8,7 +9,6 @@ const FilterSection: FC<FilterOption> = ({
   options,
   toggleFilter,
 }: FilterOption) => {
-  console.log(options, '11rm');
   return (
     <div>
       <div className="mb-4">

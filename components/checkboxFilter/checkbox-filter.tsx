@@ -14,29 +14,26 @@ const CheckboxFilter: FC<CheckboxFilterProps> = ({
   reportToState,
 }: CheckboxFilterProps) => {
   function updateCheckedStatus(target: OptionStatus) {
+    let newStatus = target.isChecked ? false : true;
     const updatedTarget: OptionStatus = {
       text: target.text,
-      isChecked: !!target.isChecked,
+      isChecked: newStatus,
     };
     const updatedSections: FilterOption[] = sections.map(
       (section: FilterOption) => {
-        // let isTheRightSectionToUpdate;
         const updated: FilterOption = {
-            title: section.title,
-            options: section.options.map((originalOption, index) => {
-                if (originalOption.text === target.text) {
-                  return updatedTarget;
-                } else {
-                  return originalOption;
-                }
-              });
-              // return section
+          title: section.title,
+          options: section.options.map((originalOption, index) => {
+            if (originalOption.text === target.text) {
+              return updatedTarget;
+            } else {
+              return originalOption;
             }
-            return updated
-        }
-        
+          }),
+        };
+        return updated;
+      }
     );
-    console.log(updatedSections, '29rm');
     reportToState(updatedSections);
   }
   return (
