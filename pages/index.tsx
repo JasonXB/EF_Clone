@@ -5,6 +5,7 @@ import Head from 'next/head';
 
 import CheckboxFilter from '../components/checkboxFilter/checkbox-filter';
 import { FilterOption } from '../interface/filter-option.interface';
+import { OptionStatus } from '../interface/option-status.interface';
 
 const Home: NextPage = ({}) => {
   const sections: FilterOption[] = [
@@ -49,7 +50,38 @@ const Home: NextPage = ({}) => {
     },
   ];
 
+  const filterTestValues = [
+    'Microsoft',
+    'Canada',
+    'United States',
+    'Google',
+    'Netflix',
+    'Design',
+    'Business',
+    'Male',
+    'Female',
+  ];
+
   const [checkboxState, setCheckboxState] = useState<FilterOption[]>(sections);
+
+  function getCheckedFilters(checkboxState: FilterOption[]): string[] {
+    const acceptedValues = checkboxState
+      .map((section: FilterOption) => {
+        return section.options
+          .filter((status: OptionStatus) => status.isChecked)
+          .map((remaining) => remaining.text);
+      })
+      .flat();
+    return acceptedValues;
+  }
+
+  function getFilteredResults(
+    rawInputs: string[],
+    acceptedValues: string[]
+  ): string[] {
+    if (acceptedValues.length === 0) return rawInputs;
+    return rawInputs.filter((i) => acceptedValues.includes(i));
+  }
 
   return (
     <div>
@@ -59,11 +91,19 @@ const Home: NextPage = ({}) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1>Home Page - Hello world!</h1>
-      <div>
+      <div className="flex">
         <CheckboxFilter
           sections={checkboxState}
           reportToState={setCheckboxState}
         />
+        {getFilteredResults(
+          filterTestValues,
+          getCheckedFilters(checkboxState)
+        ).map((v, i) => (
+          <div key={i} className="mr-3">
+            <p>{v} is shown</p>
+          </div>
+        ))}
       </div>
     </div>
   );
