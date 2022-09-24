@@ -9,9 +9,18 @@ const PercentageBar: FC<PercentBarProps> = ({
   percentage,
   color,
 }: PercentBarProps) => {
+  const progressStyle = {
+    width: percentage > 6 ? `${percentage}%` : '6%',
+  };
+
   return (
     <div className="w-80 h-6 border-gray-300 border-2 rounded-xl">
-      <div className="w-full h-full bg-namelessBlue rounded-xl"></div>
+      <div
+        style={progressStyle}
+        className={`w-3/5 h-full rounded-xl ${
+          color === 'pink' ? 'bg-fuchsia' : 'bg-namelessBlue'
+        }`}
+      ></div>
     </div>
   );
 };
