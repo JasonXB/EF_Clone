@@ -15,9 +15,9 @@ const Home: NextPage = ({}) => {
       <h1>Home Page - Hello world!</h1>
       <div>
         <div className="flex">
-          {linkTypes.map((t) => {
+          {linkTypes.map((t, i) => {
             const type = t as SocialMedia;
-            return <SocialMediaLink domain={type} />;
+            return <SocialMediaLink key={i} domain={type} />;
           })}
         </div>
       </div>

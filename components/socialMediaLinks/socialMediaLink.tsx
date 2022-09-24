@@ -18,12 +18,10 @@ const SocialMediaLink: FC<LinkTypes> = ({ domain }: LinkTypes) => {
   function selectImageOfType(domain: string) {
     let type;
     switch (domain) {
-      //   case 'Reddit':
       case SocialMedia.reddit:
         type = RedditImg;
         break;
       case SocialMedia.linkedIn:
-        //   case 'LinkedIn':
         type = LinkedInImg;
         break;
       case SocialMedia.twitter:
