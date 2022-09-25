@@ -1,3 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --pinkOrangeGradient: linear-gradient(89deg, #ce1982 0%, #ed493d 100%);
+  --blackBoxShadow: 0px 0px 15px #00000029;
+}
+* {
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+/* Bg color for buttons */
+.bg-pinkOrangeGradient {
+  background: var(--pinkOrangeGradient);
+}
+.blackBoxShadow {
+  box-shadow: var(--blackBoxShadow);
+}
