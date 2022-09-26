@@ -1,0 +1,23 @@
+.container {
+    border: 1px solid black;
+    padding: 10px;
+}
+
+
+.light {
+    border: 1px solid rgb(19, 132, 237);
+    color: rgb(19, 132, 237);
+    margin: 5px;
+    padding: 2px 15px 5px;
+    font-weight: 500;
+    border-radius: 25px;
+}
+
+.dark {
+    background-color: rgb(213, 233, 253);
+    color: rgb(19, 132, 237);
+    margin: 5px;
+    padding: 2px 15px 5px;
+    font-weight: 500;
+    border-radius: 25px;
+}
