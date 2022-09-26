@@ -8,10 +8,12 @@ module.exports = {
     extend: {
       colors: {
         black: '#0C0C0C',
-        pink: '#CE1982',
+        magenta: '#CE1982',
+        darkMagenta: '#bb0c5c',
         blue: '#026ABC',
-        yellow: '#EBC967',
-        lightBlue: '#8FC1E8',
+        sunset: '#EBC967',
+        lightSunset: '#ed913d',
+        cyanBlue: '#8FC1E8',
       },
       fontFamily: {
         mainFont: ['Montserrat', 'sans-serif'],
