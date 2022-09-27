@@ -5,7 +5,13 @@ const RemovableTags = ({ tags, removeTag }) => {
   return (
     <div className={removableTagStyles.container}>
       {tags.map((tag, index) => (
-        <RemovableTag tag={tag} removeTag={removeTag(index)} />
+        <RemovableTag
+          key={index}
+          tag={tag}
+          removeTag={() => {
+            return removeTag(index);
+          }}
+        />
       ))}
     </div>
   );

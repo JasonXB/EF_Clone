@@ -1,8 +1,22 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import RemovableTags from '../components/RemovableTags';
+// import RemovableTags from '../components/RemovableTags';
+import {useState} from 'react'
 
-let arr = [
+//test array for Removable Tag component
+
+const arr = [
+  'tomato',
+  'kayak',
+  'racecar',
+  'woo young woo',
+  'tomato',
+  'kayak',
+  'racecar',
+  'woo young woo','tomato',
+  'kayak',
+  'racecar',
+  'woo young woo',
   'tomato',
   'kayak',
   'racecar',
@@ -13,12 +27,19 @@ let arr = [
   'woo young woo',
 ];
 
-const removeTag = (index: number) => {
-  arr = arr.filter((tag, i) => i == index);
-  console.log(arr)
-};
-
 const becomeAMentor: NextPage = ({}) => {
+
+//test state for Removable Tag component
+
+  const [myList, setMyList] = useState(arr)
+
+//test event handler function for Removable Tag component
+
+  const removeTag = (index: number) => {
+    let newArr = myList.filter((tag, i) => i !== index);
+    setMyList(newArr)
+  };
+
   return (
     <div>
       <Head>
@@ -27,7 +48,7 @@ const becomeAMentor: NextPage = ({}) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1>Become a Mentor placeholder</h1>
-      <RemovableTags tags={arr} removeTag={removeTag} />
+      {/* <RemovableTags tags={myList} removeTag={removeTag} /> */}
     </div>
   );
 };

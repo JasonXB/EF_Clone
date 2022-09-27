@@ -1,5 +1,7 @@
 .container {
     padding: 10px;
+    max-width: 1000px;
+    border: solid 1px black
 }
 
 .black {
@@ -9,6 +11,7 @@
     padding: 2px 15px 5px;
     font-weight: 500;
     border-radius: 25px;
+    display: inline-block;
 }
 
 .remove {
