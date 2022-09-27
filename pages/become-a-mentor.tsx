@@ -1,5 +1,22 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import RemovableTags from '../components/RemovableTags';
+
+let arr = [
+  'tomato',
+  'kayak',
+  'racecar',
+  'woo young woo',
+  'tomato',
+  'kayak',
+  'racecar',
+  'woo young woo',
+];
+
+const removeTag = (index: number) => {
+  arr = arr.filter((tag, i) => i == index);
+  console.log(arr)
+};
 
 const becomeAMentor: NextPage = ({}) => {
   return (
@@ -10,6 +27,7 @@ const becomeAMentor: NextPage = ({}) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1>Become a Mentor placeholder</h1>
+      <RemovableTags tags={arr} removeTag={removeTag} />
     </div>
   );
 };
