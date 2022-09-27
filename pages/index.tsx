@@ -1,7 +1,24 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import SearchForm from '../components/SearchForm';
+import { useEffect, useState } from 'react';
+import useFilterSearch from '../hooks/useFilterSearch';
+import Mentor from '../components/Mentor';
+
+// const {   } = useFilterSearch()
+
+// interface Mentors {
+//   name: string;
+// }
+
+// const dummyMentors: Array<Mentors> = [{ name: 'Tommy' }, { name: 'Albert' }];
 
 const Home: NextPage = ({}) => {
+
+// useEffect(() => {
+//   filterSearch(dummyMentors, "")
+// }, [])
+
   return (
     <div>
       <Head>
@@ -10,7 +27,19 @@ const Home: NextPage = ({}) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1>Home Page - Hello world!</h1>
-    </div>
+
+      <SearchForm/>
+{/* 
+      {currentFiltered.map((mentor) => {
+            const { name } = mentor;
+            return (
+              <Mentor
+               name={name}
+              ></Mentor>
+            )
+      })} */}
+ </div>
+    
   );
 };
 
