@@ -1,8 +1,5 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import BubbleTags from '../components/BubbleTags'
-
-const tags = ['kayak', 'deed', 'rotator', 'noon', 'racecar', 'kayak', 'deed', 'rotator', 'noon', 'racecar'];
 
 const becomeAMentor: NextPage = ({}) => {
   return (
@@ -13,7 +10,6 @@ const becomeAMentor: NextPage = ({}) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1>Become a Mentor placeholder</h1>
-      <BubbleTags tags={tags} />
     </div>
   );
 };
