@@ -1,5 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import SearchInput from '../components/SearchInput';
+import { dummyCountries } from '../components/temporary/dummyCountries';
 
 const becomeAMentor: NextPage = ({}) => {
   return (
@@ -10,6 +12,7 @@ const becomeAMentor: NextPage = ({}) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1>Become a Mentor placeholder</h1>
+      <SearchInput data={dummyCountries}></SearchInput>
     </div>
   );
 };
