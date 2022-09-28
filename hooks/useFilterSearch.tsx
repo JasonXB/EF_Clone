@@ -19,7 +19,7 @@ const useFilterSearch = () => {
       })
       .filter((item) => {
         if (item) {
-          return item.name.includes(searchValue.toLowerCase());
+          return item.name.startsWith(searchValue.toLowerCase());
         } else {
           return false;
         }
