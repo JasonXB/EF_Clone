@@ -18,6 +18,18 @@ ol,
 ul {
   list-style: none;
 }
+/* Layout Styling */
+.container {
+  margin: auto;
+  display: grid;
+  grid-template-columns: 2fr [main-start] minmax(300px, 1920px) [main-end] 1fr;
+  justify-items: center;
+  grid-gap: 0.5rem;
+}
+.content {
+  grid-column: main-start/main-end;
+  padding: 0 2rem;
+}
 /* Bg color for buttons */
 .bg-pinkOrangeGradient {
   background: var(--pinkOrangeGradient);
