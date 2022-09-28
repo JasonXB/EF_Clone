@@ -1,4 +1,4 @@
-// temporary interface to set types for Mentor props
+// temporary interface to set types for SearchResult props
 interface SearchResultProps {
   category: string;
   name: string;

@@ -12,7 +12,6 @@ const becomeAMentor: NextPage = ({}) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1>Become a Mentor placeholder</h1>
-      <SearchInput data={dummyCountries}></SearchInput>
     </div>
   );
 };

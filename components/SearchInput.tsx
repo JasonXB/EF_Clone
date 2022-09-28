@@ -41,12 +41,16 @@ const SearchInput = ({ data }: SearchInputProps) => {
       </div>
       {/* Currently returning the SearchResult component here as the state is easily
      accessible from the useFilterSearch hook. This will be changed shortly. */}
-      {currentFilteredData.map((item) => {
-        const { category, id, name, key } = item;
-        return (
-          <SearchResult category={category} key={id} id={id} name={name} />
-        );
-      })}
+      {currentFilteredData[0] ? (
+        currentFilteredData.map((item) => {
+          const { category, id, name, key } = item;
+          return (
+            <SearchResult category={category} key={id} id={id} name={name} />
+          );
+        })
+      ) : (
+        <div>No results found!</div>
+      )}
     </>
   );
 };

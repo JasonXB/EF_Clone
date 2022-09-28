@@ -2,5 +2,6 @@
 export interface Data {
     category: string;
     name: string;
-    id: number
+    id: number;
+    
   }
