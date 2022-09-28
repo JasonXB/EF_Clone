@@ -1,7 +1,14 @@
 import removableTagStyles from '../styles/RemovableTag.module.css';
 import RemovableTag from './RemovableTag';
+import React from 'react';
 
-const RemovableTags = ({ tags, removeTag }) => {
+interface Tags {
+  tags: string[],
+  removeTag: (index: number) => void
+}
+
+
+const RemovableTags = ({ tags, removeTag }: Tags) => {
   return (
     <div className={removableTagStyles.container}>
       {tags.map((tag, index) => (

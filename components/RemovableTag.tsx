@@ -1,6 +1,12 @@
 import removableTagStyles from '../styles/RemovableTag.module.css';
+import React from 'react';
 
-const RemovableTag = ({ tag, removeTag }) => {
+interface Tag {
+  tag: string,
+  removeTag: React.MouseEventHandler<HTMLButtonElement>
+}
+
+const RemovableTag = ({ tag, removeTag }: Tag) => {
   return (
     <span className={removableTagStyles.black}>
       {tag}
