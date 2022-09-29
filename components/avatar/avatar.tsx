@@ -14,31 +14,36 @@ interface ImagePath2 {
   personsNam: string;
 }
 
-const Avatar: FC<ImagePath2> = ({
+interface IImageDimensions {
+  height: string;
+  width: string;
+}
+
+const Avatar: FC<ImagePath> = ({
   imgLocation,
   displaySize,
   personsName,
 }: ImagePath) => {
-  const altText = 'A picture of ' + personsName;
+  const altText: string = 'A picture of ' + personsName;
 
-  const largeSizing = {
+  const largeSizing: IImageDimensions = {
     height: '357px',
     width: '334px',
   };
-  const mediumLargeSizing = {
+  const mediumLargeSizing: IImageDimensions = {
     height: '180px',
     width: '158px',
   };
-  const mediumSizing = {
+  const mediumSizing: IImageDimensions = {
     height: '150px',
     width: '140px',
   };
-  const smallSizing = {
+  const smallSizing: IImageDimensions = {
     height: '148px',
     width: '148px',
   };
 
-  function chooseSizing(choice: string) {
+  function chooseSizing(choice: string): IImageDimensions {
     if (choice === 'large') {
       return largeSizing;
     } else if (choice === 'mediumLarge') {
