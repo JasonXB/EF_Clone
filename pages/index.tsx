@@ -9,6 +9,7 @@ import { OptionStatus } from '../interface/option-status.interface';
 
 const Home: NextPage = ({}) => {
   const sections: FilterOption[] = [
+    // todo: change to SectionDetails
     {
       title: 'Gender',
       options: [{ text: 'Male' }, { text: 'Female' }],

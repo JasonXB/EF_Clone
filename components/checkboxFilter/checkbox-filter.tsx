@@ -16,7 +16,7 @@ const CheckboxFilter: FC<CheckboxFilterProps> = ({
   function updateCheckedStatus(
     target: OptionStatus,
     targetSectionTitle: string
-  ) {
+  ): void {
     const newStatus = target.isChecked ? false : true;
     const updatedTarget: OptionStatus = {
       text: target.text,
