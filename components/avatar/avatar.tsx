@@ -7,7 +7,14 @@ interface ImagePath {
   personsName: string;
 }
 
-const Avatar: FC<ImagePath> = ({
+// example
+interface ImagePath2 {
+  imgLocaton: StaticImageData | string;
+  displaySiz: 'large' | 'mediumLarge' | 'medium' | 'small';
+  personsNam: string;
+}
+
+const Avatar: FC<ImagePath2> = ({
   imgLocation,
   displaySize,
   personsName,
