@@ -2,7 +2,12 @@ import React, { FC } from 'react';
 
 interface PercentBarProps {
   percentage: number;
-  color: 'pink' | 'blue';
+  color: 'pink' | 'blue'; // arguably should be an enum
+}
+
+interface SomeOtherPropsThatAreWrong {
+  percentage: number;
+  ingredients: string[];
 }
 
 const PercentageBar: FC<PercentBarProps> = ({

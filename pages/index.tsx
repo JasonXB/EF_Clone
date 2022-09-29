@@ -13,7 +13,7 @@ const Home: NextPage = ({}) => {
       </Head>
       <h1>Home Page - Hello world!</h1>
       <div>
-        <PercentageBar percentage={95} color="pink" />
+        <PercentageBar percentage={50} color="pink" />
       </div>
     </div>
   );
