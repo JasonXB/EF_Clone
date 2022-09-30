@@ -1,9 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import SearchInput from '../components/SearchInput';
-import { dummyCountries } from '../components/temporary/dummyCountries';
 
-const becomeAMentor: NextPage = ({}) => {
+const becomeAMentor: NextPage = () => {
   return (
     <div>
       <Head>
