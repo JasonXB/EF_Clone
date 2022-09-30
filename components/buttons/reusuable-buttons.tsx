@@ -17,6 +17,8 @@ import googleIcon from './SVGIcons/google.svg';
 //swap out "[#colors]" once theme configure is in place
 //change fill & outlined hover effect once we know what its supposed to be
 //add accessibly focus
+
+//buttonVariants are used for default class styling of each button type.
 export const buttonVariants = {
   primary: `bg-gradient-to-r from-[#CE1982] to-[#ED493D]  hover:from-[#bb0c5c] hover:to-[#ed913d] text-white font-bold py-2 px-6 m-1 rounded-3xl disabled:bg-slate-400 disabled:opacity-50 disabled:cursor-not-allowed`,
   secondary: `bg-transparent hover:bg-gradient-to-r hover:from-[#CE1982] hover:to-[#ED493D]  text-[#CE1982] font-bold hover:text-white py-2 px-6 m-1 border border-[#CE1982] hover:border-transparent rounded-3xl  disabled:text-slate-300 disabled:border-slate-300 disabled:opacity-50 disabled:cursor-not-allowed`,
@@ -45,6 +47,7 @@ type ButtonProps = {
 };
 
 const Button = ({ ...props }: ButtonProps) => {
+  //feeds variant type into class
   const defaultClassName = buttonVariants[props.variant];
   const icons = {
     facebook: ['facebook', facebookIcon],
@@ -56,7 +59,7 @@ const Button = ({ ...props }: ButtonProps) => {
     <button
       id={props.id}
       type={props.type}
-      className={defaultClassName.concat(' ', props.className)}
+      className={defaultClassName.concat(' ', props.className)} //allows possibility to adjust button style even more from the default variant styles
       disabled={props.disabled}
       onClick={props.clickHandler}
     >
