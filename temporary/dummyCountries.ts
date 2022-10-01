@@ -1,5 +1,5 @@
-// Dummy mentor data to display basic filter search functionality
-import { Data } from '../../interface/data.interface';
+// Dummy Country data to display basic filter search functionality
+import { Data } from '../interface/data.interface';
 
 export const dummyCountries: Array<Data> = [
   { category: 'Country', name: 'Canada', id: 1 },

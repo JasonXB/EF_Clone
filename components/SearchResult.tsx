@@ -8,7 +8,6 @@ const SearchResult = ({ category, name, id }: SearchResultProps) => {
     <>
     <div>
         {category} {id}: {`${name.charAt(0).toUpperCase() + name.slice(1)}`} 
-     
     </div>
     <br/>
     </>

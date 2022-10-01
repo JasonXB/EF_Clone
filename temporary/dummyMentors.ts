@@ -1,5 +1,5 @@
 // Dummy mentor data to display basic filter search functionality
-import { Data } from '../../interface/data.interface';
+import { Data } from '../interface/data.interface';
 
 export const dummyMentors: Array<Data> = [
   { category: 'Mentor', name: 'Tommy', id: 1 },
