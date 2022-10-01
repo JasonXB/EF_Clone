@@ -1,15 +1,13 @@
 import type { NextPage } from 'next';
-import Head from 'next/head';
 import Link from 'next/link';
 
-
 // Placeholder Navbar component created solely for testing whether the Links are working properly. 
-// The developer who ends up making the actual Navbar can reuse the Links created below.
+// The developer who ends up making the actual Navbar can reuse the Links created below. All styling can be modified or removed.
 
 const Navbar: NextPage = ({}) => {
   return (
     <>
-      <nav className='flex flex-wrap items-center p-3'>
+      <nav className='flex flex-wrap items-center p-3 bg-black'>
         <Link href='/'>
           <a className='inline-flex items-center p-2 mr-4 '>
             <svg
