@@ -7,13 +7,6 @@ interface ImagePath {
   personsName: string;
 }
 
-// example
-interface ImagePath2 {
-  imgLocaton: StaticImageData | string;
-  displaySiz: 'large' | 'mediumLarge' | 'medium' | 'small';
-  personsNam: string;
-}
-
 interface IImageDimensions {
   height: string;
   width: string;
