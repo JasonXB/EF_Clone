@@ -52,8 +52,8 @@ export const nextAuthConfig: NextAuthOptions = {
 
   // These custom pages will be used instead of the plain-looking defaults NextAuth Provides
   pages: {
-    signIn: '/auth/signin', // Displays signin buttons
-    newUser: '/auth/welcome', // new users will be directed here on first sign in
+    signIn: '/signin', // Displays signin buttons
+    // newUser: '/welcome', // new users will be directed here on first sign in
     // signOut: '/auth/signout', // Displays form with sign out button
     // error: '/auth/error', // Error code passed in query string as ?error=
     // verifyRequest: '/auth/verify-request', // Used for check email page

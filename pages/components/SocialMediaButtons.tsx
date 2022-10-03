@@ -1,7 +1,7 @@
 import React from 'react';
 import { signIn } from 'next-auth/react';
 
-export default function signin() {
+export default function SocialMediaButtons() {
   const buttons = [
     {
       identifier: 'google', // needed to call the NextAuth signIn method
