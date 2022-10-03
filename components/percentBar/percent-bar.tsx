@@ -24,7 +24,9 @@ const PercentageBar: FC<PercentBarProps> = ({
         }`}
       ></div>
       {showPercentageText ? (
-        <div className="w-full flex justify-center absolute">{`${percentage}%`}</div>
+        <div className="w-full flex justify-center items-center absolute text-white">
+          <span className="text-sm">{`${percentage}%`}</span>
+        </div>
       ) : null}
     </div>
   );
