@@ -4,12 +4,11 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 
 import CheckboxFilter from '../components/checkboxFilter/checkbox-filter';
-import { FilterOption } from '../interface/filter-option.interface';
+import { FilterSection } from '../interface/filter-section.interface';
 import { OptionStatus } from '../interface/option-status.interface';
 
 const Home: NextPage = ({}) => {
-  const sections: FilterOption[] = [
-    // todo: change to SectionDetails
+  const sections: FilterSection[] = [
     {
       title: 'Gender',
       options: [{ text: 'Male' }, { text: 'Female' }],

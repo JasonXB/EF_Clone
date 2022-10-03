@@ -2,13 +2,13 @@ import React, { FC } from 'react';
 
 import FilterEntry from './filter-entry';
 
-import { FilterOption } from '../../interface/filter-option.interface';
+import { FilterSection as FilterSectionProps } from '../../interface/filter-section.interface';
 
-const FilterSection: FC<FilterOption> = ({
+const FilterSection: FC<FilterSectionProps> = ({
   title,
   options,
   toggleFilter,
-}: FilterOption) => {
+}: FilterSectionProps) => {
   return (
     <div>
       <div className="mb-4">

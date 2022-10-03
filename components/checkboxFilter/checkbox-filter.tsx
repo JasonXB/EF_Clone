@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
 
-import { FilterOption } from '../../interface/filter-option.interface';
+import { FilterSection as FilterSectionProps } from '../../interface/filter-section.interface';
 import { OptionStatus } from '../../interface/option-status.interface';
 import FilterSection from './filter-section';
 
 interface CheckboxFilterProps {
-  sections: FilterOption[];
+  sections: FilterSectionProps[];
   reportToState: Function;
 }
 
