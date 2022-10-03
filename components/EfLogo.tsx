@@ -14,7 +14,7 @@ const EfLogo = ({ alt, className}:  EfLogoProps) => {
       className={className}
       alt={alt}
       src={eflogo}
-      height={100}
+      height={148}
             />
      </a>
   </Link>
