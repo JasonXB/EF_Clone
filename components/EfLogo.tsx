@@ -1,17 +1,20 @@
 import Link from 'next/link';
 import { EfLogoProps } from '../interface/ef-logo-props.interface';
+import Image from 'next/image';
+import eflogo from './assets/eflogo.png';
+ 
 
-
-const EfLogo = ({src, url, alt, className}:  EfLogoProps) => {
+const EfLogo = ({ alt, className}:  EfLogoProps) => {
   return (
 <>
  {/* Empowered Futures Logo / Link to the Homepage */}
  <Link href="/">
-    <a className="inline-flex items-center p-2 ml-6 mr-12 ">
-        <img
-            className={className}
-            alt={alt}
-            src={src}
+    <a className="items-center block p-2 ml-6 mr-12 ">
+    <Image 
+      className={className}
+      alt={alt}
+      src={eflogo}
+      height={100}
             />
      </a>
   </Link>
