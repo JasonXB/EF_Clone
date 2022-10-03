@@ -1,9 +1,6 @@
-import { StaticImageData } from "next/image";
-
 export interface EfLogoProps {
-    // image: HTMLImageElement;
     url: string;
-    src: string | StaticImageData | undefined;
+    src: string;
     className?: string;
     alt: string
   }
