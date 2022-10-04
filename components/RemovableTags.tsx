@@ -4,12 +4,17 @@ import React from 'react';
 
 interface Tags {
   tags: string[],
-  removeTag: (index: number) => void
+  setList: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
 //component mainly used for the survey pages
 
-const RemovableTags = ({ tags, removeTag }: Tags) => {
+const RemovableTags = ({ tags, setList }: Tags) => {
+
+  const removeTag = (index: number) => {
+    const newArr = tags.filter((tag, i) => i !== index);
+    setList(newArr);
+  };
   
   return (
     <div className={removableTagStyles.container}>
