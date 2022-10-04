@@ -1,7 +1,13 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import { GetStaticProps } from 'next';
 
-const becomeAMentor: NextPage = ({}) => {
+// Statically renders page and sets props equal to an empty object
+export const getStaticProps: GetStaticProps = async (context) => {
+  return { props: {} };
+};
+
+const becomeAMentor: NextPage = (props) => {
   // Will map over this list to generate JSX in order to avoid retyping classes
   const content = [
     {
