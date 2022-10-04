@@ -4,11 +4,11 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 
 import CheckboxFilter from '../components/checkboxFilter/checkbox-filter';
-import { FilterSection } from '../interface/filter-section.interface';
+import { FilterSection as FilterSectionProps } from '../interface/filter-section.interface';
 import { OptionStatus } from '../interface/option-status.interface';
 
 const Home: NextPage = ({}) => {
-  const sections: FilterSection[] = [
+  const sections: FilterSectionProps[] = [
     {
       title: 'Gender',
       options: [{ text: 'Male' }, { text: 'Female' }],
@@ -62,11 +62,12 @@ const Home: NextPage = ({}) => {
     'Female',
   ];
 
-  const [checkboxState, setCheckboxState] = useState<FilterOption[]>(sections);
+  const [checkboxState, setCheckboxState] =
+    useState<FilterSectionProps[]>(sections);
 
-  function getCheckedFilters(checkboxState: FilterOption[]): string[] {
+  function getCheckedFilters(checkboxState: FilterSectionProps[]): string[] {
     const acceptedValues = checkboxState
-      .map((section: FilterOption) => {
+      .map((section: FilterSectionProps) => {
         return section.options
           .filter((status: OptionStatus) => status.isChecked)
           .map((remaining) => remaining.text);
