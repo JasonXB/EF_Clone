@@ -5,52 +5,12 @@ import Head from 'next/head';
 
 import CheckboxFilter from '../components/checkboxFilter/checkbox-filter';
 import { FilterSection as FilterSectionProps } from '../interface/filter-section.interface';
-import { OptionStatus } from '../interface/option-status.interface';
+import { filterSectionInputs } from '../util/filter-section-inputs';
+import { getFilteredResults, getCheckedFilters } from '../util/filter-logic';
 
 const Home: NextPage = ({}) => {
-  const sections: FilterSectionProps[] = [
-    {
-      title: 'Gender',
-      options: [{ text: 'Male' }, { text: 'Female' }],
-    },
-    {
-      title: 'Skills',
-      options: [
-        { text: 'Design' },
-        { text: 'Business' },
-        { text: 'Management' },
-        { text: 'Other' },
-      ],
-    },
-    {
-      title: 'Goals',
-      options: [
-        { text: 'Job Advancement' },
-        { text: 'Job Search Help' },
-        { text: 'Networking' },
-        { text: 'Other' },
-      ],
-    },
-    {
-      title: 'Geographic Location',
-      options: [
-        { text: 'Canada' },
-        { text: 'United States' },
-        { text: 'Other' },
-      ],
-    },
-    {
-      title: 'Company',
-      options: [
-        { text: 'Microsoft' },
-        { text: 'Google' },
-        { text: 'Netflix' },
-        { text: 'Salesforce' },
-      ],
-    },
-  ];
-
   const filterTestValues = [
+    // this array can be deleted safely.
     'Microsoft',
     'Canada',
     'United States',
@@ -63,26 +23,7 @@ const Home: NextPage = ({}) => {
   ];
 
   const [checkboxState, setCheckboxState] =
-    useState<FilterSectionProps[]>(sections);
-
-  function getCheckedFilters(checkboxState: FilterSectionProps[]): string[] {
-    const acceptedValues = checkboxState
-      .map((section: FilterSectionProps) => {
-        return section.options
-          .filter((status: OptionStatus) => status.isChecked)
-          .map((remaining) => remaining.text);
-      })
-      .flat();
-    return acceptedValues;
-  }
-
-  function getFilteredResults(
-    rawInputs: string[],
-    acceptedValues: string[]
-  ): string[] {
-    if (acceptedValues.length === 0) return rawInputs;
-    return rawInputs.filter((i) => acceptedValues.includes(i));
-  }
+    useState<FilterSectionProps[]>(filterSectionInputs);
 
   return (
     <div>

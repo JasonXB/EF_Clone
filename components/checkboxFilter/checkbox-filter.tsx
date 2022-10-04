@@ -18,21 +18,25 @@ const CheckboxFilter: FC<CheckboxFilterProps> = ({
     targetSectionTitle: string
   ): void {
     const newStatus = target.isChecked ? false : true;
+    // the updated OptionStatus has the same target text, but the new status, because we are flipping the value of the prior entry.
     const updatedTarget: OptionStatus = {
       text: target.text,
       isChecked: newStatus,
     };
+    // start new array so we aren't directly modifying the old one
     const updatedSections = [...sections];
     for (let i = 0; i < updatedSections.length; i++) {
       const section = updatedSections[i];
+      // we are trying to modify the section that matches targetSectionTitle
       const isTargetSection = updatedSections[i].title === targetSectionTitle;
       if (isTargetSection) {
         for (let j = 0; j < section.options.length; j++) {
-          if (section.options[j].text === target.text) {
+          const isOptionToModify = section.options[j].text === target.text;
+          if (isOptionToModify) {
             updatedSections[i].options[j] = updatedTarget;
           }
         }
-        break;
+        break; // once the correct entry has been discovered and modified, we don't need the loop anymore
       }
     }
     reportToState(updatedSections);
