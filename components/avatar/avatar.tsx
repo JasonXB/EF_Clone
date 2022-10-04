@@ -7,9 +7,10 @@ interface ImagePath {
   personsName: string;
 }
 
-interface IImageDimensions {
+interface IImageQualities {
   height: string;
   width: string;
+  borderRadius: string;
 }
 
 const Avatar: FC<ImagePath> = ({
@@ -19,24 +20,30 @@ const Avatar: FC<ImagePath> = ({
 }: ImagePath) => {
   const altText: string = 'A picture of ' + personsName;
 
-  const largeSizing: IImageDimensions = {
+  const largeSizing: IImageQualities = {
+    // for the profile page
     height: '357px',
     width: '334px',
+    borderRadius: 'rounded-lg',
   };
-  const mediumLargeSizing: IImageDimensions = {
+  const mediumLargeSizing: IImageQualities = {
     height: '180px',
     width: '158px',
+    borderRadius: 'rounded-3xl',
   };
-  const mediumSizing: IImageDimensions = {
+  const mediumSizing: IImageQualities = {
     height: '150px',
     width: '140px',
+    borderRadius: 'rounded-3xl',
   };
-  const smallSizing: IImageDimensions = {
+  const smallSizing: IImageQualities = {
+    // for the "find a mentor" cards
     height: '148px',
     width: '148px',
+    borderRadius: 'rounded-lg',
   };
 
-  function chooseSizing(choice: string): IImageDimensions {
+  function chooseSizing(choice: string): IImageQualities {
     if (choice === 'large') {
       return largeSizing;
     } else if (choice === 'mediumLarge') {
@@ -52,6 +59,7 @@ const Avatar: FC<ImagePath> = ({
     <Image
       src={imgLocation}
       alt={altText}
+      className={`${chooseSizing(displaySize).borderRadius}`}
       height={chooseSizing(displaySize).height}
       width={chooseSizing(displaySize).width}
     />
