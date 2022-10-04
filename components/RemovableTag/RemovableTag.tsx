@@ -1,9 +1,9 @@
-import removableTagStyles from '../styles/RemovableTag.module.css';
+import removableTagStyles from '../../styles/RemovableTag.module.css';
 import React from 'react';
 
 interface Tag {
-  tag: string,
-  removeTag: React.MouseEventHandler<HTMLButtonElement>
+  tag: string;
+  removeTag: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 const RemovableTag = ({ tag, removeTag }: Tag) => {

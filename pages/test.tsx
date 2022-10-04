@@ -1,4 +1,4 @@
-import RemovableTags from '../components/RemovableTags';
+import RemovableTags from '../components/RemovableTag/RemovableTags';
 import { useState } from 'react';
 
 const arr = [
