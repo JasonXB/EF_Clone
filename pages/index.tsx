@@ -1,29 +1,7 @@
-import React, { useState } from 'react';
-
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
-import CheckboxFilter from '../components/checkboxFilter/checkbox-filter';
-import { FilterSection as FilterSectionProps } from '../interface/filter-section.interface';
-import { filterSectionInputs } from '../util/filter-section-inputs';
-import { getFilteredResults, getCheckedFilters } from '../util/filter-logic';
-
 const Home: NextPage = ({}) => {
-  const filterTestValues = [
-    // this array can be deleted safely.
-    'Microsoft',
-    'Canada',
-    'United States',
-    'Google',
-    'Netflix',
-    'Design',
-    'Business',
-    'Male',
-    'Female',
-  ];
-
-  const [checkboxState, setCheckboxState] =
-    useState<FilterSectionProps[]>(filterSectionInputs);
 
   return (
     <div>
@@ -33,20 +11,6 @@ const Home: NextPage = ({}) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1>Home Page - Hello world!</h1>
-      <div className="flex">
-        <CheckboxFilter
-          sections={checkboxState}
-          reportToState={setCheckboxState}
-        />
-        {getFilteredResults(
-          filterTestValues,
-          getCheckedFilters(checkboxState)
-        ).map((v, i) => (
-          <div key={i} className="mr-3">
-            <p>{v} is shown</p>
-          </div>
-        ))}
-      </div>
     </div>
   );
 };
