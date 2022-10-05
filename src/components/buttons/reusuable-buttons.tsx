@@ -30,10 +30,11 @@ export const buttonVariants = {
   secondaryUnselected: `bg-transparent hover:bg-gradient-to-r hover:from-[#CE1982] hover:to-[#ED493D] hover:opacity-50 text-slate-300 font-bold hover:text-white py-2 px-6 m-1 border border-slate-300 hover:border-transparent rounded-3xl disabled:text-slate-300 disabled:border-slate-300 disabled:opacity-50 disabled:cursor-not-allowed`,
   iconOnly: 'border border-black rounded-full p-1 leading-none m-1 ',
 };
+type customSVG = React.SVGProps<SVGSVGElement>;
 
 type ButtonProps = {
   id: string;
-  children?: string;
+  children?: string | customSVG | JSX.Element | any; //any temp fix need to look into further
   className: string;
   type: 'button' | 'submit';
   variant:

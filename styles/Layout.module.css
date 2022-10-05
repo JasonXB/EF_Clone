@@ -1,8 +1,13 @@
+/*needs more adjustments to style*/
+
 /* Layout Styling */
 .container {
   margin: auto;
-  display: grid;
-  grid-template-columns: minmax(300px, 1920px);
+  /*causing issues confirm to delete 
+  display: grid; 
+   2fr [main-start] minmax(300px, 1920px) [main-end] 1fr*/
+  max-width: 1400px;
+  min-width: 300px;
   justify-items: center;
   grid-gap: 0.5rem;
 }
