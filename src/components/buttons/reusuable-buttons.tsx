@@ -5,6 +5,8 @@ import React from 'react';
 import facebookIcon from './SVGIcons/facebook.svg';
 import linkedInIcon from './SVGIcons/linkedin.svg';
 import googleIcon from './SVGIcons/google.svg';
+import listIcon from './SVGIcons/listIcon.svg';
+import closeIcon from './SVGIcons/closeIcon.svg';
 
 //once theme is configured for colors, delete this
 //TempColors{
@@ -43,7 +45,8 @@ type ButtonProps = {
     | 'iconOnly';
   disabled: boolean;
   clickHandler?: React.MouseEventHandler<HTMLButtonElement> | undefined;
-  icon?: 'facebook' | 'linkedIn' | 'google';
+  icon?: 'facebook' | 'linkedIn' | 'google' | 'listIcon' | 'closeIcon';
+  ariaLabel?: string;
 };
 
 const Button = ({ ...props }: ButtonProps) => {
@@ -53,6 +56,8 @@ const Button = ({ ...props }: ButtonProps) => {
     facebook: ['facebook', facebookIcon],
     linkedIn: ['linkedIn', linkedInIcon],
     google: ['google', googleIcon],
+    listIcon: ['listIcon', listIcon],
+    closeIcon: ['closeIcon', closeIcon],
   };
 
   return (
@@ -62,6 +67,7 @@ const Button = ({ ...props }: ButtonProps) => {
       className={defaultClassName.concat(' ', props.className)} //allows possibility to adjust button style even more from the default variant styles
       disabled={props.disabled}
       onClick={props.clickHandler}
+      aria-label={props.ariaLabel}
     >
       {props.icon ? (
         <span className={'mx-0.5 flex'}>

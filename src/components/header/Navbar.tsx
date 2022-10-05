@@ -17,10 +17,20 @@ const LoginSignup = () => (
   <div className="flex flex-col items-start w-full mr-16 lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto lg:items-center lg:h-auto">
     {/*These links are made to look like buttons */}
     <Link href={'/login'}>
-      <a className={buttonVariants.secondary}>Login</a>
+      <a
+        className={buttonVariants.secondary}
+        aria-label="brings you to login screen"
+      >
+        Login
+      </a>
     </Link>
     <Link href={'/signup'}>
-      <a className={buttonVariants.primary}>Sign Up</a>
+      <a
+        className={buttonVariants.primary}
+        aria-label="brings you to a different screen to sign up"
+      >
+        Sign Up
+      </a>
     </Link>
   </div>
 );
@@ -30,6 +40,7 @@ const ProfileNavMenu = () => <div>Temp</div>;
 const Navbar = () => {
   let notLoggedIn = true; //temp for testing, will switch to auth
   const [isOpen, setIsOpen] = useState(false);
+
   return (
     <>
       {/* Empowered Futures Logo / Link to the Homepage */}
@@ -44,9 +55,12 @@ const Navbar = () => {
         </div>
         {/*Mobile + tablet */}
 
-        <Button className="lg:hidden" clickHandler={() => setIsOpen(!isOpen)}>
-          =
-        </Button>
+        <Button
+          className="text-white lg:hidden"
+          clickHandler={() => setIsOpen(!isOpen)}
+          icon={!isOpen ? 'listIcon' : 'closeIcon'}
+          ariaLabel="menu toggle"
+        ></Button>
 
         {isOpen ? (
           <>
