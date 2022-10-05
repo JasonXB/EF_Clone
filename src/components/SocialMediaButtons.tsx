@@ -1,6 +1,6 @@
 import React from 'react';
 import { signIn } from 'next-auth/react';
-
+//temp needs to be deleted and auth updated to include 'buttons' instead
 export default function SocialMediaButtons() {
   const buttons = [
     {
