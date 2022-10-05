@@ -11,15 +11,6 @@ const becomeAMentor: NextPage = ({}) => {
       </Head>
       <h1>Become a Mentor placeholder</h1>
 
-      {/* Description of role  */}
-
-      {/* What's in it for you?  */}
-
-      {/* Prerequisite requirements  */}
-
-      {/* Apply button  */}
-
-      {/* Footer */}
     </div>
   );
 };
