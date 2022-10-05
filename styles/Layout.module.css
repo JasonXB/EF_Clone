@@ -1,0 +1,12 @@
+/* Layout Styling */
+.container {
+  margin: auto;
+  display: grid;
+  grid-template-columns: minmax(300px, 1920px);
+  justify-items: center;
+  grid-gap: 0.5rem;
+}
+.content {
+  grid-column: main-start/main-end;
+  padding: 0 2rem;
+}

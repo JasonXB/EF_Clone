@@ -1,5 +1,7 @@
 import NavbarLink from './NavbarLink';
 import EfLogo from './EfLogo';
+import Button, { buttonVariants } from '../buttons/reusuable-buttons';
+import Link from 'next/link';
 
 const Navbar = () => {
   return (
@@ -17,10 +19,15 @@ const Navbar = () => {
             <NavbarLink url={'/about-us'} name={'About Us'} />
           </div>
         </div>
-        {/* Right div for Login/Sign Up Buttons (not yet pulled from repo) */}
+        {/* Right div for Login/Sign Up Buttons*/}
         <div className="flex flex-col items-start w-full mr-16 lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto lg:items-center lg:h-auto">
-          <NavbarLink url={'/about-us'} name={'Login'} />
-          <NavbarLink url={'/about-us'} name={'Sign Up'} />
+          {/*These links are made to look like buttons */}
+          <Link href={'/login'}>
+            <a className={buttonVariants.secondary}>Login</a>
+          </Link>
+          <Link href={'/signup'}>
+            <a className={buttonVariants.primary}>Sign Up</a>
+          </Link>
         </div>
       </nav>
     </>
