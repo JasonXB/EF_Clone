@@ -1,5 +1,5 @@
 import React from 'react';
-import SocialMediaButtons from './components/SocialMediaButtons';
+import SocialMediaButtons from '../src/components/SocialMediaButtons';
 import { nextAuthConfig } from './api/auth/[...nextauth]';
 import { GetServerSideProps } from 'next';
 import { unstable_getServerSession } from 'next-auth';
