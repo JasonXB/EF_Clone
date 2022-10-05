@@ -1,4 +1,4 @@
-import { useSearchContext } from '../context/SearchContext';
+import { useSearchContext } from '../../context/SearchContext';
 import SearchResult from './SearchResult';
 
 // Temporary component used to test SearchInput component

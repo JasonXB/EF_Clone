@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
-import SearchResults from '../components/SearchResults';
-import SearchForm from '../components/SearchInput';
+import SearchResults from '../src/components/SearchResults';
+import SearchForm from '../src/components/SearchInput';
 import { dummyMentors } from '../temporary/dummyMentors';
 
 const SearchInputTest: NextPage = ({}) => {

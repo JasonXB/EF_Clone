@@ -1,4 +1,4 @@
-import { SearchResultProps } from "../interface/search-result-props.interface";
+import { SearchResultProps } from "../../interface/search-result-props.interface";
 
 // Temporary component used to test SearchInput component
 // Displays a component for every returned search result from a given set of data; renders in SearchResults component
