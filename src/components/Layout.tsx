@@ -1,5 +1,6 @@
 import React, { Children } from 'react';
 import Head from 'next/head';
+import Navbar from './header/Navbar';
 // import Header from ''
 // import Footer from ''
 
@@ -21,7 +22,7 @@ const Layout = ({ ...props }: LayoutProps) => {
       <div className="content">
         {/* Add the Header component here */}
         {/* <Header/> */}
-        <h1>Hedaer</h1>
+        <Navbar />
         <main>{props.children}</main>
         {/* Add the Footer component here */}
         {/* <Footer/> */}

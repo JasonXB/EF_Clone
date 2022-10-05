@@ -2,12 +2,11 @@ import BubbleTag, { BUBBLE_TAG_TYPE_CLASSES } from './BubbleTag';
 import bubbleTagStyles from '../styles/BubbleTag.module.css';
 import { v4 as uuidv4 } from 'uuid';
 
-
 interface Tags {
-  tags: string[],
-  bubbleTagType: BUBBLE_TAG_TYPE_CLASSES,
-  index: number,
-  alternativeTagType: BUBBLE_TAG_TYPE_CLASSES,
+  tags: string[];
+  bubbleTagType: BUBBLE_TAG_TYPE_CLASSES;
+  index: number;
+  alternativeTagType: BUBBLE_TAG_TYPE_CLASSES;
 }
 
 /*
@@ -20,21 +19,27 @@ interface Tags {
   index and alternativeType props are optional and are used to select a 
   single element and change its color to the alternative one 
 */
-const BubbleTags = ({ tags, bubbleTagType, index, alternativeTagType }: Tags) => {
+const BubbleTags = ({
+  tags,
+  bubbleTagType,
+  index,
+  alternativeTagType,
+}: Tags) => {
   let selectedTagType;
   return (
     <div className={bubbleTagStyles.container}>
       {tags.map((tag: string, i: number) => {
-
         //condition to handle cases if the component involves the index prop
-        if(i == index){
-          selectedTagType = alternativeTagType
+        if (i == index) {
+          selectedTagType = alternativeTagType;
         } else {
-          selectedTagType = bubbleTagType
+          selectedTagType = bubbleTagType;
         }
 
-        return <BubbleTag key={uuidv4()} tag={tag} bubbleTagType={selectedTagType} />
-        })}
+        return (
+          <BubbleTag key={uuidv4()} tag={tag} bubbleTagType={selectedTagType} />
+        );
+      })}
     </div>
   );
 };
