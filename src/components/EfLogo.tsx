@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { EfLogoProps } from '../interface/ef-logo-props.interface';
+import { EfLogoProps } from '../../interface/ef-logo-props.interface';
 import Image from 'next/image';
 import eflogo from './assets/eflogo.png';
  

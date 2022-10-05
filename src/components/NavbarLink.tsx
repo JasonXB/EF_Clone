@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { NavbarLinkProps } from '../interface/navbar-link-props.interface';
+import { NavbarLinkProps } from '../../interface/navbar-link-props.interface';
 
 const NavbarLink = ({url, name}:  NavbarLinkProps) => {
   return (
