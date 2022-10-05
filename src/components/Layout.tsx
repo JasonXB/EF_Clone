@@ -7,7 +7,6 @@ import LayoutStyle from '../../styles/Layout.module.css';
 
 type LayoutProps = {
   headTitle?: string;
-  signedIn: boolean;
   children: any;
 };
 const Layout = ({ ...props }: LayoutProps) => {
@@ -24,7 +23,7 @@ const Layout = ({ ...props }: LayoutProps) => {
       <div className={LayoutStyle.Content}>
         {/* Add the Header component here */}
         {/* <Header/> */}
-        <Navbar signedIn={props.signedIn} />
+        <Navbar />
         <main>{props.children}</main>
         {/* Add the Footer component here */}
         {/* <Footer/> */}

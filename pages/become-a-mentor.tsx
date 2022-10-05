@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
 import { GetStaticProps } from 'next';
+import Layout from '../src/components/Layout';
 
 // Statically renders page and sets props equal to an empty object
 export const getStaticProps: GetStaticProps = async (context) => {
@@ -49,33 +50,35 @@ const becomeAMentor: NextPage = (props) => {
   ];
 
   return (
-    <div className="px-4 sm:px-8 xl:px-0 grid grid-cols-[1fr_auto_1fr]">
-      {content.map((section, i) => {
-        return (
-          <section key={i} className="col-start-2 col-end-3 mt-12">
-            {i === 0 && (
-              <h1 className="font-extrabold text-5xl sm:text-6xl leading-[4rem] text-[#085d9f] mb-10 xl:mb-28">
-                Empowered Futures
-                <br />
-                Mentorship
-              </h1>
-            )}
-            <h2 className="mb-4 text-3xl font-semibold">
-              {section.headerText}
-            </h2>
-            <ul className="list-disc list-inside">
-              {section.bullets.map((text, i) => {
-                return (
-                  <li key={i} className="text-lg">
-                    {text}
-                  </li>
-                );
-              })}
-            </ul>
-          </section>
-        );
-      })}
-    </div>
+    <Layout headTitle="Empowered Futures - Become a Mentor">
+      <div className="px-4 sm:px-8 xl:px-0 grid grid-cols-[1fr_auto_1fr]">
+        {content.map((section, i) => {
+          return (
+            <section key={i} className="col-start-2 col-end-3 mt-12">
+              {i === 0 && (
+                <h1 className="font-extrabold text-5xl sm:text-6xl leading-[4rem] text-[#085d9f] mb-10 xl:mb-28">
+                  Empowered Futures
+                  <br />
+                  Mentorship
+                </h1>
+              )}
+              <h2 className="mb-4 text-3xl font-semibold">
+                {section.headerText}
+              </h2>
+              <ul className="list-disc list-inside">
+                {section.bullets.map((text, i) => {
+                  return (
+                    <li key={i} className="text-lg">
+                      {text}
+                    </li>
+                  );
+                })}
+              </ul>
+            </section>
+          );
+        })}
+      </div>
+    </Layout>
   );
 };
 
