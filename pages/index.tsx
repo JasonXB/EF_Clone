@@ -1,17 +1,15 @@
 import type { NextPage } from 'next';
 import Link from 'next/link';
 import Layout from '../src/components/Layout';
-import MiniProfileCard from '../src/components/MiniProfileCard';
+
 
 const Home: NextPage = ({}) => {
   return (
     <Layout>
-      <MiniProfileCard mentorsInfo={{"name": "Bilbo Baggins", "location": "London", "job": "Chef"}}/> 
-      {/* <h1>Home Page - Hello world!</h1>
+      <h1>Home Page - Hello world!</h1>
       <Link href="/become-a-mentor">
         <a>Click</a>
-      </Link> */}
-
+      </Link>
 
     </Layout>
     
