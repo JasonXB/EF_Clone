@@ -4,7 +4,7 @@ import Layout from '../src/components/Layout';
 
 const findAMentor: NextPage = ({}) => {
   return (
-    <Layout headTitle="Empowered Futures - Find a Mentor">
+    <Layout headTitle="Find a Mentor">
       <h1>Find a Mentor placeholder</h1>
       {/* Search for the perfect mentor for you!  */}
 

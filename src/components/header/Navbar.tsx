@@ -4,13 +4,13 @@ import { buttonVariants } from '../buttons/reusuable-buttons';
 import { Disclosure } from '@headlessui/react';
 
 import ProfileNavMenu from './ProfileNavMenu';
-import LoginSignup from './LoginSignup';
+import LoginSignup from './LoginSignupButton';
 
 //issues when under 440px, logo not being responsive
 
 const MainLinks = () => (
   <div className="w-full lg:inline-flex lg:w-auto">
-    <div className="flex items-start w-full lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto lg:items-center lg:h-auto">
+    <div className="flex flex-col items-start w-full md:inline-flex md:flex-row sm:ml-auto sm:w-auto sm:items-center sm:h-auto">
       <NavbarLink url={'/become-a-mentor'} name={'Become a Mentor'} />
       <NavbarLink url={'/find-a-mentor'} name={'Find a Mentor'} />
       <NavbarLink url={'/about-us'} name={'About Us'} />
@@ -26,14 +26,15 @@ const Navbar = () => {
       as="nav"
       className="pt-5 bg-white border-b shadow-md border-slate-200"
     >
+      {/*handles open close boolean */}
       {({ open }) => (
         <>
-          <div className="px-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div className="relative flex items-center justify-between h-20">
-              <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
+          <div className="px-2 mx-auto max-w-7xl sm:px-6 md:px-8">
+            <div className="relative flex items-center h-20 ">
+              <div className="absolute inset-y-0 left-0 flex items-center md:hidden">
                 {/* Mobile menu button*/}
                 <Disclosure.Button
-                  className={`${buttonVariants.primary} inline-flex items-center justify-center p-2`}
+                  className={`${buttonVariants.primary} px-3 `}
                 >
                   <span className="sr-only">Open main menu</span>
                   {open ? (
@@ -64,26 +65,43 @@ const Navbar = () => {
                   )}
                 </Disclosure.Button>
               </div>
-              <div className="flex items-center justify-center flex-1 sm:items-stretch sm:justify-start">
+
+              <div className="flex items-center justify-center flex-1 md:justify-start">
+                {/* Empowered Futures Logo / Link to the Homepage */}
+                {/* Logo is currently a screenshot (need original image) */}
                 <div className="flex items-center flex-shrink-0">
-                  {/* Empowered Futures Logo / Link to the Homepage */}
-                  {/* Logo is currently a screenshot (need original image) */}
                   <EfLogo alt={'Empowered Futures Logo'} />
                 </div>
-                <div className="hidden sm:ml-6 sm:block">
+
+                {/*desktop nav */}
+                <div className="hidden ml-1 md:ml-6 md:block">
                   <MainLinks />
                 </div>
               </div>
-
+              {/*toggled state login/sign up buttons or profile menu */}
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                {notLoggedIn ? <LoginSignup /> : <ProfileNavMenu />}
+                {/*hides login from nav when its too crowded */}
+                {notLoggedIn ? (
+                  <span className="hidden sm:block">
+                    <LoginSignup />
+                  </span>
+                ) : (
+                  <ProfileNavMenu />
+                )}
               </div>
             </div>
           </div>
 
-          <Disclosure.Panel className="sm:hidden">
+          {/*mobile hamburger nav */}
+          <Disclosure.Panel className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1">
               <MainLinks />
+              {/*displays login/signup buttons in panel when nav runs out of room */}
+              {notLoggedIn ? (
+                <span className="sm:hidden">
+                  <LoginSignup />
+                </span>
+              ) : null}
             </div>
           </Disclosure.Panel>
         </>

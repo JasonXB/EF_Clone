@@ -4,7 +4,7 @@ import Layout from '../src/components/Layout';
 
 const aboutUs: NextPage = ({}) => {
   return (
-    <Layout headTitle="Empowered Futures - About Us">
+    <Layout headTitle="About Us">
       <div>
         <h1>About us placeholder</h1>
 

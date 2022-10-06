@@ -21,8 +21,6 @@ const Layout = ({ ...props }: LayoutProps) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={LayoutStyle.Content}>
-        {/* Add the Header component here */}
-        {/* <Header/> */}
         <Navbar />
         <main>{props.children}</main>
         {/* Add the Footer component here */}

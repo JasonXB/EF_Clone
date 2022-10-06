@@ -50,7 +50,7 @@ const becomeAMentor: NextPage = (props) => {
   ];
 
   return (
-    <Layout headTitle="Empowered Futures - Become a Mentor">
+    <Layout headTitle="Become a Mentor">
       <div className="px-4 sm:px-8 xl:px-0 grid grid-cols-[1fr_auto_1fr]">
         {content.map((section, i) => {
           return (
