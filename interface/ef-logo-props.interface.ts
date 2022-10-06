@@ -1,5 +1,5 @@
 export interface EfLogoProps {
     className?: string;
-    alt: string
+    alt?: string
   }
   

@@ -8,7 +8,7 @@ const Navbar = () => {
       {/* Empowered Futures Logo / Link to the Homepage */}
       {/* Logo is currently a screenshot (need original image) */}
       <nav className="flex flex-wrap items-center pt-5 border-b shadow-md border-slate-200">
-        <EfLogo alt={'Empowered Futures Logo'} />
+        <EfLogo />
       
         {/* Left div for three links */}
         <div className="w-full lg:inline-flex lg:w-auto">

@@ -12,7 +12,7 @@ const EfLogo = ({ alt, className}:  EfLogoProps) => {
     <a className="items-center block p-2 ml-6 mr-12 ">
     <Image 
       className={className}
-      alt={alt}
+      alt='Empowered Futures Logo'
       src={eflogo}
       height={148}
             />
