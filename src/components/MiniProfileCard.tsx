@@ -8,9 +8,10 @@ import style from '../../styles/MiniProfileCard.module.css'
 const MiniProfileCard = ({mentorsInfo}: any) => {
     const {name, location, job} = mentorsInfo
     const arrTags = ["management", "design"]
+    const personsName="Bilbo Baggins"
     return(
         <div className={`${style.miniProfileCard} flex`}>
-            <Avatar imgLocation={tempImage} displaySize="mediumLarge" personsName="Bilbo Baggins" />
+            <Avatar imgLocation={tempImage} displaySize="mediumLarge" personsName={personsName}/>
             <div className={`${style.infoContainer} font-mainFont pl-3`}>
                 <h2 className={style.name}>{name}</h2>
                 <h4 className={style.locationJob}>{location}</h4>
