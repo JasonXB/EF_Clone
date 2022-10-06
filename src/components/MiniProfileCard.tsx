@@ -1,20 +1,34 @@
 import BubbleTags from './BubbleTags';
 import Avatar from './avatar/avatar'
-import React from 'react'
+import tempImage from '../../src/assets/cat.jpeg'
+import { BUBBLE_TAG_TYPE_CLASSES } from './BubbleTag';
+import style from '../../styles/MiniProfileCard.module.css'
 
-interface MiniProfileCard {
-    personsName: string,
-    age: string,
-  }
 
-const MiniProfileCard = ({personsName, age}: MiniProfileCard) => {
+const MiniProfileCard = ({mentorsInfo}: any) => {
+    const {name, location, job} = mentorsInfo
+    const arrTags = ["management", "design"]
     return(
-        <div className="flex h-4 w-4" id='testtest'>
-            {personsName}
-            {/* <Avatar/> */}
-            {/* <ProfileHeader/>
-            <BubbleTags/>
-            <Compatibility/> */}
+        <div className={`${style.miniProfileCard} flex`}>
+            <Avatar imgLocation={tempImage} displaySize="mediumLarge" personsName="Bilbo Baggins" />
+            <div className={`${style.infoContainer} font-mainFont pl-3`}>
+                <h2 className={style.name}>{name}</h2>
+                <h4 className={style.locationJob}>{location}</h4>
+                <h4 className={style.locationJob}>{job}</h4>
+                {/* Remove below div when <BubbleTags/> is working, and uncomment <BubbleTags/> */}
+                <div className="h-7 my-4">
+                    [Bubble Tags]
+                </div>
+                {/* <BubbleTags tags={arrTags} bubbleTagType={BUBBLE_TAG_TYPE_CLASSES.blue} /> */}
+                <div className={style.compatibility}> 
+                    <h4>Compatibility</h4>
+                    {/* Remove below div when <PercentBar/> is working, and uncomment <PercentBar/> */}
+                    <div className="h-7 my-4">
+                        [Percent Bar]
+                    </div>
+                    {/* <PercentBar /> */}
+                </div>
+            </div>
         </div>
     )
 }
