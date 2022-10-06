@@ -21,7 +21,7 @@ const SearchInput = ({ data }: SearchInputProps) => {
       setTriggerFilterSearch(false);
     };
     searchItem(data, currentSearchValue.current.value.toLowerCase());
-  }, [triggerFilterSearch, data, filterSearch]);
+  }, [triggerFilterSearch, data]); // eslint-disable-line
 
   // render search form - currentSearchValue referenced in input. When input value changes, call searchItem to update state with current ref'd value.
   //  styling is rough/temporary.
