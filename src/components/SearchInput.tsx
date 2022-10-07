@@ -13,6 +13,22 @@ const SearchInput = ({ data }: SearchInputProps) => {
     filterSearch(data, currentSearchValue.current.value.toLowerCase());
   }
 
+<<<<<<< HEAD
+=======
+  // when boolean state set to true, call searchItem --> update currentFilteredData state.
+  useEffect(() => {
+  // function takes data (arr of obj) and value (currentSearchValue) as arguments; resets boolean to false
+  // Note: function defined inside useEffect in order to deal with eslint warning.
+    const searchItem = (data: Array<Data>, value: string) => {
+      filterSearch(data, value);
+      setTriggerFilterSearch(false);
+    };
+    searchItem(data, currentSearchValue.current.value.toLowerCase());
+  }, [triggerFilterSearch, data]); // eslint-disable-line
+
+  // render search form - currentSearchValue referenced in input. When input value changes, call searchItem to update state with current ref'd value.
+  //  styling is rough/temporary.
+>>>>>>> 7e476c87463ef9bffaafad7301c578cf166ec5c2
   return (
     <>
       <div>
