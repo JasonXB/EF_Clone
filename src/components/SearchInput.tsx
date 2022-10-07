@@ -9,22 +9,10 @@ const SearchInput = ({ data }: SearchInputProps) => {
   // sets up reference with variable currentSearchValue
   const currentSearchValue = useRef<HTMLInputElement>(null!);
 
-  // Boolean state variable used to trigger immediate call of searchItem function
-  const [triggerFilterSearch, setTriggerFilterSearch] = useState(false);
+  const onType = () => {
+    filterSearch(data, currentSearchValue.current.value.toLowerCase());
+  }
 
-  // when boolean state set to true, call searchItem --> update currentFilteredData state.
-  useEffect(() => {
-  // function takes data (arr of obj) and value (currentSearchValue) as arguments; resets boolean to false
-  // Note: function defined inside useEffect in order to deal with eslint warning.
-    const searchItem = (data: Array<Data>, value: string) => {
-      filterSearch(data, value);
-      setTriggerFilterSearch(false);
-    };
-    searchItem(data, currentSearchValue.current.value.toLowerCase());
-  }, [triggerFilterSearch, data, filterSearch]);
-
-  // render search form - currentSearchValue referenced in input. When input value changes, call searchItem to update state with current ref'd value.
-  //  styling is rough/temporary.
   return (
     <>
       <div>
@@ -38,7 +26,7 @@ const SearchInput = ({ data }: SearchInputProps) => {
               aria-describedby="button-addon2"
               placeholder="Skills, Mentor name or Industries"
               ref={currentSearchValue}
-              onChange={() => setTriggerFilterSearch(true)}
+              onChange={onType}
             />
             <button
               className="flex items-center px-4 py-0 text-xs font-medium leading-tight text-black uppercase bg-white rounded btn focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg"
