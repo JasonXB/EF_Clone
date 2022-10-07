@@ -1,6 +1,5 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-
 import { GetStaticProps } from 'next';
 import Layout from '../src/components/Layout';
 
