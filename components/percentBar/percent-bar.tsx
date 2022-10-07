@@ -20,12 +20,12 @@ const PercentageBar: FC<PercentBarProps> = ({
       <div
         style={progressStyle}
         className={`w-3/5 h-full rounded-xl absolute ${
-          color === 'pink' ? 'bg-fuchsia' : 'bg-namelessBlue'
+          color === 'pink' ? 'bg-magenta' : 'bg-blue'
         }`}
       ></div>
       {showPercentageText ? (
         <div className="w-full flex justify-center items-center absolute text-white">
-          <span className="text-sm">{`${percentage}%`}</span>
+          <span className="flex justify-center items-center h-5">{`${percentage}%`}</span>
         </div>
       ) : null}
     </div>
