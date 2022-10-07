@@ -1,12 +1,16 @@
 import Link from 'next/link';
-import { NavbarLinkProps } from '../../interface/navbar-link-props.interface';
+import { FooterLinkProps } from '../../interface/footer-link-props.interface';
 
-const FooterLink = ({url, name}:  NavbarLinkProps) => {
+const FooterLink = ({url, text, icon}:  FooterLinkProps) => {
   return (
 <Link href={url}>
-    <a className='items-center justify-center w-full px-6 py-2 font-bold text-black rounded lg:inline-flex lg:w-auto hover:bg-gray-100 hover:text-black '> 
-    {name}
+  <p className="mb-4 ">
+    <a className="flex flex-row text-gray-600 cursor-pointer hover:bg-gray-200">
+      {/* If 'icon' property exists in link, display icon  */}
+    {icon && <div className='mr-3'>{icon}</div>}
+      {text}
     </a>
+  </p>
 </Link>
   );
 };

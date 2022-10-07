@@ -4,7 +4,7 @@ import Image from 'next/image';
 import eflogo from './assets/eflogo.png';
  
 
-const EfLogo = ({ alt, className}:  EfLogoProps) => {
+const EfLogo = ({ alt, className, height}:  EfLogoProps) => {
   return (
 <>
  {/* Empowered Futures Logo / Link to the Homepage */}
@@ -14,7 +14,7 @@ const EfLogo = ({ alt, className}:  EfLogoProps) => {
       className={className}
       alt='Empowered Futures Logo'
       src={eflogo}
-      height={148}
+      height={height}
             />
      </a>
   </Link>
