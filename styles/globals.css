@@ -4,6 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body{
+width:100%;
+overflow-x:hidden;
+}
+
 :root {
   --pinkOrangeGradient: linear-gradient(89deg, #ce1982 0%, #ed493d 100%);
   --blackBoxShadow: 0px 0px 15px #00000029;

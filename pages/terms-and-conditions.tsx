@@ -62,7 +62,7 @@ const termsAndConditions: NextPage = (props) => {
 
   return (
     <Layout>
-      <div className="w-full px-4 sm:px-8 xl:px-0 grid grid-cols-[1fr_auto_1fr]">
+      <div className="px-4 sm:px-8 xl:px-0 grid grid-cols-[1fr_auto_1fr]">
         {content.map((section, i) => {
           return (
             <section key={i} className="col-start-2 col-end-3 mt-16 mb-8 px-80">
@@ -76,7 +76,7 @@ const termsAndConditions: NextPage = (props) => {
                     Empowered Futures Mentoring Program
                   </h2>
                   <br />
-                  <h2 className="mb-4 text-3xl font-semibold text-blue xl:mb-16">
+                  <h2 className="mb-20 text-3xl font-semibold text-blue xl:mb-16">
                     Last Revised: October 15, 2022
                   </h2>
                 </div>
@@ -104,9 +104,9 @@ const termsAndConditions: NextPage = (props) => {
                       {/* If either of these strings are found, colour them blue */}
                       {text.includes("'Mentor'") ||
                       text.includes("'Mentee'") ? (
-                        <div className="flex flex-row pl-12 mb-6 text-lg">
+                        <div className="flex flex-col mb-6 text-lg xl:pl-12 xl:flex-row">
                           •
-                          <span className="ml-6 font-bold text-blue">
+                          <span className="font-bold xl:ml-6 text-blue">
                             {text.slice(0, 9)}
                             <span className="font-light text-black ">
                               {text.slice(9)}
@@ -121,19 +121,19 @@ const termsAndConditions: NextPage = (props) => {
                       text.charAt(0) === '4' ||
                       text.charAt(0) === '5' ? (
                         <div>
-                          <span className="flex flex-row font-bold text-blue">
+                          <span className="flex flex-col font-bold xl:flex-row text-blue">
                             {text.slice(0, 4)}
-                            <span className="ml-12 font-light text-black">
+                            <span className="font-light text-black xl:ml-12">
                               {text.slice(4)}
                             </span>
                           </span>
                         </div>
                       ) : null}
-                       {/* If string begins with E (2nd par of 1.1), only indent corresponding paragraph */}
+                      {/* If string begins with E (2nd par of 1.1), only indent corresponding paragraph */}
                       {text.charAt(0) === 'E' && (
                         <div>
                           <span className="flex flex-row">
-                            <span className="pl-20">{text}</span>
+                            <span className="xl:pl-20">{text}</span>
                           </span>
                         </div>
                       )}
@@ -146,8 +146,13 @@ const termsAndConditions: NextPage = (props) => {
         })}
       </div>
       {/* Decline/Accept buttons */}
-      <div className="flex flex-row w-full mt-32 mb-10 justify-evenly">
-        <Button variant="secondary" className="flex items-center justify-center w-56 h-16 text-black">Decline</Button>
+      <div className="flex items-center justify-center mt-32 mb-10 xl:w-full xl:justify-evenly">
+        <Button
+          variant="secondary"
+          className="flex items-center justify-center w-56 h-16 text-black"
+        >
+          Decline
+        </Button>
         {/* Empty div to create more space between buttons */}
         <div></div>
         <Button className="w-56 h-16">Accept</Button>
