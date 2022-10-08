@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
+import Head from 'next/head';
 import Link from 'next/link';
-import PercentageBar from '../components/percentBar/percent-bar';
 import Layout from '../src/components/Layout';
 
 const Home: NextPage = ({}) => {
@@ -10,7 +10,6 @@ const Home: NextPage = ({}) => {
       <Link href="/become-a-mentor">
         <a>Click</a>
       </Link>
-      <PercentageBar percentage={55} color={'pink'} showPercentageText={true} />
     </Layout>
   );
 };
