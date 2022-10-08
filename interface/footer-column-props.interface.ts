@@ -5,7 +5,7 @@ export interface FooterColumnProps {
         efLogo?: {};
         links?: Array<{
         text: string;
-        url: string;
+        url?: string;
         icon?: any
         }> 
     

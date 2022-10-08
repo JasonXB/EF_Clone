@@ -26,6 +26,7 @@ const footerLinks: FooterColumnProps[] = [
   },
   {
     links: [
+      { text: 'Follow Us On Social Media' },
       {
         text: 'Facebook',
         url: 'https://www.facebook.com/empoweredfuturesyyc/',
@@ -81,22 +82,27 @@ const footerLinks: FooterColumnProps[] = [
 const Footer = () => {
   return (
     <footer className="text-center bg-gray-100 lg:text-left">
-      <div className="flex py-16 mx-6 font-bold text-center text-black align-center md:text-left">
+      <div className="flex pt-16 mx-6 text-center align-center md:text-left">
         <div className="grid gap-8 grid-1 md:grid-cols-2 lg:grid-cols-4">
           {footerLinks.map((column, i) => {
             return (
               <div key={i}>
                 {/* Empowered Futures logo */}
-                {i === 0 && <EfLogo height={100} />}
+                {i === 0 && <EfLogo height={88} />}
                 {/* Map over column links to avoid repeating classes (thanks, Jason) */}
                 {column.links?.map((link, i) => {
                   return (
                     <div key={i}>
-                      <FooterLink
-                        text={link.text}
-                        url={link.url}
-                        icon={link.icon}
-                      />
+                      {/* If link has no url, render heading (just 'Follow us..')*/}
+                      {!link.url && <p className="mb-6">{link.text}</p>}
+                      {/* If link has url, render FooterLink */}
+                      {link.url && (
+                        <FooterLink
+                          text={link.text}
+                          url={link.url}
+                          icon={link.icon}
+                        />
+                      )}
                     </div>
                   );
                 })}

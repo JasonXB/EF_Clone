@@ -1,17 +1,16 @@
-import Link from 'next/link';
 import { FooterLinkProps } from '../../interface/footer-link-props.interface';
 
 const FooterLink = ({url, text, icon}:  FooterLinkProps) => {
   return (
-<Link href={url}>
-  <p className="mb-4 ">
-    <a className="flex flex-row text-gray-600 cursor-pointer hover:bg-gray-200">
+
+  <p className="mb-6 hover:bg-gray-200">
+    <a href={url} className="flex flex-row font-medium text-black cursor-pointer">
       {/* If 'icon' property exists in link, display icon  */}
-    {icon && <div className='mr-3'>{icon}</div>}
+    {icon && <p className='mr-3'>{icon}</p>}
       {text}
     </a>
   </p>
-</Link>
+
   );
 };
 
