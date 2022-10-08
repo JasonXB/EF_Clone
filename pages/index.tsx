@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Layout from '../src/components/Layout';
 
 const Home: NextPage = ({}) => {
+
   return (
     <Layout>
       <h1>Home Page - Hello world!</h1>
