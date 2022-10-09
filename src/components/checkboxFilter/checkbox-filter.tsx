@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-
 import { FilterSection as FilterSectionProps } from '../../interface/filter-section.interface';
 import { OptionStatus } from '../../interface/option-status.interface';
 import FilterSection from './filter-section';
