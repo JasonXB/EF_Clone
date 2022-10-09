@@ -5,7 +5,7 @@ import RedditImg from '../../assets/icons8-reddit-50.png';
 import LinkedInImg from '../../assets/icons8-linkedin-circled-50.png';
 import TwitterImg from '../../assets/icons8-twitter-50.png';
 import FacebookImg from '../../assets/icons8-facebook-50.png';
-import { SocialMedia } from '../../enum/SocialMedia.enum';
+import { SocialMedia } from '../../../enum/SocialMedia.enum';
 
 interface LinkTypes {
   //   domain: 'Reddit' | 'LinkedIn' | 'Twitter' | 'Facebook';

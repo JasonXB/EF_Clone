@@ -29,7 +29,6 @@ const getBubbleTag = (bubbleTagType = BUBBLE_TAG_TYPE_CLASSES.blue): typeof bubb
 
 const BubbleTag= ({ tag, bubbleTagType }: Tag) => {
   const bubbleTagStyle = getBubbleTag(bubbleTagType);
-
   return <span className={bubbleTagStyle}>{tag}</span>;
 };
 
