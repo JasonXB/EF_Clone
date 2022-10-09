@@ -1,7 +1,5 @@
 import React, { FC } from 'react';
-
-import { OptionStatus } from '../../interface/option-status.interface';
-
+import { OptionStatus } from '../../../interface/option-status.interface';
 import styles from './filter-section.module.css';
 
 interface FilterEntryProps {
