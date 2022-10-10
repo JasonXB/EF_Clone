@@ -1,5 +1,5 @@
 import { signOut, signIn } from 'next-auth/react';
-import useClientAuthCheck from '../api/auth/useClientAuthCheck';
+import useClientAuthCheck from '../../api/auth/useClientAuthCheck';
 import axios from 'axios';
 import { Session } from 'next-auth'; // NextAuth built in interface
 
