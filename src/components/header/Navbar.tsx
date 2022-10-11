@@ -19,7 +19,7 @@ const MainLinks = () => (
 );
 
 const Navbar = () => {
-  let notLoggedIn = false; //temp for testing, will switch to auth
+  let notLoggedIn = true; //temp for testing, will switch to auth
 
   return (
     <Disclosure
@@ -111,7 +111,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-<>
-  <nav className="flex flex-wrap items-center justify-between pt-5 border-b shadow-md border-slate-200"></nav>
-</>;
