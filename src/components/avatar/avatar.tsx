@@ -22,8 +22,10 @@ const Avatar: FC<ImagePath> = ({
 
   const largeSizing: IImageQualities = {
     // for the profile page
-    height: '357px',
-    width: '334px',
+    // height: '357px',
+    // width: '334px',
+    height: '290px',
+    width: '267px',
     borderRadius: 'rounded-lg',
   };
   const mediumLargeSizing: IImageQualities = {
