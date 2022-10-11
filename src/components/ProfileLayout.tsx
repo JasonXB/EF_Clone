@@ -26,7 +26,7 @@ const ProfileLayout = ({ ...props }: LayoutProps) => {
       <div className="profile-content">
         {/* Add the Header component here */}
         {/* <Header/> */}
-        <main className="w-full mt-10">{props.children}</main>
+        <main className="mt-10 ">{props.children}</main>
         {/* Add the Footer component here */}
         {/* <Footer/> */}
         <h1>Footer</h1>

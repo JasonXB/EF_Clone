@@ -5,10 +5,10 @@ import MentorProfileSection from '../src/components/MentorProfileSection';
 const dummyMentors = [
   {
     id: 1,
-    name: 'Hiba',
-    title: 'Empowered Futures Founder',
+    name: 'Hiba Badran',
+    title: 'Founder of Empowered Futures',
     avatar: '',
-    socialMediaIcons: 'LinkedIn',
+    socialMediaIcons: "http://linkedin.com",
     location: 'Calgary, Canada',
     responseTime: 'Usually responds within 1 day',
     skills: ['Entrepeneurship', 'Management', 'Problem Solving'],
