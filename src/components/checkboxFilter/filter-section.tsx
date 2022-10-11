@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import FilterEntry from './filter-entry';
-import { FilterSection as FilterSectionProps } from '../../../interface/filter-section.interface';
+import { FilterSection as FilterSectionProps } from '../../interface/filter-section.interface';
 
 const FilterSection: FC<FilterSectionProps> = ({
   title,

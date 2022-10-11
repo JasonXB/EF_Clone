@@ -1,7 +1,7 @@
 import React from 'react';
 import { ReactNode, useState, createContext, useContext } from 'react';
-import { Data } from '../../interface/data.interface';
-import { dummyMentors } from '../../temporary/dummyMentors';
+import { Data } from '../../src/interface/data.interface';
+import { dummyMentors } from '../../src/temporary/dummyMentors';
 
 type searchContextType = {
   currentFilteredData: Array<Data>;
