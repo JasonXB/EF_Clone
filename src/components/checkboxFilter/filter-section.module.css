@@ -1,0 +1,14 @@
+.hideRealCheckbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  border: 1px solid #707070;
+  height: 18px;
+  width: 23px;
+  display: block;
+}

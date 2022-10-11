@@ -5,8 +5,8 @@ import { v4 as uuidv4 } from 'uuid';
 interface Tags {
   tags: string[];
   bubbleTagType: BUBBLE_TAG_TYPE_CLASSES;
-  index: number;
-  alternativeTagType: BUBBLE_TAG_TYPE_CLASSES;
+  index?: number;
+  alternativeTagType?: BUBBLE_TAG_TYPE_CLASSES;
 }
 
 /*
