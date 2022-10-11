@@ -5,6 +5,7 @@ import ReusableCards from '../src/components/homepage/ReusableCards';
 import Layout from '../src/components/Layout';
 
 const ReusableCardData = [
+  //links and img need to be added once we receive assets and where these link to.
   {
     title: 'Mentee',
     paragraph:

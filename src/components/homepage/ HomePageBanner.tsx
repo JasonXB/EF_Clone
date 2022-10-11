@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { buttonVariants } from '../buttons/reusable-buttons';
 
 const HomePageBanner = () => (
+  //missing banner graphic and background graphics
   <div className="w-full py-4 mt-[20%] mb-[20%] sm:mb-[10%] sm:h-[60vh] sm:w-8/12 ">
     <h1 className="text-3xl font-semibold leading-tight sm:text-5xl text-primary-1">
       Maximizing Hope, <br /> Empowering Potential

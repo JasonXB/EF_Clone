@@ -31,6 +31,7 @@ const ReusableCards = ({
         </span>
       </div>
       <div className="w-full h-40 bg-blue-300 ss:w-1/2">
+        {/**place holder blue, missing graphics */}
         <Image src={img} alt={imgAlt} />
       </div>
     </div>
