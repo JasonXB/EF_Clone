@@ -1,10 +1,10 @@
 import React from 'react';
 import { ReactNode, useState, createContext, useContext } from 'react';
-import { Data } from '../interface/data.interface';
-import { dummyMentors } from '../temporary/dummyMentors';
+import { Data } from '../../src/interface/data.interface';
+import { dummyMentors } from '../../src/temporary/dummyMentors';
 
- type searchContextType = {
-  currentFilteredData: Array<Data> ;
+type searchContextType = {
+  currentFilteredData: Array<Data>;
   filterSearch: (data: Array<Data>, searchValue: string) => void;
 };
 
@@ -19,9 +19,9 @@ const SearchContext = createContext<searchContextType>(
 );
 
 export function useSearchContext() {
-    return useContext(SearchContext);
-  }
-  
+  return useContext(SearchContext);
+}
+
 type Props = {
   children: ReactNode;
 };
@@ -29,7 +29,7 @@ type Props = {
 // currently, only one generic state variable defined for currentFilteredData
 // as more use cases for SearchInput components become apparent, more variables can be defined to handle different kinds of state
 
-  export function SearchProvider({ children }: Props) {
+export function SearchProvider({ children }: Props) {
   // State variable to display current filtered data on UI
   const [currentFilteredData, setCurrentFilteredData] = useState(
     searchContextDefaultValues.currentFilteredData
@@ -45,20 +45,19 @@ type Props = {
           name: name.toLowerCase(),
           id: id,
           category: category,
-          
         };
       })
       .filter((item) => {
         let containsName = item.name.startsWith(searchValue.toLowerCase());
         if (containsName) {
-          return item.name.startsWith(searchValue.toLowerCase())
+          return item.name.startsWith(searchValue.toLowerCase());
         } else {
           return false;
         }
       });
     setCurrentFilteredData(filteredData);
   };
-  
+
   const value = {
     currentFilteredData,
     filterSearch,
@@ -67,10 +66,8 @@ type Props = {
   return (
     <>
       <SearchContext.Provider value={value}>
-        <>
-        {children}
-        </>
-        </SearchContext.Provider>
+        <>{children}</>
+      </SearchContext.Provider>
     </>
   );
 }
