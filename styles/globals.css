@@ -66,6 +66,12 @@ Each element I set defaults for has an Adobe link at the bottom where I got the 
   scroll-behavior: smooth;
 }
 
+*,
+*:before,
+*:after {
+  box-sizing: border-box; /* Apply border box to all elements */
+}
+
 ol,
 ul {
   list-style: none;
