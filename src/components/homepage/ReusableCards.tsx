@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { buttonVariants } from '../buttons/reusuable-buttons';
+import { buttonVariants } from '../buttons/reusable-buttons';
 
 interface ReusableCardsProps {
   title: string;
@@ -20,10 +20,10 @@ const ReusableCards = ({
   imgAlt,
 }: ReusableCardsProps) => {
   return (
-    <div className="flex flex-col-reverse w-full p-4 space-y-3 border-2 rounded-lg ss:flex-row drop-shadow-xl border-smoke-3">
+    <div className="flex flex-col-reverse w-full p-4 space-y-3 border-2 rounded-lg shadow-xl ss:flex-row">
       <div className="w-full ss:w-1/2">
         <h4 className="font-semibold text-warning-2">{title}</h4>
-        <p className="">{paragraph}</p>
+        <p className="p-2 text-xs">{paragraph}</p>
         <span className="block pt-4">
           <Link href={buttonLink}>
             <a className={buttonVariants.primary}>{buttonText}</a>

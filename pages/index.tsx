@@ -29,7 +29,7 @@ const Home: NextPage = ({}) => {
   return (
     <Layout>
       <HomePageBanner />
-      <div className="flex flex-col space-y-2 md:space-y-0 md:flex-row md:space-x-2">
+      <div className="flex flex-col space-y-6 md:space-y-0 md:flex-row md:space-x-8">
         {ReusableCardData.map((each, i) => (
           <ReusableCards
             key={i}
@@ -42,6 +42,9 @@ const Home: NextPage = ({}) => {
           />
         ))}
       </div>
+      {/** video component -future */}
+      {/** testimonials component -future  */}
+      {/** blog component-future  */}
     </Layout>
   );
 };
