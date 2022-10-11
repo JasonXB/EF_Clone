@@ -20,7 +20,7 @@ const PercentageBar: FC<PercentBarProps> = ({
       <div
         style={progressStyle}
         className={`w-3/5 h-full rounded-xl absolute ${
-          color === 'pink' ? 'bg-magenta' : 'bg-blue'
+          color === 'pink' ? 'bg-secondary-1' : 'bg-primary-1'
         }`}
       ></div>
       {showPercentageText ? (
