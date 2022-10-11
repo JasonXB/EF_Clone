@@ -1,5 +1,5 @@
 import { GetServerSideProps } from 'next';
-import { nextAuthConfig } from '../api/auth/[...nextauth]';
+import { nextAuthConfig } from '../../api/auth/[...nextauth]';
 import { unstable_getServerSession } from 'next-auth/next'; // server side auth check method from NextAuth
 import { Session } from 'next-auth'; // NextAuth built in interface
 import axios from 'axios';
