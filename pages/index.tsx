@@ -11,6 +11,10 @@ const Home: NextPage = ({}) => {
       <Link href="/become-a-mentor">
         <a>Click</a>
       </Link>
+      <br />
+      <Link href="/login">
+        <a>Login Here</a>
+      </Link>
     </Layout>
   );
 };
