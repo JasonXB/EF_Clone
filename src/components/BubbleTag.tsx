@@ -1,4 +1,4 @@
-import bubbleTagStyles from '../styles/BubbleTag.module.css';
+import bubbleTagStyles from '../../styles/BubbleTag.module.css';
 
 interface Tag {
   tag: string;
