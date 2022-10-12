@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Layout from '../src/components/Layout';
 
+
 const Home: NextPage = ({}) => {
   return (
     <Layout>
@@ -11,7 +12,9 @@ const Home: NextPage = ({}) => {
       <Link href="/become-a-mentor">
         <a>Click</a>
       </Link>
+
     </Layout>
+    
   );
 };
 
