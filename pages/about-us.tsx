@@ -1,19 +1,14 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import Layout from '../src/components/Layout';
 
 const aboutUs: NextPage = ({}) => {
   return (
-    <div>
-      <Head>
-        <title>Empowered Futures - About Us</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <h1>About us placeholder</h1>
+    <Layout>
+      <div className="bg-slate-500 w-screen h-4">
 
-      {/* About us Hero  */}
-      
-      {/* Footer */}
-    </div>
+      </div>
+    </Layout>
   );
 };
 
