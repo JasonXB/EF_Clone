@@ -1,12 +1,14 @@
 import type { NextPage } from 'next';
-import Head from 'next/head';
 import Layout from '../src/components/Layout';
+import style from '../styles/aboutUs.module.css';
 
 const aboutUs: NextPage = ({}) => {
   return (
     <Layout>
-      <div className="bg-slate-500 w-screen h-4">
-
+      <div className="flex justify-center items-center w-screen">
+        <div className={`${style.image}`}>
+          <div className={`${style.title} w-fit`}>About Us</div>
+        </div>
       </div>
     </Layout>
   );
