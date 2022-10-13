@@ -16,7 +16,6 @@ interface MentorsInfoProps {
   aboutMentor: string;
   tags?: string[]; //temp optional, remove ? once implemented
   skills: [string, number][];
-  profileLink: string
 }
 
 const MentorCard = ({ ...mentorsInfo }: MentorsInfoProps) => {
