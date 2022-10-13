@@ -22,7 +22,7 @@ const ReusableCards = ({
   return (
     <div className="flex flex-col-reverse w-full p-4 space-y-3 border-2 rounded-lg shadow-xl ss:flex-row">
       <div className="w-full ss:w-1/2">
-        <h4 className="font-semibold text-warning-2">{title}</h4>
+        <h4 className="font-semibold text-quad-2">{title}</h4>
         <p className="p-2 text-xs h-1/2">{paragraph}</p>
         <span className="block pt-4">
           <Link href={buttonLink}>
@@ -32,7 +32,7 @@ const ReusableCards = ({
       </div>
       <div className="w-full h-40 bg-blue-300 ss:w-1/2">
         {/**place holder blue, missing graphics */}
-        <Image src={img} alt={imgAlt} />
+        {/* <Image src={img} alt={imgAlt} /> */}
       </div>
     </div>
   );
