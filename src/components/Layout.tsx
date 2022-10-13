@@ -20,13 +20,13 @@ const Layout = ({ ...props }: LayoutProps) => {
         <meta name="description" content="text" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className={LayoutStyle.Content}>
-        <Navbar />
+      <Navbar />
+      <div className={LayoutStyle.content}>
         <main>{props.children}</main>
-        {/* Add the Footer component here */}
-        {/* <Footer/> */}
-        <h1>Footer</h1>
       </div>
+      {/* Add the Footer component here */}
+      {/* <Footer/> */}
+      <h1>Footer</h1>
     </div>
   );
 };
