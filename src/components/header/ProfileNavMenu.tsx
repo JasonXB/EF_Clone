@@ -38,11 +38,11 @@ const ProfileMenu = () => (
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute right-0 z-10 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <Menu.Items className="absolute right-0 z-10 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-secondary-1 ring-opacity-5 focus:outline-none">
           <Menu.Item>
             <a
               href="#"
-              className="block px-4 py-2 text-sm text-gray-700 hover:text-magenta"
+              className="block px-4 py-2 text-sm text-gray-700 hover:text-secondary-1"
             >
               Your Profile
             </a>
@@ -50,15 +50,7 @@ const ProfileMenu = () => (
           <Menu.Item>
             <a
               href="#"
-              className="block px-4 py-2 text-sm text-gray-700 hover:text-magenta"
-            >
-              Settings
-            </a>
-          </Menu.Item>
-          <Menu.Item>
-            <a
-              href="#"
-              className="block px-4 py-2 text-sm text-gray-700 hover:text-magenta"
+              className="block px-4 py-2 text-sm text-gray-700 hover:text-secondary-1"
             >
               Sign out
             </a>
@@ -107,11 +99,7 @@ const ProfileNavMenu = () => (
       </a>
     </Link>
 
-    <Link href="/">
-      <a className="">
-        <ProfileMenu />
-      </a>
-    </Link>
+    <ProfileMenu />
   </div>
 );
 
