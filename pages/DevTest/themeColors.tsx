@@ -33,6 +33,7 @@ export default function palette() {
           <p>#AEDBFF</p>
         </div>
       </div>
+
       <div className="flex flex-row gap-8 flex-wrap mb-4">
         <div className="flex flex-col ">
           <div className="w-24 h-10 bg-[#CE1982]"> </div>
@@ -45,35 +46,36 @@ export default function palette() {
           <p>#DE325D</p>
         </div>
       </div>
+
       <div className="flex flex-row gap-8 flex-wrap mb-4">
         <div className="flex flex-col ">
           <div className="w-24 h-10 bg-[#E43348]"> </div>
-          <p>danger-1</p>
+          <p>tertiary-1</p>
           <p>#E43348</p>
         </div>
         <div className="flex flex-col ">
           <div className="w-24 h-10 bg-[#ED493D]"> </div>
-          <p>danger-2</p>
+          <p>tertiary-2</p>
           <p>#ED493D</p>
         </div>
         <div className="flex flex-col ">
           <div className="w-24 h-10 bg-[#FF5E60]"> </div>
-          <p>danger-3</p>
+          <p>tertiary-3</p>
           <p>#FF5E60</p>
         </div>
         <div className="flex flex-col ">
           <div className="w-24 h-10 bg-[#FF725E]"> </div>
-          <p>danger-4</p>
+          <p>tertiary-4</p>
           <p>#FF725E</p>
         </div>
         <div className="flex flex-col ">
           <div className="w-24 h-10 bg-[#FC98A4]"> </div>
-          <p>danger-5</p>
+          <p>tertiary-5</p>
           <p>#FC98A4</p>
         </div>
         <div className="flex flex-col ">
           <div className="w-24 h-10 bg-[#FFBCC4]"> </div>
-          <p>danger-6</p>
+          <p>tertiary-6</p>
           <p>#FFBCC4</p>
         </div>
       </div>
@@ -81,17 +83,17 @@ export default function palette() {
       <div className="flex flex-row gap-8 flex-wrap mb-4">
         <div className="flex flex-col ">
           <div className="w-24 h-10 bg-[#F8BC0F]"> </div>
-          <p>warning-1</p>
+          <p>quad-1</p>
           <p>#F8BC0F</p>
         </div>
         <div className="flex flex-col ">
           <div className="w-24 h-10 bg-[#EBC967]"> </div>
-          <p>warning-2</p>
+          <p>quad-2</p>
           <p>#EBC967</p>
         </div>
         <div className="flex flex-col ">
           <div className="w-24 h-10 bg-[#FAE4A2]"> </div>
-          <p>warning-3</p>
+          <p>quad-3</p>
           <p>#FAE4A2</p>
         </div>
       </div>

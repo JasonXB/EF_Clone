@@ -22,7 +22,8 @@ const Layout = ({ ...props }: LayoutProps) => {
         {/* Add the Header component here */}
         {/* <Header/> */}
         <h1>Hedaer</h1>
-        <main>{props.children}</main>
+        <main>{props.children}
+        </main>
         {/* Add the Footer component here */}
         {/* <Footer/> */}
         <h1>Footer</h1>
