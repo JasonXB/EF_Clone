@@ -1,5 +1,4 @@
 import type { NextPage } from 'next';
-import Head from 'next/head';
 import { GetStaticProps } from 'next';
 import Layout from '../src/components/Layout';
 
@@ -51,7 +50,7 @@ const becomeAMentor: NextPage = (props) => {
   ];
 
   return (
-    <Layout>
+    <Layout headTitle="Become a Mentor">
       <div className="px-4 sm:px-8 xl:px-0 grid grid-cols-[1fr_auto_1fr]">
         {content.map((section, i) => {
           return (
