@@ -33,22 +33,30 @@ const footerLinks: FooterColumnProps[] = [
         text: 'Facebook',
         url: 'https://www.facebook.com/empoweredfuturesyyc/',
         icon: (
-          <SocialMediaLink className="w-6 h-6 ml-2" domain={SocialMedia.facebook} />
+          <SocialMediaLink
+            className="w-6 h-6 ml-2"
+            domain={SocialMedia.facebook}
+          />
         ),
       },
       {
         text: 'Instagram',
         url: 'https://www.instagram.com/empowered_futures/?hl=en',
         icon: (
-          <SocialMediaLink className="w-6 h-6 ml-2" domain={SocialMedia.instagram} />
-
+          <SocialMediaLink
+            className="w-6 h-6 ml-2"
+            domain={SocialMedia.instagram}
+          />
         ),
       },
       {
         text: 'LinkedIn',
         url: 'https://www.linkedin.com/company/empowered-futures/',
         icon: (
-          <SocialMediaLink className="w-6 h-6 ml-2" domain={SocialMedia.linkedIn} />
+          <SocialMediaLink
+            className="w-6 h-6 ml-2"
+            domain={SocialMedia.linkedIn}
+          />
         ),
       },
     ],
@@ -64,12 +72,14 @@ const Footer = () => {
             return (
               <div key={i}>
                 {/* Empowered Futures logo */}
-                {i === 0 && <EfLogo className='h-40' alt='Empowered Futures Logo' />}
+                {i === 0 && (
+                  <EfLogo className="h-40" alt="Empowered Futures Logo" />
+                )}
                 {/* Map over column links to avoid repeating classes (thanks, Jason) */}
                 {column.links?.map((link, i) => {
                   return (
                     <div key={i}>
-                      {/* If link has no url, render heading (just 'Follow us..')*/}
+                      {/* If link has no url, render heading (just 'Follow us on social media')*/}
                       {!link.url && <p className="mb-6">{link.text}</p>}
                       {/* If link has url, render FooterLink */}
                       {link.url && (
