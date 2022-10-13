@@ -93,7 +93,7 @@ const termsAndConditions: NextPage = (props) => {
                       className={'text-lg mb-6'}
                     >
                       {/* If this string found, colour it blue */}
-                      {text.includes("'Empowered Futures' is") ? (
+                      {text.includes("'Empowered Futures'") ? (
                         <div>
                           <span className="font-bold text-blue">
                             {text.slice(0, 19)}
@@ -101,11 +101,13 @@ const termsAndConditions: NextPage = (props) => {
                           <span>{text.slice(19)}</span>
                         </div>
                       ) : null}
-                      {/* If either of these strings are found, colour them blue */}
+                      
+                      {/* If either of these strings are found (the two bullet ('•') points), colour them blue */}
                       {text.includes("'Mentor'") ||
                       text.includes("'Mentee'") ? (
                         <div className="flex flex-col mb-6 text-lg xl:pl-12 xl:flex-row">
-                          •
+                          {/* Hide '•' when in mobile view */}
+                          <span className="hidden lg:block xl:block">•</span>
                           <span className="font-bold xl:ml-6 text-blue">
                             {text.slice(0, 9)}
                             <span className="font-light text-black ">
@@ -114,12 +116,9 @@ const termsAndConditions: NextPage = (props) => {
                           </span>
                         </div>
                       ) : null}
-                      {/* If any strings begin with these numbers, colour them in blue and indent corresponding paragraph */}
-                      {text.charAt(0) === '1' ||
-                      text.charAt(0) === '2' ||
-                      text.charAt(0) === '3' ||
-                      text.charAt(0) === '4' ||
-                      text.charAt(0) === '5' ? (
+                      
+                      {/* If there is a '.' at index 1 (all numbered points), colour them in blue and indent corresponding paragraph */}
+                      {text.charAt(1) === '.' ? (
                         <div>
                           <span className="flex flex-col font-bold xl:flex-row text-blue">
                             {text.slice(0, 4)}
@@ -129,6 +128,7 @@ const termsAndConditions: NextPage = (props) => {
                           </span>
                         </div>
                       ) : null}
+                      
                       {/* If string begins with E (2nd par of 1.1), only indent corresponding paragraph */}
                       {text.charAt(0) === 'E' && (
                         <div>
