@@ -7,8 +7,6 @@ import {
 
 import 'react-circular-progressbar/dist/styles.css';
 
-import styles from './achievement-circle.module.css';
-
 interface AchievementCircleProps {
   progress: number;
   image: StaticImageData;
@@ -25,7 +23,7 @@ const AchievementCircle = ({
       <CircularProgressbarWithChildren
         value={progress}
         styles={buildStyles({
-          pathColor: `#CE1982`,
+          pathColor: `#CE1982`, // the input here doesn't understand tailwind class colors, so we have to input it manually
         })}
       >
         {/* Note: text can be passed to the "text" property of CircularProgressbar  */}
@@ -37,7 +35,6 @@ const AchievementCircle = ({
           className="rounded-full"
         />
       </CircularProgressbarWithChildren>
-      ; ;
     </div>
   );
 };
