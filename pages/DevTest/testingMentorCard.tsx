@@ -11,9 +11,11 @@ const testMentorCard: NextPage = ({}) => {
         fullName="Elon Musk"
         location="Canada"
         job="Founder, CEO at SpaceX"
+        //Should only show the first 2 skills on the card.
         skills={[
           ['Management', 90],
           ['Communication', 90],
+          ["Design", 45]
         ]}
         tags={['management', 'design']}
         aboutMentor="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris"

@@ -58,8 +58,8 @@ const MentorCard = ({ ...mentorsInfo }: MentorsInfoProps) => {
           </div>
 
           <div className={styles.skillsContainer}>
-            {skills.map((skill: [string, number]) => (
-              <div className={styles.skill}>
+            {skills.slice(0,2).map((skill: [string, number], i) => (
+              <div className={styles.skill} key={i}>
                 <div className={`${styles.skillTitle}`}>{skill[0]}</div>
                 <PercentageBar
                   percentage={skill[1]}
