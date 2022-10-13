@@ -1,6 +1,9 @@
 import { useEffect } from 'react';
 import Image, { StaticImageData } from 'next/image';
-import { CircularProgressbarWithChildren } from 'react-circular-progressbar';
+import {
+  buildStyles,
+  CircularProgressbarWithChildren,
+} from 'react-circular-progressbar';
 
 import 'react-circular-progressbar/dist/styles.css';
 
@@ -9,7 +12,7 @@ import styles from './achievement-circle.module.css';
 interface AchievementCircleProps {
   progress: number;
   image: StaticImageData;
-  text: string;
+  text?: string;
 }
 
 const AchievementCircle = ({
@@ -19,7 +22,12 @@ const AchievementCircle = ({
 }: AchievementCircleProps) => {
   return (
     <div className="h-32 w-32">
-      <CircularProgressbarWithChildren value={progress}>
+      <CircularProgressbarWithChildren
+        value={progress}
+        styles={buildStyles({
+          pathColor: `#CE1982`,
+        })}
+      >
         {/* Note: text can be passed to the "text" property of CircularProgressbar  */}
         <Image
           src={image}
