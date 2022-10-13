@@ -23,12 +23,12 @@ module.exports = {
         'secondary-1': '#CE1982',
         'secondary-2': '#DE325D',
         // Shades of Red
-        'danger-1': '#E43348',
-        'danger-2': '#ED493D',
-        'danger-3': '#FF5E60',
-        'danger-4': '#FF725E',
-        'danger-5': '#FC98A4',
-        'danger-6': '#FFBCC4',
+        'tertiary-1': '#E43348',
+        'tertiary-2': '#ED493D',
+        'tertiary-3': '#FF5E60',
+        'tertiary-4': '#FF725E',
+        'tertiary-5': '#FC98A4',
+        'tertiary-6': '#FFBCC4',
         // Shades of yellow
         'warning-1': '#F8BC0F',
         'warning-2': '#EBC967',
