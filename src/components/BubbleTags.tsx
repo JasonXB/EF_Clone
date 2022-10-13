@@ -1,5 +1,5 @@
 import BubbleTag, { BUBBLE_TAG_TYPE_CLASSES } from './BubbleTag';
-import bubbleTagStyles from '../styles/BubbleTag.module.css';
+import bubbleTagStyles from '../../styles/BubbleTag.module.css';
 import { v4 as uuidv4 } from 'uuid';
 
 interface Tags {

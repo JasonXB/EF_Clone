@@ -1,5 +1,7 @@
 import React, { Children } from 'react';
 import Head from 'next/head';
+import Navbar from './header/Navbar';
+import LayoutStyle from '../../styles/Layout.module.css';
 // import Header from ''
 // import Footer from ''
 
@@ -12,22 +14,19 @@ const Layout = ({ ...props }: LayoutProps) => {
     ? `${props.headTitle} | Empowered Futures`
     : 'Empowered Futures';
   return (
-    <div className="container font-[mainFont] ">
+    <div className={`${LayoutStyle.container} font-[mainFont] `}>
       <Head>
         <title>{title}</title>
         <meta name="description" content="text" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="content">
-        {/* Add the Header component here */}
-        {/* <Header/> */}
-        <h1>Hedaer</h1>
-        <main>{props.children}
-        </main>
-        {/* Add the Footer component here */}
-        {/* <Footer/> */}
-        <h1>Footer</h1>
+      <Navbar />
+      <div className={LayoutStyle.content}>
+        <main>{props.children}</main>
       </div>
+      {/* Add the Footer component here */}
+      {/* <Footer/> */}
+      <h1>Footer</h1>
     </div>
   );
 };

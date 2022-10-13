@@ -1,4 +1,5 @@
 import type { NextPage } from 'next';
+
 import Layout from '../src/components/Layout';
 import style from '../styles/aboutUs.module.css';
 
@@ -9,6 +10,7 @@ const aboutUs: NextPage = ({}) => {
         <div className={`${style.image}`}>
           <div className={`${style.title} w-fit`}>About Us</div>
         </div>
+
       </div>
     </Layout>
   );

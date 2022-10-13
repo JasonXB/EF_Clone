@@ -5,6 +5,8 @@ import React from 'react';
 import facebookIcon from './SVGIcons/facebook.svg';
 import linkedInIcon from './SVGIcons/linkedin.svg';
 import googleIcon from './SVGIcons/google.svg';
+import listIcon from './SVGIcons/listIcon.svg';
+import closeIcon from './SVGIcons/closeIcon.svg';
 
 //once theme is configured for colors, delete this
 //TempColors{
@@ -28,10 +30,11 @@ export const buttonVariants = {
   secondaryUnselected: `bg-transparent hover:bg-gradient-to-r hover:from-[#CE1982] hover:to-[#ED493D] hover:opacity-50 text-slate-300 font-bold hover:text-white py-2 px-6 m-1 border border-slate-300 hover:border-transparent rounded-3xl disabled:text-slate-300 disabled:border-slate-300 disabled:opacity-50 disabled:cursor-not-allowed`,
   iconOnly: 'border border-black rounded-full p-1 leading-none m-1 ',
 };
+type customSVG = React.SVGProps<SVGSVGElement>;
 
 type ButtonProps = {
   id: string;
-  children?: string;
+  children?: string | customSVG | JSX.Element | any; //any temp fix need to look into further
   className: string;
   type: 'button' | 'submit';
   variant:
@@ -43,7 +46,8 @@ type ButtonProps = {
     | 'iconOnly';
   disabled: boolean;
   clickHandler?: React.MouseEventHandler<HTMLButtonElement> | undefined;
-  icon?: 'facebook' | 'linkedIn' | 'google';
+  icon?: 'facebook' | 'linkedIn' | 'google' | 'listIcon' | 'closeIcon';
+  ariaLabel?: string;
 };
 
 const Button = ({ ...props }: ButtonProps) => {
@@ -53,6 +57,8 @@ const Button = ({ ...props }: ButtonProps) => {
     facebook: ['facebook', facebookIcon],
     linkedIn: ['linkedIn', linkedInIcon],
     google: ['google', googleIcon],
+    listIcon: ['listIcon', listIcon],
+    closeIcon: ['closeIcon', closeIcon],
   };
 
   return (
@@ -62,6 +68,7 @@ const Button = ({ ...props }: ButtonProps) => {
       className={defaultClassName.concat(' ', props.className)} //allows possibility to adjust button style even more from the default variant styles
       disabled={props.disabled}
       onClick={props.clickHandler}
+      aria-label={props.ariaLabel}
     >
       {props.icon ? (
         <span className={'mx-0.5 flex'}>
