@@ -30,9 +30,9 @@ module.exports = {
         'tertiary-5': '#FC98A4',
         'tertiary-6': '#FFBCC4',
         // Shades of yellow
-        'warning-1': '#F8BC0F',
-        'warning-2': '#EBC967',
-        'warning-3': '#FAE4A2',
+        'quad-1': '#F8BC0F',
+        'quad-2': '#EBC967',
+        'quad-3': '#FAE4A2',
         // Shades of purple
         'royal-1': '#5B1790',
         'royal-2': '#6A63F6',
