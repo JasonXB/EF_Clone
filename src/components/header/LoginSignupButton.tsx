@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { buttonVariants } from '../buttons/reusuable-buttons';
+import { buttonVariants } from '../buttons/reusable-buttons';
 
 const LoginSignup = () => (
   <div className="flex flex-col items-start w-full lg:inline-flex sm:flex-row lg:ml-auto lg:w-auto lg:items-center lg:h-auto">

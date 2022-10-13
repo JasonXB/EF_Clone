@@ -1,6 +1,6 @@
 import NavbarLink from './NavbarLink';
 import EfLogo from './EfLogo';
-import { buttonVariants } from '../buttons/reusuable-buttons';
+import { buttonVariants } from '../buttons/reusable-buttons';
 import { Disclosure } from '@headlessui/react';
 
 import ProfileNavMenu from './ProfileNavMenu';
@@ -19,7 +19,7 @@ const MainLinks = () => (
 );
 
 const Navbar = () => {
-  let notLoggedIn = true; //temp for testing, will switch to auth
+  let LoggedIn = true; //temp for testing, will switch to auth
 
   return (
     <Disclosure
@@ -81,12 +81,12 @@ const Navbar = () => {
               {/*toggled state login/sign up buttons or profile menu */}
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 {/*hides login from nav when its too crowded */}
-                {notLoggedIn ? (
+                {LoggedIn ? (
+                  <ProfileNavMenu />
+                ) : (
                   <span className="hidden sm:block">
                     <LoginSignup />
                   </span>
-                ) : (
-                  <ProfileNavMenu />
                 )}
               </div>
             </div>
@@ -97,7 +97,7 @@ const Navbar = () => {
             <div className="px-2 pt-2 pb-3 space-y-1">
               <MainLinks />
               {/*displays login/signup buttons in panel when nav runs out of room */}
-              {notLoggedIn ? (
+              {!LoggedIn ? (
                 <span className="sm:hidden">
                   <LoginSignup />
                 </span>
