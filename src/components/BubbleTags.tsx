@@ -1,5 +1,4 @@
-import BubbleTag, { BUBBLE_TAG_TYPE_CLASSES } from './BubbleTag';
-import bubbleTagStyles from '../styles/BubbleTag.module.css';
+import TestBubbleTag, { BUBBLE_TAG_TYPE_CLASSES } from './BubbleTag';
 import { v4 as uuidv4 } from 'uuid';
 
 interface Tags {
@@ -25,19 +24,19 @@ const BubbleTags = ({
   index,
   alternativeTagType,
 }: Tags) => {
-  let selectedTagType;
+  let selectedTagType = bubbleTagType;
   return (
-    <div className={bubbleTagStyles.container}>
+    <div className="flex space-x-2">
       {tags.map((tag: string, i: number) => {
         //condition to handle cases if the component involves the index prop
-        if (i == index) {
+        if (i == index && alternativeTagType) {
           selectedTagType = alternativeTagType;
         } else {
           selectedTagType = bubbleTagType;
         }
 
         return (
-          <BubbleTag key={uuidv4()} tag={tag} bubbleTagType={selectedTagType} />
+          <TestBubbleTag key={uuidv4()} tag={tag} bubbleTagType={selectedTagType}/>
         );
       })}
     </div>
