@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
-import Button from '../src/components/buttons/reusuable-buttons';
 import { GetStaticProps } from 'next';
 import Layout from '../src/components/Layout';
+import Button from '../src/components/buttons/reusable-buttons'
 
 // I used Jason's basic layout from the become-a-mentor page as this page is quite similar in structure. Thanks, Jason!
 
@@ -68,15 +68,15 @@ const termsAndConditions: NextPage = (props) => {
             <section key={i} className="col-start-2 col-end-3 mt-16 mb-8 px-80">
               {i === 0 && (
                 <div>
-                  <h1 className="font-extrabold text-5xl sm:text-6xl leading-[4rem] text-blue mb-10 xl:mb-20">
+                  <h1 className="font-extrabold text-5xl sm:text-6xl leading-[4rem] text-primary-3 mb-10 xl:mb-20">
                     Terms and Conditions
                   </h1>
 
-                  <h2 className="mb-4 text-3xl font-semibold text-blue xl:mb-2">
+                  <h2 className="mb-4 text-3xl font-semibold text-primary-3 xl:mb-2">
                     Empowered Futures Mentoring Program
                   </h2>
                   <br />
-                  <h2 className="mb-20 text-3xl font-semibold text-blue xl:mb-16">
+                  <h2 className="mb-20 text-3xl font-semibold text-primary-3 xl:mb-16">
                     Last Revised: October 15, 2022
                   </h2>
                 </div>
@@ -92,23 +92,23 @@ const termsAndConditions: NextPage = (props) => {
                       // If one of the two bullet points, indent
                       className={'text-lg mb-6'}
                     >
-                      {/* If this string found, colour it blue */}
+                      {/* If this string found, colour it primary-3 */}
                       {text.includes("'Empowered Futures'") ? (
                         <div>
-                          <span className="font-bold text-blue">
+                          <span className="font-bold text-primary-3">
                             {text.slice(0, 19)}
                           </span>
                           <span>{text.slice(19)}</span>
                         </div>
                       ) : null}
                       
-                      {/* If either of these strings are found (the two bullet ('•') points), colour them blue */}
+                      {/* If either of these strings are found (the two bullet ('•') points), colour them primary-3 */}
                       {text.includes("'Mentor'") ||
                       text.includes("'Mentee'") ? (
                         <div className="flex flex-col mb-6 text-lg xl:pl-12 xl:flex-row">
                           {/* Hide '•' when in mobile view */}
                           <span className="hidden lg:block xl:block">•</span>
-                          <span className="font-bold xl:ml-6 text-blue">
+                          <span className="font-bold xl:ml-6 text-primary-3">
                             {text.slice(0, 9)}
                             <span className="font-light text-black ">
                               {text.slice(9)}
@@ -117,10 +117,10 @@ const termsAndConditions: NextPage = (props) => {
                         </div>
                       ) : null}
                       
-                      {/* If there is a '.' at index 1 (all numbered points), colour them in blue and indent corresponding paragraph */}
+                      {/* If there is a '.' at index 1 (all numbered points), colour them in primary-3 and indent corresponding paragraph */}
                       {text.charAt(1) === '.' ? (
                         <div>
-                          <span className="flex flex-col font-bold xl:flex-row text-blue">
+                          <span className="flex flex-col font-bold xl:flex-row text-primary-3">
                             {text.slice(0, 4)}
                             <span className="font-light text-black xl:ml-12">
                               {text.slice(4)}

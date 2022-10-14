@@ -1,11 +1,11 @@
-import { useSearchContext } from '../../context/SearchContext';
+import { useSearchContext } from '../../state-management/ReactContext/SearchContext';
 import SearchResult from './SearchResult';
 
 // Temporary component used to test SearchInput component
 // maps currentFilteredData and returns a SearchResult component for each result
 const SearchResults = () => {
   const { currentFilteredData } = useSearchContext();
-  
+
   return (
     <>
       {currentFilteredData[0] ? (
