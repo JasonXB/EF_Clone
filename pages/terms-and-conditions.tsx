@@ -110,7 +110,7 @@ const termsAndConditions: NextPage = (props) => {
                           <span className="hidden lg:block xl:block">•</span>
                           <span className="font-bold xl:ml-6 text-primary-3">
                             {text.slice(0, 9)}
-                            <span className="font-light text-black ">
+                            <span className="font-light text-dark ">
                               {text.slice(9)}
                             </span>
                           </span>
@@ -122,7 +122,7 @@ const termsAndConditions: NextPage = (props) => {
                         <div>
                           <span className="flex flex-col font-bold xl:flex-row text-primary-3">
                             {text.slice(0, 4)}
-                            <span className="font-light text-black xl:ml-12">
+                            <span className="font-light text-dark xl:ml-12">
                               {text.slice(4)}
                             </span>
                           </span>
@@ -149,7 +149,7 @@ const termsAndConditions: NextPage = (props) => {
       <div className="flex items-center justify-center mt-32 mb-10 xl:w-full xl:justify-evenly">
         <Button
           variant="secondary"
-          className="flex items-center justify-center w-56 h-16 text-black"
+          className="flex items-center justify-center w-56 h-16 text-dark"
         >
           Decline
         </Button>
