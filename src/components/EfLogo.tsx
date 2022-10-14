@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { EfLogoProps } from '../../interface/ef-logo-props.interface';
+import { EfLogoProps } from '../interface/ef-logo-props.interface';
 import Image from 'next/image';
 import eflogo from './assets/eflogo.png';
  
@@ -14,7 +14,7 @@ const EfLogo = ({ alt, className}:  EfLogoProps) => {
       className={className}
       alt={alt}
       src={eflogo}
-      height={100}
+      height={148}
             />
      </a>
   </Link>

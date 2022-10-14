@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Data } from '../../interface/data.interface';
-import { SearchInputProps } from '../../interface/search-input-props.interface';
-import { useSearchContext } from '../../context/SearchContext';
+import { Data } from '../interface/data.interface';
+import { SearchInputProps } from '../interface/search-input-props.interface';
+import { useSearchContext } from '../../state-management/ReactContext/SearchContext';
 
 const SearchInput = ({ data }: SearchInputProps) => {
   const { filterSearch } = useSearchContext();
@@ -11,7 +11,7 @@ const SearchInput = ({ data }: SearchInputProps) => {
 
   const onType = () => {
     filterSearch(data, currentSearchValue.current.value.toLowerCase());
-  }
+  };
 
   return (
     <>
