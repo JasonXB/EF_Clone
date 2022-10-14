@@ -103,6 +103,7 @@ const termsAndConditions: NextPage = (props) => {
     <Layout>
       <div className="grid grid-cols-[1fr_auto_1fr] mx-[10%] sm:mx-[20%]">
         <section className="col-start-2 col-end-3 mt-16 mb-8 ">
+          {/* Titles section */}
           <div>
             <h1 className="font-extrabold text-5xl sm:text-6xl leading-[4rem] text-primary-1 mb-10 xl:mb-16">
               Terms and Conditions
@@ -116,15 +117,16 @@ const termsAndConditions: NextPage = (props) => {
               Last Revised: October 15, 2022
             </h2>
           </div>
+          
           {/* Definitions section 
           I left in slicing here as I felt it was easier for these very specific lines of text. */}
           <h2 className="mt-12 mb-8 text-3xl font-medium">
                 {content.definitions.headerText}
-              </h2>
-          <span className="font-bold text-primary-1">
+          </h2>
+          <span className="text-lg font-bold text-primary-1">
             {content.definitions.blurb.slice(0, 19)}
           </span>
-          <span>{content.definitions.blurb.slice(19)}</span>
+          <span className='text-lg'>{content.definitions.blurb.slice(19)}</span>
           
           {/* Definitions - bullet points */}
           {content.definitions.bullets.map((bullet) => {
@@ -161,7 +163,7 @@ const termsAndConditions: NextPage = (props) => {
                         <span className="min-w-[30px] text-primary-1">
                           {bullet.num}
                         </span>
-                        {/* White space rather than num the 2nd paragraph of bullet 1.1 */}
+                        {/* White space rather than num for the 2nd paragraph of bullet 1.1 */}
                         {!bullet.num && <span></span>}
                         <span className="font-light text-dark xl:pl-12">
                           {bullet.text}
@@ -175,6 +177,7 @@ const termsAndConditions: NextPage = (props) => {
           );
         })}
       </div>
+      
       {/* Accept/Decline buttons */}
       <div className="flex items-center justify-center mt-10 mb-10 xl:mt-28 xl:w-full xl:justify-evenly">
         <Button
