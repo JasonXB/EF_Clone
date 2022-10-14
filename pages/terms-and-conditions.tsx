@@ -105,10 +105,9 @@ const termsAndConditions: NextPage = (props) => {
         <section className="col-start-2 col-end-3 mt-16 mb-8 ">
           {/* Titles section */}
           <div>
-            <h1 className="font-extrabold text-5xl sm:text-6xl leading-[4rem] text-primary-1 mb-10 xl:mb-16">
+            <h1 className="mb-10 text-5xl font-extrabold sm:text-6xl text-primary-1 xl:mb-16">
               Terms and Conditions
             </h1>
-
             <h2 className="mb-4 text-3xl font-semibold text-primary-1 xl:mb-0">
               Empowered Futures Mentoring Program
             </h2>
@@ -129,11 +128,11 @@ const termsAndConditions: NextPage = (props) => {
           <span className='text-lg'>{content.definitions.blurb.slice(19)}</span>
           
           {/* Definitions - bullet points */}
-          {content.definitions.bullets.map((bullet) => {
+          {content.definitions.bullets.map((bullet, i) => {
             return (
-              <div className="flex flex-col mt-6 mb-6 text-lg xl:pl-12 xl:flex-row">
-                <span className="flex">•
-                
+              <div key={i} className="flex flex-col mt-6 mb-6 text-lg xl:pl-12 xl:flex-row">
+                <span className="flex">
+                •
                 <span className="ml-2 font-bold xl:ml-6 text-primary-1">
                   {bullet.slice(0, 9)}
                   
@@ -150,7 +149,7 @@ const termsAndConditions: NextPage = (props) => {
         {/* Numbered points section */}
         {content.numberedPoints.map((section, i) => {
           return (
-            <section className="col-start-2 col-end-3 mt-6 mb-0">
+            <section key={i} className="col-start-2 col-end-3 mt-6 mb-0">
               <h2 className="mb-8 text-3xl font-medium">
                 {section.headerText}
               </h2>
