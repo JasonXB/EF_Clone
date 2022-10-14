@@ -1,0 +1,17 @@
+.image {
+  background-image: url('../src/components/assets/aboutUs.png'); /* temp pic - awaiting asset */
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100vw;
+  min-height: 846px;
+  width: 1920px
+}
+.title {
+  font-size: 60px;
+  line-height: 80px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  color: #ffffff;
+  margin-top: 139px;
+  margin-left: 182px
+}
