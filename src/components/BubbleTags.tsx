@@ -26,7 +26,7 @@ const BubbleTags = ({
 }: Tags) => {
   let selectedTagType = bubbleTagType;
   return (
-    <div className="flex space-x-2">
+    <div className="flex flex-col lg:flex-row xl:flex-row padding-[10px]">
       {tags.map((tag: string, i: number) => {
         //condition to handle cases if the component involves the index prop
         if (i == index && alternativeTagType) {

@@ -18,7 +18,7 @@ const getBubbleTag = (
 
 const BubbleTag = ({ tag, bubbleTagType }: Tag ) => {
   const bubbleTagStyle = getBubbleTag(bubbleTagType);
-  return <span className={`inline-block px-4 py-1 font-bold text-xs capitalize leading-4 rounded-full ${bubbleTagStyle}`}>{tag}</span>;
+  return <span className={`inline-block px-4 py-1 font-bold text-xs text-center capitalize leading-4 rounded-full ${bubbleTagStyle}`}>{tag}</span>;
 };
 
 export default BubbleTag;
