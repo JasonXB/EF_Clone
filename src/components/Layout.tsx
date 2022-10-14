@@ -20,6 +20,8 @@ const Layout = ({ ...props }: LayoutProps) => {
         <meta name="description" content="text" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Navbar />
+      <div className={LayoutStyle.content}>
       <div className="content">
         {/* Add the Header component here */}
         {/* <Header/> */}
@@ -29,6 +31,7 @@ const Layout = ({ ...props }: LayoutProps) => {
       {/* Add the Footer component here */}
       {/* <Footer/> */}
       <h1>Footer</h1>
+      </div>
     </div>
   );
 };
