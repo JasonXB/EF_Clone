@@ -13,5 +13,5 @@
 }
 .content {
   grid-column: main-start/main-end;
-  padding: 0 2rem;
+  padding: 2rem;
 }
