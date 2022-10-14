@@ -1,4 +1,4 @@
-import TestBubbleTag, { BUBBLE_TAG_TYPE_CLASSES } from './BubbleTag';
+import BubbleTag, { BUBBLE_TAG_TYPE_CLASSES } from './BubbleTag';
 import { v4 as uuidv4 } from 'uuid';
 
 interface Tags {
@@ -36,7 +36,7 @@ const BubbleTags = ({
         }
 
         return (
-          <TestBubbleTag key={uuidv4()} tag={tag} bubbleTagType={selectedTagType}/>
+          <BubbleTag key={uuidv4()} tag={tag} bubbleTagType={selectedTagType}/>
         );
       })}
     </div>
