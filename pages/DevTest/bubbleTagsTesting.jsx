@@ -1,13 +1,10 @@
 import React from 'react';
-import BubbleTags from '../src/components/BubbleTags';
-import { BUBBLE_TAG_TYPE_CLASSES } from '../src/components/BubbleTag';
-
-import tailwind from '../tailwind.config';
+import BubbleTags from '../../src/components/BubbleTags';
+import { BUBBLE_TAG_TYPE_CLASSES } from '../../src/components/BubbleTag';
 
 const arr = ['tomato', 'lettuce', 'cat', 'tomato', 'lettuce', 'cat'];
 
 const test = () => {
-  console.log(tailwind.theme.extend.colors);
   return (
     <>
       <p>first test</p>
