@@ -83,17 +83,17 @@ export default function palette() {
       <div className="flex flex-row gap-8 flex-wrap mb-4">
         <div className="flex flex-col ">
           <div className="w-24 h-10 bg-[#F8BC0F]"> </div>
-          <p>fourth-1</p>
+          <p>quad-1</p>
           <p>#F8BC0F</p>
         </div>
         <div className="flex flex-col ">
           <div className="w-24 h-10 bg-[#EBC967]"> </div>
-          <p>fourth-2</p>
+          <p>quad-2</p>
           <p>#EBC967</p>
         </div>
         <div className="flex flex-col ">
           <div className="w-24 h-10 bg-[#FAE4A2]"> </div>
-          <p>fourth-3</p>
+          <p>quad-3</p>
           <p>#FAE4A2</p>
         </div>
       </div>

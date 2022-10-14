@@ -1,19 +1,18 @@
 import type { NextPage } from 'next';
-import Head from 'next/head';
+
+import Layout from '../src/components/Layout';
+import style from '../styles/aboutUs.module.css';
 
 const aboutUs: NextPage = ({}) => {
   return (
-    <div>
-      <Head>
-        <title>Empowered Futures - About Us</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <h1>About us placeholder</h1>
+    <Layout>
+      <div className="flex justify-center items-center w-screen">
+        <div className={`${style.image}`}>
+          <div className={`${style.title} w-fit`}>About Us</div>
+        </div>
 
-      {/* About us Hero  */}
-      
-      {/* Footer */}
-    </div>
+      </div>
+    </Layout>
   );
 };
 
