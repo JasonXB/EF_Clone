@@ -2,7 +2,6 @@ import type { NextPage } from 'next';
 import Link from 'next/link';
 import Router from 'next/router';
 import Layout from '../src/components/Layout';
-import style from '../styles/congratulations-mentee.module.css';
 import Image from 'next/image';
 import fireworks from '../src/components/assets/fireworks.png';
 import Button from '../src/components/buttons/reusable-buttons';
