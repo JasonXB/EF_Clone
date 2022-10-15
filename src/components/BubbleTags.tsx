@@ -36,7 +36,7 @@ const BubbleTags = ({
         }
 
         return (
-          <BubbleTag key={uuidv4()} tag={tag} bubbleTagType={selectedTagType}/>
+          <BubbleTag key={uuidv4()} tag={tag} bubbleTagType={selectedTagType} />
         );
       })}
     </div>
