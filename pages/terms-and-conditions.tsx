@@ -11,7 +11,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 const termsAndConditions: NextPage = (props) => {
-  // Will map over this list to generate JSX in order to avoid retyping classes
+  // Will map over this content to generate JSX in order to avoid retyping classes
 
   const content = {
     definitions: {
@@ -157,14 +157,14 @@ const termsAndConditions: NextPage = (props) => {
                 {section.bullets.map((bullet, i) => {
                   return (
                     <li key={i} className={'text-lg mb-6'}>
-                      <div className="flex flex-col font-bold xl:flex-row ">
+                      <div className="flex flex-col font-bold ss:flex-row sm:flex-row md:flex-row lg:flex-row xl:flex-row ">
                         {/* min width set to ensure consistent indentation */}
                         <span className="min-w-[30px] text-primary-1">
                           {bullet.num}
                         </span>
                         {/* White space rather than num for the 2nd paragraph of bullet 1.1 */}
                         {!bullet.num && <span></span>}
-                        <span className="font-light text-dark xl:pl-12">
+                        <span className="font-light text-dark ss:pl-6 sm:pl-10 md:pl-10 lg:pl-12 xl:pl-12">
                           {bullet.text}
                         </span>
                       </div>

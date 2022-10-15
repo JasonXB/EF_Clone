@@ -22,16 +22,11 @@ const Layout = ({ ...props }: LayoutProps) => {
       </Head>
       <Navbar />
       <div className={LayoutStyle.content}>
-      <div className="content">
-        {/* Add the Header component here */}
-        {/* <Header/> */}
-        <h1>Hedaer</h1>
         <main>{props.children}</main>
       </div>
       {/* Add the Footer component here */}
       {/* <Footer/> */}
       <h1>Footer</h1>
-      </div>
     </div>
   );
 };
