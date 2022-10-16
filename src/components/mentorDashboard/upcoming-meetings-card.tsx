@@ -6,9 +6,9 @@ import Button from '../buttons/reusable-buttons';
 const UpcomingMeetingCard = (props: any) => {
   const { name, avatar, numberOfMeetings, nextMeeting } = props.props;
   return (
-    <div className="flex flex-row items-center">
+    <div className="flex flex-col items-center ss:flex-row">
       {/* styles fo card */}
-      <div className="flex flex-row items-center w-10/12 p-4 my-4 overflow-hidden rounded-md shadow-md sm:mx-2 ">
+      <div className="flex flex-col items-center w-10/12 p-4 my-4 overflow-hidden rounded-md shadow-md ss:flex-row sm:mx-2 ">
         {/* avatar left column */}
         <div className="flex flex-col items-center w-1/4">
           <Avatar
