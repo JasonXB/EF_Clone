@@ -1,0 +1,20 @@
+[
+    {
+        "id": 0,
+        "name": "StrangeLove Coffee",
+        "address": "983 Queen St E, Toronto, ON M4M 1K2",
+        "neighbourhood": "at King and Spadina"
+    },
+    {
+        "id": 1,
+        "name": "Dark Horse Coffee",
+        "address": "401 Richmond St W",
+        "neighbourhood": "Richmond and Spadina"
+    },
+    {
+        "id": 300,
+        "name": "Route 300",
+        "address": "401 Richmond St W",
+        "neighbourhood": "Route 300 Neighbourhood"
+    }
+]
