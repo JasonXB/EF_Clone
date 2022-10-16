@@ -3,7 +3,7 @@ import placeholder from '../assets/cat.jpeg';
 import Button from '../buttons/reusable-buttons';
 
 const MentorshipRequestCard = (props: any) => {
-  const { name, position, age, email, status, date, goalOfMeeting } =
+  const { name, position, avatar, age, email, status, date, goalOfMeeting } =
     props.props;
   return (
     <div className="flex flex-col w-full p-4 my-4 overflow-hidden rounded-lg shadow-md sm:mx-2 ss:flex-row sm:w-1/3 bg-light sm:flex-col">
@@ -11,18 +11,18 @@ const MentorshipRequestCard = (props: any) => {
         <div className="w-20 ">
           <Image
             className="rounded-full"
-            src={placeholder}
+            src={placeholder} //avatar for future dynamic props
             alt={`${name} avatar`}
             layout="intrinsic"
             placeholder="blur"
           />
         </div>
         <span>{name}</span>
-        <br />
+
         <span>
           {position} |{age}{' '}
         </span>
-        <br />
+
         <a>{email}</a>
       </div>
       <div className="w-full sm:basis-2/3">
