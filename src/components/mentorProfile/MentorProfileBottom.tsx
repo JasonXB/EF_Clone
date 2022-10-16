@@ -12,7 +12,7 @@ const MentorProfileBottom = ({
     <>
       {/* Addition skill bubble tags, about, availability */}
         {/* Map each skill */}
-        <span className="flex flex-col justify-start mb-10 lg:flex-row xl:flex-row">
+        <span className="flex flex-row justify-start mb-10 ">
           <BubbleTags
             tags={skills}
             bubbleTagType={BUBBLE_TAG_TYPE_CLASSES.primaryLight}

@@ -22,9 +22,9 @@ const {
 const MentorProfileMain = ({}) => {
   return (
     <>
-      <div className="grid w-auto grid-cols-1 m-0 mt-10 xl:grid-cols-10">
+      <div className="grid w-auto grid-cols-1 m-0 mt-10 md:grid-cols-10">
         <div className="flex col-span-7">
-          <div className="flex flex-col items-center xl:items-stretch">
+          <div className="flex flex-col items-center lg:items-stretch xl:items-stretch">
             {/* Top-left section  */}
             <MentorProfileTop
               name={name}
@@ -48,6 +48,7 @@ const MentorProfileMain = ({}) => {
 
             {/* 2nd Line */}
             <Line />
+            
           </div>
         </div>
 
