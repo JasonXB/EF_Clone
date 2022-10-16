@@ -7,10 +7,7 @@ const MentorshipRequestCard = (props: any, numberOfRequests: number) => {
   const { name, position, avatar, age, email, status, date, goalOfMeeting } =
     props.props;
 
-  console.log(props.numberOfRequests);
-
   /* style logic incase there is only 1 request */
-
   const styleFor1 =
     props.numberOfRequests == 1
       ? 'sm:flex-row sm:w-full'
