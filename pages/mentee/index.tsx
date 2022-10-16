@@ -99,16 +99,16 @@ export default function index() {
                   </span>
                 </div>
               </div>
-              <div className="pl-4 pr-4 ">
-                <p className="text-xl">{mock.meetings[0].date}</p>
-                <span className="text-[0.6875rem]">
+              <div className="pl-4 pr-4 h-full flex flex-col justify-center">
+                <p className="text-xl text-center">{mock.meetings[0].date}</p>
+                <p className="text-[0.6875rem] text-center">
                   {mock.meetings[0].time}
-                </span>
+                </p>
               </div>
-              <div className="pl-4 h-[100%] centerChildrenVertically">
+              <div className="pl-4 h-full">
                 <button
                   type="button"
-                  className="inline-block px-6 py-2 border-2 border-[#FF0A0A] text-[#FF0A0A] font-medium text-xs leading-tight uppercase rounded-[25px] hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
+                  className="inline-block align-middle px-6 py-2 border-2 m-0 h-[2rem] border-[#FF0A0A] text-[#FF0A0A] font-medium text-xs leading-tight uppercase rounded-[25px]"
                 >
                   Contact
                 </button>

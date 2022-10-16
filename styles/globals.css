@@ -88,17 +88,4 @@ ul {
 .shadowVariant1 {
   box-shadow: 0px 3px 6px #00000029;
 }
-/* Lets you quickly create a flex container and center its children horizontally, vertically, or both */
-.centerChildrenVertically {
-  display: flex;
-  align-items: center;
-}
-.centerChildrenHorizontally {
-  display: flex;
-  justify-content: center;
-}
-.centerChildren {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
