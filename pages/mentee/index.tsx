@@ -63,13 +63,13 @@ export default function index() {
   return (
     <Layout>
       <h3 className="text-center mb-10">Welcome back {mock.username}</h3>
-      <section className="grid grid-cols-2 divide-x ">
-        <div className="">
+      <section className="grid grid-cols-2 divide-x">
+        <div className="pr-10">
           <h4 className="text-center mb-6">My Applications</h4>
           <Button>Book Meeting</Button>
           <OutlinedButton text="See all applications" onClick={() => {}} />
         </div>
-        <div className="">
+        <div className="pl-10">
           <h4 className="text-center mb-6">Upcoming Meetings</h4>
           <ul>
             {mock.meetings.length > 0 ? (
@@ -99,7 +99,7 @@ function OutlinedButton(props: { text: string; onClick: Function }) {
   return (
     <button
       type="button"
-      className="block mx-auto text-lg px-8 py-2 border-2 border-[#ff7474] text-gray-800 font-medium leading-tight uppercase rounded-full"
+      className="block mx-auto text-lg px-8 py-2 border-2 border-[#ff7474] text-gray-800 font-medium leading-tight rounded-full"
     >
       {props.text}
     </button>
@@ -109,7 +109,7 @@ function OutlinedButton(props: { text: string; onClick: Function }) {
 function MeetingListItem(props: meetingLi) {
   return (
     <li className="grid grid-cols-[50%,_30%,_20%] divide-x items-center mb-4 w-full shadowVariant1 rounded-2xl px-[26px] py-[16px]">
-      <div className="flex flex-row pr-4 border-l-[0px] divide-x-0">
+      <div className="flex flex-row pr-4 divide-x-0">
         <div className="relative rounded-[5px] overflow-hidden w-[62px] h-[62px] pr-4 flex align-middle">
           <Image
             src="/temp-assets/elon-profile.jpg"
@@ -141,4 +141,8 @@ function MeetingListItem(props: meetingLi) {
       </div>
     </li>
   );
+}
+
+function ApplicationListItem(props: { status: string; mentorName: string }) {
+
 }
