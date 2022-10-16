@@ -9,7 +9,7 @@ Each element I set defaults for has an Adobe link at the bottom where I got the 
 */
 @layer base {
   /* prettier-ignore */
-  h1, h2, h3, h4, h5, h6, p, caption, li {
+  * {
     font-family: 'Montserrat', sans-serif; 
   }
   h1 {
