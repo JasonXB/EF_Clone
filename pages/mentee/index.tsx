@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from '../../src/components/Layout';
 import Image from 'next/image';
 import Button from '../../src/components/buttons/reusable-buttons';
-import gradientPercentBar from '../../src/components/percentBar/gradient-percent-bar';
+// import gradientPercentBar from '../../src/components/percentBar/gradient-percent-bar';
 
 /* ASSUMPTION MADE (affects logic in this webpage)
 There are 3 possible status values for application status
@@ -22,12 +22,14 @@ export default function index() {
       {
         mentorName: 'Darra Wittney',
         position: 'CEO at SpaceX',
-        profilePicture: (
-          <Image
-            src="/src/components/temp-assets/elon-profile.jpg"
-            alt="elon musk pfp"
-          />
-        ),
+        // profilePicture: (
+        //   <Image
+        //     src="/src/components/temp-assets/elon-profile.jpg"
+        //     alt="elon musk pfp"
+        //     width={'500px'}
+        //     height={'500px'}
+        //   />
+        // ),
         date: '10th Oct 2022',
         time: '10:00am to 11:00am EST',
       },
@@ -70,14 +72,46 @@ export default function index() {
     <Layout>
       <h3 className="text-center">Welcome back {mock.username}</h3>
       <section className="grid grid-cols-2 divide-x ">
-        <div className="bg-slate-300">
+        <div className="">
           <h4>My Applications</h4>
           <Button>Book Meeting</Button>
           <OutlinedButton text="See all applications" onClick={() => {}} />
         </div>
-        <div className="bg-red-100">
+        <div className="">
           <h4>Upcoming Meetings</h4>
-          <OutlinedButton text="See all meetings" onClick={() => {}} />
+          <ul>
+            <li className="flex flex-row divide-x w-full shadowVariant1 rounded-2xl px-[26px] py-[16px]">
+              <div className="rounded-[5px] overflow-hidden w-[62px] h-[62px]">
+                <Image
+                  src="/temp-assets/elon-profile.jpg"
+                  alt="elon musk pfp"
+                  // layout="fill"
+                  // objectFit="cover"
+                  width={62}
+                  height={62}
+                />
+              </div>
+              <div>
+                <p className="text-xl">{mock.meetings[0].mentorName}</p>
+                <span className="text-[0.6875rem]">
+                  {mock.meetings[0].position}
+                </span>
+              </div>
+              <div>
+                <p className="text-xl">{mock.meetings[0].date}</p>
+                <span className="text-[0.6875rem]">{mock.meetings[0].time}</span>
+              </div>
+              <div>
+                <button
+                  type="button"
+                  className="inline-block px-6 py-2 border-2 border-[#FF0A0A] text-[#FF0A0A] font-medium text-xs leading-tight uppercase rounded-[25px] hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
+                >
+                  Contact
+                </button>
+              </div>
+            </li>
+          </ul>
+          {/* <OutlinedButton text="See all meetings" onClick={() => {}} /> */}
         </div>
       </section>
     </Layout>
