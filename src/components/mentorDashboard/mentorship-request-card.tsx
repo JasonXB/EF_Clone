@@ -3,23 +3,22 @@ import placeholder from '../assets/cat.jpeg';
 import Button from '../buttons/reusable-buttons';
 
 const MentorshipRequestCard = (props: any, numberOfRequests: number) => {
-  //numberOfRequest not passing in properly
   //avatar will be a future pass
   const { name, position, avatar, age, email, status, date, goalOfMeeting } =
     props.props;
 
-  const testNumber = 3;
-  const HowManyCardsStyleAdjustment = (num: number) => {
-    if (num == 1) {
-      return '  ';
-    }
-    return 'sm:mx-2  sm:w-1/2 sm:flex-col';
-  };
+  console.log(props.numberOfRequests);
+
+  /* style logic incase there is only 1 request */
+
+  const styleFor1 =
+    props.numberOfRequests == 1
+      ? 'sm:flex-row sm:w-full'
+      : 'sm:flex-col sm:w-11/12';
+
   return (
     <div
-      className={`flex flex-col w-full p-4 my-4  min-w-[280px] ss:min-w-[200px] overflow-hidden rounded-lg shadow-md ss:flex-row  bg-light ${HowManyCardsStyleAdjustment(
-        testNumber
-      )}`}
+      className={`flex flex-col w-full p-4 my-4  min-w-[280px] ss:min-w-[240px] overflow-hidden rounded-lg shadow-md ss:flex-row  bg-light sm:mx-2   ${styleFor1}`}
     >
       <div className="flex flex-col items-center sm:basis-1/3">
         <div className="h-auto">
@@ -63,12 +62,9 @@ const MentorshipRequestCard = (props: any, numberOfRequests: number) => {
           </p>
           {/* still needs 'read more'. not sure what response they want to happen when clicked */}
         </div>
-        {/* style logic incase there is only 1 request */}
+
         <div
-          className={`flex items-center mx-auto my-auto ss:space-x-5 ss:flex-row ${
-            //@ts-ignore  //remove this ts-ignore once actual evaluation is placed
-            testNumber === 1 ? 'sm:flex-row' : 'sm:flex-col'
-          } w-fit sm:space-x-0 md:space-x-2 md:flex-row`}
+          className={`flex items-center mx-auto my-auto ss:space-x-5 ss:flex-row ${styleFor1} w-fit sm:space-x-0 md:space-x-2 md:flex-row`}
         >
           {/* needs logic added */}
           <Button variant="primary">Accept</Button>
