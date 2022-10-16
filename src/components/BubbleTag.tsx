@@ -1,36 +1,24 @@
-import bubbleTagStyles from '../../styles/BubbleTag.module.css';
-
 interface Tag {
   tag: string;
   bubbleTagType: BUBBLE_TAG_TYPE_CLASSES;
 }
 
 export enum BUBBLE_TAG_TYPE_CLASSES {
-  blue = 'blue',
-  shadedBlue = 'shadedBlue',
-  pink = 'pink',
-  red = 'red',
-  black = 'black',
-  grey = 'grey',
-  pinkShadedBlue = 'pinkShadedBlue',
+  primaryLight = 'primaryLight',
+  primaryShaded = 'primaryShaded',
 }
 
 const getBubbleTag = (
-  bubbleTagType = BUBBLE_TAG_TYPE_CLASSES.blue
-): typeof bubbleTagStyles.blue =>
+  bubbleTagType = BUBBLE_TAG_TYPE_CLASSES.primaryLight
+): string =>
   ({
-    [BUBBLE_TAG_TYPE_CLASSES.blue]: bubbleTagStyles.blue,
-    [BUBBLE_TAG_TYPE_CLASSES.shadedBlue]: bubbleTagStyles.shadedBlue,
-    [BUBBLE_TAG_TYPE_CLASSES.pink]: bubbleTagStyles.pink,
-    [BUBBLE_TAG_TYPE_CLASSES.red]: bubbleTagStyles.red,
-    [BUBBLE_TAG_TYPE_CLASSES.black]: bubbleTagStyles.black,
-    [BUBBLE_TAG_TYPE_CLASSES.grey]: bubbleTagStyles.grey,
-    [BUBBLE_TAG_TYPE_CLASSES.pinkShadedBlue]: bubbleTagStyles.pinkShadedBlue,
+    [BUBBLE_TAG_TYPE_CLASSES.primaryLight]: 'border border-primary-1 text-primary-1',
+    [BUBBLE_TAG_TYPE_CLASSES.primaryShaded]: 'bg-blue-100 text-primary-2',
   }[bubbleTagType]);
 
-const BubbleTag = ({ tag, bubbleTagType }: Tag) => {
+const BubbleTag = ({ tag, bubbleTagType }: Tag ) => {
   const bubbleTagStyle = getBubbleTag(bubbleTagType);
-  return <span className={bubbleTagStyle}>{tag}</span>;
+  return <span className={`inline-block px-4 py-1 mx-1 font-bold text-xs text-center capitalize leading-4 sm:max-w-[10rem] ss:max-w-[10rem] xs:max-w-[10rem] rounded-full ${bubbleTagStyle}`}>{tag}</span>;
 };
 
 export default BubbleTag;

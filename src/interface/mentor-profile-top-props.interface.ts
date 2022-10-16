@@ -1,5 +1,4 @@
-export interface MentorProfileProps {
-    id: number;
+export interface MentorProfileTopProps {
     name: string;
     title: string;
     avatar: any;
@@ -8,9 +7,5 @@ export interface MentorProfileProps {
       url: string
     }>
     location: string;
-    skills: Array<string>;
-    about: string;
     responseTime: string;
-
-
   }

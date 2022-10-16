@@ -9,7 +9,6 @@ import { twitterIcon } from '../mentorProfile/ProfileIcons';
 
 export const dummyMentorProfiles = [
     {
-      id: 1,
       name: 'Hiba Badran',
       title: 'Founder of Empowered Futures',
       avatar: hiba,
@@ -27,6 +26,7 @@ export const dummyMentorProfiles = [
         {name: 'Mindset Coaching', percentage: 70 },
         {name: 'Figma', percentage: 100 },
       ],
-      about: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam aut voluptatibus, corrupti in placeat libero necessitatibus numquam architecto corporis? Quo nulla nisi aperiam maiores explicabo inventore ex quaerat voluptates dolor?'
+      about: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam aut voluptatibus, corrupti in placeat libero necessitatibus numquam architecto corporis? Quo nulla nisi aperiam maiores explicabo inventore ex quaerat voluptates dolor?',
+      availability: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam aut voluptatibus, corrupti in placeat libero necessitatibus numquam architecto corporis? Quo nulla nisi aperiam maiores explicabo inventore ex quaerat voluptates dolor?',
     }
   ]
