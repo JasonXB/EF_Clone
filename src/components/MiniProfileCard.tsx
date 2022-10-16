@@ -30,7 +30,7 @@ const MiniProfileCard = ({ ...mentorsInfo }: MentorsInfoProps) => {
 
         <BubbleTags
           tags={tags}
-          bubbleTagType={BUBBLE_TAG_TYPE_CLASSES.shadedBlue}
+          bubbleTagType={BUBBLE_TAG_TYPE_CLASSES.primaryShaded}
         />
         <div className={style.compatibility}>
           <h4 className={`${style.compatibility} pb-1`}>Compatibility</h4>
