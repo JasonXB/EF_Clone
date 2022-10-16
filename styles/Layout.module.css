@@ -10,6 +10,7 @@
   min-width: 300px;
   justify-items: center;
   grid-gap: 0.5rem;
+  font-family: 'Montserrat', sans-serif;
 }
 .content {
   grid-column: main-start/main-end;

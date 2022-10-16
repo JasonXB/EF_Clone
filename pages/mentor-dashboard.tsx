@@ -3,6 +3,7 @@ import type { NextPage } from 'next';
 import Layout from '../src/components/Layout';
 import MentorshipRequestCard from '../src/components/mentorDashboard/mentorship-request-card';
 import UpcomingMeetingCard from '../src/components/mentorDashboard/upcoming-meetings-card';
+
 const placeholderDataForRequest = [
   {
     name: 'Johanna Lave',
@@ -68,19 +69,48 @@ const placeholderDataForMeetings = [
   },
 ];
 
+/** Logic needed to add
+ Carousel option, only show arrows if there is more then 3
+ 
+ */
+
+// Still to do TypeScript interface, remove Any
+
 const MentorDashboard: NextPage = ({}) => {
   return (
     <Layout headTitle="Mentor Dashboard">
-      <div className="flex flex-col sm:flex-row sm:max-w-[80%] sm:mx-auto sm:space-x-4 md:space-x-10">
-        {/* logic needs to be added to carousel more then 3 */}
-        {placeholderDataForRequest.map((each, i) => (
-          <MentorshipRequestCard key={i} props={each} />
-        ))}
-      </div>
+      {/* logic if there are no requests */}
+      {placeholderDataForRequest.length === 0 ? (
+        <div className="w-1/2 mx-auto mt-[10%]">
+          <p className="font-bold text-center text-smoke-2">
+            No new mentorship requests <br /> Check back later.
+          </p>
+        </div>
+      ) : (
+        <div className="flex flex-col sm:flex-row md:max-w-[1000px] md:mx-auto sm:space-x-4 md:space-x-10">
+          {/* logic needs to be added to carousel more then 3 */}
+          {placeholderDataForRequest.map((each, i) => (
+            <MentorshipRequestCard key={i} props={each} numberOfRequests={3} />
+          ))}
+        </div>
+      )}
       <div className="space-y-4">
-        {placeholderDataForMeetings.map((each, i) => (
-          <UpcomingMeetingCard key={i} props={each} />
-        ))}
+        {/* logic to check if there are any upcoming meetings */}
+        {placeholderDataForMeetings.length === 0 ? (
+          <div className="w-1/2 mx-auto mt-[10%]">
+            <p className="font-bold text-center text-smoke-2">
+              Sorry no upcoming meetings! <br /> Check back later.
+            </p>
+          </div>
+        ) : (
+          placeholderDataForMeetings.map((each, i) => (
+            <UpcomingMeetingCard
+              key={i}
+              props={each}
+              upcomingMeetingAmount={placeholderDataForMeetings.length}
+            />
+          ))
+        )}
       </div>
     </Layout>
   );

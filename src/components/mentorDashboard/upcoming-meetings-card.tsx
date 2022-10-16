@@ -5,6 +5,7 @@ import Button from '../buttons/reusable-buttons';
 
 const UpcomingMeetingCard = (props: any) => {
   const { name, avatar, numberOfMeetings, nextMeeting } = props.props;
+
   return (
     <div className="flex flex-col items-center ss:flex-row">
       {/* styles fo card */}
