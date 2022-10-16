@@ -1,10 +1,10 @@
-import Image from 'next/image';
 import placeholderImg from '../assets/cat.jpeg';
 import Avatar from '../avatar/avatar';
 import Button from '../buttons/reusable-buttons';
 
 const UpcomingMeetingCard = (props: any) => {
   const { name, avatar, numberOfMeetings, nextMeeting } = props.props;
+  //avatar will be passed in the future
 
   return (
     <div className="flex flex-col items-center ss:flex-row">
