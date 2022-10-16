@@ -6,8 +6,13 @@ function App() {
   }
   return (
     <div className="App">
-      <input type="text" id="ddddd" ref={mytext} />
-      <button onClick={() => test()}>Add</button>
+      <input 
+        type="text" 
+        id="ddddd" 
+        ref={mytext} 
+      />
+      <button 
+        onClick={() => test()}>Add</button>
     </div>
   );
 }
