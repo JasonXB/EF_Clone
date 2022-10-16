@@ -11,6 +11,7 @@ There are 3 possible status values for application status
 3) Application Sent (Assumption**)
 If this assumption is incorrect, contact Jason B for a hotfix
 */
+
 export default function index() {
   //! The number of applications must range from 0 to 3max
   //! Render a visual for no applications or meetings yet (test out)
@@ -67,22 +68,29 @@ export default function index() {
 
   return (
     <Layout>
-      <h3>Welcome back {mock.username}</h3>
-      <section className="flex flex-row">
-        <div>
+      <h3 className="text-center">Welcome back {mock.username}</h3>
+      <section className="grid grid-cols-2 divide-x ">
+        <div className="bg-slate-300">
           <h4>My Applications</h4>
           <Button>Book Meeting</Button>
-          <button
-            type="button"
-            className="inline-block text-lg px-8 py-2 border-2 border-[#ff7474] text-gray-800 font-medium leading-tight uppercase rounded-full"
-          >
-            See all applications
-          </button>
+          <OutlinedButton text="See all applications" onClick={() => {}} />
         </div>
-        <div>
+        <div className="bg-red-100">
           <h4>Upcoming Meetings</h4>
+          <OutlinedButton text="See all meetings" onClick={() => {}} />
         </div>
       </section>
     </Layout>
+  );
+}
+
+function OutlinedButton(props: { text: string; onClick: Function }) {
+  return (
+    <button
+      type="button"
+      className="inline-block text-lg px-8 py-2 border-2 border-[#ff7474] text-gray-800 font-medium leading-tight uppercase rounded-full"
+    >
+      {props.text}
+    </button>
   );
 }
