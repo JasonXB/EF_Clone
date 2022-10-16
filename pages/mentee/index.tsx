@@ -64,12 +64,15 @@ export default function index() {
     <Layout>
       <h3 className="text-center mb-10">Welcome back {mock.username}</h3>
       <section className="grid grid-cols-2 divide-x">
-        <div className="pr-10">
+        <div className="pr-5">
           <h4 className="text-center mb-6">My Applications</h4>
-          <Button>Book Meeting</Button>
-          <OutlinedButton text="See all applications" onClick={() => {}} />
+          <li className="grid grid-cols-[70%,_30%] gap-5">
+            <div className="grid grid-cols-[70%,_30%] divide-x items-center w-full shadowVariant1 rounded-2xl px-[26px] py-[16px]"></div>
+            <Button>Book Meeting</Button>
+          </li>
+          {/* <OutlinedButton text="See all applications" onClick={() => {}} /> */}
         </div>
-        <div className="pl-10">
+        <div className="pl-5">
           <h4 className="text-center mb-6">Upcoming Meetings</h4>
           <ul>
             {mock.meetings.length > 0 ? (
@@ -108,7 +111,7 @@ function OutlinedButton(props: { text: string; onClick: Function }) {
 
 function MeetingListItem(props: meetingLi) {
   return (
-    <li className="grid grid-cols-[50%,_30%,_20%] divide-x items-center mb-4 w-full shadowVariant1 rounded-2xl px-[26px] py-[16px]">
+    <li className="grid grid-cols-[50%,_30%,_20%] divide-x items-center mb-4 w-full shadowVariant1 rounded-2xl px-[26px] py-[16px] h-[5.875rem]">
       <div className="flex flex-row pr-4 divide-x-0">
         <div className="relative rounded-[5px] overflow-hidden w-[62px] h-[62px] pr-4 flex align-middle">
           <Image
@@ -144,5 +147,12 @@ function MeetingListItem(props: meetingLi) {
 }
 
 function ApplicationListItem(props: { status: string; mentorName: string }) {
-
+  return (
+    <li className="grid grid-cols-[70%,_30%] h-[5.875rem]">
+      
+      <div className="grid grid-cols-[70%,_30%] divide-x items-center mb-4 w-full shadowVariant1 rounded-2xl px-[26px] py-[16px] h-[5.875rem]">
+      </div>
+      {/* <Button clickHandler={() => {}}>Book Meeting</Button> */}
+    </li>
+  );
 }
