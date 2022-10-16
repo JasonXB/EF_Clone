@@ -11,7 +11,7 @@ There are 3 possible status values for application status
 3) Application Sent (Assumption**)
 If this assumption is incorrect, contact Jason B for a hotfix
 */
-
+interface meetingLi { mentorName: string; mentorPosition: string; date: string; time: string; } // prettier-ignore
 export default function index() {
   //! The number of applications must range from 0 to 3max
   //! Render a visual for no applications or meetings yet (test out)
@@ -20,14 +20,20 @@ export default function index() {
     username: 'Chris Hill',
     meetings: [
       {
+        mentorName: 'Elon Tusk',
+        mentorPosition: 'CEO at SpaceX',
+        date: '10th Oct 2022',
+        time: '10:00am to 11:00am EST',
+      },
+      {
         mentorName: 'Samantha Philipopulous',
         mentorPosition: 'CEO at SpaceX',
         date: '10th Oct 2022',
         time: '10:00am to 11:00am EST',
       },
       {
-        mentorName: 'Elon Tusk',
-        mentorPosition: 'CEO at SpaceX',
+        mentorName: 'Lucas Gerrard',
+        mentorPosition: 'Frontend Lead at Empowered Futures Encorporated',
         date: '10th Oct 2022',
         time: '10:00am to 11:00am EST',
       },
@@ -66,17 +72,21 @@ export default function index() {
         <div className="">
           <h4 className="text-center mb-6">Upcoming Meetings</h4>
           <ul>
-            {mock.meetings.map((el, i: number) => {
-              return (
-                <MeetingListItem
-                  key={i}
-                  mentorName={el.mentorName}
-                  mentorPosition={el.mentorPosition}
-                  date={el.date}
-                  time={el.time}
-                />
-              );
-            })}
+            {mock.meetings.length > 0 ? (
+              mock.meetings.map((el: meetingLi, i: number) => {
+                return (
+                  <MeetingListItem
+                    key={i}
+                    mentorName={el.mentorName}
+                    mentorPosition={el.mentorPosition}
+                    date={el.date}
+                    time={el.time}
+                  />
+                );
+              })
+            ) : (
+              <h6 className="text-center mb-5">No meetings planned!</h6>
+            )}
           </ul>
           <OutlinedButton text="See all meetings" onClick={() => {}} />
         </div>
@@ -132,4 +142,3 @@ function MeetingListItem(props: meetingLi) {
     </li>
   );
 }
-interface meetingLi { mentorName: string; mentorPosition: string; date: string; time: string; } // prettier-ignore
