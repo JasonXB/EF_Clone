@@ -77,7 +77,7 @@ const MentorDashboard: NextPage = ({}) => {
           <MentorshipRequestCard key={i} props={each} />
         ))}
       </div>
-      <div>
+      <div className="space-y-4">
         {placeholderDataForMeetings.map((each, i) => (
           <UpcomingMeetingCard key={i} props={each} />
         ))}

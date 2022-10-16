@@ -10,7 +10,7 @@ const UpcomingMeetingCard = (props: any) => {
       {/* styles fo card */}
       <div className="flex flex-col items-center w-10/12 p-4 my-4 overflow-hidden rounded-md shadow-md ss:flex-row sm:mx-2 ">
         {/* avatar left column */}
-        <div className="flex flex-col items-center w-1/4">
+        <div className="flex flex-col items-center w-full ss:w-1/4">
           <Avatar
             imgLocation={placeholderImg} //swap with avatar once dynamically passed
             personsName={name}
@@ -19,26 +19,30 @@ const UpcomingMeetingCard = (props: any) => {
           {name}
         </div>
         {/* stats right */}
-        <div className="flex flex-col items-center w-3/4 space-y-2 text-center sm:flex-row justify-evenly sm:space-y-0">
-          <div className="flex flex-col items-center w-3/4 px-2 border-b-2 sm:border-r-2 sm:border-b-0 sm:w-2/12 ">
-            <span className="text-2xl text-primary-1">
-              {numberOfMeetings.individual}
-            </span>
-            <span>Number of Meetings</span>
+        <div className="flex flex-col items-center w-full space-y-2 text-center sm:3/4 sm:flex-row justify-evenly sm:space-y-0">
+          <div className="flex flex-row w-full sm:w-1/2 ">
+            <div className="flex flex-col items-center w-3/4 px-2 border-r-2 sm:w-1/2 ">
+              <span className="text-xl ss:text-2xl text-primary-1">
+                {numberOfMeetings.individual}
+              </span>
+              <span className="text-xs ss:text-md">Number of Meetings</span>
+            </div>
+            <div className="flex flex-col items-center w-3/4 px-2 sm:border-r-2 sm:w-1/2">
+              <span className="text-xl ss:text-2xl text-primary-1">
+                {numberOfMeetings.totalMins}
+              </span>
+              <span className="w-1/2 text-xs ss:text-md ss:w-full">
+                Total number of meeting minutes
+              </span>
+            </div>
           </div>
-          <div className="flex flex-col items-center w-3/4 px-2 border-b-2 sm:border-r-2 sm:border-b-0 sm:w-1/4">
-            <span className="text-2xl text-primary-1">
-              {numberOfMeetings.totalMins}
-            </span>
-            <span>Total number of meeting minutes</span>
-          </div>
-          <div className="flex flex-col items-center w-3/4 px-2 sm:w-2/4">
+          <div className="flex flex-col items-center flex-grow w-3/4 px-2 sm:1/2">
             <span className="text-2xl text-primary-1">{nextMeeting}</span>
-            <span>Upcoming Meeting</span>
+            <span className="text-xs ss:text-md">Upcoming Meeting</span>
           </div>
         </div>
       </div>
-      <div className="w-2/12">
+      <div className="ss:ml-2 sm:w-2/12">
         <Button variant="primary">Contact</Button>
       </div>
     </div>
