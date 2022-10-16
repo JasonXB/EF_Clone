@@ -81,27 +81,31 @@ export default function index() {
           <h4>Upcoming Meetings</h4>
           <ul>
             <li className="flex flex-row divide-x w-full shadowVariant1 rounded-2xl px-[26px] py-[16px]">
-              <div className="rounded-[5px] overflow-hidden w-[62px] h-[62px]">
-                <Image
-                  src="/temp-assets/elon-profile.jpg"
-                  alt="elon musk pfp"
-                  // layout="fill"
-                  // objectFit="cover"
-                  width={62}
-                  height={62}
-                />
+              <div className=" flex flex-row pr-4 border-l-[0px] divide-x-0">
+                <div className="rounded-[5px] overflow-hidden w-[62px] h-[62px] pr-4">
+                  <Image
+                    src="/temp-assets/elon-profile.jpg"
+                    alt="elon musk pfp"
+                    // layout="fill"
+                    // objectFit="cover"
+                    width={62}
+                    height={62}
+                  />
+                </div>
+                <div>
+                  <p className="text-xl">{mock.meetings[0].mentorName}</p>
+                  <span className="text-[0.6875rem]">
+                    {mock.meetings[0].position}
+                  </span>
+                </div>
               </div>
-              <div>
-                <p className="text-xl">{mock.meetings[0].mentorName}</p>
+              <div className="pl-4 pr-4">
+                <p className="text-xl">{mock.meetings[0].date}</p>
                 <span className="text-[0.6875rem]">
-                  {mock.meetings[0].position}
+                  {mock.meetings[0].time}
                 </span>
               </div>
-              <div>
-                <p className="text-xl">{mock.meetings[0].date}</p>
-                <span className="text-[0.6875rem]">{mock.meetings[0].time}</span>
-              </div>
-              <div>
+              <div className="pl-4">
                 <button
                   type="button"
                   className="inline-block px-6 py-2 border-2 border-[#FF0A0A] text-[#FF0A0A] font-medium text-xs leading-tight uppercase rounded-[25px] hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
