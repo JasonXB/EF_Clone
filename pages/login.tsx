@@ -4,10 +4,24 @@ import React, { useRef } from 'react';
 
 import SocialMediaButtons from '../src/components/SocialMediaButtons';
 import { buttonVariants } from '../src/components/buttons/reusable-buttons';
+import { useState } from 'react';
 
 const login: NextPage = ({}) => {
   const userName = useRef<HTMLInputElement | null>(null);
   const passWord = useRef<HTMLInputElement | null>(null);
+
+  const [mentorChosen, setMentorChosen] = useState(false)
+  const [menteeChosen, setMenteeChosen] = useState(false)
+  
+  const handleMentorChoice = () => {
+    setMentorChosen(true)
+    setMenteeChosen(false)
+  }
+
+  const handleMenteeChoice = () => {
+    setMenteeChosen(true)
+    setMentorChosen(false)
+  }
 
   function test() {
     console.log(userName.current?.value);
@@ -38,12 +52,20 @@ const login: NextPage = ({}) => {
                     <span className="block font-medium py-2">
                       Select your account type
                     </span>
-                    <button className="border border-[5px] h-[50px] w-[140px] rounded-[15px]hover:bg-smoke-3 hover:border-primary-1 hover:drop-shadow-lg">
+                    <button 
+                      className={`${mentorChosen ? 'border-primary-1 bg-primary-5 drop-shadow-lg': ''}border border-[5px] h-[50px] w-[140px] rounded-[15px] hover:bg-primary-5 hover:border-primary-1 hover:drop-shadow-lg`}
+                      onClick={handleMentorChoice}
+                      >
                       Mentor
                     </button>
-                    <button className="border border-[5px] h-[50px] w-[140px] rounded-[15px]hover:bg-smoke-3 hover:border-primary-1 hover:drop-shadow-lg">
+                    
+                    <button 
+                      className={`${menteeChosen ? 'border-primary-1 bg-primary-5 drop-shadow-lg': ''}border border-[5px] h-[50px] w-[140px] rounded-[15px] hover:bg-primary-5 hover:border-primary-1 hover:drop-shadow-lg`}
+                      onClick={handleMenteeChoice}
+                      >
                       Mentee
                     </button>
+                    
                   </div>
                   <div className="text-[8px] md:text-[70%] py-4">
                     <SocialMediaButtons />
@@ -82,14 +104,6 @@ const login: NextPage = ({}) => {
                         Login
                       </button>
                     </div>
-                    {/* <div className="py-6">
-                      <button
-                        onClick={() => test()}
-                        type='submit'
-                        className="text-white bg-secondary-1 text-[20px] font-semibold rounded-[25px] h-[60px] w-[146px]">
-                        Login
-                      </button>
-                    </div> */}
 
                     <div className="font-medium">
                       Forgot password? <a href="#">Click Here.</a>
