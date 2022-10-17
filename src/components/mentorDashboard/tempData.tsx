@@ -7,13 +7,23 @@ export const placeholderDataForRequest = [
     age: '31',
     email: 'fakeemail@email.com',
     status: 'Pending',
-    date: '5th September',
+    date: '5th March',
     goalOfMeeting:
       'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut lafibore sed diam nonumy eirmod tempor',
   },
   {
-    name: 'Johanna Lave',
+    name: 'Johanna Lave super long Name',
     position: 'product manager',
+    avatar: 'image src dynamic',
+    age: '31',
+    email: 'fakeemail@email.com',
+    status: 'Pending',
+    date: '5th September',
+    goalOfMeeting: 't lafibore sed diam nonumy eirmod tempor',
+  },
+  {
+    name: 'Johanna Lave',
+    position: 'product manager of staff ',
     avatar: 'image src dynamic',
     age: '31',
     email: 'fakeemail@email.com',
@@ -22,28 +32,17 @@ export const placeholderDataForRequest = [
     goalOfMeeting:
       'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut lafibore sed diam nonumy eirmod tempor',
   },
-  {
-    name: 'Johanna Lave',
-    position: 'product manager',
-    avatar: 'image src dynamic',
-    age: '31',
-    email: 'fakeemail@email.com',
-    status: 'Pending',
-    date: '5th September',
-    goalOfMeeting:
-      'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut lafibore sed diam nonumy eirmod tempor',
-  },
-  {
-    name: 'Johanna Lave',
-    position: 'product manager',
-    avatar: 'image src dynamic',
-    age: '31',
-    email: 'fakeemail@email.com',
-    status: 'Pending',
-    date: '5th September',
-    goalOfMeeting:
-      'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut lafibore sed diam nonumy eirmod tempor',
-  },
+  // {
+  //   name: 'Johanna Lave',
+  //   position: 'product manager',
+  //   avatar: 'image src dynamic',
+  //   age: '31',
+  //   email: 'fakeemail@email.com',
+  //   status: 'Pending',
+  //   date: '5th September',
+  //   goalOfMeeting:
+  //     'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut lafibore sed diam nonumy eirmod tempor',
+  // },
   // {
   //   name: 'Johanna Lave',
   //   position: 'product manager',

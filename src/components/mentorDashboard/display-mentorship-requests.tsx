@@ -1,5 +1,5 @@
 import Slider from 'react-slick';
-// import '../../../styles/slider.module.css';
+
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
@@ -25,6 +25,7 @@ function CustomArrows(props: any) {
 }
 
 //bug- renders many times. Not sure why, just notice its coming from Slider, Doesn't effect useability, not sure if it will effect overall performance
+//to see bug, run a console log in mentorship-request-card
 const ResponsiveSlider = () => {
   const settings = {
     dots: true,
@@ -66,7 +67,6 @@ const ResponsiveSlider = () => {
   };
   return (
     <div className="mx-auto max-w-[1000px]">
-      {/* arrows invisible, need to fix */}
       <Slider {...settings}>
         {placeholderDataForRequest.map((each, i) => (
           <MentorshipRequestCard
@@ -93,9 +93,9 @@ const DisplayMentorShipContainer = () => (
           No new mentorship requests <br /> Check back later.
         </p>
       </div>
-    ) : placeholderDataForRequest?.length == 1 ? (
-      // display if there is 1
-      <div className="flex flex-col md:flex-row sm:max-w-[800px] sm:mx-auto">
+    ) : placeholderDataForRequest?.length < 3 ? (
+      // display if there is 1-2
+      <div className="flex flex-col md:flex-row sm:max-w-[900px] sm:mx-auto">
         {placeholderDataForRequest?.map((each, i) => (
           <MentorshipRequestCard
             key={i}
