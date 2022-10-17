@@ -8,8 +8,6 @@ import dynamic from 'next/dynamic';
 const FooterLink = dynamic(() => import('./FooterLink'), { ssr: false });
 
 const footerLinks: FooterColumnProps[] = [
-  // Placeholder for column 1 - just the logo.
-  { efLogo: 'Ef logo goes here (index 0)' },
   {
     links: [
       { text: 'Get Involved', url: './get-involved' },
@@ -66,21 +64,23 @@ const footerLinks: FooterColumnProps[] = [
 const Footer = () => {
   return (
     <footer className="text-center bg-gray-100 lg:text-left">
-      <div className="flex pt-16 mx-6 text-center align-center md:text-left">
-        <div className="grid gap-8 grid-1 md:grid-cols-2 lg:grid-cols-4">
+      <div className="pt-16 text-center md:text-left">
+        <div className="grid grid-cols-1 gap-2 lg:gap-8 lg:grid-cols-4">
+              {/* Empowered Futures logo */}
+              <div className='flex justify-center w-full'>
+              <EfLogo className="w-44 lg:w-52 lg:mt-10" alt="Empowered Futures Logo" />
+              </div>
           {footerLinks.map((column, i) => {
             return (
+              // 
               <div key={i}>
-                {/* Empowered Futures logo */}
-                {i === 0 && (
-                  <EfLogo className="h-40" alt="Empowered Futures Logo" />
-                )}
                 {/* Map over column links to avoid repeating classes (thanks, Jason) */}
                 {column.links?.map((link, i) => {
                   return (
+                    
                     <div key={i}>
                       {/* If link has no url, render heading (just 'Follow us on social media')*/}
-                      {!link.url && <p className="mb-6">{link.text}</p>}
+                      {!link.url && <p className="flex justify-center mb-2 lg:justify-start lg:mb-6">{link.text}</p>}
                       {/* If link has url, render FooterLink */}
                       {link.url && (
                         <FooterLink
