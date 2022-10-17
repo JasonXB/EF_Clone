@@ -66,21 +66,26 @@ const Footer = () => {
     <footer className="text-center bg-gray-100 lg:text-left">
       <div className="pt-16 text-center md:text-left">
         <div className="grid grid-cols-1 gap-2 lg:gap-8 lg:grid-cols-4">
-              {/* Empowered Futures logo */}
-              <div className='flex justify-center w-full'>
-              <EfLogo className="w-44 lg:w-52 lg:mt-10" alt="Empowered Futures Logo" />
-              </div>
+          {/* Empowered Futures logo */}
+          <div className="flex justify-center w-full">
+            <EfLogo
+              className="w-44 lg:w-52 lg:mt-10"
+              alt="Empowered Futures Logo"
+            />
+          </div>
           {footerLinks.map((column, i) => {
             return (
-              // 
               <div key={i}>
                 {/* Map over column links to avoid repeating classes (thanks, Jason) */}
                 {column.links?.map((link, i) => {
                   return (
-                    
                     <div key={i}>
                       {/* If link has no url, render heading (just 'Follow us on social media')*/}
-                      {!link.url && <p className="flex justify-center mb-2 lg:justify-start lg:mb-6">{link.text}</p>}
+                      {!link.url && (
+                        <p className="flex justify-center mb-2 lg:justify-start lg:mb-6">
+                          {link.text}
+                        </p>
+                      )}
                       {/* If link has url, render FooterLink */}
                       {link.url && (
                         <FooterLink
