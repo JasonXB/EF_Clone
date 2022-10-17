@@ -48,7 +48,6 @@ const MentorProfileMain = ({}) => {
 
             {/* 2nd Line */}
             <Line />
-            
           </div>
         </div>
 
