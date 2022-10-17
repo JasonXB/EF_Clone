@@ -107,7 +107,8 @@ const login: NextPage = ({}) => {
                     </div>
 
                     <div className="font-medium">
-                      Forgot password? <a href="#">Click Here.</a>
+                      Forgot password?
+                      <span className='text-primary-1 hover:text-primary-2'><a href="#">Click Here.</a></span>
                     </div>
                   </form>
                 </div>
@@ -120,11 +121,7 @@ const login: NextPage = ({}) => {
                   Back
                 </button>
               </div>
-              {/* <div className="pt-10">
-                <button className="text-secondary-1 text-[29px] font-semibold border-2 border-secondary-1 rounded-[35px] h-[69px] w-[234px] hover:border-primary-1">
-                  Back
-                </button>
-              </div> */}
+
             </div>
           </section>
         </div>
