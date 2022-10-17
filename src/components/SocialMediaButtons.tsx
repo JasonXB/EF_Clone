@@ -27,7 +27,7 @@ export default function SocialMediaButtons() {
         return (
           <button
             onClick={signInFunction}
-            className="flex flex-row items-center border-[3px] rounded-full px-6 py-[10px]"
+            className="flex items-center border-[3px] rounded-full px-6 py-[10px]"
             key={i}
           >
             {btn.svg}

@@ -9,6 +9,11 @@ import { useState } from 'react';
 const login: NextPage = ({}) => {
   const userName = useRef<HTMLInputElement | null>(null);
   const passWord = useRef<HTMLInputElement | null>(null);
+  
+  function handleLogin() {
+    console.log(userName.current?.value);
+    console.log(passWord.current?.value);
+  }
 
   const [mentorChosen, setMentorChosen] = useState(false)
   const [menteeChosen, setMenteeChosen] = useState(false)
@@ -23,10 +28,6 @@ const login: NextPage = ({}) => {
     setMentorChosen(false)
   }
 
-  function test() {
-    console.log(userName.current?.value);
-    console.log(passWord.current?.value);
-  }
 
   return (
     <div>
@@ -39,7 +40,7 @@ const login: NextPage = ({}) => {
       <div className="outer font-mainFont border-smoke-3 bg-white border-t border-r rounded-5 px-5 pt-[40px]">
         <div className="outer-border py-4 px-5">
           <section className="inner-section p-2">
-            <div className="inner h-full text-gray-800">
+            <div className="inner h-full">
               <div className="inner-full flex justify-center items-center flex-wrap h-full">
                 <div className="left-inside text-center"></div>
 
@@ -67,7 +68,7 @@ const login: NextPage = ({}) => {
                     </button>
                     
                   </div>
-                  <div className="text-[8px] md:text-[70%] py-4">
+                  <div className="flex text-[8px] md:text-[70%] py-4">
                     <SocialMediaButtons />
                   </div>
 
@@ -97,7 +98,7 @@ const login: NextPage = ({}) => {
 
                     <div className="py-6">
                       <button
-                        onClick={() => test()}
+                        onClick={() => handleLogin()}
                         type="submit"
                         className={`${buttonVariants.primary} font-light py-4 px-5`}
                       >
