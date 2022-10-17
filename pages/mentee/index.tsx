@@ -2,7 +2,6 @@ import React from 'react';
 import Layout from '../../src/components/Layout';
 import Image from 'next/image';
 import Button from '../../src/components/buttons/reusable-buttons';
-// import gradientPercentBar from '../../src/components/percentBar/gradient-percent-bar';
 
 /* ASSUMPTION MADE (affects logic in this webpage)
 There are 3 possible status values for application status
@@ -12,6 +11,7 @@ There are 3 possible status values for application status
 If this assumption is incorrect, contact Jason B for a hotfix
 */
 interface meetingLi { mentorName: string; mentorPosition: string; date: string; time: string; } // prettier-ignore
+interface mentorLi { mentorName: string; status: string; } // prettier-ignore
 export default function index() {
   //! The number of applications must range from 0 to 3max
   //! Render a visual for no applications or meetings yet (test out)
@@ -22,7 +22,7 @@ export default function index() {
       {
         mentorName: 'Elon Tusk',
         mentorPosition: 'CEO at SpaceX',
-        date: '10th Oct 2022',
+        date: '10th Sept 2022',
         time: '10:00am to 11:00am EST',
       },
       {
@@ -39,38 +39,32 @@ export default function index() {
       },
     ],
     applications: [
-      {
-        mentorName: 'Darra Wittney',
-        status: 'Application Approved',
-        percentage: function () {
-          if (this.status === 'Application Approved') return 100;
-          else if ('Application Viewed') return 33;
-          else return 0;
-        },
-      },
-      {
-        mentorName: 'Elon Musk',
-        status: 'Application Viewed',
-        percentage: function () {
-          if (this.status === 'Application Approved') return 100;
-          else if ('Application Viewed') return 33;
-          else return 0;
-        },
-      },
+      { mentorName: 'Darra Wittney', status: 'Approved' },
+      { mentorName: 'Elon Musk', status: 'Viewed' },
+      { mentorName: 'Jack Atlas', status: 'Sent' },
     ],
   };
 
   return (
     <Layout>
-      <h3 className="text-center mb-10">Welcome back {mock.username}</h3>
+      <h3 className="text-center my-10">Welcome back {mock.username}</h3>
       <section className="grid grid-cols-2 divide-x">
         <div className="pr-5">
           <h4 className="text-center mb-6">My Applications</h4>
-          <li className="grid grid-cols-[70%,_30%] gap-5">
-            <div className="grid grid-cols-[70%,_30%] divide-x items-center w-full shadowVariant1 rounded-2xl px-[26px] py-[16px]"></div>
-            <Button>Book Meeting</Button>
-          </li>
-          {/* <OutlinedButton text="See all applications" onClick={() => {}} /> */}
+          {mock.applications.length > 0 ? (
+            mock.applications.map((el: mentorLi, i: number) => {
+              return (
+                <ApplicationListItem
+                  key={i}
+                  mentorName={el.mentorName}
+                  status={el.status}
+                />
+              );
+            })
+          ) : (
+            <h6 className="text-center mt-10">No applications!</h6>
+          )}
+          <OutlinedButton text="See all applications" onClick={() => {}} />
         </div>
         <div className="pl-5">
           <h4 className="text-center mb-6">Upcoming Meetings</h4>
@@ -88,7 +82,7 @@ export default function index() {
                 );
               })
             ) : (
-              <h6 className="text-center mb-5">No meetings planned!</h6>
+              <h6 className="text-center mt-10">No meetings planned!</h6>
             )}
           </ul>
           <OutlinedButton text="See all meetings" onClick={() => {}} />
@@ -97,12 +91,12 @@ export default function index() {
     </Layout>
   );
 }
-
+// REUSABLE COMPONENTS EXCLUSIVE TO THIS WEBPAGE
 function OutlinedButton(props: { text: string; onClick: Function }) {
   return (
     <button
       type="button"
-      className="block mx-auto text-lg px-8 py-2 border-2 border-[#ff7474] text-gray-800 font-medium leading-tight rounded-full"
+      className="block mx-auto text-lg px-8 py-2 border-2 border-[#ff7474] text-gray-800 font-medium leading-tight rounded-full mt-12"
     >
       {props.text}
     </button>
@@ -111,9 +105,9 @@ function OutlinedButton(props: { text: string; onClick: Function }) {
 
 function MeetingListItem(props: meetingLi) {
   return (
-    <li className="grid grid-cols-[50%,_30%,_20%] divide-x items-center mb-4 w-full shadowVariant1 rounded-2xl px-[26px] py-[16px] h-[5.875rem]">
+    <li className="grid grid-cols-[45%,_35%,_20%] divide-x items-center mb-4 w-full shadowVariant1 rounded-2xl px-[26px] py-[16px] h-[5.875rem]">
       <div className="flex flex-row pr-4 divide-x-0">
-        <div className="relative rounded-[5px] overflow-hidden w-[62px] h-[62px] pr-4 flex align-middle">
+        <div className="relative rounded-[5px] overflow-hidden w-[47px] h-[47px] pr-4 my-auto">
           <Image
             src="/temp-assets/elon-profile.jpg"
             alt="elon musk pfp"
@@ -148,11 +142,60 @@ function MeetingListItem(props: meetingLi) {
 
 function ApplicationListItem(props: { status: string; mentorName: string }) {
   return (
-    <li className="grid grid-cols-[70%,_30%] h-[5.875rem]">
-      
-      <div className="grid grid-cols-[70%,_30%] divide-x items-center mb-4 w-full shadowVariant1 rounded-2xl px-[26px] py-[16px] h-[5.875rem]">
+    <li className="grid grid-cols-[7fr,_3fr] h-[5.875rem] gap-6 mb-4">
+      <div className="grid grid-cols-[3fr,_7fr] divide-x items-center w-full shadowVariant1 rounded-2xl px-[26px] py-[16px] h-[5.875rem]">
+        <div className="flex flex-col pr-4">
+          <div className="relative rounded-[5px] overflow-hidden w-[40px] h-[40px] flex flex-col mx-auto">
+            <Image
+              src="/temp-assets/elon-profile.jpg"
+              alt="picture not found"
+              layout="fill"
+              objectFit="cover"
+            />
+          </div>
+          <div className="truncate mx-auto">
+            <span className="text-[12px] text-ellipsis overflow-hidden whitespace-nowrap">
+              {props.mentorName}
+            </span>
+          </div>
+        </div>
+        <div className="flex flex-col w-full h-full justify-center pl-4 m-auto">
+          <p className="mb-2">
+            <span>Status:</span> {props.status}
+          </p>
+          <GradientPercentBar status={props.status} />
+        </div>
       </div>
-      {/* <Button clickHandler={() => {}}>Book Meeting</Button> */}
+      <div className="flex flex-col justify-center">
+        <Button clickHandler={() => {}} className={'w-full noMargins'}>
+          Book Meeting
+        </Button>
+      </div>
     </li>
   );
+}
+
+function GradientPercentBar(props: { status: string }) {
+  if (props.status === 'Viewed') {
+    return (
+      <div className="w-full h-5 rounded-full bg-[#DAECFA]">
+        <div className="bg-gradient-to-r from-[#8DC3ED] to-[#0B066E] h-5 w-3/5 rounded-full"></div>
+      </div>
+    );
+  }
+  if (props.status === 'Approved') {
+    return (
+      <div className="w-full h-5 rounded-full bg-[#DAECFA]">
+        <div className="bg-gradient-to-r from-[#E1589A] to-[#CE1982] h-5 w-full rounded-full"></div>
+      </div>
+    );
+  }
+  if (props.status === 'Sent') {
+    return (
+      <div className="w-full h-5 rounded-full bg-[#e5e7eb]">
+        <div className="h-5 w-3/5 rounded-full"></div>
+      </div>
+    );
+  }
+  return null;
 }
