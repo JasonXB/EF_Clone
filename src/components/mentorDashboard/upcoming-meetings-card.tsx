@@ -2,7 +2,18 @@ import placeholderImg from '../assets/cat.jpeg';
 import Avatar from '../avatar/avatar';
 import Button from '../buttons/reusable-buttons';
 
-const UpcomingMeetingCard = (props: any) => {
+//this will have to be updated when api props are sent down
+interface UpcomingMeetingCardProps {
+  name: string;
+  avatar: string;
+  numberOfMeetings: { individual: number; totalMins: number };
+  nextMeeting: string;
+}
+type UpcomingMeetingPropsType = {
+  props: UpcomingMeetingCardProps;
+};
+
+const UpcomingMeetingCard = (props: UpcomingMeetingPropsType) => {
   const { name, avatar, numberOfMeetings, nextMeeting } = props.props;
   //avatar will be passed in the future
 

@@ -46,11 +46,7 @@ const DisplayUpcomingAvailabilityContainer = () => {
                 </div>
               ) : (
                 placeholderDataForMeetings.map((each, i) => (
-                  <UpcomingMeetingCard
-                    key={i}
-                    props={each}
-                    upcomingMeetingAmount={placeholderDataForMeetings.length}
-                  />
+                  <UpcomingMeetingCard key={i} props={each} />
                 ))
               )}
             </div>

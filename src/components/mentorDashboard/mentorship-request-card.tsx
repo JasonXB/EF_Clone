@@ -1,8 +1,25 @@
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import placeholder from '../assets/cat.jpeg';
 import Button from '../buttons/reusable-buttons';
 
-const MentorshipRequestCard = (props: any, numberOfRequests: number) => {
+//this will have to be updated when api props are sent down
+interface MentorshipRequestCardProps {
+  name: string;
+  position: string;
+  avatar: string;
+  age: string;
+  email: string;
+  date: string;
+  status: string;
+  goalOfMeeting: string;
+  numberOfRequest?: number;
+}
+type MentorshipRequestCardType = {
+  props: MentorshipRequestCardProps;
+  numberOfRequests: number;
+};
+
+const MentorshipRequestCard = (props: MentorshipRequestCardType) => {
   //avatar will be a future pass
   const { name, position, avatar, age, email, status, date, goalOfMeeting } =
     props.props;
@@ -32,7 +49,7 @@ const MentorshipRequestCard = (props: any, numberOfRequests: number) => {
             height={90}
           />
         </div>
-        <span className="max-w-full text-lg truncate">{name}</span>
+        <span className="text-lg truncate max-w-[13ch] ">{name}</span>
         <h2 className="max-w-full text-sm text-smoke-2">
           {/* | divider looks a little weird on certain break points. trying to think of dynamic solution */}
           {position}

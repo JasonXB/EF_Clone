@@ -21,17 +21,17 @@ export const placeholderDataForRequest = [
     date: '5th September',
     goalOfMeeting: 't lafibore sed diam nonumy eirmod tempor',
   },
-  {
-    name: 'Johanna Lave',
-    position: 'product manager of staff ',
-    avatar: 'image src dynamic',
-    age: '31',
-    email: 'fakeemail@email.com',
-    status: 'Pending',
-    date: '5th September',
-    goalOfMeeting:
-      'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut lafibore sed diam nonumy eirmod tempor',
-  },
+  // {
+  //   name: 'Johanna Lave',
+  //   position: 'product manager of staff ',
+  //   avatar: 'image src dynamic',
+  //   age: '31',
+  //   email: 'fakeemail@email.com',
+  //   status: 'Pending',
+  //   date: '5th September',
+  //   goalOfMeeting:
+  //     'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut lafibore sed diam nonumy eirmod tempor',
+  // },
   // {
   //   name: 'Johanna Lave',
   //   position: 'product manager',
