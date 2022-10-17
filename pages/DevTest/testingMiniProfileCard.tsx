@@ -5,7 +5,13 @@ import MiniProfileCard from '../../src/components/MiniProfileCard';
 const testMiniProfile: NextPage = ({}) => {
   return (
     <div>
-      <MiniProfileCard name="Kelsey" location="canada" job="Developer" compatibilityPercent={63} tags={["management", "design"]} />
+      <MiniProfileCard
+        name="Kelsey"
+        location="canada"
+        job="Developer"
+        compatibilityPercent={63}
+        tags={['management', 'design']}
+      />
     </div>
   );
 };
