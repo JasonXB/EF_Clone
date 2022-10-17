@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 import Image from 'next/image';
 
-import RedditImg from '../../assets/icons8-reddit-50.png';
-import LinkedInImg from '../../assets/icons8-linkedin-circled-50.png';
-import TwitterImg from '../../assets/icons8-twitter-50.png';
-import FacebookImg from '../../assets/icons8-facebook-50.png';
+import RedditImg from '../assets/icons8-reddit-50.png';
+import LinkedInImg from '../assets/icons8-linkedin-circled-50.png';
+import TwitterImg from '../assets/icons8-twitter-50.png';
+import FacebookImg from '../assets/icons8-facebook-50.png';
 import { SocialMedia } from '../../enum/SocialMedia.enum';
 
 interface LinkTypes {
@@ -36,7 +36,7 @@ const SocialMediaLink: FC<LinkTypes> = ({ domain }: LinkTypes) => {
   }
 
   return (
-    <div className="h-12 w-12 ml-2">
+    <div className="w-12 h-12 ml-2">
       <button>
         {/* // NOTE: the images I used are unlicensed, provided by Icons8. If they are to be in production, we must buy them */}
         <Image src={selectImageOfType(domain)} />
