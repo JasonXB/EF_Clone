@@ -3,18 +3,12 @@ import Layout from '../../src/components/Layout';
 import Image from 'next/image';
 import Button from '../../src/components/buttons/reusable-buttons';
 
-/* ASSUMPTION MADE (affects logic in this webpage)
-There are 3 possible status values for application status
-1) Application Approved (shown on adobe)
-2) Application Viewed (shown on adobe)
-3) Application Sent (Assumption**)
-If this assumption is incorrect, contact Jason B for a hotfix
-*/
 interface meetingLi { mentorName: string; mentorPosition: string; date: string; time: string; } // prettier-ignore
 interface mentorLi { mentorName: string; status: string; } // prettier-ignore
 export default function index() {
   //! The number of applications must range from 0 to 3max
-  //! Render a visual for no applications or meetings yet (test out)
+  //! Responsive until viewport width of 650px
+  //! Need UI team mobile layout before continuing (or else many assumptions will be required)
   // Mock data all grouped in the following objects
   const mock = {
     username: 'Chris Hill',
@@ -47,9 +41,9 @@ export default function index() {
 
   return (
     <Layout>
-      <h3 className="text-center my-10">Welcome back {mock.username}</h3>
-      <section className="grid grid-cols-2 divide-x">
-        <div className="pr-5">
+      <h3 className="text-center mt-10">Welcome back {mock.username}</h3>
+      <section className="grid grid-cols-1 lgr:grid-cols-2 lgr:divide-x">
+        <div className="lgr:pr-5 mt-10">
           <h4 className="text-center mb-6">My Applications</h4>
           {mock.applications.length > 0 ? (
             mock.applications.map((el: mentorLi, i: number) => {
@@ -66,7 +60,7 @@ export default function index() {
           )}
           <OutlinedButton text="See all applications" onClick={() => {}} />
         </div>
-        <div className="pl-5">
+        <div className="lgr:pl-5 mt-10">
           <h4 className="text-center mb-6">Upcoming Meetings</h4>
           <ul>
             {mock.meetings.length > 0 ? (
@@ -128,10 +122,10 @@ function MeetingListItem(props: meetingLi) {
           {props.time}
         </p>
       </div>
-      <div className="pl-4 h-full flex flex-col justify-center">
+      <div className="pl-4 h-full flex flex-col justify-center items-center">
         <button
           type="button"
-          className="inline-block px-4 py-2 border-2 m-0 h-[2rem] border-[#FF0A0A] text-[#FF0A0A] font-medium text-xs leading-tight uppercase rounded-[25px]"
+          className="block px-4 py-2 border-2 m-0 h-[2rem] max-w-[12rem] border-[#FF0A0A] text-[#FF0A0A] font-medium text-xs leading-tight uppercase rounded-[25px]"
         >
           Contact
         </button>
@@ -166,8 +160,8 @@ function ApplicationListItem(props: { status: string; mentorName: string }) {
           <GradientPercentBar status={props.status} />
         </div>
       </div>
-      <div className="flex flex-col justify-center">
-        <Button clickHandler={() => {}} className={'w-full noMargins'}>
+      <div className="flex flex-col justify-center items-center">
+        <Button clickHandler={() => {}} className={'max-w-[14rem] noMargins'}>
           Book Meeting
         </Button>
       </div>
