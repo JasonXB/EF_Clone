@@ -1,14 +1,8 @@
 import placeholderImg from '../assets/cat.jpeg';
 import Avatar from '../avatar/avatar';
 import Button from '../buttons/reusable-buttons';
+import { UpcomingMeetingCardProps } from './mentor-interface';
 
-//this will have to be updated when api props are sent down
-interface UpcomingMeetingCardProps {
-  name: string;
-  avatar: string;
-  numberOfMeetings: { individual: number; totalMins: number };
-  nextMeeting: string;
-}
 type UpcomingMeetingPropsType = {
   props: UpcomingMeetingCardProps;
 };

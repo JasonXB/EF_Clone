@@ -3,9 +3,13 @@ import UpcomingMeetingCard from './upcoming-meetings-card';
 import { Tab } from '@headlessui/react';
 import { Fragment } from 'react';
 
-import { placeholderDataForMeetings } from '../../tempData/temp-data-mentor';
+import { UpcomingMeetingCardProps } from './mentor-interface';
 
-const DisplayUpcomingAvailabilityContainer = () => {
+type dataType = {
+  data: UpcomingMeetingCardProps[];
+};
+
+const DisplayUpcomingAvailabilityContainer = (data: dataType) => {
   const toggleClasses = (isSelected: boolean) => {
     const classes = {
       selected: 'bg-primary-5 text-primary-1 rounded-2xl ',
@@ -38,14 +42,14 @@ const DisplayUpcomingAvailabilityContainer = () => {
             {/* Upcoming meeting/availability   toggle */}
             <div className="space-y-4">
               {/* logic to check if there are any upcoming meetings */}
-              {placeholderDataForMeetings.length === 0 ? (
+              {data.data.length === 0 ? (
                 <div className="w-1/2 mx-auto mt-[10%]">
                   <p className="font-bold text-center text-smoke-2">
                     Sorry no upcoming meetings! <br /> Check back later.
                   </p>
                 </div>
               ) : (
-                placeholderDataForMeetings.map((each, i) => (
+                data.data.map((each, i) => (
                   <UpcomingMeetingCard key={i} props={each} />
                 ))
               )}

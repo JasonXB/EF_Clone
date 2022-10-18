@@ -10,3 +10,10 @@ export interface MentorshipRequestCardProps {
   goalOfMeeting: string;
   numberOfRequest?: number;
 }
+
+export interface UpcomingMeetingCardProps {
+  name: string;
+  avatar: string;
+  numberOfMeetings: { individual: number; totalMins: number };
+  nextMeeting: string;
+}
