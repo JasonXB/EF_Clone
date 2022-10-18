@@ -49,31 +49,36 @@ const login: NextPage = ({}) => {
                     Login
                   </span>
 
-                  <div>
-                    <span className="block font-medium py-2">
-                      Select your account type
-                    </span>
+                  <span className="block font-medium py-2">
+                    Select your account type
+                  </span>
+                  
+                  <div className='flex'>
+                    <div className='pr-2'>
                     <button 
-                      className={`${mentorChosen ? 'border-primary-1 bg-primary-5 drop-shadow-lg': ''}border border-[5px] h-[50px] w-[140px] rounded-[15px] hover:bg-primary-5 hover:border-primary-1 hover:drop-shadow-lg`}
+                      className={`${mentorChosen ? 'border-primary-1 bg-primary-5 drop-shadow-lg': ''}border border-[3px] h-[50px] w-[110px] rounded-[15px] hover:bg-primary-5 hover:border-primary-1 hover:drop-shadow-lg`}
                       onClick={handleMentorChoice}
                       >
                       Mentor
                     </button>
-                    
+                    </div>
+
+                    <div className=''>
                     <button 
-                      className={`${menteeChosen ? 'border-primary-1 bg-primary-5 drop-shadow-lg': ''}border border-[5px] h-[50px] w-[140px] rounded-[15px] hover:bg-primary-5 hover:border-primary-1 hover:drop-shadow-lg`}
+                      className={`${menteeChosen ? 'border-primary-1 bg-primary-5 drop-shadow-lg': ''}border border-[3px] h-[50px] w-[110px] rounded-[15px] hover:bg-primary-5 hover:border-primary-1 hover:drop-shadow-lg`}
                       onClick={handleMenteeChoice}
                       >
                       Mentee
                     </button>
+                    </div>
                     
                   </div>
-                  <div className="flex text-[8px] md:text-[70%] py-4">
+                  <div className="flex text-[10px] md:text-[70%] py-4">
                     <SocialMediaButtons />
                   </div>
 
                   <form autoComplete="off" className="w-full">
-                    <div className="">
+                    <div className="py-3">
                       <span className="font-medium">Username</span>
                       <input
                         className="block w-full cursor-auto border border-2 rounded-lg h-[34px] w-full px-2"
@@ -107,8 +112,8 @@ const login: NextPage = ({}) => {
                     </div>
 
                     <div className="font-medium">
-                      Forgot password?
-                      <span className='text-primary-1 hover:text-primary-2'><a href="#">Click Here.</a></span>
+                      Forgot password?<span> </span>
+                      <span className='text-primary-1 hover:text-primary-2 underline'><a href="#">Click Here.</a></span>
                     </div>
                   </form>
                 </div>
@@ -116,7 +121,7 @@ const login: NextPage = ({}) => {
 
               <div>
                 <button
-                  className={`${buttonVariants.secondary} font-light py-4 px-5`}
+                  className={`${buttonVariants.secondary} font-semibold border-[2px] py-4 px-5`}
                 >
                   Back
                 </button>
