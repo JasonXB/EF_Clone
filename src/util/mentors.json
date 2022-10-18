@@ -1,20 +1,133 @@
 [
     {
-        "id": 0,
-        "name": "StrangeLove Coffee",
-        "address": "983 Queen St E, Toronto, ON M4M 1K2",
-        "neighbourhood": "at King and Spadina"
+        "mentor_id": 412,
+        "name": "Sarah Geronimo",
+        "position": "Clerk",
+        "company": "BDO",
+        "imgUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNzIyMTJ8MHwxfHNlYXJjaHwxfHxwcm9maWxlJTIwcGljfGVufDB8fHx8MTY2NjA2NTM1Nw&ixlib=rb-1.2.1&q=80&w=400",
+        "meeting-availability": {
+            "recurring": [
+                {
+                    "tuesday": [
+                        {
+                            "from": 1300,
+                            "to": 1530
+                        },
+                        {
+                            "from": 1800,
+                            "to": 2000
+                        }
+                    ]
+                }
+            ],
+            "specific": [
+                {
+                    "10-28-2022": [
+                        {
+                            "from": 1030,
+                            "to": 1200
+                        }
+                    ]
+                }
+            ]
+        }
     },
     {
-        "id": 1,
-        "name": "Dark Horse Coffee",
-        "address": "401 Richmond St W",
-        "neighbourhood": "Richmond and Spadina"
+        "mentor_id": 122,
+        "name": "Derick Pel",
+        "position": "Voice Actor",
+        "company": "GMA",
+        "imgUrl": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNzIyMTJ8MHwxfHNlYXJjaHwyfHxwcm9maWxlJTIwcGljfGVufDB8fHx8MTY2NjA2NTM1Nw&ixlib=rb-1.2.1&q=80&w=400",
+        "meeting-availability": {
+            "recurring": [
+                {
+                    "wednesday": [
+                        {
+                            "from": 500,
+                            "to": 730
+                        },
+                        {
+                            "from": 930,
+                            "to": 1000
+                        }
+                    ]
+                },
+                {
+                    "saturday": [
+                        {
+                            "from": 500,
+                            "to": 730
+                        },
+                        {
+                            "from": 930,
+                            "to": 1000
+                        }
+                    ]
+                }
+            ],
+            "specific": [
+                {
+                    "10-27-2022": [
+                        {
+                            "from": 1030,
+                            "to": 1200
+                        }
+                    ]
+                }
+            ]
+        }
     },
     {
-        "id": 300,
-        "name": "Route 300",
-        "address": "401 Richmond St W",
-        "neighbourhood": "Route 300 Neighbourhood"
+        "mentor_id": 300,
+        "name": "Joshua Pads",
+        "position": "CEO",
+        "company": "Accenture",
+        "imgUrl": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNzIyMTJ8MHwxfHNlYXJjaHwzfHxwcm9maWxlJTIwcGljfGVufDB8fHx8MTY2NjA2NTM1Nw&ixlib=rb-1.2.1&q=80&w=400",
+        "meeting-availability": {
+            "recurring": [
+                {
+                    "Monday": [
+                        {
+                            "from": 1200,
+                            "to": 1330
+                        },
+                        {
+                            "from": 1400,
+                            "to": 1500
+                        }
+                    ]
+                }
+            ],
+            "specific": [
+                {
+                    "10-26-2022": [
+                        {
+                            "from": 930,
+                            "to": 1000
+                        }
+                    ]
+                },
+                {
+                    "10-27-2022": [
+                        {
+                            "from": 1130,
+                            "to": 1200
+                        }
+                    ]
+                },
+                {
+                    "10-28-2022": [
+                        {
+                            "from": 430,
+                            "to": 500
+                        },
+                        {
+                            "from": 630,
+                            "to": 700
+                        }
+                    ]
+                }
+            ]
+        }
     }
 ]
