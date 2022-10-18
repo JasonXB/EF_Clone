@@ -16,19 +16,19 @@ export default function index() {
       {
         mentorName: 'Elon Tusk',
         mentorPosition: 'CEO at SpaceX',
-        date: '10th Sept 2022',
+        date: 'Sept 10th 2022',
         time: '10:00am to 11:00am EST',
       },
       {
         mentorName: 'Samantha Philipopulous',
         mentorPosition: 'CEO at SpaceX',
-        date: '10th Oct 2022',
+        date: 'Oct 10th 2022',
         time: '10:00am to 11:00am EST',
       },
       {
         mentorName: 'Lucas Gerrard',
         mentorPosition: 'Frontend Lead at Empowered Futures Encorporated',
-        date: '10th Oct 2022',
+        date: 'May 1st 2022',
         time: '10:00am to 11:00am EST',
       },
     ],
@@ -44,8 +44,8 @@ export default function index() {
       <h3 className="text-center mt-10 text-primary-1">
         Welcome back {mock.username}
       </h3>
-      <section className="grid grid-cols-1 lgr:grid-cols-2 lgr:divide-x">
-        <div className="lgr:pr-5 mt-10">
+      <section className="grid grid-cols-1 lg:grid-cols-2 lg:divide-x">
+        <div className="lg:pr-5 mt-10">
           <h4 className="text-center mb-6 text-primary-1">My Applications</h4>
           {mock.applications.length > 0 ? (
             mock.applications.map((el, i: number) => {
@@ -62,7 +62,7 @@ export default function index() {
           )}
           <OutlinedButton text="See all applications" onClick={() => {}} />
         </div>
-        <div className="lgr:pl-5 mt-10">
+        <div className="lg:pl-5 mt-10">
           <h4 className="text-center mb-6 text-primary-1">Upcoming Meetings</h4>
           <ul>
             {mock.meetings.length > 0 ? (
