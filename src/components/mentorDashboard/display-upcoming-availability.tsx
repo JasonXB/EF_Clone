@@ -3,7 +3,7 @@ import UpcomingMeetingCard from './upcoming-meetings-card';
 import { Tab } from '@headlessui/react';
 import { Fragment } from 'react';
 
-import { placeholderDataForMeetings } from './tempData';
+import { placeholderDataForMeetings } from '../tempData/temp-data-mentor';
 
 const DisplayUpcomingAvailabilityContainer = () => {
   const toggleClasses = (isSelected: boolean) => {

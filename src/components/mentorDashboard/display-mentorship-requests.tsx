@@ -1,7 +1,7 @@
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 // Docs for splide https://splidejs.com/
 import '@splidejs/react-splide/css';
-import { placeholderDataForRequest } from './tempData';
+import { placeholderDataForRequest } from '../tempData/temp-data-mentor';
 
 import MentorshipRequestCard from './mentorship-request-card';
 
