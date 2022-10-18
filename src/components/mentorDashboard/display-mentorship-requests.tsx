@@ -1,5 +1,6 @@
-import { Splide, SplideSlide } from '@splidejs/react-splide';
+import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide';
 // Docs for splide https://splidejs.com/
+
 import '@splidejs/react-splide/css';
 
 import MentorshipRequestCard from './mentorship-request-card';
@@ -11,25 +12,34 @@ type dataType = {
 
 //need to fix arrows adjustment and progress dots
 const ResponsiveSlider = ({ data }: { data: dataType }) => {
+  const length: number = data.data.length;
   const Options = {
     perPage: 3,
     gap: '2em',
+    pagination: false,
     // padding: { left: '3rem', right: '3rem' },
     lazyLoad: true,
-
+    arrows: length < 4 ? false : true,
     breakpoints: {
       1024: {
         perPage: 2,
+        arrows: true,
       },
       767: {
         perPage: 1,
+        arrows: true,
       },
     },
   };
 
   return (
     <div className="mx-auto max-w-[1200px]">
-      <Splide options={Options} aria-label="" tag="section">
+      <Splide
+        options={Options}
+        aria-label="show case mentorship requests"
+        tag="section"
+        id="mentorRequestSplideComponent"
+      >
         {data.data?.map((each, i) => (
           <SplideSlide key={i}>
             <MentorshipRequestCard

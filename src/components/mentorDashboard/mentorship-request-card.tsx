@@ -51,9 +51,9 @@ const MentorshipRequestCard = (props: MentorshipRequestCardType) => {
       </div>
       <div className="w-full h-3/4 ">
         <div className="flex px-4 py-2 my-2 bg-white rounded-md shadow-sm wrap ">
-          <h3 className="flex flex-wrap mx-2 text-sm w-1/3 border-dark border-r-[1px]">
+          <h3 className="flex flex-wrap pr-2 mx-2 text-sm w-1/3 border-dark border-r-[1px]">
             <span className="pr-2">Status:</span>
-            <span className="pr-2 text-tertiary-1">{status}</span>
+            <span className="pr-2 text-tertiary-1">{status} </span>
           </h3>
           <h3 className="mx-2 my-auto text-sm">
             <span>since {date}</span>
