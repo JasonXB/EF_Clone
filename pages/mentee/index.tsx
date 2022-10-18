@@ -42,7 +42,7 @@ export default function index() {
   return (
     <Layout>
       <h3 className="text-center mt-10 text-primary-1">
-        Welcome back {mock.username}
+        Welcome back<br className='sm:hidden'/> {mock.username}
       </h3>
       <section className="grid grid-cols-1 lg:grid-cols-2 lg:divide-x">
         <div className="lg:pr-5 mt-10">
