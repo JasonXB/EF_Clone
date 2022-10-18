@@ -1,86 +1,42 @@
-import Slider from 'react-slick';
-import { CustomArrowProps } from '../../../node_modules/@types/react-slick/index';
-
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-
+import { Splide, SplideSlide } from '@splidejs/react-splide';
+// Docs for splide https://splidejs.com/
+import '@splidejs/react-splide/css';
 import { placeholderDataForRequest } from './tempData';
 
 import MentorshipRequestCard from './mentorship-request-card';
 
-//Work around to make arrows appear, Don't like it. Couldn't figure out any other option
-function CustomArrows(props: CustomArrowProps) {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      style={{
-        ...style,
-        background: '#858993',
-        borderRadius: '50%',
-        display: 'flex',
-      }}
-      onClick={onClick}
-    />
-  );
-}
-
-//bug- renders many times. Not sure why, just notice its coming from Slider, Doesn't effect useability, not sure if it will effect overall performance
-//to see bug, run a console log in mentorship-request-card
+//need to fix arrows adjustment and progress dots
 const ResponsiveSlider = () => {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 3,
-    initialSlide: 0,
-    prevArrow: <CustomArrows />,
-    nextArrow: <CustomArrows />,
+  const Options = {
+    perPage: 3,
+    // padding: { left: '3rem', right: '3rem' },
+    lazyLoad: true,
 
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-        },
+    breakpoints: {
+      1024: {
+        perPage: 2,
       },
-      {
-        breakpoint: 820,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 1,
-          dots: true,
-        },
+      767: {
+        perPage: 1,
       },
-      {
-        breakpoint: 770,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          initialSlide: 1,
-          dots: true,
-        },
-      },
-    ],
+    },
   };
   return (
-    <div className="mx-auto max-w-[1000px]">
-      <Slider {...settings}>
+    <div className="mx-auto max-w-[1200px]">
+      <Splide options={Options} aria-label="" tag="section">
         {placeholderDataForRequest.map((each, i) => (
-          <MentorshipRequestCard
-            key={i}
-            props={each}
-            numberOfRequests={placeholderDataForRequest?.length}
-          />
+          <SplideSlide key={i}>
+            <MentorshipRequestCard
+              key={i}
+              props={each}
+              numberOfRequests={placeholderDataForRequest?.length}
+            />
+          </SplideSlide>
         ))}
-      </Slider>
+      </Splide>
     </div>
   );
 };
-
 const DisplayMentorShipContainer = () => (
   <>
     <h1 className="py-4 text-4xl text-center md:text-5xl text-primary-1">
