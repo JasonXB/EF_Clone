@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import mentorsData from '../../src/util/mentors.json';
+import Calendar from '../../src/components/calendar/Calendar';
 
 export async function getStaticProps(staticProps) {
   const params = staticProps.params;
@@ -30,23 +31,23 @@ export async function getStaticPaths() {
 const bookMeeting = (props) => {
   const router = useRouter();
 
-  console.log(props);
-
   if (router.isFallback) {
     return <div>Loading</div>;
   }
 
-  const { name, imgUrl } = props.mentor;
+  const { name, imgUrl, meeting_availability } = props.mentor;
 
   return (
     <>
       <div>this is book meeting page</div>
+      <div>Welcome! {name}</div>
       <Image
         src={imgUrl || 'https://ibb.co/M2Df9nq'}
         width={300}
         height={360}
         alt={name}
       />
+      <Calendar meetingAvailability={meeting_availability} />
     </>
   );
 };

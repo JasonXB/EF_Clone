@@ -12,10 +12,9 @@ To test this branch, please refer to:
 - DevTest/calendarPage.jsx
 
 The files that this branch is working on: 
-- Calender Component
-- Date Component
-- TimeSlots Component
-- Time Slot Component
+- Calendar Component
+- DateSlot Component
+- TimeSlot Component
 - Calendar Page
 - Book Meeting Context
 
