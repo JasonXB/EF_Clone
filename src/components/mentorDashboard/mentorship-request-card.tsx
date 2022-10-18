@@ -1,19 +1,8 @@
 import Image, { StaticImageData } from 'next/image';
 import placeholder from '../assets/cat.jpeg';
 import Button from '../buttons/reusable-buttons';
+import { MentorshipRequestCardProps } from './mentor-interface';
 
-//this will have to be updated when api props are sent down
-interface MentorshipRequestCardProps {
-  name: string;
-  position: string;
-  avatar: string;
-  age: string;
-  email: string;
-  date: string;
-  status: string;
-  goalOfMeeting: string;
-  numberOfRequest?: number;
-}
 type MentorshipRequestCardType = {
   props: MentorshipRequestCardProps;
   numberOfRequests: number;
@@ -27,14 +16,14 @@ const MentorshipRequestCard = (props: MentorshipRequestCardType) => {
   /* style logic incase there is only 1-2 request */
   const styleForLessThan2 = () => {
     if (props.numberOfRequests < 3) {
-      return 'sm:flex-row sm:w-full';
+      return 'sm:flex-row';
     }
-    return 'sm:flex-col sm:w-11/12';
+    return 'sm:flex-col';
   };
 
   return (
     <div
-      className={` mx-3 flex flex-col w-full p-4 my-4  min-w-[280px] ss:min-w-[240px] overflow-hidden rounded-lg shadow-md ss:flex-row  bg-light sm:mx-2  ${styleForLessThan2()}`}
+      className={` mx-auto flex flex-col w-11/12 p-4 my-4   min-w-[280px] ss:min-w-[240px] overflow-hidden rounded-lg shadow-md ss:flex-row  bg-light sm:mx-2  ${styleForLessThan2()}`}
     >
       <div className="flex flex-col items-center pr-2 mt-2 min-h-[190px] ">
         <div className="h-auto">
