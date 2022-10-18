@@ -17,6 +17,7 @@ The files that this branch is working on:
 - TimeSlot Component
 - Calendar Page
 - Book Meeting Context
+- Calendar Context
 
 Once the testing is all good you may delete the following before merging:
 - uninstall unsplash JS dependency in the package.json

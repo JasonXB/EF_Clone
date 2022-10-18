@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import {
   format,
   getDay,
@@ -7,6 +8,8 @@ import {
   isToday,
   parseISO,
 } from 'date-fns';
+
+import { CalendarContext } from '../../../state-management/ReactContext/CalendarContext';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -21,14 +24,10 @@ let colStartClasses = [
   'col-start-7',
 ];
 
-const DateSlot = ({
-  day,
-  dayIndex,
-  meetings,
-  selectedDay,
-  setSelectedDay,
-  firstDayCurrentMonth,
-}) => {
+const DateSlot = ({ day, dayIndex, meetings }) => {
+  const { selectedDay, setSelectedDay, firstDayCurrentMonth } =
+    useContext(CalendarContext);
+
   return (
     <div
       key={day.toString()}

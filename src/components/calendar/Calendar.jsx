@@ -1,94 +1,26 @@
-// import { Menu, Transition } from '@headlessui/react';
-// import { DotsVerticalIcon } from '@heroicons/react/outline';
-
-import {
-  add,
-  eachDayOfInterval,
-  endOfMonth,
-  format,
-  isSameDay,
-  parse,
-  parseISO,
-  startOfToday,
-} from 'date-fns';
-import { Fragment, useState } from 'react';
-
+import { useContext } from 'react';
+import { add, format } from 'date-fns';
 import DateSlot from './DateSlot';
+import { CalendarContext } from '../../../state-management/ReactContext/CalendarContext';
 
-import TimeSlot from '../TimeSlot';
+export default function Calendar({ availability }) {
+  const {
+    selectedDay,
+    setSelectedDay,
+    setCurrentMonth,
+    firstDayCurrentMonth,
+    days,
+  } = useContext(CalendarContext);
 
-// const meetings = [
-//   {
-//     id: 1,
-//     name: 'Leslie Alexander',
-//     imageUrl:
-//       'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-//     startDatetime: '2022-10-11T13:00',
-//     endDatetime: '2022-10-11T14:30',
-//   },
-//   {
-//     id: 2,
-//     name: 'Michael Foster',
-//     imageUrl:
-//       'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-//     startDatetime: '2022-10-20T09:00',
-//     endDatetime: '2022-10-20T11:30',
-//   },
-//   {
-//     id: 3,
-//     name: 'Dries Vincent',
-//     imageUrl:
-//       'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-//     startDatetime: '2022-10-20T17:00',
-//     endDatetime: '2022-10-20T18:30',
-//   },
-//   {
-//     id: 4,
-//     name: 'Leslie Alexander',
-//     imageUrl:
-//       'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-//     startDatetime: '2022-10-09T13:00',
-//     endDatetime: '2022-10-09T14:30',
-//   },
-//   {
-//     id: 5,
-//     name: 'Michael Foster',
-//     imageUrl:
-//       'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-//     startDatetime: '2022-10-13T14:00',
-//     endDatetime: '2022-10-13T14:30',
-//   },
-// ];
-
-export default function Calendar({ meetingAvailability }) {
-  let today = startOfToday(); //Mon Oct 17 2022 00:00:00 GMT-0700 (Pacific Daylight Time)
-  let [selectedDay, setSelectedDay] = useState(today); //must be in Calendar Context
-  let [currentMonth, setCurrentMonth] = useState(format(today, 'MMM-yyyy')); //Oct-2022
-  let firstDayCurrentMonth = parse(currentMonth, 'MMM-yyyy', new Date()); //Sat Oct 01 2022 00:00:00 GMT-0700 (Pacific Daylight Time)
-
-  //get the days of the current month selected
-  let days = eachDayOfInterval({
-    start: firstDayCurrentMonth,
-    end: endOfMonth(firstDayCurrentMonth),
-  });
-
-  function previousMonth() {
+  const previousMonth = () => {
     let firstDayNextMonth = add(firstDayCurrentMonth, { months: -1 });
     setCurrentMonth(format(firstDayNextMonth, 'MMM-yyyy'));
-  }
+  };
 
-  function nextMonth() {
+  const nextMonth = () => {
     let firstDayNextMonth = add(firstDayCurrentMonth, { months: 1 });
     setCurrentMonth(format(firstDayNextMonth, 'MMM-yyyy'));
-  }
-
-  //find if there are meetings on the selected date by comparing the date selected and the date in the json data
-  const selectedDayMeetings = (meetingAvailability) =>
-    meetingAvailability.filter((meeting) =>
-      isSameDay(parseISO(meeting.startDatetime), selectedDay)
-    );
-
-  console.log(meetingAvailability);
+  };
 
   return (
     <div className="pt-16">
@@ -167,35 +99,12 @@ export default function Calendar({ meetingAvailability }) {
                   key={day}
                   day={day}
                   dayIndex={dayIdx}
-                  meetings={meetingAvailability.specific}
-                  selectedDay={selectedDay}
-                  setSelectedDay={setSelectedDay}
-                  firstDayCurrentMonth={firstDayCurrentMonth}
+                  meetings={availability.specific}
                 />
               ))}
             </div>
             {/* -- */}
           </div>
-          <section className="mt-12 md:mt-0 md:pl-14">
-            {/* -- AVAILABILITY HEADER -- */}
-            <h2 className="font-semibold text-gray-900">
-              Schedule for{' '}
-              <time dateTime={format(selectedDay, 'yyyy-MM-dd')}>
-                {format(selectedDay, 'MMM dd, yyy')}
-              </time>
-            </h2>
-            {/* -- */}
-            {/* -- DISPLAY AVAILABILTIES -- */}
-            <ol className="mt-4 space-y-1 text-sm leading-6 text-gray-500">
-              {selectedDayMeetings(meetingAvailability.specific).length > 0 ? (
-                selectedDayMeetings(meetingAvailability.specific).map(
-                  (meeting) => <TimeSlot meeting={meeting} key={meeting.id} />
-                )
-              ) : (
-                <p>Disable the date</p>
-              )}
-            </ol>
-          </section>
         </div>
       </div>
     </div>
