@@ -23,7 +23,7 @@ const MentorshipRequestCard = (props: MentorshipRequestCardType) => {
   //avatar will be a future pass
   const { name, position, avatar, age, email, status, date, goalOfMeeting } =
     props.props;
-
+  console.log('here');
   /* style logic incase there is only 1-2 request */
   const styleForLessThan2 = () => {
     if (props.numberOfRequests < 3) {

@@ -6,8 +6,8 @@
   /*causing issues confirm to delete 
   display: grid; 
    2fr [main-start] minmax(300px, 1920px) [main-end] 1fr*/
-  max-width: 1400px;
-  min-width: 300px;
+  max-width: 1920px;
+  min-width: 360px;
   justify-items: center;
   grid-gap: 0.5rem;
   font-family: 'Montserrat', sans-serif;

@@ -1,4 +1,5 @@
 import Slider from 'react-slick';
+import { CustomArrowProps } from '../../../node_modules/@types/react-slick/index';
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -8,7 +9,7 @@ import { placeholderDataForRequest } from './tempData';
 import MentorshipRequestCard from './mentorship-request-card';
 
 //Work around to make arrows appear, Don't like it. Couldn't figure out any other option
-function CustomArrows(props: any) {
+function CustomArrows(props: CustomArrowProps) {
   const { className, style, onClick } = props;
   return (
     <div

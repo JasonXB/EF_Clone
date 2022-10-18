@@ -17,9 +17,9 @@ const DisplayUpcomingAvailabilityContainer = () => {
   };
 
   return (
-    <div className="mt-16">
+    <div className="mt-16 max-w-[1400px] mx-auto">
       <Tab.Group>
-        <Tab.List className=" border-[1px] border-smoke-1 rounded-2xl w-11/12 ss:w-1/2  mx-auto flex">
+        <Tab.List className=" border-[1px] border-smoke-1 rounded-2xl w-11/12 ss:w-1/2  mx-auto flex min-w-[340px]">
           <Tab as={Fragment}>
             {({ selected }) => (
               <button className={toggleClasses(selected)}>
