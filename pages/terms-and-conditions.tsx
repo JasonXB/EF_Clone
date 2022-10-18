@@ -105,7 +105,7 @@ const termsAndConditions: NextPage = (props) => {
         <section className="col-start-2 col-end-3 mt-16 mb-8 ">
           {/* Titles section */}
           <div>
-            <h1 className="mb-10 text-5xl font-extrabold sm:text-6xl text-primary-1 xl:mb-16">
+            <h1 className="mb-10 text-4xl font-extrabold ss:text-5xl sm:text-6xl text-primary-1 xl:mb-16">
               Terms and Conditions
             </h1>
             <h2 className="mb-4 text-3xl font-semibold text-primary-1 xl:mb-0">
