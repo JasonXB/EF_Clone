@@ -41,10 +41,12 @@ export default function index() {
 
   return (
     <Layout>
-      <h3 className="text-center mt-10">Welcome back {mock.username}</h3>
+      <h3 className="text-center mt-10 text-primary-1">
+        Welcome back {mock.username}
+      </h3>
       <section className="grid grid-cols-1 lgr:grid-cols-2 lgr:divide-x">
         <div className="lgr:pr-5 mt-10">
-          <h4 className="text-center mb-6">My Applications</h4>
+          <h4 className="text-center mb-6 text-primary-1">My Applications</h4>
           {mock.applications.length > 0 ? (
             mock.applications.map((el, i: number) => {
               return (
@@ -61,7 +63,7 @@ export default function index() {
           <OutlinedButton text="See all applications" onClick={() => {}} />
         </div>
         <div className="lgr:pl-5 mt-10">
-          <h4 className="text-center mb-6">Upcoming Meetings</h4>
+          <h4 className="text-center mb-6 text-primary-1">Upcoming Meetings</h4>
           <ul>
             {mock.meetings.length > 0 ? (
               mock.meetings.map((el, i: number) => {
