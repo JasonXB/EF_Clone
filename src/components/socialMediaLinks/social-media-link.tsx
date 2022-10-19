@@ -1,11 +1,12 @@
 import React, { FC } from 'react';
 import Image from 'next/image';
 
+// Linkedin, FB and instagram icons changed to white svgs for footer
 import RedditImg from '../../assets/icons8-reddit-50.png';
-import LinkedInImg from '../../assets/icons8-linkedin-circled-50.png';
+import LinkedInImg from '../../assets/whiteSvgIcons/linkedin.svg'
 import TwitterImg from '../../assets/icons8-twitter-50.png';
-import FacebookImg from '../../assets/icons8-facebook-50.png';
-import InstagramImg from '../../assets/icons8-instagram-48.png';
+import FacebookImg from '../../assets/whiteSvgIcons/facebook.svg'
+import InstagramImg from '../../assets/whiteSvgIcons/instagram.svg'
 import { SocialMedia } from '../../enum/SocialMedia.enum';
 
 interface LinkTypes {
