@@ -122,7 +122,6 @@ const ConfirmedMeeting = ({
           </div>
           <div>
             <div className="h-12 w-full mt-14 flex justify-center">
-              {/* // todoRM: fix button */}
               <Button variant={'secondary'}>Back To My Account</Button>
             </div>
           </div>
