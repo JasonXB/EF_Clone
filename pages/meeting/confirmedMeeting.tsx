@@ -3,12 +3,16 @@ import { GetStaticProps } from 'next';
 
 import Layout from '../../src/components/Layout';
 
-import Cat from '../../src/components/assets/cat.jpeg';
 import Avatar from '../../src/components/avatar/avatar';
 import Button from '../../src/components/buttons/reusable-buttons';
 
-// This function gets called at build time
-export async function getStaticProps() {
+import Cat from '../../src/assets/cat.jpeg';
+import Calendar from '../../src/assets/icons8-calendar-week-64.png';
+import Clock from '../../src/assets/icons8-clock-48.png';
+import Monitor from '../../src/assets/icons8-pro-display-xdr-80.png';
+import MeetingDetail from './meetingDetail';
+
+export const getStaticProps: GetStaticProps = async () => {
   const dateAndTime = new Date().toString();
   const place = 'Google Meets';
   console.log(dateAndTime, '18rm');
@@ -21,7 +25,7 @@ export async function getStaticProps() {
       place: place,
     },
   };
-}
+};
 
 interface ConfirmedMeetingProps {
   dateAsString: string;
@@ -56,8 +60,6 @@ const ConfirmedMeeting = ({ dateAsString, place }: ConfirmedMeetingProps) => {
 
   const date = getMMDDYYFromDate(dateAsString);
   const time = getHHMMFromDate(dateAsString);
-  //   const date = 't';
-  //   const time = 't';
 
   return (
     <Layout>
@@ -67,8 +69,7 @@ const ConfirmedMeeting = ({ dateAsString, place }: ConfirmedMeetingProps) => {
             <div className="flex flex-col items-center">
               <Avatar
                 imgLocation={Cat}
-                displaySize={'small'}
-                // todo: give avatar a "rounded: 50%" setting
+                displaySize={'egg'}
                 personsName={name}
               />
               <p>{name}</p>
@@ -88,27 +89,21 @@ const ConfirmedMeeting = ({ dateAsString, place }: ConfirmedMeetingProps) => {
             </div>
           </div>
           <div className="flex justify-between mt-4">
-            <div>
-              <p className="text-2xl">
-                <span className="text-primary-3">Date:</span>{' '}
-                <span>{date}</span>
-              </p>
-            </div>
-            <div>
-              <p className="text-2xl">
-                <span className="text-primary-3">Time:</span>{' '}
-                <span>{time}</span>
-              </p>
-            </div>
-            <div>
-              <p className="text-2xl">
-                <span className="text-primary-3">Meeting Method:</span>{' '}
-                <span>{place}</span>
-              </p>
-            </div>
+            <MeetingDetail
+              type="date"
+              detailInfo={date}
+              imgLocation={Calendar}
+            />
+            <MeetingDetail type="time" detailInfo={time} imgLocation={Clock} />
+            <MeetingDetail
+              type="place"
+              detailInfo={place}
+              imgLocation={Monitor}
+            />
           </div>
           <div>
             <div className="h-12 w-12">
+              {/* // todoRM: fix button */}
               <Button variant="primary" />
             </div>
           </div>

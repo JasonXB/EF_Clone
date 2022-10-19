@@ -39,7 +39,7 @@ const SocialMediaLink: FC<LinkTypes> = ({ domain }: LinkTypes) => {
     <div className="w-12 h-12 ml-2">
       <button>
         {/* // NOTE: the images I used are unlicensed, provided by Icons8. If they are to be in production, we must buy them */}
-        <Image src={selectImageOfType(domain)} />
+        <Image src={selectImageOfType(domain)} alt={domain} />
       </button>
     </div>
   );

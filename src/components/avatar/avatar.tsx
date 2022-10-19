@@ -1,9 +1,10 @@
 import React, { FC } from 'react';
 import Image, { StaticImageData } from 'next/image';
+import { AvatarSizing } from '../../enum/avatarSizing.enum';
 
 interface ImagePath {
   imgLocation: StaticImageData | string;
-  displaySize: 'large' | 'mediumLarge' | 'medium' | 'small';
+  displaySize: 'large' | 'mediumLarge' | 'medium' | 'egg' | 'small';
   personsName: string;
 }
 
@@ -38,6 +39,11 @@ const Avatar: FC<ImagePath> = ({
     width: '140px',
     borderRadius: 'rounded-3xl',
   };
+  const eggSizing: IImageQualities = {
+    height: '190px',
+    width: '160px',
+    borderRadius: 'rounded-full',
+  };
   const smallSizing: IImageQualities = {
     // for the "find a mentor" cards
     height: '148px',
@@ -46,12 +52,14 @@ const Avatar: FC<ImagePath> = ({
   };
 
   function chooseSizing(choice: string): IImageQualities {
-    if (choice === 'large') {
+    if (choice === AvatarSizing.large) {
       return largeSizing;
-    } else if (choice === 'mediumLarge') {
+    } else if (choice === AvatarSizing.mediumLarge) {
       return mediumLargeSizing;
-    } else if (choice === 'medium') {
+    } else if (choice === AvatarSizing.medium) {
       return mediumSizing;
+    } else if (choice === AvatarSizing.egg) {
+      return eggSizing;
     } else {
       return smallSizing;
     }
