@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { buttonVariants } from '../buttons/reusable-buttons';
-// import bannerImg from '../assets/'
+import bannerImg from '../../assets/homePageHeroImg.png';
+import Image from 'next/image';
 
 const HomePageBanner = () => (
   //missing banner graphic and background graphics
@@ -26,7 +27,10 @@ const HomePageBanner = () => (
           </a>
         </Link>
       </div>
-      {/* <Image src={bannerImg} alt='graphic of people chatting by computers with a big lightbulb'/> */}
+      <Image
+        src={bannerImg}
+        alt="graphic of people chatting by computers with a big lightbulb"
+      />
     </div>
   </div>
 );
