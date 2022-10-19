@@ -1,18 +1,70 @@
 import Image from 'next/image';
+import { GetStaticProps } from 'next';
 
 import Layout from '../../src/components/Layout';
 
 import Cat from '../../src/components/assets/cat.jpeg';
 import Avatar from '../../src/components/avatar/avatar';
+import Button from '../../src/components/buttons/reusable-buttons';
 
-const ConfirmedMeeting = ({}) => {
+// This function gets called at build time
+export async function getStaticProps() {
+  const dateAndTime = new Date().toString();
+  const place = 'Google Meets';
+  console.log(dateAndTime, '18rm');
+  // attempting to pass a Date object thru here gives:
+  // `object` ("[object Date]") cannot be serialized as JSON.
+  // Hence it is converted to a string first, and converted back into a Date object in the component.
+  return {
+    props: {
+      dateAsString: dateAndTime,
+      place: place,
+    },
+  };
+}
+
+interface ConfirmedMeetingProps {
+  dateAsString: string;
+  place: string;
+}
+
+const ConfirmedMeeting = ({ dateAsString, place }: ConfirmedMeetingProps) => {
   const name = 'Captain Placeholder';
+
+  function getMMDDYYFromDate(dateAsString: string): string {
+    const d = new Date(Date.parse(dateAsString));
+    const adjustmentFromZeroIndexedMonth = 1;
+    const calendarFormatting =
+      d.getFullYear().toString() +
+      '-' +
+      (d.getMonth() + adjustmentFromZeroIndexedMonth).toString() +
+      '-' +
+      d.getDate().toString();
+    return calendarFormatting;
+  }
+
+  function getHHMMFromDate(dateAsString: string): string {
+    const d = new Date(dateAsString);
+    const timeFormatting =
+      d.getHours().toString() +
+      ':' +
+      d.getMinutes().toString() +
+      ':' +
+      d.getSeconds().toString();
+    return timeFormatting;
+  }
+
+  const date = getMMDDYYFromDate(dateAsString);
+  const time = getHHMMFromDate(dateAsString);
+  //   const date = 't';
+  //   const time = 't';
+
   return (
     <Layout>
       <div className="flex justify-center">
         <div className="w-3/5 flex flex-col justify-center ">
           <div>
-            <div>
+            <div className="flex flex-col items-center">
               <Avatar
                 imgLocation={Cat}
                 displaySize={'small'}
@@ -23,22 +75,43 @@ const ConfirmedMeeting = ({}) => {
             </div>
           </div>
           <div>
-            <div>
-              <h4 className="font-semibold text-primary-1">Confirmed</h4>
+            <div className="my-3">
+              <h4 className="font-semibold text-primary-1 text-5xl text-center">
+                Confirmed
+              </h4>
             </div>
             <div>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Reiciendis excepturi sapiente vero maxime suscipit quisquam minima
-              doloremque quibusdam. Qui, alias? Exercitationem neque tempora et!
-              Consequatur neque sunt exercitationem similique at.
+              <p className="text-3xl text-center">
+                Thank you for applying for the mentorship program with Empowered
+                Futures. We are pleased to confirm your meeting with {name}.
+              </p>
+            </div>
+          </div>
+          <div className="flex justify-between mt-4">
+            <div>
+              <p>
+                <span className="text-primary-3">Date:</span>{' '}
+                <span>{date}</span>
+              </p>
+            </div>
+            <div>
+              <p className="text-primary-3">
+                <span className="text-primary-3">Time:</span>
+                <span>{time}</span>
+              </p>
+            </div>
+            <div>
+              <p className="text-primary-3">
+                <span className="text-primary-3">Meeting Method:</span>
+                <span>{place}</span>
+              </p>
             </div>
           </div>
           <div>
-            <div>Date</div>
-            <div>Time</div>
-            <div>Method</div>
+            <div className="h-12 w-12">
+              <Button variant="primary" />
+            </div>
           </div>
-          <div>Back</div>
         </div>
       </div>
     </Layout>
