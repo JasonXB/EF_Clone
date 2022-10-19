@@ -9,7 +9,9 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundImage: {},
+      backgroundImage: {
+        gears: "url('./src/assets/Beckground for homepage2.png)",
+      },
       width: {
         90: '360px',
       },

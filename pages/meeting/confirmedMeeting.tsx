@@ -48,8 +48,30 @@ const ConfirmedMeeting = ({
   }
 
   function getHHMMFromDate(dateAsString: string): string {
-    const d: Date = new Date(dateAsString);
-    return d.toLocaleString();
+    const dStart: Date = new Date(dateAsString);
+    const dEnd: Date = new Date(dateAsString);
+    const oneSecondInMilliseconds = 1000;
+    const sixtySecondsPerMinute = 60;
+    const sixtyMinutes = 60;
+    const oneHour =
+      oneSecondInMilliseconds * sixtySecondsPerMinute * sixtyMinutes;
+    const oneHourInTheFuture = dStart.getTime() + oneHour;
+    dEnd.setTime(oneHourInTheFuture);
+
+    const hhmmStart = dStart
+      .toLocaleString()
+      .split(' ')[1]
+      .split(':')
+      .slice(0, 2)
+      .join(':');
+    const hhmmEnd = dEnd
+      .toLocaleString()
+      .split(' ')[1]
+      .split(':')
+      .slice(0, 2)
+      .join(':');
+
+    return hhmmStart + ' - ' + hhmmEnd;
   }
 
   useEffect(() => {
@@ -57,12 +79,9 @@ const ConfirmedMeeting = ({
     setTime(getHHMMFromDate(dateAsString));
   }, [dateAsString]);
 
-  //   const date: string = getMMDDYYFromDate(dateAsString);
-  //   const time: string = getHHMMFromDate(dateAsString);
-
   return (
     <Layout>
-      <div className="flex justify-center">
+      <div className="flex justify-center bg-gears">
         <div className="mt-40 w-4/5 flex flex-col justify-center ">
           <div>
             <div className="flex flex-col items-center">
