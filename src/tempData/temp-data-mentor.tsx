@@ -7,7 +7,7 @@ export const placeholderDataForRequest = [
     age: '31',
     email: 'fakeemail@email.com',
     status: 'Pending',
-    date: '5th March',
+    date: 'March 5th, 2022',
     goalOfMeeting:
       'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut lafibore sed diam nonumy eirmod tempor',
   },
@@ -18,7 +18,7 @@ export const placeholderDataForRequest = [
     age: '31',
     email: 'fakeemail@email.com',
     status: 'Pending',
-    date: '5th September',
+    date: 'September 5th, 2022',
     goalOfMeeting: 't lafibore sed diam nonumy eirmod tempor',
   },
   {
@@ -28,7 +28,7 @@ export const placeholderDataForRequest = [
     age: '31',
     email: 'fakeemail@email.com',
     status: 'Pending',
-    date: '5th September',
+    date: 'September 5th, 2022',
     goalOfMeeting:
       'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut lafibore sed diam nonumy eirmod tempor',
   },
@@ -39,7 +39,7 @@ export const placeholderDataForRequest = [
     age: '31',
     email: 'fakeemail@email.com',
     status: 'Pending',
-    date: '5th September',
+    date: 'September 5th, 2022',
     goalOfMeeting:
       'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut lafibore sed diam nonumy eirmod tempor',
   },
@@ -50,7 +50,7 @@ export const placeholderDataForRequest = [
     age: '31',
     email: 'fakeemail@email.com',
     status: 'Pending',
-    date: '5th September',
+    date: 'September 5th, 2022',
     goalOfMeeting:
       'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut lafibore sed diam nonumy eirmod tempor',
   },

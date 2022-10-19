@@ -12,9 +12,9 @@ const UpcomingMeetingCard = (props: UpcomingMeetingPropsType) => {
   //avatar will be passed in the future
 
   return (
-    <div className="flex flex-col items-center ss:flex-row">
+    <div className="flex flex-col items-center sm:flex-row">
       {/* styles fo card */}
-      <div className="flex flex-col items-center w-10/12 p-4 my-4 overflow-hidden rounded-md shadow-md ss:flex-row sm:mx-2 ">
+      <div className="flex flex-col items-center w-10/12 p-4 my-4 overflow-hidden rounded-md shadow-md sm:flex-row sm:mx-2 ">
         {/* avatar left column */}
         <div className="flex flex-col items-center w-full ss:w-1/4">
           <Avatar
@@ -22,7 +22,7 @@ const UpcomingMeetingCard = (props: UpcomingMeetingPropsType) => {
             personsName={name}
             displaySize={'small'}
           />
-          {name}
+          <span className="text-center">{name}</span>
         </div>
         {/* stats right */}
         <div className="flex flex-col items-center w-full space-y-2 text-center sm:3/4 sm:flex-row justify-evenly sm:space-y-0">
