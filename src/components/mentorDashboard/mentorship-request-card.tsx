@@ -1,5 +1,5 @@
 import Image, { StaticImageData } from 'next/image';
-import placeholder from '../assets/cat.jpeg';
+import placeholder from '../../assets/cat.jpeg';
 import Button from '../buttons/reusable-buttons';
 import { MentorshipRequestCardProps } from './mentor-interface';
 
