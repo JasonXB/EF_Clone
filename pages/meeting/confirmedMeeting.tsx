@@ -81,8 +81,8 @@ const ConfirmedMeeting = ({
 
   return (
     <Layout isConfirmedMeetingPg={true}>
-      <div className="h-full w-full absolute bg-gears bg-cover opacity-30"></div>
-      <div className="flex justify-center">
+      <div className="h-full w-full absolute bg-gears bg-cover opacity-20 bg-150"></div>
+      <div className="flex justify-center relative">
         <div className="mt-40 w-4/5 flex flex-col justify-center ">
           <div>
             <div className="flex flex-col items-center">
@@ -91,7 +91,7 @@ const ConfirmedMeeting = ({
                 displaySize={'egg'}
                 personsName={name}
               />
-              <p>{name}</p>
+              <p className="mt-6">{name}</p>
             </div>
           </div>
           <div>

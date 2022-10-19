@@ -24,7 +24,7 @@ const MeetingDetail = ({
     }
   }
   return (
-    <div className="flex items-center">
+    <div className="flex items-center mr-6">
       <Image
         src={imgLocation}
         alt="calendar icon"
