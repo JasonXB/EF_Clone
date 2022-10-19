@@ -39,30 +39,17 @@ const ConfirmedMeeting = ({
   place,
 }: ConfirmedMeetingProps) => {
   function getMMDDYYFromDate(dateAsString: string): string {
-    const d = new Date(Date.parse(dateAsString));
-    const adjustmentFromZeroIndexedMonth = 1;
-    const calendarFormatting = // todoRM: fix this calendar formatting & time formatting
-      d.getFullYear().toString() +
-      '-' +
-      (d.getMonth() + adjustmentFromZeroIndexedMonth).toString() +
-      '-' +
-      d.getDate().toString();
-    return calendarFormatting;
+    const d: Date = new Date(Date.parse(dateAsString));
+    return d.toDateString();
   }
 
   function getHHMMFromDate(dateAsString: string): string {
-    const d = new Date(dateAsString);
-    const timeFormatting =
-      d.getHours().toString() +
-      ':' +
-      d.getMinutes().toString() +
-      ':' +
-      d.getSeconds().toString();
-    return timeFormatting;
+    const d: Date = new Date(dateAsString);
+    return d.toLocaleString(); // TODO: verify that the timezone is set correctly for different timezones.
   }
 
-  const date = getMMDDYYFromDate(dateAsString);
-  const time = getHHMMFromDate(dateAsString);
+  const date: string = getMMDDYYFromDate(dateAsString);
+  const time: string = getHHMMFromDate(dateAsString);
 
   return (
     <Layout>
