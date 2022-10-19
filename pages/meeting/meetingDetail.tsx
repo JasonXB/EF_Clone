@@ -12,7 +12,7 @@ const MeetingDetail = ({
   detailInfo,
   imgLocation,
 }: MeetingDetailProps) => {
-  function getJSXForType(type: string): string {
+  function getTextForType(type: string): string {
     if (type === MeetingDetailType.date) {
       return 'Date: ';
     } else if (type === MeetingDetailType.time) {
@@ -32,7 +32,7 @@ const MeetingDetail = ({
         width={'30px'}
       />{' '}
       <p className="ml-3 text-2xl">
-        <span className="text-primary-3">{getJSXForType(type)}</span>{' '}
+        <span className="text-primary-3">{getTextForType(type)}</span>{' '}
         <span>{detailInfo}</span>
       </p>
     </div>
