@@ -57,9 +57,9 @@ Each element I set defaults for has an Adobe link at the bottom where I got the 
 }
 
 html,
-body{
-width:100%;
-overflow-x:hidden;
+body {
+  width: 100%;
+  overflow-x: hidden;
 }
 
 :root {

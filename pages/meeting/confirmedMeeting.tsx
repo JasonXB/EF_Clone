@@ -62,7 +62,7 @@ const ConfirmedMeeting = ({ dateAsString, place }: ConfirmedMeetingProps) => {
   return (
     <Layout>
       <div className="flex justify-center">
-        <div className="w-3/5 flex flex-col justify-center ">
+        <div className="mt-40 w-4/5 flex flex-col justify-center ">
           <div>
             <div className="flex flex-col items-center">
               <Avatar
@@ -75,7 +75,7 @@ const ConfirmedMeeting = ({ dateAsString, place }: ConfirmedMeetingProps) => {
             </div>
           </div>
           <div>
-            <div className="my-3">
+            <div className="mt-10 mb-8">
               <h4 className="font-semibold text-primary-1 text-5xl text-center">
                 Confirmed
               </h4>
@@ -89,20 +89,20 @@ const ConfirmedMeeting = ({ dateAsString, place }: ConfirmedMeetingProps) => {
           </div>
           <div className="flex justify-between mt-4">
             <div>
-              <p>
+              <p className="text-2xl">
                 <span className="text-primary-3">Date:</span>{' '}
                 <span>{date}</span>
               </p>
             </div>
             <div>
-              <p className="text-primary-3">
-                <span className="text-primary-3">Time:</span>
+              <p className="text-2xl">
+                <span className="text-primary-3">Time:</span>{' '}
                 <span>{time}</span>
               </p>
             </div>
             <div>
-              <p className="text-primary-3">
-                <span className="text-primary-3">Meeting Method:</span>
+              <p className="text-2xl">
+                <span className="text-primary-3">Meeting Method:</span>{' '}
                 <span>{place}</span>
               </p>
             </div>
