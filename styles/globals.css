@@ -90,3 +90,9 @@ ul {
 .blackBoxShadow {
   box-shadow: var(--blackBoxShadow);
 }
+
+/* carousel component, couldnt figure out how to override it any other way */
+#mentorRequestSplideComponent .splide__track {
+  margin: auto 5%;
+  width: 91%;
+}
