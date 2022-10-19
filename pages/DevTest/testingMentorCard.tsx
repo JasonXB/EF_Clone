@@ -5,6 +5,9 @@ import MentorCard from '../../src/components/MentorCard';
 const testMentorCard: NextPage = ({}) => {
   return (
     <div>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+      </Head>
       <MentorCard
         id={1}
         firstName="Elon"
