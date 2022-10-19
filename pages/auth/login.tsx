@@ -78,7 +78,7 @@ const login: NextPage = ({}) => {
                     <div className="py-3">
                       <span className="font-medium">Username</span>
                       <input
-                        className="block cursor-auto border border-2 rounded-lg h-[34px] w-full px-2"
+                        className="block border-2 rounded-lg h-[34px] w-full px-2"
                         placeholder=""
                         type="text"
                         name="email"
@@ -89,7 +89,7 @@ const login: NextPage = ({}) => {
                     </div>
                     <span className="font-medium">Password</span>
                     <input
-                      className="block cursor-auto border border-2 rounded-lg h-[34px] w-full px-2"
+                      className="block border-2 rounded-lg h-[34px] w-full px-2"
                       placeholder=""
                       type="password"
                       name="password"
