@@ -2,9 +2,9 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import React, { useRef } from 'react';
 
-import SocialMediaButtons from '../src/components/SocialMediaButtons';
-import { buttonVariants } from '../src/components/buttons/reusable-buttons';
-import { useState } from 'react';
+import SocialMediaButtons from '../../src/components/SocialMediaButtons';
+import { buttonVariants } from '../../src/components/buttons/reusable-buttons';
+// import { useState } from 'react';
 
 const login: NextPage = ({}) => {
   const userName = useRef<HTMLInputElement | null>(null);
@@ -15,19 +15,16 @@ const login: NextPage = ({}) => {
     console.log(passWord.current?.value);
   }
 
-  const [mentorChosen, setMentorChosen] = useState(false)
-  const [menteeChosen, setMenteeChosen] = useState(false)
-  
-  const handleMentorChoice = () => {
-    setMentorChosen(true)
-    setMenteeChosen(false)
-  }
-
-  const handleMenteeChoice = () => {
-    setMenteeChosen(true)
-    setMentorChosen(false)
-  }
-
+  // const [mentorChosen, setMentorChosen] = useState(false) //mentor mentee choosing login button
+  // const [menteeChosen, setMenteeChosen] = useState(false)
+  // const handleMentorChoice = () => {
+  //   setMentorChosen(true)
+  //   setMenteeChosen(false)
+  // }
+  // const handleMenteeChoice = () => {
+  //   setMenteeChosen(true)
+  //   setMentorChosen(false)
+  // }
 
   return (
     <div>
@@ -53,7 +50,7 @@ const login: NextPage = ({}) => {
                     Select your account type
                   </span>
                   
-                  <div className='flex'>
+                  {/* <div className='flex'>
                     <div className='pr-2'>
                     <button 
                       className={`${mentorChosen ? 'border-primary-1 bg-primary-5 drop-shadow-lg': ''}border border-[3px] h-[50px] w-[110px] rounded-[15px] hover:bg-primary-5 hover:border-primary-1 hover:drop-shadow-lg`}
@@ -71,17 +68,17 @@ const login: NextPage = ({}) => {
                       Mentee
                     </button>
                     </div>
-                    
-                  </div>
+                  </div> */}
+
                   <div className="flex text-[10px] md:text-[70%] py-4">
                     <SocialMediaButtons />
                   </div>
 
-                  <form autoComplete="off" className="w-full">
+                  <form autoComplete="off" className="">
                     <div className="py-3">
                       <span className="font-medium">Username</span>
                       <input
-                        className="block w-full cursor-auto border border-2 rounded-lg h-[34px] w-full px-2"
+                        className="block cursor-auto border border-2 rounded-lg h-[34px] w-full px-2"
                         placeholder=""
                         type="text"
                         name="email"
@@ -92,7 +89,7 @@ const login: NextPage = ({}) => {
                     </div>
                     <span className="font-medium">Password</span>
                     <input
-                      className="block w-full cursor-auto border border-2 rounded-lg h-[34px] w-full px-2"
+                      className="block cursor-auto border border-2 rounded-lg h-[34px] w-full px-2"
                       placeholder=""
                       type="password"
                       name="password"
@@ -119,13 +116,13 @@ const login: NextPage = ({}) => {
                 </div>
               </div>
 
-              <div>
+              {/* <div>
                 <button
                   className={`${buttonVariants.secondary} font-semibold border-[2px] py-4 px-5`}
                 >
                   Back
                 </button>
-              </div>
+              </div> */}
 
             </div>
           </section>

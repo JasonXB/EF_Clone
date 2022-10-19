@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { EfLogoProps } from '../../interface/ef-logo-props.interface';
 import Image from 'next/image';
-import eflogo from './../assets/eflogo.png';
+import eflogo from '../../assets/eflogo.png';
 
 const EfLogo = ({ alt, className }: EfLogoProps) => {
   return (
