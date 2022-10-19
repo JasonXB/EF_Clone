@@ -16,17 +16,19 @@ const UpcomingMeetingCard = (props: UpcomingMeetingPropsType) => {
       {/* styles fo card */}
       <div className="flex flex-col items-center w-10/12 p-4 my-4 overflow-hidden rounded-md shadow-md sm:flex-row sm:mx-2 ">
         {/* avatar left column */}
-        <div className="flex flex-col items-center w-full ss:w-1/4">
+        <div className="flex flex-col items-center w-full ss:w-1/3">
           <Avatar
             imgLocation={placeholderImg} //swap with avatar once dynamically passed
             personsName={name}
             displaySize={'small'}
           />
-          <span className="text-center">{name}</span>
+          <span className="py-2 text-xl font-bold text-center sm:text-md sm:font-normal">
+            {name}
+          </span>
         </div>
         {/* stats right */}
-        <div className="flex flex-col items-center w-full space-y-2 text-center sm:3/4 sm:flex-row justify-evenly sm:space-y-0">
-          <div className="flex flex-row w-full sm:w-1/2 ">
+        <div className="flex flex-col items-center w-full mt-4 space-y-6 text-center sm:mt-0 sm:3/4 sm:flex-row justify-evenly sm:space-y-0">
+          <div className="flex flex-row w-full pt-4 sm:border-t-0 border-t-[1px] sm:w-1/2 border-smoke-4 ">
             <div className="flex flex-col items-center w-3/4 px-2 border-r-2 sm:w-1/2 ">
               <span className="text-xl ss:text-2xl text-primary-1">
                 {numberOfMeetings.individual}
@@ -42,7 +44,7 @@ const UpcomingMeetingCard = (props: UpcomingMeetingPropsType) => {
               </span>
             </div>
           </div>
-          <div className="flex flex-col items-center flex-grow w-3/4 px-2 sm:1/2">
+          <div className="flex flex-col items-center flex-grow w-3/4 px-2 ">
             <span className="text-2xl text-primary-1">{nextMeeting}</span>
             <span className="text-xs ss:text-md">Upcoming Meeting</span>
           </div>
