@@ -110,13 +110,16 @@ const login: NextPage = ({}) => {
                     />
 
                     <div className="py-6">
-                      <button
-                        // onClick={() => handleLogin()} // related to login function
-                        type="submit"
-                        className={`${buttonVariants.primary} font-light py-4 px-5`}
+                      <Button
+                        variant="primary"
+                        type= "submit"
+                        clickHandler={() =>
+                          console.log('LOGIN BUTTON will be updated to make a request function')
+                        }
                       >
-                        Login
-                      </button>
+                      Login
+                      </Button>
+
                     </div>
 
                     <div className="font-medium">
