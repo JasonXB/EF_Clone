@@ -1,21 +1,23 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import React, { useRef } from 'react';
+import Layout from '../../src/components/Layout';
 
-import SocialMediaButtons from '../../src/components/SocialMediaButtons';
-import { buttonVariants } from '../../src/components/buttons/reusable-buttons';
+import Button, { buttonVariants } from '../../src/components/buttons/reusable-buttons';
+
+// import React, { useRef } from 'react';
 // import { useState } from 'react';
 
 const login: NextPage = ({}) => {
-  const userName = useRef<HTMLInputElement | null>(null);
-  const passWord = useRef<HTMLInputElement | null>(null);
-  
-  function handleLogin() {
-    console.log(userName.current?.value);
-    console.log(passWord.current?.value);
-  }
+  // related to grabbing the values in the username and password input fields; commented out for now
+  // const userName = useRef<HTMLInputElement | null>(null);
+  // const passWord = useRef<HTMLInputElement | null>(null);
+    // function handleLogin() {
+  //   console.log(userName.current?.value);
+  //   console.log(passWord.current?.value);
+  // }
 
-  // const [mentorChosen, setMentorChosen] = useState(false) //mentor mentee choosing login button
+  // mentor mentee choosing login button; when clicked, the blue color stays
+  // const [mentorChosen, setMentorChosen] = useState(false) 
   // const [menteeChosen, setMenteeChosen] = useState(false)
   // const handleMentorChoice = () => {
   //   setMentorChosen(true)
@@ -32,8 +34,8 @@ const login: NextPage = ({}) => {
         <title>Empowered Futures - Login</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1 className="text-3xl font-bold">HEADER</h1>
 
+      <Layout>
       <div className="outer font-mainFont rounded-5 px-5 pt-[40px]">
         <div className="outer-border py-4 px-5">
           <section className="inner-section p-2">
@@ -46,6 +48,7 @@ const login: NextPage = ({}) => {
                     Login
                   </span>
 
+                  {/* Mentor Mentee Buttons */}
                   {/* <span className="block font-medium py-2">
                     Select your account type
                   </span> */}
@@ -71,7 +74,15 @@ const login: NextPage = ({}) => {
                   </div> */}
 
                   <div className="flex text-[10px] md:text-[70%] py-4">
-                    <SocialMediaButtons />
+                    <Button
+                      variant="tertiary"
+                      icon="google"
+                      clickHandler={() =>
+                        console.log('will be updated to make a request function')
+                      }
+                      >
+                      Continue with google
+                      </Button>
                   </div>
 
                   <form autoComplete="off" className="">
@@ -82,7 +93,7 @@ const login: NextPage = ({}) => {
                         placeholder=""
                         type="text"
                         name="email"
-                        ref={userName}
+                        // ref={userName} // for the function up top
                         required
                         autoFocus
                       />
@@ -93,14 +104,14 @@ const login: NextPage = ({}) => {
                       placeholder=""
                       type="password"
                       name="password"
-                      ref={passWord}
+                      // ref={passWord} //for the function up top
                       required
                       autoFocus
                     />
 
                     <div className="py-6">
                       <button
-                        onClick={() => handleLogin()}
+                        // onClick={() => handleLogin()} // related to login function
                         type="submit"
                         className={`${buttonVariants.primary} font-light py-4 px-5`}
                       >
@@ -116,32 +127,12 @@ const login: NextPage = ({}) => {
                 </div>
               </div>
 
-              {/* <div>
-                <button
-                  className={`${buttonVariants.secondary} font-semibold border-[2px] py-4 px-5`}
-                >
-                  Back
-                </button>
-              </div> */}
-
             </div>
           </section>
         </div>
       </div>
+      </Layout>
 
-      <h1 className="text-3xl font-bold">FOOTER</h1>
-
-      {/* Login Mentee */}
-
-      {/* Sign in with your email address + input */}
-
-      {/* Password + input, Forgot your password? */}
-
-      {/* Link to terms and conditions */}
-
-      {/* Sign up, Login buttons */}
-
-      {/* Footer */}
     </div>
   );
 };
