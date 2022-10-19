@@ -16,7 +16,7 @@ const PercentageBar: FC<PercentBarProps> = ({
   };
 
   return (
-    <div className="w-80 h-6 border-gray-300 border-2 rounded-xl relative">
+    <div className="relative h-6 border-2 border-gray-300 w-52 sm:w-80 md:w-80 lg:w-80 xl:w-80 rounded-xl">
       <div
         style={progressStyle}
         className={`w-3/5 h-full rounded-xl absolute ${
@@ -24,8 +24,8 @@ const PercentageBar: FC<PercentBarProps> = ({
         }`}
       ></div>
       {showPercentageText ? (
-        <div className="w-full flex justify-center items-center absolute text-white">
-          <span className="flex justify-center items-center h-5">{`${percentage}%`}</span>
+        <div className="absolute flex items-center justify-center w-full text-white">
+          <span className="flex items-center justify-center h-5">{`${percentage}%`}</span>
         </div>
       ) : null}
     </div>
