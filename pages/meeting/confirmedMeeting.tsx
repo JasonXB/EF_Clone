@@ -15,13 +15,13 @@ import MeetingDetail from './meetingDetail';
 export const getStaticProps: GetStaticProps = async () => {
   const dateAndTime = new Date().toString();
   const place = 'Google Meets';
-  console.log(dateAndTime, '18rm');
   // attempting to pass a Date object thru here gives:
   // `object` ("[object Date]") cannot be serialized as JSON.
   // Hence it is converted to a string first, and converted back into a Date object in the component.
   return {
     props: {
       dateAsString: dateAndTime,
+      name: 'Captain Placeholder',
       place: place,
     },
   };
@@ -29,16 +29,19 @@ export const getStaticProps: GetStaticProps = async () => {
 
 interface ConfirmedMeetingProps {
   dateAsString: string;
+  name: string;
   place: string;
 }
 
-const ConfirmedMeeting = ({ dateAsString, place }: ConfirmedMeetingProps) => {
-  const name = 'Captain Placeholder';
-
+const ConfirmedMeeting = ({
+  dateAsString,
+  name,
+  place,
+}: ConfirmedMeetingProps) => {
   function getMMDDYYFromDate(dateAsString: string): string {
     const d = new Date(Date.parse(dateAsString));
     const adjustmentFromZeroIndexedMonth = 1;
-    const calendarFormatting =
+    const calendarFormatting = // todoRM: fix this calendar formatting & time formatting
       d.getFullYear().toString() +
       '-' +
       (d.getMonth() + adjustmentFromZeroIndexedMonth).toString() +
@@ -88,7 +91,7 @@ const ConfirmedMeeting = ({ dateAsString, place }: ConfirmedMeetingProps) => {
               </p>
             </div>
           </div>
-          <div className="flex justify-between mt-4">
+          <div className="mt-14 flex justify-between mt-4">
             <MeetingDetail
               type="date"
               detailInfo={date}
@@ -102,9 +105,9 @@ const ConfirmedMeeting = ({ dateAsString, place }: ConfirmedMeetingProps) => {
             />
           </div>
           <div>
-            <div className="h-12 w-12">
+            <div className="h-12 w-full mt-14 flex justify-center">
               {/* // todoRM: fix button */}
-              <Button variant="primary" />
+              <Button variant={'secondary'}>Back To My Account</Button>
             </div>
           </div>
         </div>
