@@ -4,9 +4,6 @@ import ReusableCards from '../src/components/homepage/ReusableCards';
 
 import Layout from '../src/components/Layout';
 
-import SignUpFormMentee from './signUpForm/SignUpFormMentee';
-
-
 const ReusableCardData = [
   //links and img need to be added once we receive assets and where these link to.
   {
@@ -49,7 +46,6 @@ const Home: NextPage = ({}) => {
       {/** video component -future */}
       {/** testimonials component -future  */}
       {/** blog component-future  */}
-      
     </Layout>
   );
 };
