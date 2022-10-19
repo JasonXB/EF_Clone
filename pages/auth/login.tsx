@@ -34,7 +34,7 @@ const login: NextPage = ({}) => {
       </Head>
       <h1 className="text-3xl font-bold">HEADER</h1>
 
-      <div className="outer font-mainFont border-smoke-3 bg-white border-t border-r rounded-5 px-5 pt-[40px]">
+      <div className="outer font-mainFont rounded-5 px-5 pt-[40px]">
         <div className="outer-border py-4 px-5">
           <section className="inner-section p-2">
             <div className="inner h-full">
