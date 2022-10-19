@@ -1,4 +1,4 @@
-import { FooterLinkProps } from '../interface/footer-link-props.interface';
+import { FooterLinkProps } from './footer-link-props.interface';
 
 const FooterLink = ({ url, text, icon }: FooterLinkProps) => {
   return (

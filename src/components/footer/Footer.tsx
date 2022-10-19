@@ -1,7 +1,7 @@
-import EfLogo from './EfLogo';
-import { FooterColumnProps } from '../interface/footer-column-props.interface';
-import SocialMediaLink from './socialMediaLinks/social-media-link';
-import { SocialMedia } from '../enum/SocialMedia.enum';
+import EfLogo from '../EfLogo';
+import { FooterColumnProps } from './footer-column-props.interface';
+import SocialMediaLink from '../socialMediaLinks/social-media-link';
+import { SocialMedia } from '../../enum/SocialMedia.enum';
 
 // solution to 'Hydration error' bug I was getting.
 import dynamic from 'next/dynamic';

@@ -2,7 +2,7 @@ import React, { Children } from 'react';
 import Head from 'next/head';
 import Navbar from './header/Navbar';
 import LayoutStyle from '../../styles/Layout.module.css';
-import Footer from './Footer';
+import Footer from './footer/Footer';
 
 type LayoutProps = {
   headTitle?: string;
