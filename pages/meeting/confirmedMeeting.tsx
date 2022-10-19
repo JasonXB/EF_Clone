@@ -11,6 +11,7 @@ import Calendar from '../../src/assets/icons8-calendar-week-64.png';
 import Clock from '../../src/assets/icons8-clock-48.png';
 import Monitor from '../../src/assets/icons8-pro-display-xdr-80.png';
 import MeetingDetail from './meetingDetail';
+import { useEffect, useState } from 'react';
 
 export const getStaticProps: GetStaticProps = async () => {
   const dateAndTime = new Date().toString();
@@ -38,6 +39,9 @@ const ConfirmedMeeting = ({
   name,
   place,
 }: ConfirmedMeetingProps) => {
+  const [date, setDate] = useState('');
+  const [time, setTime] = useState('');
+
   function getMMDDYYFromDate(dateAsString: string): string {
     const d: Date = new Date(Date.parse(dateAsString));
     return d.toDateString();
@@ -45,11 +49,16 @@ const ConfirmedMeeting = ({
 
   function getHHMMFromDate(dateAsString: string): string {
     const d: Date = new Date(dateAsString);
-    return d.toLocaleString(); // TODO: verify that the timezone is set correctly for different timezones.
+    return d.toLocaleString();
   }
 
-  const date: string = getMMDDYYFromDate(dateAsString);
-  const time: string = getHHMMFromDate(dateAsString);
+  useEffect(() => {
+    setDate(getMMDDYYFromDate(dateAsString));
+    setTime(getHHMMFromDate(dateAsString));
+  }, [dateAsString]);
+
+  //   const date: string = getMMDDYYFromDate(dateAsString);
+  //   const time: string = getHHMMFromDate(dateAsString);
 
   return (
     <Layout>
