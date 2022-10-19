@@ -1,7 +1,7 @@
 import BubbleTags from './BubbleTags';
 import Avatar from './avatar/avatar';
 import tempImage from './assets/cat.jpeg';
-// import { BUBBLE_TAG_TYPE_CLASSES } from './BubbleTag';
+import { BUBBLE_TAG_TYPE_CLASSES } from './BubbleTag';
 import styles from '../../styles/MentorCard.module.css';
 import PercentageBar from './percentBar/percent-bar';
 import Button from './buttons/reusable-buttons';
@@ -14,7 +14,7 @@ interface MentorsInfoProps {
   location: string;
   job: string;
   aboutMentor: string;
-  tags?: string[]; //temp optional, remove ? once implemented
+  tags: string[]; 
   skills: [string, number][];
 }
 
@@ -49,11 +49,9 @@ const MentorCard = ({ ...mentorsInfo }: MentorsInfoProps) => {
         <div className=" h-full flex w-full">
           <div>
             <h4 className={styles.locationJob}>{location}</h4>
-            <h4 className={styles.locationJob}>{job}</h4>
-            {/* Remove below div when <BubbleTags/> is working, and uncomment <BubbleTags/> */}
-            <div className="my-4 h-5">[Bubble Tags]</div>
-            {/* <BubbleTags tags={tags} bubbleTagType={BUBBLE_TAG_TYPE_CLASSES.blue} /> */}
-            <h4 className={styles.aboutMentorTitle}>About {firstName}</h4>
+            <h4 className={`${styles.locationJob} pb-3`}>{job}</h4>
+            <BubbleTags tags={tags} bubbleTagType={BUBBLE_TAG_TYPE_CLASSES.primaryLight} />
+            <h4 className={`${styles.aboutMentorTitle} pt-3`}>About {firstName}</h4>
             <div className={styles.aboutMentorInfo}>{aboutMentor}</div>
           </div>
 
