@@ -41,14 +41,14 @@ const login: NextPage = ({}) => {
               <div className="inner-full flex justify-center items-center flex-wrap h-full">
                 <div className="left-inside text-center"></div>
 
-                <div className="right-inside w-1/2">
+                <div className="right-inside xs:w-200 sm:w-[480px]">
                   <span className="text-primary-1 text-[24px] font-semibold">
                     Login
                   </span>
 
-                  <span className="block font-medium py-2">
+                  {/* <span className="block font-medium py-2">
                     Select your account type
-                  </span>
+                  </span> */}
                   
                   {/* <div className='flex'>
                     <div className='pr-2'>
