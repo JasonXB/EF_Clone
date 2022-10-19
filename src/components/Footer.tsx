@@ -63,15 +63,14 @@ const socialMediaLinks: FooterColumnProps = {
 
 const Footer = () => {
   return (
-    <footer className="text-center bg-gray-100 ">
-       {/* This column and the social media column have been changed from grid to flex */}
+    <footer className="text-sm text-center bg-smoke-1 text-light">
+      {/* This column and the social media column have been changed from grid to flex */}
       <div className="flex flex-col pt-16 text-center lg:flex-row">
         {/* Empowered Futures logo */}
-        <div className="flex justify-center lg:ml-16 lg:mr-24">
-          <EfLogo
-            className="mb-5 w-44 lg:w-52 lg:mb-0 lg:mt-10"
-            alt="Empowered Futures Logo"
-          />
+        <div className="flex justify-center w-full lg:w-1/4">
+          <div className="flex justify-center mb-5 lg:mb-0 lg:mt-10 max-w-[337px] min-w-[337px] lg:ml-16 lg:mr-24">
+            <EfLogo className="" alt="Empowered Futures Logo" />
+          </div>
         </div>
         {/* The two columns in the middle (non-social media links) have remained a grid. */}
         <div className="grid w-full grid-cols-1 mb-5 mr-5 sm:gap-8 lg:w-2/4 ss:grid-cols-2">
@@ -85,6 +84,7 @@ const Footer = () => {
                       {/* If link has url, render FooterLink */}
                       {link.url && (
                         <FooterLink
+                          key={i}
                           text={link.text}
                           url={link.url}
                           icon={link.icon}
@@ -98,13 +98,18 @@ const Footer = () => {
           })}
         </div>
 
-          {/* Social Media column now flex */}
+        {/* Social Media column now flex */}
         <div className="flex flex-col mb-2 lg:mb-6">
-          <div className="lg:mb-6">Follow Us on Social Media</div>
+          <div className="font-bold lg:mb-6">Follow Us on Social Media</div>
           <div className="flex flex-row justify-center lg:flex-col">
-            {socialMediaLinks.links.map((link, i) => {
+            {socialMediaLinks?.links?.map((link, i) => {
               return (
-                <FooterLink text={link.text} url={link.url} icon={link.icon} />
+                <FooterLink
+                  key={i}
+                  text={link.text}
+                  url={link.url}
+                  icon={link.icon}
+                />
               );
             })}
           </div>
@@ -112,7 +117,7 @@ const Footer = () => {
       </div>
 
       {/* Copyright */}
-      <div className="pt-8 pb-4 text-center text-gray-600 ss:pt-0 ">
+      <div className="pt-8 pb-4 text-center text-smoke-3 ss:pt-0 ">
         <span>Empowered Futures Copyright 2022</span>
       </div>
     </footer>
