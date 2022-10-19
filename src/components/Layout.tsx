@@ -7,6 +7,7 @@ import LayoutStyle from '../../styles/Layout.module.css';
 
 type LayoutProps = {
   headTitle?: string;
+  isConfirmedMeetingPg?: boolean;
   children: any;
 };
 const Layout = ({ ...props }: LayoutProps) => {
@@ -21,7 +22,9 @@ const Layout = ({ ...props }: LayoutProps) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <div className={LayoutStyle.content}>
+      <div
+        className={`${props.isConfirmedMeetingPg ? '' : LayoutStyle.content}`}
+      >
         <main>{props.children}</main>
       </div>
       {/* Add the Footer component here */}

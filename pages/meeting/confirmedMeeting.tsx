@@ -80,8 +80,9 @@ const ConfirmedMeeting = ({
   }, [dateAsString]);
 
   return (
-    <Layout>
-      <div className="flex justify-center bg-gears">
+    <Layout isConfirmedMeetingPg={true}>
+      <div className="h-full w-full absolute bg-gears bg-cover opacity-30"></div>
+      <div className="flex justify-center">
         <div className="mt-40 w-4/5 flex flex-col justify-center ">
           <div>
             <div className="flex flex-col items-center">
