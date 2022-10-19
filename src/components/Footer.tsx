@@ -24,68 +24,64 @@ const footerLinks: FooterColumnProps[] = [
       { text: 'Suggest A Program', url: './suggest-a-program' },
     ],
   },
-  {
-    links: [
-      { text: 'Follow Us On Social Media' },
-      {
-        text: 'Facebook',
-        url: 'https://www.facebook.com/empoweredfuturesyyc/',
-        icon: (
-          <SocialMediaLink
-            className="w-6 h-6 ml-2"
-            domain={SocialMedia.facebook}
-          />
-        ),
-      },
-      {
-        text: 'Instagram',
-        url: 'https://www.instagram.com/empowered_futures/?hl=en',
-        icon: (
-          <SocialMediaLink
-            className="w-6 h-6 ml-2"
-            domain={SocialMedia.instagram}
-          />
-        ),
-      },
-      {
-        text: 'LinkedIn',
-        url: 'https://www.linkedin.com/company/empowered-futures/',
-        icon: (
-          <SocialMediaLink
-            className="w-6 h-6 ml-2"
-            domain={SocialMedia.linkedIn}
-          />
-        ),
-      },
-    ],
-  },
 ];
+
+const socialMediaLinks: FooterColumnProps = {
+  links: [
+    {
+      text: 'Facebook',
+      url: 'https://www.facebook.com/empoweredfuturesyyc/',
+      icon: (
+        <SocialMediaLink
+          className="w-6 h-6 ml-2"
+          domain={SocialMedia.facebook}
+        />
+      ),
+    },
+    {
+      text: 'Instagram',
+      url: 'https://www.instagram.com/empowered_futures/?hl=en',
+      icon: (
+        <SocialMediaLink
+          className="w-6 h-6 ml-2"
+          domain={SocialMedia.instagram}
+        />
+      ),
+    },
+    {
+      text: 'LinkedIn',
+      url: 'https://www.linkedin.com/company/empowered-futures/',
+      icon: (
+        <SocialMediaLink
+          className="w-6 h-6 ml-2"
+          domain={SocialMedia.linkedIn}
+        />
+      ),
+    },
+  ],
+};
 
 const Footer = () => {
   return (
-    <footer className="text-center bg-gray-100 lg:text-left">
-      <div className="pt-16 text-center md:text-left">
-        <div className="grid grid-cols-1 gap-2 lg:gap-8 lg:grid-cols-4">
-          {/* Empowered Futures logo */}
-          <div className="flex justify-center w-full">
-            <EfLogo
-              className="w-44 lg:w-52 lg:mt-10"
-              alt="Empowered Futures Logo"
-            />
-          </div>
+    <footer className="text-center bg-gray-100 ">
+       {/* This column and the social media column have been changed from grid to flex */}
+      <div className="flex flex-col pt-16 text-center lg:flex-row">
+        {/* Empowered Futures logo */}
+        <div className="flex justify-center lg:ml-16 lg:mr-24">
+          <EfLogo
+            className="mb-5 w-44 lg:w-52 lg:mb-0 lg:mt-10"
+            alt="Empowered Futures Logo"
+          />
+        </div>
+        {/* The two columns in the middle (non-social media links) have remained a grid. */}
+        <div className="grid w-full grid-cols-1 mb-5 mr-5 sm:gap-8 lg:w-2/4 ss:grid-cols-2">
           {footerLinks.map((column, i) => {
             return (
-              <div key={i}>
+              <div key={i} className="w-full mb-5">
                 {/* Map over column links to avoid repeating classes (thanks, Jason) */}
                 {column.links?.map((link, i) => {
                   return (
                     <div key={i}>
-                      {/* If link has no url, render heading (just 'Follow us on social media')*/}
-                      {!link.url && (
-                        <p className="flex justify-center mb-2 lg:justify-start lg:mb-6">
-                          {link.text}
-                        </p>
-                      )}
                       {/* If link has url, render FooterLink */}
                       {link.url && (
                         <FooterLink
@@ -101,9 +97,22 @@ const Footer = () => {
             );
           })}
         </div>
+
+          {/* Social Media column now flex */}
+        <div className="flex flex-col mb-2 lg:mb-6">
+          <div className="lg:mb-6">Follow Us on Social Media</div>
+          <div className="flex flex-row justify-center lg:flex-col">
+            {socialMediaLinks.links.map((link, i) => {
+              return (
+                <FooterLink text={link.text} url={link.url} icon={link.icon} />
+              );
+            })}
+          </div>
+        </div>
       </div>
+
       {/* Copyright */}
-      <div className="p-6 text-center text-gray-600">
+      <div className="pt-8 pb-4 text-center text-gray-600 ss:pt-0 ">
         <span>Empowered Futures Copyright 2022</span>
       </div>
     </footer>

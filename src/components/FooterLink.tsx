@@ -2,7 +2,7 @@ import { FooterLinkProps } from '../interface/footer-link-props.interface';
 
 const FooterLink = ({ url, text, icon }: FooterLinkProps) => {
   return (
-    <p className="flex justify-center mb-2 lg:mb-6 lg:justify-start hover:bg-gray-200">
+    <p className="flex justify-center pr-4 mb-2 lg:mb-6 lg:justify-start hover:bg-gray-200">
       {/* If url string includes 'http' (external link), open in new tab */}
       <a
         href={url}
