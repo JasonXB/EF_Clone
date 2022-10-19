@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/become-a-mentor.jsx", "pages/become-a-mentor.jsx", "pages/test.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/become-a-mentor.jsx", "pages/become-a-mentor.jsx", "pages/bubbleTagsTesting.jsx"],
   "exclude": ["node_modules"]
 }
