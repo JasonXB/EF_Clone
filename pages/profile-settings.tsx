@@ -6,32 +6,43 @@ const ProfileSettings: NextPage = ({}) => {
     <>
       <div className="flex">
         <div className="flex ">
-          <ul className="bg-gray-300 bg-opacity-20 border border-gray-200 w-72 text-gray-900">
-            <li className="mt-11 px-6 text-base py-3 w-10/12 bg-white rounded-2xl  ml-5 mb-5 mr-5 hover:shadow-lg">
-              Profile
+          <ul className="bg-gray-300 bg-opacity-20 border border-gray-200 w-64 text-gray-900 ">
+            <li className=" mt-11 px-6 text-base py-3 w-10/12 bg-white rounded-2xl ml-5 mb-5 mr-5 hover:shadow-lg ">
+              <div className="pl-3 hover:border-l-4 hover:border-pink-600 hover:pl-2 text-md">
+                <a href="#">Profile</a>
+              </div>
             </li>
-            <li className="px-6 px-6 py-3 w-10/12 bg-white  rounded-2xl ml-5 mb-5 text-base hover:shadow-lg">
-              Communications
+            <li className="px-6 px-6 py-3 w-10/12 bg-white rounded-2xl ml-5 mb-5 text-base hover:shadow-lg">
+            <div className="pl-3 hover:border-l-4 hover:border-pink-600 hover:pl-2 text-md">
+              <a href="#">
+                Communications
+              </a>
+              </div>
             </li>
             <li className="px-6 px-6 py-3 w-10/12 bg-white rounded-2xl ml-5 text-base hover:shadow-lg">
-              Password
+            <div className="pl-3 hover:border-l-4 hover:border-pink-600 hover:pl-2 text-md">
+              <a href="#">Password</a>
+              </div>
             </li>
           </ul>
         </div>
 
         <div className="flex flex-col justify-center ml-40 mt-10">
           <div className="flex flex-col items-center">
-            <p className="flex justify-center text-2xl font-bold mb-5" style={{color:'#006abc'}}>
+            <p
+              className="flex justify-center text-2xl font-bold mb-5"
+              style={{ color: '#006abc' }}
+            >
               Profile Settings
             </p>
 
             <p className="mb-7 font-semibold text-xs">
-              Complete your profile to achieve Protege status.
+              Complete your profile to achieve protégé status.
             </p>
 
-            <span className="inline-block h-14 w-15 overflow-hidden mb-5 rounded-lg-full bg-gray-100">
+            <span className="inline-block border-black h-14 w-15 overflow-hidden mb-5 rounded-lg-full bg-gray-100">
               <svg
-                className="h-full w-full bg-black text-gray-300 mb-5"
+                className="h-full w-full border-black text-gray-300 mb-5"
                 fill="currentColor"
                 viewBox="0 0 23 24"
               >
@@ -39,7 +50,9 @@ const ProfileSettings: NextPage = ({}) => {
               </svg>
             </span>
 
-            <p className="mb-12 font-semibold text-xs">Add a public profile picture</p>
+            <p className="mb-12 font-semibold text-xs">
+              Add a public profile picture
+            </p>
           </div>
           <h4 className="text-pink-600 text-2xl mb-4 ">General Information</h4>
           <div className="flex">
@@ -66,7 +79,6 @@ const ProfileSettings: NextPage = ({}) => {
         ease-in-out
         m-0
         
-        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
       "
                 id="exampleEmail0"
                 placeholder="John"
@@ -95,7 +107,6 @@ const ProfileSettings: NextPage = ({}) => {
         transition
         ease-in-out
         m-0
-        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
       "
                 id="exampleEmail0"
                 placeholder="Smith"
@@ -105,7 +116,7 @@ const ProfileSettings: NextPage = ({}) => {
           <div className="flex">
             <div className="mb-3 xl:w-96 mr-4">
               <label className="form-label inline-block mb-2 text-gray-700">
-              Email
+                Email
               </label>
               <input
                 type="email"
@@ -122,12 +133,9 @@ const ProfileSettings: NextPage = ({}) => {
         bg-white bg-clip-padding
         border border-solid border-gray-300
         rounded-lg
-        transition
-        ease-in-out
+        
         m-0
-        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
       "
-               
                 placeholder="johnsmith@gmail.com"
               />
             </div>
@@ -151,17 +159,15 @@ const ProfileSettings: NextPage = ({}) => {
         bg-white bg-clip-padding
         border border-solid border-gray-300
         rounded-lg
-        transition
-        ease-in-out
+       
         m-0
-        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+        
       "
-               
                 placeholder="Linedin.ca"
               />
             </div>
           </div>
-          
+
           <div className="flex">
             <div className="mb-3 xl:w-96 mr-4">
               <label className="form-label inline-block mb-2 text-gray-700">
@@ -182,13 +188,9 @@ const ProfileSettings: NextPage = ({}) => {
         bg-white bg-clip-padding
         border border-solid border-gray-300
         rounded-lg
-        transition
-        ease-in-out
         m-0
-        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
       "
-                
-                placeholder="student"
+                placeholder="Student"
               />
             </div>
             <div className="mb-3 xl:w-96 mr-4">
@@ -210,29 +212,24 @@ const ProfileSettings: NextPage = ({}) => {
         bg-white bg-clip-padding
         border border-solid border-gray-300
         rounded-lg
-        transition
-        ease-in-out
         m-0
-        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+       
       "
-                
                 placeholder="Calgary,Alberta"
               />
             </div>
           </div>
 
-          <div className="col-span-6 sm:col-span-3">
+          <div className="col-span-6 sm:col-span-3 ">
             <label
-              htmlFor="country"
+              htmlFor="language"
               className="block text-sm font-medium text-gray-700"
             >
               Primary Language
             </label>
             <select
-              id="country"
-              name="country"
-              autoComplete="country-name"
-              className="mt-1  mb-12 rounded-lg block w-full text-gray-400 rounded-lg-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm  w-80
+              name="language"
+              className="mt-1  mb-12 rounded-lg block w-full text-gray-400 rounded-lg-md border border-gray-300 bg-white py-2 px-3 shadow-sm sm:text-sm  w-80
             "
             >
               <option>English(Canada)</option>
@@ -242,7 +239,7 @@ const ProfileSettings: NextPage = ({}) => {
           </div>
 
           <div>
-            <h5 className='text-pink-600 text-2xl mb-4'>Main Goal</h5>
+            <h5 className="text-pink-600 text-2xl mb-4">Main Goal</h5>
             <br></br>
             <label
               htmlFor="about"
@@ -253,9 +250,8 @@ const ProfileSettings: NextPage = ({}) => {
             </label>
             <div className="mt-1 w-full border-gray-700">
               <textarea
-              
                 rows={6}
-                className="mt-1 ml-2 rounded-lg px-4 border-2 block w-full rounded-lg-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-md"
+                className="mt-1 ml-2 rounded-lg px-4 border-2 block w-full rounded-lg-md border-gray-300 shadow-sm focus:border-indigo-100 focus:ring-indigo-500 sm:text-md"
                 placeholder="Getting a job,career pivot, career advancement,etc"
                 defaultValue={''}
               />
