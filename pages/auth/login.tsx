@@ -73,7 +73,7 @@ const login: NextPage = ({}) => {
                     </div>
                   </div> */}
 
-                  <div className="flex text-[10px] md:text-[70%]">
+                  <div className="flex text-[12px] md:text-[70%]">
                     <Button
                       variant="tertiary"
                       icon="google"
