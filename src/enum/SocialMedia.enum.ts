@@ -3,4 +3,5 @@ export enum SocialMedia {
   linkedIn = 'LinkedIn',
   twitter = 'Twitter',
   facebook = 'Facebook',
+  instagram = 'Instagram'
 }
