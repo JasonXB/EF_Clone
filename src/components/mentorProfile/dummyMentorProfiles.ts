@@ -3,7 +3,7 @@ I pulled different ones temporarily from Bootstrap icons. However, can easily sw
 found in the component if that is what's decided. :) 
 */
 
-import hiba from '../assets/hiba.png'
+import hiba from '../../assets/hiba.png'
 import { linkedInIcon } from '../mentorProfile/ProfileIcons';
 import { twitterIcon } from '../mentorProfile/ProfileIcons';
 
