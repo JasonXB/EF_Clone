@@ -2,8 +2,7 @@ import React, { Children } from 'react';
 import Head from 'next/head';
 import Navbar from './header/Navbar';
 import LayoutStyle from '../../styles/Layout.module.css';
-// import Header from ''
-// import Footer from ''
+import Footer from './footer/Footer';
 
 type LayoutProps = {
   headTitle?: string;
@@ -24,9 +23,7 @@ const Layout = ({ ...props }: LayoutProps) => {
       <div className={LayoutStyle.content}>
         <main>{props.children}</main>
       </div>
-      {/* Add the Footer component here */}
-      {/* <Footer/> */}
-      <h1>Footer</h1>
+      <Footer/>
     </div>
   );
 };
