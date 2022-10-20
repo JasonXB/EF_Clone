@@ -1,19 +1,22 @@
 import React, { FC } from 'react';
 import Image from 'next/image';
 
+// Linkedin, FB and instagram icons changed to white svgs for footer
 import RedditImg from '../../assets/icons8-reddit-50.png';
-import LinkedInImg from '../../assets/icons8-linkedin-circled-50.png';
+import LinkedInImg from '../../assets/whiteSvgIcons/linkedin.svg'
 import TwitterImg from '../../assets/icons8-twitter-50.png';
-import FacebookImg from '../../assets/icons8-facebook-50.png';
+import FacebookImg from '../../assets/whiteSvgIcons/facebook.svg'
+import InstagramImg from '../../assets/whiteSvgIcons/instagram.svg'
 import { SocialMedia } from '../../enum/SocialMedia.enum';
 
 interface LinkTypes {
   //   domain: 'Reddit' | 'LinkedIn' | 'Twitter' | 'Facebook';
   domain: `${SocialMedia}`; // https://stackoverflow.com/questions/52393730/typescript-string-literal-union-type-from-enum/64966647#64966647
   // note for reviewer: it's arguable this is too complicated of a path. Line 12 could be used instead.
+  className: string;
 }
 
-const SocialMediaLink: FC<LinkTypes> = ({ domain }: LinkTypes) => {
+const SocialMediaLink: FC<LinkTypes> = ({ domain, className }: LinkTypes) => {
   function selectImageOfType(domain: string) {
     let type;
     switch (domain) {
@@ -26,6 +29,9 @@ const SocialMediaLink: FC<LinkTypes> = ({ domain }: LinkTypes) => {
       case SocialMedia.twitter:
         type = TwitterImg;
         break;
+      case SocialMedia.instagram:
+        type = InstagramImg;
+        break;
       case SocialMedia.facebook:
         type = FacebookImg;
         break;
@@ -36,7 +42,7 @@ const SocialMediaLink: FC<LinkTypes> = ({ domain }: LinkTypes) => {
   }
 
   return (
-    <div className="h-12 w-12 ml-2">
+    <div className={className}>
       <button>
         {/* // NOTE: the images I used are unlicensed, provided by Icons8. If they are to be in production, we must buy them */}
         <Image src={selectImageOfType(domain)} />
