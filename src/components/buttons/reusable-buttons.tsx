@@ -8,26 +8,20 @@ import googleIcon from './SVGIcons/google.svg';
 import listIcon from './SVGIcons/listIcon.svg';
 import closeIcon from './SVGIcons/closeIcon.svg';
 
-//once theme is configured for colors, delete this
-//TempColors{
-//   magenta: '#CE1982',
-//   sunset: '#ED493D',
 //   darkMagenta: '#bb0c5c',
 //   lightSunset: '#ed913d',
-//}
 
-//swap out "[#colors]" once theme configure is in place
 //change fill & outlined hover effect once we know what its supposed to be
 //add accessibly focus
 
 //buttonVariants are used for default class styling of each button type.
 export const buttonVariants = {
-  primary: `bg-gradient-to-r from-[#CE1982] to-[#ED493D]  hover:from-[#bb0c5c] hover:to-[#ed913d] text-white font-bold py-2 px-6 m-1 rounded-3xl disabled:bg-slate-400 disabled:opacity-50 disabled:cursor-not-allowed`,
-  secondary: `bg-transparent hover:bg-gradient-to-r hover:from-[#CE1982] hover:to-[#ED493D]  text-[#CE1982] font-bold hover:text-white py-2 px-6 m-1 border border-[#CE1982] hover:border-transparent rounded-3xl  disabled:text-slate-300 disabled:border-slate-300 disabled:opacity-50 disabled:cursor-not-allowed`,
+  primary: `bg-gradient-to-r from-secondary-1 to-tertiary-2  hover:from-[#bb0c5c] hover:to-[#ed913d] text-white font-bold py-2 px-6 m-1 rounded-3xl disabled:bg-slate-400 disabled:opacity-50 disabled:cursor-not-allowed`,
+  secondary: `bg-transparent hover:bg-gradient-to-r hover:from-secondary-1 hover:to-tertiary-2   text-secondary-1 font-bold hover:text-white py-2 px-6 m-1 border border-secondary-1 hover:border-transparent rounded-3xl  disabled:text-slate-300 disabled:border-slate-300 disabled:opacity-50 disabled:cursor-not-allowed`,
   tertiary:
     'flex flex-row  items-center border-[2px] rounded-full px-6 py-[10px] bg-transparent text-black  m-1  rounded-3xl  hover:underline hover:underline-offset-2 flex space-x-2',
-  primaryUnselected: `bg-slate-300 hover:bg-gradient-to-r hover:from-[#CE1982] hover:to-[#ED493D] hover:opacity-50 text-white font-bold py-2 px-6 m-1 rounded-3xl disabled:bg-slate-400 disabled:opacity-50 disabled:cursor-not-allowed`,
-  secondaryUnselected: `bg-transparent hover:bg-gradient-to-r hover:from-[#CE1982] hover:to-[#ED493D] hover:opacity-50 text-slate-300 font-bold hover:text-white py-2 px-6 m-1 border border-slate-300 hover:border-transparent rounded-3xl disabled:text-slate-300 disabled:border-slate-300 disabled:opacity-50 disabled:cursor-not-allowed`,
+  primaryUnselected: `bg-slate-300 hover:bg-gradient-to-r hover:from-secondary-1 hover:to-tertiary-2 hover:opacity-50 text-white font-bold py-2 px-6 m-1 rounded-3xl disabled:bg-slate-400 disabled:opacity-50 disabled:cursor-not-allowed`,
+  secondaryUnselected: `bg-transparent hover:bg-gradient-to-r hover:from-secondary-1 hover:to-tertiary-2 hover:opacity-50 text-slate-300 font-bold hover:text-white py-2 px-6 m-1 border border-slate-300 hover:border-transparent rounded-3xl disabled:text-slate-300 disabled:border-slate-300 disabled:opacity-50 disabled:cursor-not-allowed`,
   iconOnly: 'border border-black rounded-full p-1 leading-none m-1 ',
 };
 type customSVG = React.SVGProps<SVGSVGElement>;
