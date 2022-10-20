@@ -1,7 +1,8 @@
 import type { NextPage } from 'next';
 import HomePageBanner from '../src/components/homepage/ HomePageBanner';
 import ReusableCards from '../src/components/homepage/ReusableCards';
-
+import mentorGraphic from '../src/assets/mentorImageHomePage.png';
+import menteeGraphic from '../src/assets/menteeImageHomePage.png';
 import Layout from '../src/components/Layout';
 
 const ReusableCardData = [
@@ -12,7 +13,7 @@ const ReusableCardData = [
       'Join us: Share who you are and show mentors what you need help with.',
     buttonText: 'Learn More',
     buttonLink: '/',
-    img: '',
+    img: menteeGraphic,
     imgAlt: 'two people chatting in speech bubbles',
   },
   {
@@ -21,7 +22,7 @@ const ReusableCardData = [
       'Join us: share who you are and show young adults what you can help them with.',
     buttonText: 'Learn More',
     buttonLink: '/',
-    img: '',
+    img: mentorGraphic,
     imgAlt: 'two people connected puzzle pieces together.',
   },
 ];

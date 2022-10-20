@@ -10,7 +10,7 @@ const HomePageBanner = () => (
       <h1 className="text-3xl font-semibold leading-tight sm:text-5xl text-primary-1 lg:text-6xl">
         Maximizing Hope, <br /> Empowering Potential
       </h1>
-      <p className="ss:w-9/12 ss:py-4 md:text-xl">
+      <p className="text-lg ss:w-9/12 ss:py-4 md:text-xl">
         We help empowered young minds to look forward to their future.
         We&lsquo;re looking for mentors ready to support the next generation of
         leaders
