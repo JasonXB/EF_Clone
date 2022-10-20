@@ -20,9 +20,11 @@ const ReusableCards = ({
   imgAlt,
 }: ReusableCardsProps) => {
   return (
-    <div className="flex flex-col-reverse w-full p-4 space-y-3 border-2 rounded-lg shadow-xl min-h-[260px] ss:flex-row">
+    <div className="flex flex-col-reverse w-full max-w-[700px] p-4 space-y-3 border-2 rounded-lg shadow-xl min-h-[260px] ss:flex-row">
       <div className="w-full ss:w-1/2">
-        <h4 className="font-semibold text-quad-2">{title}</h4>
+        <h4 className="font-semibold md:text-4xl lg:text-5xl text-quad-2">
+          {title}
+        </h4>
         <p className="p-2 text-lg h-1/2">{paragraph}</p>
         <span className="block pt-4 mt-4">
           <Link href={buttonLink}>
@@ -31,7 +33,6 @@ const ReusableCards = ({
         </span>
       </div>
       <div className="mx-auto xl:ml-20 w-fit ss:w-1/2">
-        {/**place holder blue, missing graphics */}
         <Image src={img} alt={imgAlt} />
       </div>
     </div>

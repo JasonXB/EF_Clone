@@ -31,7 +31,7 @@ const Home: NextPage = ({}) => {
   return (
     <Layout>
       <HomePageBanner />
-      <div className="flex flex-col space-y-6 md:space-y-0 md:flex-row md:space-x-8">
+      <div className="flex flex-col mx-auto space-y-6 w-fit md:space-y-0 md:flex-row md:space-x-8 lg:space-x-20">
         {ReusableCardData.map((each, i) => (
           <ReusableCards
             key={i}
