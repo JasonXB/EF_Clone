@@ -4,8 +4,8 @@ found in the component if that is what's decided. :)
 */
 
 import hiba from '../../assets/cat.jpeg'
-import { linkedInIcon } from '../mentorProfile/ProfileIcons';
-import { twitterIcon } from '../mentorProfile/ProfileIcons';
+import { linkedInIcon } from '../../src/components/mentorProfile/ProfileIcons';
+import { twitterIcon } from '../../src/components/mentorProfile/ProfileIcons';
 
 export const dummyMentors = [
     {
