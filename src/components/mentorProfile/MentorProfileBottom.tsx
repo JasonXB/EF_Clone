@@ -1,6 +1,6 @@
 import BubbleTags from '../BubbleTags';
 import { BUBBLE_TAG_TYPE_CLASSES } from '../BubbleTag';
-import { MentorProfileBottomProps } from '../../interface/mentor-profile-bottom-props.interface';
+import { MentorProfileBottomProps } from './mentor-profile-bottom-props.interface';
 
 const MentorProfileBottom = ({
   name,

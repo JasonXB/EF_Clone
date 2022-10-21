@@ -5,7 +5,7 @@ import PercentageBar from '../percentBar/percent-bar';
 interface PercentBarsProps {
   percentBarSkills: Array<{
   name: string;
-  percentage: number
+  percentage: number,
 }> }
 
 const MentorProfilePercentBars = ({

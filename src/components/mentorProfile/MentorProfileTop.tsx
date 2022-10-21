@@ -1,5 +1,5 @@
 import Avatar from '../avatar/avatar';
-import { MentorProfileTopProps } from '../../interface/mentor-profile-top-props.interface';
+import { MentorProfileTopProps } from './mentor-profile-top-props.interface';
 import Button from '../buttons/reusable-buttons';
 import { locationIcon } from './ProfileIcons';
 import { clockIcon } from './ProfileIcons';

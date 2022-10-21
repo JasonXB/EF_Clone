@@ -2,7 +2,7 @@ import MentorProfileTop from './MentorProfileTop';
 import MentorProfileBottom from './MentorProfileBottom';
 import Line from './Line';
 import MentorProfilePercentBars from './MentorProfilePercentBars';
-
+import SimilarMentors from './SimilarMentors';
 import { dummyMentorProfiles } from './dummyMentorProfiles';
 
 // Temporarily displaying dummyMentor data
@@ -57,9 +57,9 @@ const MentorProfileMain = ({}) => {
 
       {/* Similar Mentors Component */}
       <div>
-        <h1 className="flex items-center mt-10 text-4xl">
-          Similar Mentors component goes here
-        </h1>
+        {/* <div className="flex items-center mt-10 text-4xl"> */}
+          <SimilarMentors/>
+        {/* </div> */}
       </div>
     </>
   );
