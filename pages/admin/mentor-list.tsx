@@ -2,14 +2,14 @@ import { useState } from 'react';
 
 type MentorInfo = {
   name: string;
-  email: string;
+  email: string | null;
   status: boolean;
   index: number;
 };
 
 const MentorList = ({ name, email, status, index }: MentorInfo) => {
   // manage email changing with useState
-  const [isEmail, setIsEmail] = useState<string>(email);
+  const [isEmail, setIsEmail] = useState<string | null>(email);
   const [editorIsOn, setEditorIsOn] = useState<boolean>(false);
 
   const updateAnEmail = (e: any) => {
@@ -27,7 +27,11 @@ const MentorList = ({ name, email, status, index }: MentorInfo) => {
           {editorIsOn ? (
             <>
               {/* changing initial state when you input new email address */}
-              <input type="text" placeholder={isEmail} onChange={updateAnEmail}/>
+              <input
+                type="text"
+                placeholder={isEmail !== null ? isEmail : ''}
+                onChange={updateAnEmail}
+              />
               {/* close editor */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"

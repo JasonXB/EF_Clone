@@ -32,9 +32,9 @@ export const dummyMentors = [
       status: true,
     },
     {
-      name: 'Hiba Badran',
+      name: 'Jane Doe',
       title: 'Founder of Empowered Futures',
-      email: 'test1@mail.com',
+      email: 'test2@mail.com',
       avatar: hiba,
       socialMediaIcons: [
         {svg: linkedInIcon, url: 'http://linkedin.com' },
@@ -55,9 +55,9 @@ export const dummyMentors = [
       status: true,
     },
     {
-      name: 'Hiba Badran',
+      name: 'John Doe',
       title: 'Founder of Empowered Futures',
-      email: '',
+      email: 'test3@mail.com',
       avatar: hiba,
       socialMediaIcons: [
         {svg: linkedInIcon, url: 'http://linkedin.com' },
