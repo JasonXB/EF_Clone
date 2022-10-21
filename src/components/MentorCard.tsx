@@ -6,24 +6,23 @@ import PercentageBar from './percentBar/percent-bar';
 import Button from './buttons/reusable-buttons';
 import Link from 'next/link';
 
-// interface MentorsInfoProps {
-//   id: number;
-//   firstName: string;
-//   fullName: string;
-//   location: string;
-//   job: string;
-//   aboutMentor: string;
-//   tags: string[]; 
-//   skills: [string, number][];
-// }
+export interface MentorsInfoProps {
+  mentorsInfo: {
+  id: number;
+  firstName: string;
+  fullName: string;
+  location: string;
+  job: string;
+  aboutMentor: string;
+  tags: string[]; 
+  skills: [string, number][];
+  }
+}
 
-// type DataType = {
-//   mentorsInfo: MentorsInfoProps
-// }
 
-const MentorCard = (mentorsInfo: any) => {
+const MentorCard = ({mentorsInfo}: MentorsInfoProps) => {
   const { id, firstName, fullName, location, job, tags, skills, aboutMentor } =
-    mentorsInfo.mentorsInfo;
+    mentorsInfo;
 
   return (
     <div className="mb-2 w-[550px] md:w-[850px] md:h-[264px] lg:w-[1011px] p-[28px] bg-white shadow-md rounded-[20px] flex">
