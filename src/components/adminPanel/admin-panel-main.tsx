@@ -20,7 +20,7 @@ interface MentorType {
   status: boolean;
 }
 
-const AdminMentorSort = () => {
+const AdminPanelMain = () => {
   const [sortBy, setSortBy] = useState<string>('all');
 
   const [searchedBy, setSearchedBy] = useState<string>('');
@@ -45,7 +45,7 @@ const AdminMentorSort = () => {
   }, [onlineMentors, offlineMentors]); //adjust when connected mongoDB
 
   // const updateStatusList = () => {
-    //create function for sort automatically when you update mentor status
+  //create function for sort automatically when you update mentor status
   // }
 
   return (
@@ -137,4 +137,4 @@ const AdminMentorSort = () => {
   );
 };
 
-export default AdminMentorSort;
+export default AdminPanelMain;
