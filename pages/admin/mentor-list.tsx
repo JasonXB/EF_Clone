@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 type MentorInfo = {
   name: string;
@@ -12,9 +12,20 @@ const MentorList = ({ name, email, status, index }: MentorInfo) => {
   const [isEmail, setIsEmail] = useState<string | null>(email);
   const [editorIsOn, setEditorIsOn] = useState<boolean>(false);
 
-  const updateAnEmail = (e: any) => {
+  const UpdateAnEmail = (e: any) => {
     setIsEmail(e.target.value);
   };
+
+  //toggle verified status
+  const [isVerified, setIsVerified] = useState<boolean>(status);
+  const VerifiedToggleButton = () => {
+    setIsVerified((prev) => !prev);
+  };
+
+  // useEffect(() => {
+    //create function for sort automatically when you update mentor status
+    //admin-mentor-sort.tsx line 47-49
+  // },[status])
 
   return (
     <ul
@@ -30,7 +41,7 @@ const MentorList = ({ name, email, status, index }: MentorInfo) => {
               <input
                 type="text"
                 placeholder={isEmail !== null ? isEmail : ''}
-                onChange={updateAnEmail}
+                onChange={UpdateAnEmail}
               />
               {/* close editor */}
               <svg
@@ -70,8 +81,11 @@ const MentorList = ({ name, email, status, index }: MentorInfo) => {
         </div>
       </li>
       <li className="col-span-1">
-        {status ? (
-          <div className="flex items-center gap-1">
+        {isVerified ? (
+          <button
+            className="flex items-center gap-1 w-28 px-2 rounded-lg ease-in duration-100 transition-all hover:shadow-md hover:bg-smoke-5"
+            onClick={VerifiedToggleButton}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -82,10 +96,13 @@ const MentorList = ({ name, email, status, index }: MentorInfo) => {
             >
               <circle cx="8" cy="8" r="8" />
             </svg>
-            <p>on</p>
-          </div>
+            <p>verified</p>
+          </button>
         ) : (
-          <div className="flex items-center gap-1">
+          <button
+            className="flex items-center gap-1 w-28 px-2 rounded-lg ease-in duration-100 transition-all hover:shadow-md hover:bg-smoke-5"
+            onClick={VerifiedToggleButton}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -96,8 +113,8 @@ const MentorList = ({ name, email, status, index }: MentorInfo) => {
             >
               <circle cx="8" cy="8" r="8" />
             </svg>
-            <p>off</p>
-          </div>
+            <p>unverified</p>
+          </button>
         )}
       </li>
     </ul>

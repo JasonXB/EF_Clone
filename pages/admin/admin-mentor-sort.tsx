@@ -2,6 +2,24 @@ import React, { useEffect, useState } from 'react';
 import { dummyMentors } from './dummyMentor';
 import MentorList from './mentor-list';
 
+interface MentorType {
+  name: string;
+  title: string;
+  email: string;
+  avatar: any;
+  socialMediaIcons: {
+    svg: JSX.Element;
+    url: string;
+  }[];
+  location: string;
+  responseTime: string;
+  skills: string[];
+  percentBarSkills: {}[];
+  about: string;
+  availability: string;
+  status: boolean;
+}
+
 const AdminMentorSort = () => {
   const [sortBy, setSortBy] = useState<string>('all');
 
@@ -14,14 +32,21 @@ const AdminMentorSort = () => {
   };
 
   // should set useEffect to fetch data(mentor information) from mongoDB when rendered page
-  // useEffect(() => {
-
-  // },[])
-
-  const onlineMentors = dummyMentors.filter((mentor) => mentor.status === true);
-  const offlineMentors = dummyMentors.filter(
-    (mentor) => mentor.status === false
+  const [onlineMentors, setOnlineMentors] = useState<MentorType[]>(
+    [] as MentorType[]
   );
+  const [offlineMentors, setOfflineMentors] = useState<MentorType[]>(
+    [] as MentorType[]
+  );
+
+  useEffect(() => {
+    setOnlineMentors(dummyMentors.filter((mentor) => mentor.status === true));
+    setOfflineMentors(dummyMentors.filter((mentor) => mentor.status === false));
+  }, [onlineMentors, offlineMentors]); //adjust when connected mongoDB
+
+  // const updateStatusList = () => {
+    //create function for sort automatically when you update mentor status
+  // }
 
   return (
     <div className="relative w-full h-screen flex items-center justify-center">
@@ -31,7 +56,7 @@ const AdminMentorSort = () => {
         <div className="flex gap-4 mt-2">
           {/* all mentors */}
           <div
-            className="bg-gradient-to-r from-cyan-500 to-blue-500 w-60 h-20 rounded-sm flex items-center justify-center cursor-pointer drop-shadow ease-out duration-300 active:opacity-50 active:drop-shadow-none"
+            className="bg-gradient-to-r from-cyan-500 to-blue-500 w-60 h-20 rounded-sm flex items-center justify-center cursor-pointer drop-shadow ease-out duration-300 transition-all active:opacity-50 active:drop-shadow-none"
             onClick={() => setSortBy('all')}
           >
             <h2 className="text-xl text-light">
@@ -40,20 +65,20 @@ const AdminMentorSort = () => {
           </div>
           {/* filter for online mentors */}
           <div
-            className="bg-gradient-to-r from-teal-400 to-green-500 w-60 h-20 rounded-sm flex items-center justify-center cursor-pointer drop-shadow ease-out duration-300 active:opacity-50 active:drop-shadow-none"
+            className="bg-gradient-to-r from-teal-400 to-green-500 w-60 h-20 rounded-sm flex items-center justify-center cursor-pointer drop-shadow ease-out duration-300 transition-all active:opacity-50 active:drop-shadow-none"
             onClick={() => setSortBy('on')}
           >
             <h2 className="text-xl text-light">
-              {onlineMentors.length} Online
+              {onlineMentors.length} Verified
             </h2>
           </div>
           {/* filter for offline mentors */}
           <div
-            className="bg-gradient-to-r from-gray-400 to-gray-500 w-60 h-20 rounded-sm flex items-center justify-center cursor-pointer drop-shadow ease-out duration-300 active:opacity-50 active:drop-shadow-none"
+            className="bg-gradient-to-r from-gray-400 to-gray-500 w-60 h-20 rounded-sm flex items-center justify-center cursor-pointer drop-shadow ease-out duration-300 transition-all active:opacity-50 active:drop-shadow-none"
             onClick={() => setSortBy('off')}
           >
             <h2 className="text-xl text-light">
-              {offlineMentors.length} Offline
+              {offlineMentors.length} Unverified
             </h2>
           </div>
         </div>
