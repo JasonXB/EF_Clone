@@ -16,52 +16,49 @@ const adminPanel: NextPage = ({}) => {
         <div className="bg-light w-2/3 h-5/6 m-auto z-50 rounded-md p-4 drop-shadow-lg">
           <h1 className="text-3xl font-semibold">Dashboard</h1>
           <div className="flex gap-4 mt-2">
-            <div className="bg-gradient-to-r from-cyan-500 to-blue-500 w-60 h-20 rounded-sm flex items-center justify-center cursor-pointer">
+            {/* all mentors */}
+            <div className="bg-gradient-to-r from-cyan-500 to-blue-500 w-60 h-20 rounded-sm flex items-center justify-center cursor-pointer drop-shadow">
               <h2 className="text-xl text-light">10 Mentors</h2>
             </div>
-            <div className="bg-gradient-to-r from-teal-400 to-green-500 w-60 h-20 rounded-sm flex items-center justify-center cursor-pointer">
+            {/* filter for online mentors */}
+            <div className="bg-gradient-to-r from-teal-400 to-green-500 w-60 h-20 rounded-sm flex items-center justify-center cursor-pointer drop-shadow">
               <h2 className="text-xl text-light">6 Online</h2>
             </div>
-            <div className="bg-gradient-to-r from-amber-400 to-orange-500 w-60 h-20 rounded-sm flex items-center justify-center cursor-pointer">
+            {/* filter for offline mentors */}
+            <div className="bg-gradient-to-r from-zinc-300 to-gray-500 w-60 h-20 rounded-sm flex items-center justify-center cursor-pointer drop-shadow">
               <h2 className="text-xl text-light">4 Offline</h2>
             </div>
           </div>
-          <div>
-            <div>
-              <div className="flex justify-between bg-smoke-4 p-4">
-                <h4 className="text-xl">Mentor Details</h4>
-                <div className="flex">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    className="bi bi-search bg-white h-full p-2 w-8"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                  </svg>
-                  <input
-                    type="text"
-                    placeholder="Search mentor"
-                    className="outline-none"
-                  />
-                </div>
-              </div>
-              <ul className="grid grid-cols-6 border-b-slate-700 border-b p-2 font-semibold">
-                <li className="col-span-2">Name</li>
-                <li className="col-span-3">Email</li>
-                <li className="col-span-1">Status</li>
-              </ul>
-
-              {dummyMentors.map((mentor, index) => (
-                <MentorList
-                  name={mentor.name}
-                  key={mentor.name}
-                  index={index}
+          <div className="bg-light">
+            <div className="flex justify-between bg-smoke-4 p-4">
+              <h4 className="text-xl">Mentor Details</h4>
+              <div className="flex">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  className="bi bi-search bg-white h-full p-2 w-8 text-gray-400"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                </svg>
+                <input
+                  type="text"
+                  placeholder="Search mentor"
+                  className="outline-none"
                 />
-              ))}
+              </div>
             </div>
+            <ul className="grid grid-cols-6 border-b-slate-700 border-b p-2 font-semibold">
+              <li className="col-span-2">Name</li>
+              <li className="col-span-3">Email</li>
+              <li className="col-span-1">Status</li>
+            </ul>
+            {/* need to replace real mentors data */}
+            {dummyMentors.map((mentor, index) => (
+              <MentorList name={mentor.name} email={mentor.email} status={mentor.status} key={mentor.name} index={index} />
+            ))}
           </div>
         </div>
       </div>

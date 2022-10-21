@@ -11,6 +11,7 @@ export const dummyMentors = [
     {
       name: 'Hiba Badran',
       title: 'Founder of Empowered Futures',
+      email: 'test1@mail.com',
       avatar: hiba,
       socialMediaIcons: [
         {svg: linkedInIcon, url: 'http://linkedin.com' },
@@ -28,10 +29,12 @@ export const dummyMentors = [
       ],
       about: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam aut voluptatibus, corrupti in placeat libero necessitatibus numquam architecto corporis? Quo nulla nisi aperiam maiores explicabo inventore ex quaerat voluptates dolor?',
       availability: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam aut voluptatibus, corrupti in placeat libero necessitatibus numquam architecto corporis? Quo nulla nisi aperiam maiores explicabo inventore ex quaerat voluptates dolor?',
+      status: true,
     },
     {
       name: 'Hiba Badran',
       title: 'Founder of Empowered Futures',
+      email: 'test1@mail.com',
       avatar: hiba,
       socialMediaIcons: [
         {svg: linkedInIcon, url: 'http://linkedin.com' },
@@ -49,10 +52,12 @@ export const dummyMentors = [
       ],
       about: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam aut voluptatibus, corrupti in placeat libero necessitatibus numquam architecto corporis? Quo nulla nisi aperiam maiores explicabo inventore ex quaerat voluptates dolor?',
       availability: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam aut voluptatibus, corrupti in placeat libero necessitatibus numquam architecto corporis? Quo nulla nisi aperiam maiores explicabo inventore ex quaerat voluptates dolor?',
+      status: true,
     },
     {
       name: 'Hiba Badran',
       title: 'Founder of Empowered Futures',
+      email: '',
       avatar: hiba,
       socialMediaIcons: [
         {svg: linkedInIcon, url: 'http://linkedin.com' },
@@ -70,5 +75,6 @@ export const dummyMentors = [
       ],
       about: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam aut voluptatibus, corrupti in placeat libero necessitatibus numquam architecto corporis? Quo nulla nisi aperiam maiores explicabo inventore ex quaerat voluptates dolor?',
       availability: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam aut voluptatibus, corrupti in placeat libero necessitatibus numquam architecto corporis? Quo nulla nisi aperiam maiores explicabo inventore ex quaerat voluptates dolor?',
+      status: false,
     }
   ]
