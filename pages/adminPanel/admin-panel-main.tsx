@@ -51,41 +51,41 @@ const AdminPanelMain = () => {
   return (
     <div className="relative w-full h-screen flex items-center justify-center">
       <div className="bg-smoke-4 w-full h-60 absolute top-0 left-0 z-0"></div>
-      <div className="bg-light w-2/3 h-5/6 m-auto z-50 rounded-md p-4 drop-shadow-lg">
+      <div className="bg-light w-5/6 md:w-2/3 h-5/6 m-auto z-50 rounded-md p-4 drop-shadow-lg">
         <h1 className="text-3xl font-semibold">Dashboard</h1>
         <div className="flex gap-4 mt-2">
           {/* all mentors */}
           <div
-            className="bg-gradient-to-r from-cyan-500 to-blue-500 w-60 h-20 rounded-sm flex items-center justify-center cursor-pointer drop-shadow ease-out duration-300 transition-all active:opacity-50 active:drop-shadow-none"
+            className="bg-gradient-to-r from-cyan-500 to-blue-500 w-52 h-16 md:w-60 md:h-20 rounded-sm flex items-center justify-center cursor-pointer drop-shadow ease-out duration-300 transition-all active:opacity-50 active:drop-shadow-none"
             onClick={() => setSortBy('all')}
           >
-            <h2 className="text-xl text-light">
+            <h2 className="text-lg md:text-xl text-light">
               {dummyMentors.length} Mentors
             </h2>
           </div>
           {/* filter for online mentors */}
           <div
-            className="bg-gradient-to-r from-teal-400 to-green-500 w-60 h-20 rounded-sm flex items-center justify-center cursor-pointer drop-shadow ease-out duration-300 transition-all active:opacity-50 active:drop-shadow-none"
+            className="bg-gradient-to-r from-teal-400 to-green-500 w-52 h-16 md:w-60 md:h-20 rounded-sm flex items-center justify-center cursor-pointer drop-shadow ease-out duration-300 transition-all active:opacity-50 active:drop-shadow-none"
             onClick={() => setSortBy('on')}
           >
-            <h2 className="text-xl text-light">
+            <h2 className="text-lg lg:text-xl text-light">
               {onlineMentors.length} Verified
             </h2>
           </div>
           {/* filter for offline mentors */}
           <div
-            className="bg-gradient-to-r from-gray-400 to-gray-500 w-60 h-20 rounded-sm flex items-center justify-center cursor-pointer drop-shadow ease-out duration-300 transition-all active:opacity-50 active:drop-shadow-none"
+            className="bg-gradient-to-r from-gray-400 to-gray-500 w-52 h-16 md:w-60 md:h-20 rounded-sm flex items-center justify-center cursor-pointer drop-shadow ease-out duration-300 transition-all active:opacity-50 active:drop-shadow-none"
             onClick={() => setSortBy('off')}
           >
-            <h2 className="text-xl text-light">
+            <h2 className="text-lg md:text-xl text-light">
               {offlineMentors.length} Unverified
             </h2>
           </div>
         </div>
         <div className="bg-light">
-          <div className="flex justify-between bg-smoke-4 p-4">
-            <h4 className="text-xl">Mentor Details</h4>
-            <div className="flex">
+          <div className="flex justify-between items-center bg-smoke-4 p-4">
+            <h4 className="text-lg md:text-xl">Mentor Details</h4>
+            <div className="flex h-8 overflow-hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -110,7 +110,7 @@ const AdminPanelMain = () => {
             <li className="col-span-3">Email</li>
             <li className="col-span-1">Status</li>
           </ul>
-          <div className="w-full h-96 overflow-y-scroll">
+          <div className="w-full h-80 xl:h-96 overflow-y-scroll">
             {/* supposed to be datas from mongoDB. Need to be replace */}
             {(sortBy === 'all'
               ? dummyMentors
