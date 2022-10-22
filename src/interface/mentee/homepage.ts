@@ -10,8 +10,10 @@ export interface ApplicationData {
   status: 'viewed' | 'sent' | 'approved';
 }
 
-export interface StatusProp {
+export interface GradientBarProp {
   status: 'viewed' | 'sent' | 'approved';
+  pixelHeight: number;
+  progressPercentage: number;
 }
 
 export interface MockData {
