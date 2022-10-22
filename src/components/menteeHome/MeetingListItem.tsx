@@ -8,7 +8,7 @@ export default function MeetingListItem(props: MeetingData) {
       {/* The following layout only applies after the ss breakpoint */}
       <li className="hidden ss:grid grid-cols-[43%,_37%,_20%] divide-x items-center mb-4 w-full shadowVariant1 rounded-2xl px-[26px] py-[16px] h-[5.875rem]">
         <div className="flex flex-row pr-4 divide-x-0">
-          <div className="relative rounded-[5px] overflow-hidden w-[47px] h-[47px] pr-4 my-auto">
+          <div className="relative rounded-[5px] overflow-hidden w-[47px] h-[47px] pr-4 my-auto shrink-0">
             <Image
               src="/temp-assets/elon-profile.jpg"
               alt="elon musk pfp"

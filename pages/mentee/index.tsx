@@ -7,9 +7,6 @@ import { MockData } from '../../src/interface/mentee/homepage';
 
 export default function index() {
   //! The number of applications must range from 0 to 3max
-  //! Responsive until viewport width of 650px
-  //! Need UI team mobile layout before continuing (or else many assumptions will be required)
-  //! Images are grainy and differ in size
   // Mock data all grouped in the following objects
   const mock: MockData = {
     username: 'Chris Hill',
