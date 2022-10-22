@@ -1,5 +1,5 @@
 import React from 'react';
-import SocialMediaButtons from '../src/components/SocialMediaButtons';
+import SocialMediaButtons from '../../src/components/SocialMediaButtons';
 
 export default function signin() {
   return (
