@@ -24,7 +24,7 @@ export default function ApplicationListItem(props: ApplicationData) {
           </div>
         </div>
         <div className="flex flex-col w-full h-full justify-center pl-4 m-auto">
-          <p className="mb-2 text-lg">
+          <p className="mb-2 text-xl">
             <span>Status:</span> {props.status}
           </p>
           <GradientBar status={props.status} />
