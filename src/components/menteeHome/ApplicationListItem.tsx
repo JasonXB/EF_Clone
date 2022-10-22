@@ -11,7 +11,7 @@ export default function ApplicationListItem(props: ApplicationData) {
         <div className="flex flex-col pr-4">
           <div className="relative rounded-[5px] overflow-hidden w-[40px] h-[40px] flex flex-col mx-auto">
             <Image
-              src="/temp-assets/elon-profile.jpg"
+              src="/temp-assets/Emilio-lg.jpg"
               alt="picture not found"
               layout="fill"
               objectFit="cover"

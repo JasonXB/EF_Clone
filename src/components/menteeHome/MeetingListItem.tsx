@@ -10,7 +10,7 @@ export default function MeetingListItem(props: MeetingData) {
         <div className="flex flex-row pr-4 divide-x-0">
           <div className="relative rounded-[5px] overflow-hidden w-[47px] h-[47px] pr-4 my-auto shrink-0">
             <Image
-              src="/temp-assets/elon-profile.jpg"
+              src="/temp-assets/Emilio-lg.jpg"
               alt="elon musk pfp"
               layout="fill"
               objectFit="cover"
