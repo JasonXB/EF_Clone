@@ -24,17 +24,21 @@ const MeetingDetail = ({
     }
   }
   return (
-    <div className="flex items-center mr-6">
+    <div className="w-full flex items-center mr-6">
       <Image
         src={imgLocation}
         alt="calendar icon"
         height={'30px'}
         width={'30px'}
       />{' '}
-      <p className="ml-3 text-2xl">
-        <span className="text-primary-3">{getTextForType(type)}</span>{' '}
-        <span>{detailInfo}</span>
-      </p>
+      <div className="ml-2 flex flex-col lg:flex-row">
+        <div className="mr-2">
+          <p className="text-2xl text-primary-3">{getTextForType(type)}</p>{' '}
+        </div>
+        <div>
+          <p className="text-2xl">{detailInfo}</p>
+        </div>
+      </div>
     </div>
   );
 };
