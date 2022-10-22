@@ -1,10 +1,10 @@
 import type { NextPage } from 'next';
 import Link from 'next/link';
 import Router from 'next/router';
-import Layout from '../src/components/Layout';
+import Layout from '../../src/components/Layout';
 import Image from 'next/image';
-import fireworks from '../src/components/assets/fireworks.png';
-import Button from '../src/components/buttons/reusable-buttons';
+import fireworks from '../../src/components/assets/fireworks.png';
+import Button from '../../src/components/buttons/reusable-buttons';
 import { ReactEventHandler } from 'react';
 
 const congratulationsMentee: NextPage = ({}) => {
@@ -14,9 +14,7 @@ const congratulationsMentee: NextPage = ({}) => {
   return (
     <Layout>
       <div className="flex flex-col md:flex-row justify-center items-center md:items-start">
-        <div
-          className="object-contain max-w-[600px] flex justify-center items-center md:py-18"
-        >
+        <div className="object-contain max-w-[600px] flex justify-center items-center md:py-18">
           <Image alt="illustration of fireworks" src={fireworks} />
         </div>
         <div className=" font-mainFont flex flex-col justify-center items-center text-center w-ss px-3 md:py-20">
