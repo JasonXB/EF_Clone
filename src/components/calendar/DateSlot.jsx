@@ -4,7 +4,6 @@ import {
   getDay,
   isEqual,
   isSameDay,
-  isSameMonth,
   isToday,
   parseISO,
 } from 'date-fns';
@@ -14,57 +13,52 @@ import { CalendarContext } from '../../../state-management/ReactContext/Calendar
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
+//grid styling used to align the date with the days
 let colStartClasses = [
   '',
+  'col-start-1',
   'col-start-2',
   'col-start-3',
   'col-start-4',
   'col-start-5',
   'col-start-6',
-  'col-start-7',
 ];
 
-const DateSlot = ({ day, dayIndex, meetings }) => {
-  const { selectedDay, setSelectedDay, firstDayCurrentMonth } =
-    useContext(CalendarContext);
+const DateSlot = ({ day, dayIndex, availabilities }) => {
+  const { selectedDay, setSelectedDay } = useContext(CalendarContext);
+
+  //check if there is availability in a date by referring to the availabilities prop
+  let isAvailable = availabilities.some((availability) =>
+    isSameDay(parseISO(availability.startDatetime), day)
+  );
 
   return (
     <div
       key={day.toString()}
-      className={classNames(
-        dayIndex === 0 && colStartClasses[getDay(day)],
-        'py-1.5'
-      )}
+      className={classNames(dayIndex === 0 && colStartClasses[getDay(day)])}
     >
       <button
         type="button"
         onClick={() => setSelectedDay(day)}
         className={classNames(
-          isEqual(day, selectedDay) && 'text-white',
-          !isEqual(day, selectedDay) && isToday(day) && 'text-red-500',
-          !isEqual(day, selectedDay) &&
-            !isToday(day) &&
-            isSameMonth(day, firstDayCurrentMonth) &&
-            'text-gray-900',
-          !isEqual(day, selectedDay) &&
-            !isToday(day) &&
-            !isSameMonth(day, firstDayCurrentMonth) &&
-            'text-gray-400',
-          isEqual(day, selectedDay) && isToday(day) && 'bg-red-500',
-          isEqual(day, selectedDay) && !isToday(day) && 'bg-gray-900',
+          // ----- BACKGROUND CONDITIONS -----
+          //selected day is today
+          isEqual(day, selectedDay) && 'bg-primary-5 border-4 border-primary-1',
+          //not the selected day
           !isEqual(day, selectedDay) && 'hover:bg-gray-200',
-          (isEqual(day, selectedDay) || isToday(day)) && 'font-semibold',
-          'mx-auto flex h-8 w-8 items-center justify-center rounded-full'
+          // ----- TEXT CONDITIONS -----------
+          //today
+          isToday(day) && 'font-semibold',
+          //has availability
+          isAvailable && 'text-black',
+          //has no availability
+          !isAvailable && 'text-smoke-1 line-through',
+          // ----- DEFAULT CLASS -------------
+          'mx-auto flex h-8 w-8 items-center justify-center rounded py-9 px-9'
         )}
       >
         <time dateTime={format(day, 'yyyy-MM-dd')}>{format(day, 'd')}</time>
       </button>
-
-      <div className="w-1 h-1 mx-auto mt-1">
-        {meetings.some((meeting) =>
-          isSameDay(parseISO(meeting.startDatetime), day)
-        ) && <div className="w-1 h-1 rounded-full bg-sky-500"></div>}
-      </div>
     </div>
   );
 };

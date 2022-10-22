@@ -1,13 +1,10 @@
 import { createContext, useState } from 'react';
 
 import {
-  add,
   eachDayOfInterval,
   endOfMonth,
   format,
-  isSameDay,
   parse,
-  parseISO,
   startOfToday,
 } from 'date-fns';
 

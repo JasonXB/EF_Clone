@@ -18,6 +18,9 @@ The files that this branch is working on:
 - Calendar Page
 - Book Meeting Context
 - Calendar Context
+- TimeZones Dropdown Component
+- Timezone Component
+- Timezone Context
 
 Once the testing is all good you may delete the following before merging:
 - uninstall unsplash JS dependency in the package.json
@@ -41,7 +44,6 @@ export async function getStaticProps(context) {
 }
 
 const calendarPage = (props) => {
-  console.log(props.mentors);
   return (
     <>
       <div>This is the calendar page tester</div>
