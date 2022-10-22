@@ -100,12 +100,13 @@ export default function index() {
           )}
         </div>
       </section>
-      <section className="bg-[#F2F2F2] mt-10">
+      <section className="bg-[#F2F2F2] mt-16">
         <h4 className="text-center">
-          We think these mentors are a good match for you
+          We think these mentors are a good match for you.
         </h4>
         <h6 className="text-center">
-          Waiting for reusable carousel component from Mentor Dashboard ticket
+          Will add a carousel after this gets merged into development
+          <br /> Would rather not set up Splide when someone else already has
         </h6>
       </section>
     </Layout>
