@@ -96,15 +96,21 @@ Component names should be PascalCase.
 
 Props should be explictly named in all cases:
 
-```
+```jsx
 // bad
 const Component = (props) => {
-  return (<div>{props.foo}</div>);
+  return <div>{props.foo}</div>;
 };
 
 // good
-const Component = ({foo}) => {
-  return (<div>{foo}</div>);
+const Component = ({ foo }) => {
+  return <div>{foo}</div>;
+};
+
+//good
+const Component = (props) => {
+  const { foo } = props;
+  return <div>{foo}</div>;
 };
 ```
 
@@ -134,6 +140,7 @@ If an interface defines the props for a component, the interface's name should:
 - End in "Props"
 - Live in the same file as the component
 
+If the interface is only used for this component and wont be shared with others it can remain in its components folder.
 If the interface isn't defining props, it should go in the `/src/interface` folder.
 
 ### Components And Their Children
@@ -163,6 +170,8 @@ import Cat from "../assets/cat.jpeg";
 
 ## Accessibility
 
+-For more detailed look on accessibility, great resource are https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML and https://www.w3.org/WAI/standards-guidelines/wcag/glance/
+
 - Always include an `alt` prop on `<img>` tags.
 
 - Do not use words like "image", "photo", or "picture" in `<img>` `alt` props.
@@ -175,6 +184,13 @@ import Cat from "../assets/cat.jpeg";
 
 // good
 <img src="hello.jpg" alt="Me waving hello" />
+```
+
+-if the image is just decorative leaving an empty alt tag will help screen reader, recognize the img however not go into mass file name or details. Another option would be to add an aria-role with role='presentation'
+
+```jsx
+// good
+<img src="decorativeImage.jpg" alt="" />
 ```
 
 - Use only valid, non-abstract [ARIA roles](https://www.w3.org/TR/wai-aria/#usage_intro). eslint: [`jsx-a11y/aria-role`](https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/aria-role.md)
@@ -201,6 +217,18 @@ import Cat from "../assets/cat.jpeg";
 // good
 <div />
 ```
+
+-Good semantics are important, using proper html tags
+
+```jsx
+// bad
+<div className='title'>My heading</div>
+
+// good
+<h1 className='title'>My heading</h1>
+```
+
+-being descriptive about where the link will be taking them.
 
 ## Misc
 
