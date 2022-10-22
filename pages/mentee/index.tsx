@@ -6,7 +6,6 @@ import OutlinedButton from '../../src/components/menteeHome/OutlinedButton';
 import { MockData } from '../../src/interface/mentee/homepage';
 
 export default function index() {
-  //! The number of applications must range from 0 to 3max
   // Mock data all grouped in the following objects
   const mock: MockData = {
     username: 'Chris Hill',
