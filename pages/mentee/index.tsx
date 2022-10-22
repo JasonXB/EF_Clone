@@ -36,10 +36,10 @@ export default function index() {
       },
     ],
     applications: [
-      { mentorName: 'Darra Wittney', status: 'approved' },
-      { mentorName: 'Elon Musk', status: 'viewed' },
-      { mentorName: 'Jack Atlas', status: 'sent' },
-      { mentorName: 'Ebrahim Merchant', status: 'sent' },
+      { mentorName: 'Darra Wittney', status: 'Approved' },
+      { mentorName: 'Elon Musk', status: 'Viewed' },
+      { mentorName: 'Jack Atlas', status: 'Sent' },
+      { mentorName: 'Ebrahim Merchant', status: 'Sent' },
     ],
   };
 

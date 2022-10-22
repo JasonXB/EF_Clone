@@ -7,13 +7,14 @@ import { ApplicationData } from '../../interface/mentee/homepage';
 export default function ApplicationListItem(props: ApplicationData) {
   // The percentage sent to the Gradient Bar is determined by the status
   const statusPercentage =
-    props.status === 'sent' // sent applications have 0% progress
+    props.status === 'Sent' // sent applications have 0% progress
       ? 0
-      : props.status === 'viewed' // viewed applications have 50% progress
+      : props.status === 'Viewed' // viewed applications have 50% progress
       ? 50
-      : props.status === 'approved' // approved applications have 100% progress
+      : props.status === 'Approved' // approved applications have 100% progress
       ? 100
       : 0; // this default value should never get used but is needed to complete the triple-ternary operator
+
   return (
     <li className="grid ss:grid-cols-[7fr,_auto] ss:h-[5.875rem] ss:gap-6 ss:mb-4 gap-4 mb-8">
       <div className="grid grid-cols-[3fr,_7fr] divide-x items-center w-full shadowVariant1 rounded-2xl px-[13px] py-[8px] xs:px-[26px] xs:py-[16px] h-[5.875rem]">
@@ -36,16 +37,13 @@ export default function ApplicationListItem(props: ApplicationData) {
           <p className="mb-2 text-xl">
             <span>Status:</span> {props.status}
           </p>
-          <GradientBar
-            status={props.status}
-            progressPercentage={statusPercentage}
-          />
+          <GradientBar status={props.status} />
         </div>
       </div>
       <div className="flex flex-col justify-center items-center">
         <Button
           clickHandler={() => {}}
-          disabled={props.status === 'approved' ? false : true} // disable button when applications are not approved
+          disabled={props.status === 'Approved' ? false : true} // disable button when applications are not approved
           className={'max-w-[14rem] noMargins'}
         >
           Book Meeting

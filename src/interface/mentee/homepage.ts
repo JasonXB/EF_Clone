@@ -7,12 +7,11 @@ export interface MeetingData {
 
 export interface ApplicationData {
   mentorName: string;
-  status: 'viewed' | 'sent' | 'approved'; // status options which determine the color of the progress bar
+  status: 'Viewed' | 'Sent' | 'Approved'; // status options which determine the color of the progress bar
 }
 
 export interface GradientBarProp {
-  status: 'viewed' | 'sent' | 'approved'; // status options which determine the color of the progress bar
-  progressPercentage: number; // how far along the progress part of the progress bar extends
+  status: 'Viewed' | 'Sent' | 'Approved'; // status options which determine the color of the progress bar
 }
 
 export interface MockData {
@@ -25,6 +24,6 @@ export interface MockData {
   }[];
   applications: {
     mentorName: string;
-    status: 'viewed' | 'sent' | 'approved';
+    status: 'Viewed' | 'Sent' | 'Approved';
   }[];
 }
