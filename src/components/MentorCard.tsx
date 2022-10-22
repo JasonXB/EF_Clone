@@ -8,19 +8,18 @@ import Link from 'next/link';
 
 export interface MentorsInfoProps {
   mentorsInfo: {
-  id: number;
-  firstName: string;
-  fullName: string;
-  location: string;
-  job: string;
-  aboutMentor: string;
-  tags: string[]; 
-  skills: [string, number][];
-  }
+    id: number;
+    firstName: string;
+    fullName: string;
+    location: string;
+    job: string;
+    aboutMentor: string;
+    tags: string[];
+    skills: [string, number][];
+  };
 }
 
-
-const MentorCard = ({mentorsInfo}: MentorsInfoProps) => {
+const MentorCard = ({ mentorsInfo }: MentorsInfoProps) => {
   const { id, firstName, fullName, location, job, tags, skills, aboutMentor } =
     mentorsInfo;
 
@@ -36,19 +35,16 @@ const MentorCard = ({mentorsInfo}: MentorsInfoProps) => {
         </div>
 
         {/* Put in link to mentor page when available */}
-
-        <Link href="">
-          <Button className="mt-[25px] md:m-1  text-[14px]" variant="secondary">
-            View Profile
-          </Button>
-        </Link>
+        <Button className="mt-[25px] md:m-1  text-[14px]" variant="secondary">
+          View Profile
+        </Button>
       </div>
 
       <div className="md:h-[180px] w-full font-mainFont pl-3">
         <h2 className="font-bold leading-[25px] text-[25px] mb-[2px] ">
           {fullName}
         </h2>
-        <div className=" h-full flex flex-col md:flex-row w-full items-start justify-start">
+        <div className="flex flex-col items-start justify-start w-full h-full md:flex-row">
           <div>
             <h4 className="font-bold text-[17px] leading-[25px]">{location}</h4>
             <h4 className="font-bold text-[17px] leading-[25px] pb-3">{job}</h4>
@@ -64,7 +60,7 @@ const MentorCard = ({mentorsInfo}: MentorsInfoProps) => {
             </div>
           </div>
 
-          <div className="h-full w-full flex flex-col justify-end items-left pb-4 md:pb-0 md:items-center gap-5">
+          <div className="flex flex-col justify-end w-full h-full gap-5 pb-4 items-left md:pb-0 md:items-center">
             {skills.slice(0, 2).map((skill: [string, number], i: number) => (
               <div key={i}>
                 <div className="text-xl leading-6 mb-[18px]">{skill[0]}</div>
