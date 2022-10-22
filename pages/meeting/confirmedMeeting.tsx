@@ -81,7 +81,7 @@ const ConfirmedMeeting = ({
 
   return (
     <Layout isConfirmedMeetingPg={true}>
-      <div className="h-full w-full absolute bg-gears bg-cover opacity-20 bg-150"></div>
+      <div className="h-full w-full absolute bg-gears bg-cover opacity-20 bg-150 z-10 border border-red-700 border-4"></div>
       <div className="flex justify-center relative">
         <div className="mt-40 w-4/5 flex flex-col justify-center ">
           <div>
@@ -107,7 +107,7 @@ const ConfirmedMeeting = ({
               </p>
             </div>
           </div>
-          <div className="mt-14 flex justify-between mt-4">
+          <div className="mt-14 flex justify-between">
             <MeetingDetail
               type="date"
               detailInfo={date}
@@ -121,7 +121,7 @@ const ConfirmedMeeting = ({
             />
           </div>
           <div>
-            <div className="h-12 w-full mt-14 flex justify-center">
+            <div className="h-12 w-full mt-14 mb-20 flex justify-center">
               <Button variant={'secondary'}>Back To My Account</Button>
             </div>
           </div>

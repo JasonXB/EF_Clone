@@ -1,4 +1,4 @@
-import placeholderImg from '../assets/cat.jpeg';
+import placeholderImg from '../../assets/cat.jpeg';
 import Avatar from '../avatar/avatar';
 import Button from '../buttons/reusable-buttons';
 import { UpcomingMeetingCardProps } from './mentor-interface';

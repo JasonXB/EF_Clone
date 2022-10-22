@@ -1,5 +1,5 @@
 import NavbarLink from './NavbarLink';
-import EfLogo from './EfLogo';
+import EfLogo from '../EfLogo';
 import { buttonVariants } from '../buttons/reusable-buttons';
 import { Disclosure } from '@headlessui/react';
 
@@ -24,12 +24,12 @@ const Navbar = () => {
   return (
     <Disclosure
       as="nav"
-      className="pt-5 bg-white border-b shadow-md border-slate-200"
+      className="pt-5 bg-white border-b shadow-md border-slate-200  min-w-[400px] z-20 relative"
     >
       {/*handles open close boolean */}
       {({ open }) => (
         <>
-          <div className="px-2 mx-auto max-w-7xl sm:px-6 md:px-8">
+          <div className="px-2 mx-auto sm:px-6 md:px-8">
             <div className="relative flex items-center h-20 ">
               <div className="absolute inset-y-0 left-0 flex items-center md:hidden">
                 {/* Mobile menu button*/}
@@ -68,8 +68,8 @@ const Navbar = () => {
 
               <div className="flex items-center justify-center flex-1 md:justify-start">
                 {/* Empowered Futures Logo / Link to the Homepage */}
-                {/* Logo is currently a screenshot (need original image) */}
-                <div className="flex items-center flex-shrink-0">
+
+                <div className="flex items-center max-w-[180px] mr-[10%] ss:mr-0 ml-0 sm:ml-[20%] md:ml-0 sm:max-w-[250px] ">
                   <EfLogo alt={'Empowered Futures Logo'} />
                 </div>
 

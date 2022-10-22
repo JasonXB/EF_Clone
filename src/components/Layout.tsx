@@ -2,8 +2,7 @@ import React, { Children } from 'react';
 import Head from 'next/head';
 import Navbar from './header/Navbar';
 import LayoutStyle from '../../styles/Layout.module.css';
-// import Header from ''
-// import Footer from ''
+import Footer from './footer/Footer';
 
 type LayoutProps = {
   headTitle?: string;
@@ -15,7 +14,7 @@ const Layout = ({ ...props }: LayoutProps) => {
     ? `${props.headTitle} | Empowered Futures`
     : 'Empowered Futures';
   return (
-    <div className={`${LayoutStyle.container} font-[mainFont] `}>
+    <div className={`${LayoutStyle.container} font-[mainFont]`}>
       <Head>
         <title>{title}</title>
         <meta name="description" content="text" />
@@ -27,9 +26,7 @@ const Layout = ({ ...props }: LayoutProps) => {
       >
         <main>{props.children}</main>
       </div>
-      {/* Add the Footer component here */}
-      {/* <Footer/> */}
-      <h1>Footer</h1>
+      <Footer />
     </div>
   );
 };
