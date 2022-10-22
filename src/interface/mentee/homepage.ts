@@ -7,13 +7,13 @@ export interface MeetingData {
 
 export interface ApplicationData {
   mentorName: string;
-  status: 'viewed' | 'sent' | 'approved';
+  status: 'viewed' | 'sent' | 'approved'; // status options which determine the color of the progress bar
 }
 
 export interface GradientBarProp {
-  status: 'viewed' | 'sent' | 'approved';
-  pixelHeight: number;
-  progressPercentage: number;
+  status: 'viewed' | 'sent' | 'approved'; // status options which determine the color of the progress bar
+  pixelHeight: number; // height of the progress bar
+  progressPercentage: number; // how far along the progress part of the progress bar extends
 }
 
 export interface MockData {
