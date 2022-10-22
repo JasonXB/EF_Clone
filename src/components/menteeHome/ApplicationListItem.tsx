@@ -6,7 +6,7 @@ import { ApplicationData } from '../../interface/mentee/homepage';
 
 export default function ApplicationListItem(props: ApplicationData) {
   return (
-    <li className="hidden ss:grid ss:grid-cols-[7fr,_auto] ss:h-[5.875rem] ss:gap-6 ss:mb-4 gap-4 mb-8">
+    <li className="grid ss:grid-cols-[7fr,_auto] ss:h-[5.875rem] ss:gap-6 ss:mb-4 gap-4 mb-8">
       <div className="grid grid-cols-[3fr,_7fr] divide-x items-center w-full shadowVariant1 rounded-2xl px-[13px] py-[8px] xs:px-[26px] xs:py-[16px] h-[5.875rem]">
         <div className="flex flex-col pr-4">
           <div className="relative rounded-[5px] overflow-hidden w-[40px] h-[40px] flex flex-col mx-auto">

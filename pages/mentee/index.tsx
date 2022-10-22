@@ -50,7 +50,7 @@ export default function index() {
         Welcome back
         <br className="sm:hidden" /> {mock.username}
       </h3>
-      <section className="grid grid-cols-1 lg:grid-cols-2 lg:divide-x">
+      <section className="grid grid-cols-1 lg:grid-cols-2 sm:max-w-[80%] sm:mx-auto lg:max-w-full lg:divide-x">
         <div className="lg:pr-5 mt-10">
           <h4 className="text-center mb-6 text-primary-1 font-bold">
             My Applications
