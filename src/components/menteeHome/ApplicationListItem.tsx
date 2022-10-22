@@ -38,7 +38,6 @@ export default function ApplicationListItem(props: ApplicationData) {
           </p>
           <GradientBar
             status={props.status}
-            pixelHeight={20}
             progressPercentage={statusPercentage}
           />
         </div>

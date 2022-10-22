@@ -12,7 +12,6 @@ export interface ApplicationData {
 
 export interface GradientBarProp {
   status: 'viewed' | 'sent' | 'approved'; // status options which determine the color of the progress bar
-  pixelHeight: number; // height of the progress bar
   progressPercentage: number; // how far along the progress part of the progress bar extends
 }
 

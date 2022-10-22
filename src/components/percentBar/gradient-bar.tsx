@@ -3,7 +3,7 @@ import { GradientBarProp } from '../../interface/mentee/homepage';
 
 export default function GradientBar(props: GradientBarProp) {
   // Use props to set progess width at X % and height at Y pixels
-  const containerStyle = `w-full h-[${props.pixelHeight}px] rounded-full`;
+  const containerStyle = `w-full h-[20px] rounded-full`;
   if (props.status === 'viewed') {
     return (
       <div className={`${containerStyle} bg-[#DAECFA]`}>
