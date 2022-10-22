@@ -29,11 +29,18 @@ export default function index() {
         date: 'May 1st 2022',
         time: '10:00am to 11:00am EST',
       },
+      {
+        mentorName: 'Kane Hill',
+        mentorPosition: 'IT services at UOIT',
+        date: 'Feb 29th 2022',
+        time: '10:00am to 11:00am EST',
+      },
     ],
     applications: [
       { mentorName: 'Darra Wittney', status: 'approved' },
       { mentorName: 'Elon Musk', status: 'viewed' },
       { mentorName: 'Jack Atlas', status: 'sent' },
+      { mentorName: 'Ebrahim Merchant', status: 'sent' },
     ],
   };
 
@@ -50,6 +57,7 @@ export default function index() {
           </h4>
           {mock.applications.length > 0 ? (
             mock.applications.map((el, i: number) => {
+              if (i > 2) return; // render a max of 3
               return (
                 <ApplicationListItem
                   key={i}
@@ -61,7 +69,9 @@ export default function index() {
           ) : (
             <h6 className="text-center mt-10">No applications!</h6>
           )}
-          <OutlinedButton text="See all applications" onClick={() => {}} />
+          {mock.applications.length > 3 && (
+            <OutlinedButton text="See all applications" onClick={() => {}} />
+          )}
         </div>
         <div className="lg:pl-5 mt-10">
           <h4 className="text-center mb-6 text-primary-1 font-bold">
@@ -70,6 +80,7 @@ export default function index() {
           <ul>
             {mock.meetings.length > 0 ? (
               mock.meetings.map((el, i: number) => {
+                if (i > 2) return; // render a max of 3
                 return (
                   <MeetingListItem
                     key={i}
@@ -84,7 +95,9 @@ export default function index() {
               <h6 className="text-center mt-10">No meetings planned!</h6>
             )}
           </ul>
-          <OutlinedButton text="See all meetings" onClick={() => {}} />
+          {mock.meetings.length > 3 && (
+            <OutlinedButton text="See all meetings" onClick={() => {}} />
+          )}
         </div>
       </section>
       <section className="bg-[#F2F2F2] mt-10">
