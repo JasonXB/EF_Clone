@@ -12,6 +12,7 @@ import Clock from '../../src/assets/icons8-clock-48.png';
 import Monitor from '../../src/assets/icons8-pro-display-xdr-80.png';
 import MeetingDetail from './meetingDetail';
 import { useEffect, useState } from 'react';
+import { MeetingDetailType } from '../../src/enum/meetingDetailType.enum';
 
 export const getStaticProps: GetStaticProps = async () => {
   const dateAndTime = new Date().toString();
@@ -91,7 +92,7 @@ const ConfirmedMeeting = ({
                 displaySize={'egg'}
                 personsName={name}
               />
-              <p className="mt-6">{name}</p>
+              <p className="mt-6 text-xl font-medium">{name}</p>
             </div>
           </div>
           <div>
@@ -109,13 +110,17 @@ const ConfirmedMeeting = ({
           </div>
           <div className="mt-14 flex justify-between">
             <MeetingDetail
-              type="date"
+              type={MeetingDetailType.date}
               detailInfo={date}
               imgLocation={Calendar}
             />
-            <MeetingDetail type="time" detailInfo={time} imgLocation={Clock} />
             <MeetingDetail
-              type="place"
+              type={MeetingDetailType.time}
+              detailInfo={time}
+              imgLocation={Clock}
+            />
+            <MeetingDetail
+              type={MeetingDetailType.place}
               detailInfo={place}
               imgLocation={Monitor}
             />

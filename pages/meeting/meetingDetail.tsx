@@ -23,11 +23,24 @@ const MeetingDetail = ({
       throw new Error('Invalid type passed');
     }
   }
+
+  function altTagPicker(type: string): string {
+    if (type === MeetingDetailType.date) {
+      return 'Calendar';
+    } else if (type === MeetingDetailType.time) {
+      return 'Clock';
+    } else if (type === MeetingDetailType.place) {
+      return 'Computer monitor';
+    } else {
+      throw new Error('Invalid type passed');
+    }
+  }
+
   return (
     <div className="w-full flex items-center mr-6">
       <Image
         src={imgLocation}
-        alt="calendar icon"
+        alt={altTagPicker(type)}
         height={'30px'}
         width={'30px'}
       />{' '}
