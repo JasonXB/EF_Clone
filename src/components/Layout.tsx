@@ -23,7 +23,7 @@ const Layout = ({ ...props }: LayoutProps) => {
       <div className={LayoutStyle.content}>
         <main>{props.children}</main>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };
