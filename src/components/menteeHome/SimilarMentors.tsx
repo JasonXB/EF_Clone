@@ -27,8 +27,13 @@ export default function SimilarMentors() {
   const comp = (
     <SplideSlide className="slide">
       <div className="grid grid-cols-[35%_65%] h-[14.6875rem] p-6 bg-emerald-200">
-        <Image src={Hiba} width="100%" height="100%" alt="" />
-        <span>ddd</span>
+        <Image
+          src={Hiba}
+          width="100%"
+          height="100%"
+          alt=""
+          className="bRadius"
+        />
       </div>
     </SplideSlide>
   );

@@ -125,3 +125,7 @@ Add "trailingDots" class to child element which should be text based
   margin: auto 5%;
   width: 91%;
 }
+
+.bRadius {
+  border-radius: 20px;
+}
