@@ -1,14 +1,10 @@
-import { useContext } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-import { isSameDay, parseISO } from 'date-fns';
+
 import mentorsData from '../../src/util/mentors.json';
 import Calendar from '../../src/components/calendar/Calendar';
-import TimeSlot from '../../src/components/TimeSlot';
+import TimeSlots from '../../src/components/timeSlots/TimeSlots';
 import TimeZonesDropdown from '../../src/components/timezonesDropdown/TimeZonesDropdown';
-import { v4 as uuidv4 } from 'uuid';
-
-import { CalendarContext } from '../../state-management/ReactContext/CalendarContext';
 
 //find the json data of the mentor selected and store it in the props
 export async function getStaticProps(staticProps) {
@@ -46,14 +42,6 @@ const bookMeeting = (props) => {
   const { name, position, company, imgUrl, meeting_availability } =
     props.mentor;
 
-  const { selectedDay } = useContext(CalendarContext);
-
-  //find if the mentor has availabilities on the selected date by comparing the date selected and the date in the json data
-  const selectedDayAvailability = (availabilities) =>
-    availabilities.filter((availability) =>
-      isSameDay(parseISO(availability.startDatetime), selectedDay)
-    );
-
   return (
     <>
       {/* left side with basic info */}
@@ -90,46 +78,37 @@ const bookMeeting = (props) => {
           </div>
 
           {/* available time slots block */}
-          <div className="mt-12 md:mt-0 md:pl-14 pt-1">
+          <div className="mt-12 md:mt-0 md:pl-14 pt-1 place-items-center">
             {/* -- AVAILABILITY HEADER -- */}
-            <div className="py-10 border-t border-primary-1">
-              {/* -- clock icon -- */}
-              <div className="text-primary-1">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="2"
-                  stroke="currentColor"
-                  className="w-6 h-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
+            <div className="py-10 border-t border-primary-1 items-center justify-center">
+              <div className="flex">
+                {/* -- clock icon -- */}
+                <div className="text-primary-1 px-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="2"
+                    stroke="currentColor"
+                    className="w-6 h-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </div>
+                {/* -- */}
+                <p className="font-bold">Available Time Slot</p>
               </div>
-              {/* -- */}
-              <p className="font-bold">Available Time Slot</p>
               {/* dropdown for timezone */}
               <TimeZonesDropdown />
               {/* -- */}
             </div>
             {/* -- */}
             {/* -- DISPLAY AVAILABILTIES -- */}
-            <ol className="mt-4 space-y-1 text-sm leading-6 text-gray-500">
-              {selectedDayAvailability(meeting_availability.specific).length >
-              0 ? (
-                selectedDayAvailability(meeting_availability.specific).map(
-                  (availability) => (
-                    <TimeSlot key={uuidv4()} meeting={availability} />
-                  )
-                )
-              ) : (
-                <p>No time slot available</p>
-              )}
-            </ol>
+            <TimeSlots meeting_availability={meeting_availability} />
             {/* -- */}
           </div>
         </div>

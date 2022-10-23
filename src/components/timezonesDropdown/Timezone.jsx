@@ -11,7 +11,7 @@ const Timezone = ({ zone, setDropdownToggle }) => {
   };
 
   return (
-    <div className=" border-b border-gray hover:bg-gray-200">
+    <div className="border-b border-gray hover:bg-gray-200">
       <button className="text-left font-medium" onClick={selectTimezone}>
         <p>{zone}</p>
       </button>

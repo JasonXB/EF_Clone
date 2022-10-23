@@ -14,6 +14,7 @@ To test this branch, please refer to:
 The files that this branch is working on: 
 - Calendar Component
 - DateSlot Component
+- TimeSlots Component
 - TimeSlot Component
 - Calendar Page
 - Book Meeting Context
