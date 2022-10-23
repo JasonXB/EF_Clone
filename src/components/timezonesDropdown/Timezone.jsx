@@ -1,9 +1,18 @@
-import React from 'react';
+import { useContext } from 'react';
 
-const Timezone = ({ zone }) => {
+import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
+
+const Timezone = ({ zone, setDropdownToggle }) => {
+  const { setSelectedTimezone } = useContext(TimezoneContext);
+
+  const selectTimezone = () => {
+    setSelectedTimezone(zone);
+    setDropdownToggle(false);
+  };
+
   return (
-    <div>
-      <button className="font-sm border border-black">
+    <div className=" border-b border-gray hover:bg-gray-200">
+      <button className="text-left font-medium" onClick={selectTimezone}>
         <p>{zone}</p>
       </button>
     </div>

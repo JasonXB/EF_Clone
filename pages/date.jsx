@@ -1,11 +1,11 @@
 const test = () => {
   const local = new Intl.Locale('en-US');
 
-  const options = { timeZoneName: 'short' }; // or long
+  const options = { timeZoneName: 'long' }; // or long
 
-  const dateTest = new Intl.DateTimeFormat('default', options).formatToParts(
-    new Date()
-  );
+  const dateTest = new Intl.DateTimeFormat('default', {
+    timeZoneName: 'long',
+  }).formatToParts(new Date());
 
   /*
   {type: 'month', value: '10'}
@@ -17,12 +17,14 @@ const test = () => {
   {type: 'timeZoneName', value: 'PDT'} 
 */
 
-  console.log(dateTest);
+  const timezonePart = dateTest.find(
+    (datePart) => datePart.type === 'timeZoneName'
+  );
 
   const region1 = new Intl.DateTimeFormat('zh-CN', { timeZone: 'UTC' });
   const options1 = region1.resolvedOptions();
 
-  console.log(options1);
+  console.log(timezonePart.value);
 
   //-----
 

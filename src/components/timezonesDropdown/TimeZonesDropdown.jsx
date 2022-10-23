@@ -1,22 +1,26 @@
 //this component provides a dropdown for the timezones and uses a TimeZone context
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import Timezone from './Timezone';
 import { v4 as uuidv4 } from 'uuid';
 
 import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
 
 const TimeZonesDropdown = () => {
-  const { timezones } = useContext(TimezoneContext);
+  const { timezones, selectedTimezone } = useContext(TimezoneContext);
+  const [dropdownToggle, setDropdownToggle] = useState(false);
 
-  console.log(timezones);
-
-  //how to support all IANA
+  const toggle = () => {
+    setDropdownToggle(!dropdownToggle);
+  };
 
   return (
-    <div className="relative group w-50">
+    <div className="dropdown relative group w-50">
       {/* default dropdown */}
-      <div className="flex items-center cursor-pointer group-hover:border-grey-light rounded-t-lg py-1 px-2">
-        <p className="font-medium">Eastern Time</p>
+      <button
+        className="flex items-center cursor-pointer group-hover:border-grey-light rounded-t-lg py-1 px-2"
+        onClick={toggle}
+      >
+        <p className="font-medium">{selectedTimezone}</p>
         {/* dropdown icon */}
         <div className="text-primary-1 pl-2">
           <svg
@@ -28,16 +32,24 @@ const TimeZonesDropdown = () => {
           </svg>
         </div>
         {/* -- */}
-      </div>
+      </button>
       {/* -- */}
       {/* dropdown options */}
-      <div
-        className={`items-center absolute max-h-96 border rounded-lg p-1 p-2 invisible group-hover:visible w-full bg-white overflow-y-scroll`}
-      >
-        {timezones.map((zone) => {
-          return <Timezone key={uuidv4()} zone={zone} />;
-        })}
-      </div>
+      {dropdownToggle && (
+        <div
+          className={`absolute max-h-96 border rounded-lg p-1 p-2 w-full bg-white overflow-y-scroll`}
+        >
+          {timezones.map((zone) => {
+            return (
+              <Timezone
+                key={uuidv4()}
+                zone={zone}
+                setDropdownToggle={setDropdownToggle}
+              />
+            );
+          })}
+        </div>
+      )}
       {/* -- */}
     </div>
   );
