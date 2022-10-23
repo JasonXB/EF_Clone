@@ -5,9 +5,13 @@ interface NotificationCardProps {
 }
 
 function NotificationCard({ notification }: NotificationCardProps) {
-  const date = notification.date;
-  const hours = notification.date.getHours().toString().padStart(2, '0');
-  const minutes = notification.date.getMinutes().toString().padStart(2, '0');
+  const { date } = notification;
+  let hours = date.getHours();
+  if (hours > 12) {
+    hours -= 12;
+  }
+  const HH = hours.toString().padStart(2, '0');
+  const MM = date.getMinutes().toString().padStart(2, '0');
   const timeNotation = date.toLocaleTimeString().slice(-2).toLocaleLowerCase();
 
   return (
@@ -29,7 +33,7 @@ function NotificationCard({ notification }: NotificationCardProps) {
           <div className="text-sm">
             {notification.date.toLocaleDateString()}
           </div>
-          <div className="text-sm">{`${hours}:${minutes}${timeNotation}`}</div>
+          <div className="text-sm">{`${HH}:${MM}${timeNotation}`}</div>
           <div className="font-bold">{notification.name}</div>
           <div className="font-bold text-sm">{notification.country}</div>
           <div className="font-bold text-sm">{notification.position}</div>
