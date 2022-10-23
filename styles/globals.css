@@ -9,7 +9,7 @@ Each element I set defaults for has an Adobe link at the bottom where I got the 
 */
 @layer base {
   /* prettier-ignore */
-  h1, h2, h3, h4, h5, h6, p, caption, li {
+  * {
     font-family: 'Montserrat', sans-serif; 
   }
   h1 {
@@ -97,8 +97,32 @@ ul {
   box-shadow: var(--blackBoxShadow);
 }
 
+.shadowVariant1 {
+  box-shadow: 0px 3px 6px #00000029;
+}
+.noMargins {
+  margin: 0;
+}
+
+.trailingDots {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+/* trailingDots usage guide
+Add "truncate" class to parent element. 
+Add "trailingDots" class to child element which should be text based
+
+              <div className="truncate">
+                <p className="trailingDots">
+                  A very long string of text that would otherwise wrap around and make your element taller
+                </p>
+              </div>
+*/
+
 /* carousel component, couldnt figure out how to override it any other way */
 #mentorRequestSplideComponent .splide__track {
   margin: auto 5%;
   width: 91%;
 }
+
