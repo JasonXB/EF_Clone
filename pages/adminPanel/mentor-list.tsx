@@ -1,13 +1,21 @@
 import { useEffect, useState } from 'react';
+import StatusOptionButton from './status-option-button';
 
 type MentorInfo = {
   name: string;
   email: string | null;
-  status: boolean;
+  status: string;
   index: number;
+  UpdateStatusList: () => void;
 };
 
-const MentorList = ({ name, email, status, index }: MentorInfo) => {
+const MentorList = ({
+  name,
+  email,
+  status,
+  index,
+  UpdateStatusList,
+}: MentorInfo) => {
   // manage email changing with useState
   const [isEmail, setIsEmail] = useState<string | null>(email);
   const [editorIsOn, setEditorIsOn] = useState<boolean>(false);
@@ -16,20 +24,17 @@ const MentorList = ({ name, email, status, index }: MentorInfo) => {
     setIsEmail(e.target.value);
   };
 
-  //toggle verified status
-  const [isVerified, setIsVerified] = useState<boolean>(status);
-  const VerifiedToggleButton = () => {
-    setIsVerified((prev) => !prev);
-  };
+  const [statusOptionIsOn, setStatusOptionIsOn] = useState<boolean>(false);
 
-  // useEffect(() => {
-    //create function for sort automatically when you update mentor status
-    //admin-mentor-sort.tsx line 47-49
-  // },[status])
+  //toggle verified status
+  const [mentorStatus, setMentorStatus] = useState<string>(status);
+
+  //mentor status options
+  const statusOptions: string[] = ['verified', 'pending', 'declined'];
 
   return (
     <ul
-      className="grid grid-cols-6 border-b-slate-700 border-b p-2 hover:bg-smoke-4"
+      className="w-screen sm:w-full grid grid-cols-6 border-b-slate-700 border-b p-2 hover:bg-smoke-4"
       key={index}
     >
       <li className="col-span-2">{name}</li>
@@ -80,41 +85,46 @@ const MentorList = ({ name, email, status, index }: MentorInfo) => {
           )}
         </div>
       </li>
-      <li className="col-span-1">
-        {isVerified ? (
-          <button
-            className="flex items-center gap-1 w-28 px-2 rounded-lg ease-in duration-100 transition-all hover:shadow-md hover:bg-smoke-5"
-            onClick={VerifiedToggleButton}
+      <li
+        className="relative col-span-1"
+        onMouseEnter={() => setStatusOptionIsOn(true)}
+        onMouseLeave={() => setStatusOptionIsOn(false)}
+      >
+        <button className="flex items-center gap-1 w-28 px-2 rounded-lg ease-in duration-100 transition-all hover:shadow-md hover:bg-smoke-5">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            className={`bi bi-circle-fill w-2 ${
+              mentorStatus === 'verified'
+                ? 'text-green-400'
+                : mentorStatus === 'pending'
+                ? 'text-pink-600'
+                : 'text-gray-400'
+            }`}
+            viewBox="0 0 16 16"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              className="bi bi-circle-fill w-2 text-green-400"
-              viewBox="0 0 16 16"
-            >
-              <circle cx="8" cy="8" r="8" />
-            </svg>
-            <p>verified</p>
-          </button>
-        ) : (
-          <button
-            className="flex items-center gap-1 w-28 px-2 rounded-lg ease-in duration-100 transition-all hover:shadow-md hover:bg-smoke-5"
-            onClick={VerifiedToggleButton}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              className="bi bi-circle-fill w-2 text-gray-400"
-              viewBox="0 0 16 16"
-            >
-              <circle cx="8" cy="8" r="8" />
-            </svg>
-            <p>unverified</p>
-          </button>
+            <circle cx="8" cy="8" r="8" />
+          </svg>
+          <p>{mentorStatus}</p>
+        </button>
+        {/* toggle list */}
+        {statusOptionIsOn && (
+          <div className="absolute top-0 left-0 w-full bg-smoke-4/90 z-50">
+            <ul className="flex flex-col items-start p-2 gap-1">
+              {statusOptions.map((option: string, index: number) => (
+                <StatusOptionButton
+                  option={option}
+                  index={index}
+                  mentorStatus={mentorStatus}
+                  setMentorStatus={setMentorStatus}
+                  UpdateStatusList={UpdateStatusList}
+                  key={option}
+                />
+              ))}
+            </ul>
+          </div>
         )}
       </li>
     </ul>

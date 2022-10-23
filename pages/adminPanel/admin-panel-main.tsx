@@ -17,7 +17,7 @@ interface MentorType {
   percentBarSkills: {}[];
   about: string;
   availability: string;
-  status: boolean;
+  status: string;
 }
 
 const AdminPanelMain = () => {
@@ -32,56 +32,78 @@ const AdminPanelMain = () => {
   };
 
   // should set useEffect to fetch data(mentor information) from mongoDB when rendered page
-  const [onlineMentors, setOnlineMentors] = useState<MentorType[]>(
+  const [verifiedMentors, setVerifiedMentors] = useState<MentorType[]>(
     [] as MentorType[]
   );
-  const [offlineMentors, setOfflineMentors] = useState<MentorType[]>(
+  const [pendingMentors, setPendingMentors] = useState<MentorType[]>(
+    [] as MentorType[]
+  );
+  const [declinedMentors, setDeclinedMentors] = useState<MentorType[]>(
     [] as MentorType[]
   );
 
   useEffect(() => {
-    setOnlineMentors(dummyMentors.filter((mentor) => mentor.status === true));
-    setOfflineMentors(dummyMentors.filter((mentor) => mentor.status === false));
-  }, [onlineMentors, offlineMentors]); //adjust when connected mongoDB
+    UpdateStatusList();
+  }, []);
 
-  // const updateStatusList = () => {
-  //create function for sort automatically when you update mentor status
-  // }
+  const UpdateStatusList = () => {
+    setVerifiedMentors(
+      dummyMentors.filter((mentor) => mentor.status === 'verified')
+    );
+    setPendingMentors(
+      dummyMentors.filter((mentor) => mentor.status === 'pending')
+    );
+    setDeclinedMentors(
+      dummyMentors.filter((mentor) => mentor.status === 'declined')
+    );
+  };
 
   return (
     <div className="relative w-full h-screen flex items-center justify-center">
       <div className="bg-smoke-4 w-full h-60 absolute top-0 left-0 z-0"></div>
-      <div className="bg-light w-5/6 md:w-2/3 h-5/6 m-auto z-50 rounded-md p-4 drop-shadow-lg">
+      <div className="relative bg-light w-5/6 md:w-2/3 h-5/6 m-auto z-50 p-4 rounded-md drop-shadow-lg">
         <h1 className="text-3xl font-semibold">Dashboard</h1>
-        <div className="flex gap-4 mt-2">
-          {/* all mentors */}
-          <div
-            className="bg-gradient-to-r from-cyan-500 to-blue-500 w-52 h-16 md:w-60 md:h-20 rounded-sm flex items-center justify-center cursor-pointer drop-shadow ease-out duration-300 transition-all active:opacity-50 active:drop-shadow-none"
-            onClick={() => setSortBy('all')}
-          >
-            <h2 className="text-lg md:text-xl text-light">
-              {dummyMentors.length} Mentors
-            </h2>
-          </div>
-          {/* filter for online mentors */}
-          <div
-            className="bg-gradient-to-r from-teal-400 to-green-500 w-52 h-16 md:w-60 md:h-20 rounded-sm flex items-center justify-center cursor-pointer drop-shadow ease-out duration-300 transition-all active:opacity-50 active:drop-shadow-none"
-            onClick={() => setSortBy('on')}
-          >
-            <h2 className="text-lg lg:text-xl text-light">
-              {onlineMentors.length} Verified
-            </h2>
-          </div>
-          {/* filter for offline mentors */}
-          <div
-            className="bg-gradient-to-r from-gray-400 to-gray-500 w-52 h-16 md:w-60 md:h-20 rounded-sm flex items-center justify-center cursor-pointer drop-shadow ease-out duration-300 transition-all active:opacity-50 active:drop-shadow-none"
-            onClick={() => setSortBy('off')}
-          >
-            <h2 className="text-lg md:text-xl text-light">
-              {offlineMentors.length} Unverified
-            </h2>
+        <div className="w-full overflow-scroll">
+          <div className="flex gap-1 w-max md:gap-4 mt-2">
+            {/* all mentors */}
+            <div
+              className="bg-gradient-to-r from-cyan-500 to-blue-500 w-28 h-16 md:w-44 md:h-20 rounded-sm flex items-center justify-center cursor-pointer drop-shadow ease-out duration-300 transition-all active:opacity-50 active:drop-shadow-none"
+              onClick={() => setSortBy('all')}
+            >
+              <h2 className="text-lg md:text-xl text-light">
+                {dummyMentors.length} Mentors
+              </h2>
+            </div>
+            {/* filter for verified mentors */}
+            <div
+              className="bg-gradient-to-r from-teal-400 to-green-500 w-28 h-16 md:w-44 md:h-20 rounded-sm flex items-center justify-center cursor-pointer drop-shadow ease-out duration-300 transition-all active:opacity-50 active:drop-shadow-none"
+              onClick={() => setSortBy('ok')}
+            >
+              <h2 className="text-lg lg:text-xl text-light">
+                {verifiedMentors.length} Verified
+              </h2>
+            </div>
+            {/* filter for pending mentors */}
+            <div
+              className="bg-gradient-to-r from-fuchsia-400 to-pink-600 w-28 h-16 md:w-44 md:h-20 rounded-sm flex items-center justify-center cursor-pointer drop-shadow ease-out duration-300 transition-all active:opacity-50 active:drop-shadow-none"
+              onClick={() => setSortBy('pending')}
+            >
+              <h2 className="text-lg md:text-xl text-light">
+                {declinedMentors.length} Pending
+              </h2>
+            </div>
+            {/* filter for declined mentors */}
+            <div
+              className="bg-gradient-to-r from-gray-400 to-gray-500 w-28 h-16 md:w-44 md:h-20 rounded-sm flex items-center justify-center cursor-pointer drop-shadow ease-out duration-300 transition-all active:opacity-50 active:drop-shadow-none"
+              onClick={() => setSortBy('no')}
+            >
+              <h2 className="text-lg md:text-xl text-light">
+                {declinedMentors.length} Declined
+              </h2>
+            </div>
           </div>
         </div>
+
         <div className="bg-light">
           <div className="flex justify-between items-center bg-smoke-4 p-4">
             <h4 className="text-lg md:text-xl">Mentor Details</h4>
@@ -105,31 +127,36 @@ const AdminPanelMain = () => {
               />
             </div>
           </div>
-          <ul className="grid grid-cols-6 border-b-slate-700 border-b p-2 font-semibold">
-            <li className="col-span-2">Name</li>
-            <li className="col-span-3">Email</li>
-            <li className="col-span-1">Status</li>
-          </ul>
-          <div className="w-full h-80 xl:h-96 overflow-y-scroll">
-            {/* supposed to be datas from mongoDB. Need to be replace */}
-            {(sortBy === 'all'
-              ? dummyMentors
-              : sortBy === 'on'
-              ? onlineMentors
-              : sortBy === 'off'
-              ? offlineMentors
-              : dummyMentors.filter((mentor) =>
-                  mentor.name.toLowerCase().includes(searchedBy)
-                )
-            ).map((mentor, index) => (
-              <MentorList
-                name={mentor.name}
-                email={mentor.email}
-                status={mentor.status}
-                key={mentor.name}
-                index={index}
-              />
-            ))}
+          <div className="w-full overflow-auto">
+            <ul className="w-screen sm:w-full grid grid-cols-6 border-b-slate-700 border-b p-2 font-semibold">
+              <li className="col-span-2">Name</li>
+              <li className="col-span-3">Email</li>
+              <li className="col-span-1">Status</li>
+            </ul>
+            <div className="h-80 xl:h-96">
+              {/* supposed to be datas from mongoDB. Need to be replace */}
+              {(sortBy === 'all'
+                ? dummyMentors
+                : sortBy === 'ok'
+                ? verifiedMentors
+                : sortBy === 'pending'
+                ? pendingMentors
+                : sortBy === 'no'
+                ? declinedMentors
+                : dummyMentors.filter((mentor) =>
+                    mentor.name.toLowerCase().includes(searchedBy.toLowerCase())
+                  )
+              ).map((mentor, index) => (
+                <MentorList
+                  name={mentor.name}
+                  email={mentor.email}
+                  status={mentor.status}
+                  key={mentor.name}
+                  index={index}
+                  UpdateStatusList={UpdateStatusList}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
