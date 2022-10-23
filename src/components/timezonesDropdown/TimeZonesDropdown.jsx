@@ -6,7 +6,9 @@ import { v4 as uuidv4 } from 'uuid';
 import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
 
 const TimeZonesDropdown = () => {
-  const { IANA } = useContext(TimezoneContext);
+  const { timezones } = useContext(TimezoneContext);
+
+  console.log(timezones);
 
   //how to support all IANA
 
@@ -32,7 +34,7 @@ const TimeZonesDropdown = () => {
       <div
         className={`items-center absolute max-h-96 border rounded-lg p-1 p-2 invisible group-hover:visible w-full bg-white overflow-y-scroll`}
       >
-        {IANA.map((zone) => {
+        {timezones.map((zone) => {
           return <Timezone key={uuidv4()} zone={zone} />;
         })}
       </div>

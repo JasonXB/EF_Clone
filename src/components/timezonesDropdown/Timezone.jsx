@@ -2,9 +2,11 @@ import React from 'react';
 
 const Timezone = ({ zone }) => {
   return (
-    <button className="font-medium">
-      <p>{zone}</p>
-    </button>
+    <div>
+      <button className="font-sm border border-black">
+        <p>{zone}</p>
+      </button>
+    </div>
   );
 };
 

@@ -1,5 +1,3 @@
-import { createContext } from 'react';
-
 import { formatInTimeZone } from 'date-fns-tz';
 
 const getTimezoneOfIANA = (IANA, option) => {
@@ -36,21 +34,13 @@ const listOfTimezones = new Set(
   listOfIANA.map((IANA) => getTimezoneOfIANA(IANA, 'long'))
 );
 
-export const TimezoneContext = createContext({
-  timezones: [],
-});
+//a sorted array of timezones
+const sortedListOfTimezones = Array.from(listOfTimezones).sort();
 
-export const TimezoneProvider = ({ children }) => {
-  //a sorted array of timezones
-  const timezones = Array.from(listOfTimezones).sort();
+const timezone = () => {
+  console.log(sortedListOfTimezones);
 
-  const value = {
-    timezones,
-  };
-
-  return (
-    <TimezoneContext.Provider value={value}>
-      {children}
-    </TimezoneContext.Provider>
-  );
+  return <div>timezone</div>;
 };
+
+export default timezone;
