@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { buttonVariants } from '../buttons/reusable-buttons';
-// import bannerImg from '../assets/'
 
 const HomePageBanner = () => (
   //missing banner graphic and background graphics

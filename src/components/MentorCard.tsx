@@ -1,10 +1,10 @@
 import BubbleTags from './BubbleTags';
 import Avatar from './avatar/avatar';
-import tempImage from '../assets/cat.jpeg';
+import tempImage from '../../public/assets/cat.jpeg';
 import { BUBBLE_TAG_TYPE_CLASSES } from './BubbleTag';
 import PercentageBar from './percentBar/percent-bar';
 import Button from './buttons/reusable-buttons';
-import Link from 'next/link';
+// import Link from 'next/link';
 
 export interface MentorsInfoProps {
   mentorsInfo: {
