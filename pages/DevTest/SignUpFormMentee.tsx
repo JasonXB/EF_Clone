@@ -86,6 +86,7 @@ const SignUpFormMentee = () => {
                         <h1 className="text-4xl font-bold text-secondary-1">Sign Up as a Mentee</h1>
                         {/* Not sure the route for mentor sign up page, should be changed later */}
                         <h2 className="mt-2 text-xl">Interested in being a <a href="/signUpMentor" className="font-bold text-primary-1">mentor instead?</a></h2>
+                        {/* <Button cariant="primary" icon="google" clickHandler={() => console.log('Will be updated to make request function')}>Continue with Google</Button> */}
                         <form className="relative">
                             <div className="flex flex-col">
                                 <label className="mt-2 text-xl font-bold">Name</label>

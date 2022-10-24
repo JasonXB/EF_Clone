@@ -1,6 +1,8 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import SignUpFormMentee from '../signUpForm/SignUpFormMentee';
+import SignUpFormMentee from '../DevTest/SignUpFormMentee';
+
+
 const signup: NextPage = ({}) => {
   return (
     <div>
