@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import SignUpFormMentee from '../DevTest/SignUpFormMentee';
+
 
 
 const signup: NextPage = ({}) => {
@@ -26,7 +26,6 @@ const signup: NextPage = ({}) => {
       {/* Sign up button */}
 
       {/* Footer */}
-      <SignUpFormMentee />
     </div>
 
     
