@@ -27,8 +27,6 @@ const TimeSlot = ({ meeting }) => {
       startDatetime: meeting.startDatetime,
       endDatetime: meeting.endDatetime,
     });
-
-    console.log(selectedTimeSlot);
   };
 
   const isTimeSlotSelected = () => {
@@ -44,7 +42,7 @@ const TimeSlot = ({ meeting }) => {
     <button
       className={classNames(
         isTimeSlotSelected() && 'border-4 bg-primary-5 font-bold',
-        !isTimeSlotSelected() && 'border',
+        !isTimeSlotSelected() && 'border font-medium',
         `flex items-center px-6 py-6 space-x-4 group rounded-xl focus-within:bg-gray-100 hover:bg-gray-100 border-primary-1 w-full`
       )}
       onClick={selectTimeSlot}
