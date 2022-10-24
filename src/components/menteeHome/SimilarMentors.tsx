@@ -9,15 +9,15 @@ export default function SimilarMentors() {
     perPage: 3,
     gap: '2rem',
     pagination: false,
-    padding: { left: '3rem', right: '3rem' },
+    // padding: { left: '3rem', right: '3rem' },
     lazyLoad: true,
     arrows: true,
     breakpoints: {
-      1024: {
+      1400: {
         perPage: 2,
         arrows: true,
       },
-      767: {
+      900: {
         perPage: 1,
         arrows: true,
       },
@@ -25,20 +25,24 @@ export default function SimilarMentors() {
   };
 
   const comp = (
-    <SplideSlide className="slide">
-      <div className="grid grid-cols-[35%_65%] h-[14.6875rem] p-6 bg-emerald-200">
+    <SplideSlide className="slide px-8 ad:px-0">
+      <div className="grid grid-cols-[40%_1fr] h-[14.6875rem] p-6 bg-emerald-200 rounded-[20px]">
         <Image
           src={Hiba}
-          width="100%"
           height="100%"
+          objectFit="cover"
           alt=""
-          className="bRadius"
+          className="rounded-[20px]"
         />
       </div>
     </SplideSlide>
   );
   return (
-    <Splide aria-label="My Favorite Images" options={Options}>
+    <Splide
+      aria-label="My Favorite Images"
+      options={Options}
+      className="carousel px-0"
+    >
       {comp}
       {comp}
       {comp}

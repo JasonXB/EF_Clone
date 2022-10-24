@@ -134,8 +134,8 @@ export default function index() {
           )}
         </div>
       </section>
-      <section className="bg-[#F2F2F2] mt-16">
-        <h4 className="text-center">
+      <section className="bg-[#F2F2F2] mt-16 py-6">
+        <h4 className="text-center  mb-8">
           We think these mentors are a good match for you.
         </h4>
         <SimilarMentors />

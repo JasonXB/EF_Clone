@@ -126,6 +126,7 @@ Add "trailingDots" class to child element which should be text based
   width: 91%;
 }
 
-.bRadius {
-  border-radius: 20px;
+.carousel .splide__track {
+  margin: auto 5%;
+  width: 91%;
 }
