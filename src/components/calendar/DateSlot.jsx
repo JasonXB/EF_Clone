@@ -7,8 +7,8 @@ import {
   isToday,
   parseISO,
 } from 'date-fns';
-
 import { CalendarContext } from '../../../state-management/ReactContext/CalendarContext';
+import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -26,11 +26,18 @@ let colStartClasses = [
 
 const DateSlot = ({ day, dayIndex, availabilities }) => {
   const { selectedDay, setSelectedDay } = useContext(CalendarContext);
+  const { setSelectedTimeSlot } = useContext(TimezoneContext);
 
   //check if there is availability in a date by referring to the availabilities prop
   let isAvailable = availabilities.some((availability) =>
     isSameDay(parseISO(availability.startDatetime), day)
   );
+
+  //select date event handler-----------------
+  const selectDate = () => {
+    setSelectedDay(day);
+    setSelectedTimeSlot({}); //reset the selected time slot whenever a date is clicked so that there is no time slot selected by default
+  };
 
   return (
     <div
@@ -39,7 +46,7 @@ const DateSlot = ({ day, dayIndex, availabilities }) => {
     >
       <button
         type="button"
-        onClick={() => setSelectedDay(day)}
+        onClick={selectDate}
         className={classNames(
           // ----- BACKGROUND CONDITIONS -----
           //selected day is today

@@ -3,17 +3,19 @@
     https://xd.adobe.com/view/748b20f6-3f12-4c04-a128-f3ecbec94ef2-21d8/screen/962caf43-9fe9-44ed-93c5-e08de2342056/?hints=off
 */
 import { useContext } from 'react';
-
-import { format, parseISO } from 'date-fns';
-
+import { format } from 'date-fns';
 import { utcToZonedTime } from 'date-fns-tz';
-
 import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
+
+function classNames(...classes) {
+  return classes.filter(Boolean).join(' ');
+}
 
 const TimeSlot = ({ meeting }) => {
   const { selectedTimeSlot, setSelectedTimeSlot, IANACounterpart } =
     useContext(TimezoneContext);
 
+  //converted timezones by referring to the useState variable IANACounterpart-------------
   const convertedStartTime = utcToZonedTime(
     meeting.startDatetime,
     IANACounterpart
@@ -29,22 +31,21 @@ const TimeSlot = ({ meeting }) => {
     console.log(selectedTimeSlot);
   };
 
-  //handle the styling condition for showing the border
-  let selectedStyle = 'bg-primary-5 border-4 border-primary-1';
-
-  const dateMatcher = {
-    startDatetime: meeting.startDatetime,
-    endDatetime: meeting.endDatetime,
+  const isTimeSlotSelected = () => {
+    return (
+      meeting.startDatetime === selectedTimeSlot.startDatetime &&
+      meeting.endDatetime === selectedTimeSlot.endDatetime
+    );
   };
 
-  // console.log(
-  //   dateMatcher.startDatetime === selectedTimeSlot.startDatetime &&
-  //     dateMatcher.endDatetime === selectedTimeSlot.endDatetime
-  // );
+  console.log(isTimeSlotSelected());
 
   return (
     <button
-      className={`flex items-center px-4 py-2 space-x-4 group rounded-xl focus-within:bg-gray-100 hover:bg-gray-100 ${selectedStyle}`}
+      className={classNames(
+        isTimeSlotSelected() && 'bg-primary-5 border-4 border-primary-1',
+        `flex items-center px-4 py-2 space-x-4 group rounded-xl focus-within:bg-gray-100 hover:bg-gray-100`
+      )}
       onClick={selectTimeSlot}
     >
       <div className="flex-auto">
