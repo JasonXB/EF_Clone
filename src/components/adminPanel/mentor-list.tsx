@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import StatusOptionButton from './status-option-button';
+import { MentorStatus } from '../../enum/MentorStatus.enum';
 
 type MentorInfo = {
   name: string;
@@ -30,7 +31,11 @@ const MentorList = ({
   const [mentorStatus, setMentorStatus] = useState<string>(status);
 
   //mentor status options
-  const statusOptions: string[] = ['verified', 'pending', 'declined'];
+  const statusOptions: string[] = [
+    MentorStatus.Verified,
+    MentorStatus.Pending,
+    MentorStatus.Declined,
+  ];
 
   return (
     <ul

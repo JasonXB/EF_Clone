@@ -36,9 +36,9 @@ const StatusOptionButton = ({
         height="16"
         fill="currentColor"
         className={`bi bi-circle-fill w-2 ${
-          option === 'verified'
+          option === 'Verified'
             ? 'text-green-400'
-            : option === 'pending'
+            : option === 'Pending'
             ? 'text-pink-600'
             : 'text-gray-400'
         }`}
