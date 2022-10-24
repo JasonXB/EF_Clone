@@ -1,4 +1,3 @@
-// import { mentorsData } from '../../src/util/mentors.json';
 import { fetchMentorPics } from '../../src/util/mentor-pics';
 import mentorsData from '../../src/util/mentors.json';
 import Link from 'next/link';
@@ -32,15 +31,8 @@ Once the testing is all good you may delete the following before merging:
 */
 
 export async function getStaticProps(context) {
-  //get an array of random image url from unsplash API
-  const mentorPics = await fetchMentorPics();
-  //add the image URL from mentorPics to the json data of mentors data
-  const mentors = mentorsData.map((m, index) => {
-    return { ...m, imgUrl: mentorPics[index] };
-  });
-  //mentors will be the json data used to test the calendar page
   return {
-    props: { mentors: mentors },
+    props: { mentors: mentorsData },
   };
 }
 

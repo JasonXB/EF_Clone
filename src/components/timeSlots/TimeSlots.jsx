@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import TimeSlot from './TimeSlot';
 
 import { CalendarContext } from '../../../state-management/ReactContext/CalendarContext';
@@ -8,7 +8,6 @@ import { isSameDay, parseISO } from 'date-fns';
 
 const TimeSlots = ({ meeting_availability }) => {
   const { selectedDay } = useContext(CalendarContext);
-  const [isSelected, setIsSelected] = useState(false);
 
   //find if the mentor has availabilities on the selected date by comparing the date selected and the date in the json data
   const selectedDayAvailability = (availabilities) =>
@@ -20,14 +19,7 @@ const TimeSlots = ({ meeting_availability }) => {
     <div className="mt-4 space-y-1 text-sm leading-6 text-gray-500">
       {selectedDayAvailability(meeting_availability.specific).length > 0 ? (
         selectedDayAvailability(meeting_availability.specific).map(
-          (availability) => (
-            <TimeSlot
-              key={uuidv4()}
-              meeting={availability}
-              isSelected={isSelected}
-              setIsSelected={setIsSelected}
-            />
-          )
+          (availability) => <TimeSlot key={uuidv4()} meeting={availability} />
         )
       ) : (
         <p>No time slot available</p>
