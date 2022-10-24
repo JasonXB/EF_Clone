@@ -80,11 +80,11 @@ export default function index() {
 
   return (
     <Layout>
-      <h3 className="hidden font-semibold text-center mt-10 text-primary-1">
+      <h3 className="font-semibold text-center mt-10 text-primary-1">
         Welcome back
         <br className="sm:hidden" /> {mock.username}
       </h3>
-      <section className="hidden grid grid-cols-1 lg:grid-cols-2 sm:max-w-[80%] sm:mx-auto lg:max-w-full lg:divide-x">
+      <section className="grid grid-cols-1 lg:grid-cols-2 sm:max-w-[80%] sm:mx-auto lg:max-w-full lg:divide-x">
         <div className="lg:pr-5 mt-10">
           <h4 className="text-center mb-6 text-primary-1 font-bold">
             My Applications
@@ -134,7 +134,7 @@ export default function index() {
           )}
         </div>
       </section>
-      <section className="bg-[#F2F2F2] mt-16 py-6">
+      <section className="bg-[#d9d9d9] mt-16 py-6">
         <h4 className="text-center  mb-8">
           We think these mentors are a good match for you.
         </h4>

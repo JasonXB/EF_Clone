@@ -53,7 +53,7 @@ module.exports = {
       xs: '480px',
       ss: '620px',
       sm: '768px',
-      ad: '900px',
+      ad: '900px', // needed a new breakpoint to style a carousel! from: Jason
       md: '1060px',
       lg: '1200px',
       xl: '1700px',
