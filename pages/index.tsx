@@ -1,8 +1,8 @@
 import type { NextPage } from 'next';
-import HomePageBanner from '../src/components/homepage/ HomePageBanner';
+import HomePageBanner from '../src/components/homepage/HomePageBanner';
 import ReusableCards from '../src/components/homepage/ReusableCards';
-import mentorGraphic from '../src/assets/mentorImageHomePage.png';
-import menteeGraphic from '../src/assets/menteeImageHomePage.png';
+import mentorGraphic from '../public/assets/mentorImageHomePage.png';
+import menteeGraphic from '../public/assets/menteeImageHomePage.png';
 import Layout from '../src/components/Layout';
 
 const ReusableCardData = [

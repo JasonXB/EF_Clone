@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { buttonVariants } from '../buttons/reusable-buttons';
-import bannerImg from '../../assets/homePageHeroImg.png';
+import bannerImg from '../../../public/assets/homePageHeroImg.png';
 import Image from 'next/image';
 import style from '../../../styles/homePage.module.css';
 
