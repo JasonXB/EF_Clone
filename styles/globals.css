@@ -3,6 +3,8 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 /* 
 Default sizes + fonts for text-based elements 
 Each element I set defaults for has an Adobe link at the bottom where I got the exact values from
@@ -83,4 +85,29 @@ ul {
 }
 .blackBoxShadow {
   box-shadow: var(--blackBoxShadow);
+}
+
+
+/* styling for scrollbar */
+
+
+/* Firefox */
+.scrollBar {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(113, 113, 113);
+}
+
+/* Chrome, Edge, and Safari */
+.scrollBar::-webkit-scrollbar {
+  width: 15px;
+}
+
+.scrollBar::-webkit-scrollbar-track {
+  background: rgb(236, 236, 236);
+  border-radius: 5px;
+}
+
+.scrollBar::-webkit-scrollbar-thumb {
+  background-color: rgb(113, 113, 113);
+  border-radius: 14px;
 }

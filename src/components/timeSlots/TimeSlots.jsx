@@ -16,7 +16,7 @@ const TimeSlots = ({ meeting_availability }) => {
     );
 
   return (
-    <div className="mt-4 space-y-1 text-sm leading-6 text-gray-500">
+    <div className="mt-4 space-y-3 text-sm">
       {selectedDayAvailability(meeting_availability.specific).length > 0 ? (
         selectedDayAvailability(meeting_availability.specific).map(
           (availability) => <TimeSlot key={uuidv4()} meeting={availability} />

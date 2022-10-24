@@ -2,7 +2,6 @@
 import { useContext, useState } from 'react';
 import Timezone from './Timezone';
 import { v4 as uuidv4 } from 'uuid';
-
 import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
 
 const TimeZonesDropdown = () => {
@@ -37,7 +36,7 @@ const TimeZonesDropdown = () => {
       {/* dropdown options */}
       {dropdownToggle && (
         <div
-          className={`absolute max-h-96 border rounded-lg p-1 p-2 w-full bg-white overflow-y-scroll`}
+          className={`absolute max-h-96 border rounded-lg p-1 p-2 w-full bg-white overflow-y-scroll scrollBar`}
         >
           {timezones.map((zone) => {
             return (
