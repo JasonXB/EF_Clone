@@ -112,8 +112,8 @@ export const TimezoneContext = createContext({
   setSelectedTimezone: () => {},
   selectedTimeSlot: new Date(),
   setSelectedTimeSlot: () => {},
-  zonedTimeSlot: '',
-  setZonedTimeSlot: () => {},
+  IANACounterpart: '',
+  setIANACounterpart: () => {},
 });
 
 export const TimezoneProvider = ({ children }) => {
@@ -125,17 +125,18 @@ export const TimezoneProvider = ({ children }) => {
       e.g 'Eastern Daylight Time'
   */
   const [selectedTimezone, setSelectedTimezone] = useState(timezonePart.value);
+
   //refers to the timeslot that the user picked
   const [selectedTimeSlot, setSelectedTimeSlot] = useState({});
 
   //variable used in 'utcToZonedTime' from date-fns-tz to convert to a specific timezone
-  let IANACounterpart = getIANACounterpart(selectedTimezone);
-  useEffect(() => {
-    IANACounterpart = getIANACounterpart(selectedTimezone);
-  }, [selectedTimezone]);
+  const [IANACounterpart, setIANACounterpart] = useState(
+    getIANACounterpart(selectedTimezone)
+  );
 
-  //variable used to hold the timeSlots that have been converted to a particular time zone
-  const [zonedTimeSlots, setZonedTimeSlots] = useState({});
+  useEffect(() => {
+    setIANACounterpart(getIANACounterpart(selectedTimezone));
+  }, [selectedTimezone]);
 
   const value = {
     timezones,
@@ -143,8 +144,6 @@ export const TimezoneProvider = ({ children }) => {
     setSelectedTimezone,
     selectedTimeSlot,
     setSelectedTimeSlot,
-    zonedTimeSlots,
-    setZonedTimeSlots,
     IANACounterpart,
   };
 

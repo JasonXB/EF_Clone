@@ -11,16 +11,14 @@ import { utcToZonedTime } from 'date-fns-tz';
 import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
 
 const TimeSlot = ({ meeting }) => {
-  let startDateTime = parseISO(meeting.startDatetime);
-  let endDateTime = parseISO(meeting.endDatetime);
-
-  //store the selected timeSlot in the useContext variables--------------------
   const { selectedTimeSlot, setSelectedTimeSlot, IANACounterpart } =
     useContext(TimezoneContext);
 
-  const convertedTime = utcToZonedTime(meeting.endDatetime, IANACounterpart);
-
-  console.log(convertedTime); //to be continued...
+  const convertedStartTime = utcToZonedTime(
+    meeting.startDatetime,
+    IANACounterpart
+  );
+  const convertedEndTime = utcToZonedTime(meeting.endDatetime, IANACounterpart);
 
   const selectTimeSlot = () => {
     setSelectedTimeSlot({
@@ -52,12 +50,12 @@ const TimeSlot = ({ meeting }) => {
       <div className="flex-auto">
         <p className="text-gray-900">{meeting.name}</p>
         <p className="mt-0.5">
-          <time dateTime={meeting.startDatetime}>
-            {format(startDateTime, 'h:mm a')}
+          <time dateTime={convertedStartTime}>
+            {format(convertedStartTime, 'h:mm a')}
           </time>{' '}
           -{' '}
-          <time dateTime={meeting.endDatetime}>
-            {format(endDateTime, 'h:mm a')}
+          <time dateTime={convertedEndTime}>
+            {format(convertedEndTime, 'h:mm a')}
           </time>
         </p>
       </div>
