@@ -2,11 +2,11 @@ import React, { FC } from 'react';
 import Image from 'next/image';
 
 // Linkedin, FB and instagram icons changed to white svgs for footer
-import RedditImg from '../../assets/icons8-reddit-50.png';
-import LinkedInImg from '../../assets/whiteSvgIcons/linkedin.svg'
-import TwitterImg from '../../assets/icons8-twitter-50.png';
-import FacebookImg from '../../assets/whiteSvgIcons/facebook.svg'
-import InstagramImg from '../../assets/whiteSvgIcons/instagram.svg'
+import RedditImg from '../../../public/assets/icons8-reddit-50.png';
+import LinkedInImg from '../../../public/assets/whiteSvgIcons/linkedin.svg';
+import TwitterImg from '../../../public/assets/icons8-twitter-50.png';
+import FacebookImg from '../../../public/assets/whiteSvgIcons/facebook.svg';
+import InstagramImg from '../../../public/assets/whiteSvgIcons/instagram.svg';
 import { SocialMedia } from '../../enum/SocialMedia.enum';
 
 interface LinkTypes {
@@ -45,7 +45,7 @@ const SocialMediaLink: FC<LinkTypes> = ({ domain, className }: LinkTypes) => {
     <div className={className}>
       <button>
         {/* // NOTE: the images I used are unlicensed, provided by Icons8. If they are to be in production, we must buy them */}
-        <Image src={selectImageOfType(domain)} />
+        <Image src={selectImageOfType(domain)} alt="social media logo" />
       </button>
     </div>
   );
