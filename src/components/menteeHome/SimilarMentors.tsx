@@ -37,9 +37,19 @@ export default function SimilarMentors() {
           className="rounded-[20px]"
         />
         <div className="grid grid-rows-[auto_auto_auto_1fr_26px_26px] gap-2">
-          <h6 className="font-semibold mx-1]">Darra Wittney</h6>
-          <p className="font-medium mx-1">USA</p>
-          <p className="font-medium mx-1">Project Manager at CIBC</p>
+          <div className="truncate">
+            <h6 className="font-semibold mx-1 text-ellipsis overflow-hidden">
+              Darra Wittney Aliaga Escobar
+            </h6>
+          </div>
+          <div className="truncate">
+            <p className="font-medium mx-1 text-ellipsis overflow-hidden">
+              USA
+            </p>
+          </div>
+          <p className="font-medium mx-1 text-ellipsis overflow-hidden">
+            Project Manager at CIBC
+          </p>
           <br />
           <BubbleTag
             tag="Entrepeneurship"
