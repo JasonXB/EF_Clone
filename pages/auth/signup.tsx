@@ -12,8 +12,9 @@ const signup: NextPage = ({}) => {
       </Head>
       
       <Layout>
-      
+
         <SignUpFormMentee />
+
       </Layout>
       
 

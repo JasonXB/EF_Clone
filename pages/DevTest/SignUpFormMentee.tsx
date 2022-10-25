@@ -77,22 +77,20 @@ const SignUpFormMentee = () => {
         router.push("/auth/login");
     }
     return (      
-        <div className="container pb-10 my-20">
-            <div className="flex flex-row">
-                <div>{/* This is the place holder for social media links */}</div>
-                <hr className="text-secondary-1"/>
+        <div className="pb-10 my-20 outer">
+            <div className="flex flex-wrap items-center justify-center h-full inner-full">
                 <div className="relative w-5/12 border-l-1">
                     <h1 className="text-4xl font-bold text-secondary-1">Sign Up as a Mentee</h1>
                     {/* Not sure the route for mentor sign up page, should be changed later */}
                     <h2 className="mt-2 text-xl">Interested in being a <a href="/signUpMentor" className="font-bold text-primary-1">mentor instead?</a></h2>
                     <Button
-                      variant="tertiary"
-                      icon="google"
-                      clickHandler={() =>
+                    variant="tertiary"
+                    icon="google"
+                    clickHandler={() =>
                         console.log('will be updated to make a request function')
-                      }
-                      >
-                      Continue with google
+                    }
+                    >
+                    Continue with google
                     </Button>
                     <form className="relative">
                         <div className="flex flex-col">
