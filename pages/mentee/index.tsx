@@ -138,7 +138,7 @@ export default function index() {
         <h4 className="text-center  mb-8">
           We think these mentors are a good match for you.
         </h4>
-        <SimilarMentors />
+        <SimilarMentors data={mock.similarMentors} />
       </section>
     </Layout>
   );
