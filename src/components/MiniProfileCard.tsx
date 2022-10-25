@@ -1,6 +1,6 @@
 import BubbleTags from './BubbleTags';
 import Avatar from './avatar/avatar';
-import tempImage from './assets/cat.jpeg';
+import tempImage from '../../public/assets/cat.jpeg';
 import { BUBBLE_TAG_TYPE_CLASSES } from './BubbleTag';
 import style from '../../styles/MiniProfileCard.module.css';
 import PercentageBar from './percentBar/percent-bar';
@@ -30,7 +30,7 @@ const MiniProfileCard = ({ ...mentorsInfo }: MentorsInfoProps) => {
 
         <BubbleTags
           tags={tags}
-          bubbleTagType={BUBBLE_TAG_TYPE_CLASSES.shadedBlue}
+          bubbleTagType={BUBBLE_TAG_TYPE_CLASSES.primaryShaded}
         />
         <div className={style.compatibility}>
           <h4 className={`${style.compatibility} pb-1`}>Compatibility</h4>

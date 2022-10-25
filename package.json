@@ -12,22 +12,29 @@
     "@headlessui/react": "^1.7.3",
     "@heroicons/react": "^2.0.12",
     "@reduxjs/toolkit": "^1.8.6",
+    "@splidejs/react-splide": "^0.7.12",
     "axios": "^0.27.2",
     "bootstrap-icons": "^1.9.1",
     "date-fns": "^2.29.3",
     "date-fns-tz": "^1.3.7",
     "eslint-config-prettier": "^8.5.0",
-    "next": "12.2.5",
+    "next": "^12.2.5",
+    "next-auth": "^4.12.2",
     "prettier": "^2.7.1",
     "react": "18.2.0",
+    "react-circular-progressbar": "^2.1.0",
     "react-dom": "18.2.0",
     "react-redux": "^8.0.4",
     "redux": "^4.2.0",
     "tw-elements": "^1.0.0-alpha12",
+<<<<<<< HEAD
     "unsplash-js": "^7.0.15",
+=======
+>>>>>>> 9a3ba161964ad29c3b87a47ea5c3cffbedec5865
     "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "@tailwindcss/line-clamp": "^0.4.2",
     "@types/node": "18.7.15",
     "@types/react": "18.0.18",
     "@types/react-dom": "18.0.6",
