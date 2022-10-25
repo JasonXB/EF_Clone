@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 import { parseISO, format } from 'date-fns';
 import Image from 'next/image';
 import mentorsData from '../../src/util/mentors.json';
@@ -78,9 +79,15 @@ const bookMeeting = (props) => {
       ' (' +
       timeZoneShort +
       ')';
-
-    console.log(timeReview);
   }
+
+  const meetingDetails = {
+    name: name,
+    imgUrl: imgUrl,
+    startDatetime: selectedTimeSlot.startDatetime,
+    endDatetime: selectedTimeSlot.endDatetime,
+    meetingMethod: 'Google Meet',
+  };
 
   return (
     <>
@@ -200,7 +207,14 @@ const bookMeeting = (props) => {
           </div>
           {/* ^ end of item 3 div */}
           {/* SUBMIT BUTTON------------------------------------------------- */}
-          <button>Book Meeting</button>
+          <Link
+            href={{
+              pathname: '/meeting/confirmedMeeting',
+              query: meetingDetails,
+            }}
+          >
+            <Button variant={'primary'}>Book Meeting</Button>
+          </Link>
         </div>
         {/* ^ end of div that cover the items */}
       </div>
