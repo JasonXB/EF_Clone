@@ -21,8 +21,8 @@ const SignUpFormMentee = () => {
 
         if ( name === "" ) {
             setNameError("*Please enter your name");
-        } else if ( !name.match(/^[A-Za-z\s]*$/) ) {
-            setNameError("*Please enter a valid name(Letters only)");
+        } else if ( !name.match(/^[a-zA-Z].*(-[a-zA-Z]*)?$/) ) {
+            setNameError("*Please enter a valid name(only letters and hyphens allowed)");
         } else {
             setNameError("");
         }
@@ -48,10 +48,10 @@ const SignUpFormMentee = () => {
             setConfirmPasswordError("");
         }
         
-        if ( password.match(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/) ) {
+        if ( password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/) ) {
             setPasswordValidation("");
         } else {
-            setPasswordValidation("*Password must contain 8 characters, 1 letter and 1 number");
+            setPasswordValidation("*Password must contain 8 characters, one uppercase letter, one lowercase letter, 1 number and one special character(@$!%*?&)");
         }
         
         // Create a new user
@@ -74,7 +74,7 @@ const SignUpFormMentee = () => {
     }
 
     const redirect = () => {
-        router.push("/login");
+        router.push("/auth/login");
     }
     return (      
         <div className="container pb-10 my-20">
@@ -85,7 +85,15 @@ const SignUpFormMentee = () => {
                     <h1 className="text-4xl font-bold text-secondary-1">Sign Up as a Mentee</h1>
                     {/* Not sure the route for mentor sign up page, should be changed later */}
                     <h2 className="mt-2 text-xl">Interested in being a <a href="/signUpMentor" className="font-bold text-primary-1">mentor instead?</a></h2>
-                    <Button variant="primary" icon="google" clickHandler={() => console.log('Will be updated to make request function')}>Continue with Google</Button>
+                    <Button
+                      variant="tertiary"
+                      icon="google"
+                      clickHandler={() =>
+                        console.log('will be updated to make a request function')
+                      }
+                      >
+                      Continue with google
+                    </Button>
                     <form className="relative">
                         <div className="flex flex-col">
                             <label className="mt-2 text-xl font-bold">Name</label>
@@ -110,8 +118,20 @@ const SignUpFormMentee = () => {
                         {/* Need the route for Terms And Conditions*/}
                         <h3 className="mt-5 text-xs font-bold">By logging in, you agree to Empowered Future's <a href="" className="text-secondary-2">Terms And Conditions*</a></h3>
                         <div className="absolute right-0 -bottom-15">
-                            <button className="px-10 py-3 mt-10 text-sm border border-solid rounded-full shadow-md text-secondary-2 bg-light border-secondary-1" onClick={redirect}>Login</button>
-                            <button type="submit" className="px-10 py-3 ml-3 mr-0 text-sm text-white rounded-full shadow-md font-montserrat bg-gradient-to-r from-secondary-1 to-tertiary-2" onClick={handleSubmit}>Sign Up</button>
+                            {/* <button className="px-10 py-3 mt-10 text-sm border border-solid rounded-full shadow-md text-secondary-2 bg-light border-secondary-1" onClick={redirect}>Login</button>
+                            <button type="submit" className="px-10 py-3 ml-3 mr-0 text-sm text-white rounded-full shadow-md font-montserrat bg-gradient-to-r from-secondary-1 to-tertiary-2" onClick={handleSubmit}>Sign Up</button> */}
+                            <Button
+                                variant="secondary"
+                                clickHandler={redirect}
+                                >
+                                Login
+                            </Button>
+                            <Button
+                                variant="primary"
+                                clickHandler={handleSubmit}
+                                >
+                                Sign Up
+                            </Button>
                         </div>                
                     </form>
                 </div>
