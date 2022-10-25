@@ -27,10 +27,7 @@
     "react-redux": "^8.0.4",
     "redux": "^4.2.0",
     "tw-elements": "^1.0.0-alpha12",
-<<<<<<< HEAD
     "unsplash-js": "^7.0.15",
-=======
->>>>>>> 9a3ba161964ad29c3b87a47ea5c3cffbedec5865
     "uuid": "^9.0.0"
   },
   "devDependencies": {
