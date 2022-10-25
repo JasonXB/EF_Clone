@@ -20,7 +20,7 @@ export default function SimilarMentors(props: {
     pagination: false,
     // padding: { left: '3rem', right: '3rem' },
     lazyLoad: true,
-    arrows: true,
+    arrows: props.data.length > 3 ? true : false,
     breakpoints: {
       1400: {
         perPage: 2,

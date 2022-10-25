@@ -59,22 +59,22 @@ export default function index() {
         bubbleTag2: 'Management',
         image: '/temp-assets/Emilio-lg.jpg',
       },
-      {
-        mentorName: 'Darra Whitney',
-        location: 'USA',
-        mentorPosition: 'Project Manager at EF',
-        bubbleTag1: 'Entrepeneurship',
-        bubbleTag2: 'Management',
-        image: '/temp-assets/Emilio-lg.jpg',
-      },
-      {
-        mentorName: 'Darra Whitney',
-        location: 'USA',
-        mentorPosition: 'Project Manager at EF',
-        bubbleTag1: 'Entrepeneurship',
-        bubbleTag2: 'Management',
-        image: '/temp-assets/Emilio-lg.jpg',
-      },
+      // {
+      //   mentorName: 'Darra Whitney',
+      //   location: 'USA',
+      //   mentorPosition: 'Project Manager at EF',
+      //   bubbleTag1: 'Entrepeneurship',
+      //   bubbleTag2: 'Management',
+      //   image: '/temp-assets/Emilio-lg.jpg',
+      // },
+      // {
+      //   mentorName: 'Darra Whitney',
+      //   location: 'USA',
+      //   mentorPosition: 'Project Manager at EF',
+      //   bubbleTag1: 'Entrepeneurship',
+      //   bubbleTag2: 'Management',
+      //   image: '/temp-assets/Emilio-lg.jpg',
+      // },
     ],
   };
 
