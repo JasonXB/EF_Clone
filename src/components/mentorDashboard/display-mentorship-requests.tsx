@@ -10,7 +10,6 @@ type dataType = {
   data: MentorshipRequestCardProps[];
 };
 
-//need to fix arrows adjustment and progress dots
 const ResponsiveSlider = ({ data }: { data: dataType }) => {
   const length: number = data.data.length;
   const Options = {

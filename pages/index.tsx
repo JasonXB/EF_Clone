@@ -4,6 +4,7 @@ import ReusableCards from '../src/components/homepage/ReusableCards';
 import mentorGraphic from '../public/assets/mentorImageHomePage.png';
 import menteeGraphic from '../public/assets/menteeImageHomePage.png';
 import Layout from '../src/components/Layout';
+import Testimonials from '../src/components/homepage/testimonials/testimonials';
 
 const ReusableCardData = [
   //links and img need to be added once we receive assets and where these link to.
@@ -45,7 +46,9 @@ const Home: NextPage = ({}) => {
         ))}
       </div>
       {/** video component -future */}
-      {/** testimonials component -future  */}
+      <div className="my-20">
+        <Testimonials />
+      </div>
       {/** blog component-future  */}
     </Layout>
   );
