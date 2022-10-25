@@ -4,6 +4,7 @@ import Layout from '../src/components/Layout';
 import Button from '../src/components/buttons/reusable-buttons';
 
 // I used Jason's basic layout from the become-a-mentor page as this page is quite similar in structure. Thanks, Jason!
+// You're welcome Matt! <3
 
 // Statically renders page and sets props equal to an empty object
 export const getStaticProps: GetStaticProps = async (context) => {
