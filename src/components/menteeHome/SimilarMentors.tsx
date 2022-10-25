@@ -3,10 +3,13 @@ import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide';
 import Image from 'next/image';
 import Hiba from '../../../public/assets/hiba.png';
 import BubbleTag from '../BubbleTag';
-import '@splidejs/react-splide/css';
 import { BUBBLE_TAG_TYPE_CLASSES } from '../BubbleTag';
+import '@splidejs/react-splide/css';
 
 export default function SimilarMentors() {
+  //! Make carousel content dynamic
+  //! Make carousel look good with 2 or 1 items
+  //! Adjust paddings to keep arrows further apart
   const Options = {
     perPage: 3,
     gap: '2rem',
