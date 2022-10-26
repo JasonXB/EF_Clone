@@ -8,4 +8,4 @@ export default function TitledInput(props: any) {
             <span className="text-tertiary-1">{props.error}</span>
         </div>
     );
-    }
+}
