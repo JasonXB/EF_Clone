@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Navbar from './header/Navbar';
 import LayoutStyle from '../../styles/Layout.module.css';
 import Footer from './footer/Footer';
-import Profilesettings from '../../pages/profile-settings'
+import Profilesettings from '../../pages/profileSettings/profile-settings'
 type LayoutProps = {
   headTitle?: string;
   children: any;
@@ -20,7 +20,7 @@ const Layout = ({ ...props }: LayoutProps) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <Profilesettings />
+      
       <div className={LayoutStyle.content}>
         <main>{props.children}</main>
       </div>
