@@ -79,23 +79,6 @@ const SignUpFormMentee = () => {
                     Continue with google
                     </Button>
                     <form className="relative">
-                        {/* <div className="flex flex-col">
-                            <label className="mt-2 text-xl font-bold">Name</label>
-                            <input type="text" placeholder=" First and Last Name" className="p-2 mt-1 text-xl border border-solid rounded-lg border-smoke-3" value={name} onChange={(e) => setName(e.target.value)} required/>
-                            <span className="text-tertiary-1">{nameError}</span>
-                        
-                            <label className="mt-2 text-xl font-bold">Sign Up With Your Email Address</label>
-                            <input type="email" placeholder=" Email Address" className="p-2 mt-1 text-xl border border-solid rounded-lg border-smoke-3" value={email} onChange={(e) => setEmail(e.target.value)} required/>
-                            <span className="text-tertiary-1">{emailError}</span>
-
-                            <label className="mt-2 text-xl font-bold">Create A Password</label>
-                            <input type="password" placeholder=" Password" className="p-2 text-xl border border-solid rounded-lg mt-f1 border-smoke-3" value={password} onChange={(e) => setPassword(e.target.value)} required/>
-                            <span className="text-tertiary-1">{password === "" ? (passwordError) :("") }{passwordValidation}</span>
-
-                            <label className="mt-2 text-xl font-bold">Confirm Password</label>
-                            <input type="password" placeholder=" Password" className="p-2 mt-1 text-xl border border-solid rounded-lg border-smoke-3" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required/>
-                            <span className="text-tertiary-1">{confirmPassword === "" ? (passwordError) :(confirmPasswordError) }</span>
-                        </div> */}
                         <TitledInput
                             title="Name"
                             placeholder="First and Last Name"
