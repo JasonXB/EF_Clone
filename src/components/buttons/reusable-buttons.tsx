@@ -7,6 +7,7 @@ import linkedInIcon from './SVGIcons/linkedin.svg';
 import googleIcon from './SVGIcons/google.svg';
 import listIcon from './SVGIcons/listIcon.svg';
 import closeIcon from './SVGIcons/closeIcon.svg';
+import { ButtonVariant } from '../../enum/buttonVariant.enum';
 
 //once theme is configured for colors, delete this
 //TempColors{
@@ -37,13 +38,7 @@ type ButtonProps = {
   children?: string | customSVG | JSX.Element | any; //any temp fix need to look into further
   className: string;
   type: 'button' | 'submit';
-  variant:
-    | 'primary'
-    | 'secondary'
-    | 'tertiary'
-    | 'primaryUnselected'
-    | 'secondaryUnselected'
-    | 'iconOnly';
+  variant: `${ButtonVariant}`;
   disabled: boolean;
   clickHandler?: React.MouseEventHandler<HTMLButtonElement> | undefined;
   icon?: 'facebook' | 'linkedIn' | 'google' | 'listIcon' | 'closeIcon';

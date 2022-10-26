@@ -63,7 +63,7 @@ const socialMediaLinks: FooterColumnProps = {
 
 const Footer = () => {
   return (
-    <footer className="text-sm text-center bg-smoke-1 text-light">
+    <footer className="text-sm text-center bg-smoke-1 text-light z-20 relative">
       {/* This column and the social media column have been changed from grid to flex */}
       <div className="flex flex-col pt-16 text-center lg:flex-row">
         {/* Empowered Futures logo */}
@@ -100,7 +100,9 @@ const Footer = () => {
 
         {/* Social Media column now flex */}
         <div className="flex flex-col mb-2 lg:mb-6">
-          <div className="mb-2 font-bold lg:mb-6">Follow Us on Social Media</div>
+          <div className="mb-2 font-bold lg:mb-6">
+            Follow Us on Social Media
+          </div>
           <div className="flex flex-row justify-center lg:flex-col">
             {socialMediaLinks?.links?.map((link, i) => {
               return (
