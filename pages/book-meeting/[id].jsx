@@ -7,6 +7,7 @@ import Calendar from '../../src/components/calendar/Calendar';
 import TimeSlots from '../../src/components/timeSlots/TimeSlots';
 import TimeZonesDropdown from '../../src/components/timezonesDropdown/TimeZonesDropdown';
 import Button from '../../src/components/buttons/reusable-buttons';
+import Layout from '../../src/components/Layout';
 
 import { TimezoneContext } from '../../state-management/ReactContext/TimezoneContext';
 
@@ -105,7 +106,7 @@ const bookMeeting = (props) => {
       {/* --- */}
 
       {/* right side with meeting questions */}
-      <div className="bg-green-100 w-4/5 float-right h-full px-16 py-28">
+      <div className="w-4/5 float-right h-full px-16 py-28">
         <h4 className="text-primary-1 font-semibold mb-16">
           Schedule your Meeting with {name}
         </h4>
@@ -200,7 +201,7 @@ const bookMeeting = (props) => {
           </div>
           {/* ^ end of item 3 div */}
           {/* SUBMIT BUTTON------------------------------------------------- */}
-          <button>Book Meeting</button>
+          <Button variant="primary">Book Meeting</Button>
         </div>
         {/* ^ end of div that cover the items */}
       </div>
