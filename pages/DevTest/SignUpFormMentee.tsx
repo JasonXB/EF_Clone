@@ -63,9 +63,9 @@ const SignUpFormMentee = () => {
         router.push("/auth/login");
     }
     return (      
-        <div className="py-20 bg-fixed backdrop:outer">
-            <div className="flex flex-wrap items-center justify-center h-full py-20 inner-full" >
-                <div className="relative w-7/12 px-20 pt-20 pb-20 shadow-2xl rounded-3xl border-l-1">
+        <div className="backdrop:outer" >
+            <div className="relative flex flex-wrap items-center justify-center h-full py-20 inner-full" >
+                <div className="relative w-7/12 px-20 pt-20 pb-20 bg-white shadow-2xl rounded-3xl border-l-1">
                     <h1 className="text-4xl font-bold text-secondary-1">Sign Up as a Mentee</h1>
                     {/* Not sure the route for mentor sign up page, should be changed later */}
                     <h2 className="mt-2 text-xl">Interested in being a <a href="/signUpMentor" className="font-bold text-primary-1">mentor instead?</a></h2>
