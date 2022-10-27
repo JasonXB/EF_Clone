@@ -50,9 +50,10 @@ const DateSlot = ({ day, dayIndex, availabilities }) => {
         className={classNames(
           // ----- BACKGROUND CONDITIONS -----
           //selected day is today
-          isEqual(day, selectedDay) && 'bg-primary-5 border-4 border-primary-1',
+          isEqual(day, selectedDay) &&
+            'bg-primary-5 border-4 border-primary-1 py-9',
           //not the selected day
-          !isEqual(day, selectedDay) && 'hover:bg-gray-200',
+          !isEqual(day, selectedDay) && 'hover:bg-gray-200 px-10',
           // ----- TEXT CONDITIONS -----------
           //today
           isToday(day) && 'font-semibold',
@@ -61,7 +62,7 @@ const DateSlot = ({ day, dayIndex, availabilities }) => {
           //has no availability
           !isAvailable && 'text-smoke-1 line-through',
           // ----- DEFAULT CLASS -------------
-          'mx-auto flex h-8 w-8 items-center justify-center rounded py-9 px-9'
+          'mx-auto flex h-8 w-8 items-center justify-center rounded py-10 px-9'
         )}
       >
         <time dateTime={format(day, 'yyyy-MM-dd')}>{format(day, 'd')}</time>
