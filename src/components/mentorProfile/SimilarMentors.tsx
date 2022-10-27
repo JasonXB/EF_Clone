@@ -3,15 +3,14 @@ import BubbleTags from '../BubbleTags';
 import { BUBBLE_TAG_TYPE_CLASSES } from '../BubbleTag';
 import { dummySimilarMentorProfiles } from './dummySimilarMentorProfiles';
 import Button from '../buttons/reusable-buttons';
+import SimilarMentorsCarousel from './SimilarMentorsCarousel'
 
-// Temporarily displaying dummyMentor data
+// Temporarily displaying dummySimilarMentor data
 const {
   name,
-  title,
+  job,
   avatar,
-  socialMediaIcons,
   location,
-  responseTime,
   skills,
   percentBarSkills,
   about,
@@ -21,6 +20,7 @@ const {
 const SimilarMentors = ({}) => {
   return (
     <>
+    <SimilarMentorsCarousel data={dummySimilarMentorProfiles}/>
       {/* Top part */}
       <h1 className="mb-10 text-3xl font-bold text-primary-1 xl:mb-5">
         Simliar mentors
@@ -40,7 +40,7 @@ const SimilarMentors = ({}) => {
             {location}
           </h2>
           {/* Title */}
-          <h2 className="mb-2 text-lg">{title}</h2>
+          <h2 className="mb-2 text-lg">{job}</h2>
           <span className="flex flex-row justify-start mb-10 ">
             <BubbleTags
               tags={skills}
