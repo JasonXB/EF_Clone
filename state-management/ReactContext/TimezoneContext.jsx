@@ -27,6 +27,8 @@ if (typeof Intl.supportedValuesOf !== 'undefined') {
   listOfIANA = Intl.supportedValuesOf('timeZone');
 }
 
+console.log(listOfIANA);
+
 /*
   a set object of timezones not sorted 
     - e.g Pacific Standard Time 

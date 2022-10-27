@@ -1,7 +1,6 @@
 import { useContext } from 'react';
 import { useRouter } from 'next/router';
 import { parseISO, format } from 'date-fns';
-import Image from 'next/image';
 import mentorsData from '../../src/util/mentors.json';
 import Calendar from '../../src/components/calendar/Calendar';
 import TimeSlots from '../../src/components/timeSlots/TimeSlots';

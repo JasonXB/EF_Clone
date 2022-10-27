@@ -9,6 +9,7 @@ import {
 } from 'date-fns';
 import { CalendarContext } from '../../../state-management/ReactContext/CalendarContext';
 import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
+import { utcToZonedTime } from 'date-fns-tz';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -26,11 +27,24 @@ let colStartClasses = [
 
 const DateSlot = ({ day, dayIndex, availabilities }) => {
   const { selectedDay, setSelectedDay } = useContext(CalendarContext);
-  const { setSelectedTimeSlot } = useContext(TimezoneContext);
+  const { setSelectedTimeSlot, IANACounterpart } = useContext(TimezoneContext);
+
+  //variable used to adjust the date available based on the timezone
+  const timeZonedAvailabilities = availabilities.map((availability) => {
+    return {
+      startDatetime: utcToZonedTime(
+        availability.startDatetime,
+        IANACounterpart
+      ),
+      endDatetime: utcToZonedTime(availability.endDatetime, IANACounterpart),
+    };
+  });
 
   //check if there is availability in a date by referring to the availabilities prop
-  let isAvailable = availabilities.some((availability) =>
-    isSameDay(parseISO(availability.startDatetime), day)
+  const isAvailable = timeZonedAvailabilities.some(
+    (availability) =>
+      isSameDay(parseISO(availability.startDatetime), day) ||
+      isSameDay(availability.startDatetime, day)
   );
 
   //select date event handler-----------------
