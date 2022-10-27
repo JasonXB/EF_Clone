@@ -1,5 +1,4 @@
 import { useContext } from 'react';
-
 import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
 
 const Timezone = ({ zone, setDropdownToggle }) => {

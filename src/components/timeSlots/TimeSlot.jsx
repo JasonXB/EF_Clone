@@ -3,7 +3,7 @@
     https://xd.adobe.com/view/748b20f6-3f12-4c04-a128-f3ecbec94ef2-21d8/screen/962caf43-9fe9-44ed-93c5-e08de2342056/?hints=off
 */
 import { useContext } from 'react';
-import { format } from 'date-fns';
+import { format, isEqual } from 'date-fns';
 import { utcToZonedTime } from 'date-fns-tz';
 import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
 
@@ -32,8 +32,8 @@ const TimeSlot = ({ meeting }) => {
 
   const isTimeSlotSelected = () => {
     return (
-      meeting.startDatetime === selectedTimeSlot.startDatetime &&
-      meeting.endDatetime === selectedTimeSlot.endDatetime
+      isEqual(meeting.startDatetime, selectedTimeSlot.startDatetime) &&
+      isEqual(meeting.endDatetime, selectedTimeSlot.endDatetime)
     );
   };
 
@@ -41,8 +41,8 @@ const TimeSlot = ({ meeting }) => {
     <button
       className={classNames(
         isTimeSlotSelected() && 'border-4 bg-primary-5 font-bold',
-        !isTimeSlotSelected() && 'border font-medium',
-        `flex items-center px-6 py-6 space-x-4 group rounded-xl focus-within:bg-gray-100 hover:bg-gray-100 border-primary-1 w-full`
+        !isTimeSlotSelected() && 'border font-medium hover:bg-gray-100',
+        `flex items-center px-6 py-6 space-x-4 group rounded-xl focus-within:bg-gray-100  border-primary-1 w-full`
       )}
       onClick={selectTimeSlot}
     >

@@ -28,6 +28,8 @@ let colStartClasses = [
 const DateSlot = ({ day, dayIndex, availabilities }) => {
   const { selectedDay, setSelectedDay } = useContext(CalendarContext);
   const { setSelectedTimeSlot, IANACounterpart } = useContext(TimezoneContext);
+  //checkpoint!---------->fixing bug..when changing the timezone, the date with the blueborder must be changed as well
+  const zonedDay = utcToZonedTime(day, IANACounterpart);
 
   //variable used to adjust the date available based on the timezone
   const timeZonedAvailabilities = availabilities.map((availability) => {
@@ -49,7 +51,7 @@ const DateSlot = ({ day, dayIndex, availabilities }) => {
 
   //select date event handler-----------------
   const selectDate = () => {
-    setSelectedDay(day);
+    setSelectedDay(zonedDay);
     setSelectedTimeSlot({}); //reset the selected time slot whenever a date is clicked so that there is no time slot selected by default
   };
 
@@ -64,10 +66,10 @@ const DateSlot = ({ day, dayIndex, availabilities }) => {
         className={classNames(
           // ----- BACKGROUND CONDITIONS -----
           //selected day is today
-          isEqual(day, selectedDay) &&
+          isSameDay(zonedDay, selectedDay) &&
             'bg-primary-5 border-4 border-primary-1 py-9',
           //not the selected day
-          !isEqual(day, selectedDay) && 'hover:bg-gray-200 px-10',
+          !isSameDay(zonedDay, selectedDay) && 'hover:bg-gray-200 px-10',
           // ----- TEXT CONDITIONS -----------
           //today
           isToday(day) && 'font-semibold',

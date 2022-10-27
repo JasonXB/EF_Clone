@@ -52,18 +52,17 @@ const bookMeeting = (props) => {
   let timeReview = '';
 
   if (JSON.stringify(selectedTimeSlot) !== '{}') {
-    let startTimeISO = parseISO(selectedTimeSlot.startDatetime);
-    let endTimeISO = parseISO(selectedTimeSlot.endDatetime);
-    //Sep 17th Saturday
-    let formatteddateAndDay = format(startTimeISO, 'LLL do EEEE');
-
-    let formattedStartTime = format(startTimeISO, 'HH:mm a');
-    let formattedEndTime = format(endTimeISO, 'HH:mm a');
+    let formatteddateAndDay = format(
+      selectedTimeSlot.startDatetime,
+      'LLL do EEEE'
+    ); //Sep 17th Saturday
+    let formattedStartTime = format(selectedTimeSlot.startDatetime, 'hh:mm a'); //09:00 AM
+    let formattedEndTime = format(selectedTimeSlot.endDatetime, 'hh:mm a'); //11:30 AM
 
     //array of formatted date splitted into parts. this is used to get the timezone 'e.g PDT'
     const dateInParts = new Intl.DateTimeFormat('default', {
       timeZoneName: 'short',
-    }).formatToParts(startTimeISO);
+    }).formatToParts(selectedTimeSlot.startDatetime);
 
     // 'PDT'
     const timeZoneShort = dateInParts.find(

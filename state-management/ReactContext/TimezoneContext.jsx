@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useState, useContext } from 'react';
 import { formatInTimeZone } from 'date-fns-tz';
 
 //helper functions and variables to get the timezones-------------------------------------
@@ -26,8 +26,6 @@ let listOfIANA = [];
 if (typeof Intl.supportedValuesOf !== 'undefined') {
   listOfIANA = Intl.supportedValuesOf('timeZone');
 }
-
-console.log(listOfIANA);
 
 /*
   a set object of timezones not sorted 
