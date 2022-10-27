@@ -32,7 +32,19 @@ if (typeof Intl.supportedValuesOf !== 'undefined') {
     - e.g Pacific Standard Time 
 */
 const listOfTimezones = new Set(
-  listOfIANA.map((IANA) => getTimezoneOfIANA(IANA, 'long'))
+  listOfIANA.map((IANA) => {
+    let timezone = getTimezoneOfIANA(IANA, 'long');
+
+    //if the timezone is only GMT+11:00 which is not descriptive, add the IANA to label it
+    if (timezone.includes('GMT')) {
+      let IANAsplit = IANA.split('/'); //['Pacific', 'Bougainville']
+      let adjustedTimezone = IANAsplit[1] + ' ' + IANAsplit[0] + ' ' + timezone; //Bougainville Pacific GMT+11:00
+
+      timezone = adjustedTimezone;
+    }
+
+    return timezone;
+  })
 );
 
 //helper variables to get the currentTimezone-------------------------------------
@@ -70,7 +82,18 @@ const timezonePart = currentDateInParts.find(
           ]
 */
 const listOfKeyPairIANA = listOfIANA.map((IANA) => {
-  return { IANA: IANA, timezone: getTimezoneOfIANA(IANA, 'long') };
+  let timezone = getTimezoneOfIANA(IANA, 'long');
+  let keyPair = { IANA: IANA, timezone: timezone };
+
+  //if the timezone is only GMT+11:00 which is not descriptive, add the IANA to label it
+  if (timezone.includes('GMT')) {
+    let IANAsplit = IANA.split('/'); //['Pacific', 'Bougainville']
+    let adjustedTimezone = IANAsplit[1] + ' ' + IANAsplit[0] + ' ' + timezone; //Bougainville Pacific GMT+11:00
+
+    keyPair = { IANA: IANA, timezone: adjustedTimezone };
+  }
+
+  return keyPair;
 });
 
 /*
