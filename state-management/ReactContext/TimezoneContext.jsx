@@ -1,5 +1,4 @@
 import { createContext, useEffect, useState } from 'react';
-
 import { formatInTimeZone } from 'date-fns-tz';
 
 //helper functions and variables to get the timezones-------------------------------------
@@ -24,22 +23,19 @@ const getTimezoneOfIANA = (IANA, option) => {
   e.g 'Africa/Abidjan'
 */
 let listOfIANA = [];
-try {
+if (typeof Intl.supportedValuesOf !== 'undefined') {
   listOfIANA = Intl.supportedValuesOf('timeZone');
-} catch (err) {
-  console.log(err.toString());
 }
 
 /*
-    a set object of timezones not sorted 
-      - e.g Pacific Standard Time 
-    */
+  a set object of timezones not sorted 
+    - e.g Pacific Standard Time 
+*/
 const listOfTimezones = new Set(
   listOfIANA.map((IANA) => getTimezoneOfIANA(IANA, 'long'))
 );
 
 //helper variables to get the currentTimezone-------------------------------------
-
 /*
   currentDateInParts returns an array that splites the date into parts indicated below
   [
@@ -52,7 +48,6 @@ const listOfTimezones = new Set(
     {type: 'timeZoneName', value: 'PDT'} 
   ]
 */
-
 const currentDateInParts = new Intl.DateTimeFormat('default', {
   timeZoneName: 'long',
 }).formatToParts(new Date());
@@ -88,19 +83,11 @@ const listOfkeyPairUnique = [
 ];
 
 //helper function that takes in the argument such as 'Pacific Daylight Timezone' and return the object
-
-const getIANACounterpart = (timezone) => {
-  const keyPairIANAResult = listOfkeyPairUnique.find(
+const getIANACounterpart = async (timezone) => {
+  const keyPairIANAResult = await listOfkeyPairUnique.find(
     (keyPairIANA) => keyPairIANA.timezone === timezone
   );
-
-  let IANAResult = '';
-  try {
-    IANAResult = keyPairIANAResult.IANA;
-  } catch (err) {
-    console.log(err.toString());
-  }
-
+  const IANAResult = keyPairIANAResult && keyPairIANAResult.IANA;
   return IANAResult;
 };
 
@@ -135,7 +122,9 @@ export const TimezoneProvider = ({ children }) => {
   );
 
   useEffect(() => {
-    setIANACounterpart(getIANACounterpart(selectedTimezone));
+    getIANACounterpart(selectedTimezone).then((IANACounterpart) =>
+      setIANACounterpart(IANACounterpart)
+    );
   }, [selectedTimezone]);
 
   const value = {

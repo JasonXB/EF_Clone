@@ -80,8 +80,6 @@ const bookMeeting = (props) => {
       ' (' +
       timeZoneShort +
       ')';
-
-    console.log(timeReview);
   }
 
   return (

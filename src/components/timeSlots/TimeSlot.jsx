@@ -20,6 +20,7 @@ const TimeSlot = ({ meeting }) => {
     meeting.startDatetime,
     IANACounterpart
   );
+
   const convertedEndTime = utcToZonedTime(meeting.endDatetime, IANACounterpart);
 
   const selectTimeSlot = () => {
@@ -35,8 +36,6 @@ const TimeSlot = ({ meeting }) => {
       meeting.endDatetime === selectedTimeSlot.endDatetime
     );
   };
-
-  console.log(isTimeSlotSelected());
 
   return (
     <button
