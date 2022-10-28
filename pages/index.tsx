@@ -1,7 +1,8 @@
 import type { NextPage } from 'next';
-import HomePageBanner from '../src/components/homepage/ HomePageBanner';
+import HomePageBanner from '../src/components/homepage/HomePageBanner';
 import ReusableCards from '../src/components/homepage/ReusableCards';
-
+import mentorGraphic from '../public/assets/mentorImageHomePage.png';
+import menteeGraphic from '../public/assets/menteeImageHomePage.png';
 import Layout from '../src/components/Layout';
 
 const ReusableCardData = [
@@ -12,7 +13,7 @@ const ReusableCardData = [
       'Join us: Share who you are and show mentors what you need help with.',
     buttonText: 'Learn More',
     buttonLink: '/',
-    img: '',
+    img: menteeGraphic,
     imgAlt: 'two people chatting in speech bubbles',
   },
   {
@@ -21,7 +22,7 @@ const ReusableCardData = [
       'Join us: share who you are and show young adults what you can help them with.',
     buttonText: 'Learn More',
     buttonLink: '/',
-    img: '',
+    img: mentorGraphic,
     imgAlt: 'two people connected puzzle pieces together.',
   },
 ];
@@ -30,7 +31,7 @@ const Home: NextPage = ({}) => {
   return (
     <Layout>
       <HomePageBanner />
-      <div className="flex flex-col space-y-6 md:space-y-0 md:flex-row md:space-x-8">
+      <div className="flex flex-col mx-auto space-y-6 w-fit md:space-y-0 md:flex-row md:space-x-8 lg:space-x-20">
         {ReusableCardData.map((each, i) => (
           <ReusableCards
             key={i}
