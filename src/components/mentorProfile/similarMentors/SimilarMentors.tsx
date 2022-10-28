@@ -1,9 +1,17 @@
-import MentorProfilePercentBars from './MentorProfilePercentBars';
-import BubbleTags from '../BubbleTags';
-import { BUBBLE_TAG_TYPE_CLASSES } from '../BubbleTag';
+import MentorProfilePercentBars from './../MentorProfilePercentBars';
+import BubbleTags from '../../BubbleTags';
+import { BUBBLE_TAG_TYPE_CLASSES } from '../../BubbleTag';
 import { dummySimilarMentorProfiles } from './dummySimilarMentorProfiles';
-import Button from '../buttons/reusable-buttons';
+import Button from '../../buttons/reusable-buttons';
 import SimilarMentorsCarousel from './SimilarMentorsCarousel'
+import { useState } from 'react'
+import { useGlobalContext } from '../../../../state-management/ReactContext/Context';
+
+
+
+const SimilarMentors = ({}) => {
+
+  const { selectedSimilarMentor } = useGlobalContext();
 
 // Temporarily displaying dummySimilarMentor data
 const {
@@ -15,21 +23,24 @@ const {
   percentBarSkills,
   about,
   availability,
-} = dummySimilarMentorProfiles[0];
+  selected }
+= selectedSimilarMentor
 
-const SimilarMentors = ({}) => {
+
   return (
-    <>
-    <SimilarMentorsCarousel data={dummySimilarMentorProfiles}/>
-      {/* Top part */}
-      <h1 className="mb-10 text-3xl font-bold text-primary-1 xl:mb-5">
-        Simliar mentors
+    
+    <div className='px-20 '>
+       {/* Top part */}
+          <h1 className="mb-10 text-3xl font-bold text-primary-1 xl:mb-5">
+        Similar mentors
       </h1>
-      
+      {/* Carousel */}
+    <SimilarMentorsCarousel data={dummySimilarMentorProfiles}/>
+     
       {/* Bottom part */}
       {/* Left - Name, location, details etc */}
-      <div className="flex items-center justify-center px-8 mt-10 border-2 border-gray-300 shadow rounded-xl">
-        <div className="flex flex-col w-1/2">
+      <div className="flex items-center px-12 mt-10 border-2 border-gray-300 shadow rounded-xl">
+        <div className="flex flex-col w-2/3">
           {/* Name */}
           <h1 className="mb-6 text-4xl font-semibold text-black xl:text-3xl lg:mb-2 xl:mb-2">
             {name}
@@ -54,18 +65,22 @@ const SimilarMentors = ({}) => {
 
           {/* About */}
           <p className="mb-0 text-lg">About: </p>
-          <p className="mb-5">{about}</p>
-          <div className="flex mb-10">
-            <Button>View Profile</Button>
+          <p className="mb-8">{about}</p>
+          <div className="flex justify-center mb-10">
+            <Button variant='secondary'>View Profile</Button>
           </div>
         </div>
         
         {/* Right - Percent bars */}
-        <span className="flex flex-col justify-start mb-10 ">
-          <MentorProfilePercentBars percentBarSkills={percentBarSkills} />
-        </span>
+        <div className="flex justify-start mb-10 ">
+          <MentorProfilePercentBars percentBarSkills={percentBarSkills!} />
+       
+        </div>
+        <span className="mb-10 bg-dark">
+        <Button className='relative inset-0 ' variant="iconOnly">X</Button>        </span>
+
       </div>
-    </>
+      </div>
   );
 };
 

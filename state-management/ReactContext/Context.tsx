@@ -2,24 +2,32 @@ import React from 'react';
 import { ReactNode, useState, createContext, useContext } from 'react';
 import { Data } from '../../src/interface/data.interface';
 import { dummyMentors } from '../../src/temporary/dummyMentors';
+import { dummySimilarMentorProfiles } from '../../src/components/mentorProfile/similarMentors/dummySimilarMentorProfiles'
+import { MiniCardProps } from '../../src/components/mentorProfile/similarMentors/SimilarMentorsCarousel'
 
-type searchContextType = {
+
+type contextType = {
   currentFilteredData: Array<Data>;
   filterSearch: (data: Array<Data>, searchValue: string) => void;
+  selectedSimilarMentor: MiniCardProps;
+  selectSimilarMentor: (i:number) => void
 };
 
 // default data set to dummyMentors for the time being.
-const searchContextDefaultValues: searchContextType = {
+const contextDefaultValues: contextType = {
   currentFilteredData: dummyMentors,
   filterSearch: () => {},
+  selectedSimilarMentor: dummySimilarMentorProfiles[0],
+  selectSimilarMentor: () => {}
+
 };
 
-const SearchContext = createContext<searchContextType>(
-  searchContextDefaultValues
+const GlobalContext = createContext<contextType>(
+  contextDefaultValues
 );
 
-export function useSearchContext() {
-  return useContext(SearchContext);
+export function useGlobalContext() {
+  return useContext(GlobalContext);
 }
 
 type Props = {
@@ -29,11 +37,21 @@ type Props = {
 // currently, only one generic state variable defined for currentFilteredData
 // as more use cases for SearchInput components become apparent, more variables can be defined to handle different kinds of state
 
-export function SearchProvider({ children }: Props) {
+export function ContextProvider({ children }: Props) {
   // State variable to display current filtered data on UI
   const [currentFilteredData, setCurrentFilteredData] = useState(
-    searchContextDefaultValues.currentFilteredData
+    contextDefaultValues.currentFilteredData
   );
+
+  // Context for similar mentors carousel 
+  const [selectedSimilarMentor, setSelectedSimilarMentor] = useState<any>(dummySimilarMentorProfiles[0])
+
+  const selectSimilarMentor = (i: number) => {
+    console.log(dummySimilarMentorProfiles[i])
+    setSelectedSimilarMentor(dummySimilarMentorProfiles[i])
+  }
+
+  // React.MouseEventHandler<HTMLLIElement> 
 
   // Function which takes a) an array of objects (data) and b) a searchValue as parameters.
   // In the end, sets the currentFilteredData state to the data filtered by what is entered in SearchForm.
@@ -61,13 +79,16 @@ export function SearchProvider({ children }: Props) {
   const value = {
     currentFilteredData,
     filterSearch,
+    selectedSimilarMentor,
+    selectSimilarMentor
+  
   };
 
   return (
     <>
-      <SearchContext.Provider value={value}>
+      <GlobalContext.Provider value={value}>
         <>{children}</>
-      </SearchContext.Provider>
+      </GlobalContext.Provider>
     </>
   );
 }

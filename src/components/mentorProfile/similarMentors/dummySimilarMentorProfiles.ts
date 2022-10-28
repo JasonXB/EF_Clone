@@ -1,5 +1,5 @@
 
-import hiba from '../../assets/hiba.png'
+import hiba from '../../../assets/hiba.png'
 
 export const dummySimilarMentorProfiles = [
     {
@@ -18,6 +18,7 @@ export const dummySimilarMentorProfiles = [
       ],
       about: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam aut voluptatibus, corrupti in placeat libero necessitatibus numquam architecto corporis? Quo nulla nisi aperiam maiores explicabo inventore ex quaerat voluptates dolor?',
       availability: 'Every day after 1 pm',
+      selected: false
     },
 
     {
@@ -36,6 +37,8 @@ export const dummySimilarMentorProfiles = [
       ],
       about: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam aut voluptatibus, corrupti in placeat libero necessitatibus numquam architecto corporis? Quo nulla nisi aperiam maiores explicabo inventore ex quaerat voluptates dolor?',
       availability: 'Weekends after 11 pm',
+      selected: false
+
     },
 
     {
@@ -54,6 +57,8 @@ export const dummySimilarMentorProfiles = [
       ],
       about: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam aut voluptatibus, corrupti in placeat libero necessitatibus numquam architecto corporis? Quo nulla nisi aperiam maiores explicabo inventore ex quaerat voluptates dolor?',
       availability: 'Weekends after 7 pm',
+      selected: false
+
     },
     {
       name: 'Kelsey Hall',
@@ -71,6 +76,8 @@ export const dummySimilarMentorProfiles = [
       ],
       about: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam aut voluptatibus, corrupti in placeat libero necessitatibus numquam architecto corporis? Quo nulla nisi aperiam maiores explicabo inventore ex quaerat voluptates dolor?',
       availability: 'Weekends after 7 pm',
+      selected: false
+
     },
     {
       name: 'Joshua Padron-Uy',
@@ -88,6 +95,8 @@ export const dummySimilarMentorProfiles = [
       ],
       about: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam aut voluptatibus, corrupti in placeat libero necessitatibus numquam architecto corporis? Quo nulla nisi aperiam maiores explicabo inventore ex quaerat voluptates dolor?',
       availability: 'Weekends after 7 pm',
+      selected: false
+
     },
     {
       name: 'Roland Mackintosh',
@@ -105,6 +114,8 @@ export const dummySimilarMentorProfiles = [
       ],
       about: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam aut voluptatibus, corrupti in placeat libero necessitatibus numquam architecto corporis? Quo nulla nisi aperiam maiores explicabo inventore ex quaerat voluptates dolor?',
       availability: 'Weekends after 7 pm',
+      selected: false
+
     },
     {
       name: 'Vincent Vuong',
@@ -122,6 +133,8 @@ export const dummySimilarMentorProfiles = [
       ],
       about: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam aut voluptatibus, corrupti in placeat libero necessitatibus numquam architecto corporis? Quo nulla nisi aperiam maiores explicabo inventore ex quaerat voluptates dolor?',
       availability: 'Weekends after 7 pm',
+      selected: false
+
     }
   
   ]

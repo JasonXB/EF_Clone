@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Data } from '../interface/data.interface';
 import { SearchInputProps } from '../interface/search-input-props.interface';
-import { useSearchContext } from '../../state-management/ReactContext/SearchContext';
+import { useSearchContext } from '../../state-management/ReactContext/Context';
 
 const SearchInput = ({ data }: SearchInputProps) => {
   const { filterSearch } = useSearchContext();

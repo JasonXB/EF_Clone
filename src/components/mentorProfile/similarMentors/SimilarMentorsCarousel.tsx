@@ -2,8 +2,9 @@ import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide';
 // Docs for splide https://splidejs.com/
 
 import '@splidejs/react-splide/css';
+import SimilarMentorsMiniProfile from './SimilarMentorsMiniProfile';
+import { useGlobalContext } from '../../../../state-management/ReactContext/Context';
 
-import MiniProfileCard from '../MiniProfileCard';
 
 export interface MiniCardProps {
   name: string;
@@ -16,8 +17,10 @@ export interface MiniCardProps {
   percentBarSkills?: Array<{
     name: string;
     percentage: number,
-  }>
+  }>,
+  selected: boolean
 }
+
 
 type dataType = {
   data: MiniCardProps[];
@@ -26,13 +29,17 @@ type dataType = {
 
 
 //need to fix arrows adjustment and progress dots
-const ResponsiveSlider = ({ data }: { data: dataType }) => {
+const ResponsiveSlider = ({ data }: { data: dataType },
+) => {
+  const { selectSimilarMentor } = useGlobalContext();
+
+
   const length: number = data.data.length;
   const Options = {
     perPage: 3,
     gap: '2em',
     pagination: false,
-    // padding: { left: '3rem', right: '3rem' },
+    padding: { left: '4rem', right: '4rem' },
     lazyLoad: true,
     arrows: length < 4 ? false : true,
     breakpoints: {
@@ -48,7 +55,8 @@ const ResponsiveSlider = ({ data }: { data: dataType }) => {
   };
 
   return (
-    <div className="mx-auto max-w-[1200px]">
+    // max-w-[1400px]
+    <div className="mx-auto ">
       <Splide
         options={Options}
         aria-label="show case mentorship requests"
@@ -56,8 +64,8 @@ const ResponsiveSlider = ({ data }: { data: dataType }) => {
         id="similarMentorsSplideComponent"
       >
         {data.data?.map((each, i) => (
-          <SplideSlide key={i}>
-            <MiniProfileCard
+          <SplideSlide key={i} onClick={() => selectSimilarMentor(i)} className='cursor-pointer'>
+            <SimilarMentorsMiniProfile
           name={each.name} avatar={each.avatar} location={each.location} job={each.job} tags={each.skills} compatibilityPercent={50}
               key={i}
             />
@@ -69,10 +77,6 @@ const ResponsiveSlider = ({ data }: { data: dataType }) => {
 };
 const SimilarMentorsCarousel = (data: dataType) => (
   <>
-    <h1 className="py-4 text-4xl text-center md:text-5xl text-primary-1">
-      Similar Mentors
-    </h1>
-
     {/* logic if there are no requests */}
     {data.data?.length === 0 ? (
       <div className="w-1/2 mx-auto mt-[10%]">

@@ -1,10 +1,10 @@
-import { useSearchContext } from '../../state-management/ReactContext/SearchContext';
+import { useGlobalContext } from '../../state-management/ReactContext/Context';
 import SearchResult from './SearchResult';
 
 // Temporary component used to test SearchInput component
 // maps currentFilteredData and returns a SearchResult component for each result
 const SearchResults = () => {
-  const { currentFilteredData } = useSearchContext();
+  const { currentFilteredData } = useGlobalContext();
 
   return (
     <>

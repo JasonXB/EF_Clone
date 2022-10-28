@@ -21,7 +21,7 @@ const MiniProfileCard = ({ ...mentorsInfo }: MentorsInfoProps) => {
     <div className={`${style.miniProfileCard} flex`}>
       <Avatar
         imgLocation={avatar}
-        displaySize="mediumLarge"
+        displaySize="small"
         personsName={name}
       />
       <div className={`${style.infoContainer} font-mainFont pl-3`}>
