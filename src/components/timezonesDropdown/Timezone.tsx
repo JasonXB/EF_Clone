@@ -1,7 +1,10 @@
-import { useContext } from 'react';
+import { useContext, ReactNode } from 'react';
+import { TimezoneProps } from '../../interface/book-meeting/book-with-mentor.interface'
 import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
 
-const Timezone = ({ zone, setDropdownToggle }) => {
+
+
+const Timezone = ({ zone, setDropdownToggle }: TimezoneProps) => {
   const { setSelectedTimezone } = useContext(TimezoneContext);
 
   const selectTimezone = () => {

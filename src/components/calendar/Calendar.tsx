@@ -2,8 +2,11 @@ import { useContext } from 'react';
 import { add, format } from 'date-fns';
 import DateSlot from './DateSlot';
 import { CalendarContext } from '../../../state-management/ReactContext/CalendarContext';
+import { v4 as uuidv4 } from 'uuid';
+import { MeetingAvailabilityProps } from '../../interface/book-meeting/book-with-mentor.interface'
 
-export default function Calendar({ availability }) {
+
+export default function Calendar({ meeting_availability }: MeetingAvailabilityProps) {
   const { setCurrentMonth, firstDayCurrentMonth, days } =
     useContext(CalendarContext);
 
@@ -91,10 +94,10 @@ export default function Calendar({ availability }) {
       <div className="grid grid-cols-7 grid-rows-6 my-2 text-2xl">
         {days.map((day, dayIdx) => (
           <DateSlot
-            key={day}
+            key={uuidv4()}
             day={day}
             dayIndex={dayIdx}
-            availabilities={availability.specific}
+            availabilities={meeting_availability.specific}
           />
         ))}
         {/* -- */}

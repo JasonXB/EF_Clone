@@ -1,4 +1,4 @@
-import mentorsData from '../../src/tempData/dummyMentorsForCalendar.json';
+import { mentorsData } from '../../src/tempData/dummyMentorsForCalendar';
 import Link from 'next/link';
 
 //JSON file for list of mentors that the mentee applied to

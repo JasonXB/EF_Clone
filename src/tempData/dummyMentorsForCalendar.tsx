@@ -1,4 +1,5 @@
-[
+// Placeholder data, delete in future//////
+export const mentorsData = [
     {
         "mentor_id": 412,
         "name": "Sarah Geronimo",

@@ -1,5 +1,4 @@
-import { createContext, useState } from 'react';
-
+import { createContext, useState, ReactNode, Dispatch, SetStateAction } from 'react';
 import {
   eachDayOfInterval,
   endOfMonth,
@@ -8,18 +7,22 @@ import {
   startOfToday,
 } from 'date-fns';
 
+const today = startOfToday();
+
 export const CalendarContext = createContext({
-  today: new Date(),
   selectedDay: new Date(),
-  setSelectedDay: () => {},
-  currentMonth: new Date(),
-  setCurrentMonth: () => {},
+  setSelectedDay: (() => {}) as Dispatch<SetStateAction<Date>>,
+  currentMonth: '',
+  setCurrentMonth: (() => {}) as Dispatch<SetStateAction<string>>,
   firstDayCurrentMonth: new Date(),
-  days: [],
+  days: [] as Date[],
 });
 
-export const CalendarProvider = ({ children }) => {
-  const today = startOfToday();
+interface Children {
+  children: ReactNode
+}
+
+export const CalendarProvider = ({ children }: Children) => {
   const [selectedDay, setSelectedDay] = useState(today); //Mon Oct 17 2022 00:00:00 GMT-0700 (Pacific Daylight Time)
   const [currentMonth, setCurrentMonth] = useState(format(today, 'MMM-yyyy')); //Oct-2022
   let firstDayCurrentMonth = parse(currentMonth, 'MMM-yyyy', new Date()); //Sat Oct 01 2022 00:00:00 GMT-0700 (Pacific Daylight Time)

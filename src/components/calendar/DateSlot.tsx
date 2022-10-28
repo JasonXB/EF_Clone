@@ -2,16 +2,16 @@ import { useContext } from 'react';
 import {
   format,
   getDay,
-  isEqual,
   isSameDay,
   isToday,
   parseISO,
 } from 'date-fns';
+import { utcToZonedTime } from 'date-fns-tz';
+import { DateSlotProps } from '../../interface/book-meeting/book-with-mentor.interface'
 import { CalendarContext } from '../../../state-management/ReactContext/CalendarContext';
 import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
-import { utcToZonedTime } from 'date-fns-tz';
 
-function classNames(...classes) {
+function classNames(...classes: (string | boolean)[]) {
   return classes.filter(Boolean).join(' ');
 }
 //grid styling used to align the date with the days
@@ -25,27 +25,29 @@ let colStartClasses = [
   'col-start-6',
 ];
 
-const DateSlot = ({ day, dayIndex, availabilities }) => {
+
+
+const DateSlot = ({ day, dayIndex, availabilities }: DateSlotProps) => {
   const { selectedDay, setSelectedDay } = useContext(CalendarContext);
   const { setSelectedTimeSlot, IANACounterpart } = useContext(TimezoneContext);
   //checkpoint!---------->fixing bug..when changing the timezone, the date with the blueborder must be changed as well
-  const zonedDay = utcToZonedTime(day, IANACounterpart);
+  const zonedDay = utcToZonedTime(day, IANACounterpart as unknown as string);
 
   //variable used to adjust the date available based on the timezone
   const timeZonedAvailabilities = availabilities.map((availability) => {
     return {
       startDatetime: utcToZonedTime(
         availability.startDatetime,
-        IANACounterpart
+        IANACounterpart as unknown as string
       ),
-      endDatetime: utcToZonedTime(availability.endDatetime, IANACounterpart),
+      endDatetime: utcToZonedTime(availability.endDatetime, IANACounterpart as unknown as string),
     };
   });
 
   //check if there is availability in a date by referring to the availabilities prop
   const isAvailable = timeZonedAvailabilities.some(
     (availability) =>
-      isSameDay(parseISO(availability.startDatetime), day) ||
+      isSameDay(parseISO(availability.startDatetime as unknown as string), day) ||
       isSameDay(availability.startDatetime, day)
   );
 

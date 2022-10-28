@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from 'react';
+import { useContext, useState, useEffect, SetStateAction } from 'react';
 import { useRouter } from 'next/router';
 import { format } from 'date-fns';
 import Calendar from '../../src/components/calendar/Calendar';
@@ -8,20 +8,20 @@ import Button from '../../src/components/buttons/reusable-buttons';
 import Layout from '../../src/components/Layout';
 import Avatar from '../../src/components/avatar/avatar';
 import { TimezoneContext } from '../../state-management/ReactContext/TimezoneContext';
-
-import mentorsData from '../../src/tempData/dummyMentorsForCalendar';
+import { mentorsData } from '../../src/tempData/dummyMentorsForCalendar';
+import { Mentor } from '../../src/interface/book-meeting/book-with-mentor.interface';
 
 const BookMeeting = () => {
   const router = useRouter();
   const mentorId = router.query.mentorId;
-  const [thisMentor, setThisMentor] = useState({});
+  const [thisMentor, setThisMentor] = useState({} as Mentor);
 
   useEffect(() => {
     if (router.isReady) {
-      const findMentor = mentorsData.find(
+      const mentorFound = mentorsData.find(
         (mentor) => mentor.mentor_id.toString() === mentorId
       );
-      setThisMentor(findMentor);
+      setThisMentor(mentorFound as SetStateAction<Mentor>);
     } else {
       console.log('loading');
     }
@@ -49,7 +49,7 @@ const BookMeeting = () => {
     // 'PDT'
     const timeZoneShort = dateInParts.find(
       (element) => element.type === 'timeZoneName'
-    ).value;
+    )?.value;
     //Sep 17th Saturday 05:00 PM - 06:30 PM (EST)
     timeReview =
       formatteddateAndDay +
@@ -100,7 +100,7 @@ const BookMeeting = () => {
                 {/* style to separate the calendar and timeslot blocks in its own grids */}
                 <div className="md:grid md:grid-cols-3">
                   <div className="col-span-2">
-                    <Calendar availability={meeting_availability} />
+                    <Calendar meeting_availability={meeting_availability} />
                   </div>
 
                   {/* available time slots block */}

@@ -6,22 +6,23 @@ import { useContext } from 'react';
 import { format, isEqual } from 'date-fns';
 import { utcToZonedTime } from 'date-fns-tz';
 import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
+import { MeetingProps } from '../../interface/book-meeting/book-with-mentor.interface'
 
-function classNames(...classes) {
+function classNames(...classes: (string | boolean)[]) {
   return classes.filter(Boolean).join(' ');
 }
 
-const TimeSlot = ({ meeting }) => {
+const TimeSlot = ({ meeting }: MeetingProps) => {
   const { selectedTimeSlot, setSelectedTimeSlot, IANACounterpart } =
     useContext(TimezoneContext);
 
   //converted timezones by referring to the useState variable IANACounterpart-------------
   const convertedStartTime = utcToZonedTime(
     meeting.startDatetime,
-    IANACounterpart
+    IANACounterpart as unknown as string
   );
 
-  const convertedEndTime = utcToZonedTime(meeting.endDatetime, IANACounterpart);
+  const convertedEndTime = utcToZonedTime(meeting.endDatetime, IANACounterpart as unknown as string);
 
   const selectTimeSlot = () => {
     setSelectedTimeSlot({
@@ -48,11 +49,11 @@ const TimeSlot = ({ meeting }) => {
     >
       <div className="flex-auto">
         <p>
-          <time dateTime={convertedStartTime}>
+          <time dateTime={format(convertedStartTime, 'hh:mm a')}>
             {format(convertedStartTime, 'hh:mm a')}
           </time>{' '}
           -{' '}
-          <time dateTime={convertedEndTime}>
+          <time dateTime={format(convertedEndTime, 'hh:mm a')}>
             {format(convertedEndTime, 'hh:mm a')}
           </time>
         </p>

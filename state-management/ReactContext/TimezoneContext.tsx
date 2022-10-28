@@ -1,9 +1,9 @@
-import { createContext, useEffect, useState, useContext } from 'react';
+import { createContext, useEffect, useState, ReactNode, Dispatch, SetStateAction  } from 'react';
 import { formatInTimeZone } from 'date-fns-tz';
 
 //helper functions and variables to get the timezones-------------------------------------
 
-const getTimezoneOfIANA = (IANA, option) => {
+const getTimezoneOfIANA = (IANA: string, option: string) => {
   //timezone may be 'long' or 'short' as a string
   let selectedOption = 'z';
 
@@ -18,6 +18,16 @@ const getTimezoneOfIANA = (IANA, option) => {
   return timeZone;
 };
 
+interface Option {
+  timeZoneName: string
+}
+interface customIntl {
+  supportedValuesOf: Function,
+  DateTimeFormat: new (local: string, option: Option) => {
+    formatToParts: Function
+  }
+}
+declare const Intl: customIntl;
 /* 
   array of IANA with each IANA as strings
   e.g 'Africa/Abidjan'
@@ -32,7 +42,7 @@ if (typeof Intl.supportedValuesOf !== 'undefined') {
     - e.g Pacific Standard Time 
 */
 const listOfTimezones = new Set(
-  listOfIANA.map((IANA) => {
+  listOfIANA.map((IANA: string) => {
     let timezone = getTimezoneOfIANA(IANA, 'long');
 
     //if the timezone is only GMT+11:00 which is not descriptive, add the IANA to label it
@@ -60,16 +70,21 @@ const listOfTimezones = new Set(
     {type: 'timeZoneName', value: 'PDT'} 
   ]
 */
+
 const currentDateInParts = new Intl.DateTimeFormat('default', {
   timeZoneName: 'long',
 }).formatToParts(new Date());
 
+interface DatePart {
+  type: string,
+  value: string
+}
 /*
  timezonePart is an object with type timeZoneName from the array currentDateInParts
   - e.g {type: 'timeZoneName', value: 'PDT'} 
 */
 const timezonePart = currentDateInParts.find(
-  (datePart) => datePart.type === 'timeZoneName'
+  (datePart: DatePart) => datePart.type === 'timeZoneName'
 );
 
 //helper variables to convert timzones----------------------------------------
@@ -81,7 +96,7 @@ const timezonePart = currentDateInParts.find(
             {IANA: 'Indian/Mayotte', timezone: 'East Africa Time'}
           ]
 */
-const listOfKeyPairIANA = listOfIANA.map((IANA) => {
+const listOfKeyPairIANA = listOfIANA.map((IANA: string) => {
   let timezone = getTimezoneOfIANA(IANA, 'long');
   let keyPair = { IANA: IANA, timezone: timezone };
 
@@ -96,17 +111,37 @@ const listOfKeyPairIANA = listOfIANA.map((IANA) => {
   return keyPair;
 });
 
-/*
-  the unique version of listOfKeyPairIANA (unique according to timezone)
+
+interface KeyPairIANA {
+  IANA: string,
+  timezone: string
+}
+/*array of keyPair arrays 
+  [
+      ['Greenwich Mean Time', {IANA: "Africa/Abidjan", timezone: "Greenwich Mean Time"}],
+      ['East Africa Time', {IANA: "Africa/Addis_Ababa", timezone: "East Africa Time"}]
+  ]
 */
-const listOfkeyPairUnique = [
-  ...new Map(
-    listOfKeyPairIANA.map((item) => [item['timezone'], item])
-  ).values(),
-];
+const IANAKeyPairMapItem = listOfKeyPairIANA.map((keyPairIANA: KeyPairIANA) => [keyPairIANA['timezone'], keyPairIANA]);
+
+// IANAKeyPairMapItem converted to Map object so that we can iterate through it to make a unique array
+const IANAKeyPairMap = new Map(IANAKeyPairMapItem);
+
+//helper function that takes in a Map and returns an array of unique IANA keypair values 
+const getMapItemValues = () => {
+  const mapIterator = IANAKeyPairMap.values();
+  const uniqueArray = [];
+  for (let i = 0; i < IANAKeyPairMap.size; i++) {
+    uniqueArray.push(mapIterator.next().value);
+  }
+  return uniqueArray;
+};
+
+const listOfkeyPairUnique = getMapItemValues();
+
 
 //helper function that takes in the argument such as 'Pacific Daylight Timezone' and return the object
-const getIANACounterpart = async (timezone) => {
+const getIANACounterpart = async (timezone: string) => {
   const keyPairIANAResult = await listOfkeyPairUnique.find(
     (keyPairIANA) => keyPairIANA.timezone === timezone
   );
@@ -114,21 +149,30 @@ const getIANACounterpart = async (timezone) => {
   return IANAResult;
 };
 
+interface SelectedTimeSlot {
+  startDatetime: Date,
+  endDatetime: Date,
+}
 //----------------------------------------------------------------------------
 
 export const TimezoneContext = createContext({
-  timezones: [],
+  timezones: [] as string[],
   selectedTimezone: '',
-  setSelectedTimezone: () => {},
-  selectedTimeSlot: new Date(),
-  setSelectedTimeSlot: () => {},
-  IANACounterpart: '',
-  setIANACounterpart: () => {},
+  setSelectedTimezone: (() => {}) as Dispatch<any>,
+  selectedTimeSlot: { } as any, //must fix but on interface as SelectedTimeSlot
+  setSelectedTimeSlot: (() => {}) as Dispatch<SetStateAction<{}>>,
+  IANACounterpart: {} as Promise<string>,
+  setIANACounterpart: (() => {}) as Dispatch<SetStateAction<Promise<any>>>
 });
 
-export const TimezoneProvider = ({ children }) => {
+interface Children {
+  children: ReactNode
+}
+
+
+export const TimezoneProvider = ({ children }: Children) => {
   //a sorted array of timezones e.g [Pacific Daylight Time, Central Standard Time...] which is used to populate the dropdown menu options
-  const timezones = Array.from(listOfTimezones).sort();
+  const timezones = Array.from(listOfTimezones).sort() as string[];
   /*
     the variable used to store the selected timezone in the dropdown menu
     the initial value is the currentTimezone according to the locale of the user 
@@ -157,6 +201,7 @@ export const TimezoneProvider = ({ children }) => {
     selectedTimeSlot,
     setSelectedTimeSlot,
     IANACounterpart,
+    setIANACounterpart
   };
 
   return (
