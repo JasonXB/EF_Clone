@@ -1,8 +1,8 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import Button from '../../src/components/buttons/reusable-buttons';
-import TitledInput from './TitledInput';
+import Button from '../buttons/reusable-buttons';
+import TitledInput from '../titledInput/TitledInput';
 
 const SignUpFormMentee = () => {
   const router = useRouter();
