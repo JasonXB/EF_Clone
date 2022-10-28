@@ -1,5 +1,4 @@
 import MentorProfileMain from '../../../src/components/mentorProfile/MentorProfileMain';
-import { dummyMentorProfiles } from '../../../src/components/mentorProfile/dummyMentorProfiles';
 
 // Below line is placed in the tests in order to see the component on the Cypress testing environment. (browser)
 // cy.get('body');

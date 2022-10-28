@@ -11,7 +11,6 @@ describe('gradient-bar.cy.tsx', () => {
 
   it('Status: Viewed', () => {
     cy.mount(<GradientBar status="Viewed" />);
-
     cy.get('body');
   });
 

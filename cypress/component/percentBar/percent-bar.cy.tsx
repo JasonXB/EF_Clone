@@ -11,6 +11,11 @@ describe('percent-bar.cy.tsx', () => {
     cy.get('body');
   });
 
+  it('check when the optional prop showPercentageText is not declared ', () => {
+    cy.mount(<PercentageBar percentage={50} color="blue" />);
+    cy.get('span').should('not.exist');
+  });
+
   it('check the percentage is shown correctly on the bar', () => {
     const percentage = 60;
     cy.mount(
@@ -33,7 +38,6 @@ describe('percent-bar.cy.tsx', () => {
         showPercentageText={false}
       />
     );
-
     cy.get('div')
       .find('div')
       .find('div')
@@ -50,7 +54,6 @@ describe('percent-bar.cy.tsx', () => {
         showPercentageText={false}
       />
     );
-
     cy.get('div')
       .find('div')
       .find('div')
