@@ -1,5 +1,4 @@
-import { fetchMentorPics } from '../../src/util/mentor-pics';
-import mentorsData from '../../src/util/mentors.json';
+import mentorsData from '../../src/tempData/dummyMentorsForCalendar.json';
 import Link from 'next/link';
 
 //JSON file for list of mentors that the mentee applied to
@@ -11,16 +10,15 @@ To test this branch, please refer to:
 - DevTest/calendarPage.jsx
 
 The files that this branch is working on: 
+- book-meeting/[id].jsx
 - Calendar Component
 - DateSlot Component
 - TimeSlots Component
 - TimeSlot Component
-- Calendar Page
-- Book Meeting Context
-- Calendar Context
 - TimeZones Dropdown Component
 - Timezone Component
 - Timezone Context
+- Calendar Context
 
 Once the testing is all good you may delete the following before merging:
 - uninstall unsplash JS dependency in the package.json
