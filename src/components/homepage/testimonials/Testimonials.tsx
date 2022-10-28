@@ -1,4 +1,4 @@
-import TestimonialCard from './testimonialCard';
+import TestimonialCard from './TestimonialCard';
 import placeholderAvatar from '../../../../public/assets/cat.jpeg';
 
 import { Splide, SplideSlide } from '@splidejs/react-splide';
@@ -11,7 +11,7 @@ const mockData = {
       img: placeholderAvatar,
       fullName: 'Bill Gates',
       company: 'Microsoft Company',
-      stars: 5,
+      rate: 5,
       reviewBlurb:
         'I loved mentoring with Empowered Futures. The process was simple and easy to use. I will recommend to my friends to join Empowered Futures, to mentor people in the future.',
     },
@@ -19,7 +19,7 @@ const mockData = {
       img: placeholderAvatar,
       fullName: 'Bill Gates',
       company: 'Microsoft Company',
-      stars: 5,
+      rate: 5,
       reviewBlurb:
         'I loved mentoring with Empowered Futures. The process was simple and easy to use. I will recommend to my friends to join Empowered Futures, to mentor people in the future.',
     },
@@ -27,7 +27,7 @@ const mockData = {
       img: placeholderAvatar,
       fullName: 'Bill Gates',
       company: 'Microsoft Company',
-      stars: 5,
+      rate: 4,
       reviewBlurb:
         'I loved mentoring with Empowered Futures. The process was simple and easy to use. I will recommend to my friends to join Empowered Futures, to mentor people in the future.',
     },
