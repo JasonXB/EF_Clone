@@ -1,7 +1,7 @@
 import { useContext, useState, useEffect, SetStateAction } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { format } from 'date-fns';
+import { format, formatISO  } from 'date-fns';
 import Calendar from '../../src/components/calendar/Calendar';
 import TimeSlots from '../../src/components/timeSlots/TimeSlots';
 import TimeZonesDropdown from '../../src/components/timezonesDropdown/TimeZonesDropdown';
@@ -71,18 +71,33 @@ const BookMeeting = () => {
       ')';
   }
 
+
+  
+  console.log('JSON',JSON.stringify(selectedTimeSlot.startDatetime) === '{}');
+  
   //pass data to next page
 
   //placeholder for passing data to next page
-  const meetingDetails = {
-    mentorFirstName: 'Kitty',
-    mentorLastName: 'PussyCat',
-    mentorImg: '../../src/assets/cat.jpeg',
-    date: '2022-10-11T13:00',
-    startDatetime: '2022-10-11T13:00',
-    endDatetime: '2022-10-11T14:30',
-    meetingMethod: 'Google Meet',
-  };
+  let meetingDetails = {};
+
+  if(JSON.stringify(selectedTimeSlot.startDatetime) !== '{}' && JSON.stringify(selectedTimeSlot.endDatetime) !== '{}'){
+    meetingDetails = {
+      mentorFirstName: name,
+      mentorLastName: name,
+      mentorImg: imgUrl,
+      meetingStartDatetime: formatISO(selectedTimeSlot.startDatetime),
+      meetingEndDatetime: formatISO(selectedTimeSlot.endDatetime),
+      meetingMethod: 'Google Meet',
+    };
+  }
+
+  const bookMeeting = () => {
+    if(JSON.stringify(meetingDetails) === '{}'){
+      alert("Please select the date and time for the meeting")
+    }
+  }
+
+  console.log(meetingDetails);
 
   return (
     <Layout>
@@ -207,11 +222,11 @@ const BookMeeting = () => {
               {/* SUBMIT BUTTON------------------------------------------------- */}
               <Link
                 href={{
-                  pathname: '/meeting/confirmedMeeting',
+                  pathname: JSON.stringify(meetingDetails) !== '{}' ? '/meeting/confirmedMeeting' : '#',
                   query: meetingDetails,
                 }}
               >
-                <div><Button variant="primary">Book Meeting</Button></div>
+                <div><Button variant="primary" clickHandler={bookMeeting}>Book Meeting</Button></div>
               </Link>
             </div>
             {/* ^ end of div that cover the items */}
