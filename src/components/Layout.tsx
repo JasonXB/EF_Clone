@@ -6,6 +6,7 @@ import Footer from './footer/Footer';
 
 type LayoutProps = {
   headTitle?: string;
+  isConfirmedMeetingPg?: boolean;
   children: any;
 };
 const Layout = ({ ...props }: LayoutProps) => {
@@ -13,17 +14,19 @@ const Layout = ({ ...props }: LayoutProps) => {
     ? `${props.headTitle} | Empowered Futures`
     : 'Empowered Futures';
   return (
-    <div className={`${LayoutStyle.container} font-[mainFont] `}>
+    <div className={`${LayoutStyle.container} font-[mainFont]`}>
       <Head>
         <title>{title}</title>
         <meta name="description" content="text" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <div className={LayoutStyle.content}>
+      <div
+        className={`${props.isConfirmedMeetingPg ? '' : LayoutStyle.content}`}
+      >
         <main>{props.children}</main>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };
