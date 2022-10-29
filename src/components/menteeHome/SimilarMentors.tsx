@@ -34,7 +34,7 @@ export default function SimilarMentors(props: {
   if (props.data.length === 0)
     return <h5 className="text-center">No similar mentors found!</h5>;
   return (
-    <section className="bg-[#d9d9d9] mt-16 py-6">
+    <section className="bg-[#d9d9d9] mt-16 py-6 extendBeyondLayout">
       <h4 className="text-center mb-8">
         We think these mentors are a good match for you.
       </h4>

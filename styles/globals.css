@@ -125,7 +125,15 @@ Add "trailingDots" class to child element which should be text based
   width: 91%;
 }
 
-.carousel .splide__track {
+#similarMentorsSplideComponent .splide__track {
   margin: auto 5%;
   width: 91%;
+}
+
+/* Allows the background color to extend beyond the layout container while maintaining the same padding*/
+.extendBeyondLayout {
+  width: 100vw;
+  max-width: 100vw;
+  margin-inline: calc(-50vw + 50%);
+  padding-inline: 2rem;
 }
