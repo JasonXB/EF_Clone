@@ -2,29 +2,25 @@ import React from 'react';
 import { ReactNode, useState, createContext, useContext } from 'react';
 import { Data } from '../../src/interface/data.interface';
 import { dummyMentors } from '../../src/temporary/dummyMentors';
-import { dummySimilarMentorProfiles } from '../../src/components/mentorProfile/similarMentors/dummySimilarMentorProfiles'
-import { MiniCardProps } from '../../src/components/mentorProfile/similarMentors/SimilarMentorsCarousel'
-
+import { dummySimilarMentorProfiles } from '../../src/components/mentorProfile/similarMentors/dummySimilarMentorProfiles';
+import { MiniCardProps } from '../../src/components/mentorProfile/similarMentors/SimilarMentorsCarousel';
 
 type contextType = {
   currentFilteredData: Array<Data>;
   filterSearch: (data: Array<Data>, searchValue: string) => void;
-  selectedSimilarMentor: MiniCardProps;
-  selectSimilarMentor: (i:number) => void
+  selectedSimilarMentor: MiniCardProps | null;
+  selectSimilarMentor: (i: number | null) => void;
 };
 
 // default data set to dummyMentors for the time being.
 const contextDefaultValues: contextType = {
   currentFilteredData: dummyMentors,
   filterSearch: () => {},
-  selectedSimilarMentor: dummySimilarMentorProfiles[0],
-  selectSimilarMentor: () => {}
-
+  selectedSimilarMentor: null,
+  selectSimilarMentor: () => {},
 };
 
-const GlobalContext = createContext<contextType>(
-  contextDefaultValues
-);
+const GlobalContext = createContext<contextType>(contextDefaultValues);
 
 export function useGlobalContext() {
   return useContext(GlobalContext);
@@ -43,15 +39,15 @@ export function ContextProvider({ children }: Props) {
     contextDefaultValues.currentFilteredData
   );
 
-  // Context for similar mentors carousel 
-  const [selectedSimilarMentor, setSelectedSimilarMentor] = useState<any>(dummySimilarMentorProfiles[0])
+  // Context for similar mentors carousel  -- fix 'any' soon
+  const [selectedSimilarMentor, setSelectedSimilarMentor] = useState<any>(null);
 
-  const selectSimilarMentor = (i: number) => {
-    console.log(dummySimilarMentorProfiles[i])
-    setSelectedSimilarMentor(dummySimilarMentorProfiles[i])
-  }
-
-  // React.MouseEventHandler<HTMLLIElement> 
+  // sets selectedSimilarMentor to the mentor object with the same id as the clicked profile card
+  const selectSimilarMentor = (i: number | null) => {
+    i !== null
+      ? setSelectedSimilarMentor(dummySimilarMentorProfiles[i])
+      : setSelectedSimilarMentor(i);
+  };
 
   // Function which takes a) an array of objects (data) and b) a searchValue as parameters.
   // In the end, sets the currentFilteredData state to the data filtered by what is entered in SearchForm.
@@ -80,8 +76,7 @@ export function ContextProvider({ children }: Props) {
     currentFilteredData,
     filterSearch,
     selectedSimilarMentor,
-    selectSimilarMentor
-  
+    selectSimilarMentor,
   };
 
   return (

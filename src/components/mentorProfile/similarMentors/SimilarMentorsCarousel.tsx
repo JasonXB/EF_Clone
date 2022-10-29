@@ -5,7 +5,6 @@ import '@splidejs/react-splide/css';
 import SimilarMentorsMiniProfile from './SimilarMentorsMiniProfile';
 import { useGlobalContext } from '../../../../state-management/ReactContext/Context';
 
-
 export interface MiniCardProps {
   name: string;
   location: string;
@@ -26,8 +25,6 @@ type dataType = {
   data: MiniCardProps[];
 };
 
-
-
 //need to fix arrows adjustment and progress dots
 const ResponsiveSlider = ({ data }: { data: dataType },
 ) => {
@@ -39,7 +36,7 @@ const ResponsiveSlider = ({ data }: { data: dataType },
     perPage: 3,
     gap: '2em',
     pagination: false,
-    padding: { left: '4rem', right: '4rem' },
+    padding: { left: '2rem', right: '2rem' },
     lazyLoad: true,
     arrows: length < 4 ? false : true,
     breakpoints: {
@@ -56,10 +53,10 @@ const ResponsiveSlider = ({ data }: { data: dataType },
 
   return (
     // max-w-[1400px]
-    <div className="mx-auto ">
+    <div className="mx-auto max-w-[1400px]">
       <Splide
         options={Options}
-        aria-label="show case mentorship requests"
+        aria-label="display similar mentors"
         tag="section"
         id="similarMentorsSplideComponent"
       >
@@ -88,7 +85,8 @@ const SimilarMentorsCarousel = (data: dataType) => (
       // display if there is 1-2
       <div className="flex flex-col md:flex-row sm:max-w-[900px] sm:mx-auto">
         {data.data?.map((each, i) => (
-<div></div>      ))}
+      <ResponsiveSlider data={data} />
+      ))}
       </div>
     ) : (
       // display as carousel only if 3 or more
