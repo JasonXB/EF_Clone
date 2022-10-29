@@ -10,12 +10,10 @@ import '@splidejs/react-splide/css';
 export default function SimilarMentors(props: {
   data: MockData['similarMentors'];
 }) {
-  //! Extend gray color out further
   //! Make carousel look good with 2 or 1 items
-  //! Adjust paddings to keep arrows further apart
   const Options = {
     perPage: 3,
-    gap: '2rem',
+    gap: '1rem',
     pagination: false,
     // padding: { left: '3rem', right: '3rem' },
     lazyLoad: true,
@@ -25,7 +23,7 @@ export default function SimilarMentors(props: {
         perPage: 2,
         arrows: true,
       },
-      900: {
+      1060: {
         perPage: 1,
         arrows: true,
       },
@@ -42,10 +40,11 @@ export default function SimilarMentors(props: {
         aria-label="My Favorite Images"
         options={Options}
         className="carousel px-0"
+        id="similarMentorsSplideComponent"
       >
         {props.data.map((mentor, i) => {
           return (
-            <SplideSlide className="slide px-8 ad:px-0" key={i}>
+            <SplideSlide className="slide px-8 md:px-0" key={i}>
               <div className="grid grid-cols-[40%_1fr] gap-4 h-[14.6875rem] p-6 bg-light rounded-[20px]">
                 <Image
                   src={Hiba}
