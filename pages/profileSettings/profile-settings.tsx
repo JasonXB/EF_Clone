@@ -1,9 +1,11 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import Layout from '../../src/components/Layout';
 
 const ProfileSettings: NextPage = ({}) => {
   return (
     <>
+    <Layout>
       <div className="flex">
         <div className="flex ">
           <ul className="bg-gray-300 bg-opacity-20 border border-gray-200 w-64 text-gray-900 ">
@@ -259,7 +261,9 @@ const ProfileSettings: NextPage = ({}) => {
           </div>
         </div>
       </div>
+      </Layout>
     </>
+    
   );
 };
 
