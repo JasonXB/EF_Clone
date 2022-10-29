@@ -10,10 +10,9 @@ import '@splidejs/react-splide/css';
 export default function SimilarMentors(props: {
   data: MockData['similarMentors'];
 }) {
+  //! Extend gray color out further
   //! Make carousel look good with 2 or 1 items
   //! Adjust paddings to keep arrows further apart
-  //! Extend gray color out further
-  //! Render fallback text if no similar mentors are available
   const Options = {
     perPage: 3,
     gap: '2rem',
@@ -32,7 +31,8 @@ export default function SimilarMentors(props: {
       },
     },
   };
-
+  if (props.data.length === 0)
+    return <h5 className="text-center">No similar mentors found!</h5>;
   return (
     <Splide
       aria-label="My Favorite Images"
