@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState, ReactNode, Dispatch, SetStateAction  } from 'react';
 import { formatInTimeZone } from 'date-fns-tz';
+import { customIntl, DatePart, KeyPairIANA, Children, SelectedTimeSlot } from '../../src/interface/book-meeting/timezone-context.interface'
 
 //helper functions and variables to get the timezones-------------------------------------
 
@@ -18,15 +19,7 @@ const getTimezoneOfIANA = (IANA: string, option: string) => {
   return timeZone;
 };
 
-interface Option {
-  timeZoneName: string
-}
-interface customIntl {
-  supportedValuesOf: Function,
-  DateTimeFormat: new (local: string, option: Option) => {
-    formatToParts: Function
-  }
-}
+
 declare const Intl: customIntl;
 /* 
   array of IANA with each IANA as strings
@@ -75,10 +68,7 @@ const currentDateInParts = new Intl.DateTimeFormat('default', {
   timeZoneName: 'long',
 }).formatToParts(new Date());
 
-interface DatePart {
-  type: string,
-  value: string
-}
+
 /*
  timezonePart is an object with type timeZoneName from the array currentDateInParts
   - e.g {type: 'timeZoneName', value: 'PDT'} 
@@ -112,10 +102,7 @@ const listOfKeyPairIANA = listOfIANA.map((IANA: string) => {
 });
 
 
-interface KeyPairIANA {
-  IANA: string,
-  timezone: string
-}
+
 /*array of keyPair arrays 
   [
       ['Greenwich Mean Time', {IANA: "Africa/Abidjan", timezone: "Greenwich Mean Time"}],
@@ -149,25 +136,18 @@ const getIANACounterpart = async (timezone: string) => {
   return IANAResult;
 };
 
-interface SelectedTimeSlot {
-  startDatetime: Date,
-  endDatetime: Date,
-}
+
 //----------------------------------------------------------------------------
 
 export const TimezoneContext = createContext({
   timezones: [] as string[],
   selectedTimezone: '',
   setSelectedTimezone: (() => {}) as Dispatch<any>,
-  selectedTimeSlot: { } as any, //must fix but on interface as SelectedTimeSlot
-  setSelectedTimeSlot: (() => {}) as Dispatch<SetStateAction<{}>>,
+  selectedTimeSlot: {} as SelectedTimeSlot,
+  setSelectedTimeSlot: (() => {}) as Dispatch<SetStateAction<SelectedTimeSlot>>,
   IANACounterpart: {} as Promise<string>,
   setIANACounterpart: (() => {}) as Dispatch<SetStateAction<Promise<any>>>
 });
-
-interface Children {
-  children: ReactNode
-}
 
 
 export const TimezoneProvider = ({ children }: Children) => {
@@ -181,7 +161,7 @@ export const TimezoneProvider = ({ children }: Children) => {
   const [selectedTimezone, setSelectedTimezone] = useState(timezonePart.value);
 
   //refers to the timeslot that the user picked
-  const [selectedTimeSlot, setSelectedTimeSlot] = useState({});
+  const [selectedTimeSlot, setSelectedTimeSlot] = useState({ startDatetime: {}, endDatetime: {} } as SelectedTimeSlot);
 
   //variable used in 'utcToZonedTime' from date-fns-tz to convert to a specific timezone
   const [IANACounterpart, setIANACounterpart] = useState(

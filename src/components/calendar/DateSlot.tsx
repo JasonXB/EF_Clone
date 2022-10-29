@@ -54,7 +54,7 @@ const DateSlot = ({ day, dayIndex, availabilities }: DateSlotProps) => {
   //select date event handler-----------------
   const selectDate = () => {
     setSelectedDay(zonedDay);
-    setSelectedTimeSlot({}); //reset the selected time slot whenever a date is clicked so that there is no time slot selected by default
+    setSelectedTimeSlot({ startDatetime: {} as Date, endDatetime: {} as Date }); //reset the selected time slot whenever a date is clicked so that there is no time slot selected by default
   };
 
   return (

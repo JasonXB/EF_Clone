@@ -1,5 +1,6 @@
 import { useContext, useState, useEffect, SetStateAction } from 'react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 import { format } from 'date-fns';
 import Calendar from '../../src/components/calendar/Calendar';
 import TimeSlots from '../../src/components/timeSlots/TimeSlots';
@@ -14,13 +15,21 @@ import { Mentor } from '../../src/interface/book-meeting/book-with-mentor.interf
 const BookMeeting = () => {
   const router = useRouter();
   const mentorId = router.query.mentorId;
+
+  
   const [thisMentor, setThisMentor] = useState({} as Mentor);
 
   useEffect(() => {
     if (router.isReady) {
-      const mentorFound = mentorsData.find(
+      let mentorFound = mentorsData.find(
         (mentor) => mentor.mentor_id.toString() === mentorId
       );
+      //place holder for demo
+      if (!mentorFound) {
+        mentorFound = mentorsData.find(
+          (mentor) => mentor.mentor_id.toString() === '122'
+        );
+      }
       setThisMentor(mentorFound as SetStateAction<Mentor>);
     } else {
       console.log('loading');
@@ -33,7 +42,7 @@ const BookMeeting = () => {
 
   let timeReview = '';
 
-  if (JSON.stringify(selectedTimeSlot) !== '{}') {
+  if (JSON.stringify(selectedTimeSlot) !== '{"startDatetime":{},"endDatetime":{}}') {
     let formatteddateAndDay = format(
       selectedTimeSlot.startDatetime,
       'LLL do EEEE'
@@ -61,6 +70,19 @@ const BookMeeting = () => {
       timeZoneShort +
       ')';
   }
+
+  //pass data to next page
+
+  //placeholder for passing data to next page
+  const meetingDetails = {
+    mentorFirstName: 'Kitty',
+    mentorLastName: 'PussyCat',
+    mentorImg: '../../src/assets/cat.jpeg',
+    date: '2022-10-11T13:00',
+    startDatetime: '2022-10-11T13:00',
+    endDatetime: '2022-10-11T14:30',
+    meetingMethod: 'Google Meet',
+  };
 
   return (
     <Layout>
@@ -183,7 +205,14 @@ const BookMeeting = () => {
               </div>
               {/* ^ end of item 3 div */}
               {/* SUBMIT BUTTON------------------------------------------------- */}
-              <Button variant="primary">Book Meeting</Button>
+              <Link
+                href={{
+                  pathname: '/meeting/confirmedMeeting',
+                  query: meetingDetails,
+                }}
+              >
+                <div><Button variant="primary">Book Meeting</Button></div>
+              </Link>
             </div>
             {/* ^ end of div that cover the items */}
           </div>

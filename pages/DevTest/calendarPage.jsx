@@ -1,5 +1,7 @@
 import { mentorsData } from '../../src/tempData/dummyMentorsForCalendar';
 import Link from 'next/link';
+import { useContext } from 'react';
+import { TimezoneContext } from '../../state-management/ReactContext/TimezoneContext';
 
 //JSON file for list of mentors that the mentee applied to
 /*
@@ -35,6 +37,8 @@ export async function getStaticProps(context) {
 }
 
 const calendarPage = (props) => {
+  const { selectedTimeSlot } = useContext(TimezoneContext);
+  console.log(JSON.stringify(selectedTimeSlot));
   return (
     <>
       <div>This is the calendar page tester</div>
