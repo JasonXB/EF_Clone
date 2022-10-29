@@ -134,12 +134,7 @@ export default function index() {
           )}
         </div>
       </section>
-      <section className="bg-[#d9d9d9] mt-16 py-6">
-        <h4 className="text-center  mb-8">
-          We think these mentors are a good match for you.
-        </h4>
-        <SimilarMentors data={mock.similarMentors} />
-      </section>
+      <SimilarMentors data={mock.similarMentors} />
     </Layout>
   );
 }
