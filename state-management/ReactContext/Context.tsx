@@ -50,12 +50,6 @@ export function ContextProvider({ children }: Props) {
 
   };
 
-  useEffect(() => {
-    if (selectedSimilarMentor !== null && selectedSimilarMentor.key === 0) {
-      console.log('OH')
-     }
-  }, [selectedSimilarMentor])
-
   // Function which takes a) an array of objects (data) and b) a searchValue as parameters.
   // In the end, sets the currentFilteredData state to the data filtered by what is entered in SearchForm.
   const filterSearch = (data: Array<Data>, searchValue: string) => {
