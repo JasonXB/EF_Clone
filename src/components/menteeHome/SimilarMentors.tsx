@@ -10,6 +10,7 @@ import '@splidejs/react-splide/css';
 export default function SimilarMentors(props: {
   data: MockData['similarMentors'];
 }) {
+  //! Set max width per carousel item
   // Configured options so carousel looks good on all screen sizes, despite how many similar mentors are found
   // Ex. On large screens, we can hold 3 carousel items per slide
   // If we only get 1 similar mentor match, then the carousel will change its look to keep that 1 mentor centered
@@ -35,7 +36,10 @@ export default function SimilarMentors(props: {
     },
   };
   if (props.data.length === 0)
-    return <h5 className="text-center">No similar mentors found!</h5>;
+    return (
+      <h5 className="text-center mt-28 mb-20">No similar mentors found!</h5>
+    );
+
   return (
     <section className="bg-[#d9d9d9] mt-16 py-6 extendBeyondLayout">
       <h4 className="text-center mb-8">
