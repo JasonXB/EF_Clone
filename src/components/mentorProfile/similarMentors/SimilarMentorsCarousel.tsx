@@ -43,6 +43,7 @@ const ResponsiveSlider = ({ data }: { data: dataType }) => {
       767: {
         perPage: 1,
         arrows: true,
+        padding: { left: '0.5rem', right: '0.5rem' },
       },
     },
   };
@@ -67,7 +68,7 @@ const ResponsiveSlider = ({ data }: { data: dataType }) => {
               location={each.location}
               job={each.job}
               tags={each.skills}
-              compatibilityPercent={50}
+              // compatibilityPercent={each.compatibilityPercent}
               key={i}
             />
           </SplideSlide>

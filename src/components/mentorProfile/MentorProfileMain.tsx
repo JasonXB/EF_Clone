@@ -57,7 +57,7 @@ const MentorProfileMain = ({}) => {
       </div>
 
       {/* Similar Mentors Component */}
-      <div className='mt-20 md:mt-0'>
+      <div className='mt-20 w-[100%] md:mt-0'>
           <SimilarMentors/>
       </div>
     </>

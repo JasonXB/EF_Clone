@@ -7,18 +7,19 @@ interface MentorsInfoProps {
   job: string;
   tags: string[];
   avatar: any;
-  compatibilityPercent: number;
+  // not using cP for the time being
+  // compatibilityPercent: number;
 }
 
 const SimilarMentorsMiniProfile = ({ ...mentorsInfo }: MentorsInfoProps) => {
   const { selectedSimilarMentor, selectSimilarMentor } = useGlobalContext();
 
-  const { name, location, job, tags, compatibilityPercent, avatar } =
+  const { name, location, job, tags, avatar } =
     mentorsInfo;
 
   return (
     <div
-      className="flex p-6 shadow-md cursor-pointer min-h-[100%] rounded-xl"
+      className="flex p-6 shadow-md cursor-pointer w-[100%] min-h-[100%] rounded-xl"
       style={{
         border:
           name === selectedSimilarMentor?.name
