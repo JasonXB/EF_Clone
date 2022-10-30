@@ -137,3 +137,9 @@ Add "trailingDots" class to child element which should be text based
   margin-inline: calc(-50vw + 50%);
   padding-inline: 2rem;
 }
+
+.centerCarouselItem {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}

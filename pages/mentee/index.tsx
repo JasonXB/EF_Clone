@@ -43,30 +43,30 @@ export default function index() {
       { mentorName: 'Ebrahim Merchant', status: 'Sent' },
     ],
     similarMentors: [
-      // {
-      //   mentorName: 'Darra Whitney',
-      //   location: 'USA',
-      //   mentorPosition: 'Project Manager at EF',
-      //   bubbleTag1: 'Entrepeneurship',
-      //   bubbleTag2: 'Management',
-      //   image: '/temp-assets/Emilio-lg.jpg',
-      // },
-      // {
-      //   mentorName: 'Darra Whitney',
-      //   location: 'USA',
-      //   mentorPosition: 'Project Manager at EF',
-      //   bubbleTag1: 'Entrepeneurship',
-      //   bubbleTag2: 'Management',
-      //   image: '/temp-assets/Emilio-lg.jpg',
-      // },
-      // {
-      //   mentorName: 'Darra Whitney',
-      //   location: 'USA',
-      //   mentorPosition: 'Project Manager at EF',
-      //   bubbleTag1: 'Entrepeneurship',
-      //   bubbleTag2: 'Management',
-      //   image: '/temp-assets/Emilio-lg.jpg',
-      // },
+      {
+        mentorName: 'Darra Whitney',
+        location: 'USA',
+        mentorPosition: 'Project Manager at EF',
+        bubbleTag1: 'Entrepeneurship',
+        bubbleTag2: 'Management',
+        image: '/temp-assets/Emilio-lg.jpg',
+      },
+      {
+        mentorName: 'Darra Whitney',
+        location: 'USA',
+        mentorPosition: 'Project Manager at EF',
+        bubbleTag1: 'Entrepeneurship',
+        bubbleTag2: 'Management',
+        image: '/temp-assets/Emilio-lg.jpg',
+      },
+      {
+        mentorName: 'Darra Whitney',
+        location: 'USA',
+        mentorPosition: 'Project Manager at EF',
+        bubbleTag1: 'Entrepeneurship',
+        bubbleTag2: 'Management',
+        image: '/temp-assets/Emilio-lg.jpg',
+      },
       {
         mentorName: 'Darra Whitney',
         location: 'USA',
@@ -80,7 +80,7 @@ export default function index() {
 
   return (
     <Layout>
-      <h3 className="font-semibold text-center mt-10 text-primary-1">
+      {/* <h3 className="font-semibold text-center mt-10 text-primary-1">
         Welcome back
         <br className="sm:hidden" /> {mock.username}
       </h3>
@@ -133,7 +133,7 @@ export default function index() {
             <OutlinedButton text="See all meetings" onClick={() => {}} />
           )}
         </div>
-      </section>
+      </section> */}
       <SimilarMentors data={mock.similarMentors} />
     </Layout>
   );

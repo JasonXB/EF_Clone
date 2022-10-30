@@ -10,7 +10,6 @@ import '@splidejs/react-splide/css';
 export default function SimilarMentors(props: {
   data: MockData['similarMentors'];
 }) {
-  //! Set max width per carousel item
   // Configured options so carousel looks good on all screen sizes, despite how many similar mentors are found
   // Ex. On large screens, we can hold 3 carousel items per slide
   // If we only get 1 similar mentor match, then the carousel will change its look to keep that 1 mentor centered
@@ -24,14 +23,15 @@ export default function SimilarMentors(props: {
     // padding: { left: '3rem', right: '3rem' },
     lazyLoad: true,
     arrows: props.data.length > 3 ? true : false, // only show arrows when we have over 3 similar mentors
+    width: props.data.length === 1 ? '56.25rem' : 'auto',
     breakpoints: {
       1400: {
         perPage: props.data.length >= 2 ? 2 : props.data.length === 1 ? 1 : 1,
-        arrows: true,
+        arrows: props.data.length > 2 ? true : false, // only show arrows when we have over 2 similar mentors
       },
       1060: {
         perPage: 1,
-        arrows: true,
+        arrows: props.data.length > 1 ? true : false, // only show arrows when we have over 1 similar mentor
       },
     },
   };
@@ -48,7 +48,7 @@ export default function SimilarMentors(props: {
       <Splide
         aria-label="My Favorite Images"
         options={Options}
-        className="carousel px-0"
+        className="carousel px-0 mx-auto"
         id="similarMentorsSplideComponent"
       >
         {props.data.map((mentor, i) => {
