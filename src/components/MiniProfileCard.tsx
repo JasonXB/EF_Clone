@@ -1,5 +1,6 @@
 import BubbleTags from './BubbleTags';
 import Avatar from './avatar/avatar';
+import tempImage from '../../public/assets/cat.jpeg';
 import { BUBBLE_TAG_TYPE_CLASSES } from './BubbleTag';
 import style from '../../styles/MiniProfileCard.module.css';
 import PercentageBar from './percentBar/percent-bar';

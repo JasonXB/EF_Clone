@@ -1,5 +1,5 @@
 
-import hiba from '../../../assets/hiba.png'
+import hiba from '../../../../public/assets/hiba.png'
 
 export const dummySimilarMentorProfiles = [
     {

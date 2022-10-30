@@ -1,29 +1,23 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import Layout from '../../src/components/Layout';
+import SignUpFormMentee from '../../src/components/signupForm/SignUpFormMentee';
+import bg from '../../public/assets/Sign-Up-page.png';
 
 const signup: NextPage = ({}) => {
   return (
-    <div>
+    <div
+      className="w-full h-full bg-local bg-center bg-no-repeat bg-auto"
+      style={{ backgroundImage: `url(${bg.src})` }}
+    >
       <Head>
         <title>Empowered Futures - Sign up</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1>Sign up placeholder</h1>
-      {/* Sign Up */}
 
-      {/* Name + input */}
-
-      {/* Sign up with your email address + input */}
-
-      {/* Create a password + input */}
-      
-      {/* Confirm password + input */}
-
-      {/* Link to terms and conditions */}
-      
-      {/* Sign up button */}
-
-      {/* Footer */}
+      <Layout>
+        <SignUpFormMentee />
+      </Layout>
     </div>
   );
 };
