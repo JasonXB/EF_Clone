@@ -37,6 +37,10 @@ File names should be kebab-case-like-this.
 
 Component names should be PascalCase.
 
+### Function Names
+
+Function names should be camelCase.
+
 ### On Interfaces
 
 If an interface defines the props for a component, the interface's name should:
