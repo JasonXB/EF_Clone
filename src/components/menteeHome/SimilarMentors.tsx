@@ -25,11 +25,11 @@ export default function SimilarMentors(props: {
     arrows: props.data.length > 3 ? true : false, // only show arrows when we have over 3 similar mentors
     width: props.data.length === 1 ? '48rem' : 'auto', // max width of carousel item
     breakpoints: {
-      1600: {
+      1700: {
         perPage: props.data.length >= 2 ? 2 : props.data.length === 1 ? 1 : 1,
         arrows: props.data.length > 2 ? true : false, // only show arrows when we have over 2 similar mentors
       },
-      1060: {
+      1200: {
         perPage: 1,
         arrows: props.data.length > 1 ? true : false, // only show arrows when we have over 1 similar mentor
       },
@@ -41,8 +41,8 @@ export default function SimilarMentors(props: {
     );
 
   return (
-    <section className="bg-[#d9d9d9] mt-16 py-6 extendBeyondLayout">
-      <h4 className="text-center mb-8">
+    <section className="bg-[#e4e4e4] mt-16 py-6 extendBeyondLayout">
+      <h4 className="text-center my-8">
         We think these mentors are a good match for you.
       </h4>
       <Splide
@@ -53,8 +53,11 @@ export default function SimilarMentors(props: {
       >
         {props.data.map((mentor, i) => {
           return (
-            <SplideSlide className="slide px-8 md:px-0" key={i}>
-              <div className="grid grid-cols-[minmax(150px,_200px)_1fr] gap-4 h-[14.6875rem] p-6 bg-light rounded-[20px]">
+            <SplideSlide
+              className="slide px-8 lg:px-0 grid grid-cols-[minmax(auto,_37.5rem)] justify-center"
+              key={i}
+            >
+              <div className="grid grid-cols-[minmax(150px,_200px)_1fr] gap-4 h-[14.6875rem] shadowVariant2 mb-8  p-6 bg-light rounded-[20px]">
                 <Image
                   src={Hiba}
                   height="100%"
