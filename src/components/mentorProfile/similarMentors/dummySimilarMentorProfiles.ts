@@ -18,12 +18,12 @@ export const dummySimilarMentorProfiles = [
       ],
       about: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam aut voluptatibus, corrupti in placeat libero necessitatibus numquam architecto corporis? Quo nulla nisi aperiam maiores explicabo inventore ex quaerat voluptates dolor?',
       availability: 'Every day after 1 pm',
-      selected: false
+      
     },
 
     {
       name: 'Matt Engerer',
-      job: 'Makes some of the website pages',
+      job: 'Makes websites',
       avatar: hiba,
       location: 'Toronto, Canada',
       responseTime: 'Usually responds within 1 day',
@@ -37,7 +37,7 @@ export const dummySimilarMentorProfiles = [
       ],
       about: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam aut voluptatibus, corrupti in placeat libero necessitatibus numquam architecto corporis? Quo nulla nisi aperiam maiores explicabo inventore ex quaerat voluptates dolor?',
       availability: 'Weekends after 11 pm',
-      selected: false
+      
 
     },
 
@@ -57,7 +57,7 @@ export const dummySimilarMentorProfiles = [
       ],
       about: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam aut voluptatibus, corrupti in placeat libero necessitatibus numquam architecto corporis? Quo nulla nisi aperiam maiores explicabo inventore ex quaerat voluptates dolor?',
       availability: 'Weekends after 7 pm',
-      selected: false
+      
 
     },
     {
@@ -76,12 +76,12 @@ export const dummySimilarMentorProfiles = [
       ],
       about: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam aut voluptatibus, corrupti in placeat libero necessitatibus numquam architecto corporis? Quo nulla nisi aperiam maiores explicabo inventore ex quaerat voluptates dolor?',
       availability: 'Weekends after 7 pm',
-      selected: false
+      
 
     },
     {
       name: 'Joshua Padron-Uy',
-      job: 'React Code Master',
+      job: 'React Coder',
       avatar: hiba,
       location: 'Toronto, Canada',
       responseTime: 'Usually responds within 1 day',
@@ -95,7 +95,7 @@ export const dummySimilarMentorProfiles = [
       ],
       about: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam aut voluptatibus, corrupti in placeat libero necessitatibus numquam architecto corporis? Quo nulla nisi aperiam maiores explicabo inventore ex quaerat voluptates dolor?',
       availability: 'Weekends after 7 pm',
-      selected: false
+      
 
     },
     {
@@ -114,7 +114,26 @@ export const dummySimilarMentorProfiles = [
       ],
       about: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam aut voluptatibus, corrupti in placeat libero necessitatibus numquam architecto corporis? Quo nulla nisi aperiam maiores explicabo inventore ex quaerat voluptates dolor?',
       availability: 'Weekends after 7 pm',
-      selected: false
+      
+
+    },
+    {
+      name: 'Jamie Pantling',
+      job: 'Codes',
+      avatar: hiba,
+      location: 'Toronto, Canada',
+      responseTime: 'Usually responds within 1 day',
+      skills: ['Reacting', 'Management', 'Problem Solving'],
+      percentBarSkills: [
+        {name: 'Grow a Business', percentage: 40 }, 
+        {name: 'Adobe XD', percentage: 90 },
+        {name: 'Networking', percentage: 100 },
+        {name: 'Mindset Coaching', percentage: 70 },
+        {name: 'Figma', percentage: 100 },
+      ],
+      about: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam aut voluptatibus, corrupti in placeat libero necessitatibus numquam architecto corporis? Quo nulla nisi aperiam maiores explicabo inventore ex quaerat voluptates dolor?',
+      availability: 'Weekends after 7 pm',
+      
 
     },
     {
@@ -133,7 +152,26 @@ export const dummySimilarMentorProfiles = [
       ],
       about: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam aut voluptatibus, corrupti in placeat libero necessitatibus numquam architecto corporis? Quo nulla nisi aperiam maiores explicabo inventore ex quaerat voluptates dolor?',
       availability: 'Weekends after 7 pm',
-      selected: false
+      
+
+    },
+    {
+      name: 'Shiho Nagano',
+      job: 'Codes',
+      avatar: hiba,
+      location: 'Toronto, Canada',
+      responseTime: 'Usually responds within 1 day',
+      skills: ['React', 'Code', 'Problem Solving'],
+      percentBarSkills: [
+        {name: 'Grow a Business', percentage: 20 }, 
+        {name: 'Adobe XD', percentage: 100 },
+        {name: 'Networking', percentage: 40 },
+        {name: 'Mindset Coaching', percentage: 70 },
+        {name: 'Figma', percentage: 100 },
+      ],
+      about: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam aut voluptatibus, corrupti in placeat libero necessitatibus numquam architecto corporis? Quo nulla nisi aperiam maiores explicabo inventore ex quaerat voluptates dolor?',
+      availability: 'Weekends after 7 pm',
+      
 
     }
   

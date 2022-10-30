@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ReactNode, useState, createContext, useContext } from 'react';
 import { Data } from '../../src/interface/data.interface';
 import { dummyMentors } from '../../src/temporary/dummyMentors';
@@ -47,7 +47,14 @@ export function ContextProvider({ children }: Props) {
     i !== null
       ? setSelectedSimilarMentor(dummySimilarMentorProfiles[i])
       : setSelectedSimilarMentor(i);
+
   };
+
+  useEffect(() => {
+    if (selectedSimilarMentor !== null && selectedSimilarMentor.key === 0) {
+      console.log('OH')
+     }
+  }, [selectedSimilarMentor])
 
   // Function which takes a) an array of objects (data) and b) a searchValue as parameters.
   // In the end, sets the currentFilteredData state to the data filtered by what is entered in SearchForm.

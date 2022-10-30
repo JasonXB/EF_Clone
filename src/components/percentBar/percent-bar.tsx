@@ -16,7 +16,7 @@ const PercentageBar: FC<PercentBarProps> = ({
   };
 
   return (
-    <div className="relative h-6 border-2 border-gray-300 w-52 rounded-xl">
+    <div className="relative h-6 border-2 border-gray-300 w-52 md:w-72 rounded-xl">
       <div
         style={progressStyle}
         className={`w-3/5 h-full rounded-xl absolute ${

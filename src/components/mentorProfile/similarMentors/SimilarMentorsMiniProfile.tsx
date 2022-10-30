@@ -1,4 +1,5 @@
 import Avatar from '../../avatar/avatar';
+import { useGlobalContext } from '../../../../state-management/ReactContext/Context';
 
 interface MentorsInfoProps {
   name: string;
@@ -10,11 +11,21 @@ interface MentorsInfoProps {
 }
 
 const SimilarMentorsMiniProfile = ({ ...mentorsInfo }: MentorsInfoProps) => {
+  const { selectedSimilarMentor, selectSimilarMentor } = useGlobalContext();
+
   const { name, location, job, tags, compatibilityPercent, avatar } =
     mentorsInfo;
 
   return (
-    <div className="flex p-6 border shadow-xl rounded-xl">
+    <div
+      className="flex p-6 shadow-md cursor-pointer min-h-[100%] rounded-xl"
+      style={{
+        border:
+          name === selectedSimilarMentor?.name
+            ? '2px solid #CE1982'
+            : '1px  #B9C0D3',
+      }}
+    >
       <Avatar imgLocation={avatar} displaySize="medium" personsName={name} />
       <div className="flex flex-col justify-center w-full ml-4">
         <h2 className="mb-2 text-sm font-bold">{name}</h2>

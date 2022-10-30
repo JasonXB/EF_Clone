@@ -10,26 +10,22 @@ export interface MiniCardProps {
   location: string;
   job: string;
   avatar: any;
-  skills:  string[];
+  skills: string[];
   about?: string;
   availability?: string;
   percentBarSkills?: Array<{
     name: string;
-    percentage: number,
-  }>,
-  selected: boolean
+    percentage: number;
+  }>;
 }
-
 
 type dataType = {
   data: MiniCardProps[];
 };
 
 //need to fix arrows adjustment and progress dots
-const ResponsiveSlider = ({ data }: { data: dataType },
-) => {
+const ResponsiveSlider = ({ data }: { data: dataType }) => {
   const { selectSimilarMentor } = useGlobalContext();
-
 
   const length: number = data.data.length;
   const Options = {
@@ -52,8 +48,7 @@ const ResponsiveSlider = ({ data }: { data: dataType },
   };
 
   return (
-    // max-w-[1400px]
-    <div className="mx-auto max-w-[1400px]">
+    <div className="mx-auto w-[100%]">
       <Splide
         options={Options}
         aria-label="display similar mentors"
@@ -61,9 +56,18 @@ const ResponsiveSlider = ({ data }: { data: dataType },
         id="similarMentorsSplideComponent"
       >
         {data.data?.map((each, i) => (
-          <SplideSlide key={i} onClick={() => selectSimilarMentor(i)} className='cursor-pointer'>
+          <SplideSlide
+            key={i}
+            onClick={() => selectSimilarMentor(i)}
+            className=""
+          >
             <SimilarMentorsMiniProfile
-          name={each.name} avatar={each.avatar} location={each.location} job={each.job} tags={each.skills} compatibilityPercent={50}
+              name={each.name}
+              avatar={each.avatar}
+              location={each.location}
+              job={each.job}
+              tags={each.skills}
+              compatibilityPercent={50}
               key={i}
             />
           </SplideSlide>
@@ -85,8 +89,8 @@ const SimilarMentorsCarousel = (data: dataType) => (
       // display if there is 1-2
       <div className="flex flex-col md:flex-row sm:max-w-[900px] sm:mx-auto">
         {data.data?.map((each, i) => (
-      <ResponsiveSlider data={data} />
-      ))}
+          <ResponsiveSlider key={i} data={data} />
+        ))}
       </div>
     ) : (
       // display as carousel only if 3 or more

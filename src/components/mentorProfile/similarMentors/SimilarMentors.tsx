@@ -12,7 +12,7 @@ const SimilarMentors = ({}) => {
   // Temporarily displaying dummySimilarMentor data
 
   return (
-    <div className="px-0 mb-10 md:pl-20">
+    <div className="mb-10 flex flex-col justify-center w-[100%]">
       {/* Top part */}
       <h1 className="mb-10 text-3xl font-bold text-primary-1 xl:mb-5">
         Similar mentors
@@ -21,11 +21,10 @@ const SimilarMentors = ({}) => {
       <SimilarMentorsCarousel data={dummySimilarMentorProfiles} />
 
       {/* Bottom part */}
-
       {/* Close button */}
-      <div className={selectedSimilarMentor ? 'relative mb-10' : 'hidden'}>
+      <div className={selectedSimilarMentor ? 'relative ' : 'hidden'}>
         <Button
-          className="absolute top-10 right-5 lg:right-10 lg:top-16"
+          className="absolute top-16 right-5 lg:right-10 lg:top-16"
           clickHandler={() => selectSimilarMentor(null)}
           variant="iconOnly"
         >
@@ -33,7 +32,7 @@ const SimilarMentors = ({}) => {
         </Button>{' '}
       </div>
       {/* Left - Name, location, details etc */}
-      <div className="flex flex-col items-center px-2 mt-10 border-2 border-gray-300 shadow md:px-12 sm:flex-row rounded-xl">
+      <div className="flex flex-col items-center px-2 pt-10 mt-10 border-2 border-gray-300 shadow-xl md:px-12 sm:flex-row rounded-xl">
         {selectedSimilarMentor?.name && (
           <div className="flex flex-col px-2 mb-0 md:mb-20 md:w-2/3">
             {/* Name */}
@@ -82,14 +81,14 @@ const SimilarMentors = ({}) => {
         )}
         {/* If selectedSimilarMentor is null, render this */}
         {!selectedSimilarMentor && (
-          <div className="w-full text-center">
+          <div className="w-full pb-10 text-center">
             <h6>Select a mentor from above</h6>
           </div>
         )}
 
         {/* If selectedSimilarMentor, render this */}
         {selectedSimilarMentor && (
-          <div className="">
+          <div>
             {/* Right - Percent bars */}
             <div className="flex justify-start mb-10 sm:mb-0">
               <MentorProfilePercentBars

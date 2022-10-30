@@ -52,7 +52,8 @@ const MentorProfileMain = ({}) => {
         </div>
 
         {/* Top-right side - Secondary skills Percent bars */}
-        <MentorProfilePercentBars percentBarSkills={percentBarSkills} />
+        <MentorProfilePercentBars percentBarSkills={percentBarSkills}
+  />
       </div>
 
       {/* Similar Mentors Component */}
