@@ -54,13 +54,13 @@ export default function SimilarMentors(props: {
         {props.data.map((mentor, i) => {
           return (
             <SplideSlide className="slide px-8 md:px-0" key={i}>
-              <div className="grid grid-cols-[40%_1fr] gap-4 h-[14.6875rem] p-6 bg-light rounded-[20px]">
+              <div className="grid grid-cols-[minmax(150px,_200px)_1fr] gap-4 h-[14.6875rem] p-6 bg-light rounded-[20px]">
                 <Image
                   src={Hiba}
                   height="100%"
                   objectFit="cover"
                   alt="mentor profile picture"
-                  className="rounded-[20px]"
+                  className="rounded-[20px] max-w-[200px]"
                 />
                 <div className="grid grid-rows-[auto_auto_auto_1fr_26px_26px] gap-2">
                   <div className="truncate">
