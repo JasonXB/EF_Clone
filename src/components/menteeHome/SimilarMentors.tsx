@@ -18,14 +18,14 @@ export default function SimilarMentors(props: {
       props.data.length >= 3 ? 3 : 
       props.data.length === 2 ? 2 : 
       props.data.length === 1 ? 1 : 1, //  prettier-ignore
-    gap: '1rem',
+    gap: '1.5rem',
     pagination: false,
     // padding: { left: '3rem', right: '3rem' },
     lazyLoad: true,
     arrows: props.data.length > 3 ? true : false, // only show arrows when we have over 3 similar mentors
-    width: props.data.length === 1 ? '56.25rem' : 'auto',
+    width: props.data.length === 1 ? '48rem' : 'auto', // max width of carousel item
     breakpoints: {
-      1400: {
+      1600: {
         perPage: props.data.length >= 2 ? 2 : props.data.length === 1 ? 1 : 1,
         arrows: props.data.length > 2 ? true : false, // only show arrows when we have over 2 similar mentors
       },
