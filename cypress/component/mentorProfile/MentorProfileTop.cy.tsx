@@ -20,7 +20,7 @@ const dummyMentorData = {
 };
 
 describe('MentorProfileTop.cy.tsx', () => {
-  it('mounts', () => {
+  beforeEach(() => {
     cy.viewport(1920, 1080);
     cy.mount(
       <MentorProfileTop
@@ -32,81 +32,29 @@ describe('MentorProfileTop.cy.tsx', () => {
         avatar={dummyMentorData.avatar}
       />
     );
+  });
+
+  it('mounts', () => {
     cy.get('body');
   });
 
   it('check the name prop', () => {
-    cy.viewport(1920, 1080);
-    cy.mount(
-      <MentorProfileTop
-        name={dummyMentorData.name}
-        title={dummyMentorData.title}
-        socialMediaIcons={dummyMentorData.socialMediaIcons}
-        location={dummyMentorData.location}
-        responseTime={dummyMentorData.responseTime}
-        avatar={dummyMentorData.avatar}
-      />
-    );
     cy.get('h1').should('have.text', 'Hiba Badran');
   });
 
   it('check the title prop', () => {
-    cy.viewport(1920, 1080);
-    cy.mount(
-      <MentorProfileTop
-        name={dummyMentorData.name}
-        title={dummyMentorData.title}
-        socialMediaIcons={dummyMentorData.socialMediaIcons}
-        location={dummyMentorData.location}
-        responseTime={dummyMentorData.responseTime}
-        avatar={dummyMentorData.avatar}
-      />
-    );
     cy.get('h2').eq(0).should('have.text', 'Founder of Empowered Futures');
   });
 
   it('check the location prop', () => {
-    cy.viewport(1920, 1080);
-    cy.mount(
-      <MentorProfileTop
-        name={dummyMentorData.name}
-        title={dummyMentorData.title}
-        socialMediaIcons={dummyMentorData.socialMediaIcons}
-        location={dummyMentorData.location}
-        responseTime={dummyMentorData.responseTime}
-        avatar={dummyMentorData.avatar}
-      />
-    );
     cy.get('h2').eq(1).should('contain', 'Calgary, Canada');
   });
 
   it('check the responseTime prop', () => {
-    cy.viewport(1920, 1080);
-    cy.mount(
-      <MentorProfileTop
-        name={dummyMentorData.name}
-        title={dummyMentorData.title}
-        socialMediaIcons={dummyMentorData.socialMediaIcons}
-        location={dummyMentorData.location}
-        responseTime={dummyMentorData.responseTime}
-        avatar={dummyMentorData.avatar}
-      />
-    );
     cy.get('h2').eq(2).should('contain', 'Usually responds within 1 day');
   });
 
   it('check social media icons correctness and their respective hrefs', () => {
-    cy.viewport(1920, 1080);
-    cy.mount(
-      <MentorProfileTop
-        name={dummyMentorData.name}
-        title={dummyMentorData.title}
-        socialMediaIcons={dummyMentorData.socialMediaIcons}
-        location={dummyMentorData.location}
-        responseTime={dummyMentorData.responseTime}
-        avatar={dummyMentorData.avatar}
-      />
-    );
     cy.get('a').each((item, index) => {
       // create a 'linkedin' and 'twitter' string in order to use in a regex. then it will look svg classes for the matching names.
       const socialMediaNames = ['linkedin', 'twitter'];
@@ -124,18 +72,6 @@ describe('MentorProfileTop.cy.tsx', () => {
   });
 
   it('check the avatar prop and image', () => {
-    cy.viewport(1920, 1080);
-    cy.mount(
-      <MentorProfileTop
-        name={dummyMentorData.name}
-        title={dummyMentorData.title}
-        socialMediaIcons={dummyMentorData.socialMediaIcons}
-        location={dummyMentorData.location}
-        responseTime={dummyMentorData.responseTime}
-        avatar={dummyMentorData.avatar}
-      />
-    );
-
     // Finding the DOM <img> element with an alt attribute containing 'Hiba Badran', if it cannot be find, test fails. Then checks for its visibility.
     // There is a problem with images in the component testing, since they are used with next/images module, they cannot be seen in the cypress testing environment.
     // Such as the actual link for the image is in localhost:3000 (nextjs port) and the image searched in the testing environment is in localhost:8080 (cypress port).

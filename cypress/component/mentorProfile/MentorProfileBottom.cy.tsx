@@ -12,7 +12,7 @@ const dummyMentorData = {
 };
 
 describe('MentorProfileBottom.cy.tsx', () => {
-  it('mounts', () => {
+  beforeEach(() => {
     cy.viewport(1920, 1080);
     cy.mount(
       <MentorProfileBottom
@@ -22,60 +22,27 @@ describe('MentorProfileBottom.cy.tsx', () => {
         availability={dummyMentorData.availability}
       />
     );
+  });
+
+  it('mounts', () => {
     cy.get('body');
   });
 
   it('check the name in About and Availability section', () => {
-    cy.viewport(1920, 1080);
-    cy.mount(
-      <MentorProfileBottom
-        name={dummyMentorData.name}
-        about={dummyMentorData.about}
-        skills={dummyMentorData.skills}
-        availability={dummyMentorData.availability}
-      />
-    );
     cy.get('h2').each((item, index) => {
       cy.wrap(item).should('contain', 'Hiba Badran');
     });
   });
 
   it('check the about prop text is shown correctly', () => {
-    cy.viewport(1920, 1080);
-    cy.mount(
-      <MentorProfileBottom
-        name={dummyMentorData.name}
-        about={dummyMentorData.about}
-        skills={dummyMentorData.skills}
-        availability={dummyMentorData.availability}
-      />
-    );
     cy.get('p:first').should('have.text', 'This is the about section.');
   });
 
   it('check the availability prop text is shown correctly', () => {
-    cy.viewport(1920, 1080);
-    cy.mount(
-      <MentorProfileBottom
-        name={dummyMentorData.name}
-        about={dummyMentorData.about}
-        skills={dummyMentorData.skills}
-        availability={dummyMentorData.availability}
-      />
-    );
     cy.get('p').eq(1).should('have.text', 'This is the availability section.');
   });
 
   it('check all the skills props are shown correctly in their respective BubbleTags', () => {
-    cy.viewport(1920, 1080);
-    cy.mount(
-      <MentorProfileBottom
-        name={dummyMentorData.name}
-        about={dummyMentorData.about}
-        skills={dummyMentorData.skills}
-        availability={dummyMentorData.availability}
-      />
-    );
     cy.get('span')
       .children()
       .children()

@@ -13,21 +13,20 @@ const percentBarSkills = [
 ];
 
 describe('MentorProfilePercentBars.cy.tsx', () => {
-  it('mounts', () => {
+  beforeEach(() => {
     cy.viewport(1920, 1080);
     cy.mount(<MentorProfilePercentBars percentBarSkills={percentBarSkills} />);
+  });
+
+  it('mounts', () => {
     cy.get('body');
   });
 
   it('check one example skill name from the list for test, Networking', () => {
-    cy.viewport(1920, 1080);
-    cy.mount(<MentorProfilePercentBars percentBarSkills={percentBarSkills} />);
     cy.get('p').eq(2).should('have.text', 'Networking');
   });
 
   it('check all the skill names are presented in the percentBars', () => {
-    cy.viewport(1920, 1080);
-    cy.mount(<MentorProfilePercentBars percentBarSkills={percentBarSkills} />);
     cy.get('p')
       .should('have.length', percentBarSkills.length)
       .each((item, index) => {
