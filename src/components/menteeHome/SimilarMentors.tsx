@@ -10,17 +10,22 @@ import '@splidejs/react-splide/css';
 export default function SimilarMentors(props: {
   data: MockData['similarMentors'];
 }) {
-  //! Make carousel look good with 2 or 1 items
+  // Configured options so carousel looks good on all screen sizes, despite how many similar mentors are found
+  // Ex. On large screens, we can hold 3 carousel items per slide
+  // If we only get 1 similar mentor match, then the carousel will change its look to keep that 1 mentor centered
   const Options = {
-    perPage: 3,
+    perPage:
+      props.data.length >= 3 ? 3 : 
+      props.data.length === 2 ? 2 : 
+      props.data.length === 1 ? 1 : 1, //  prettier-ignore
     gap: '1rem',
     pagination: false,
     // padding: { left: '3rem', right: '3rem' },
     lazyLoad: true,
-    arrows: props.data.length > 3 ? true : false,
+    arrows: props.data.length > 3 ? true : false, // only show arrows when we have over 3 similar mentors
     breakpoints: {
       1400: {
-        perPage: 2,
+        perPage: props.data.length >= 2 ? 2 : props.data.length === 1 ? 1 : 1,
         arrows: true,
       },
       1060: {
