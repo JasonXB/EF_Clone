@@ -1,9 +1,11 @@
-import Layout from '../src/components/Layout';
-import NotificationCard from '../src/components/notificationCard';
-import { UserNotification } from '../src/interface/user-notification.interface';
+import Layout from '../../src/components/Layout';
+import NotificationCard from '../../src/components/notificationCard';
+import { UserNotification } from '../../src/interface/user-notification.interface';
 import { NextPage } from 'next';
 import { useEffect, useState } from 'react';
 
+//! Requires getServerSideProps, unless this is supposed to be an overlay or modal...
+//! that goes on top of an existing webpage (in which case pre-rendering is not needed)
 const Notifications: NextPage = () => {
   let [notifications, setNotifications] = useState<UserNotification[]>();
 

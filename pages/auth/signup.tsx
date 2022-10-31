@@ -2,15 +2,12 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useRef, useState } from 'react';
 import Layout from '../../src/components/Layout';
-
-import Button, {
-  buttonVariants,
-} from '../../src/components/buttons/reusable-buttons';
+import Button, { buttonVariants } from '../../src/components/buttons/reusable-buttons'; // prettier-ignore
 import { signup } from '../../src/api/auth';
 
 // import React, { useRef } from 'react';
 // import { useState } from 'react';
-
+//! Requires getServerSide props to check if a user is offline (required to view this page)
 const Signup: NextPage = ({}) => {
   const [username, setUsername] = useState<string>('');
   const [email, setEmail] = useState<string>('');

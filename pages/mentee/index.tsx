@@ -5,6 +5,8 @@ import MeetingListItem from '../../src/components/menteeHome/MeetingListItem';
 import OutlinedButton from '../../src/components/menteeHome/OutlinedButton';
 import { MockData } from '../../src/interface/mentee/homepage';
 
+//! Requires getServerSideProps to check whether a user is authenticated as a mentee
+//! required to view this page- otherwise user is redirected to /auth/login
 export default function index() {
   // Mock data all grouped in the following objects
   const mock: MockData = {
