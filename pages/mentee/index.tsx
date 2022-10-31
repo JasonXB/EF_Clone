@@ -79,7 +79,7 @@ export default function index() {
   };
 
   return (
-    <Layout>
+    <Layout noBottomPadding={true}>
       <h3 className="font-semibold text-center mt-10 text-primary-1">
         Welcome back
         <br className="sm:hidden" /> {mock.username}

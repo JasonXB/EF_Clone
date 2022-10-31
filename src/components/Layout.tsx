@@ -7,20 +7,25 @@ import Footer from './footer/Footer';
 type LayoutProps = {
   headTitle?: string;
   children: any;
+  noBottomPadding?: boolean;
 };
 const Layout = ({ ...props }: LayoutProps) => {
   const title = props.headTitle
     ? `${props.headTitle} | Empowered Futures`
     : 'Empowered Futures';
   return (
-    <div className={`${LayoutStyle.container} font-[mainFont] `}>
+    <div className={`${LayoutStyle.container} font-[mainFont]`}>
       <Head>
         <title>{title}</title>
         <meta name="description" content="text" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <div className={LayoutStyle.content}>
+      <div
+        className={
+          props.noBottomPadding ? LayoutStyle.contentV2 : LayoutStyle.content
+        }
+      >
         <main>{props.children}</main>
       </div>
       <Footer />
