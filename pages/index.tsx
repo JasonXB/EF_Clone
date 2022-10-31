@@ -31,7 +31,7 @@ const ReusableCardData = [
 
 const Home: NextPage = ({}) => {
   return (
-    <Layout>
+    <Layout contentCustomClass="pb-0">
       <HomePageBanner />
       <div className="flex flex-col mx-auto space-y-6 w-fit md:space-y-0 md:flex-row md:space-x-8 lg:space-x-20">
         {ReusableCardData.map((each, i) => (
@@ -51,7 +51,7 @@ const Home: NextPage = ({}) => {
         <h2>Testimonials</h2>
         <Testimonials />
       </div>
-      <div className="my-20">
+      <div className="my-20 ">
         <h2>Latest Blogs</h2>
         <LatestBlogs />
       </div>

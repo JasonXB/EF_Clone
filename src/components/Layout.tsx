@@ -7,6 +7,7 @@ import Footer from './footer/Footer';
 type LayoutProps = {
   headTitle?: string;
   children: any;
+  contentCustomClass?: string;
 };
 const Layout = ({ ...props }: LayoutProps) => {
   const title = props.headTitle
@@ -20,10 +21,16 @@ const Layout = ({ ...props }: LayoutProps) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <div className={LayoutStyle.content}>
+      <div
+        className={
+          props.contentCustomClass
+            ? props.contentCustomClass
+            : LayoutStyle.content
+        }
+      >
         <main>{props.children}</main>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };
