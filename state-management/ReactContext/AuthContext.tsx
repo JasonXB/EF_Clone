@@ -1,16 +1,21 @@
 import React, { createContext, ReactNode, useContext, useState } from 'react';
+import { storeCredentialsInLocalStorage } from '../../src/api/localStorage';
 
 type authContextType = {
-  user: string | null;
-  setUser: Function;
-  login: (a: string) => void;
+  username: string | null;
+  setUsername: Function;
+  accessToken: string;
+  isLoggedIn: Function;
+  clientSideLogin: (username: string, token: string) => void;
   logout: () => void;
 };
 
 const authContextDefaultValues: authContextType = {
-  user: null,
-  setUser: () => {},
-  login: () => {},
+  username: null,
+  setUsername: () => {},
+  accessToken: '',
+  isLoggedIn: () => {},
+  clientSideLogin: () => {},
   logout: () => {},
 };
 
@@ -25,18 +30,35 @@ type AuthContextProps = {
 };
 
 export function AuthProvider({ children }: AuthContextProps) {
-  const [user, setUser] = useState<string | null>(null);
+  const [username, setUsername] = useState<string | null>(null);
+  const [accessToken, setAccessToken] = useState<string>('');
 
-  const login = (token: string) => {
-    setUser(token);
+  const clientSideLogin = (username: string, token: string) => {
+    setUsername(username);
+    setAccessToken(token);
+    storeCredentialsInLocalStorage(token);
+  };
+
+  const isLoggedIn = () => {
+    return !!accessToken;
   };
 
   const logout = () => {
-    setUser('');
+    setUsername('');
+    // todo: redirect to lander
   };
 
   return (
-    <AuthContext.Provider value={{ user, setUser, login, logout }}>
+    <AuthContext.Provider
+      value={{
+        username,
+        setUsername,
+        accessToken,
+        isLoggedIn,
+        clientSideLogin,
+        logout,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

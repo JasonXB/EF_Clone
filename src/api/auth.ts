@@ -27,6 +27,9 @@ export async function signupAPI(
   });
   const responseData = await response.json();
   console.log(responseData, '29rm');
+  // todo: check shpae of resp data
+  if (responseData._id) return true;
+  return false;
 }
 
 export async function loginAPI(
@@ -58,4 +61,17 @@ export async function loginAPI(
   const responseData = await response.json();
   console.log(responseData, '54rm');
   return responseData.accessToken;
+}
+
+export async function isLoggedInAPI(token: string) {
+  const res = await fetch('http://localhost:1992/api/users/check/status', {
+    method: 'GET',
+    headers: {
+      Authorization: 'Bearer ' + token,
+    },
+  });
+  const responseData = await res.json();
+  if (responseData.status === 'Mentee' || responseData.status === 'Mentor')
+    return true;
+  else return false;
 }

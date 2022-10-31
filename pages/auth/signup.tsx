@@ -6,17 +6,23 @@ import Layout from '../../src/components/Layout';
 import Button, {
   buttonVariants,
 } from '../../src/components/buttons/reusable-buttons';
-import { signupAPI } from '../../src/api/auth';
+import { loginAPI, signupAPI } from '../../src/api/auth';
+import { useAuth } from '../../state-management/ReactContext/AuthContext';
 
 // import React, { useRef } from 'react';
 // import { useState } from 'react';
 //! Requires getServerSide props to check if a user is offline (required to view this page)
 const Signup: NextPage = ({}) => {
-  const [username, setUsername] = useState<string>('');
+  const { username, clientSideLogin } = useAuth();
+  const [usernameToSubmit, setUsernameToSubmit] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  function handleLogin() {
-    signupAPI(username, email, password);
+  async function handleSignup() {
+    const success = await signupAPI(usernameToSubmit, email, password);
+    if (!success) return; // todo: tell the user their signup failed
+    const token = await loginAPI(usernameToSubmit, email, password);
+    clientSideLogin(usernameToSubmit, token);
+    // todo: redirect
   }
 
   return (
@@ -62,8 +68,9 @@ const Signup: NextPage = ({}) => {
                           type="text"
                           name="username"
                           onChange={(e) => {
-                            const username = e.target.value;
-                            if (username.length > 2) setUsername(username);
+                            const usernameToSubmit = e.target.value;
+                            if (usernameToSubmit.length > 2)
+                              setUsernameToSubmit(usernameToSubmit);
                           }}
                           required
                           autoFocus
@@ -108,7 +115,7 @@ const Signup: NextPage = ({}) => {
                           type="submit"
                           clickHandler={(e) => {
                             e.preventDefault();
-                            handleLogin();
+                            handleSignup();
                           }}
                         >
                           Register

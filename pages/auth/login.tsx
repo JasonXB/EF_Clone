@@ -15,19 +15,16 @@ import { useAuth } from '../../state-management/ReactContext/AuthContext';
 
 //! Requires getServerSide props to check if a user is offline (required to view this page)
 const Login: NextPage = ({}) => {
-  // related to grabbing the values in the username and password input fields; commented out for now
-  // const userName = useRef<HTMLInputElement | null>(null);
-  // const passWord = useRef<HTMLInputElement | null>(null);
-  const { user, login, logout } = useAuth();
+  const { username, clientSideLogin, logout } = useAuth();
 
-  const [username, setUsername] = useState<string>('');
+  const [usernameToSubmit, setUsernameToSubmit] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
   async function handleLogin() {
-    console.log(username, password, '21rm');
-    const accessToken = await loginAPI(username, email, password);
-    login(accessToken);
+    console.log(usernameToSubmit, password, '21rm');
+    const accessToken = await loginAPI(usernameToSubmit, email, password);
+    clientSideLogin(usernameToSubmit, accessToken);
   }
 
   return (
@@ -102,7 +99,7 @@ const Login: NextPage = ({}) => {
                             e.preventDefault();
                             console.log(e.target.value, '106rm');
                             const username = e.target.value;
-                            setUsername(username);
+                            setUsernameToSubmit(username);
                           }}
                           required
                           autoFocus
