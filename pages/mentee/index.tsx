@@ -4,10 +4,11 @@ import ApplicationListItem from '../../src/components/menteeHome/ApplicationList
 import MeetingListItem from '../../src/components/menteeHome/MeetingListItem';
 import OutlinedButton from '../../src/components/menteeHome/OutlinedButton';
 import { MockData } from '../../src/interface/mentee/homepage';
+import useAuthCheck from '../../src/hooks/useAuthCheck';
 
 //! Requires getServerSideProps to check whether a user is authenticated as a mentee
 //! required to view this page- otherwise user is redirected to /auth/login
-export default function index() {
+export default function Index() {
   // Mock data all grouped in the following objects
   const mock: MockData = {
     username: 'Chris Hill',
@@ -45,6 +46,9 @@ export default function index() {
     ],
   };
 
+  // Testing the authentication status check hook
+  const authStatus = useAuthCheck();
+  console.log(authStatus);
   return (
     <Layout>
       <h3 className="font-semibold text-center mt-10 text-primary-1">

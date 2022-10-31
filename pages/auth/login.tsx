@@ -2,12 +2,8 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useRef, useState } from 'react';
 import Layout from '../../src/components/Layout';
-
-import Button, {
-  buttonVariants,
-} from '../../src/components/buttons/reusable-buttons';
+import Button, { buttonVariants } from '../../src/components/buttons/reusable-buttons'; //  prettier-ignore
 import { loginAPI } from '../../src/api/auth';
-
 import { useAuth } from '../../state-management/ReactContext/AuthContext';
 
 // import React, { useRef } from 'react';
