@@ -33,20 +33,20 @@ export function AuthProvider({ children }: AuthContextProps) {
   const [username, setUsername] = useState<string | null>(null);
   const [accessToken, setAccessToken] = useState<string>('');
 
-  const clientSideLogin = (username: string, token: string) => {
+  function clientSideLogin(username: string, token: string) {
     setUsername(username);
     setAccessToken(token);
     storeCredentialsInLocalStorage(token);
-  };
+  }
 
   const isLoggedIn = () => {
     return !!accessToken;
   };
 
-  const logout = () => {
+  function logout() {
     setUsername('');
     // todo: redirect to lander
-  };
+  }
 
   return (
     <AuthContext.Provider

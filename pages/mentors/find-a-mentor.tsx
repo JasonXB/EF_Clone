@@ -1,4 +1,3 @@
-import * as cookie from 'cookie';
 import type {
   GetServerSideProps,
   GetServerSidePropsContext,
