@@ -1,4 +1,4 @@
-export async function signup(
+export async function signupAPI(
   username: string,
   email: string,
   password: string
@@ -29,7 +29,11 @@ export async function signup(
   console.log(responseData, '29rm');
 }
 
-export async function login(username: string, email: string, password: string) {
+export async function loginAPI(
+  username: string,
+  email: string,
+  password: string
+) {
   console.log(username, password, '35rm');
   const details = {
     username: username,

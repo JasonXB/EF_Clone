@@ -6,7 +6,9 @@ import Layout from '../../src/components/Layout';
 import Button, {
   buttonVariants,
 } from '../../src/components/buttons/reusable-buttons';
-import { login } from '../../src/api/auth';
+import { loginAPI } from '../../src/api/auth';
+
+import { useAuth } from '../../state-management/ReactContext/AuthContext';
 
 // import React, { useRef } from 'react';
 // import { useState } from 'react';
@@ -15,13 +17,16 @@ const Login: NextPage = ({}) => {
   // related to grabbing the values in the username and password input fields; commented out for now
   // const userName = useRef<HTMLInputElement | null>(null);
   // const passWord = useRef<HTMLInputElement | null>(null);
+  const { user, login, logout } = useAuth();
+
   const [username, setUsername] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
   async function handleLogin() {
     console.log(username, password, '21rm');
-    const accessToken = await login(username, email, password);
+    const accessToken = await loginAPI(username, email, password);
+    login(accessToken);
   }
 
   return (

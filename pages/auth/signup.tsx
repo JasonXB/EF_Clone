@@ -6,7 +6,7 @@ import Layout from '../../src/components/Layout';
 import Button, {
   buttonVariants,
 } from '../../src/components/buttons/reusable-buttons';
-import { signup } from '../../src/api/auth';
+import { signupAPI } from '../../src/api/auth';
 
 // import React, { useRef } from 'react';
 // import { useState } from 'react';
@@ -16,7 +16,7 @@ const Signup: NextPage = ({}) => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   function handleLogin() {
-    signup(username, email, password);
+    signupAPI(username, email, password);
   }
 
   return (
