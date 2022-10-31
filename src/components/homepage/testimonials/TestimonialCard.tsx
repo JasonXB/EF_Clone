@@ -44,7 +44,7 @@ const TestimonialCard = (props: any) => {
       </div>
       <div>
         <blockquote
-          className=" flex flex-col  after:self-end before:font-bold before:text-5xl before:text-primary-2
+          className=" flex flex-col before:leading-4  after:self-end before:font-bold before:text-5xl before:text-primary-2
         after:font-bold after:text-5xl after:text-primary-2 
          before:content-[open-quote] after:content-[close-quote]  "
         >
