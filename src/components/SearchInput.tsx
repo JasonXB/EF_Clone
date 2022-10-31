@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Data } from '../interface/data.interface';
 import { SearchInputProps } from '../interface/search-input-props.interface';
-import { useSearchContext } from '../../state-management/ReactContext/Context';
+import { useGlobalContext } from '../../state-management/ReactContext/Context';
 
 const SearchInput = ({ data }: SearchInputProps) => {
-  const { filterSearch } = useSearchContext();
+  const { filterSearch } = useGlobalContext();
 
   // sets up reference with variable currentSearchValue
   const currentSearchValue = useRef<HTMLInputElement>(null!);
