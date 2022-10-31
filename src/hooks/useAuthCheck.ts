@@ -7,7 +7,7 @@ function useInput() {
     const checkStatus = async function () {
       try {
         // Check for a JWT inside Local-storage
-        const jwtString = localStorage.getItem('EF_TEST') || ""; // prettier-ignore
+        const jwtString = localStorage.getItem('EFuserCredentials') || ""; // prettier-ignore
         console.log(jwtString);
         // Make an axios request using the jwt in the header
         const headers = {
