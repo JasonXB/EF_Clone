@@ -13,6 +13,7 @@ import { useAuth } from '../../state-management/ReactContext/AuthContext';
 // import React, { useRef } from 'react';
 // import { useState } from 'react';
 
+//! Requires getServerSide props to check if a user is offline (required to view this page)
 const Login: NextPage = ({}) => {
   // related to grabbing the values in the username and password input fields; commented out for now
   // const userName = useRef<HTMLInputElement | null>(null);

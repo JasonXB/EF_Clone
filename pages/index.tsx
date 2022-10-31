@@ -5,6 +5,12 @@ import mentorGraphic from '../public/assets/mentorImageHomePage.png';
 import menteeGraphic from '../public/assets/menteeImageHomePage.png';
 import Layout from '../src/components/Layout';
 import { AuthProvider } from '../state-management/ReactContext/AuthContext';
+import { GetStaticProps } from 'next';
+
+// Statically renders page and sets props equal to an empty object
+export const getStaticProps: GetStaticProps = async (context) => {
+  return { props: {} };
+};
 
 const ReusableCardData = [
   //links and img need to be added once we receive assets and where these link to.

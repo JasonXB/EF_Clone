@@ -10,7 +10,7 @@ import { signupAPI } from '../../src/api/auth';
 
 // import React, { useRef } from 'react';
 // import { useState } from 'react';
-
+//! Requires getServerSide props to check if a user is offline (required to view this page)
 const Signup: NextPage = ({}) => {
   const [username, setUsername] = useState<string>('');
   const [email, setEmail] = useState<string>('');
