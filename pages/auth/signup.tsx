@@ -11,7 +11,7 @@ import { useAuth } from '../../state-management/ReactContext/AuthContext';
 
 // import React, { useRef } from 'react';
 // import { useState } from 'react';
-//! Requires getServerSide props to check if a user is offline (required to view this page)
+//! check if a user is offline (required to view this page)
 const Signup: NextPage = ({}) => {
   const { username, clientSideLogin } = useAuth();
   const [usernameToSubmit, setUsernameToSubmit] = useState<string>('');

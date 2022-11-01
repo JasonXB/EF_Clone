@@ -7,8 +7,7 @@ import {
   placeholderDataForMeetings,
 } from '../../src/tempData/temp-data-mentor';
 
-//! Requires getServerSideProps to check whether a user is authenticated as a mentor
-//! otherwise user is redirected to /auth/login
+//! check whether a user is authenticated as a mentor, otherwise user is redirected to /auth/login
 const MentorDashboard: NextPage = ({}) => {
   return (
     <Layout headTitle="Mentor Dashboard">

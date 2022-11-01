@@ -6,8 +6,8 @@ import OutlinedButton from '../../src/components/menteeHome/OutlinedButton';
 import { MockData } from '../../src/interface/mentee/homepage';
 import useAuthCheck from '../../src/hooks/useAuthCheck';
 
-//! Requires getServerSideProps to check whether a user is authenticated as a mentee
-//! required to view this page- otherwise user is redirected to /auth/login
+//! check whether a user is authenticated as a mentee
+// required to view this page- otherwise user is redirected to /auth/login
 export default function Index() {
   // Mock data all grouped in the following objects
   const mock: MockData = {
