@@ -29,7 +29,7 @@ type Props = {
 // currently, only one generic state variable defined for currentFilteredData
 // as more use cases for SearchInput components become apparent, more variables can be defined to handle different kinds of state
 
-export function SimilarMentorsContextProvider({ children }: Props) {
+export function SimilarMentorsProvider({ children }: Props) {
   // Context for similar mentors carousel  -- fix 'any' soon
   const [selectedSimilarMentor, setSelectedSimilarMentor] = useState<any>(null);
 

@@ -29,7 +29,7 @@ type Props = {
 // currently, only one generic state variable defined for currentFilteredData
 // as more use cases for SearchInput components become apparent, more variables can be defined to handle different kinds of state
 
-export function SearchContextProvider({ children }: Props) {
+export function SearchProvider({ children }: Props) {
   // State variable to display current filtered data on UI
   const [currentFilteredData, setCurrentFilteredData] = useState(
     searchContextDefaultValues.currentFilteredData
