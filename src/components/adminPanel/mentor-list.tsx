@@ -102,9 +102,9 @@ const MentorList = ({
             height="16"
             fill="currentColor"
             className={`bi bi-circle-fill w-2 ${
-              mentorStatus === 'verified'
+              mentorStatus === 'Verified'
                 ? 'text-green-400'
-                : mentorStatus === 'pending'
+                : mentorStatus === 'Pending'
                 ? 'text-pink-600'
                 : 'text-gray-400'
             }`}
