@@ -17,7 +17,7 @@ const Layout = ({ ...props }: LayoutProps) => {
     <div className={`${LayoutStyle.container} font-[mainFont]`}>
       <Head>
         <title>{title}</title>
-        <meta name="description" content="text" />
+        <meta name="description" content="text/html; charset=ISO-8859-1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
