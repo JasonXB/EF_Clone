@@ -1,28 +1,27 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import { useRef, useState } from 'react';
 
 import Layout from '../../src/components/Layout';
-import SignUpFormMentee from '../../src/components/signupForm/SignUpFormMentee';
 import bg from '../../public/assets/Sign-Up-page.png';
+import SignUpFormAdmin from '../../src/components/signupForm/SignUpFormAdmin';
 
-//! Requires getServerSide props to check if a user is offline (required to view this page)
-//! check if a user is offline (required to view this page)
-const Signup: NextPage = ({}) => {
+const SignupAsAdmin: NextPage = ({}) => {
   return (
     <div
       className="w-full h-full bg-local bg-center bg-no-repeat bg-auto"
       style={{ backgroundImage: `url(${bg.src})` }}
     >
       <Head>
-        <title>Empowered Futures - Sign Up</title>
+        <title>Empowered Futures - Sign Up As Admin</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Layout>
-        <SignUpFormMentee />
+        <SignUpFormAdmin />
       </Layout>
     </div>
   );
 };
 
-export default Signup;
+export default SignupAsAdmin;

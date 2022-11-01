@@ -5,20 +5,35 @@ import Layout from '../../src/components/Layout';
 import Button, { buttonVariants } from '../../src/components/buttons/reusable-buttons'; //  prettier-ignore
 import { loginAPI } from '../../src/api/auth';
 import { useAuth } from '../../state-management/ReactContext/AuthContext';
+import { Roles } from '../../src/enum/role.enum';
+import { useRouter } from 'next/router';
 
-// import React, { useRef } from 'react';
-// import { useState } from 'react';
-
-//! check if a user is offline (required to view this page)
 const Login: NextPage = ({}) => {
+  const router = useRouter();
   const { clientSideLogin, logout } = useAuth();
 
+  const [username, setUsername] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const [role, setRole] = useState<Roles>(Roles.mentee);
 
   async function handleLogin() {
-    const accessToken = await loginAPI(email, password);
+    const accessToken = await loginAPI(username, email, password);
     clientSideLogin(email, accessToken);
+    if (role === Roles.mentee) {
+      router.push('/mentee');
+    } else {
+      router.push('/mentor');
+    }
+  }
+
+  function switchSignupRole() {
+    if (role === Roles.mentee) {
+      setRole(Roles.mentor);
+    }
+    if (role === Roles.mentor) {
+      setRole(Roles.mentee);
+    }
   }
 
   return (
@@ -38,33 +53,19 @@ const Login: NextPage = ({}) => {
 
                   <div className="right-inside xs:w-200 sm:w-[480px]">
                     <span className="text-primary-1 text-[24px] font-semibold">
-                      Login
+                      Login as a {role === Roles.mentee ? 'Mentee' : 'Mentor'}
                     </span>
-
-                    {/* Mentor Mentee Buttons */}
-                    {/* <span className="block font-medium py-2">
-                    Select your account type
-                  </span> */}
-
-                    {/* <div className='flex'>
-                    <div className='pr-2'>
-                    <button 
-                      className={`${mentorChosen ? 'border-primary-1 bg-primary-5 drop-shadow-lg': ''}border border-[3px] h-[50px] w-[110px] rounded-[15px] hover:bg-primary-5 hover:border-primary-1 hover:drop-shadow-lg`}
-                      onClick={handleMentorChoice}
+                    <p>
+                      Not a {role === Roles.mentee ? 'Mentee' : 'Mentor'}?{' '}
+                      <a
+                        onClick={() => {
+                          switchSignupRole();
+                        }}
+                        className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"
                       >
-                      Mentor
-                    </button>
-                    </div>
-
-                    <div className=''>
-                    <button 
-                      className={`${menteeChosen ? 'border-primary-1 bg-primary-5 drop-shadow-lg': ''}border border-[3px] h-[50px] w-[110px] rounded-[15px] hover:bg-primary-5 hover:border-primary-1 hover:drop-shadow-lg`}
-                      onClick={handleMenteeChoice}
-                      >
-                      Mentee
-                    </button>
-                    </div>
-                  </div> */}
+                        Login as a {role === Roles.mentee ? 'Mentor' : 'Mentee'}
+                      </a>
+                    </p>
 
                     <div className="flex text-[12px] md:text-[70%]">
                       <Button
@@ -82,6 +83,23 @@ const Login: NextPage = ({}) => {
 
                     <form autoComplete="off" className="">
                       <div className="py-3">
+                        <span className="font-medium">Username</span>
+                        <input
+                          className="block border-2 rounded-lg h-[34px] w-full px-2"
+                          placeholder=""
+                          type="text"
+                          name="username"
+                          // ref={userName} // for the function up top
+                          onChange={(e) => {
+                            e.preventDefault();
+                            const username = e.target.value;
+                            setUsername(username);
+                          }}
+                          required
+                          autoFocus
+                        />
+                      </div>
+                      <div className="py-3">
                         <span className="font-medium">Email</span>
                         <input
                           className="block border-2 rounded-lg h-[34px] w-full px-2"
@@ -91,7 +109,6 @@ const Login: NextPage = ({}) => {
                           // ref={userName} // for the function up top
                           onChange={(e) => {
                             e.preventDefault();
-                            console.log(e.target.value, '106rm');
                             const email = e.target.value;
                             setEmail(email);
                           }}
