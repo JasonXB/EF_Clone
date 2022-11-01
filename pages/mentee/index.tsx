@@ -4,7 +4,7 @@ import ApplicationListItem from '../../src/components/menteeHome/ApplicationList
 import MeetingListItem from '../../src/components/menteeHome/MeetingListItem';
 import OutlinedButton from '../../src/components/menteeHome/OutlinedButton';
 import { MockData } from '../../src/interface/mentee/homepage';
-import useAuthCheck from '../../src/hooks/useAuthCheck';
+import useAuthStatusCheck from '../../src/hooks/useAuthStatusCheck';
 
 //! check whether a user is authenticated as a mentee
 // required to view this page- otherwise user is redirected to /auth/login
@@ -47,7 +47,7 @@ export default function Index() {
   };
 
   // Testing the authentication status check hook
-  const authStatus = useAuthCheck();
+  const authStatus = useAuthStatusCheck();
   console.log('HOOK RETURNS AUTH STATUS OF: ', authStatus);
   return (
     <Layout>
