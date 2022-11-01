@@ -16,7 +16,7 @@ interface MentorType {
   goalOfMeeting: string;
 }
 
-//! Requires getServerSideProps to check if the user is authenticated as an admin (req'd to view this page)
+//! check if the user is authenticated as an admin (req'd to view this page)
 const AdminPanelDashboard: NextPage = ({}) => {
   const [sortBy, setSortBy] = useState<string>('all');
 
