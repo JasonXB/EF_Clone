@@ -8,21 +8,30 @@ import Button, {
 } from '../../src/components/buttons/reusable-buttons';
 import { loginAPI, signupAPI } from '../../src/api/auth';
 import { useAuth } from '../../state-management/ReactContext/AuthContext';
+import { Roles } from '../../src/enum/role.enum';
 
-// import React, { useRef } from 'react';
-// import { useState } from 'react';
 //! Requires getServerSide props to check if a user is offline (required to view this page)
 const Signup: NextPage = ({}) => {
   const { username, clientSideLogin } = useAuth();
   const [usernameToSubmit, setUsernameToSubmit] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const [role, setRole] = useState<Roles>(Roles.mentee);
   async function handleSignup() {
-    const success = await signupAPI(usernameToSubmit, email, password);
+    const success = await signupAPI(usernameToSubmit, email, password, role);
     if (!success) return; // todo: tell the user their signup failed
     const token = await loginAPI(usernameToSubmit, email, password);
     clientSideLogin(usernameToSubmit, token);
     // todo: redirect
+  }
+
+  function switchSignupRole() {
+    if (role === Roles.mentee) {
+      setRole(Roles.mentor);
+    }
+    if (role === Roles.mentor) {
+      setRole(Roles.mentee);
+    }
   }
 
   return (
@@ -41,9 +50,38 @@ const Signup: NextPage = ({}) => {
                   <div className="left-inside text-center"></div>
 
                   <div className="right-inside xs:w-200 sm:w-[480px]">
-                    <span className="text-primary-1 text-[24px] font-semibold">
-                      Signup
-                    </span>
+                    <div className="mb-1">
+                      <span className="text-primary-1 text-[24px] font-semibold">
+                        Sign Up as a {role}
+                      </span>
+                      {role === Roles.mentee ? (
+                        <p>
+                          Not your preference?{' '}
+                          <a
+                            onClick={() => {
+                              switchSignupRole();
+                            }}
+                            className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"
+                          >
+                            Sign up as a mentor
+                          </a>
+                          .
+                        </p>
+                      ) : (
+                        <p>
+                          Not your preference?{' '}
+                          <a
+                            onClick={() => {
+                              switchSignupRole();
+                            }}
+                            className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"
+                          >
+                            Sign up as a mentee
+                          </a>
+                          .
+                        </p>
+                      )}
+                    </div>
 
                     <div className="flex text-[12px] md:text-[70%]">
                       <Button

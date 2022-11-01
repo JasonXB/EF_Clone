@@ -1,14 +1,17 @@
+import { Roles } from '../enum/role.enum';
+
 export async function signupAPI(
   username: string,
   email: string,
-  password: string
+  password: string,
+  role: Roles
 ) {
   console.log(username, email, password, '2rm');
   const details = {
     username: username,
     email: email,
     password: password,
-    role: 'MENTEE',
+    role: role === Roles.mentee ? 'MENTEE' : 'MENTOR',
   };
   const formBody = [];
   for (let i = 0; i < Object.keys(details).length; i++) {
