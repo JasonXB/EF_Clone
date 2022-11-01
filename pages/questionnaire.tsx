@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 import Layout from '../src/components/Layout';
 import Button from '../src/components/buttons/reusable-buttons';
+// import SearchInput from '../src/components/SearchInput';
 
 const questionnaire: NextPage = ({}) => {
   return (
@@ -17,7 +18,7 @@ const questionnaire: NextPage = ({}) => {
              <input
               className="border-2 rounded-[23px] h-[36px] w-[231px] sm:w-[350px] md:w-[500px] md:text-center drop-shadow-md text-[10px] sm:text-[16px] pl-[22px]"
               placeholder="Skills, Mentor name, or Industries"
-              type="text"
+              type="search"
               name="searchBar"
               required
               autoFocus
@@ -28,11 +29,11 @@ const questionnaire: NextPage = ({}) => {
                 width="24"
                 height="24"
                 viewBox="0 0 24 24"
-                stroke-width="2"
+                strokeWidth="2"
                 stroke="currentColor"
                 fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
                 {' '}
                 <path stroke="none" d="M0 0h24v24H0z" />{' '}
