@@ -97,8 +97,6 @@ const BookMeeting = () => {
     }
   }
 
-  console.log(meetingDetails);
-
   return (
     <Layout>
       {meeting_availability?.specific && (
