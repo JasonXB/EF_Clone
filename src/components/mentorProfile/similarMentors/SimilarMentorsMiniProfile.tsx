@@ -1,5 +1,5 @@
 import Avatar from '../../avatar/avatar';
-import { useGlobalContext } from '../../../../state-management/ReactContext/Context';
+import { useSimilarMentorsContext } from '../../../../state-management/ReactContext/SimilarMentorsContext';
 
 interface MentorsInfoProps {
   name: string;
@@ -12,7 +12,7 @@ interface MentorsInfoProps {
 }
 
 const SimilarMentorsMiniProfile = ({ ...mentorsInfo }: MentorsInfoProps) => {
-  const { selectedSimilarMentor, selectSimilarMentor } = useGlobalContext();
+  const { selectedSimilarMentor, selectSimilarMentor } = useSimilarMentorsContext();
 
   const { name, location, job, tags, avatar } =
     mentorsInfo;

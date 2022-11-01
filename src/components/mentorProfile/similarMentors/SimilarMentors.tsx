@@ -4,12 +4,10 @@ import { BUBBLE_TAG_TYPE_CLASSES } from '../../BubbleTag';
 import { dummySimilarMentorProfiles } from './dummySimilarMentorProfiles';
 import Button from '../../buttons/reusable-buttons';
 import SimilarMentorsCarousel from './SimilarMentorsCarousel';
-import { useGlobalContext } from '../../../../state-management/ReactContext/Context';
+import { useSimilarMentorsContext } from '../../../../state-management/ReactContext/SimilarMentorsContext';
 
 const SimilarMentors = ({}) => {
-  const { selectedSimilarMentor, selectSimilarMentor } = useGlobalContext();
-
-  // Temporarily displaying dummySimilarMentor data
+  const { selectedSimilarMentor, selectSimilarMentor } = useSimilarMentorsContext();
 
   return (
     <div className="mb-10 flex flex-col justify-center w-[100%]">

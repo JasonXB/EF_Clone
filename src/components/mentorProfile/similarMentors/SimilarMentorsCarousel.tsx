@@ -3,7 +3,7 @@ import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide';
 
 import '@splidejs/react-splide/css';
 import SimilarMentorsMiniProfile from './SimilarMentorsMiniProfile';
-import { useGlobalContext } from '../../../../state-management/ReactContext/Context';
+import { useSimilarMentorsContext } from '../../../../state-management/ReactContext/SimilarMentorsContext';
 
 export interface MiniCardProps {
   name: string;
@@ -25,7 +25,7 @@ type dataType = {
 
 //need to fix arrows adjustment and progress dots
 const ResponsiveSlider = ({ data }: { data: dataType }) => {
-  const { selectSimilarMentor } = useGlobalContext();
+  const { selectSimilarMentor } = useSimilarMentorsContext();
 
   const length: number = data.data.length;
   const Options = {

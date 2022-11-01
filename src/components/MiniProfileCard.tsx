@@ -10,8 +10,7 @@ interface MentorsInfoProps {
   location: string;
   job: string;
   tags: string[];
-  // Matt - added 'avatar'
-  avatar: any;
+  avatar: string;
   compatibilityPercent: number;
 }
 

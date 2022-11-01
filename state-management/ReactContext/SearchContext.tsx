@@ -8,22 +8,18 @@ import { MiniCardProps } from '../../src/components/mentorProfile/similarMentors
 type contextType = {
   currentFilteredData: Array<Data>;
   filterSearch: (data: Array<Data>, searchValue: string) => void;
-  selectedSimilarMentor: MiniCardProps | null;
-  selectSimilarMentor: (i: number | null) => void;
 };
 
 // default data set to dummyMentors for the time being.
-const contextDefaultValues: contextType = {
+const searchContextDefaultValues: contextType = {
   currentFilteredData: dummyMentors,
   filterSearch: () => {},
-  selectedSimilarMentor: null,
-  selectSimilarMentor: () => {},
 };
 
-const GlobalContext = createContext<contextType>(contextDefaultValues);
+const SearchContext = createContext<contextType>(searchContextDefaultValues);
 
-export function useGlobalContext() {
-  return useContext(GlobalContext);
+export function useSearchContext() {
+  return useContext(SearchContext);
 }
 
 type Props = {
@@ -33,10 +29,10 @@ type Props = {
 // currently, only one generic state variable defined for currentFilteredData
 // as more use cases for SearchInput components become apparent, more variables can be defined to handle different kinds of state
 
-export function ContextProvider({ children }: Props) {
+export function SearchContextProvider({ children }: Props) {
   // State variable to display current filtered data on UI
   const [currentFilteredData, setCurrentFilteredData] = useState(
-    contextDefaultValues.currentFilteredData
+    searchContextDefaultValues.currentFilteredData
   );
 
   // Context for similar mentors carousel  -- fix 'any' soon
@@ -75,16 +71,14 @@ export function ContextProvider({ children }: Props) {
 
   const value = {
     currentFilteredData,
-    filterSearch,
-    selectedSimilarMentor,
-    selectSimilarMentor,
+    filterSearch
   };
 
   return (
     <>
-      <GlobalContext.Provider value={value}>
+      <SearchContext.Provider value={value}>
         <>{children}</>
-      </GlobalContext.Provider>
+      </SearchContext.Provider>
     </>
   );
 }

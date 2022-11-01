@@ -1,6 +1,8 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
-import { ContextProvider } from '../state-management/ReactContext/Context';
+import { SimilarMentorsContextProvider } from '../state-management/ReactContext/SimilarMentorsContext';
+import { SearchContextProvider } from '../state-management/ReactContext/SearchContext';
+
 import { CalendarProvider } from '../state-management/ReactContext/CalendarContext';
 import { TimezoneProvider } from '../state-management/ReactContext/TimezoneContext';
 import { Provider } from 'react-redux';
@@ -11,9 +13,11 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider store={ReduxStore}>
       {/* ContextProvider: current Context API provider (for filter search functionality) */}
-      <ContextProvider>
+      <SearchContextProvider>
+      <SimilarMentorsContextProvider>
         <Component {...pageProps} />
-      </ContextProvider>
+      </SimilarMentorsContextProvider>
+      </SearchContextProvider>
     </Provider>
   );
 }
