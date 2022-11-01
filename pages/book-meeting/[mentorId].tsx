@@ -15,10 +15,10 @@ import { Mentor } from '../../src/interface/book-meeting/book-with-mentor.interf
 const BookMeeting = () => {
   const router = useRouter();
   const mentorId = router.query.mentorId;
-
-  
   const [thisMentor, setThisMentor] = useState({} as Mentor);
 
+
+  
   useEffect(() => {
     if (router.isReady) {
       let mentorFound = mentorsData.find(
@@ -73,7 +73,7 @@ const BookMeeting = () => {
 
 
   
-  console.log('JSON',JSON.stringify(selectedTimeSlot.startDatetime) === '{}');
+  // console.log('JSON',JSON.stringify(selectedTimeSlot.startDatetime) === '{}');
   
   //pass data to next page
 
@@ -91,9 +91,33 @@ const BookMeeting = () => {
     };
   }
 
+  const postMeeting = async () => {
+    try {
+    const meeting = {
+      mentorID: thisMentor.mentor_id, 
+      menteeID: 11, 
+      date: formatISO(selectedTimeSlot.startDatetime, {representation: 'date'}), //type to be fixed
+      time: formatISO(selectedTimeSlot.startDatetime, {representation: 'date'}), //type to be fixed
+      meetingMethod: 'Google Meeting',
+    }
+    const response = await fetch('https://efback.azurewebsites.net/api/meeting/auth/set_meeting/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(meeting),
+    })
+    // const data = await response.json()
+    // console.log('meeting',meeting);
+    // console.log('data',data);
+    } catch (err: any) { //type to be fixed
+      console.log('POST error: ',err.message);
+    }
+  }
+
   const bookMeeting = () => {
     if(JSON.stringify(meetingDetails) === '{}'){
       alert("Please select the date and time for the meeting")
+    } else {
+      postMeeting();
     }
   }
 
@@ -217,10 +241,10 @@ const BookMeeting = () => {
                 </div>
               </div>
               {/* ^ end of item 3 div */}
-              {/* SUBMIT BUTTON------------------------------------------------- */}
+              {/* SUBMIT BUTTON------------------------------------------------- /meeting/confirmedMeeting*/}
               <Link
                 href={{
-                  pathname: JSON.stringify(meetingDetails) !== '{}' ? '/meeting/confirmedMeeting' : '#',
+                  pathname: JSON.stringify(meetingDetails) !== '{}' ? '#' : '#',
                   query: meetingDetails,
                 }}
               >
