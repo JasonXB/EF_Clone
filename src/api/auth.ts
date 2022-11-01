@@ -6,7 +6,7 @@ export async function signupAPI(
   password: string,
   role: Roles
 ) {
-  console.log(username, email, password, '2rm');
+  console.log(email, password, '2rm');
   const details = {
     username: username,
     email: email,
@@ -40,7 +40,7 @@ export async function loginAPI(
   email: string,
   password: string
 ) {
-  console.log(username, password, '35rm');
+  console.log(password, '35rm');
   const details = {
     username: username,
     email: email,

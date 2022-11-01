@@ -11,16 +11,14 @@ import { useAuth } from '../../state-management/ReactContext/AuthContext';
 
 //! check if a user is offline (required to view this page)
 const Login: NextPage = ({}) => {
-  const { username, clientSideLogin, logout } = useAuth();
+  const { clientSideLogin, logout } = useAuth();
 
-  const [usernameToSubmit, setUsernameToSubmit] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
   async function handleLogin() {
-    console.log(usernameToSubmit, password, '21rm');
-    const accessToken = await loginAPI(usernameToSubmit, email, password);
-    clientSideLogin(usernameToSubmit, accessToken);
+    const accessToken = await loginAPI(email, password);
+    clientSideLogin(email, accessToken);
   }
 
   return (
@@ -83,24 +81,6 @@ const Login: NextPage = ({}) => {
                     </div>
 
                     <form autoComplete="off" className="">
-                      <div className="py-3">
-                        <span className="font-medium">Username</span>
-                        <input
-                          className="block border-2 rounded-lg h-[34px] w-full px-2"
-                          placeholder=""
-                          type="text"
-                          name="username"
-                          // ref={userName} // for the function up top
-                          onChange={(e) => {
-                            e.preventDefault();
-                            console.log(e.target.value, '106rm');
-                            const username = e.target.value;
-                            setUsernameToSubmit(username);
-                          }}
-                          required
-                          autoFocus
-                        />
-                      </div>
                       <div className="py-3">
                         <span className="font-medium">Email</span>
                         <input

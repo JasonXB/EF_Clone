@@ -2,8 +2,8 @@ import React, { createContext, ReactNode, useContext, useState } from 'react';
 import { storeCredentialsInLocalStorage } from '../../src/api/localStorage';
 
 type authContextType = {
-  username: string | null;
-  setUsername: Function;
+  email: string | null;
+  setEmail: Function;
   accessToken: string;
   isLoggedIn: Function;
   clientSideLogin: (username: string, token: string) => void;
@@ -11,8 +11,8 @@ type authContextType = {
 };
 
 const authContextDefaultValues: authContextType = {
-  username: null,
-  setUsername: () => {},
+  email: null,
+  setEmail: () => {},
   accessToken: '',
   isLoggedIn: () => {},
   clientSideLogin: () => {},
@@ -30,11 +30,11 @@ type AuthContextProps = {
 };
 
 export function AuthProvider({ children }: AuthContextProps) {
-  const [username, setUsername] = useState<string | null>(null);
+  const [email, setEmail] = useState<string | null>(null);
   const [accessToken, setAccessToken] = useState<string>('');
 
-  function clientSideLogin(username: string, token: string) {
-    setUsername(username);
+  function clientSideLogin(email: string, token: string) {
+    setEmail(email);
     setAccessToken(token);
     storeCredentialsInLocalStorage(token);
   }
@@ -44,15 +44,16 @@ export function AuthProvider({ children }: AuthContextProps) {
   };
 
   function logout() {
-    setUsername('');
+    setEmail('');
+    setAccessToken('');
     // todo: redirect to lander
   }
 
   return (
     <AuthContext.Provider
       value={{
-        username,
-        setUsername,
+        email,
+        setEmail,
         accessToken,
         isLoggedIn,
         clientSideLogin,
