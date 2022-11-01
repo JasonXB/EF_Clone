@@ -31,6 +31,22 @@ const mockData = {
       reviewBlurb:
         'I loved mentoring with Empowered Futures. The process was simple and easy to use. I will recommend to my friends to join Empowered Futures, to mentor people in the future.',
     },
+    {
+      img: placeholderAvatar,
+      fullName: 'Bill Gates',
+      company: 'Microsoft Company',
+      rate: 5,
+      reviewBlurb:
+        'I loved mentoring with Empowered Futures. The process was simple and easy to use. I will recommend to my friends to join Empowered Futures, to mentor people in the future.',
+    },
+    {
+      img: placeholderAvatar,
+      fullName: 'Bill Gates',
+      company: 'Microsoft Company',
+      rate: 4,
+      reviewBlurb:
+        'I loved mentoring with Empowered Futures. The process was simple and easy to use. I will recommend to my friends to join Empowered Futures, to mentor people in the future.',
+    },
   ],
 };
 
@@ -39,7 +55,6 @@ const Testimonials = () => {
     perPage: 3,
     gap: '2em',
     pagination: false,
-    // padding: { left: '3rem', right: '3rem' },
     lazyLoad: true,
 
     breakpoints: {
@@ -56,7 +71,7 @@ const Testimonials = () => {
   return (
     <div
       className="block
-    mt-40 mx-auto max-w-[1200px]"
+    mt-20 mx-auto max-w-[1400px]"
     >
       <Splide
         options={Options}

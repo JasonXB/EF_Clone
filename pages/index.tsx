@@ -31,7 +31,7 @@ const ReusableCardData = [
 
 const Home: NextPage = ({}) => {
   return (
-    <Layout contentCustomClass="pb-0">
+    <Layout>
       <HomePageBanner />
       <div className="flex flex-col mx-auto space-y-6 w-fit md:space-y-0 md:flex-row md:space-x-8 lg:space-x-20">
         {ReusableCardData.map((each, i) => (
@@ -47,12 +47,12 @@ const Home: NextPage = ({}) => {
         ))}
       </div>
       {/** video component -future */}
-      <div className="my-20">
-        <h2>Testimonials</h2>
+      <div className="my-20 lg:my-40">
+        <h2 className="text-5xl text-center text-primary-1">Testimonials</h2>
         <Testimonials />
       </div>
-      <div className="my-20 ">
-        <h2>Latest Blogs</h2>
+      <div className="my-20 lg:my-40 ">
+        <h2 className="text-5xl text-center text-primary-1">Latest Blogs</h2>
         <LatestBlogs />
       </div>
     </Layout>

@@ -1,7 +1,18 @@
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
+interface TestimonialCardProps {
+  props: {
+    img: string | StaticImageData;
+    fullName: string;
+    company: string;
+    reviewBlurb: string;
+    rate: number;
+  };
+}
 
-const TestimonialCard = (props: any) => {
-  const { img, fullName, company, reviewBlurb, rate } = props.props;
+const TestimonialCard = ({ props }: TestimonialCardProps) => {
+  const { img, fullName, company, reviewBlurb, rate } = props;
+
+  //only allows full number rating. no half amounts as of now.
   const stars = (num: number) => {
     let content = [];
     for (let i = 0; i < num; i++) {
@@ -20,10 +31,10 @@ const TestimonialCard = (props: any) => {
     }
     return content;
   };
-
+  //style for less then 600px needs to be adjusted in future
   return (
     <div
-      className="my-4 mx-4  flex space-y-4 flex-col items-center max-w-[412px] rounded-t-[15%] p-8"
+      className="my-4 mx-auto sm:mx-4   flex space-y-4 flex-col items-center max-w-[412px] rounded-t-[15%] p-8"
       style={{
         boxShadow: ' 0 0.2rem 1.25rem rgba(0, 0, 0, 0.2)',
       }}
@@ -48,7 +59,7 @@ const TestimonialCard = (props: any) => {
         after:font-bold after:text-5xl after:text-primary-2 
          before:content-[open-quote] after:content-[close-quote]  "
         >
-          <p className="w-11/12 mx-auto ">{reviewBlurb}</p>
+          <p className="w-10/12 mx-auto ">{reviewBlurb}</p>
         </blockquote>
       </div>
     </div>
