@@ -109,7 +109,7 @@ const ConfirmedMeeting = ({
             <div>
               <p className="text-3xl text-center">
                 Thank you for applying for the mentorship program with Empowered
-                Futures. We are pleased to confirm your meeting with {name}.
+                Futures. We are pleased to confirm your meeting with {mentorFullName}.
               </p>
             </div>
           </div>
