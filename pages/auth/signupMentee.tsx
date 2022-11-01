@@ -1,10 +1,11 @@
-import type { NextPage } from 'next';
 import Head from 'next/head';
-import Layout from '../../src/components/Layout';
+import type { NextPage } from 'next';
 import SignUpFormMentee from '../../src/components/signupForm/SignUpFormMentee';
+import Layout from '../../src/components/Layout';
+
 import bg from '../../public/assets/Sign-Up-page.png';
 
-const signup: NextPage = ({}) => {
+const SignupMentee: NextPage = ({}) => {
   return (
     <div
       className="w-full h-full bg-local bg-center bg-no-repeat bg-auto"
@@ -22,4 +23,4 @@ const signup: NextPage = ({}) => {
   );
 };
 
-export default signup;
+export default SignupMentee;

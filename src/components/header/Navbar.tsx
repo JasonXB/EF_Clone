@@ -24,7 +24,7 @@ const Navbar = () => {
   return (
     <Disclosure
       as="nav"
-      className="pt-5 bg-white border-b shadow-md border-slate-200  min-w-[400px]"
+      className="pt-5 bg-white border-b shadow-md border-slate-200  min-w-[400px] z-20 relative"
     >
       {/*handles open close boolean */}
       {({ open }) => (

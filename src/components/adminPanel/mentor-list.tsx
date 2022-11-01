@@ -39,12 +39,12 @@ const MentorList = ({
 
   return (
     <ul
-      className="w-screen sm:w-full grid grid-cols-6 border-b-slate-700 border-b p-2 hover:bg-smoke-4"
+      className="grid w-screen grid-cols-6 p-2 border-b sm:w-full border-b-slate-700 hover:bg-smoke-4"
       key={index}
     >
       <li className="col-span-2">{name}</li>
       <li className="col-span-3">
-        <div className="flex gap-2 items-center">
+        <div className="flex items-center gap-2">
           {editorIsOn ? (
             <>
               {/* changing initial state when you input new email address */}
@@ -59,7 +59,7 @@ const MentorList = ({
                 width="16"
                 height="16"
                 fill="currentColor"
-                className="bi bi-download cursor-pointer"
+                className="cursor-pointer bi bi-download"
                 viewBox="0 0 16 16"
                 onClick={() => setEditorIsOn(false)}
               >
@@ -76,7 +76,7 @@ const MentorList = ({
                 width="16"
                 height="16"
                 fill="currentColor"
-                className="bi bi-pencil-square cursor-pointer"
+                className="cursor-pointer bi bi-pencil-square"
                 viewBox="0 0 16 16"
                 onClick={() => setEditorIsOn(true)}
               >
@@ -95,16 +95,16 @@ const MentorList = ({
         onMouseEnter={() => setStatusOptionIsOn(true)}
         onMouseLeave={() => setStatusOptionIsOn(false)}
       >
-        <button className="flex items-center gap-1 w-28 px-2 rounded-lg ease-in duration-100 transition-all hover:shadow-md hover:bg-smoke-5">
+        <button className="flex items-center gap-1 px-2 transition-all duration-100 ease-in rounded-lg w-28 hover:shadow-md hover:bg-smoke-5">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
             height="16"
             fill="currentColor"
             className={`bi bi-circle-fill w-2 ${
-              mentorStatus === 'verified'
+              mentorStatus === 'Verified'
                 ? 'text-green-400'
-                : mentorStatus === 'pending'
+                : mentorStatus === 'Pending'
                 ? 'text-pink-600'
                 : 'text-gray-400'
             }`}
@@ -116,8 +116,8 @@ const MentorList = ({
         </button>
         {/* toggle list */}
         {statusOptionIsOn && (
-          <div className="absolute top-0 left-0 w-full bg-smoke-4/90 z-50">
-            <ul className="flex flex-col items-start p-2 gap-1">
+          <div className="absolute top-0 left-0 z-50 w-full bg-smoke-4/90">
+            <ul className="flex flex-col items-start gap-1 p-2">
               {statusOptions.map((option: string, index: number) => (
                 <StatusOptionButton
                   option={option}
