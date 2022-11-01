@@ -15,23 +15,23 @@ export default function SimilarMentors(props: {
   // If we only get 1 similar mentor match, then the carousel will change its look to keep that 1 mentor centered
   const Options = {
     perPage:
-      props.data.length >= 3 ? 3 : 
-      props.data.length === 2 ? 2 : 
-      props.data.length === 1 ? 1 : 1, //  prettier-ignore
+      props.data.length >= 3 
+        ? 3 
+        : props.data.length, //  prettier-ignore
     gap: '1.5rem',
     pagination: false,
     // padding: { left: '3rem', right: '3rem' },
     lazyLoad: true,
-    arrows: props.data.length > 3 ? true : false, // only show arrows when we have over 3 similar mentors
+    arrows: props.data.length > 3, // only show arrows when we have over 3 similar mentors
     width: props.data.length === 1 ? '48rem' : 'auto', // max width of carousel item
     breakpoints: {
       1700: {
-        perPage: props.data.length >= 2 ? 2 : props.data.length === 1 ? 1 : 1,
-        arrows: props.data.length > 2 ? true : false, // only show arrows when we have over 2 similar mentors
+        perPage: props.data.length >= 2 ? 2 : 1,
+        arrows: props.data.length > 2, // only show arrows when we have over 2 similar mentors
       },
       1200: {
         perPage: 1,
-        arrows: props.data.length > 1 ? true : false, // only show arrows when we have over 1 similar mentor
+        arrows: props.data.length > 1, // only show arrows when we have over 1 similar mentor
       },
     },
   };
