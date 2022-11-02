@@ -5,9 +5,9 @@ import Button from '../src/components/buttons/reusable-buttons';
 const questionnaire = ({}) => {
   return (
     <Layout>
-      <div className={`bg-cover bg-opacity-[50%] text-center py-[200px]`}>
+      <div className={`text-center py-[20%]`}>
         <div className="">
-          <h3 className="text-primary-1 font-semibold">
+          <h3 className="font-semibold text-primary-1">
             Search for the perfect mentor for you!
           </h3>
 
@@ -22,7 +22,7 @@ const questionnaire = ({}) => {
             />
             <div className="absolute ml-20 sm:ml-48 md:ml-80">
               <svg
-                className="h-8 w-8 text-black"
+                className="w-8 h-8 text-black"
                 width="24"
                 height="24"
                 viewBox="0 0 24 24"
