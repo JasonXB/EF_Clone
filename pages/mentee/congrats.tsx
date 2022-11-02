@@ -7,6 +7,8 @@ import fireworks from '../../public/assets/fireworks.png';
 import Button from '../../src/components/buttons/reusable-buttons';
 import { ReactEventHandler } from 'react';
 
+//! check whether a user is authenticated as a mentee (required to view this page)
+// otherwise user is redirected to /auth/login
 const congratulationsMentee: NextPage = ({}) => {
   const clickHandler: ReactEventHandler = () => {
     Router.push('/');
