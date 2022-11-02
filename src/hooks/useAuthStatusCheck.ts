@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function useInput() {
-  const [authStatus, setAuthStatus] = useState('Guest');
+  const [authStatus, setAuthStatus] = useState('Loading');
   useEffect(() => {
     const checkStatus = async function () {
       try {

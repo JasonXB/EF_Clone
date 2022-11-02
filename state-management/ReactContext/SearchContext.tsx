@@ -1,22 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ReactNode, useState, createContext, useContext } from 'react';
 import { Data } from '../../src/interface/data.interface';
 import { dummyMentors } from '../../src/temporary/dummyMentors';
+import { dummySimilarMentorProfiles } from '../../src/components/mentorProfile/similarMentors/dummySimilarMentorProfiles';
+import { MiniCardProps } from '../../src/components/mentorProfile/similarMentors/SimilarMentorsCarousel';
 
-type searchContextType = {
+type contextType = {
   currentFilteredData: Array<Data>;
   filterSearch: (data: Array<Data>, searchValue: string) => void;
 };
 
 // default data set to dummyMentors for the time being.
-const searchContextDefaultValues: searchContextType = {
+const searchContextDefaultValues: contextType = {
   currentFilteredData: dummyMentors,
   filterSearch: () => {},
 };
 
-const SearchContext = createContext<searchContextType>(
-  searchContextDefaultValues
-);
+const SearchContext = createContext<contextType>(searchContextDefaultValues);
 
 export function useSearchContext() {
   return useContext(SearchContext);
@@ -34,6 +34,17 @@ export function SearchProvider({ children }: Props) {
   const [currentFilteredData, setCurrentFilteredData] = useState(
     searchContextDefaultValues.currentFilteredData
   );
+
+  // Context for similar mentors carousel  -- fix 'any' soon
+  const [selectedSimilarMentor, setSelectedSimilarMentor] = useState<any>(null);
+
+  // sets selectedSimilarMentor to the mentor object with the same id as the clicked profile card
+  const selectSimilarMentor = (i: number | null) => {
+    i !== null
+      ? setSelectedSimilarMentor(dummySimilarMentorProfiles[i])
+      : setSelectedSimilarMentor(i);
+
+  };
 
   // Function which takes a) an array of objects (data) and b) a searchValue as parameters.
   // In the end, sets the currentFilteredData state to the data filtered by what is entered in SearchForm.
@@ -60,7 +71,7 @@ export function SearchProvider({ children }: Props) {
 
   const value = {
     currentFilteredData,
-    filterSearch,
+    filterSearch
   };
 
   return (

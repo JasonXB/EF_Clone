@@ -10,17 +10,18 @@ interface MentorsInfoProps {
   location: string;
   job: string;
   tags: string[];
+  avatar: string;
   compatibilityPercent: number;
 }
 
 const MiniProfileCard = ({ ...mentorsInfo }: MentorsInfoProps) => {
-  const { name, location, job, tags, compatibilityPercent } = mentorsInfo;
+  const { name, location, job, tags, compatibilityPercent, avatar } = mentorsInfo;
 
   return (
     <div className={`${style.miniProfileCard} flex`}>
       <Avatar
-        imgLocation={tempImage}
-        displaySize="mediumLarge"
+        imgLocation={avatar}
+        displaySize="small"
         personsName={name}
       />
       <div className={`${style.infoContainer} font-mainFont pl-3`}>

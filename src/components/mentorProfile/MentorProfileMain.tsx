@@ -3,6 +3,7 @@ import MentorProfileBottom from './MentorProfileBottom';
 import Line from './Line';
 import MentorProfilePercentBars from './MentorProfilePercentBars';
 import Mentor from '../../interface/mentor.interface';
+import SimilarMentors from './similarMentors/SimilarMentors';
 
 interface MentorProfileProps {
   mentor: Mentor;
@@ -61,10 +62,8 @@ const MentorProfileMain = ({ mentor }: MentorProfileProps) => {
       </div>
 
       {/* Similar Mentors Component */}
-      <div>
-        <h1 className="flex items-center mt-10 text-4xl">
-          Similar Mentors component goes here
-        </h1>
+      <div className="mt-20 w-[100%] md:mt-0">
+        <SimilarMentors />
       </div>
     </>
   );
