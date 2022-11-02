@@ -1,6 +1,6 @@
-import Layout from '../src/components/Layout';
-import NotificationCard from '../src/components/notificationCard';
-import { UserNotification } from '../src/interface/user-notification.interface';
+import Layout from '../../src/components/Layout';
+import NotificationCard from '../../src/components/notificationCard';
+import { UserNotification } from '../../src/interface/user-notification.interface';
 import { NextPage } from 'next';
 import { useEffect, useState } from 'react';
 

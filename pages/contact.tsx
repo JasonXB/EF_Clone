@@ -1,6 +1,11 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import { GetStaticProps } from 'next';
 
+// Statically renders page and sets props equal to an empty object
+export const getStaticProps: GetStaticProps = async (context) => {
+  return { props: {} };
+};
 const contact: NextPage = ({}) => {
   return (
     <div>
