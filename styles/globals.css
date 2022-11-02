@@ -3,8 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 /* 
 Default sizes + fonts for text-based elements 
 Each element I set defaults for has an Adobe link at the bottom where I got the exact values from
@@ -98,7 +96,6 @@ ul {
   box-shadow: var(--blackBoxShadow);
 }
 
-
 /* styling for scrollbar */
 .scrollBar {
   scrollbar-width: thin;
@@ -118,7 +115,6 @@ ul {
   background-color: rgb(113, 113, 113);
   border-radius: 14px;
 }
-
 
 .shadowVariant1 {
   box-shadow: 0px 3px 6px #00000029;
@@ -148,7 +144,7 @@ Add "trailingDots" class to child element which should be text based
 
 /* carousel component, couldnt figure out how to override it any other way */
 #mentorRequestSplideComponent .splide__track {
-  margin: auto 8%;
+  margin: auto 5%;
   width: 91%;
 }
 
