@@ -37,14 +37,14 @@ const MeetingDetail = ({
   }
 
   return (
-    <div className="w-full flex items-center mr-6">
+    <div className="flex items-center w-full mr-6">
       <Image
         src={imgLocation}
         alt={altTagPicker(type)}
         height={'30px'}
         width={'30px'}
       />{' '}
-      <div className="ml-2 flex flex-col lg:flex-row">
+      <div className="flex flex-col ml-2 lg:flex-row">
         <div className="mr-2">
           <p className="text-2xl text-primary-3">{getTextForType(type)}</p>{' '}
         </div>
