@@ -1,6 +1,6 @@
 type MentorSkill = [string, number];
 
-export type Mentor = {
+interface Mentor {
   id: number;
   first_name: string;
   last_name: string;
@@ -9,6 +9,9 @@ export type Mentor = {
   profile_path: string;
   job: string;
   bio: string;
+  email: string;
   tags: string[];
   skills: MentorSkill[];
-};
+}
+
+export default Mentor;
