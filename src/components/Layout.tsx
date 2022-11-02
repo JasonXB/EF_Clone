@@ -17,8 +17,7 @@ type LayoutProps = {
   isConfirmedMeetingPg?: boolean; //determine if we actually need this
   noBottomPadding?: boolean;
 };
-// setting background default to be Primary, if someone doesn't add it to layout, it will still include it by default.
-// Ex. <Layout background="none"> will create a layout element with no background visuals
+//setting background default to be Primary, if someone doesn't add it to layout, it will still include it by default.
 const Layout = ({
   background = BackgroundTypes.primary,
   ...props
@@ -57,6 +56,7 @@ const Layout = ({
             <main>{props.children}</main>
           </div>
         </div>
+        <Footer />
       </div>
     </>
   );
