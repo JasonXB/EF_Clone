@@ -35,6 +35,7 @@ const MentorProfileMain = ({ mentor }: MentorProfileProps) => {
               name={full_name}
               title={job}
               location={location}
+              // placeholder: replace with real dynamic data when backend is ready
               responseTime={'Responds in a day'}
               avatar={profile_path}
             />

@@ -6,7 +6,7 @@ export default function FindAMentor() {
   let [query, setQuery] = useState('');
   return (
     <Layout headTitle="Find a Mentor">
-      <div className={`bg-[url("/assets/bg-gears.png")] bg-cover`}>
+      <div>
         <div className={`container mx-auto `}>
           <div className="flex flex-col h-[720px]">
             <div className="flex flex-row justify-center">
