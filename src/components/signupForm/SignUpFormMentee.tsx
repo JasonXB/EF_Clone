@@ -3,38 +3,66 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import Button from '../buttons/reusable-buttons';
 import TitledInput from '../titledInput/TitledInput';
+import { useAuth } from '../../../state-management/ReactContext/AuthContext';
+import { loginAPI, signupAPI } from '../../api/auth';
+import { Roles } from '../../enum/role.enum';
 
 const SignUpFormMentee = () => {
   const router = useRouter();
-  const [name, setName] = useState('');
+  const { clientSideLogin } = useAuth();
+
+  const [username, setUsername] = useState<string>('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [role, setRole] = useState<Roles>(Roles.mentee);
 
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [confirmPasswordError, setConfirmPasswordError] = useState('');
   const [passwordValidation, setPasswordValidation] = useState('');
 
+  async function handleSignup() {
+    const success = await signupAPI(username, email, password, role);
+    if (!success) return; // todo: tell the user their signup failed
+    const token = await loginAPI(username, email, password);
+    console.log(email, password, token, '28rm');
+    clientSideLogin(email, token);
+    // todo: redirect
+  }
+
+  function switchSignupRole() {
+    if (role === Roles.mentee) {
+      setRole(Roles.mentor);
+    }
+    if (role === Roles.mentor) {
+      setRole(Roles.mentee);
+    }
+  }
+
   const handleSubmit = (e: any) => {
     e.preventDefault();
 
     if (email === '') {
       setEmailError('*Please enter your email');
+      return;
     } else if (!email.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)) {
       setEmailError('*Please enter a valid email');
+      return;
     } else {
       setEmailError('');
     }
 
     if (password === '' || confirmPassword === '') {
       setPasswordError('*Passwords can not be empty');
+      return;
     } else {
       setPasswordError('');
     }
 
     if (password !== confirmPassword) {
       setConfirmPasswordError('*Passwords do not match. Please try again');
+      return;
     } else {
       setConfirmPasswordError('');
     }
@@ -49,7 +77,9 @@ const SignUpFormMentee = () => {
       setPasswordValidation(
         '*Password must contain 8 characters, one uppercase letter, one lowercase letter, 1 number and one special character(@$!%*?&)'
       );
+      return;
     }
+    handleSignup();
   };
 
   const redirect = () => {
@@ -60,15 +90,33 @@ const SignUpFormMentee = () => {
       <div className="relative flex flex-wrap items-center justify-center h-full py-20 inner-full">
         <div className="relative w-7/12 px-20 pt-20 pb-20 bg-white shadow-2xl rounded-3xl border-l-1">
           <h1 className="text-4xl font-bold text-secondary-1">
-            Sign Up as a Mentee
+            Sign Up as a {role === Roles.mentee ? 'Mentee' : 'Mentor'}
           </h1>
-          {/* Not sure the route for mentor sign up page, should be changed later */}
-          <h2 className="mt-2 text-xl">
-            Interested in being a{' '}
-            <a href="/signUpMentor" className="font-bold text-primary-1">
-              mentor instead?
-            </a>
-          </h2>
+          {role === Roles.mentee ? (
+            <h2 className="mt-2 text-xl">
+              Interested in being a{' '}
+              <a
+                onClick={() => {
+                  switchSignupRole();
+                }}
+                className="font-bold text-primary-1"
+              >
+                mentor instead?
+              </a>
+            </h2>
+          ) : (
+            <h2 className="mt-2 text-xl">
+              Interested in being a{' '}
+              <a
+                onClick={() => {
+                  switchSignupRole();
+                }}
+                className="font-bold text-primary-1"
+              >
+                mentee instead?
+              </a>
+            </h2>
+          )}
           <Button
             variant="tertiary"
             icon="google"
@@ -80,7 +128,15 @@ const SignUpFormMentee = () => {
           </Button>
           <form className="relative">
             <TitledInput
-              title="Sign Up With Your Email Address"
+              title="Username"
+              placeholder="Username"
+              type="text"
+              value={username}
+              onChange={(e: any) => setUsername(e.target.value)}
+              required
+            />
+            <TitledInput
+              title="Email Address"
               placeholder="Email Address"
               type="email"
               value={email}
@@ -121,9 +177,6 @@ const SignUpFormMentee = () => {
               </a>
             </h3>
             <div className="absolute right-0 -bottom-15">
-              <Button variant="secondary" clickHandler={redirect}>
-                Login
-              </Button>
               <Button variant="primary" clickHandler={handleSubmit}>
                 Sign Up
               </Button>

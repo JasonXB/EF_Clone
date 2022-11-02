@@ -82,8 +82,8 @@ const BookMeeting = () => {
 
   if(JSON.stringify(selectedTimeSlot.startDatetime) !== '{}' && JSON.stringify(selectedTimeSlot.endDatetime) !== '{}'){
     meetingDetails = {
-      mentorFirstName: name,
-      mentorLastName: name,
+      mentorFirstName: 'Sarah', // fix to work with first name
+      mentorLastName: 'Geronimo', // fix to work with first name
       mentorImg: imgUrl,
       meetingStartDatetime: formatISO(selectedTimeSlot.startDatetime),
       meetingEndDatetime: formatISO(selectedTimeSlot.endDatetime),
@@ -244,7 +244,7 @@ const BookMeeting = () => {
               {/* SUBMIT BUTTON------------------------------------------------- /meeting/confirmedMeeting*/}
               <Link
                 href={{
-                  pathname: JSON.stringify(meetingDetails) !== '{}' ? '#' : '#',
+                  pathname: JSON.stringify(meetingDetails) !== '{}' ? '/meeting/confirmedMeeting' : '#',
                   query: meetingDetails,
                 }}
               >
