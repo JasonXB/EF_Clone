@@ -1,5 +1,6 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
+import { SimilarMentorsProvider } from '../state-management/ReactContext/SimilarMentorsContext';
 import { SearchProvider } from '../state-management/ReactContext/SearchContext';
 import { AuthProvider } from '../state-management/ReactContext/AuthContext';
 import { CalendarProvider } from '../state-management/ReactContext/CalendarContext';
@@ -14,11 +15,13 @@ function MyApp({ Component, pageProps }: AppProps) {
       <AuthProvider>
         {/* SearchProvider: current Context API provider (for filter search functionality) */}
         <SearchProvider>
+          <SimilarMentorsProvider>
           <TimezoneProvider>
             <CalendarProvider>
               <Component {...pageProps} />
             </CalendarProvider>
           </TimezoneProvider>
+          </SimilarMentorsProvider>
         </SearchProvider>
       </AuthProvider>
     </Provider>
