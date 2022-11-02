@@ -9,7 +9,7 @@ import Button from '../../../src/components/buttons/reusable-buttons';
 import Calendar from '../../../src/assets/icons8-calendar-week-64.png';
 import Clock from '../../../src/assets/icons8-clock-48.png';
 import Monitor from '../../../src/assets/icons8-pro-display-xdr-80.png';
-import MeetingDetail from './details';
+import MeetingDetail from '../../../src/components/details';
 import { useEffect, useState } from 'react';
 import { MeetingDetailType } from '../../../src/enum/meetingDetailType.enum';
 

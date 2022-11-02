@@ -1,5 +1,5 @@
 import Image, { StaticImageData } from 'next/image';
-import { MeetingDetailType } from '../../../src/enum/meetingDetailType.enum';
+import { MeetingDetailType } from '../enum/meetingDetailType.enum';
 
 interface MeetingDetailProps {
   type: `${MeetingDetailType}`;

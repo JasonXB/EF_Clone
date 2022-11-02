@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import { GetStaticProps } from 'next';
-import Layout from '../src/components/Layout';
-import Button from '../src/components/buttons/reusable-buttons';
+import Layout from '../../src/components/Layout';
+import Button from '../../src/components/buttons/reusable-buttons';
 
 // I used Jason's basic layout from the become-a-mentor page as this page is quite similar in structure. Thanks, Jason!
 // You're welcome Matt! <3 (see Kelsey, that's how you use the word "you're" correctly)

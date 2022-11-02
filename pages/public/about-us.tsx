@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import Layout from '../src/components/Layout';
+import Layout from '../../src/components/Layout';
 import style from '../styles/aboutUs.module.css';
 import { GetStaticProps } from 'next';
 
