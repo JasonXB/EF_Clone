@@ -14,7 +14,8 @@
 }
 .content {
   grid-column: main-start/main-end;
-  padding: 2rem;
+  /* removed padding cause it didnt let my background image for the questionnaire page go right to the edges; apply again if theres problems */
+  /* padding: 2rem; */
 }
 
 .primaryBG {
