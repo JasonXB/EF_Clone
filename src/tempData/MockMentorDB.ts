@@ -1,4 +1,4 @@
-import { Mentor } from '../interface/mentor.interface';
+import Mentor from '../interface/mentor.interface';
 
 const lorem =
   'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores incidunt praesentium animi hic officiis delectus beatae, alias ea aut iusto, omnis totam, ullam assumenda odio eos rerum nam. Voluptatum, ipsam?';
@@ -15,10 +15,14 @@ const Mentors: Mentor[] = [
       'https://robohash.org/providentnumquampossimus.png?size=200x200&set=set1',
     job: 'Account Coordinator',
     bio: lorem,
+    email: 'afeld0@independent.co.uk',
     tags: ['Synergy', 'Intuitive'],
     skills: [
       ['Workforce', 74],
       ['Portal', 66],
+      ['Enhanced', 85],
+      ['stable', 60],
+      ['open system', 66],
     ],
   },
   {
@@ -31,10 +35,14 @@ const Mentors: Mentor[] = [
       'https://robohash.org/sequiadipisciet.png?size=200x200&set=set1',
     job: 'Human Resources Manager',
     bio: lorem,
+    email: 'smainson1@amazonaws.com',
     tags: ['Multimedia', 'Strategy'],
     skills: [
       ['Help-Desk', 72],
       ['Visionary', 87],
+      ['heuristic', 87],
+      ['Implemented', 60],
+      ['leverage', 70],
     ],
   },
   {
@@ -47,10 +55,14 @@ const Mentors: Mentor[] = [
       'https://robohash.org/isterecusandaenihil.png?size=200x200&set=set1',
     job: 'Editor',
     bio: lorem,
+    email: 'scaldwall2@topsy.com',
     tags: ['4th Generation', 'Oriented'],
     skills: [
       ['Zero Defect', 93],
       ['Alliance', 78],
+      ['multi-tasking', 64],
+      ['Up-sized', 55],
+      ['stable', 92],
     ],
   },
   {
@@ -63,10 +75,14 @@ const Mentors: Mentor[] = [
       'https://robohash.org/animirerumsapiente.png?size=200x200&set=set1',
     job: 'Analyst Programmer',
     bio: lorem,
+    email: 'bwrathmell3@amazon.com',
     tags: ['Moderator', 'Analyzer'],
     skills: [
       ['Optional', 68],
       ['Synergized', 68],
+      ['disintermediate', 84],
+      ['throughput', 82],
+      ['Decentralized', 95],
     ],
   },
   {
@@ -79,10 +95,14 @@ const Mentors: Mentor[] = [
       'https://robohash.org/officiaveritatisautem.png?size=200x200&set=set1',
     job: 'Quality Engineer',
     bio: lorem,
+    email: 'tcallway4@studiopress.com',
     tags: ['Profit-Focused', 'Ergonomic'],
     skills: [
       ['Needs-Based', 67],
       ['Benchmark', 87],
+      ['Networked', 76],
+      ['Customer-focused', 70],
+      ['contextually-based', 56],
     ],
   },
   {
@@ -94,10 +114,14 @@ const Mentors: Mentor[] = [
     profile_path: 'https://robohash.org/eaquequisid.png?size=200x200&set=set1',
     job: 'Automation Specialist I',
     bio: lorem,
+    email: 'rsolan5@usgs.gov',
     tags: ['Installation', 'Archive'],
     skills: [
       ['Multi-Lateral', 60],
       ['Future-Proofed', 59],
+      ['system engine', 80],
+      ['synergy', 77],
+      ['Extended', 95],
     ],
   },
   {
@@ -110,10 +134,14 @@ const Mentors: Mentor[] = [
       'https://robohash.org/quasicorruptiducimus.png?size=200x200&set=set1',
     job: 'Account Representative I',
     bio: lorem,
+    email: 'esanten6@businessweek.com',
     tags: ['Public-Key', 'Installation'],
     skills: [
       ['Robust', 83],
       ['Hub', 65],
+      ['Adaptive', 50],
+      ['systemic', 73],
+      ['fresh-thinking', 51],
     ],
   },
   {
@@ -126,10 +154,14 @@ const Mentors: Mentor[] = [
       'https://robohash.org/voluptasautoccaecati.png?size=200x200&set=set1',
     job: 'Structural Analysis Engineer',
     bio: lorem,
+    email: 'cmeech7@discuz.net',
     tags: ['Framework', 'Neutral'],
     skills: [
       ['Contextually-Based', 53],
       ['Re-Contextualized', 87],
+      ['Adaptive', 58],
+      ['portal', 58],
+      ['project', 94],
     ],
   },
   {
@@ -142,10 +174,14 @@ const Mentors: Mentor[] = [
       'https://robohash.org/asperioressintpraesentium.png?size=200x200&set=set1',
     job: 'Project Manager',
     bio: lorem,
+    email: 'mgrattan8@godaddy.com',
     tags: ['Function', 'Moratorium'],
     skills: [
       ['Infrastructure', 95],
       ['Function', 65],
+      ['Expanded', 69],
+      ['Ergonomic', 87],
+      ['local', 62],
     ],
   },
   {
@@ -158,10 +194,14 @@ const Mentors: Mentor[] = [
       'https://robohash.org/cupiditatesintea.png?size=200x200&set=set1',
     job: 'Engineer IV',
     bio: lorem,
+    email: 'alimb9@photobucket.com',
     tags: ['Optimized', 'Holistic'],
     skills: [
       ['Middleware', 61],
       ['Client-Server', 54],
+      ['Fundamental', 80],
+      ['infrastructure', 53],
+      ['explicit', 54],
     ],
   },
   {
@@ -174,10 +214,14 @@ const Mentors: Mentor[] = [
       'https://robohash.org/repellendusaliquidsaepe.png?size=200x200&set=set1',
     job: 'Administrative Assistant II',
     bio: lorem,
+    email: 'rbellsona@wired.com',
     tags: ['Managed', 'Proactive'],
     skills: [
       ['Impactful', 62],
       ['Organized', 58],
+      ['concept', 71],
+      ['architecture', 91],
+      ['Upgradable', 96],
     ],
   },
   {
@@ -190,10 +234,14 @@ const Mentors: Mentor[] = [
       'https://robohash.org/estofficiisdolor.png?size=200x200&set=set1',
     job: 'Budget/Accounting Analyst IV',
     bio: lorem,
+    email: 'dfisbyb@shinystat.com',
     tags: ['Foreground', 'Critical'],
     skills: [
       ['Enterprise-Wide', 90],
       ['Systemic', 53],
+      ['even-keeled', 93],
+      ['Re-engineered', 65],
+      ['parallelism', 70],
     ],
   },
   {
@@ -206,10 +254,14 @@ const Mentors: Mentor[] = [
       'https://robohash.org/nulladistinctiodolor.png?size=200x200&set=set1',
     job: 'Help Desk Technician',
     bio: lorem,
+    email: 'gpattinsonc@barnesandnoble.com',
     tags: ['Framework', 'Sevens'],
     skills: [
       ['Demand-Driven', 68],
       ['Reciprocal', 72],
+      ['directional', 62],
+      ['system-worthy', 77],
+      ['Multi-lateral', 94],
     ],
   },
   {
@@ -222,10 +274,14 @@ const Mentors: Mentor[] = [
       'https://robohash.org/saepeetaliquam.png?size=200x200&set=set1',
     job: 'VP Sales',
     bio: lorem,
+    email: 'xmiched@topsy.com',
     tags: ['Up-sized', 'productivity'],
     skills: [
       ['Multi-layered', 74],
       ['Dynamic', 84],
+      ['product', 53],
+      ['benchmark', 81],
+      ['even-keeled', 80],
     ],
   },
   {
@@ -237,10 +293,14 @@ const Mentors: Mentor[] = [
     profile_path: 'https://robohash.org/autquiaqui.png?size=200x200&set=set1',
     job: 'Actuary',
     bio: lorem,
+    email: 'kvasileviche@eventbrite.com',
     tags: ['Web-Enabled', 'Architected'],
     skills: [
       ['Reactive', 53],
       ['Needs-Based', 78],
+      ['Balanced', 52],
+      ['complexity', 89],
+      ['Switchable', 100],
     ],
   },
   {
@@ -253,10 +313,14 @@ const Mentors: Mentor[] = [
       'https://robohash.org/magnisuscipithic.png?size=200x200&set=set1',
     job: 'Clinical Specialist',
     bio: lorem,
+    email: 'gshieldsf@soup.io',
     tags: ['Demand-Driven', 'Worthy'],
     skills: [
       ['Right-Sized', 74],
       ['Pricing Structur', 57],
+      ['high-level', 51],
+      ['structure', 71],
+      ['access', 60],
     ],
   },
   {
@@ -269,10 +333,14 @@ const Mentors: Mentor[] = [
       'https://robohash.org/quisquamearumeligendi.png?size=200x200&set=set1',
     job: 'VP Product Management',
     bio: lorem,
+    email: 'rlacaseg@paginegialle.it',
     tags: ['System Engine', 'Transitional'],
     skills: [
       ['Decentralized', 83],
       ['Cross-Platform', 91],
+      ['Up-sized', 70],
+      ['global', 67],
+      ['5th generation', 100],
     ],
   },
   {
@@ -285,10 +353,14 @@ const Mentors: Mentor[] = [
       'https://robohash.org/atlaudantiumcommodi.png?size=200x200&set=set1',
     job: 'Health Coach',
     bio: lorem,
+    email: 'mlorrowayh@bizjournals.com',
     tags: ['Multi-Channelled', 'Oriented'],
     skills: [
       ['Visionary', 55],
       ['Regional', 85],
+      ['hierarchy', 67],
+      ['non-volatile', 91],
+      ['firmware', 73],
     ],
   },
   {
@@ -300,10 +372,14 @@ const Mentors: Mentor[] = [
     profile_path: 'https://robohash.org/autsintsunt.png?size=200x200&set=set1',
     job: 'Environmental Tech',
     bio: lorem,
+    email: 'skitleyi@theguardian.com',
     tags: ['Horizontal', 'Support'],
     skills: [
       ['Alliance', 65],
       ['Systematic', 89],
+      ['paradigm', 70],
+      ['Adaptive', 57],
+      ['Multi-layered', 97],
     ],
   },
   {
@@ -316,19 +392,25 @@ const Mentors: Mentor[] = [
       'https://robohash.org/quivoluptatesdeserunt.png?size=200x200&set=set1',
     job: 'Geological Engineer',
     bio: lorem,
+    email: 'cfeareyj@issuu.com',
     tags: ['Future-Proofed', 'Operative'],
     skills: [
       ['Optimizing', 67],
       ['Time-Frame', 78],
+      ['fault-tolerant', 59],
+      ['policy', 93],
+      ['Mandatory', 91],
     ],
   },
 ];
 
-export const TempMentorDB = {
+const MockMentorDB = {
   getAll: () => {
     return Mentors;
   },
   getByID: (id: number) => {
-    return Mentors.find((mentor) => mentor.id === id);
+    return Mentors.find((mentor) => mentor.id === id) || Mentors[0];
   },
 };
+
+export default MockMentorDB;
