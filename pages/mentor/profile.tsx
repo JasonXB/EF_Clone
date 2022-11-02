@@ -2,6 +2,7 @@ import type { NextPage } from 'next';
 import MentorProfileSection from '../../src/components/mentorProfile/MentorProfileMain';
 import Layout from '../../src/components/Layout';
 
+//! check whether a user is authenticated as a mentor, otherwise user is redirected to /auth/login
 const mentorProfile: NextPage = () => {
   return (
     <Layout>

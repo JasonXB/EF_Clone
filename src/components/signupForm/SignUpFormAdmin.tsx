@@ -7,7 +7,7 @@ import { useAuth } from '../../../state-management/ReactContext/AuthContext';
 import { loginAPI, signupAPI } from '../../api/auth';
 import { Roles } from '../../enum/role.enum';
 
-const SignUpFormMentee = () => {
+const SignUpFormAdmin = () => {
   const router = useRouter();
   const { clientSideLogin } = useAuth();
 
@@ -15,7 +15,7 @@ const SignUpFormMentee = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [role, setRole] = useState<Roles>(Roles.mentee);
+  const [role, setRole] = useState<Roles>(Roles.admin);
 
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
@@ -26,18 +26,9 @@ const SignUpFormMentee = () => {
     const success = await signupAPI(username, email, password, role);
     if (!success) return; // todo: tell the user their signup failed
     const token = await loginAPI(username, email, password);
-    console.log(email, password, token, '28rm');
     clientSideLogin(email, token);
     // todo: redirect
-  }
-
-  function switchSignupRole() {
-    if (role === Roles.mentee) {
-      setRole(Roles.mentor);
-    }
-    if (role === Roles.mentor) {
-      setRole(Roles.mentee);
-    }
+    router.push('/admin-panel');
   }
 
   const handleSubmit = (e: any) => {
@@ -90,33 +81,8 @@ const SignUpFormMentee = () => {
       <div className="relative flex flex-wrap items-center justify-center h-full py-20 inner-full">
         <div className="relative w-7/12 px-20 pt-20 pb-20 bg-white shadow-2xl rounded-3xl border-l-1">
           <h1 className="text-4xl font-bold text-secondary-1">
-            Sign Up as a {role === Roles.mentee ? 'Mentee' : 'Mentor'}
+            Sign Up as an Admin
           </h1>
-          {role === Roles.mentee ? (
-            <h2 className="mt-2 text-xl">
-              Interested in being a{' '}
-              <a
-                onClick={() => {
-                  switchSignupRole();
-                }}
-                className="font-bold text-primary-1"
-              >
-                mentor instead?
-              </a>
-            </h2>
-          ) : (
-            <h2 className="mt-2 text-xl">
-              Interested in being a{' '}
-              <a
-                onClick={() => {
-                  switchSignupRole();
-                }}
-                className="font-bold text-primary-1"
-              >
-                mentee instead?
-              </a>
-            </h2>
-          )}
           <Button
             variant="tertiary"
             icon="google"
@@ -188,4 +154,4 @@ const SignUpFormMentee = () => {
   );
 };
 
-export default SignUpFormMentee;
+export default SignUpFormAdmin;
