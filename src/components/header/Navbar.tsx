@@ -13,7 +13,7 @@ const MainLinks = () => (
   <div className="w-full lg:inline-flex lg:w-auto">
     <div className="flex flex-col items-start w-full md:inline-flex md:flex-row sm:ml-auto sm:w-auto sm:items-center sm:h-auto">
       <NavbarLink url={'/public/become-a-mentor'} name={'Become a Mentor'} />
-      <NavbarLink url={'/public/find-a-mentor'} name={'Find a Mentor'} />
+      <NavbarLink url={'/find-a-mentor'} name={'Find a Mentor'} />
       <NavbarLink url={'/public/about-us'} name={'About Us'} />
     </div>
   </div>

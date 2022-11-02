@@ -19,7 +19,7 @@ const Navbar = () => {
               url={'/public/become-a-mentor'}
               name={'Become a Mentor'}
             />
-            <NavbarLink url={'/public/find-a-mentor'} name={'Find a Mentor'} />
+            <NavbarLink url={'/find-a-mentor'} name={'Find a Mentor'} />
             <NavbarLink url={'/public/about-us'} name={'About Us'} />
           </div>
         </div>

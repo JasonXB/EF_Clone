@@ -255,7 +255,7 @@ const BookMeeting = () => {
                 href={{
                   pathname:
                     JSON.stringify(meetingDetails) !== '{}'
-                      ? '/meeting/confirmedMeeting'
+                      ? '/mentee/meeting/confirmed'
                       : '#',
                   query: meetingDetails,
                 }}
