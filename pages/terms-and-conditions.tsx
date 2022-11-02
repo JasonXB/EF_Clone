@@ -101,7 +101,7 @@ const termsAndConditions: NextPage = (props) => {
   };
 
   return (
-    <Layout>
+    <Layout headTitle="Terms and Conditions">
       <div className="grid grid-cols-[1fr_auto_1fr] mx-[10%] sm:mx-[20%]">
         <section className="col-start-2 col-end-3 mt-16 mb-8 ">
           {/* Titles section */}
