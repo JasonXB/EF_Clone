@@ -2,7 +2,7 @@ import MentorProfileTop from './MentorProfileTop';
 import MentorProfileBottom from './MentorProfileBottom';
 import Line from './Line';
 import MentorProfilePercentBars from './MentorProfilePercentBars';
-
+import SimilarMentors from './similarMentors/SimilarMentors';
 import { dummyMentorProfiles } from './dummyMentorProfiles';
 
 // Temporarily displaying dummyMentor data
@@ -52,14 +52,13 @@ const MentorProfileMain = ({}) => {
         </div>
 
         {/* Top-right side - Secondary skills Percent bars */}
-        <MentorProfilePercentBars percentBarSkills={percentBarSkills} />
+        <MentorProfilePercentBars percentBarSkills={percentBarSkills}
+  />
       </div>
 
       {/* Similar Mentors Component */}
-      <div>
-        <h1 className="flex items-center mt-10 text-4xl">
-          Similar Mentors component goes here
-        </h1>
+      <div className='mt-20 w-[100%] md:mt-0'>
+          <SimilarMentors/>
       </div>
     </>
   );
