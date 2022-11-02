@@ -31,7 +31,7 @@ const congratulationsMentee = ({}) => {
             <Link href="/">
               <Button
                 variant="primary"
-                clickHandler={() => Router.push('/')}
+                clickHandler={() => Router.push('/mentee')}
                 disabled={false}
               >
                 Go to Homepage

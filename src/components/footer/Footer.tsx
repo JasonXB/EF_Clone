@@ -10,18 +10,18 @@ const FooterLink = dynamic(() => import('./FooterLink'), { ssr: false });
 const footerLinks: FooterColumnProps[] = [
   {
     links: [
-      { text: 'Get Involved', url: './get-involved' },
-      { text: 'About Us', url: './about-us' },
-      { text: 'Contact', url: './contact' },
-      { text: 'Login', url: './login' },
+      { text: 'Get Involved', url: './public/get-involved' },
+      { text: 'About Us', url: './public/about-us' },
+      { text: 'Contact', url: './public/contact' },
+      { text: 'Login', url: './auth/mentee/login' },
     ],
   },
   {
     links: [
-      { text: 'Become A Mentor', url: './become-a-mentor' },
-      { text: 'Become A Mentee', url: './become-a-mentee' },
-      { text: 'Support Our Work', url: './support-our-work' },
-      { text: 'Suggest A Program', url: './suggest-a-program' },
+      { text: 'Become A Mentor', url: './public/become-a-mentor' },
+      { text: 'Become A Mentee', url: './public/become-a-mentee' },
+      { text: 'Support Our Work', url: './public/support-our-work' },
+      { text: 'Suggest A Program', url: './public/suggest-a-program' },
     ],
   },
 ];
