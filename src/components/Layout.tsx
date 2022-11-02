@@ -15,7 +15,7 @@ type LayoutProps = {
   children: any;
   contentCustomClass?: string;
   background?: `${BackgroundTypes}`;
-  isConfirmedMeetingPg?: boolean; //determine if we actually need this
+  isConfirmedMeetingPg?: boolean;
   noBottomPadding?: boolean;
 };
 //setting background default to be Primary, if someone doesn't add it to layout, it will still include it by default.
