@@ -6,8 +6,10 @@ import Button from '../../buttons/reusable-buttons';
 import SimilarMentorsCarousel from './SimilarMentorsCarousel';
 import { useSimilarMentorsContext } from '../../../../state-management/ReactContext/SimilarMentorsContext';
 
+//This needs to be updated for robot data
 const SimilarMentors = ({}) => {
-  const { selectedSimilarMentor, selectSimilarMentor } = useSimilarMentorsContext();
+  const { selectedSimilarMentor, selectSimilarMentor } =
+    useSimilarMentorsContext();
 
   return (
     <div className="mb-10 flex flex-col justify-center w-[100%]">
@@ -90,7 +92,7 @@ const SimilarMentors = ({}) => {
             {/* Right - Percent bars */}
             <div className="flex justify-start mb-10 sm:mb-0">
               <MentorProfilePercentBars
-                percentBarSkills={selectedSimilarMentor?.percentBarSkills!}
+                skills={selectedSimilarMentor?.percentBarSkills!}
               />
             </div>
           </div>
