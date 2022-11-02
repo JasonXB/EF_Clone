@@ -38,129 +38,122 @@ const Login: NextPage = ({}) => {
   }
 
   return (
-    <div>
-      <Head>
-        <title>Empowered Futures - Login</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <Layout headTitle="Login">
+      <div className="outer font-mainFont rounded-5 px-5 pt-[40px]">
+        <div className="px-5 py-4 outer-border">
+          <section className="p-2 inner-section">
+            <div className="h-full inner">
+              <div className="flex flex-wrap items-center justify-center h-full inner-full">
+                <div className="text-center left-inside"></div>
 
-      <Layout>
-        <div className="outer font-mainFont rounded-5 px-5 pt-[40px]">
-          <div className="outer-border py-4 px-5">
-            <section className="inner-section p-2">
-              <div className="inner h-full">
-                <div className="inner-full flex justify-center items-center flex-wrap h-full">
-                  <div className="left-inside text-center"></div>
+                <div className="right-inside xs:w-200 sm:w-[480px]">
+                  <span className="text-primary-1 text-[24px] font-semibold">
+                    Login as a {role === Roles.mentee ? 'Mentee' : 'Mentor'}
+                  </span>
+                  <p>
+                    Not a {role === Roles.mentee ? 'Mentee' : 'Mentor'}?{' '}
+                    <a
+                      onClick={() => {
+                        switchSignupRole();
+                      }}
+                      className="text-blue-600 underline hover:text-blue-800 visited:text-purple-600"
+                    >
+                      Login as a {role === Roles.mentee ? 'Mentor' : 'Mentee'}
+                    </a>
+                  </p>
 
-                  <div className="right-inside xs:w-200 sm:w-[480px]">
-                    <span className="text-primary-1 text-[24px] font-semibold">
-                      Login as a {role === Roles.mentee ? 'Mentee' : 'Mentor'}
-                    </span>
-                    <p>
-                      Not a {role === Roles.mentee ? 'Mentee' : 'Mentor'}?{' '}
-                      <a
-                        onClick={() => {
-                          switchSignupRole();
-                        }}
-                        className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"
-                      >
-                        Login as a {role === Roles.mentee ? 'Mentor' : 'Mentee'}
-                      </a>
-                    </p>
+                  <div className="flex text-[12px] md:text-[70%]">
+                    <Button
+                      variant="tertiary"
+                      icon="google"
+                      clickHandler={() =>
+                        console.log(
+                          'will be updated to make a request function'
+                        )
+                      }
+                    >
+                      Continue with google
+                    </Button>
+                  </div>
 
-                    <div className="flex text-[12px] md:text-[70%]">
-                      <Button
-                        variant="tertiary"
-                        icon="google"
-                        clickHandler={() =>
-                          console.log(
-                            'will be updated to make a request function'
-                          )
-                        }
-                      >
-                        Continue with google
-                      </Button>
-                    </div>
-
-                    <form autoComplete="off" className="">
-                      <div className="py-3">
-                        <span className="font-medium">Username</span>
-                        <input
-                          className="block border-2 rounded-lg h-[34px] w-full px-2"
-                          placeholder=""
-                          type="text"
-                          name="username"
-                          // ref={userName} // for the function up top
-                          onChange={(e) => {
-                            e.preventDefault();
-                            const username = e.target.value;
-                            setUsername(username);
-                          }}
-                          required
-                          autoFocus
-                        />
-                      </div>
-                      <div className="py-3">
-                        <span className="font-medium">Email</span>
-                        <input
-                          className="block border-2 rounded-lg h-[34px] w-full px-2"
-                          placeholder=""
-                          type="text"
-                          name="email"
-                          // ref={userName} // for the function up top
-                          onChange={(e) => {
-                            e.preventDefault();
-                            const email = e.target.value;
-                            setEmail(email);
-                          }}
-                          required
-                          autoFocus
-                        />
-                      </div>
-                      <span className="font-medium">Password</span>
+                  <form autoComplete="off" className="">
+                    <div className="py-3">
+                      <span className="font-medium">Username</span>
                       <input
                         className="block border-2 rounded-lg h-[34px] w-full px-2"
                         placeholder=""
-                        type="password"
-                        name="password"
-                        // ref={passWord} //for the function up top
+                        type="text"
+                        name="username"
+                        // ref={userName} // for the function up top
                         onChange={(e) => {
                           e.preventDefault();
-                          const pw = e.target.value;
-                          setPassword(pw);
+                          const username = e.target.value;
+                          setUsername(username);
                         }}
                         required
                         autoFocus
                       />
+                    </div>
+                    <div className="py-3">
+                      <span className="font-medium">Email</span>
+                      <input
+                        className="block border-2 rounded-lg h-[34px] w-full px-2"
+                        placeholder=""
+                        type="text"
+                        name="email"
+                        // ref={userName} // for the function up top
+                        onChange={(e) => {
+                          e.preventDefault();
+                          const email = e.target.value;
+                          setEmail(email);
+                        }}
+                        required
+                        autoFocus
+                      />
+                    </div>
+                    <span className="font-medium">Password</span>
+                    <input
+                      className="block border-2 rounded-lg h-[34px] w-full px-2"
+                      placeholder=""
+                      type="password"
+                      name="password"
+                      // ref={passWord} //for the function up top
+                      onChange={(e) => {
+                        e.preventDefault();
+                        const pw = e.target.value;
+                        setPassword(pw);
+                      }}
+                      required
+                      autoFocus
+                    />
 
-                      <div className="py-6">
-                        <Button
-                          variant="primary"
-                          type="submit"
-                          clickHandler={(e) => {
-                            e.preventDefault();
-                            handleLogin();
-                          }}
-                        >
-                          Login
-                        </Button>
-                      </div>
+                    <div className="py-6">
+                      <Button
+                        variant="primary"
+                        type="submit"
+                        clickHandler={(e) => {
+                          e.preventDefault();
+                          handleLogin();
+                        }}
+                      >
+                        Login
+                      </Button>
+                    </div>
 
-                      <div className="font-medium">
-                        Forgot password?<span> </span>
-                        <span className="text-primary-1 hover:text-primary-2 underline">
-                          <a href="#">Click Here.</a>
-                        </span>
-                      </div>
-                    </form>
-                  </div>
+                    <div className="font-medium">
+                      Forgot password?<span> </span>
+                      <span className="underline text-primary-1 hover:text-primary-2">
+                        <a href="#">Click Here.</a>
+                      </span>
+                    </div>
+                  </form>
                 </div>
               </div>
-            </section>
-          </div>
+            </div>
+          </section>
         </div>
-      </Layout>
-    </div>
+      </div>
+    </Layout>
   );
 };
 
