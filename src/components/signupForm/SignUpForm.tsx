@@ -1,13 +1,19 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import Link from 'next/link';
+
 import Button from '../buttons/reusable-buttons';
 import TitledInput from '../titledInput/TitledInput';
 import { useAuth } from '../../../state-management/ReactContext/AuthContext';
 import { loginAPI, signupAPI } from '../../api/auth';
 import { Roles } from '../../enum/role.enum';
 
-const SignUpFormMentee = () => {
+interface SignupFormProps {
+  chosenRole: 'Mentee' | 'Mentor' | 'Admin';
+}
+
+const SignUpForm = ({ chosenRole }: SignupFormProps) => {
   const router = useRouter();
   const { clientSideLogin } = useAuth();
 
@@ -15,7 +21,7 @@ const SignUpFormMentee = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [role, setRole] = useState<Roles>(Roles.mentee);
+  const [role, setRole] = useState<string>(chosenRole);
 
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
@@ -29,15 +35,6 @@ const SignUpFormMentee = () => {
     console.log(email, password, token, '28rm');
     clientSideLogin(email, token);
     // todo: redirect
-  }
-
-  function switchSignupRole() {
-    if (role === Roles.mentee) {
-      setRole(Roles.mentor);
-    }
-    if (role === Roles.mentor) {
-      setRole(Roles.mentee);
-    }
   }
 
   const handleSubmit = (e: any) => {
@@ -95,26 +92,26 @@ const SignUpFormMentee = () => {
           {role === Roles.mentee ? (
             <h2 className="mt-2 text-xl">
               Interested in being a{' '}
-              <a
-                onClick={() => {
-                  switchSignupRole();
-                }}
+              <Link
+                href="/auth/mentor/signup"
                 className="font-bold text-primary-1"
               >
-                mentor instead?
-              </a>
+                <span className="text-blue-600 underline hover:text-blue-800 visited:text-purple-600">
+                  mentor instead?
+                </span>
+              </Link>
             </h2>
           ) : (
             <h2 className="mt-2 text-xl">
               Interested in being a{' '}
-              <a
-                onClick={() => {
-                  switchSignupRole();
-                }}
+              <Link
+                href="/auth/mentee/signup"
                 className="font-bold text-primary-1"
               >
-                mentee instead?
-              </a>
+                <span className="text-blue-600 underline hover:text-blue-800 visited:text-purple-600">
+                  mentee instead?
+                </span>
+              </Link>
             </h2>
           )}
           <Button
@@ -188,4 +185,4 @@ const SignUpFormMentee = () => {
   );
 };
 
-export default SignUpFormMentee;
+export default SignUpForm;
