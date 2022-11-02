@@ -1,9 +1,12 @@
 import type { NextPage } from 'next';
-import Layout from '../src/components/Layout';
+import Layout from '../../src/components/Layout';
 import React, { useEffect, useState } from 'react';
-import MentorList from '../src/components/adminPanel/mentor-list';
-import { placeholderDataForRequest as dummyMentors } from '../src/tempData/temp-data-mentor';
-import { MentorStatus } from '../src/enum/MentorStatus.enum';
+import MentorList from '../../src/components/adminPanel/mentor-list';
+import { placeholderDataForRequest as dummyMentors } from '../../src/tempData/temp-data-mentor';
+import { MentorStatus } from '../../src/enum/MentorStatus.enum';
+import useAuthStatusCheck from '../../src/hooks/useAuthStatusCheck';
+import Spinner from '../../src/components/loadingVisuals/spinner';
+import Router from 'next/router';
 
 interface MentorType {
   name: string;
@@ -19,7 +22,6 @@ interface MentorType {
 //! check if the user is authenticated as an admin (req'd to view this page)
 const AdminPanelDashboard: NextPage = ({}) => {
   const [sortBy, setSortBy] = useState<string>('all');
-
   const [searchedBy, setSearchedBy] = useState<string>('');
 
   // sort by search engine
@@ -54,6 +56,9 @@ const AdminPanelDashboard: NextPage = ({}) => {
       dummyMentors.filter((mentor) => mentor.status === MentorStatus.Declined)
     );
   };
+
+  //! This component is left unprotected deliberately
+  // Add protection later (need this component visible for presentation on Nov 3rd)
   return (
     <Layout headTitle="Admin Panel" background="none">
       <div className="relative flex items-center justify-center w-full h-screen">
