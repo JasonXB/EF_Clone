@@ -4,6 +4,8 @@ import ReusableCards from '../src/components/homepage/ReusableCards';
 import mentorGraphic from '../public/assets/mentorImageHomePage.png';
 import menteeGraphic from '../public/assets/menteeImageHomePage.png';
 import Layout from '../src/components/Layout';
+import Testimonials from '../src/components/homepage/testimonials/Testimonials';
+import LatestBlogs from '../src/components/homepage/latestBlogs/LatestBlogs';
 import { AuthProvider } from '../state-management/ReactContext/AuthContext';
 import { GetStaticProps } from 'next';
 
@@ -53,8 +55,14 @@ const Home: NextPage = ({}) => {
           ))}
         </div>
         {/** video component -future */}
-        {/** testimonials component -future  */}
-        {/** blog component-future  */}
+        <div className="my-20 lg:my-40">
+          <h2 className="text-5xl text-center text-primary-1">Testimonials</h2>
+          <Testimonials />
+        </div>
+        <div className="my-20 lg:my-40 ">
+          <h2 className="text-5xl text-center text-primary-1">Latest Blogs</h2>
+          <LatestBlogs />
+        </div>
       </Layout>
     </AuthProvider>
   );

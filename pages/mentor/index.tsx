@@ -10,7 +10,7 @@ import {
 //! check whether a user is authenticated as a mentor, otherwise user is redirected to /auth/login
 const MentorDashboard: NextPage = ({}) => {
   return (
-    <Layout headTitle="Mentor Dashboard">
+    <Layout headTitle="Mentor Dashboard" background="none">
       <DisplayMentorShipContainer data={placeholderDataForRequest} />
       <hr className="my-6" />
       <DisplayUpcomingAvailabilityContainer data={placeholderDataForMeetings} />

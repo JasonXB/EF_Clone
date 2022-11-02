@@ -13,6 +13,7 @@ enum BackgroundTypes {
 type LayoutProps = {
   headTitle?: string;
   children: any;
+  contentCustomClass?: string;
   background?: `${BackgroundTypes}`;
   isConfirmedMeetingPg?: boolean; //determine if we actually need this
   noBottomPadding?: boolean;
@@ -46,7 +47,10 @@ const Layout = ({
           <Navbar />
           <div
             className={
-              props.isConfirmedMeetingPg
+              //we need to fix this for a more clear solution
+              props.contentCustomClass
+                ? props.contentCustomClass
+                : props.isConfirmedMeetingPg
                 ? ''
                 : props.noBottomPadding
                 ? LayoutStyle.contentV2
