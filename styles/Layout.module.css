@@ -41,7 +41,6 @@
 .noneBG {
   background: none;
 }
-
 .contentV2 {
   grid-column: main-start/main-end;
   padding-left: 2rem;
