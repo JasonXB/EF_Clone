@@ -79,9 +79,6 @@ const SignUpForm = ({ chosenRole }: SignupFormProps) => {
     handleSignup();
   };
 
-  const redirect = () => {
-    router.push('/auth/login');
-  };
   return (
     <div className="backdrop:outer">
       <div className="relative flex flex-wrap items-center justify-center h-full py-20 inner-full">
