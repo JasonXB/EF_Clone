@@ -3,44 +3,51 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 /* 
 Default sizes + fonts for text-based elements 
 Each element I set defaults for has an Adobe link at the bottom where I got the exact values from
 */
 @layer base {
   /* prettier-ignore */
-  h1, h2, h3, h4, h5, h6, p, caption, li {
-    font-family: 'Montserrat', sans-serif; 
-  }
+  * { font-family: 'Montserrat', sans-serif; }
+
   h1 {
     font-size: 4.875rem; /* 78px */
     line-height: 6rem;
-    /*https://xd.adobe.com/view/748b20f6-3f12-4c04-a128-f3ecbec94ef2-21d8/?hints=off*/
+    font-weight: 700;
+    /* https://xd.adobe.com/view/748b20f6-3f12-4c04-a128-f3ecbec94ef2-21d8/?hints=off */
   }
   h2 {
     font-size: 3.75rem; /* 60px */
     line-height: 5rem;
-    /*https://xd.adobe.com/view/748b20f6-3f12-4c04-a128-f3ecbec94ef2-21d8/screen/c0b1ea06-c44e-46b3-9330-f6a10bd8ca8b/specs/?hints=off*/
+    font-weight: 700;
+    /* https://xd.adobe.com/view/748b20f6-3f12-4c04-a128-f3ecbec94ef2-21d8/screen/c0b1ea06-c44e-46b3-9330-f6a10bd8ca8b/specs/?hints=off */
   }
   h3 {
     font-size: 3rem; /* 48px */
     line-height: 3.625rem;
-    /*https://xd.adobe.com/view/748b20f6-3f12-4c04-a128-f3ecbec94ef2-21d8/screen/cf62bfe4-3eb1-4022-b0f3-fcdbac894881/?hints=off*/
+    font-weight: 600;
+    /* https://xd.adobe.com/view/748b20f6-3f12-4c04-a128-f3ecbec94ef2-21d8/screen/cf62bfe4-3eb1-4022-b0f3-fcdbac894881/?hints=off */
   }
   h4 {
     font-size: 2.125rem; /* 34px */
     line-height: 2.625rem;
-    /*https://xd.adobe.com/view/748b20f6-3f12-4c04-a128-f3ecbec94ef2-21d8/screen/793e4f84-4443-4f0a-959b-10b86701424d/specs/?hints=off*/
+    font-weight: 500;
+    /* https://xd.adobe.com/view/748b20f6-3f12-4c04-a128-f3ecbec94ef2-21d8/screen/793e4f84-4443-4f0a-959b-10b86701424d/specs/?hints=off */
   }
   h5 {
     font-size: 1.5rem; /* 24px */
     line-height: 1.5rem;
-    /*https://xd.adobe.com/view/748b20f6-3f12-4c04-a128-f3ecbec94ef2-21d8/specs/?hints=off*/
+    font-weight: 500;
+    /* https://xd.adobe.com/view/748b20f6-3f12-4c04-a128-f3ecbec94ef2-21d8/specs/?hints=off */
   }
   h6 {
     font-size: 1.25rem; /* 20px */
     line-height: 1.5rem;
-    /*https://xd.adobe.com/view/748b20f6-3f12-4c04-a128-f3ecbec94ef2-21d8/screen/793e4f84-4443-4f0a-959b-10b86701424d/specs/?hints=off*/
+    font-weight: 500;
+    /* https://xd.adobe.com/view/748b20f6-3f12-4c04-a128-f3ecbec94ef2-21d8/screen/093afc53-75c4-44fa-b63d-7fbd1cfdd544/specs/?hints=off */
   }
   p {
     font-size: 1rem; /* 16px */
@@ -48,18 +55,18 @@ Each element I set defaults for has an Adobe link at the bottom where I got the 
   li {
     font-size: 1rem; /* 16px */
     line-height: 1.1875rem;
-    /*https://xd.adobe.com/view/748b20f6-3f12-4c04-a128-f3ecbec94ef2-21d8/screen/c44d5fdb-92eb-491c-beb8-918ef0007b93/specs/?hints=off*/
+    /* https://xd.adobe.com/view/748b20f6-3f12-4c04-a128-f3ecbec94ef2-21d8/screen/c44d5fdb-92eb-491c-beb8-918ef0007b93/specs/?hints=off */
   }
   caption {
     font-size: 0.75rem; /* 12px */
-    /*https://xd.adobe.com/view/748b20f6-3f12-4c04-a128-f3ecbec94ef2-21d8/screen/16b6237a-658b-40c9-ace6-c07b8e3d3320/specs/?hints=off*/
+    /* https://xd.adobe.com/view/748b20f6-3f12-4c04-a128-f3ecbec94ef2-21d8/screen/16b6237a-658b-40c9-ace6-c07b8e3d3320/specs/?hints=off */
   }
 }
 
 html,
-body{
-width:100%;
-overflow-x:hidden;
+body {
+  width: 100%;
+  overflow-x: hidden;
 }
 
 :root {
@@ -91,8 +98,69 @@ ul {
   box-shadow: var(--blackBoxShadow);
 }
 
+
+/* styling for scrollbar */
+.scrollBar {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(113, 113, 113);
+}
+
+.scrollBar::-webkit-scrollbar {
+  width: 15px;
+}
+
+.scrollBar::-webkit-scrollbar-track {
+  background: rgb(236, 236, 236);
+  border-radius: 5px;
+}
+
+.scrollBar::-webkit-scrollbar-thumb {
+  background-color: rgb(113, 113, 113);
+  border-radius: 14px;
+}
+
+
+.shadowVariant1 {
+  box-shadow: 0px 3px 6px #00000029;
+}
+.shadowVariant2 {
+  box-shadow: 0px 3px 6px #00000033;
+}
+.noMargins {
+  margin: 0;
+}
+
+.trailingDots {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+/* trailingDots usage guide
+Add "truncate" class to parent element. 
+Add "trailingDots" class to child element which should be text based
+
+              <div className="truncate">
+                <p className="trailingDots">
+                  A very long string of text that would otherwise wrap around and make your element taller
+                </p>
+              </div>
+*/
+
 /* carousel component, couldnt figure out how to override it any other way */
 #mentorRequestSplideComponent .splide__track {
-  margin: auto 5%;
+  margin: auto 8%;
   width: 91%;
+}
+
+#similarMentorsSplideComponent .splide__track {
+  margin: auto 5%;
+  width: 89%;
+}
+
+/* Allows the background color to extend beyond the layout container while maintaining the same padding*/
+.extendBeyondLayout {
+  width: 100vw;
+  max-width: 100vw;
+  margin-inline: calc(-50vw + 50%);
+  padding-inline: 2rem;
 }

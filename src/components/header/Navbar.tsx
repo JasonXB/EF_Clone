@@ -5,6 +5,7 @@ import { Disclosure } from '@headlessui/react';
 
 import ProfileNavMenu from './ProfileNavMenu';
 import LoginSignup from './LoginSignupButton';
+import { useAuth } from '../../../state-management/ReactContext/AuthContext';
 
 //issues when under 440px, logo not being responsive
 
@@ -19,12 +20,12 @@ const MainLinks = () => (
 );
 
 const Navbar = () => {
-  let LoggedIn = true; //temp for testing, will switch to auth
+  const { isLoggedIn } = useAuth();
 
   return (
     <Disclosure
       as="nav"
-      className="pt-5 bg-white border-b shadow-md border-slate-200  min-w-[400px]"
+      className="pt-5 bg-white border-b shadow-md border-slate-200  min-w-[400px] z-20 relative"
     >
       {/*handles open close boolean */}
       {({ open }) => (
@@ -81,7 +82,7 @@ const Navbar = () => {
               {/*toggled state login/sign up buttons or profile menu */}
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 {/*hides login from nav when its too crowded */}
-                {LoggedIn ? (
+                {isLoggedIn ? (
                   <ProfileNavMenu />
                 ) : (
                   <span className="hidden sm:block">
@@ -97,11 +98,11 @@ const Navbar = () => {
             <div className="px-2 pt-2 pb-3 space-y-1">
               <MainLinks />
               {/*displays login/signup buttons in panel when nav runs out of room */}
-              {!LoggedIn ? (
+              {isLoggedIn ? null : (
                 <span className="sm:hidden">
                   <LoginSignup />
                 </span>
-              ) : null}
+              )}
             </div>
           </Disclosure.Panel>
         </>

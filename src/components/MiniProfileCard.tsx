@@ -1,6 +1,6 @@
 import BubbleTags from './BubbleTags';
 import Avatar from './avatar/avatar';
-import tempImage from './assets/cat.jpeg';
+import tempImage from '../../public/assets/cat.jpeg';
 import { BUBBLE_TAG_TYPE_CLASSES } from './BubbleTag';
 import style from '../../styles/MiniProfileCard.module.css';
 import PercentageBar from './percentBar/percent-bar';
@@ -10,17 +10,18 @@ interface MentorsInfoProps {
   location: string;
   job: string;
   tags: string[];
+  avatar: string;
   compatibilityPercent: number;
 }
 
 const MiniProfileCard = ({ ...mentorsInfo }: MentorsInfoProps) => {
-  const { name, location, job, tags, compatibilityPercent } = mentorsInfo;
+  const { name, location, job, tags, compatibilityPercent, avatar } = mentorsInfo;
 
   return (
     <div className={`${style.miniProfileCard} flex`}>
       <Avatar
-        imgLocation={tempImage}
-        displaySize="mediumLarge"
+        imgLocation={avatar}
+        displaySize="small"
         personsName={name}
       />
       <div className={`${style.infoContainer} font-mainFont pl-3`}>

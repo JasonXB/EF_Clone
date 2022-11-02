@@ -1,31 +1,16 @@
 import type { NextPage } from 'next';
-import Head from 'next/head';
 
-const signup: NextPage = ({}) => {
+import Layout from '../../src/components/Layout';
+import SignUpFormMentee from '../../src/components/signupForm/SignUpFormMentee';
+
+//! Requires getServerSide props to check if a user is offline (required to view this page)
+//! check if a user is offline (required to view this page)
+const Signup: NextPage = ({}) => {
   return (
-    <div>
-      <Head>
-        <title>Empowered Futures - Sign up</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <h1>Sign up placeholder</h1>
-      {/* Sign Up */}
-
-      {/* Name + input */}
-
-      {/* Sign up with your email address + input */}
-
-      {/* Create a password + input */}
-      
-      {/* Confirm password + input */}
-
-      {/* Link to terms and conditions */}
-      
-      {/* Sign up button */}
-
-      {/* Footer */}
-    </div>
+    <Layout headTitle="Sign Up" background="secondary">
+      <SignUpFormMentee />
+    </Layout>
   );
 };
 
-export default signup;
+export default Signup;
