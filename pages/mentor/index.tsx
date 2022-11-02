@@ -44,7 +44,7 @@ export default function MentorDashboard() {
 
   return (
     <Layout headTitle="Mentor Dashboard" background="none">
-      <DisplayMentorShipContainer data={placeholderDataForRequest} />
+      <DisplayMentorShipContainer mentorshipRequests={mentorshipRequests} />
       <hr className="my-6" />
       <UpcomingAvailabilityContainer meetings={meetings} />
     </Layout>

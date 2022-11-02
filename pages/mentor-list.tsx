@@ -120,7 +120,7 @@ export default function MentorList() {
       <Layout headTitle="Mentor List">
         <div className="container mx-auto">
           <div className="flex flex-row">
-            <div className="flex flex-col mr-20 space-y-8 w-1/5">
+            <div className="flex flex-col w-1/5 mr-20 space-y-8">
               <div
                 onClick={() => router.back()}
                 className="flex flex-row cursor-pointer p-2 rounded-[25px] text-white max-w-[115px] bg-gradient-to-r from-secondary-1 to-[#ED493D]"
@@ -162,10 +162,10 @@ export default function MentorList() {
                   </svg>
                 </div>
               </div>
-              <div className="flex flex-col space-y-2 border border-black p-4">
+              <div className="flex flex-col p-4 space-y-2 border border-black">
                 <div className="text-[34px]">Gender</div>
                 <select
-                  className="bg-white border border-black rounded-xl p-2"
+                  className="p-2 bg-white border border-black rounded-xl"
                   defaultValue={FilterDefaults.Gender}
                   onChange={(e) =>
                     setGenderFilter(e.currentTarget.value as any)
@@ -179,7 +179,7 @@ export default function MentorList() {
                 </select>
                 <div className="text-[34px]">Location</div>
                 <select
-                  className="bg-white border border-black rounded-xl p-2"
+                  className="p-2 bg-white border border-black rounded-xl"
                   defaultValue={FilterDefaults.Location}
                   onChange={(e) =>
                     setLocationFilter(e.currentTarget.value as any)
@@ -193,7 +193,7 @@ export default function MentorList() {
                 </select>
                 <div className="text-[34px]">Skills</div>
                 <select
-                  className="bg-white border border-black rounded-xl p-2"
+                  className="p-2 bg-white border border-black rounded-xl"
                   defaultValue={FilterDefaults.Skill}
                   onChange={(e) => setSkillFilter(e.currentTarget.value as any)}
                 >
@@ -205,7 +205,7 @@ export default function MentorList() {
                 </select>
               </div>
             </div>
-            <div className="flex flex-col space-y-10 w-2/3">
+            <div className="flex flex-col w-2/3 space-y-10">
               <div className="flex flex-row justify-center">
                 <div
                   className="text-center mr-20 text-primary-1 font-bold text-[54px]"
@@ -220,7 +220,7 @@ export default function MentorList() {
                 <MentorCard mentor={mentor} key={`${index}`} />
               ))}
               {mentors.length <= 0 && (
-                <div className="text-center mr-20 text-primary-1 font-bold text-3xl">
+                <div className="mr-20 text-3xl font-bold text-center text-primary-1">
                   No mentors match those filters!
                 </div>
               )}
@@ -230,7 +230,7 @@ export default function MentorList() {
                     <div>{''}</div>
                     <div className="flex flex-row justify-center space-x-4">
                       <button
-                        className="text-secondary-1 text-xl font-semibold"
+                        className="text-xl font-semibold text-secondary-1"
                         disabled={page === 1}
                         onClick={() => setPage(page - 1)}
                       >
@@ -242,14 +242,14 @@ export default function MentorList() {
                       <button
                         onClick={() => setPage(page + 1)}
                         disabled={page >= maxPages}
-                        className="text-secondary-1 text-xl font-semibold"
+                        className="text-xl font-semibold text-secondary-1"
                       >
                         {'>'}
                       </button>
                     </div>
                     <div>
                       <a href="#">
-                        <div className="p-2 rounded-xl border text-secondary-1 font-semibold border-secondary-1">
+                        <div className="p-2 font-semibold border rounded-xl text-secondary-1 border-secondary-1">
                           ^ Top of Page
                         </div>
                       </a>
