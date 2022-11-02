@@ -92,9 +92,8 @@ const ConfirmedMeeting = ({
 
   return (
     <Layout isConfirmedMeetingPg={true}>
-      <div className="h-[1100px] w-full absolute bg-gears bg-cover opacity-20 bg-150 z-10"></div>
       <div className="h-[1100px] flex justify-center relative z-20">
-        <div className="mt-40 w-5/6 flex flex-col justify-start">
+        <div className="flex flex-col justify-start w-5/6 mt-40">
           <div>
             <div className="flex flex-col items-center">
               <Avatar
@@ -107,7 +106,7 @@ const ConfirmedMeeting = ({
           </div>
           <div>
             <div className="mt-10 mb-8">
-              <h4 className="font-semibold text-primary-1 text-5xl text-center">
+              <h4 className="text-5xl font-semibold text-center text-primary-1">
                 Confirmed
               </h4>
             </div>
@@ -118,7 +117,7 @@ const ConfirmedMeeting = ({
               </p>
             </div>
           </div>
-          <div className="mt-14 flex justify-between">
+          <div className="flex justify-between mt-14">
             <MeetingDetail
               type={MeetingDetailType.date}
               detailInfo={date}
@@ -136,7 +135,7 @@ const ConfirmedMeeting = ({
             />
           </div>
           <div>
-            <div className="h-12 w-full mt-14 flex justify-center">
+            <div className="flex justify-center w-full h-12 mt-14">
               <Button variant={'secondary'}>Back To My Account</Button>
             </div>
           </div>
