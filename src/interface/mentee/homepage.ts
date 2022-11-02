@@ -26,4 +26,12 @@ export interface MockData {
     mentorName: string;
     status: 'Viewed' | 'Sent' | 'Approved';
   }[];
+  similarMentors: {
+    mentorName: string;
+    location: string;
+    mentorPosition: string;
+    bubbleTag1: string;
+    bubbleTag2: string;
+    image: string;
+  }[];
 }

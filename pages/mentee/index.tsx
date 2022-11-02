@@ -3,9 +3,13 @@ import Layout from '../../src/components/Layout';
 import ApplicationListItem from '../../src/components/menteeHome/ApplicationListItem';
 import MeetingListItem from '../../src/components/menteeHome/MeetingListItem';
 import OutlinedButton from '../../src/components/menteeHome/OutlinedButton';
+import SimilarMentors from '../../src/components/menteeHome/SimilarMentors';
 import { MockData } from '../../src/interface/mentee/homepage';
+import useAuthStatusCheck from '../../src/hooks/useAuthStatusCheck';
 
-export default function index() {
+//! check whether a user is authenticated as a mentee
+// required to view this page- otherwise user is redirected to /auth/login
+export default function Index() {
   // Mock data all grouped in the following objects
   const mock: MockData = {
     username: 'Chris Hill',
@@ -41,10 +45,44 @@ export default function index() {
       { mentorName: 'Jack Atlas', status: 'Sent' },
       { mentorName: 'Ebrahim Merchant', status: 'Sent' },
     ],
+    similarMentors: [
+      {
+        mentorName: 'Darra Whitney',
+        location: 'USA',
+        mentorPosition: 'Project Manager at EF',
+        bubbleTag1: 'Entrepeneurship',
+        bubbleTag2: 'Management',
+        image: '/temp-assets/Emilio-lg.jpg',
+      },
+      {
+        mentorName: 'Darra Whitney',
+        location: 'USA',
+        mentorPosition: 'Project Manager at EF',
+        bubbleTag1: 'Entrepeneurship',
+        bubbleTag2: 'Management',
+        image: '/temp-assets/Emilio-lg.jpg',
+      },
+      {
+        mentorName: 'Darra Whitney',
+        location: 'USA',
+        mentorPosition: 'Project Manager at EF',
+        bubbleTag1: 'Entrepeneurship',
+        bubbleTag2: 'Management',
+        image: '/temp-assets/Emilio-lg.jpg',
+      },
+      {
+        mentorName: 'Darra Whitney',
+        location: 'USA',
+        mentorPosition: 'Project Manager at EF',
+        bubbleTag1: 'Entrepeneurship',
+        bubbleTag2: 'Management',
+        image: '/temp-assets/Emilio-lg.jpg',
+      },
+    ],
   };
 
   return (
-    <Layout>
+    <Layout noBottomPadding={true}>
       <h3 className="font-semibold text-center mt-10 text-primary-1">
         Welcome back
         <br className="sm:hidden" /> {mock.username}
@@ -99,15 +137,7 @@ export default function index() {
           )}
         </div>
       </section>
-      <section className="bg-[#F2F2F2] mt-16">
-        <h4 className="text-center">
-          We think these mentors are a good match for you.
-        </h4>
-        <h6 className="text-center">
-          Will add a carousel after this gets merged into development
-          <br /> Would rather not set up Splide when someone else already has
-        </h6>
-      </section>
+      <SimilarMentors data={mock.similarMentors} />
     </Layout>
   );
 }

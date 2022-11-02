@@ -12,9 +12,10 @@ enum BackgroundTypes {
 
 type LayoutProps = {
   headTitle?: string;
-  isConfirmedMeetingPg?: boolean;
   children: any;
   background?: `${BackgroundTypes}`;
+  isConfirmedMeetingPg?: boolean; //determine if we actually need this
+  noBottomPadding?: boolean;
 };
 //setting background default to be Primary, if someone doesn't add it to layout, it will still include it by default.
 const Layout = ({
@@ -36,7 +37,7 @@ const Layout = ({
   return (
     <>
       <div className={`${whichBackground(background)} `}>
-        <div className={`${LayoutStyle.container} font-[mainFont] `}>
+        <div className={`${LayoutStyle.container} font-[mainFont]`}>
           <Head>
             <title>{title}</title>
             <meta name="description" content="text" />
@@ -44,13 +45,16 @@ const Layout = ({
           </Head>
           <Navbar />
           <div
-            className={`${
-              props.isConfirmedMeetingPg ? '' : LayoutStyle.content
-            }`}
+            className={
+              props.isConfirmedMeetingPg
+                ? ''
+                : props.noBottomPadding
+                ? LayoutStyle.contentV2
+                : LayoutStyle.content
+            }
           >
             <main>{props.children}</main>
           </div>
-          <Footer />
         </div>
       </div>
     </>
