@@ -1,14 +1,25 @@
 import Avatar from '../avatar/avatar';
-import { MentorProfileTopProps } from '../../interface/mentor-profile-top-props.interface';
 import Button from '../buttons/reusable-buttons';
-import { locationIcon } from './ProfileIcons';
+import { linkedInIcon, locationIcon, twitterIcon } from './ProfileIcons';
 import { clockIcon } from './ProfileIcons';
 import { v4 as uuidv4 } from 'uuid';
+
+const socialMediaIcons = [
+  { svg: twitterIcon, url: 'http://twitter.com' },
+  { svg: linkedInIcon, url: 'http://linkedin.com' },
+];
+
+export interface MentorProfileTopProps {
+  name: string;
+  title: string;
+  avatar: any;
+  location: string;
+  responseTime: string;
+}
 
 const MentorProfileTop = ({
   name,
   title,
-  socialMediaIcons,
   location,
   responseTime,
   avatar,

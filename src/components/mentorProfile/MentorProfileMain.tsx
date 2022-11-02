@@ -2,24 +2,29 @@ import MentorProfileTop from './MentorProfileTop';
 import MentorProfileBottom from './MentorProfileBottom';
 import Line from './Line';
 import MentorProfilePercentBars from './MentorProfilePercentBars';
+import Mentor from '../../interface/mentor.interface';
 
-import { dummyMentorProfiles } from './dummyMentorProfiles';
-
-// Temporarily displaying dummyMentor data
-const {
-  name,
-  title,
-  avatar,
-  socialMediaIcons,
-  location,
-  responseTime,
-  skills,
-  about,
-  percentBarSkills,
-  availability,
-} = dummyMentorProfiles[0];
-
-const MentorProfileMain = ({}) => {
+interface MentorProfileProps {
+  mentor: Mentor;
+}
+const MentorProfileMain = ({ mentor }: MentorProfileProps) => {
+  const {
+    first_name,
+    last_name,
+    location,
+    job,
+    bio,
+    profile_path,
+    skills,
+    tags,
+  } = mentor;
+  const full_name = `${first_name} ${last_name}`;
+  const percentBarSkills = skills.map((skill) => {
+    return {
+      name: skill[0],
+      percentage: skill[1],
+    };
+  });
   return (
     <>
       <div className="grid w-auto grid-cols-1 m-0 mt-10 md:grid-cols-10">
@@ -27,12 +32,11 @@ const MentorProfileMain = ({}) => {
           <div className="flex flex-col items-center lg:items-stretch xl:items-stretch">
             {/* Top-left section  */}
             <MentorProfileTop
-              name={name}
-              title={title}
-              socialMediaIcons={socialMediaIcons}
+              name={full_name}
+              title={job}
               location={location}
-              responseTime={responseTime}
-              avatar={avatar}
+              responseTime={'Responds in a day'}
+              avatar={profile_path}
             />
 
             {/* Line */}
@@ -40,10 +44,10 @@ const MentorProfileMain = ({}) => {
 
             {/* Bottom section */}
             <MentorProfileBottom
-              name={name}
-              about={about}
-              skills={skills}
-              availability={availability}
+              name={full_name}
+              about={bio}
+              skills={tags}
+              availability={'Available Monday - Friday afternoons'}
             />
 
             {/* 2nd Line */}
@@ -52,7 +56,7 @@ const MentorProfileMain = ({}) => {
         </div>
 
         {/* Top-right side - Secondary skills Percent bars */}
-        <MentorProfilePercentBars percentBarSkills={percentBarSkills} />
+        <MentorProfilePercentBars skills={percentBarSkills} />
       </div>
 
       {/* Similar Mentors Component */}
