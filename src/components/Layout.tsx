@@ -6,8 +6,9 @@ import Footer from './footer/Footer';
 
 type LayoutProps = {
   headTitle?: string;
-  isConfirmedMeetingPg?: boolean;
   children: any;
+  isConfirmedMeetingPg?: boolean;
+  noBottomPadding?: boolean;
 };
 const Layout = ({ ...props }: LayoutProps) => {
   const title = props.headTitle
@@ -22,7 +23,13 @@ const Layout = ({ ...props }: LayoutProps) => {
       </Head>
       <Navbar />
       <div
-        className={`${props.isConfirmedMeetingPg ? '' : LayoutStyle.content}`}
+        className={
+          props.isConfirmedMeetingPg
+            ? ''
+            : props.noBottomPadding
+            ? LayoutStyle.contentV2
+            : LayoutStyle.content
+        }
       >
         <main>{props.children}</main>
       </div>
@@ -32,3 +39,4 @@ const Layout = ({ ...props }: LayoutProps) => {
 };
 
 export default Layout;
+
