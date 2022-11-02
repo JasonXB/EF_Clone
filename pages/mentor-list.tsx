@@ -1,8 +1,8 @@
 import Layout from '../src/components/Layout';
 import { useEffect, useState } from 'react';
 import MentorCard from '../src/components/MentorCard';
-import { TempMentorDB } from '../src/tempData/TempMentorDB';
-import { Mentor } from '../src/interface/mentor.interface';
+import MockMentorDB from '../src/tempData/MockMentorDB';
+import Mentor from '../src/interface/mentor.interface';
 import { useRouter } from 'next/router';
 
 enum FilterDefaults {
@@ -79,7 +79,7 @@ export default function MentorList() {
 
   // simulated backend fetch
   useEffect(() => {
-    setAllMentors(TempMentorDB.getAll());
+    setAllMentors(MockMentorDB.getAll());
   }, []);
 
   let skillsArray: string[] = [];
@@ -220,6 +220,11 @@ export default function MentorList() {
               {mentors.map((mentor, index) => (
                 <MentorCard mentor={mentor} key={`${index}`} />
               ))}
+              {mentors.length <= 0 && (
+                <div className="text-center mr-20 text-primary-1 font-bold text-3xl">
+                  No mentors match those filters!
+                </div>
+              )}
               {mentors.length > 0 && (
                 <>
                   <div className="flex flex-row justify-around">
