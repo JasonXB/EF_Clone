@@ -1,19 +1,17 @@
 import Image from 'next/image';
 import { GetStaticProps } from 'next';
-import { useRouter } from 'next/router'
-
-import Layout from '../../src/components/Layout';
-
-import Avatar from '../../src/components/avatar/avatar';
-import Button from '../../src/components/buttons/reusable-buttons';
+import { useRouter } from 'next/router';
+import Layout from '../../../src/components/Layout';
+import Avatar from '../../../src/components/avatar/avatar';
+import Button from '../../../src/components/buttons/reusable-buttons';
 
 // import Cat from '../../src/assets/cat.jpeg';
-import Calendar from '../../src/assets/icons8-calendar-week-64.png';
-import Clock from '../../src/assets/icons8-clock-48.png';
-import Monitor from '../../src/assets/icons8-pro-display-xdr-80.png';
-import MeetingDetail from './meetingDetail';
+import Calendar from '../../../src/assets/icons8-calendar-week-64.png';
+import Clock from '../../../src/assets/icons8-clock-48.png';
+import Monitor from '../../../src/assets/icons8-pro-display-xdr-80.png';
+import MeetingDetail from './details';
 import { useEffect, useState } from 'react';
-import { MeetingDetailType } from '../../src/enum/meetingDetailType.enum';
+import { MeetingDetailType } from '../../../src/enum/meetingDetailType.enum';
 
 export const getStaticProps: GetStaticProps = async () => {
   const dateAndTime = new Date().toString();
@@ -43,10 +41,17 @@ const ConfirmedMeeting = ({
 }: ConfirmedMeetingProps) => {
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
-  const router = useRouter()
-  const meetingDetails = router.query
-  const { mentorFirstName, mentorLastName, mentorImg, meetingStartDatetime, meetingEndDatetime, meetingMethod } = meetingDetails
-  const mentorFullName = mentorFirstName + ' ' + mentorLastName
+  const router = useRouter();
+  const meetingDetails = router.query;
+  const {
+    mentorFirstName,
+    mentorLastName,
+    mentorImg,
+    meetingStartDatetime,
+    meetingEndDatetime,
+    meetingMethod,
+  } = meetingDetails;
+  const mentorFullName = mentorFirstName + ' ' + mentorLastName;
 
   function getMMDDYYFromDate(dateAsString: string): string {
     const d: Date = new Date(Date.parse(dateAsString));

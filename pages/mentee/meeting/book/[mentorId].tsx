@@ -1,24 +1,22 @@
 import { useContext, useState, useEffect, SetStateAction } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { format, formatISO  } from 'date-fns';
-import Calendar from '../../src/components/calendar/Calendar';
-import TimeSlots from '../../src/components/timeSlots/TimeSlots';
-import TimeZonesDropdown from '../../src/components/timezonesDropdown/TimeZonesDropdown';
-import Button from '../../src/components/buttons/reusable-buttons';
-import Layout from '../../src/components/Layout';
-import Avatar from '../../src/components/avatar/avatar';
-import { TimezoneContext } from '../../state-management/ReactContext/TimezoneContext';
-import { mentorsData } from '../../src/tempData/dummyMentorsForCalendar';
-import { Mentor } from '../../src/interface/book-meeting/book-with-mentor.interface';
+import { format, formatISO } from 'date-fns';
+import Calendar from '../../../../src/components/calendar/Calendar';
+import TimeSlots from '../../../../src/components/timeSlots/TimeSlots';
+import TimeZonesDropdown from '../../../../src/components/timezonesDropdown/TimeZonesDropdown';
+import Button from '../../../../src/components/buttons/reusable-buttons';
+import Layout from '../../../../src/components/Layout';
+import Avatar from '../../../../src/components/avatar/avatar';
+import { TimezoneContext } from '../../../../state-management/ReactContext/TimezoneContext';
+import { mentorsData } from '../../../../src/tempData/dummyMentorsForCalendar';
+import { Mentor } from '../../../../src/interface/book-meeting/book-with-mentor.interface';
 
 const BookMeeting = () => {
   const router = useRouter();
   const mentorId = router.query.mentorId;
   const [thisMentor, setThisMentor] = useState({} as Mentor);
 
-
-  
   useEffect(() => {
     if (router.isReady) {
       let mentorFound = mentorsData.find(
@@ -42,7 +40,9 @@ const BookMeeting = () => {
 
   let timeReview = '';
 
-  if (JSON.stringify(selectedTimeSlot) !== '{"startDatetime":{},"endDatetime":{}}') {
+  if (
+    JSON.stringify(selectedTimeSlot) !== '{"startDatetime":{},"endDatetime":{}}'
+  ) {
     let formatteddateAndDay = format(
       selectedTimeSlot.startDatetime,
       'LLL do EEEE'
@@ -71,16 +71,17 @@ const BookMeeting = () => {
       ')';
   }
 
-
-  
   // console.log('JSON',JSON.stringify(selectedTimeSlot.startDatetime) === '{}');
-  
+
   //pass data to next page
 
   //placeholder for passing data to next page
   let meetingDetails = {};
 
-  if(JSON.stringify(selectedTimeSlot.startDatetime) !== '{}' && JSON.stringify(selectedTimeSlot.endDatetime) !== '{}'){
+  if (
+    JSON.stringify(selectedTimeSlot.startDatetime) !== '{}' &&
+    JSON.stringify(selectedTimeSlot.endDatetime) !== '{}'
+  ) {
     meetingDetails = {
       mentorFirstName: 'Sarah', // fix to work with first name
       mentorLastName: 'Geronimo', // fix to work with first name
@@ -93,33 +94,41 @@ const BookMeeting = () => {
 
   const postMeeting = async () => {
     try {
-    const meeting = {
-      mentorID: thisMentor.mentor_id, 
-      menteeID: 11, 
-      date: formatISO(selectedTimeSlot.startDatetime, {representation: 'date'}), //type to be fixed
-      time: formatISO(selectedTimeSlot.startDatetime, {representation: 'date'}), //type to be fixed
-      meetingMethod: 'Google Meeting',
+      const meeting = {
+        mentorID: thisMentor.mentor_id,
+        menteeID: 11,
+        date: formatISO(selectedTimeSlot.startDatetime, {
+          representation: 'date',
+        }), //type to be fixed
+        time: formatISO(selectedTimeSlot.startDatetime, {
+          representation: 'date',
+        }), //type to be fixed
+        meetingMethod: 'Google Meeting',
+      };
+      const response = await fetch(
+        'https://efback.azurewebsites.net/api/meeting/auth/set_meeting/',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(meeting),
+        }
+      );
+      // const data = await response.json()
+      // console.log('meeting',meeting);
+      // console.log('data',data);
+    } catch (err: any) {
+      //type to be fixed
+      console.log('POST error: ', err.message);
     }
-    const response = await fetch('https://efback.azurewebsites.net/api/meeting/auth/set_meeting/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(meeting),
-    })
-    // const data = await response.json()
-    // console.log('meeting',meeting);
-    // console.log('data',data);
-    } catch (err: any) { //type to be fixed
-      console.log('POST error: ',err.message);
-    }
-  }
+  };
 
   const bookMeeting = () => {
-    if(JSON.stringify(meetingDetails) === '{}'){
-      alert("Please select the date and time for the meeting")
+    if (JSON.stringify(meetingDetails) === '{}') {
+      alert('Please select the date and time for the meeting');
     } else {
       postMeeting();
     }
-  }
+  };
 
   return (
     <Layout>
@@ -244,11 +253,18 @@ const BookMeeting = () => {
               {/* SUBMIT BUTTON------------------------------------------------- /meeting/confirmedMeeting*/}
               <Link
                 href={{
-                  pathname: JSON.stringify(meetingDetails) !== '{}' ? '/meeting/confirmedMeeting' : '#',
+                  pathname:
+                    JSON.stringify(meetingDetails) !== '{}'
+                      ? '/meeting/confirmedMeeting'
+                      : '#',
                   query: meetingDetails,
                 }}
               >
-                <div><Button variant="primary" clickHandler={bookMeeting}>Book Meeting</Button></div>
+                <div>
+                  <Button variant="primary" clickHandler={bookMeeting}>
+                    Book Meeting
+                  </Button>
+                </div>
               </Link>
             </div>
             {/* ^ end of div that cover the items */}
