@@ -168,9 +168,12 @@ const SignUpForm = ({ chosenRole }: SignupFormProps) => {
             {/* Need the route for Terms And Conditions*/}
             <h3 className="mt-5 text-xs font-bold">
               By logging in, you agree to Empowered Future's{' '}
-              <a href="" className="text-secondary-2">
+              <Link
+                href="/public/terms-and-conditions"
+                className="text-secondary-2"
+              >
                 Terms And Conditions*
-              </a>
+              </Link>
             </h3>
             <div className="absolute right-0 -bottom-15">
               <Button variant="primary" clickHandler={handleSubmit}>
