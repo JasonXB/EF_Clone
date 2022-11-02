@@ -46,11 +46,11 @@ export default function Index() {
     ],
   };
 
-  //# Check what the user is authrorized as (Guest, Mentee, Mentor, or Admin)
+  //# Check what the user is authorized as (Guest, Mentee, Mentor, or Admin)
   //# If the user is not a mentee, redirect them to /auth/login
   const authStatus = useAuthStatusCheck();
   if (authStatus === 'Loading') return <Spinner />;
-  if (authStatus !== 'Mentee') Router.replace('/auth/login');
+  else if (authStatus !== 'Mentee') Router.replace('/auth/login');
   else
     return (
       <Layout>
