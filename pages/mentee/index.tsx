@@ -81,9 +81,6 @@ export default function Index() {
     ],
   };
 
-  // Testing the authentication status check hook
-  const authStatus = useAuthStatusCheck();
-  console.log('HOOK RETURNS AUTH STATUS OF: ', authStatus);
   return (
     <Layout noBottomPadding={true}>
       <h3 className="font-semibold text-center mt-10 text-primary-1">
