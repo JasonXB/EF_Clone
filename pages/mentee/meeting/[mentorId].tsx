@@ -2,15 +2,15 @@ import { useContext, useState, useEffect, SetStateAction } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { format, formatISO } from 'date-fns';
-import Calendar from '../../src/components/calendar/Calendar';
-import TimeSlots from '../../src/components/timeSlots/TimeSlots';
-import TimeZonesDropdown from '../../src/components/timezonesDropdown/TimeZonesDropdown';
-import Button from '../../src/components/buttons/reusable-buttons';
-import Layout from '../../src/components/Layout';
-import Avatar from '../../src/components/avatar/avatar';
-import { TimezoneContext } from '../../state-management/ReactContext/TimezoneContext';
-import { mentorsData } from '../../src/tempData/dummyMentorsForCalendar';
-import { Mentor } from '../../src/interface/book-meeting/book-with-mentor.interface';
+import Calendar from '../../../src/components/calendar/Calendar';
+import TimeSlots from '../../../src/components/timeSlots/TimeSlots';
+import TimeZonesDropdown from '../../../src/components/timezonesDropdown/TimeZonesDropdown';
+import Button from '../../../src/components/buttons/reusable-buttons';
+import Layout from '../../../src/components/Layout';
+import Avatar from '../../../src/components/avatar/avatar';
+import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
+import { mentorsData } from '../../../src/tempData/dummyMentorsForCalendar';
+import { Mentor } from '../../../src/interface/book-meeting/book-with-mentor.interface';
 
 const BookMeeting = () => {
   const router = useRouter();
@@ -34,15 +34,16 @@ const BookMeeting = () => {
     }
   }, [router.isReady, mentorId]);
 
-  const { name, position, company, imgUrl, meeting_availability } = thisMentor;
-
+  const { firstName, lastName, position, company, imgUrl, meeting_availability } = thisMentor;
+  const fullName = firstName + ' ' + lastName
   const { selectedTimeSlot } = useContext(TimezoneContext);
 
   let timeReview = '';
 
-  if (
-    JSON.stringify(selectedTimeSlot) !== '{"startDatetime":{},"endDatetime":{}}'
-  ) {
+  //checks if the user has selected a time
+  const hasSelectedATime = JSON.stringify(selectedTimeSlot) === '{"startDatetime":{},"endDatetime":{}}'
+
+  if (!hasSelectedATime) {
     let formatteddateAndDay = format(
       selectedTimeSlot.startDatetime,
       'LLL do EEEE'
@@ -122,9 +123,11 @@ const BookMeeting = () => {
     }
   };
 
+  const [needToChooseTime, setNeedToChooseTime] = useState(false)
+
   const bookMeeting = () => {
     if (JSON.stringify(meetingDetails) === '{}') {
-      alert('Please select the date and time for the meeting');
+      setNeedToChooseTime(true)
     } else {
       postMeeting();
     }
@@ -144,9 +147,9 @@ const BookMeeting = () => {
                   'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNzIyMTJ8MHwxfHNlYXJjaHwxfHxwcm9maWxlJTIwcGljfGVufDB8fHx8MTY2NjA2NTM1Nw&ixlib=rb-1.2.1&q=80&w=400'
                 }
                 displaySize="large"
-                personsName={name}
+                personsName={fullName}
               />
-              <h5 className="mt-2 font-medium text-primary-1">{name}</h5>
+              <h5 className="mt-2 font-medium text-primary-1">{fullName}</h5>
               <p className="text-sm">
                 {position} at {company}
               </p>
@@ -158,13 +161,20 @@ const BookMeeting = () => {
           {/* right side with meeting questions */}
           <div className="w-4/5 h-full px-16 bg-white py-28">
             <h4 className="mb-16 font-semibold text-primary-1">
-              Schedule your Meeting with {name}
+              Schedule your Meeting with {firstName}
             </h4>
             <div className="space-y-20">
               {/* ITEM 1: Choosing the meeting schedule---------------------------------- */}
               <div>
                 <h5 className="font-medium">1. Select Date And Time</h5>
-
+                {needToChooseTime && 
+                  <div className="bg-red-100 rounded-lg py-5 px-6 my-6 text-base text-red-700 font-medium inline-flex items-center w-full" role="alert">
+                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times-circle" className="w-4 h-4 mr-2 fill-current" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                      <path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm121.6 313.1c4.7 4.7 4.7 12.3 0 17L338 377.6c-4.7 4.7-12.3 4.7-17 0L256 312l-65.1 65.6c-4.7 4.7-12.3 4.7-17 0L134.4 338c-4.7-4.7-4.7-12.3 0-17l65.6-65-65.6-65.1c-4.7-4.7-4.7-12.3 0-17l39.6-39.6c4.7-4.7 12.3-4.7 17 0l65 65.7 65.1-65.6c4.7-4.7 12.3-4.7 17 0l39.6 39.6c4.7 4.7 4.7 12.3 0 17L312 256l65.6 65.1z"></path>
+                    </svg>
+                    <p>Please select the date and time for the meeting</p>
+                  </div>
+                }
                 {/* style to separate the calendar and timeslot blocks in its own grids */}
                 <div className="md:grid md:grid-cols-3">
                   <div className="col-span-2">
@@ -233,11 +243,11 @@ const BookMeeting = () => {
                 <div className="flex flex-row justify-between w-11/12 p-4">
                   <div className="flex flex-row space-x-2 font-medium">
                     <p>Meeting with </p>
-                    <p className="font-bold">{name}</p>
+                    <p className="font-bold">{fullName}</p>
                   </div>
                   <div className="flex flex-row space-x-2 font-medium">
                     <p>Time: </p>
-                    {JSON.stringify(selectedTimeSlot) === '{}' ? (
+                    {hasSelectedATime ? (
                       <p className="font-bold">None</p>
                     ) : (
                       <p className="font-bold">{timeReview}</p>
@@ -255,7 +265,7 @@ const BookMeeting = () => {
                 href={{
                   pathname:
                     JSON.stringify(meetingDetails) !== '{}'
-                      ? '/meeting/confirmedMeeting'
+                      ? '/mentee/meeting/confirmedMeeting'
                       : '#',
                   query: meetingDetails,
                 }}

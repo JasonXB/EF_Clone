@@ -9,7 +9,8 @@ export interface Availability {
 
 export interface Mentor {
     mentor_id: number,
-    name: string, 
+    firstName: string, 
+    lastName: string, 
     position: string, 
     company: string, 
     imgUrl: string, 

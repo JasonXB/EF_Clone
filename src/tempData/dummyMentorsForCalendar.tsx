@@ -2,7 +2,8 @@
 export const mentorsData = [
     {
         "mentor_id": 412,
-        "name": "Derick Pelayo",
+        "firstName": "Derick",
+        "lastName": "Pelayo",
         "position": "Clerk",
         "company": "BDO",
         "imgUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNzIyMTJ8MHwxfHNlYXJjaHwxfHxwcm9maWxlJTIwcGljfGVufDB8fHx8MTY2NjA2NTM1Nw&ixlib=rb-1.2.1&q=80&w=400",
@@ -47,9 +48,10 @@ export const mentorsData = [
     },
     {
         "mentor_id": 122,
-        "name": "Sarah Geronimo",
-        "position": "Voice Actor",
-        "company": "GMA",
+        "firstName": "Shirley Mae",
+        "lastName": "Dizon",
+        "position": "Business Analyst",
+        "company": "RBC",
         "imgUrl": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNzIyMTJ8MHwxfHNlYXJjaHwyfHxwcm9maWxlJTIwcGljfGVufDB8fHx8MTY2NjA2NTM1Nw&ixlib=rb-1.2.1&q=80&w=400",
         "meeting_availability": {
             "recurring": [
@@ -104,7 +106,8 @@ export const mentorsData = [
     },
     {
         "mentor_id": 300,
-        "name": "Charlotte Pads",
+        "firstName": "Charlotte",
+        "lastName": "Smith",
         "position": "CEO",
         "company": "Accenture",
         "imgUrl": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNzIyMTJ8MHwxfHNlYXJjaHwzfHxwcm9maWxlJTIwcGljfGVufDB8fHx8MTY2NjA2NTM1Nw&ixlib=rb-1.2.1&q=80&w=400",
