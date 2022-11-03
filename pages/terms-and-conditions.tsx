@@ -4,7 +4,7 @@ import Layout from '../src/components/Layout';
 import Button from '../src/components/buttons/reusable-buttons';
 
 // I used Jason's basic layout from the become-a-mentor page as this page is quite similar in structure. Thanks, Jason!
-// You're welcome Matt! <3
+// You're welcome Matt! <3 (see Kelsey, that's how you use the word "you're" correctly)
 
 // Statically renders page and sets props equal to an empty object
 export const getStaticProps: GetStaticProps = async (context) => {
@@ -101,7 +101,7 @@ const termsAndConditions: NextPage = (props) => {
   };
 
   return (
-    <Layout>
+    <Layout headTitle="Terms and Conditions">
       <div className="grid grid-cols-[1fr_auto_1fr] mx-[10%] sm:mx-[20%]">
         <section className="col-start-2 col-end-3 mt-16 mb-8 ">
           {/* Titles section */}
@@ -117,29 +117,32 @@ const termsAndConditions: NextPage = (props) => {
               Last Revised: October 15, 2022
             </h2>
           </div>
-          
+
           {/* Definitions section 
           I left in slicing here as I felt it was easier for these very specific lines of text. */}
           <h2 className="mt-12 mb-8 text-3xl font-medium">
-                {content.definitions.headerText}
+            {content.definitions.headerText}
           </h2>
           <span className="text-lg font-bold text-primary-1">
             {content.definitions.blurb.slice(0, 19)}
           </span>
-          <span className='text-lg'>{content.definitions.blurb.slice(19)}</span>
-          
+          <span className="text-lg">{content.definitions.blurb.slice(19)}</span>
+
           {/* Definitions - bullet points */}
           {content.definitions.bullets.map((bullet, i) => {
             return (
-              <div key={i} className="flex flex-col mt-6 mb-6 text-lg xl:pl-12 xl:flex-row">
+              <div
+                key={i}
+                className="flex flex-col mt-6 mb-6 text-lg xl:pl-12 xl:flex-row"
+              >
                 <span className="flex">
-                •
-                <span className="ml-2 font-bold xl:ml-6 text-primary-1">
-                  {bullet.slice(0, 9)}
-                  
-                  <span className="font-light text-dark ">
-                    {bullet.slice(9)}
-                  </span>
+                  •
+                  <span className="ml-2 font-bold xl:ml-6 text-primary-1">
+                    {bullet.slice(0, 9)}
+
+                    <span className="font-light text-dark ">
+                      {bullet.slice(9)}
+                    </span>
                   </span>
                 </span>
               </div>
@@ -177,7 +180,7 @@ const termsAndConditions: NextPage = (props) => {
           );
         })}
       </div>
-      
+
       {/* Accept/Decline buttons */}
       <div className="flex items-center justify-center mt-10 mb-10 xl:mt-28 xl:w-full xl:justify-evenly">
         <Button
@@ -187,7 +190,7 @@ const termsAndConditions: NextPage = (props) => {
           Decline
         </Button>
         {/* Empty div to create more space between buttons */}
-        <div className='w-10 xl:w-90'></div>
+        <div className="w-10 xl:w-90"></div>
         <Button className="w-56 h-16">Accept</Button>
       </div>
     </Layout>

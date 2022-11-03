@@ -16,3 +16,34 @@
   grid-column: main-start/main-end;
   padding: 2rem;
 }
+
+.primaryBG {
+  height: 100vh;
+}
+.primaryBG::before {
+  content: '';
+  background-image: url(../public/assets/primaryBackground.png);
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.25;
+  z-index: -10;
+}
+
+.secondaryBG {
+  background-image: url(../public/assets/Sign-Up-page.png);
+  background-position: top;
+  height: 100%;
+}
+.noneBG {
+  background: none;
+}
+.contentV2 {
+  grid-column: main-start/main-end;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 2rem;
+}

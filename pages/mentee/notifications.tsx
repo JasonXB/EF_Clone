@@ -1,6 +1,6 @@
-import Layout from '../src/components/Layout';
-import NotificationCard from '../src/components/notificationCard';
-import { UserNotification } from '../src/interface/user-notification.interface';
+import Layout from '../../src/components/Layout';
+import NotificationCard from '../../src/components/notificationCard';
+import { UserNotification } from '../../src/interface/user-notification.interface';
 import { NextPage } from 'next';
 import { useEffect, useState } from 'react';
 
@@ -22,11 +22,11 @@ const Notifications: NextPage = () => {
 
   return (
     <>
-      <Layout headTitle="Notifications">
+      <Layout headTitle="Notifications" background="none">
         <div className="container mx-auto">
           <div className="flex flex-col space-y-2">
             <div className="flex flex-row justify-center">
-              <span className="text-primary-1 font-semibold text-5xl mb-4">
+              <span className="mb-4 text-5xl font-semibold text-primary-1">
                 {'Notifications'}
               </span>
             </div>
