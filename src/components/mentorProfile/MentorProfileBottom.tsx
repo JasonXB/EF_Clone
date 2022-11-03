@@ -1,7 +1,12 @@
 import BubbleTags from '../BubbleTags';
 import { BUBBLE_TAG_TYPE_CLASSES } from '../BubbleTag';
-import { MentorProfileBottomProps } from '../../interface/mentor-profile-bottom-props.interface';
 
+export interface MentorProfileBottomProps {
+  name: string;
+  skills: string[];
+  about: string;
+  availability: string;
+}
 const MentorProfileBottom = ({
   name,
   availability,
@@ -11,19 +16,19 @@ const MentorProfileBottom = ({
   return (
     <>
       {/* Addition skill bubble tags, about, availability */}
-        {/* Map each skill */}
-        <span className="flex flex-row justify-start mb-10 ">
-          <BubbleTags
-            tags={skills}
-            bubbleTagType={BUBBLE_TAG_TYPE_CLASSES.primaryLight}
-          />
-        </span>
-        {/* About */}
-        <h2 className="mb-5 text-2xl">About {name}</h2>
-        <p className="mb-14 text-md">{about}</p>
-        {/* Availability */}
-        <h2 className="mb-5 text-2xl">{`${name}'s Availability`}</h2>
-        <p className="mb-10 text-md">{availability}</p>
+      {/* Map each skill */}
+      <span className="flex flex-row justify-start mb-10 ">
+        <BubbleTags
+          tags={skills}
+          bubbleTagType={BUBBLE_TAG_TYPE_CLASSES.primaryLight}
+        />
+      </span>
+      {/* About */}
+      <h2 className="mb-5 text-2xl">About {name}</h2>
+      <p className="mb-14 text-md">{about}</p>
+      {/* Availability */}
+      <h2 className="mb-5 text-2xl">{`${name}'s Availability`}</h2>
+      <p className="mb-10 text-md">{availability}</p>
     </>
   );
 };

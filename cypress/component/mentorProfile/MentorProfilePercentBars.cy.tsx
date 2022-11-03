@@ -15,7 +15,7 @@ const percentBarSkills = [
 describe('MentorProfilePercentBars.cy.tsx', () => {
   beforeEach(() => {
     cy.viewport(1920, 1080);
-    cy.mount(<MentorProfilePercentBars percentBarSkills={percentBarSkills} />);
+    cy.mount(<MentorProfilePercentBars skills={percentBarSkills} />);
   });
 
   it('mounts', () => {
