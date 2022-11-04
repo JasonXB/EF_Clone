@@ -1,14 +1,13 @@
-import placeholderImg from '../../../public/assets/cat.jpeg';
+import Meeting from '../../interface/meeting.interface';
 import Avatar from '../avatar/avatar';
 import Button from '../buttons/reusable-buttons';
-import { UpcomingMeetingCardProps } from './mentor-interface';
 
-type UpcomingMeetingPropsType = {
-  props: UpcomingMeetingCardProps;
-};
+interface UpcomingMeetingCardProps {
+  meeting: Meeting;
+}
 
-const UpcomingMeetingCard = (props: UpcomingMeetingPropsType) => {
-  const { name, avatar, numberOfMeetings, nextMeeting } = props.props;
+const UpcomingMeetingCard = ({ meeting }: UpcomingMeetingCardProps) => {
+  const { name, avatar, numberOfMeetings, nextMeeting } = meeting;
   //avatar will be passed in the future
 
   return (
@@ -18,7 +17,7 @@ const UpcomingMeetingCard = (props: UpcomingMeetingPropsType) => {
         {/* avatar left column */}
         <div className="flex flex-col items-center w-full ss:w-1/3">
           <Avatar
-            imgLocation={placeholderImg} //swap with avatar once dynamically passed
+            imgLocation={avatar} //swap with avatar once dynamically passed
             personsName={name}
             displaySize={'small'}
           />
