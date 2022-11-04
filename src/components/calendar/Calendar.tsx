@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { add, format } from 'date-fns';
+import { add, format, isPast } from 'date-fns';
 import DateSlot from './DateSlot';
 import { CalendarContext } from '../../../state-management/ReactContext/CalendarContext';
 import { v4 as uuidv4 } from 'uuid';
@@ -27,7 +27,7 @@ export default function Calendar({ meeting_availability }: MeetingAvailabilityPr
       {/* style for navigation header of calendar */}
       <div className="flex justify-between border border-primary-1 rounded-md px-6 py-6">
         {/* -- LEFT ARROW -- */}
-        <button
+        {!isPast(firstDayCurrentMonth) ? (<button
           className="hover:text-gray-500"
           type="button"
           onClick={previousMonth}
@@ -47,7 +47,7 @@ export default function Calendar({ meeting_availability }: MeetingAvailabilityPr
               d="M15.75 19.5L8.25 12l7.5-7.5"
             />
           </svg>
-        </button>
+        </button>) : <div className="px-5"/>}
         {/* -- */}
         {/* -- CALENDAR MONTH -- */}
         <h4 className="font-medium">
