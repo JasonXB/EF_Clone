@@ -35,6 +35,7 @@ const BookMeeting = () => {
   }, [router.isReady, mentorId]);
 
   const { firstName, lastName, position, company, imgUrl, meeting_availability } = thisMentor;
+  
   const fullName = firstName + ' ' + lastName
   const { selectedTimeSlot } = useContext(TimezoneContext);
 
