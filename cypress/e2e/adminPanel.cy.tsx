@@ -2,7 +2,7 @@ import { placeholderDataForRequest as dummyMentors } from '../../src/tempData/te
 
 describe('adminPanel.cy.tsx', () => {
   beforeEach(()=>{
-    cy.visit(`http://localhost:3000/admin-panel`)
+    cy.visit(`http://localhost:3000/admin/panel`)
   })
   it('should load one entry for each dummy mentor', () => {
     cy.get('#applicantList')
