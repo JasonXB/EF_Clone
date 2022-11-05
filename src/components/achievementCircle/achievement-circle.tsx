@@ -25,6 +25,7 @@ const AchievementCircle = ({
         styles={buildStyles({
           pathColor: `#CE1982`, // the input here doesn't understand tailwind class colors, so we have to input it manually
         })}
+        text={text ? text : ''}
       >
         {/* Note: text can be passed to the "text" property of CircularProgressbar  */}
         <Image
