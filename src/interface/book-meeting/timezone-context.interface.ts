@@ -19,8 +19,8 @@ export interface KeyPairIANA {
     timezone: string
 }
 export interface SelectedTimeSlot {
-    startDatetime: Date,
-    endDatetime: Date,
+    startDatetime: string,
+    endDatetime: string,
 }
 export interface Children {
     children: ReactNode

@@ -1,7 +1,7 @@
 import { useContext, useState, useEffect, SetStateAction } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { format, formatISO } from 'date-fns';
+import { format, formatISO, parseISO } from 'date-fns';
 import Calendar from '../../../src/components/calendar/Calendar';
 import TimeSlots from '../../../src/components/timeSlots/TimeSlots';
 import TimeZonesDropdown from '../../../src/components/timezonesDropdown/TimeZonesDropdown';
@@ -38,6 +38,8 @@ const BookMeeting = () => {
   
   const fullName = firstName + ' ' + lastName
   const { selectedTimeSlot } = useContext(TimezoneContext);
+  const startTime = parseISO(selectedTimeSlot.startDatetime)
+  const endTime = parseISO(selectedTimeSlot.endDatetime)
 
   let timeReview = '';
 
@@ -46,16 +48,16 @@ const BookMeeting = () => {
 
   if (!hasSelectedATime) {
     let formatteddateAndDay = format(
-      selectedTimeSlot.startDatetime,
+      startTime,
       'LLL do EEEE'
     ); //Sep 17th Saturday
-    let formattedStartTime = format(selectedTimeSlot.startDatetime, 'hh:mm a'); //09:00 AM
-    let formattedEndTime = format(selectedTimeSlot.endDatetime, 'hh:mm a'); //11:30 AM
+    let formattedStartTime = format(startTime, 'hh:mm a'); //09:00 AM
+    let formattedEndTime = format(endTime, 'hh:mm a'); //11:30 AM
 
     //array of formatted date splitted into parts. this is used to get the timezone 'e.g PDT'
     const dateInParts = new Intl.DateTimeFormat('default', {
       timeZoneName: 'short',
-    }).formatToParts(selectedTimeSlot.startDatetime);
+    }).formatToParts(startTime);
 
     // 'PDT'
     const timeZoneShort = dateInParts.find(
@@ -73,7 +75,7 @@ const BookMeeting = () => {
       ')';
   }
 
-  // console.log('JSON',JSON.stringify(selectedTimeSlot.startDatetime) === '{}');
+  // console.log('JSON',JSON.stringify(startTime) === '{}');
 
   //pass data to next page
 
@@ -81,15 +83,15 @@ const BookMeeting = () => {
   let meetingDetails = {};
 
   if (
-    JSON.stringify(selectedTimeSlot.startDatetime) !== '{}' &&
-    JSON.stringify(selectedTimeSlot.endDatetime) !== '{}'
+    JSON.stringify(startTime) !== '{}' &&
+    JSON.stringify(endTime) !== '{}'
   ) {
     meetingDetails = {
       mentorFirstName: 'Sarah', // fix to work with first name
       mentorLastName: 'Geronimo', // fix to work with first name
       mentorImg: imgUrl,
-      meetingStartDatetime: formatISO(selectedTimeSlot.startDatetime),
-      meetingEndDatetime: formatISO(selectedTimeSlot.endDatetime),
+      meetingStartDatetime: startTime,
+      meetingEndDatetime: endTime,
       meetingMethod: 'Google Meet',
     };
   }
@@ -99,10 +101,10 @@ const BookMeeting = () => {
       const meeting = {
         mentorID: thisMentor.mentor_id,
         menteeID: 11,
-        date: formatISO(selectedTimeSlot.startDatetime, {
+        date: formatISO(startTime, {
           representation: 'date',
         }), //type to be fixed
-        time: formatISO(selectedTimeSlot.startDatetime, {
+        time: formatISO(startTime, {
           representation: 'date',
         }), //type to be fixed
         meetingMethod: 'Google Meeting',

@@ -3,7 +3,7 @@
     https://xd.adobe.com/view/748b20f6-3f12-4c04-a128-f3ecbec94ef2-21d8/screen/962caf43-9fe9-44ed-93c5-e08de2342056/?hints=off
 */
 import { useContext } from 'react';
-import { format, isEqual } from 'date-fns';
+import { format, isEqual, parseISO } from 'date-fns';
 import { utcToZonedTime } from 'date-fns-tz';
 import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
 import { MeetingProps } from '../../interface/book-meeting/book-with-mentor.interface'
@@ -33,8 +33,8 @@ const TimeSlot = ({ meeting }: MeetingProps) => {
 
   const isTimeSlotSelected = () => {
     return (
-      isEqual(meeting.startDatetime, selectedTimeSlot.startDatetime) &&
-      isEqual(meeting.endDatetime, selectedTimeSlot.endDatetime)
+      isEqual(parseISO(meeting.startDatetime), parseISO(selectedTimeSlot.startDatetime)) &&
+      isEqual(parseISO(meeting.endDatetime), parseISO(selectedTimeSlot.endDatetime))
     );
   };
 

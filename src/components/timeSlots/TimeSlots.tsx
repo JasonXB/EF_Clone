@@ -25,17 +25,28 @@ const TimeSlots = ({ meeting_availability }: MeetingAvailabilityProps) => {
   );
 
   //find if the mentor has availabilities on the selected date by comparing the date selected and the date in the json data
-  const selectedDayAvailability = (availabilities: ZonedAvailability[]) =>
-    availabilities.filter(
-      (availability) =>
-        isSameDay(parseISO(availability.startDatetime as unknown as string), selectedDay) ||
-        isSameDay(availability.startDatetime, selectedDay)
-    );
+  // type ZonedAvailability[]
+  // const selectedDayAvailability = (availabilities: any) => {
+  //   return availabilities.filter(
+  //     (availability: any) =>
+  //       isSameDay(parseISO(availability.startDatetime as unknown as string), selectedDay) ||
+  //       isSameDay(availability.startDatetime, selectedDay)
+  //   );
+  // }
+
+
+  const selectedDayAvailability = (availabilities: any) => {
+    return availabilities.filter((availability: any)=>
+      isSameDay(parseISO(availability.startDatetime), selectedDay)
+    )
+  }
+
+  let meetingsOnSelectedDay = selectedDayAvailability(meeting_availability.specific)
 
   return (
     <div className="mt-4 space-y-3 text-sm">
-      {selectedDayAvailability(timeZonedAvailabilities).length > 0 ? (
-        selectedDayAvailability(timeZonedAvailabilities).map((availability) => (
+      {meetingsOnSelectedDay.length > 0 ? (
+        meetingsOnSelectedDay.map((availability: any) => (
           <TimeSlot key={uuidv4()} meeting={availability} />
         ))
       ) : (

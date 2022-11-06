@@ -67,7 +67,7 @@ const DateSlot = ({ day, dayIndex, availabilities }: DateSlotProps) => {
     >
       <button
         type="button"
-        disabled={!hasFuture}
+        disabled={!hasFuture(timeZonedAvailabilities)}
         onClick={selectDate}
         className={classNames(
           // ----- BACKGROUND CONDITIONS -----

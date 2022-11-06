@@ -1,5 +1,5 @@
-import { createContext, useEffect, useState, ReactNode, Dispatch, SetStateAction  } from 'react';
-import { formatInTimeZone } from 'date-fns-tz';
+import { createContext, useEffect, useState, Dispatch, SetStateAction } from 'react';
+import { formatInTimeZone, utcToZonedTime, zonedTimeToUtc  } from 'date-fns-tz';
 import { customIntl, DatePart, KeyPairIANA, Children, SelectedTimeSlot } from '../../src/interface/book-meeting/timezone-context.interface'
 
 //helper functions and variables to get the timezones-------------------------------------
@@ -49,6 +49,19 @@ const listOfTimezones = new Set(
     return timezone;
   })
 );
+
+// let localDate = new Date("November 20, 2014 09:00:00")
+// let pst = 'America/Vancouver'
+// let est = 'America/Toronto'
+// let cst = 'America/Winnipeg'
+// let zoneToUTCdate = zonedTimeToUtc(localDate, est)
+// let utcToZonedDate = utcToZonedTime(localDate, cst)
+// console.log('------------------------');
+// console.log('localDate--->', localDate);
+// // console.log('zoneToUTCdate--->', zoneToUTCdate);
+// console.log('utcToZonedDate--->', utcToZonedDate);
+// console.log('------------------------');
+
 
 //helper variables to get the currentTimezone-------------------------------------
 /*
@@ -103,6 +116,7 @@ const listOfKeyPairIANA = listOfIANA.map((IANA: string) => {
 
 
 
+
 /*array of keyPair arrays 
   [
       ['Greenwich Mean Time', {IANA: "Africa/Abidjan", timezone: "Greenwich Mean Time"}],
@@ -142,11 +156,11 @@ const getIANACounterpart = async (timezone: string) => {
 export const TimezoneContext = createContext({
   timezones: [] as string[],
   selectedTimezone: '',
-  setSelectedTimezone: (() => {}) as Dispatch<any>,
+  setSelectedTimezone: (() => { }) as Dispatch<any>,
   selectedTimeSlot: {} as SelectedTimeSlot,
-  setSelectedTimeSlot: (() => {}) as Dispatch<SetStateAction<SelectedTimeSlot>>,
+  setSelectedTimeSlot: (() => { }) as Dispatch<SetStateAction<SelectedTimeSlot>>,
   IANACounterpart: {} as Promise<string>,
-  setIANACounterpart: (() => {}) as Dispatch<SetStateAction<Promise<any>>>
+  setIANACounterpart: (() => { }) as Dispatch<SetStateAction<Promise<any>>>
 });
 
 

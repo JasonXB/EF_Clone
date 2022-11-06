@@ -2,8 +2,8 @@ import { ReactNode } from 'react';
 
 //used in book-meeting/[mentorId]  
 export interface Availability {
-    startDatetime: Date | string,
-    endDatetime: Date | string,
+    startDatetime: string,
+    endDatetime: string,
   }
 
 
@@ -25,7 +25,7 @@ export interface ZonedAvailability {
   endDatetime: Date,
 }
 export interface MeetingProps {
-    meeting: ZonedAvailability
+    meeting: Availability
   }
 
 

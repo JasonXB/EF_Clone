@@ -1,5 +1,5 @@
 //this component provides a dropdown for the timezones and uses a TimeZone context
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState, useRef, MouseEvent } from 'react';
 import Timezone from './Timezone';
 import { v4 as uuidv4 } from 'uuid';
 import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
@@ -12,8 +12,23 @@ const TimeZonesDropdown = () => {
     setDropdownToggle(!dropdownToggle);
   };
 
+  //handle to close the dropdown if we are clicking outside
+  //>>not sure how to fix the typescript error
+  let menuRef: any = useRef()
+  useEffect(()=>{
+    let handler = (event: MouseEvent): any => {
+      if(!menuRef.current.contains(event.target)){
+        setDropdownToggle(false)
+      }
+    }
+    document.addEventListener("mousedown", handler as any);
+    return () => {
+      document.removeEventListener("mousedown", handler as any)
+    }
+  })
+
   return (
-    <div className="dropdown relative group w-50">
+    <div className="dropdown relative group w-50 " ref={menuRef}>
       {/* default dropdown */}
       <button
         className="flex items-center cursor-pointer group-hover:border-grey-light rounded-t-lg py-1 px-2"
