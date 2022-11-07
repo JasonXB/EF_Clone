@@ -2,6 +2,7 @@ import { useContext, useState, useEffect, SetStateAction } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { format, formatISO, parseISO } from 'date-fns';
+import { formatInTimeZone } from 'date-fns-tz';
 import Calendar from '../../../src/components/calendar/Calendar';
 import TimeSlots from '../../../src/components/timeSlots/TimeSlots';
 import TimeZonesDropdown from '../../../src/components/timezonesDropdown/TimeZonesDropdown';
@@ -37,7 +38,7 @@ const BookMeeting = () => {
   const { firstName, lastName, position, company, imgUrl, meeting_availability } = thisMentor;
   
   const fullName = firstName + ' ' + lastName
-  const { selectedTimeSlot } = useContext(TimezoneContext);
+  const { selectedTimeSlot, IANACounterpart } = useContext(TimezoneContext);
   const startTime = parseISO(selectedTimeSlot.startDatetime)
   const endTime = parseISO(selectedTimeSlot.endDatetime)
 
@@ -48,32 +49,12 @@ const BookMeeting = () => {
   const hasSelectedATime = JSON.stringify(selectedTimeSlot) !== `{"startDatetime":"","endDatetime":""}`
 
   if (hasSelectedATime) {
-    let formatteddateAndDay = format(
-      startTime,
-      'LLL do EEEE'
-    ); //Sep 17th Saturday
-    let formattedStartTime = format(startTime, 'hh:mm a'); //09:00 AM
-    let formattedEndTime = format(endTime, 'hh:mm a'); //11:30 AM
-
-    //array of formatted date splitted into parts. this is used to get the timezone 'e.g PDT'
-    const dateInParts = new Intl.DateTimeFormat('default', {
-      timeZoneName: 'short',
-    }).formatToParts(startTime);
-
-    // 'PDT'
-    const timeZoneShort = dateInParts.find(
-      (element) => element.type === 'timeZoneName'
-    )?.value;
-    //Sep 17th Saturday 05:00 PM - 06:30 PM (EST)
-    timeReview =
-      formatteddateAndDay +
-      ' ' +
-      formattedStartTime +
-      ' - ' +
-      formattedEndTime +
-      ' (' +
-      timeZoneShort +
-      ')';
+    //Nov 15th Tuesday 07:30 PM - 
+    const start = formatInTimeZone(startTime, IANACounterpart as unknown as string, 'LLL do EEEE hh:mm a - ')
+    // 05:00 PM (CST)
+    const end = formatInTimeZone(endTime, IANACounterpart as unknown as string, 'hh:mm a (zzz)')
+    //Nov 15th Tuesday 07:30 PM - 05:00 PM (CST)
+    timeReview = start + end    
   }
 
   //pass data to next page

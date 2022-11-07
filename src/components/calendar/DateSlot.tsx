@@ -6,7 +6,7 @@ import {
   isToday,
   isFuture,
 } from 'date-fns';
-import { utcToZonedTime, formatInTimeZone } from 'date-fns-tz';
+import { utcToZonedTime } from 'date-fns-tz';
 import { DateSlotProps } from '../../interface/book-meeting/book-with-mentor.interface'
 import { CalendarContext } from '../../../state-management/ReactContext/CalendarContext';
 import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
