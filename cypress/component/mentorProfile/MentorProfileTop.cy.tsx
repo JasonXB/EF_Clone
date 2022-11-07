@@ -12,8 +12,8 @@ const dummyMentorData = {
   title: 'Founder of Empowered Futures',
   avatar: hiba,
   socialMediaIcons: [
-    { svg: linkedInIcon, url: 'http://linkedin.com' },
     { svg: twitterIcon, url: 'http://twitter.com' },
+    { svg: linkedInIcon, url: 'http://linkedin.com' },
   ],
   location: 'Calgary, Canada',
   responseTime: 'Usually responds within 1 day',
@@ -22,11 +22,15 @@ const dummyMentorData = {
 describe('MentorProfileTop.cy.tsx', () => {
   beforeEach(() => {
     cy.viewport(1920, 1080);
+
+    // In the MentorProfileTop, socialMediaIcons prop had been removed, but I guess it should be added in the future for relative links to mentors social medias.
+    // For the current test, I have removed it too for the test to work.
+
     cy.mount(
       <MentorProfileTop
         name={dummyMentorData.name}
         title={dummyMentorData.title}
-        socialMediaIcons={dummyMentorData.socialMediaIcons}
+        // socialMediaIcons={dummyMentorData.socialMediaIcons}
         location={dummyMentorData.location}
         responseTime={dummyMentorData.responseTime}
         avatar={dummyMentorData.avatar}
@@ -39,25 +43,25 @@ describe('MentorProfileTop.cy.tsx', () => {
   });
 
   it('check the name prop', () => {
-    cy.get('h1').should('have.text', 'Hiba Badran');
+    cy.get('h3').should('have.text', 'Hiba Badran');
   });
 
   it('check the title prop', () => {
-    cy.get('h2').eq(0).should('have.text', 'Founder of Empowered Futures');
+    cy.get('h5').eq(0).should('have.text', 'Founder of Empowered Futures');
   });
 
   it('check the location prop', () => {
-    cy.get('h2').eq(1).should('contain', 'Calgary, Canada');
+    cy.get('h5').eq(1).should('contain', 'Calgary, Canada');
   });
 
   it('check the responseTime prop', () => {
-    cy.get('h2').eq(2).should('contain', 'Usually responds within 1 day');
+    cy.get('h5').eq(2).should('contain', 'Usually responds within 1 day');
   });
 
   it('check social media icons correctness and their respective hrefs', () => {
     cy.get('a').each((item, index) => {
       // create a 'linkedin' and 'twitter' string in order to use in a regex. then it will look svg classes for the matching names.
-      const socialMediaNames = ['linkedin', 'twitter'];
+      const socialMediaNames = ['twitter', 'linkedin'];
       let regex = new RegExp(socialMediaNames[index]);
       cy.wrap(item)
         .should(
