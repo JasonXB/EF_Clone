@@ -11,19 +11,6 @@ const TimeSlots = ({ meeting_availability }: MeetingAvailabilityProps) => {
   const { selectedDay } = useContext(CalendarContext);
   const { IANACounterpart } = useContext(TimezoneContext);
 
-  //variable used to adjust the timeslot available based on the timezone
-  // const timeZonedAvailabilities = meeting_availability.specific.map(
-  //   (availability) => {
-  //     return {
-  //       startDatetime: utcToZonedTime(
-  //         availability.startDatetime,
-  //         IANACounterpart as unknown as string
-  //       ),
-  //       endDatetime: utcToZonedTime(availability.endDatetime, IANACounterpart as unknown as string),
-  //     };
-  //   }
-  // );
-
   //find if the mentor has availabilities on the selected date by comparing the date selected and the date in the json data
   const selectedDayAvailability = (availabilities: any) => {
     return availabilities.filter((availability: any)=>{
@@ -32,9 +19,7 @@ const TimeSlots = ({ meeting_availability }: MeetingAvailabilityProps) => {
         IANACounterpart as unknown as string
       )
       return isSameDay(zonedStartTime, selectedDay)
-    }
-      
-    )
+    })
   }
 
   let meetingsOnSelectedDay = selectedDayAvailability(meeting_availability.specific)
