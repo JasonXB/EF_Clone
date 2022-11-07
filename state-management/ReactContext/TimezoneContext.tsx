@@ -175,7 +175,7 @@ export const TimezoneProvider = ({ children }: Children) => {
   const [selectedTimezone, setSelectedTimezone] = useState(timezonePart.value);
 
   //refers to the timeslot that the user picked
-  const [selectedTimeSlot, setSelectedTimeSlot] = useState({ startDatetime: {}, endDatetime: {} } as SelectedTimeSlot);
+  const [selectedTimeSlot, setSelectedTimeSlot] = useState({ startDatetime: '', endDatetime: '' } as SelectedTimeSlot);
 
   //variable used in 'utcToZonedTime' from date-fns-tz to convert to a specific timezone
   const [IANACounterpart, setIANACounterpart] = useState(

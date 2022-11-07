@@ -4,9 +4,9 @@ import {
   getDay,
   isSameDay,
   isToday,
-  isFuture
+  isFuture,
 } from 'date-fns';
-import { utcToZonedTime } from 'date-fns-tz';
+import { utcToZonedTime, formatInTimeZone } from 'date-fns-tz';
 import { DateSlotProps } from '../../interface/book-meeting/book-with-mentor.interface'
 import { CalendarContext } from '../../../state-management/ReactContext/CalendarContext';
 import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
@@ -29,7 +29,6 @@ const DateSlot = ({ day, dayIndex, availabilities }: DateSlotProps) => {
   const { selectedDay, setSelectedDay } = useContext(CalendarContext);
   const { setSelectedTimeSlot, IANACounterpart } = useContext(TimezoneContext);
   //checkpoint!---------->fixing bug..when changing the timezone, the date with the blueborder must be changed as well
-  const zonedDay = utcToZonedTime(day, IANACounterpart as unknown as string);
 
   //variable used to adjust the date available based on the timezone
   const timeZonedAvailabilities = availabilities.map((availability) => {
@@ -43,10 +42,10 @@ const DateSlot = ({ day, dayIndex, availabilities }: DateSlotProps) => {
   });
 
   //predicate function to check the array if it has any future start dates
-  const hasFuture = (availabilities: any) => {
+  const hasFuture = () => {
     let startTime 
-    for (let i = 0; i < availabilities.length; i++) {
-      startTime = availabilities[i].startDatetime
+    for (let i = 0; i < timeZonedAvailabilities.length; i++) {
+      startTime = timeZonedAvailabilities[i].startDatetime
       if (isSameDay(startTime, day) && isFuture(startTime)) {
           return true
       }
@@ -56,8 +55,8 @@ const DateSlot = ({ day, dayIndex, availabilities }: DateSlotProps) => {
 
   //select date event handler-----------------
   const selectDate = () => {
-    setSelectedDay(zonedDay);
-    setSelectedTimeSlot({ startDatetime: {} as Date, endDatetime: {} as Date }); //reset the selected time slot whenever a date is clicked so that there is no time slot selected by default
+    setSelectedDay(day);
+    setSelectedTimeSlot({ startDatetime: '', endDatetime: ''}); //reset the selected time slot whenever a date is clicked so that there is no time slot selected by default
   };
 
   return (
@@ -67,22 +66,22 @@ const DateSlot = ({ day, dayIndex, availabilities }: DateSlotProps) => {
     >
       <button
         type="button"
-        disabled={!hasFuture(timeZonedAvailabilities)}
+        // disabled={!hasFuture(timeZonedAvailabilities)}
         onClick={selectDate}
         className={classNames(
           // ----- BACKGROUND CONDITIONS -----
           //selected day is today
-          isSameDay(zonedDay, selectedDay) &&
+          isSameDay(day, selectedDay) &&
             'bg-primary-5 border-4 border-primary-1 py-9',
           //not the selected day
-          !isSameDay(zonedDay, selectedDay) && 'hover:bg-gray-100 px-10',
+          !isSameDay(day, selectedDay) && 'hover:bg-gray-100 px-10',
           // ----- TEXT CONDITIONS -----------
           //today
           isToday(day) && 'font-semibold',
           //has availability in the future
-          hasFuture(timeZonedAvailabilities) && 'text-black',
+          hasFuture() && 'text-black',
           //has no availability in the future
-          !hasFuture(timeZonedAvailabilities) && 'text-smoke-2 line-through',
+          !hasFuture() && 'text-smoke-2 line-through',
           // ----- DEFAULT CLASS -------------
           'mx-auto flex h-8 w-8 items-center justify-center rounded py-10 px-9'
         )}

@@ -45,7 +45,7 @@ const BookMeeting = () => {
   let timeReview = '';
 
   //checks if the user has selected a time
-  const hasSelectedATime = JSON.stringify(selectedTimeSlot) !== '{"startDatetime":{},"endDatetime":{}}'
+  const hasSelectedATime = JSON.stringify(selectedTimeSlot) !== `{"startDatetime":"","endDatetime":""}`
 
   if (hasSelectedATime) {
     let formatteddateAndDay = format(
@@ -120,16 +120,6 @@ const BookMeeting = () => {
       console.log('POST error: ', err.message);
     }
   };
-
-  let myDate = formatISO(new Date(), { representation: 'date' })
-  let testISO = '2022-11-07T10:22:59-08:00'
-  let parsedDate = parseISO(testISO)
-  let dateObj = new Date(testISO)
-  //2022-11-07T10:22:59-08:00
-  //Mon Nov 07 2022 10:22:59 GMT-0800 (Pacific Standard Time)
-  //Mon Nov 07 2022 13:22:59 GMT-0500 (Eastern Standard Time)
-  console.log(dateObj);
-  
 
   const [needToChooseTime, setNeedToChooseTime] = useState(false)
 
