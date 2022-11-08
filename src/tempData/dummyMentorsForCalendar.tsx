@@ -1,4 +1,4 @@
-// Placeholder data, delete in future//////
+// Placeholder data for Calendar Page, delete in future//////
 export const mentorsData = [
     {
         "mentor_id": 412,
@@ -56,29 +56,25 @@ export const mentorsData = [
         "meeting_availability": {
             "recurring": [
                 {
-                    "wednesday": [
-                        {
-                            "from": "T05:00",
-                            "to": "T07:30"
-                        },
-                        {
-                            "from": "T09:30",
-                            "to": "T10:00"
-                        }
-                    ]
+                    "startDatetime": "2022-11-22T09:30:00-08:00",
+                    "endDatetime": "2022-11-22T10:00:00-08:00"
                 },
                 {
-                    "saturday": [
-                        {
-                            "from": "T05:00",
-                            "to": "T07:30"
-                        },
-                        {
-                            "from": "T09:30",
-                            "to": "T10:00"
-                        }
-                    ]
-                }
+                    "startDatetime": "2022-11-22T13:30:00-08:00",
+                    "endDatetime": "2022-11-22T15:00:00-08:00"
+                },
+                {
+                    "startDatetime": "2022-11-15T20:30:00-08:00",
+                    "endDatetime": "2022-11-15T21:00:00-08:00"
+                },
+                {
+                    "startDatetime": "2022-11-15T16:30:00-08:00",
+                    "endDatetime": "2022-11-15T18:00:00-08:00"
+                },
+                {
+                    "startDatetime": "2022-11-18T06:30:00-08:00",
+                    "endDatetime": "2022-11-18T08:00:00-08:00"
+                },
             ],
             "specific": [
                 {

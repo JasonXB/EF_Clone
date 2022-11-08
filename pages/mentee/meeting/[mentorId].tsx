@@ -1,7 +1,7 @@
 import { useContext, useState, useEffect, SetStateAction } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { format, formatISO, parseISO } from 'date-fns';
+import { format, setDay, formatISO, parseISO } from 'date-fns';
 import { formatInTimeZone } from 'date-fns-tz';
 import Calendar from '../../../src/components/calendar/Calendar';
 import TimeSlots from '../../../src/components/timeSlots/TimeSlots';
@@ -15,8 +15,13 @@ import { Mentor } from '../../../src/interface/book-meeting/book-with-mentor.int
 
 /*
   IMPROVEMENT TO FEATURES: 
-  center the avaiable time slots
-  gears background
+  - center the avaiable time slots
+  - gears background
+  - recurring day feature
+  - API for mentor availabilities
+  - API for mentor's meetings (to be used in the recurring feature)
+    - if mentor already has a meeting on the particular date of the recurring timeslot, 
+    - we must omit that one
 */
 
 const BookMeeting = () => {
@@ -107,6 +112,23 @@ const BookMeeting = () => {
       console.log('POST error: ', err.message);
     }
   };
+
+
+
+  /*
+    0 | 1 | 2 | 3 | 4 | 5 | 6	
+    the day of week, 0 represents Sunday 
+    - this function gets a sample date starting from today
+     e.g if nDay is 0, the function will return the sunday date for this week 
+  */
+  const reccurringDay = setDay(new Date(), 1)
+  let timeStamp = '16:10:23-08:00'
+  let testDateTime = format(reccurringDay, `yyyy-MM-dd ${timeStamp} zzz`)
+  let ISOTime = formatISO(new Date(testDateTime), {representation: 'date'})
+  // console.log('testDateTime', testDateTime);
+  // console.log('ISOTime', ISOTime);
+  // console.log('reccurringDay', reccurringDay);
+  
 
   const [needToChooseTime, setNeedToChooseTime] = useState(false)
 
