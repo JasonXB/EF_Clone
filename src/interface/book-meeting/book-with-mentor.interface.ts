@@ -6,7 +6,6 @@ export interface Availability {
     endDatetime: string,
   }
 
-
 export interface Mentor {
     mentor_id: number,
     firstName: string, 
@@ -19,11 +18,6 @@ export interface Mentor {
     }
   }
 
-//used in timeslot component
-export interface ZonedAvailability {
-  startDatetime: Date,
-  endDatetime: Date,
-}
 export interface MeetingProps {
     meeting: Availability
   }

@@ -13,6 +13,12 @@ import { TimezoneContext } from '../../../state-management/ReactContext/Timezone
 import { mentorsData } from '../../../src/tempData/dummyMentorsForCalendar';
 import { Mentor } from '../../../src/interface/book-meeting/book-with-mentor.interface';
 
+/*
+  IMPROVEMENT TO FEATURES: 
+  center the avaiable time slots
+  gears background
+*/
+
 const BookMeeting = () => {
   const router = useRouter();
   const mentorId = router.query.mentorId;

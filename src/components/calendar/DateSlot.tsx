@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import {
   format,
   getDay,
@@ -24,11 +24,16 @@ let colStartClasses = [
   'col-start-5',
   'col-start-6',
 ];
-
+/*
+  IMPROVEMENT TO FEATURES: 
+  the current code has a missing feature to align the day selected when the timezone is changed.
+  this would apply for a selected time which is when converted, would be a different date
+  you may use the variable below as a starting point to fix this feature.
+  const zonedSelectedTime = utcToZonedTime(selectedTimeSlot.startDatetime, IANACounterpart as unknown as string);
+ */
 const DateSlot = ({ day, dayIndex, availabilities }: DateSlotProps) => {
   const { selectedDay, setSelectedDay } = useContext(CalendarContext);
   const { setSelectedTimeSlot, IANACounterpart } = useContext(TimezoneContext);
-  //checkpoint!---------->fixing bug..when changing the timezone, the date with the blueborder must be changed as well
 
   //variable used to adjust the date available based on the timezone
   const timeZonedAvailabilities = availabilities.map((availability) => {
@@ -66,7 +71,7 @@ const DateSlot = ({ day, dayIndex, availabilities }: DateSlotProps) => {
     >
       <button
         type="button"
-        // disabled={!hasFuture(timeZonedAvailabilities)}
+        disabled={!hasFuture()}
         onClick={selectDate}
         className={classNames(
           // ----- BACKGROUND CONDITIONS -----
