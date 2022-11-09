@@ -1,18 +1,11 @@
 import type { NextPage } from 'next';
 import Layout from '../../src/components/Layout';
 import React, { useEffect, useState } from 'react';
-<<<<<<< HEAD:pages/admin-panel.tsx
-import { placeholderDataForRequest as dummyMentors } from '../src/tempData/temp-data-mentor';
-import { MentorStatus } from '../src/enum/MentorStatus.enum';
-import MentorListEntry from '../src/components/adminPanel/mentor-list-entry';
-=======
-import MentorList from '../../src/components/adminPanel/mentor-list';
 import { placeholderDataForRequest as dummyMentors } from '../../src/tempData/temp-data-mentor';
 import { MentorStatus } from '../../src/enum/MentorStatus.enum';
 import useAuthStatusCheck from '../../src/hooks/useAuthStatusCheck';
 import Spinner from '../../src/components/loadingVisuals/spinner';
 import Router from 'next/router';
->>>>>>> 04e887fae2947d99aecc0d073e88885f78bb1422:pages/admin/panel.tsx
 
 interface MentorType {
   name: string;
