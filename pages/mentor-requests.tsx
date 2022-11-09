@@ -24,7 +24,7 @@ const MentorRequests: NextPage = () => {
           </h1>
           <form className="mt-16">
             <OptionForm
-              name="description"
+              name="describe"
               label="Which describes you the best?"
               options={describesOptionList}
             />
