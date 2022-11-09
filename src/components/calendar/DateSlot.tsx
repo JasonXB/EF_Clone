@@ -33,7 +33,7 @@ let colStartClasses = [
  */
 const DateSlot = ({ day, dayIndex, availabilities }: DateSlotProps) => {
   const { selectedDay, setSelectedDay } = useContext(CalendarContext);
-  const { setSelectedTimeSlot, IANACounterpart } = useContext(TimezoneContext);
+  const { setSelectedTimeSlot, IANACounterpart, selectedTimeSlot } = useContext(TimezoneContext);
 
   //variable used to adjust the date available based on the timezone
   const timeZonedAvailabilities = availabilities.map((availability) => {
@@ -52,6 +52,7 @@ const DateSlot = ({ day, dayIndex, availabilities }: DateSlotProps) => {
     for (let i = 0; i < timeZonedAvailabilities.length; i++) {
       startTime = timeZonedAvailabilities[i].startDatetime
       if (isSameDay(startTime, day) && isFuture(startTime)) {
+        const zonedSelectedTime = utcToZonedTime(selectedTimeSlot.startDatetime, IANACounterpart as unknown as string);
           return true
       }
     }

@@ -74,8 +74,8 @@ const BookMeeting = () => {
 
   if (hasSelectedATime) {
     meetingDetails = {
-      mentorFirstName: 'Sarah', // fix to work with first name
-      mentorLastName: 'Geronimo', // fix to work with first name
+      mentorFirstName: 'Sarah',
+      mentorLastName: 'Geronimo',
       mentorImg: imgUrl,
       meetingStartDatetime: startTime,
       meetingEndDatetime: endTime,
@@ -87,7 +87,7 @@ const BookMeeting = () => {
     try {
       const meeting = {
         mentorID: thisMentor.mentor_id,
-        menteeID: 11,
+        menteeID: 999,
         date: formatISO(startTime, {
           representation: 'date',
         }), //type to be fixed
@@ -96,39 +96,31 @@ const BookMeeting = () => {
         }), //type to be fixed
         meetingMethod: 'Google Meeting',
       };
+
+
+      //accessToken from AuthContext will be used
+      //placeholder token
+      let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjljZTNhNDkzYzE3NTNiN2UxZGU5MCIsImlhdCI6MTY2Nzg3ODYzMywiZXhwIjoxNjY3OTY1MDMzfQ.0nTpLZgcz3CmirJRSoa1Z2vG7VRQTxmOLoIWYhD94-k"
+
       const response = await fetch(
         'https://efback.azurewebsites.net/api/meeting/auth/set_meeting/',
         {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 
+            'Content-Type': 'application/json',
+            // Authorization: "Bearer " + token,
+        },
           body: JSON.stringify(meeting),
         }
       );
-      // const data = await response.json()
-      // console.log('meeting',meeting);
-      // console.log('data',data);
+      const data = await response.json()
+      console.log('meeting',meeting);
+      console.log('data',data);
     } catch (err: any) {
       //type to be fixed
       console.log('POST error: ', err.message);
     }
   };
-
-
-
-  /*
-    0 | 1 | 2 | 3 | 4 | 5 | 6	
-    the day of week, 0 represents Sunday 
-    - this function gets a sample date starting from today
-     e.g if nDay is 0, the function will return the sunday date for this week 
-  */
-  const reccurringDay = setDay(new Date(), 1)
-  let timeStamp = '16:10:23-08:00'
-  let testDateTime = format(reccurringDay, `yyyy-MM-dd ${timeStamp} zzz`)
-  let ISOTime = formatISO(new Date(testDateTime), {representation: 'date'})
-  // console.log('testDateTime', testDateTime);
-  // console.log('ISOTime', ISOTime);
-  // console.log('reccurringDay', reccurringDay);
-  
 
   const [needToChooseTime, setNeedToChooseTime] = useState(false)
 
