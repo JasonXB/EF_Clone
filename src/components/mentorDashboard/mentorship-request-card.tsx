@@ -2,6 +2,8 @@ import Image from 'next/image';
 import MentorshipRequest from '../../interface/mentorship-request';
 import Button from '../buttons/reusable-buttons';
 
+import ResponseMentorshipRequest from './response-mentorship-request';
+
 interface MentorshipRequestCardProps {
   mentorshipRequest: MentorshipRequest;
 }
@@ -10,8 +12,15 @@ function MentorshipRequestCard({
   mentorshipRequest,
 }: MentorshipRequestCardProps) {
   //avatar will be a future pass
-  const { first_name, last_name, job, profile_path, email, bio } =
-    mentorshipRequest.mentor;
+  const {
+    id: mentorId,
+    first_name,
+    last_name,
+    job,
+    profile_path,
+    email,
+    bio,
+  } = mentorshipRequest.mentor;
   const full_name = `${first_name} ${last_name}`;
 
   /* style logic incase there is only 1-2 request */
@@ -65,8 +74,22 @@ function MentorshipRequestCard({
           className={`flex items-center mx-auto my-auto ss:space-x-5 ss:flex-row ${styleForLessThan2()} w-fit sm:space-x-0 md:space-x-2 md:flex-row`}
         >
           {/* needs logic added */}
-          <Button variant="primary">Accept</Button>
-          <Button variant="secondary">Reject</Button>
+          <Button
+            variant="primary"
+            clickHandler={(e) => {
+              ResponseMentorshipRequest(e, '9', '11');
+            }}
+          >
+            Accept
+          </Button>
+          <Button
+            variant="secondary"
+            clickHandler={(e) => {
+              ResponseMentorshipRequest(e, '9', '11');
+            }}
+          >
+            Reject
+          </Button>
         </div>
       </div>
     </div>
