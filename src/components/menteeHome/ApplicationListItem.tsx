@@ -3,6 +3,7 @@ import Image from 'next/image';
 import GradientBar from '../percentBar/gradient-bar';
 import Button from '../buttons/reusable-buttons';
 import { ApplicationData } from '../../interface/mentee/homepage';
+import Link from 'next/link';
 
 export default function ApplicationListItem(props: ApplicationData) {
   // The percentage sent to the Gradient Bar is determined by the status
@@ -41,13 +42,17 @@ export default function ApplicationListItem(props: ApplicationData) {
         </div>
       </div>
       <div className="flex flex-col justify-center items-center">
-        <Button
-          clickHandler={() => {}}
-          disabled={props.status === 'Approved' ? false : true} // disable button when applications are not approved
-          className={'max-w-[14rem] noMargins'}
-        >
-          Book Meeting
-        </Button>
+        <Link href='/mentee/meeting/1'>
+          <a>
+            <Button
+              clickHandler={() => {}}
+              disabled={props.status === 'Approved' ? false : true} // disable button when applications are not approved
+              className={'max-w-[14rem] noMargins'}
+            >
+              Book Meeting
+            </Button>
+          </a>
+        </Link>
       </div>
     </li>
   );

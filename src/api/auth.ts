@@ -54,7 +54,7 @@ export async function loginAPI(
     const encodedValue = encodeURIComponent(value);
     formBody.push(encodedKey + '=' + encodedValue);
   }
-  const response = await fetch('http://localhost:1992/api/users/authenticate', {
+  const response = await fetch("https://efback.azurewebsites.net/api/users/authenticate", {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

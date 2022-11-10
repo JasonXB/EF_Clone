@@ -10,6 +10,7 @@ import Button from '../../../src/components/buttons/reusable-buttons';
 import Layout from '../../../src/components/Layout';
 import Avatar from '../../../src/components/avatar/avatar';
 import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
+import { useAuth } from '../../../state-management/ReactContext/AuthContext';
 import { mentorsData } from '../../../src/tempData/dummyMentorsForCalendar';
 import { Mentor } from '../../../src/interface/book-meeting/book-with-mentor.interface';
 
@@ -25,6 +26,8 @@ import { Mentor } from '../../../src/interface/book-meeting/book-with-mentor.int
 */
 
 const BookMeeting = () => {
+  //token used for the accessing the APIs
+  const { accessToken } = useAuth();
   const router = useRouter();
   const mentorId = router.query.mentorId;
   const [thisMentor, setThisMentor] = useState({} as Mentor);
@@ -87,20 +90,16 @@ const BookMeeting = () => {
     try {
       const meeting = {
         mentorID: thisMentor.mentor_id,
-        menteeID: 999,
-        date: formatISO(startTime, {
-          representation: 'date',
-        }), //type to be fixed
-        time: formatISO(startTime, {
-          representation: 'date',
-        }), //type to be fixed
+        menteeID: 14,
+        date: formatISO(startTime), //type to be fixed
+        time: formatISO(startTime), //type to be fixed
         meetingMethod: 'Google Meeting',
       };
 
 
       //accessToken from AuthContext will be used
       //placeholder token
-      let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjljZTNhNDkzYzE3NTNiN2UxZGU5MCIsImlhdCI6MTY2Nzg3ODYzMywiZXhwIjoxNjY3OTY1MDMzfQ.0nTpLZgcz3CmirJRSoa1Z2vG7VRQTxmOLoIWYhD94-k"
+      //let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjljZTNhNDkzYzE3NTNiN2UxZGU5MCIsImlhdCI6MTY2Nzg3ODYzMywiZXhwIjoxNjY3OTY1MDMzfQ.0nTpLZgcz3CmirJRSoa1Z2vG7VRQTxmOLoIWYhD94-k"
 
       const response = await fetch(
         'https://efback.azurewebsites.net/api/meeting/auth/set_meeting/',
@@ -108,7 +107,7 @@ const BookMeeting = () => {
           method: 'POST',
           headers: { 
             'Content-Type': 'application/json',
-            // Authorization: "Bearer " + token,
+            Authorization: "Bearer " + accessToken,
         },
           body: JSON.stringify(meeting),
         }
