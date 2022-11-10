@@ -1,5 +1,5 @@
 export default async function responseMentorshipRequest(
-  e: React.MouseEvent<HTMLElement>,
+  urlPart: string,
   mentorId: string,
   menteeId: string
 ) {
@@ -8,9 +8,7 @@ export default async function responseMentorshipRequest(
     mentee: menteeId,
   };
 
-  const buttonText = e.currentTarget.innerText;
-
-  const apiUrl = `https://efback.azurewebsites.net/api/mentorRequests/${buttonText.toLowerCase()}`;
+  const apiUrl = `https://efback.azurewebsites.net/api/mentorRequests/${urlPart}`;
 
   const response = await fetch(apiUrl, {
     method: 'PATCH',

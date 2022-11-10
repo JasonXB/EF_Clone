@@ -76,16 +76,16 @@ function MentorshipRequestCard({
           {/* needs logic added */}
           <Button
             variant="primary"
-            clickHandler={(e) => {
-              ResponseMentorshipRequest(e, '9', '11');
+            clickHandler={() => {
+              ResponseMentorshipRequest('accept', '9', '12');
             }}
           >
             Accept
           </Button>
           <Button
             variant="secondary"
-            clickHandler={(e) => {
-              ResponseMentorshipRequest(e, '9', '11');
+            clickHandler={() => {
+              ResponseMentorshipRequest('reject', '7', '11');
             }}
           >
             Reject
