@@ -56,10 +56,7 @@ const listOfCompleteTimezones = new Set(
   {GMTSortingKey: 0, timezone: '(GMT+00:00) Greenwich Mean Time'}
   {GMTSortingKey: 3, timezone: '(GMT+03:00) East Africa Time'}
   {GMTSortingKey: 1, timezone: '(GMT+01:00) Central European Standard Time'}
-
-
 */
-
 const getSortableTimezones = () => {
   let timezoneArray: string[] = Array.from(listOfCompleteTimezones) as string[]
   return timezoneArray.map((completeTimezone) => {
@@ -74,11 +71,21 @@ const getSortableTimezones = () => {
   })
 }
 
-console.log(getSortableTimezones().sort())
+//sorted array according to the GMTSortingKey
+const sortedGMTTimezonesPair = getSortableTimezones().sort(
+  (a, b)=>{
+    if (a.GMTSortingKey < b.GMTSortingKey){
+      return -1
+    } else if (a.GMTSortingKey > b.GMTSortingKey){
+      return 1
+    } else {
+      return 0
+    }
+})
 
-
-
-
+const sortedListOfCompleteTimezone = sortedGMTTimezonesPair.map((GMTTimezonePair)=>{
+  return GMTTimezonePair.completeTimezone
+})
 
 // let localDate = new Date("November 20, 2014 09:00:00")
 // let pst = 'America/Vancouver'
@@ -114,7 +121,7 @@ const currentDateInParts = new Intl.DateTimeFormat('default', {
 
 /*
  timezonePart is an object with type timeZoneName from the array currentDateInParts
-  - e.g {type: 'timeZoneName', value: 'PDT'} 
+  - e.g {type: 'timeZoneName', value: 'Pacific Standard Time'} 
 */
 const timezonePart = currentDateInParts.find(
   (datePart: DatePart) => datePart.type === 'timeZoneName'
@@ -199,7 +206,7 @@ export const TimezoneContext = createContext({
 
 export const TimezoneProvider = ({ children }: Children) => {
   //a sorted array of timezones e.g [Pacific Daylight Time, Central Standard Time...] which is used to populate the dropdown menu options
-  const timezones = Array.from(listOfCompleteTimezones).sort() as string[];
+  const timezones = sortedListOfCompleteTimezone;
   /*
     the variable used to store the selected timezone in the dropdown menu
     the initial value is the currentTimezone according to the locale of the user 

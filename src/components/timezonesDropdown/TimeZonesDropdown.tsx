@@ -4,6 +4,11 @@ import Timezone from './Timezone';
 import { v4 as uuidv4 } from 'uuid';
 import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
 
+/*
+  AREAS OF IMPROVEMENT IN THE FEATURES: 
+  - implement search bar for user experience
+*/
+
 const TimeZonesDropdown = () => {
   const { timezones, selectedTimezone } = useContext(TimezoneContext);
   const [dropdownToggle, setDropdownToggle] = useState(false);
