@@ -55,6 +55,37 @@ To learn more about Next.js, take a look at the following resources:
 
 ### Linting
 
+Folder names should be camelCase.
+
+File names should be kebab-case-like-this.
+
+Component names should be PascalCase.
+
+### Function Names
+
+Function names should be camelCase.
+
+### On Interfaces
+
+If an interface defines the props for a component, the interface's name should:
+
+- End in "Props"
+- Live in the same file as the component
+
+If the interface isn't defining props, it should go in the `/src/interface` folder.
+
+### Components And Their Children
+
+If a component's child will only ever be used within that component, you are welcome to define it locally within the same file as its parent component.
+
+However, if the component will be used as a child of other components, it should live in its own file.
+
+In other words: It is ok to define multiple components in the same file _if and only if_ they aren’t used outside of the main component we are exporting.
+
+The reason for this is that exporting two components from one file is disorganized.
+
+## Linting
+
 This project uses a .prettierrc.json file located at the project root. Your code must follow the linting rules described in this file. We will not accept pull requests with any instances of code being moved around by Prettier without real changes. We expect every developer to help enforce these project-wide linting rules.
 
 The reason for this is: If we had different linting rules, pull requests on GitHub would continually contain "changes" that are really just the linter moving code around. We want to avoid that.

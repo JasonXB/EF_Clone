@@ -10,7 +10,7 @@ type MentorInfo = {
   UpdateStatusList: () => void;
 };
 
-const MentorList = ({
+const MentorListEntry = ({
   name,
   email,
   status,
@@ -39,10 +39,14 @@ const MentorList = ({
 
   return (
     <ul
+<<<<<<< HEAD:src/components/adminPanel/mentor-list-entry.tsx
+      className="mentorListEntry w-screen sm:w-full grid grid-cols-6 border-b-slate-700 border-b p-2 hover:bg-smoke-4"
+=======
       className="grid w-screen grid-cols-6 p-2 border-b sm:w-full border-b-slate-700 hover:bg-smoke-4"
+>>>>>>> 04e887fae2947d99aecc0d073e88885f78bb1422:src/components/adminPanel/mentor-list.tsx
       key={index}
     >
-      <li className="col-span-2">{name}</li>
+      <li className="applicantName col-span-2">{name}</li>
       <li className="col-span-3">
         <div className="flex items-center gap-2">
           {editorIsOn ? (
@@ -136,4 +140,4 @@ const MentorList = ({
   );
 };
 
-export default MentorList;
+export default MentorListEntry;
