@@ -9,6 +9,7 @@ export default function OptionForm(props: any) {
       <select
         id={props.name}
         className="my-2 p-1 border rounded-md border-smoke-2 w-1/2 cursor-pointer"
+        onChange={(e: any) => props.status(e.target.value)}
       >
         <option value=''>Select...</option>
         {props.options.map((option: any, index: number) => (

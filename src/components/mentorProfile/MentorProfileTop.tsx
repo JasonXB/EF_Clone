@@ -3,6 +3,8 @@ import Button from '../buttons/reusable-buttons';
 import { linkedInIcon, locationIcon, twitterIcon } from './ProfileIcons';
 import { clockIcon } from './ProfileIcons';
 import { v4 as uuidv4 } from 'uuid';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const socialMediaIcons = [
   { svg: twitterIcon, url: 'http://twitter.com' },
@@ -10,6 +12,7 @@ const socialMediaIcons = [
 ];
 
 export interface MentorProfileTopProps {
+  id: number;
   name: string;
   title: string;
   avatar: any;
@@ -18,19 +21,25 @@ export interface MentorProfileTopProps {
 }
 
 const MentorProfileTop = ({
+  id,
   name,
   title,
   location,
   responseTime,
   avatar,
 }: MentorProfileTopProps) => {
+  const router = useRouter();
+
   return (
     <>
       {/* Left: Avatar and Request button */}
       <div className="flex flex-col items-center ss:flex-row md:flex-col md:items-center lg:items-start lg:flex-row xl:flex-row">
         <div className="flex flex-col items-center w-3/5 md:items-center lg:items-center xl:items-start md:w-3/5 lg:w-4/5 xl:w-2/5">
           <Avatar personsName={name} imgLocation={avatar} displaySize="large" />
-          <Button className="px-8 mt-6 mb-6 text-xl w-3/8 xl:ml-14">
+          <Button
+            clickHandler={() => router.push(`/mentor-requests/${id}`)}
+            className="px-8 mt-6 mb-6 text-xl w-3/8 xl:ml-14"
+          >
             Request
           </Button>
         </div>
