@@ -15,7 +15,7 @@ import { mentorsData } from '../../../src/tempData/dummyMentorsForCalendar';
 import { Mentor } from '../../../src/interface/book-meeting/book-with-mentor.interface';
 
 /*
-  IMPROVEMENT TO FEATURES: 
+  AREAS OF IMPROVEMENT IN THE FEATURES: 
   - center the avaiable time slots
   - gears background
   - recurring day feature
@@ -23,6 +23,7 @@ import { Mentor } from '../../../src/interface/book-meeting/book-with-mentor.int
   - API for mentor's meetings (to be used in the recurring feature)
     - if mentor already has a meeting on the particular date of the recurring timeslot, 
     - we must omit that one
+  - make it mobile friendly
 */
 
 const BookMeeting = () => {

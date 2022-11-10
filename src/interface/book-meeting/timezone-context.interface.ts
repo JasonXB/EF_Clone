@@ -16,7 +16,7 @@ export interface DatePart {
 }
 export interface KeyPairIANA {
     IANA: string,
-    timezone: string
+    completeTimezone: string
 }
 export interface SelectedTimeSlot {
     startDatetime: string,
