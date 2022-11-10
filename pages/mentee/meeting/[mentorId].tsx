@@ -82,7 +82,7 @@ const BookMeeting = () => {
       mentorImg: imgUrl,
       meetingStartDatetime: startTime,
       meetingEndDatetime: endTime,
-      meetingMethod: 'Google Meet',
+      meetingMethod: 'Google Meets',
     };
   }
 
@@ -91,9 +91,9 @@ const BookMeeting = () => {
       const meeting = {
         mentorID: thisMentor.mentor_id,
         menteeID: 14,
-        date: formatISO(startTime), //type to be fixed
-        time: formatISO(startTime), //type to be fixed
-        meetingMethod: 'Google Meeting',
+        date: formatISO(startTime),
+        time: formatISO(startTime),
+        meetingMethod: 'Google Meets',
       };
 
 
