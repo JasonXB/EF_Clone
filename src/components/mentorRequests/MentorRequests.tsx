@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Button, { buttonVariants } from '..//buttons/reusable-buttons';
+import { buttonVariants } from '..//buttons/reusable-buttons';
 import Image from 'next/image';
 import bannerImg from '../../../public/assets/mentorRequestsForm.png';
 import OptionForm from '../optionForm/OptionForm';
@@ -121,7 +121,7 @@ const MentorRequests = ({ mentor }: MentorProfileProps) => {
             {/* </Link> */}
           </div>
         </form>
-        
+
         <div className="invisible md:visible absolute top-8 right-8">
           <Image
             src={bannerImg}
