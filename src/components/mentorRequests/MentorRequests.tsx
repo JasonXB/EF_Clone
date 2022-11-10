@@ -23,30 +23,41 @@ const MentorRequests = ({ mentor }: MentorProfileProps) => {
   const { t1, t2, t3, t4 } = TimelineOptions;
   const timelineOptionList: string[] = [t1, t2, t3, t4];
 
-  const [userDescribe, setUserDescribe] = useState<string>('');
-  const [userAchieve, setUserAchieve] = useState<string>('');
-  const [userTimeline, setUserTimeline] = useState<string>('');
+  const [userDescribe, setUserDescribe] = useState<undefined | string>();
+  const [userAchieve, setUserAchieve] = useState<undefined | string>();
+  const [userTimeline, setUserTimeline] = useState<undefined | string>();
+
+  const [blankWarn, setBlankWarn] = useState(false);
 
   const submitHandler = async (e: any) => {
     e.preventDefault();
 
-    const requestInfo = {
-      mentor: full_name,
-      describe: userDescribe,
-      achieve: userAchieve,
-      timeline: userTimeline,
-    };
+    if (userDescribe === undefined || userDescribe.length <= 0) {
+      setBlankWarn(true);
+    } else if (userAchieve === undefined || userAchieve.length <= 0) {
+      setBlankWarn(true);
+    } else if (userTimeline === undefined || userTimeline.length <= 0) {
+      setBlankWarn(true);
+    } else {
+      setBlankWarn(false);
+      const requestInfo = {
+        mentor: full_name,
+        describe: userDescribe,
+        achieve: userAchieve,
+        timeline: userTimeline,
+      };
 
-    //connect with backend (endpoint needed)
-    await axios
-      .post('', requestInfo)
-      .then((res) => {
-        console.log(res);
-        //will be needed to show confirmation message?
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+      //connect with backend (endpoint needed)
+      await axios
+        .post('', requestInfo)
+        .then((res) => {
+          console.log(res);
+          //will be needed to show confirmation message?
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
 
   return (
@@ -55,7 +66,15 @@ const MentorRequests = ({ mentor }: MentorProfileProps) => {
         <h1 className="text-xl sm:text-2xl md:text-4xl text-primary-1 my-4 md:my-8">
           Apply For {full_name}
         </h1>
-        <form className="mt-16" onSubmit={submitHandler}>
+        <div
+          className={`w-2/3 sm:w-1/2 p-2 text-tertiary-1 bg-tertiary-6 rounded-md ${
+            !blankWarn && 'hidden'
+          }`}
+        >
+          Please fill out this form.
+        </div>
+
+        <form onSubmit={submitHandler}>
           <OptionForm
             name="describe"
             label="Which describes you the best?"
@@ -71,7 +90,7 @@ const MentorRequests = ({ mentor }: MentorProfileProps) => {
             id="achieve"
             name="achieve"
             rows={5}
-            className="mt-2 mb-16 p-1 border rounded-md border-smoke-2 w-full"
+            className="relative mt-2 p-1 border rounded-md border-smoke-2 w-full"
             onChange={(e: any) => setUserAchieve(e.target.value)}
           />
 
@@ -92,16 +111,17 @@ const MentorRequests = ({ mentor }: MentorProfileProps) => {
               </button>
             </Link>
             {/* jump to where? */}
-            <Link href="">
-              <button
-                type="submit"
-                className={`${buttonVariants.primary} md:px-16 font-light hover:shadow-md`}
-              >
-                Submit
-              </button>
-            </Link>
+            {/* <Link href=""> */}
+            <button
+              type="submit"
+              className={`${buttonVariants.primary} md:px-16 font-light hover:shadow-md`}
+            >
+              Submit
+            </button>
+            {/* </Link> */}
           </div>
         </form>
+        
         <div className="invisible md:visible absolute top-8 right-8">
           <Image
             src={bannerImg}
