@@ -28,10 +28,12 @@ import { Mentor } from '../../../src/interface/book-meeting/book-with-mentor.int
 
 const BookMeeting = () => {
   //token used for the accessing the APIs
-  const { accessToken } = useAuth();
+  const { accessToken, profileID } = useAuth();
   const router = useRouter();
   const mentorId = router.query.mentorId;
   const [thisMentor, setThisMentor] = useState({} as Mentor);
+
+  console.log( accessToken, profileID )
 
   useEffect(() => {
     if (router.isReady) {
@@ -91,7 +93,7 @@ const BookMeeting = () => {
     try {
       const meeting = {
         mentorID: thisMentor.mentor_id,
-        menteeID: 14,
+        menteeID: profileID,
         date: formatISO(startTime),
         time: formatISO(startTime),
         meetingMethod: 'Google Meets',

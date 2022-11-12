@@ -5,8 +5,9 @@ type authContextType = {
   email: string | null;
   setEmail: Function;
   accessToken: string;
+  profileID: string;
   isLoggedIn: Function;
-  clientSideLogin: (username: string, token: string) => void;
+  clientSideLogin: (username: string, token: string, id: string) => void;
   logout: () => void;
 };
 
@@ -14,6 +15,7 @@ const authContextDefaultValues: authContextType = {
   email: null,
   setEmail: () => {},
   accessToken: '',
+  profileID: '',
   isLoggedIn: () => {},
   clientSideLogin: () => {},
   logout: () => {},
@@ -32,10 +34,12 @@ type AuthContextProps = {
 export function AuthProvider({ children }: AuthContextProps) {
   const [email, setEmail] = useState<string | null>(null);
   const [accessToken, setAccessToken] = useState<string>('');
+  const [profileID, setProfileID] = useState<string>('');
 
-  function clientSideLogin(email: string, token: string) {
+  function clientSideLogin(email: string, token: string, id: string) {
     setEmail(email);
     setAccessToken(token);
+    setProfileID(id)
     storeCredentialsInLocalStorage(token);
   }
 
@@ -46,6 +50,7 @@ export function AuthProvider({ children }: AuthContextProps) {
   function logout() {
     setEmail('');
     setAccessToken('');
+    setProfileID('')
     // todo: redirect to lander
   }
 
@@ -55,6 +60,7 @@ export function AuthProvider({ children }: AuthContextProps) {
         email,
         setEmail,
         accessToken,
+        profileID,
         isLoggedIn,
         clientSideLogin,
         logout,

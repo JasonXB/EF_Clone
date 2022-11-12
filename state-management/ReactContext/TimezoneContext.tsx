@@ -73,15 +73,7 @@ const getSortableTimezones = () => {
 
 //sorted array according to the GMTSortingKey
 const sortedGMTTimezonesPair = getSortableTimezones().sort(
-  (a, b)=>{
-    if (a.GMTSortingKey < b.GMTSortingKey){
-      return -1
-    } else if (a.GMTSortingKey > b.GMTSortingKey){
-      return 1
-    } else {
-      return 0
-    }
-})
+  (a, b)=>{ return a.GMTSortingKey - b.GMTSortingKey })
 
 const sortedListOfCompleteTimezone = sortedGMTTimezonesPair.map((GMTTimezonePair)=>{
   return GMTTimezonePair.completeTimezone
