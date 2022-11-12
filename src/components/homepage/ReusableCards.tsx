@@ -22,7 +22,7 @@ const ReusableCards = ({
   return (
     <div
       style={{ boxShadow: '0px 0px 20px 4px rgb(0 0 0 / 20%)' }} //inline for a more custom shadow, might be good to add to theme.
-      className="flex flex-col-reverse w-full max-w-[700px] p-4 space-y-3  rounded-lg min-h-[260px] ss:flex-row"
+      className="flex flex-col-reverse bg-light w-full max-w-[700px] p-4 space-y-3  rounded-lg min-h-[260px] ss:flex-row"
     >
       <div className="w-full ss:w-1/2">
         <h4 className="font-semibold md:text-4xl lg:text-5xl text-quad-2">

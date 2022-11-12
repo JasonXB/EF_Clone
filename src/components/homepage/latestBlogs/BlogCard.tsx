@@ -13,7 +13,7 @@ const BlogCard = ({ props }: BlogCardProps) => {
 
   return (
     <div
-      className=" mx-4 lg:mx-8 flex  flex-col items-center rounded-t-[15%] rounded-b-2xl "
+      className=" mx-4 lg:mx-8 flex  bg-light flex-col items-center rounded-t-[15%] rounded-b-2xl "
       style={{
         boxShadow: ' 0 0.2rem 1.25rem rgba(0, 0, 0, 0.2)',
       }}
