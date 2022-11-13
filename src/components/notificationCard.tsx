@@ -1,4 +1,5 @@
 import { UserNotification } from '../interface/user-notification.interface';
+import Image from 'next/image';
 
 interface NotificationCardProps {
   notification: UserNotification;
@@ -22,13 +23,17 @@ function NotificationCard({ notification }: NotificationCardProps) {
           boxShadow: '0px 0px 10px #00000054',
         }}
       >
-        <div className="flex flex-col mr-2">
-          <img
+        <div className="mr-2">
+          <Image
+            alt="temp image"
+            src="/temp-assets/Emilio-lg.jpg"
+            width="147px"
+            height="157px"
             className="rounded-xl max-w-[147px] max-h-[157px]"
-            src="https://picsum.photos/200"
-            alt=""
+            // layout="responsive"
           />
         </div>
+
         <div className="flex flex-col space-y-1">
           <div className="text-sm">
             {notification.date.toLocaleDateString()}
