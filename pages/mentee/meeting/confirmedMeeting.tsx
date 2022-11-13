@@ -1,16 +1,14 @@
 import Image from 'next/image';
 import { GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
-
 import Layout from '../../../src/components/Layout';
-
 import Avatar from '../../../src/components/avatar/avatar';
 import Button from '../../../src/components/buttons/reusable-buttons';
-
 // import Cat from '../../src/assets/cat.jpeg';
-import Calendar from '../../src/assets/icons8-calendar-week-64.png';
-import Clock from '../../src/assets/icons8-clock-48.png';
-import Monitor from '../../src/assets/icons8-pro-display-xdr-80.png';
+import Calendar from '../../src/assets/icons8-calendar-week-64.png'; //$ fix broken
+import Clock from '../../src/assets/icons8-clock-48.png'; //$ fix broken
+import Monitor from '../../src/assets/icons8-pro-display-xdr-80.png'; //$ fix broken
+
 import MeetingDetail from './meetingDetail';
 import { useEffect, useState } from 'react';
 import { MeetingDetailType } from '../../../src/enum/meetingDetailType.enum';
