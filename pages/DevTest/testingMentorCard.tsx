@@ -32,7 +32,7 @@ const testMentorCard: NextPage = ({}) => {
           content="width=device-width, initial-scale=1.0"
         ></meta>
       </Head>
-      <MentorCard mentorsInfo={mockData} />
+      <MentorCard mentor={mockData} />
     </div>
   );
 };
