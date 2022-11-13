@@ -2,7 +2,7 @@ import Image from 'next/image';
 import MentorshipRequest from '../../interface/mentorship-request';
 import Button from '../buttons/reusable-buttons';
 
-import ResponseMentorshipRequest from './response-mentorship-request';
+import ResponseMentorshipRequest from './functions/response-mentorship-request';
 
 interface MentorshipRequestCardProps {
   mentorshipRequest: MentorshipRequest;
@@ -12,6 +12,7 @@ function MentorshipRequestCard({
   mentorshipRequest,
 }: MentorshipRequestCardProps) {
   //avatar will be a future pass
+
   const {
     id: mentorId,
     first_name,
@@ -21,6 +22,9 @@ function MentorshipRequestCard({
     email,
     bio,
   } = mentorshipRequest.mentor;
+
+  // const { profile_path } = mentorshipRequest.mentor;
+
   const full_name = `${first_name} ${last_name}`;
 
   /* style logic incase there is only 1-2 request */

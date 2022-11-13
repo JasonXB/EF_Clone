@@ -17,10 +17,4 @@ export default async function responseMentorshipRequest(
     },
     body: JSON.stringify(details),
   });
-
-  const responseData = await response.json();
-  console.log(responseData, '29rm');
-  // todo: check shape of resp data
-  if (responseData._id) return true;
-  return false;
 }
