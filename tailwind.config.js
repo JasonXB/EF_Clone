@@ -10,7 +10,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        gears: "url('~/src/assets/gears.png')", //$ fix broken
+        gears: "url('~/assets/gears.png')", // xj2485
       },
       backgroundSize: {
         150: '150%',
