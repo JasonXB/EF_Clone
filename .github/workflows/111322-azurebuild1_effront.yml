@@ -4,7 +4,7 @@ name: Build and deploy Node.js app to Azure Web App - EFFront
 on:
   push:
     branches:
-      - 111322-azurebuild0
+      - 111322-azurebuild1
   workflow_dispatch:
 
 jobs:
