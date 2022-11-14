@@ -12,20 +12,18 @@ interface MentorsInfoProps {
 }
 
 const SimilarMentorsMiniProfile = ({ ...mentorsInfo }: MentorsInfoProps) => {
-  const { selectedSimilarMentor, selectSimilarMentor } = useSimilarMentorsContext();
+  const { selectedSimilarMentor, selectSimilarMentor } =
+    useSimilarMentorsContext();
 
-  const { name, location, job, tags, avatar } =
-    mentorsInfo;
+  const { name, location, job, tags, avatar } = mentorsInfo;
 
   return (
     <div
-      className="flex p-6 shadow-md cursor-pointer w-[100%] min-h-[100%] rounded-xl"
-      style={{
-        border:
-          name === selectedSimilarMentor?.name
-            ? '2px solid #CE1982'
-            : '1px  #B9C0D3',
-      }}
+      className={`flex p-6 shadow-md cursor-pointer w-[100%] min-h-[100%] rounded-xl ${
+        name === selectedSimilarMentor?.name
+          ? 'border-2 border-secondary-1'
+          : 'border-[1px] border-smoke-3'
+      }`}
     >
       <Avatar imgLocation={avatar} displaySize="medium" personsName={name} />
       <div className="flex flex-col justify-center w-full ml-4">
