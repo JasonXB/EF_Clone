@@ -56,7 +56,7 @@ const becomeAMentor: NextPage = (props) => {
           return (
             <section key={i} className="col-start-2 col-end-3 mt-12">
               {i === 0 && (
-                <h1 className="font-extrabold text-5xl sm:text-6xl leading-[4rem] text-[#085d9f] mb-10 xl:mb-28">
+                <h1 className="font-extrabold text-5xl sm:text-6xl leading-[4rem] text-primary-1 mb-10 xl:mb-28">
                   Empowered Futures
                   <br />
                   Mentorship

@@ -1,5 +1,7 @@
 import Link from 'next/link';
+import Router from 'next/router';
 import { useState } from 'react';
+import Button from '../src/components/buttons/reusable-buttons';
 import Layout from '../src/components/Layout';
 
 export default function FindAMentor() {
@@ -15,7 +17,7 @@ export default function FindAMentor() {
               </span>
             </div>
             <div className="flex flex-row justify-center space-x-4 max-h-[70px]">
-              <div className="flex flex-row space-x-0 rounded-[23px] shadow-branded-1 border border-[#707070]">
+              <div className="flex flex-row space-x-0 rounded-[23px] shadow-branded-1 border border-smoke-2">
                 <input
                   type="text"
                   className="w-[755px] p-4 text-[28px] rounded-[23px] outline-none"
@@ -35,11 +37,15 @@ export default function FindAMentor() {
                   </svg>
                 </div>
               </div>
-              <Link href={`mentor-list${query ? `?q=${query}` : ''}`}>
-                <button className="bg-gradient-to-r from-secondary-1 to-[#EF4C3A] w-[222px] rounded-[30px] text-white text-[30px] font-semibold">
-                  Search
-                </button>
-              </Link>
+
+              <Button
+                variant="primary"
+                clickHandler={() =>
+                  Router.push(`mentor-list${query ? `?q=${query}` : ''}`)
+                }
+              >
+                Search
+              </Button>
             </div>
           </div>
         </div>

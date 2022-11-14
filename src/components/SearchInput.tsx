@@ -21,7 +21,7 @@ const SearchInput = ({ data }: SearchInputProps) => {
           <div className="relative flex items-stretch w-1/4 p-1 mb-4 border-2 border-gray-300 border-solid shadow-sm rounded-2xl input-group">
             <input
               type="search"
-              className="relative flex-auto block w-full min-w-0 px-3 py-0 m-1 text-xl transition ease-in-out text-lggray-700 text-font-normal form-control focus:ring-0 focus:text-gray-700 focus:bg-white"
+              className="relative flex-auto block w-full min-w-0 px-3 py-0 m-1 text-xl transition ease-in-out gray-700 text-font-normal form-control focus:ring-0 focus:text-gray-700 focus:bg-white"
               aria-label="Search"
               aria-describedby="button-addon2"
               placeholder="Skills, Mentor name or Industries"
