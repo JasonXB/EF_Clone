@@ -12,12 +12,7 @@ const BlogCard = ({ props }: BlogCardProps) => {
   const { img, title, blurb } = props;
 
   return (
-    <div
-      className=" mx-4 lg:mx-8 flex  bg-light flex-col items-center rounded-t-[15%] rounded-b-2xl "
-      style={{
-        boxShadow: ' 0 0.2rem 1.25rem rgba(0, 0, 0, 0.2)',
-      }}
-    >
+    <div className=" mx-4 shadow-3xl lg:mx-8 flex  bg-light flex-col items-center rounded-t-[15%] rounded-b-2xl ">
       <div className="overflow-hidden ">
         <Image
           src={img}

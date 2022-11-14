@@ -26,7 +26,7 @@ export default function MentorCard({ mentor }: MentorsCardProps) {
   const router = useRouter();
 
   return (
-    <div className="w-[550px] md:w-[850px] md:h-[264px] lg:w-[1011px] p-[28px] bg-white shadow-[0px_0px_10px_#00000054] rounded-[38px] flex">
+    <div className="w-[550px] md:w-[850px] md:h-[264px] lg:w-[1011px] p-[28px] bg-white shadow-branded-2 rounded-[38px] flex">
       <div className="md:h-[218px] w-[180px] flex flex-col justify-start md:justify-between items-center">
         <div className="h-[150px] w-[140px] overflow-hidden">
           <Avatar

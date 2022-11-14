@@ -9,9 +9,6 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        gears: "url('~/src/assets/gears.png')",
-      },
       backgroundSize: {
         150: '150%',
       },
@@ -48,11 +45,23 @@ module.exports = {
         'smoke-3': '#B9C0D3',
         'smoke-4': '#CED7F0',
         'smoke-5': '#EEF2FF',
+        cardBG: '#FFFFFF', //full white
         dark: '#0C0C0C', // black
         light: '#F6F6F6', // white
+
+        success: '#00aa00', //green
+        warning: '#22bb33', //orange
+        info: '#aaaaaa', //grey
+        error: '#bb2124', //red
       },
       fontFamily: {
         mainFont: ['Montserrat', 'sans-serif'],
+      },
+      boxShadow: {
+        '3xl': '0 0.2rem 1.25rem rgba(0, 0, 0, 0.2)',
+        '4xl': '0px 0px 20px 4px rgb(0 0 0 / 20%)',
+        'branded-1': '0px 3px 6px #00000029',
+        'branded-2': '0px 0px 10px #00000054',
       },
     },
     screens: {

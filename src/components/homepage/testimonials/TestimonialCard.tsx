@@ -33,12 +33,7 @@ const TestimonialCard = ({ props }: TestimonialCardProps) => {
   };
   //style for less then 600px needs to be adjusted in future
   return (
-    <div
-      className="my-4 mx-auto sm:mx-4  bg-light flex space-y-4 flex-col items-center max-w-[412px] rounded-t-[15%] p-8"
-      style={{
-        boxShadow: ' 0 0.2rem 1.25rem rgba(0, 0, 0, 0.2)',
-      }}
-    >
+    <div className="my-4 shadow-3xl mx-auto sm:mx-4  bg-light flex space-y-4 flex-col items-center max-w-[412px] rounded-t-[15%] p-8">
       <div
         className="rounded-full"
         style={{ clipPath: 'circle(70px at center)' }}

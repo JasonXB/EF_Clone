@@ -10,12 +10,12 @@ export default function FindAMentor() {
         <div className={`container mx-auto `}>
           <div className="flex flex-col h-[720px]">
             <div className="flex flex-row justify-center">
-              <span className="text-primary-1 text-5xl font-semibold my-20">
+              <span className="my-20 text-5xl font-semibold text-primary-1">
                 Search for the perfect mentor for you!
               </span>
             </div>
             <div className="flex flex-row justify-center space-x-4 max-h-[70px]">
-              <div className="flex flex-row space-x-0 rounded-[23px] shadow-[0px_3px_6px_#00000030] border border-[#707070]">
+              <div className="flex flex-row space-x-0 rounded-[23px] shadow-branded-1 border border-[#707070]">
                 <input
                   type="text"
                   className="w-[755px] p-4 text-[28px] rounded-[23px] outline-none"

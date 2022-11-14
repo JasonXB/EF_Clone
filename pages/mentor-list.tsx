@@ -207,12 +207,7 @@ export default function MentorList() {
             </div>
             <div className="flex flex-col w-2/3 space-y-10">
               <div className="flex flex-row justify-center">
-                <div
-                  className="text-center mr-20 text-primary-1 font-bold text-[54px]"
-                  style={{
-                    textShadow: '0px 3px 6px #00000029',
-                  }}
-                >
+                <div className="text-center mr-20 text-primary-1 font-bold text-[54px]">
                   Find a Mentor
                 </div>
               </div>

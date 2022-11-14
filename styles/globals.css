@@ -69,7 +69,6 @@ body {
 
 :root {
   --pinkOrangeGradient: linear-gradient(89deg, #ce1982 0%, #ed493d 100%);
-  --blackBoxShadow: 0px 0px 15px #00000029;
 }
 * {
   padding: 0;
@@ -92,9 +91,6 @@ ul {
 .bg-pinkOrangeGradient {
   background: var(--pinkOrangeGradient);
 }
-.blackBoxShadow {
-  box-shadow: var(--blackBoxShadow);
-}
 
 /* styling for scrollbar */
 .scrollBar {
@@ -116,12 +112,6 @@ ul {
   border-radius: 14px;
 }
 
-.shadowVariant1 {
-  box-shadow: 0px 3px 6px #00000029;
-}
-.shadowVariant2 {
-  box-shadow: 0px 3px 6px #00000033;
-}
 .noMargins {
   margin: 0;
 }

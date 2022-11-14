@@ -16,13 +16,9 @@ function NotificationCard({ notification }: NotificationCardProps) {
 
   return (
     <>
-      <div
-        className="flex flex-row px-4 py-8 border rounded-[38px]"
-        style={{
-          boxShadow: '0px 0px 10px #00000054',
-        }}
-      >
+      <div className="flex flex-row px-4 py-8 border rounded-[38px] shadow-branded-2">
         <div className="flex flex-col mr-2">
+          {/* this needs to be changed to Image from next */}
           <img
             className="rounded-xl max-w-[147px] max-h-[157px]"
             src="https://picsum.photos/200"
@@ -35,8 +31,8 @@ function NotificationCard({ notification }: NotificationCardProps) {
           </div>
           <div className="text-sm">{`${HH}:${MM}${timeNotation}`}</div>
           <div className="font-bold">{notification.name}</div>
-          <div className="font-bold text-sm">{notification.country}</div>
-          <div className="font-bold text-sm">{notification.position}</div>
+          <div className="text-sm font-bold">{notification.country}</div>
+          <div className="text-sm font-bold">{notification.position}</div>
           <div className="text-sm">{notification.body}</div>
         </div>
       </div>
