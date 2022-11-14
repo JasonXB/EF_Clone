@@ -21,7 +21,7 @@ const BubbleTag = ({ tag, bubbleTagType }: Tag) => {
   const bubbleTagStyle = getBubbleTag(bubbleTagType);
   return (
     <span
-      className={`inline-block px-4 py-1 mx-1 font-bold text-xs text-center capitalize leading-4 sm:max-w-[10rem] ss:max-w-[10rem] xs:max-w-[10rem] rounded-full ${bubbleTagStyle}`}
+      className={`inline-block px-4 py-1 mx-1 font-bold text-sm text-center capitalize leading-4 sm:max-w-[10rem] ss:max-w-[10rem] xs:max-w-[10rem] rounded-full ${bubbleTagStyle}`}
     >
       {tag}
     </span>

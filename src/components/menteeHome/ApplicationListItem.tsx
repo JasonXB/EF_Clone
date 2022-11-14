@@ -28,7 +28,7 @@ export default function ApplicationListItem(props: ApplicationData) {
             />
           </div>
           <div className="mx-auto truncate">
-            <span className="text-[12px] text-ellipsis overflow-hidden whitespace-nowrap">
+            <span className="overflow-hidden text-base text-ellipsis whitespace-nowrap">
               {props.mentorName}
             </span>
           </div>

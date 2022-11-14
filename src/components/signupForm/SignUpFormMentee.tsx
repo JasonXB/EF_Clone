@@ -170,7 +170,7 @@ const SignUpFormMentee = () => {
             />
 
             {/* Need the route for Terms And Conditions*/}
-            <h3 className="mt-5 text-xs font-bold">
+            <h3 className="mt-5 text-sm font-bold">
               By logging in, you agree to Empowered Future's{' '}
               <a href="" className="text-secondary-2">
                 Terms And Conditions*

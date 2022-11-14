@@ -29,7 +29,7 @@ const SearchInput = ({ data }: SearchInputProps) => {
               onChange={onType}
             />
             <button
-              className="flex items-center px-4 py-0 text-xs font-medium leading-tight text-black uppercase bg-white rounded btn focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg"
+              className="flex items-center px-4 py-0 text-base font-medium leading-tight text-black uppercase bg-white rounded btn focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg"
               type="button"
               id="button-addon2"
             >

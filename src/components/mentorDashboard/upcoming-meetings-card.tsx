@@ -32,20 +32,20 @@ const UpcomingMeetingCard = ({ meeting }: UpcomingMeetingCardProps) => {
               <span className="text-xl ss:text-2xl text-primary-1">
                 {numberOfMeetings.individual}
               </span>
-              <span className="text-xs ss:text-md">Number of Meetings</span>
+              <span className="text-base ss:text-md">Number of Meetings</span>
             </div>
             <div className="flex flex-col items-center w-3/4 px-2 sm:border-r-2 sm:w-1/2">
               <span className="text-xl ss:text-2xl text-primary-1">
                 {numberOfMeetings.totalMins}
               </span>
-              <span className="w-1/2 text-xs ss:text-md ss:w-full">
+              <span className="w-1/2 text-base ss:text-md ss:w-full">
                 Total number of meeting minutes
               </span>
             </div>
           </div>
           <div className="flex flex-col items-center flex-grow w-3/4 px-2 ">
             <span className="text-2xl text-primary-1">{nextMeeting}</span>
-            <span className="text-xs ss:text-md">Upcoming Meeting</span>
+            <span className="text-base ss:text-md">Upcoming Meeting</span>
           </div>
         </div>
       </div>

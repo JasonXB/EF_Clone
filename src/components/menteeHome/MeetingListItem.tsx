@@ -18,21 +18,17 @@ export default function MeetingListItem(props: MeetingData) {
           </div>
           <div className="flex flex-col justify-center ml-4 truncate">
             <p className="text-xl trailingDots">{props.mentorName}</p>
-            <p className="text-[0.6875rem] trailingDots">
-              {props.mentorPosition}
-            </p>
+            <p className="text-sm trailingDots">{props.mentorPosition}</p>
           </div>
         </div>
         <div className="flex flex-col justify-center h-full pl-4 pr-4 truncate">
           <p className="text-xl text-center trailingDots">{props.date}</p>
-          <p className="text-[0.6875rem] text-center trailingDots">
-            {props.time}
-          </p>
+          <p className="text-sm text-center trailingDots">{props.time}</p>
         </div>
         <div className="flex flex-col items-center justify-center h-full pl-4">
           <button
             type="button"
-            className="block px-4 py-2 border-2 m-0 h-[2rem] max-w-[12rem] border-[#FF0A0A] text-[#FF0A0A] font-medium text-xs leading-tight uppercase rounded-[25px]"
+            className="block px-4 py-2 border-2 m-0 h-[2rem] max-w-[12rem] border-[#FF0A0A] text-[#FF0A0A] font-medium text-sm leading-tight uppercase rounded-[25px]"
           >
             Contact
           </button>

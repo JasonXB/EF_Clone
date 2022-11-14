@@ -27,9 +27,9 @@ const SimilarMentorsMiniProfile = ({ ...mentorsInfo }: MentorsInfoProps) => {
     >
       <Avatar imgLocation={avatar} displaySize="medium" personsName={name} />
       <div className="flex flex-col justify-center w-full ml-4">
-        <h2 className="mb-2 text-sm font-bold">{name}</h2>
-        <h4 className="mb-2 text-xs font-light">{location}</h4>
-        <h4 className="mb-2 text-xs font-light">{job}</h4>
+        <h2 className="mb-2 text-lg font-bold">{name}</h2>
+        <h4 className="mb-2 text-base font-light">{location}</h4>
+        <h4 className="mb-2 text-base font-light">{job}</h4>
 
         {/* I don't believe this is being used anymore, but am leaving
        it here just in case */}

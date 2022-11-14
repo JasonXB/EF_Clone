@@ -62,7 +62,7 @@ export default function MentorCard({ mentor }: MentorsCardProps) {
             <h4 className="text-lg leading-[22px] font-[600] pt-3">
               About {first_name}
             </h4>
-            <div className="text-xs leading-4 pt-[6px] overflow-hidden h-14 w-[300px] lg:w-[405px]">
+            <div className="text-sm leading-4 pt-[6px] overflow-hidden h-14 w-[300px] lg:w-[405px]">
               {bio}
             </div>
           </div>
