@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useState } from 'react';
-import Layout from '../src/components/Layout';
+import Layout from '../../src/components/Layout';
 
 export default function FindAMentor() {
   let [query, setQuery] = useState('');
@@ -35,7 +35,7 @@ export default function FindAMentor() {
                   </svg>
                 </div>
               </div>
-              <Link href={`mentor-list${query ? `?q=${query}` : ''}`}>
+              <Link href={`find-a-mentor/search${query ? `?q=${query}` : ''}`}>
                 <button className="bg-gradient-to-r from-secondary-1 to-[#EF4C3A] w-[222px] rounded-[30px] text-white text-[30px] font-semibold">
                   Search
                 </button>

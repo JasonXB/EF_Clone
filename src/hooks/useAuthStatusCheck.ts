@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function useInput() {
@@ -28,7 +28,7 @@ function useInput() {
     checkStatus();
   }, []);
 
-  return authStatus;
+  return authStatus; // returns: "Loading", "Guest", "Mentor", "Mentee", "Admin"
 }
 
 export default useInput;
