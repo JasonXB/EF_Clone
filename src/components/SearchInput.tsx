@@ -6,6 +6,8 @@ import { useSearchContext } from '../../state-management/ReactContext/SearchCont
 const SearchInput = ({ data }: SearchInputProps) => {
   const { filterSearch } = useSearchContext();
 
+
+
   // sets up reference with variable currentSearchValue
   const currentSearchValue = useRef<HTMLInputElement>(null!);
 

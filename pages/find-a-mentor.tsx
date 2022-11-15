@@ -1,16 +1,63 @@
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Layout from '../src/components/Layout';
+import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
+import { dummyMentors } from '../src/temporary/dummyMentors';
+
+declare module 'axios' {
+  export interface AxiosRequestConfig {
+    name?: string;
+    id: string;
+    protocolProfileBehavior: {};
+    request: {};
+    response: [];
+  }
+}
+
+const url = 'https://efback.azurewebsites.net/api/mentor/auth/all';
 
 export default function FindAMentor() {
   let [query, setQuery] = useState('');
+
+  const getUsers = async () => {
+    const options: AxiosRequestConfig = {
+      name: "ADMIN: get all mentors' profile",
+      id: '57c19079-77fa-4aad-9ce3-1d93525b1ef2',
+      protocolProfileBehavior: {
+        disableBodyPruning: true,
+      },
+      request: {
+        auth: {
+          type: 'noauth',
+        },
+        method: 'GET',
+        header: [],
+        url: 'https://efback.azurewebsites.net/api/mentor/list/all',
+      },
+      response: [],
+    };
+
+    try {
+      const response: AxiosResponse = await axios(options);
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getUsers();
+    console.log('a');
+  }, []);
+
   return (
     <Layout headTitle="Find a Mentor">
       <div>
         <div className={`container mx-auto `}>
           <div className="flex flex-col h-[720px]">
             <div className="flex flex-row justify-center">
-              <span className="text-primary-1 text-5xl font-semibold my-20">
+              <span className="my-20 text-5xl font-semibold text-primary-1">
                 Search for the perfect mentor for you!
               </span>
             </div>
