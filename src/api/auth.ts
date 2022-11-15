@@ -21,7 +21,7 @@ export async function signupAPI(
     const encodedValue = encodeURIComponent(value);
     formBody.push(encodedKey + '=' + encodedValue);
   }
-  const response = await fetch('http://localhost:1992/api/users/create', {
+  const response = await fetch('http://localhost:5200/api/users/create', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -54,6 +54,7 @@ export async function loginAPI(
     const encodedValue = encodeURIComponent(value);
     formBody.push(encodedKey + '=' + encodedValue);
   }
+
   const response = await fetch("https://efback.azurewebsites.net/api/users/authenticate", {
     method: 'POST',
     headers: {
@@ -67,7 +68,7 @@ export async function loginAPI(
 }
 
 export async function isLoggedInAPI(token: string) {
-  const res = await fetch('http://localhost:1992/api/users/check/status', {
+  const res = await fetch('http://localhost:5200/api/users/check/status', {
     method: 'GET',
     headers: {
       Authorization: 'Bearer ' + token,

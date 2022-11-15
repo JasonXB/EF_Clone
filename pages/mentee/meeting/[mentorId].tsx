@@ -33,7 +33,8 @@ const BookMeeting = () => {
   const mentorId = router.query.mentorId;
   const [thisMentor, setThisMentor] = useState({} as Mentor);
 
-  console.log( accessToken, profileID )
+  console.log( "accessToken -- > ", accessToken )
+  console.log( "profileID -- > ", profileID )
 
   useEffect(() => {
     if (router.isReady) {
@@ -103,7 +104,8 @@ const BookMeeting = () => {
       //accessToken from AuthContext will be used
       //placeholder token
       //let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjljZTNhNDkzYzE3NTNiN2UxZGU5MCIsImlhdCI6MTY2Nzg3ODYzMywiZXhwIjoxNjY3OTY1MDMzfQ.0nTpLZgcz3CmirJRSoa1Z2vG7VRQTxmOLoIWYhD94-k"
-
+      //http://localhost:5200/api/meeting/auth/set_meeting/
+      //https://efback.azurewebsites.net/api/meeting/auth/set_meeting/
       const response = await fetch(
         'https://efback.azurewebsites.net/api/meeting/auth/set_meeting/',
         {
