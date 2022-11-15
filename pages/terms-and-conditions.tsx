@@ -6,7 +6,6 @@ import Button from '../src/components/buttons/reusable-buttons';
 // I used Jason's basic layout from the become-a-mentor page as this page is quite similar in structure. Thanks, Jason!
 // You're welcome Matt! <3 (see Kelsey, that's how you use the word "you're" correctly)
 
-// Statically renders page and sets props equal to an empty object
 export const getStaticProps: GetStaticProps = async (context) => {
   return { props: {} };
 };

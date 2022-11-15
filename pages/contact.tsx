@@ -7,6 +7,7 @@ import Layout from '../src/components/Layout';
 export const getStaticProps: GetStaticProps = async (context) => {
   return { props: {} };
 };
+
 const contact: NextPage = ({}) => {
   return (
     <Layout headTitle="Contact">

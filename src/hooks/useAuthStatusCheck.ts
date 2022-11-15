@@ -28,7 +28,7 @@ function useInput() {
     checkStatus();
   }, []);
 
-  return authStatus;
+  return authStatus; // returns: "Loading", "Guest", "Mentor", "Mentee", "Admin"
 }
 
 export default useInput;

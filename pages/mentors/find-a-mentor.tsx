@@ -8,6 +8,7 @@ import { GetStaticProps } from 'next';
 export const getStaticProps: GetStaticProps = async (context) => {
   return { props: {} };
 };
+
 const findAMentor: NextPage = ({}) => {
   return (
     <Layout headTitle="Find a Mentor">
