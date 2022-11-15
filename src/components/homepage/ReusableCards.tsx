@@ -22,7 +22,7 @@ const ReusableCards = ({
   return (
     <div className="flex shadow-4xl flex-col-reverse bg-light w-full max-w-[700px] p-4 space-y-3  rounded-lg min-h-[260px] ss:flex-row">
       <div className="w-full ss:w-1/2">
-        <h4 className="font-semibold md:text-4xl lg:text-5xl text-quad-2">
+        <h4 className="font-semibold md:text-4xl lg:text-5xl text-primary-1">
           {title}
         </h4>
         <p className="p-2 text-lg h-1/2">{paragraph}</p>

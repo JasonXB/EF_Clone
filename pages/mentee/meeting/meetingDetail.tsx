@@ -46,7 +46,7 @@ const MeetingDetail = ({
       />{' '}
       <div className="flex flex-col ml-2 lg:flex-row">
         <div className="mr-2">
-          <p className="text-2xl text-primary-3">{getTextForType(type)}</p>{' '}
+          <p className="text-2xl text-primary-1">{getTextForType(type)}</p>{' '}
         </div>
         <div>
           <p className="text-2xl">{detailInfo}</p>

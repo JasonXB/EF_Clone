@@ -63,7 +63,7 @@ const AdminPanelDashboard: NextPage = ({}) => {
   return (
     <Layout headTitle="Admin Panel" background="none">
       <div className="relative flex items-center justify-center w-full h-screen">
-        <div className="absolute top-0 left-0 z-0 w-full bg-smoke-4 h-60"></div>
+        <div className="absolute top-0 left-0 z-0 w-full bg-hue-400 h-60"></div>
         <div className="relative z-50 w-5/6 p-4 m-auto rounded-md bg-light md:w-2/3 h-5/6 drop-shadow-lg">
           <h1 className="text-3xl font-semibold">Dashboard</h1>
           <div className="w-full overflow-scroll">
@@ -108,7 +108,7 @@ const AdminPanelDashboard: NextPage = ({}) => {
           </div>
 
           <div className="bg-light">
-            <div className="flex items-center justify-between p-4 bg-smoke-4">
+            <div className="flex items-center justify-between p-4 bg-hue-400">
               <h4 className="text-lg md:text-xl">Mentor Details</h4>
               <div className="flex h-8 overflow-hidden">
                 <svg

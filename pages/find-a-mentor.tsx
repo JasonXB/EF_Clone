@@ -17,7 +17,7 @@ export default function FindAMentor() {
               </span>
             </div>
             <div className="flex flex-row justify-center space-x-4 max-h-[70px]">
-              <div className="flex flex-row space-x-0 rounded-[23px] shadow-branded-1 border border-smoke-2">
+              <div className="flex flex-row space-x-0 rounded-[23px] shadow-branded-1 border border-hue-700">
                 <input
                   type="text"
                   className="w-[755px] p-4 text-[28px] rounded-[23px] outline-none"

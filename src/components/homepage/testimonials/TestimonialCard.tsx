@@ -44,14 +44,14 @@ const TestimonialCard = ({ props }: TestimonialCardProps) => {
       <p>{company}</p>
       <div>
         {' '}
-        <div className="flex items-center mb-4 text-primary-4">
+        <div className="flex items-center mb-4 text-secondary-1">
           {stars(rate)}
         </div>
       </div>
       <div>
         <blockquote
-          className=" flex flex-col before:leading-4  after:self-end before:font-bold before:text-5xl before:text-primary-2
-        after:font-bold after:text-5xl after:text-primary-2 
+          className=" flex flex-col before:leading-4  after:self-end before:font-bold before:text-5xl before:text-primary-1
+        after:font-bold after:text-5xl after:text-primary-1 
          before:content-[open-quote] after:content-[close-quote]  "
         >
           <p className="w-10/12 mx-auto ">{reviewBlurb}</p>

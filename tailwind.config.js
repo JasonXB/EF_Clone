@@ -16,43 +16,34 @@ module.exports = {
         90: '360px',
       },
       colors: {
-        // Shades of blue
-        'primary-1': '#026ABC',
-        'primary-2': '#007AD9',
-        'primary-3': '#1583D8',
-        'primary-4': '#4BA5ED',
-        'primary-5': '#AEDBFF',
-        // Shades of Magenta
-        'secondary-1': '#CE1982',
-        'secondary-2': '#DE325D',
-        // Shades of Red
-        'tertiary-1': '#E43348',
-        'tertiary-2': '#ED493D',
-        'tertiary-3': '#FF5E60',
-        'tertiary-4': '#FF725E',
-        'tertiary-5': '#FC98A4',
-        'tertiary-6': '#FFBCC4',
-        // Shades of yellow
-        'quad-1': '#F8BC0F',
-        'quad-2': '#EBC967',
-        'quad-3': '#FAE4A2',
-        // Shades of purple
-        'royal-1': '#5B1790',
-        'royal-2': '#6A63F6',
-        // Shades of gray
-        'smoke-1': '#52555D',
-        'smoke-2': '#858993',
-        'smoke-3': '#B9C0D3',
-        'smoke-4': '#CED7F0',
-        'smoke-5': '#EEF2FF',
+        'primary-1': '#026ABC', //brand blue
+        'primary-2': '#CE1982', //brand magenta
+
+        'secondary-1-1': '#C3E5FF', //light blue
+        'secondary-1-2': '#0B066E', // dark blue - click states
+        'secondary-1-3': '#4BA5ED', //blue - link hover states
+        'secondary-2-1': '#860957', //plum //click state
+        'secondary-2-2': '#DB57A3', //pink
+        'secondary-2-3': '#F0BADC', //light pink
+
+        //gradient colors,
+        'gradient-primary-1': '#CB1488', //dark pink
+        'gradient-primary-2': '#EF4C3A', //pinky orange
+        'gradient-secondary-1': '#0B066E', //dark blue
+        'gradient-secondary-2': '#8DC3ED', //light blue
+        // Shades of Hue
+        'hue-800': '#0C0C0C', //dark black
+        'hue-700': '#52555D', //dark grey
+        'hue-400': '#B9C0D3', //mid grey
+        'hue-300': '#EEF2FF', //has been removed in scheme
+        'hue-200': '#F6F6F6', //off white
+        'hue-100': '#FFFFFF', //white
+
         cardBG: '#FFFFFF', //full white
         dark: '#0C0C0C', // black
         light: '#F6F6F6', // white
 
-        success: '#00aa00', //green
-        warning: '#22bb33', //orange
-        info: '#aaaaaa', //grey
-        error: '#bb2124', //red
+        error: '#F21A06', //red
       },
       fontFamily: {
         mainFont: ['Montserrat', 'sans-serif'],

@@ -27,7 +27,7 @@ const UpcomingMeetingCard = ({ meeting }: UpcomingMeetingCardProps) => {
         </div>
         {/* stats right */}
         <div className="flex flex-col items-center w-full mt-4 space-y-6 text-center sm:mt-0 sm:3/4 sm:flex-row justify-evenly sm:space-y-0">
-          <div className="flex flex-row w-full pt-4 sm:border-t-0 border-t-[1px] sm:w-1/2 border-smoke-4 ">
+          <div className="flex flex-row w-full pt-4 sm:border-t-0 border-t-[1px] sm:w-1/2 border-hue-400 ">
             <div className="flex flex-col items-center w-3/4 px-2 border-r-2 sm:w-1/2 ">
               <span className="text-xl ss:text-2xl text-primary-1">
                 {numberOfMeetings.individual}

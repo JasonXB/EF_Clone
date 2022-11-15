@@ -14,16 +14,16 @@ import { ButtonVariant } from '../../enum/buttonVariant.enum';
 
 //buttonVariants are used for default class styling of each button type.
 export const buttonVariants = {
-  primary: `bg-gradient-to-r from-secondary-1 to-tertiary-2  hover:from-secondary-2 hover:to-tertiary-4 text-white font-bold py-2 px-6 m-1 rounded-3xl disabled:bg-slate-400 disabled:opacity-50 disabled:cursor-not-allowed`,
-  secondary: `bg-white hover:bg-gradient-to-r hover:from-secondary-1 hover:to-tertiary-2   text-secondary-1 font-bold hover:text-white py-2 px-6 m-1 border border-secondary-1 hover:border-transparent rounded-3xl  disabled:text-slate-300 disabled:border-slate-300 disabled:opacity-50 disabled:cursor-not-allowed`,
+  primary: `bg-gradient-to-r from-gradient-primary-1 to-gradient-primary-2 text-white font-bold py-2 px-6 m-1 rounded-3xl disabled:bg-slate-400 disabled:opacity-50 disabled:cursor-not-allowed`,
+  secondary: `bg-white  text-primary-2 font-bold  py-2 px-6 m-1 border border-primary-2 rounded-3xl  disabled:text-slate-300 disabled:border-slate-300 disabled:opacity-50 disabled:cursor-not-allowed`,
   tertiary:
     'flex flex-row  items-center border-[2px] rounded-full px-6 py-[10px] bg-transparent text-black  m-1  rounded-3xl  hover:underline hover:underline-offset-2 flex space-x-2',
-  quad: `py-2 px-6 m-1 flex flex-col items-center py-3 group rounded-2xl focus-within:bg-gray-100 hover:bg-gray-100 border-primary-1 border-4 hover:border bg-primary-5 text-center border bg-white font-bold`,
+  quad: `py-2 px-6 m-1 flex flex-col items-center py-3 group rounded-2xl focus-within:bg-gray-100 hover:bg-gray-100 border-primary-1 border-4 hover:border bg-secondary-1 text-center border bg-white font-bold`,
   quadUnselected: `py-2 px-6 m-1 flex flex-col items-center py-3 group rounded-2xl focus-within:bg-gray-100 hover:bg-gray-100 border-primary-1 border font-medium`,
-  primaryUnselected: `bg-slate-300 hover:bg-gradient-to-r hover:from-secondary-1 hover:to-tertiary-2 hover:opacity-50 text-white font-bold py-2 px-6 m-1 rounded-3xl disabled:bg-slate-400 disabled:opacity-50 disabled:cursor-not-allowed`,
-  secondaryUnselected: `bg-transparent hover:bg-gradient-to-r hover:from-secondary-1 hover:to-tertiary-2 hover:opacity-50 text-slate-300 font-bold hover:text-white py-2 px-6 m-1 border border-slate-300 hover:border-transparent rounded-3xl disabled:text-slate-300 disabled:border-slate-300 disabled:opacity-50 disabled:cursor-not-allowed`,
+  primaryUnselected: `bg-slate-300  hover:opacity-50 text-white font-bold py-2 px-6 m-1 rounded-3xl disabled:bg-slate-400 disabled:opacity-50 disabled:cursor-not-allowed`,
+  secondaryUnselected: `bg-transparent  hover:opacity-50 text-slate-300 font-bold hover:text-white py-2 px-6 m-1 border border-slate-300 hover:border-transparent rounded-3xl disabled:text-slate-300 disabled:border-slate-300 disabled:opacity-50 disabled:cursor-not-allowed`,
   iconOnly: 'border border-black rounded-full p-1 leading-none m-1 ',
-  calendarDataSelector: 'bg-primary-5 border-4 border-primary-1 p-1',
+  calendarDataSelector: 'bg-secondary-1 border-4 border-primary-1 p-1',
 };
 type customSVG = React.SVGProps<SVGSVGElement>;
 

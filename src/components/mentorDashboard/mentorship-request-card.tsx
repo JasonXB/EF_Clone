@@ -39,13 +39,13 @@ function MentorshipRequestCard({
           />
         </div>
         <span className="text-lg truncate max-w-[13ch] ">{full_name}</span>
-        <h2 className="max-w-full text-sm text-center text-smoke-2">
+        <h2 className="max-w-full text-sm font-light text-center text-hue-700">
           {/* | divider looks a little weird on certain break points. trying to think of dynamic solution */}
           {job}
           <br />
         </h2>
         {/* temp option for email? */}
-        <a href="mailto:name@email.com" className=" text-primary-2">
+        <a href="mailto:name@email.com" className=" text-primary-1">
           {email}
         </a>
       </div>

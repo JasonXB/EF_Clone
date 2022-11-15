@@ -8,7 +8,7 @@ export default function GradientBar(props: GradientBarProp) {
     return (
       <div className={`${containerStyle} bg-[#DAECFA]`}>
         <div
-          className={`bg-gradient-to-r from-[#8DC3ED] to-[#0B066E] h-full w-[50%] rounded-full`}
+          className={`bg-gradient-to-r from-gradient-secondary-2 to-gradient-secondary-1 h-full w-[50%] rounded-full`}
         ></div>
       </div>
     );
@@ -17,7 +17,7 @@ export default function GradientBar(props: GradientBarProp) {
     return (
       <div className={`${containerStyle} bg-[#DAECFA]`}>
         <div
-          className={`bg-gradient-to-r from-[#E1589A] to-[#CE1982] h-full w-full rounded-full`}
+          className={`bg-gradient-to-r from-gradient-primary-2 to-gradient-primary-1 h-full w-full rounded-full`}
         ></div>
       </div>
     );

@@ -142,7 +142,8 @@ const Login: NextPage = ({}) => {
 
                     <div className="font-medium">
                       Forgot password?<span> </span>
-                      <span className="underline text-primary-1 hover:text-primary-2">
+                      {/* fix hover */}
+                      <span className="underline text-primary-1 hover:text-secondary-1-3">
                         <a href="#">Click Here.</a>
                       </span>
                     </div>

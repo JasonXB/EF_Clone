@@ -21,8 +21,8 @@ const SimilarMentorsMiniProfile = ({ ...mentorsInfo }: MentorsInfoProps) => {
     <div
       className={`flex p-6 shadow-md cursor-pointer w-[100%] min-h-[100%] rounded-xl ${
         name === selectedSimilarMentor?.name
-          ? 'border-2 border-secondary-1'
-          : 'border-[1px] border-smoke-3'
+          ? 'border-2 border-primary-2'
+          : 'border-[1px] border-hue-400'
       }`}
     >
       <Avatar imgLocation={avatar} displaySize="medium" personsName={name} />

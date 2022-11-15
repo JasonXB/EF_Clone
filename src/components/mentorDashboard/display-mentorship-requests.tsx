@@ -66,7 +66,7 @@ const DisplayMentorShipContainer = ({
     {/* logic if there are no requests */}
     {mentorshipRequests.length === 0 ? (
       <div className="w-1/2 mx-auto mt-[10%]">
-        <p className="font-bold text-center text-smoke-2">
+        <p className="font-bold text-center text-hue-700">
           No new mentorship requests <br /> Check back later.
         </p>
       </div>

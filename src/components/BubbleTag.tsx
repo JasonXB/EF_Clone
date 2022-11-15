@@ -13,8 +13,8 @@ const getBubbleTag = (
 ): string =>
   ({
     [BUBBLE_TAG_TYPE_CLASSES.primaryLight]:
-      'border border-primary-1 text-primary-1',
-    [BUBBLE_TAG_TYPE_CLASSES.primaryShaded]: 'bg-blue-100 text-primary-2',
+      'border border-hue-400 text-primary-1',
+    [BUBBLE_TAG_TYPE_CLASSES.primaryShaded]: 'bg-secondary-1 text-primary-1',
   }[bubbleTagType]);
 
 const BubbleTag = ({ tag, bubbleTagType }: Tag) => {

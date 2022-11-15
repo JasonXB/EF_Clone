@@ -3,7 +3,7 @@ export const clockIcon = (
     xmlns="http://www.w3.org/2000/svg"
     width="25"
     height="25"
-    fill="#1583D8"
+    fill="#007ad9"
     className="mr-2 bi bi-clock"
     viewBox="0 0 16 16"
   >
@@ -17,7 +17,7 @@ export const locationIcon = (
     xmlns="http://www.w3.org/2000/svg"
     width="25"
     height="25"
-    fill="#1583D8"
+    fill="#007ad9"
     className="mb-2 mr-2 bi bi-geo-alt-fill"
     viewBox="0 0 16 16"
   >
@@ -46,7 +46,7 @@ export const twitterIcon = (
     xmlns="http://www.w3.org/2000/svg"
     width="30"
     height="30"
-    fill="#4BA5ED"
+    fill="#AEDBFF"
     className="bi bi-twitter"
     viewBox="0 0 16 16"
   >
