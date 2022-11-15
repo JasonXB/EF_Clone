@@ -21,70 +21,70 @@ export default function palette() {
 
       <div className="flex flex-row flex-wrap gap-8 mb-4">
         <div className="flex flex-col ">
-          <div className="w-24 h-10 bg-secondary-1-1"> </div>
-          <p>secondary-1-1</p>
+          <div className="w-24 h-10 bg-secondary-1"> </div>
+          <p>secondary-1</p>
           <p>#C3E5FF</p>
         </div>
         <div className="flex flex-col ">
-          <div className="w-24 h-10 bg-secondary-1-2"> </div>
-          <p>secondary-1-2</p>
+          <div className="w-24 h-10 bg-secondary-2"> </div>
+          <p>secondary-2</p>
           <p>#OB066E</p>
         </div>
         <div className="flex flex-col ">
-          <div className="w-24 h-10 bg-secondary-1-3"> </div>
-          <p>secondary-1-3</p>
+          <div className="w-24 h-10 bg-secondary-3"> </div>
+          <p>secondary-3</p>
           <p>#4BA5ED</p>
         </div>
         <div className="flex flex-col ">
-          <div className="w-24 h-10 bg-secondary-2-1"> </div>
-          <p>secondary-2-1</p>
+          <div className="w-24 h-10 bg-secondary-4"> </div>
+          <p>secondary-4</p>
           <p>#860957</p>
         </div>
         <div className="flex flex-col ">
-          <div className="w-24 h-10 bg-secondary-2-2"> </div>
-          <p>secondary-2-2</p>
+          <div className="w-24 h-10 bg-secondary-5"> </div>
+          <p>secondary-5</p>
           <p>#DB57A3</p>
         </div>
         <div className="flex flex-col ">
-          <div className="w-24 h-10 bg-secondary-2-3"> </div>
-          <p>secondary-2-3</p>
+          <div className="w-24 h-10 bg-secondary-6"> </div>
+          <p>secondary-6</p>
           <p>#F0BADC</p>
         </div>
       </div>
 
       <div className="flex flex-row flex-wrap gap-8 mb-4">
         <div className="flex flex-col ">
-          <div className="w-24 h-10 bg-gradient-to-r from-gradient-primary-1 to-gradient-primary-2">
+          <div className="w-24 h-10 bg-gradient-to-r from-gradient-var-1 to-gradient-var-2">
             {' '}
           </div>
-          <p>primary</p>
+          <p>var-1 to var-2</p>
           <p>#CB1488-#EF4C3A</p>
         </div>
         <div className="flex flex-col ">
-          <div className="w-24 h-10 bg-gradient-to-r from-gradient-secondary-1 to-gradient-secondary-2">
+          <div className="w-24 h-10 bg-gradient-to-r from-gradient-var-3 to-gradient-var-4">
             {' '}
           </div>
-          <p>secondary</p>
+          <p>var-3 to var-4</p>
           <p>#OB066E - #8DC3ED</p>
         </div>
         <div className="flex flex-col ">
-          <div className="w-24 h-10 bg-gradient-primary-1"> </div>
-          <p>gradient-primary-1</p>
+          <div className="w-24 h-10 bg-gradient-var-1"> </div>
+          <p>gradient-var-1</p>
           <p>#CB1488</p>
         </div>
         <div className="flex flex-col ">
-          <div className="w-24 h-10 bg-gradient-primary-2"> </div>
-          <p>gradient-primary-2</p>
+          <div className="w-24 h-10 bg-gradient-var-2"> </div>
+          <p>gradient-var-2</p>
           <p>#EF4C3A</p>
         </div>
         <div className="flex flex-col ">
-          <div className="w-24 h-10 bg-gradient-secondary-1"> </div>
-          <p>gradient-secondary-1</p>
+          <div className="w-24 h-10 bg-gradient-var-3"> </div>
+          <p>gradient-var-3</p>
           <p>#OB066E</p>
         </div>
         <div className="flex flex-col ">
-          <div className="w-24 h-10 bg-gradient-secondary-2"> </div>
-          <p>gradient-secondary-2</p>
+          <div className="w-24 h-10 bg-gradient-var-4"> </div>
+          <p>gradient-var-4</p>
           <p>#8DC3ED</p>
         </div>
       </div>

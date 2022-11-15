@@ -123,7 +123,7 @@ export default function MentorList() {
             <div className="flex flex-col w-1/5 mr-20 space-y-8">
               <div
                 onClick={() => router.back()}
-                className="flex flex-row cursor-pointer p-2 rounded-[25px] text-white max-w-[115px] bg-gradient-to-r from-gradient-primary-1 to-gradient-primary-2"
+                className="flex flex-row cursor-pointer p-2 rounded-[25px] text-white max-w-[115px] bg-gradient-to-r from-gradient-var-1 to-gradient-var-2"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

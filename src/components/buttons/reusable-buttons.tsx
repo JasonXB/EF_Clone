@@ -14,7 +14,7 @@ import { ButtonVariant } from '../../enum/buttonVariant.enum';
 
 //buttonVariants are used for default class styling of each button type.
 export const buttonVariants = {
-  primary: `bg-gradient-to-r from-gradient-primary-1 to-gradient-primary-2 text-white font-bold py-2 px-6 m-1 rounded-3xl disabled:bg-slate-400 disabled:opacity-50 disabled:cursor-not-allowed`,
+  primary: `bg-gradient-to-r from-gradient-var-1 to-gradient-var-2 text-white font-bold py-2 px-6 m-1 rounded-3xl disabled:bg-slate-400 disabled:opacity-50 disabled:cursor-not-allowed`,
   secondary: `bg-white  text-primary-2 font-bold  py-2 px-6 m-1 border border-primary-2 rounded-3xl  disabled:text-slate-300 disabled:border-slate-300 disabled:opacity-50 disabled:cursor-not-allowed`,
   tertiary:
     'flex flex-row  items-center border-[2px] rounded-full px-6 py-[10px] bg-transparent text-black  m-1  rounded-3xl  hover:underline hover:underline-offset-2 flex space-x-2',
