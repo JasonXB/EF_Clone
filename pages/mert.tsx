@@ -7,19 +7,30 @@ import fetch from '../src/components/mentorDashboard/functions/fetch-mentorship-
 
 import Button from '../src/components/buttons/reusable-buttons';
 
+import { useAuth } from '../state-management/ReactContext/AuthContext';
+
 // Statically renders page and sets props equal to an empty object
 export const getStaticProps: GetStaticProps = async (context) => {
   return { props: {} };
 };
 
-const aboutUs: NextPage = ({}) => {
+const AboutUs: NextPage = ({}) => {
+  const { accessToken } = useAuth();
+  console.log(accessToken);
+
   return (
     <Layout background="none" contentCustomClass="p-0">
       <div className="flex items-center justify-center w-screen">
-        <Button clickHandler={fetch}>CLICK</Button>
+        <Button
+          clickHandler={() => {
+            fetch(accessToken);
+          }}
+        >
+          CLICK
+        </Button>
       </div>
     </Layout>
   );
 };
 
-export default aboutUs;
+export default AboutUs;

@@ -8,19 +8,23 @@ import MockMentorDB from '../../src/tempData/MockMentorDB';
 import getRandomInt from '../../src/util/random-int';
 
 import fetch from '../../src/components/mentorDashboard/functions/fetch-mentorship-requests';
+import Mentee from '../../src/interface/mentee.interface';
 
 //! check whether a user is authenticated as a mentor, otherwise user is redirected to /auth/login
 export default async function MentorDashboard() {
   let menteeList = await fetch();
-  let [mentorshipRequests, setMentorshipRequests] =
-    useState<MentorshipRequest[]>();
+  let [mentorshipRequests, setMentorshipRequests] = useState<
+    MentorshipRequest[]
+  >([]);
   let [meetings, setMeetings] = useState<Meeting[]>([]);
 
   useEffect(() => {
     for (let i = 1; i < 6; i++) {
       let mentor = MockMentorDB.getByID(i);
 
-      setMentorshipRequests(menteeList);
+      if (menteeList) {
+        setMentorshipRequests(menteeList);
+      }
 
       let newMeeting: Meeting = {
         avatar: mentor.profile_path,

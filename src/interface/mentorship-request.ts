@@ -1,8 +1,8 @@
-import Mentor from './mentor.interface';
+import Mentee from './mentee.interface';
 
 interface MentorshipRequest {
-  mentor: Mentor;
-  numberOfRequests: number;
+  mentee: Mentee;
+  // numberOfRequests: number;
 }
 
 export default MentorshipRequest;
