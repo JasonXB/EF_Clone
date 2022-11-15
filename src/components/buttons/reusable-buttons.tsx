@@ -9,21 +9,19 @@ import listIcon from './SVGIcons/listIcon.svg';
 import closeIcon from './SVGIcons/closeIcon.svg';
 import { ButtonVariant } from '../../enum/buttonVariant.enum';
 
-//   darkMagenta: '#bb0c5c',
-//   lightSunset: '#ed913d',
-
 //change fill & outlined hover effect once we know what its supposed to be
 //add accessibly focus
 
 //buttonVariants are used for default class styling of each button type.
 export const buttonVariants = {
-  primary: `bg-gradient-to-r from-secondary-1 to-tertiary-2  hover:from-[#bb0c5c] hover:to-[#ed913d] text-white font-bold py-2 px-6 m-1 rounded-3xl disabled:bg-slate-400 disabled:opacity-50 disabled:cursor-not-allowed`,
-  secondary: `bg-transparent hover:bg-gradient-to-r hover:from-secondary-1 hover:to-tertiary-2   text-secondary-1 font-bold hover:text-white py-2 px-6 m-1 border border-secondary-1 hover:border-transparent rounded-3xl  disabled:text-slate-300 disabled:border-slate-300 disabled:opacity-50 disabled:cursor-not-allowed`,
-  tertiary:
+  primary: ` bg-gradient-to-r active:from-secondary-4 active:drop-shadow-none active:to-secondary-4 from-gradient-var-1 to-gradient-var-2 hover:drop-shadow-[0_3px_2px_rgba(0,0,0,0.7)]  text-white font-bold py-2 px-6 m-1 rounded-3xl disabled:from-hue-400 disabled:to-hue-400  disabled:text-white disabled:hover:drop-shadow-none  disabled:cursor-not-allowed`, //cant turn off gradient for other state so have to 'to and from same color for solid'
+  secondary: `bg-white  text-primary-2 font-bold  py-2 px-6 m-1 border border-primary-2 hover:drop-shadow-[0_2px_2px_rgba(0,0,0,0.7)] rounded-3xl active:drop-shadow-none active:text-white active:bg-secondary-6 disabled:text-white disabled:hover:drop-shadow-none disabled:bg-hue-400 disabled:border-none disabled:cursor-not-allowed`,
+  tertiary: `bg-secondary-5  text-white font-bold  py-2 px-6 m-1 hover:drop-shadow-[0_2px_2px_rgba(0,0,0,0.7)] rounded-3xl active:drop-shadow-none active:text-white active:bg-primary-2 disabled:text-white disabled:hover:drop-shadow-none disabled:bg-hue-400 disabled:border-none disabled:cursor-not-allowed`,
+  quad: `py-2 px-6 m-1 flex flex-col items-center text-primary-1 hover:text-hue-800 active:text-hue-800  group rounded-2xl focus-within:bg-secondary-1  focus-within:border-primary-1 focus-within:border-4 focus-within:text-hue-800 active:border-primary-1 border-hue-400 border-4 hover:drop-shadow-[0_3px_2px_rgba(0,0,0,0.7)] hover:border-2 hover:primary-1 active:border-4  hover:bg-secondary-1 active:bg-secondary-1 text-center border bg-white active:font-bold`,
+  simple:
     'flex flex-row  items-center border-[2px] rounded-full px-6 py-[10px] bg-transparent text-black  m-1  rounded-3xl  hover:underline hover:underline-offset-2 flex space-x-2',
-  primaryUnselected: `bg-slate-300 hover:bg-gradient-to-r hover:from-secondary-1 hover:to-tertiary-2 hover:opacity-50 text-white font-bold py-2 px-6 m-1 rounded-3xl disabled:bg-slate-400 disabled:opacity-50 disabled:cursor-not-allowed`,
-  secondaryUnselected: `bg-transparent hover:bg-gradient-to-r hover:from-secondary-1 hover:to-tertiary-2 hover:opacity-50 text-slate-300 font-bold hover:text-white py-2 px-6 m-1 border border-slate-300 hover:border-transparent rounded-3xl disabled:text-slate-300 disabled:border-slate-300 disabled:opacity-50 disabled:cursor-not-allowed`,
   iconOnly: 'border border-black rounded-full p-1 leading-none m-1 ',
+  calendarDataSelector: 'bg-secondary-1 border-4 border-primary-1 p-1', //needs to have more styles added to this, but here for future use
 };
 type customSVG = React.SVGProps<SVGSVGElement>;
 
@@ -90,12 +88,12 @@ Button.defaultProps = {
 //     <Button variant="iconOnly">X</Button>
 //     <Button>Default</Button>
 //     <Button variant="primary">primary</Button>
-//     <Button variant="primaryUnselected">primary unselected</Button>
+//
 //     <Button variant="secondary">secondary</Button>
-//     <Button variant="secondaryUnselected">secondary unselected</Button>
-//     <Button variant="tertiary">tertiary</Button>
-//     <Button variant="tertiary" icon="google">
-//       tertiary with icon
+//
+//     <Button variant="simple">simple</Button>
+//     <Button variant="simple" icon="google">
+//       simple with icon
 //     </Button>
 //   </>
 // );

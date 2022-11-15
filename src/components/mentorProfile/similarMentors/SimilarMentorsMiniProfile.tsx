@@ -12,26 +12,24 @@ interface MentorsInfoProps {
 }
 
 const SimilarMentorsMiniProfile = ({ ...mentorsInfo }: MentorsInfoProps) => {
-  const { selectedSimilarMentor, selectSimilarMentor } = useSimilarMentorsContext();
+  const { selectedSimilarMentor, selectSimilarMentor } =
+    useSimilarMentorsContext();
 
-  const { name, location, job, tags, avatar } =
-    mentorsInfo;
+  const { name, location, job, tags, avatar } = mentorsInfo;
 
   return (
     <div
-      className="flex p-6 shadow-md cursor-pointer w-[100%] min-h-[100%] rounded-xl"
-      style={{
-        border:
-          name === selectedSimilarMentor?.name
-            ? '2px solid #CE1982'
-            : '1px  #B9C0D3',
-      }}
+      className={`flex p-6 shadow-md cursor-pointer w-[100%] min-h-[100%] rounded-xl ${
+        name === selectedSimilarMentor?.name
+          ? 'border-2 border-primary-2'
+          : 'border-[1px] border-hue-400'
+      }`}
     >
       <Avatar imgLocation={avatar} displaySize="medium" personsName={name} />
       <div className="flex flex-col justify-center w-full ml-4">
-        <h2 className="mb-2 text-sm font-bold">{name}</h2>
-        <h4 className="mb-2 text-xs font-light">{location}</h4>
-        <h4 className="mb-2 text-xs font-light">{job}</h4>
+        <h2 className="mb-2 text-lg font-bold">{name}</h2>
+        <h4 className="mb-2 text-base font-light">{location}</h4>
+        <h4 className="mb-2 text-base font-light">{job}</h4>
 
         {/* I don't believe this is being used anymore, but am leaving
        it here just in case */}

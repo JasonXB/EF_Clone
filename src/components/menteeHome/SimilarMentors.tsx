@@ -37,18 +37,18 @@ export default function SimilarMentors(props: {
   };
   if (props.data.length === 0)
     return (
-      <h5 className="text-center mt-28 mb-20">No similar mentors found!</h5>
+      <h5 className="mb-20 text-center mt-28">No similar mentors found!</h5>
     );
 
   return (
     <section className="bg-[#e4e4e4] mt-16 py-6 extendBeyondLayout">
-      <h4 className="text-center my-8">
+      <h4 className="my-8 text-center">
         We think these mentors are a good match for you.
       </h4>
       <Splide
         aria-label="My Favorite Images"
         options={Options}
-        className="carousel px-0 mx-auto"
+        className="px-0 mx-auto carousel"
         id="similarMentorsSplideComponent"
       >
         {props.data.map((mentor, i) => {
@@ -57,7 +57,7 @@ export default function SimilarMentors(props: {
               className="slide px-8 lg:px-0 grid grid-cols-[minmax(auto,_37.5rem)] justify-center"
               key={i}
             >
-              <div className="grid grid-cols-[minmax(150px,_200px)_1fr] gap-4 h-[14.6875rem] shadowVariant2 mb-8  p-6 bg-light rounded-[20px]">
+              <div className="grid grid-cols-[minmax(150px,_200px)_1fr] gap-4 h-[14.6875rem] shadow-branded-1 mb-8  p-6 bg-light rounded-[20px]">
                 <Image
                   src={Hiba}
                   height="100%"
@@ -67,16 +67,16 @@ export default function SimilarMentors(props: {
                 />
                 <div className="grid grid-rows-[auto_auto_auto_1fr_26px_26px] gap-2">
                   <div className="truncate">
-                    <h6 className="font-semibold mx-1 text-ellipsis overflow-hidden">
+                    <h6 className="mx-1 overflow-hidden font-semibold text-ellipsis">
                       {mentor.mentorName}
                     </h6>
                   </div>
                   <div className="truncate">
-                    <p className="font-medium mx-1 text-ellipsis overflow-hidden">
+                    <p className="mx-1 overflow-hidden font-medium text-ellipsis">
                       {mentor.location}
                     </p>
                   </div>
-                  <p className="font-medium mx-1 text-ellipsis overflow-hidden">
+                  <p className="mx-1 overflow-hidden font-medium text-ellipsis">
                     {mentor.mentorPosition}
                   </p>
                   <br />
