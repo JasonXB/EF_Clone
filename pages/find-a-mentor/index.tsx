@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import Router from 'next/router';
 import { useState } from 'react';
-import Button from '../src/components/buttons/reusable-buttons';
-import Layout from '../src/components/Layout';
+import Button from '../../src/components/buttons/reusable-buttons';
+import Layout from '../../src/components/Layout';
 
 export default function FindAMentor() {
   let [query, setQuery] = useState('');
