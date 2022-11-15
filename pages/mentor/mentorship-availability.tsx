@@ -5,8 +5,9 @@ import Layout from '../../src/components/Layout';
 import calendarImg from '../../public/assets/vectorCalendar.png';
 import { mentorsData } from '../../src/tempData/dummyMentorsForCalendar';
 import Calendar from '../../src/components/calendar/Calendar';
+import TimeZonesDropdown from '../../src/components/timezonesDropdown/TimeZonesDropdown';
 import Button from '../../src/components/buttons/reusable-buttons';
-import { Mentor } from '../../src/interface/book-meeting/book-with-mentor.interface';
+import { Mentor, CALENDAR_TYPE_CLASSES } from '../../src/interface/book-meeting/book-with-mentor.interface';
 
 
 const MentorshipAvailability: NextPage = () => {
@@ -31,14 +32,14 @@ const MentorshipAvailability: NextPage = () => {
                     width={200}
                     height={130}
                     />
-                    <div>Timezone dropdown</div>
+                    <TimeZonesDropdown />
                 </div>
                 {/* mentorship status */}
                 <h4 className="font-bold text-primary-1">Mentor Status</h4>
                 {/* div for calendar */}
                 <div>
                     <h4 className="font-bold text-primary-1">Set Available Meeting Time</h4>
-                    <Calendar meeting_availability={meeting_availability} />
+                    <Calendar meeting_availability={meeting_availability} calendarType={CALENDAR_TYPE_CLASSES.large} />
                 </div>
                 {/* div for duration */}
                 <div>

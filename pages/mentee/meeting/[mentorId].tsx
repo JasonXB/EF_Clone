@@ -12,7 +12,7 @@ import Avatar from '../../../src/components/avatar/avatar';
 import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
 import { useAuth } from '../../../state-management/ReactContext/AuthContext';
 import { mentorsData } from '../../../src/tempData/dummyMentorsForCalendar';
-import { Mentor } from '../../../src/interface/book-meeting/book-with-mentor.interface';
+import { Mentor, CALENDAR_TYPE_CLASSES } from '../../../src/interface/book-meeting/book-with-mentor.interface';
 
 /*
   AREAS OF IMPROVEMENT IN THE FEATURES: 
@@ -181,7 +181,7 @@ const BookMeeting = () => {
                 {/* style to separate the calendar and timeslot blocks in its own grids */}
                 <div className="md:grid md:grid-cols-3">
                   <div className="col-span-2">
-                    <Calendar meeting_availability={meeting_availability} />
+                    <Calendar meeting_availability={meeting_availability} calendarType={CALENDAR_TYPE_CLASSES.medium} />
                   </div>
 
                   {/* available time slots block */}
@@ -215,7 +215,7 @@ const BookMeeting = () => {
                     </div>
                     {/* -- */}
                     {/* -- DISPLAY AVAILABILTIES -- */}
-                    <TimeSlots meeting_availability={meeting_availability} />
+                    <TimeSlots meeting_availability={meeting_availability} calendarType={CALENDAR_TYPE_CLASSES.medium} />
                     {/* -- */}
                   </div>
                 </div>

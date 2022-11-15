@@ -1,5 +1,10 @@
 import { ReactNode } from 'react';
 
+export enum CALENDAR_TYPE_CLASSES {
+  medium = 'medium',
+  large = 'large',
+}
+
 //used in book-meeting/[mentorId]  
 export interface Availability {
     startDatetime: string,
@@ -27,7 +32,8 @@ export interface MeetingProps {
 export interface MeetingAvailabilityProps {
     meeting_availability: {
       specific: Availability[]
-    }
+    },
+    calendarType: CALENDAR_TYPE_CLASSES
 }
 
 //used in DateSlot component
