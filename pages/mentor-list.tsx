@@ -142,7 +142,7 @@ export default function MentorList() {
                     Filter Mentor Profiles:
                   </span>
                 </div>
-                <div className="flex flex-row border border-[#707070] max-h-[60px] rounded-[23px]">
+                <div className="flex flex-row border border-hue-700 max-h-[60px] rounded-[23px]">
                   <input
                     type="text"
                     placeholder="Type Keywords"

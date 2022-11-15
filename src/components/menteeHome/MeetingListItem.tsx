@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { MeetingData } from '../../interface/mentee/homepage';
+import Button from '../buttons/reusable-buttons';
 
 export default function MeetingListItem(props: MeetingData) {
   return (
@@ -26,12 +27,7 @@ export default function MeetingListItem(props: MeetingData) {
           <p className="text-sm text-center trailingDots">{props.time}</p>
         </div>
         <div className="flex flex-col items-center justify-center h-full pl-4">
-          <button
-            type="button"
-            className="block px-4 py-2 border-2 m-0 h-[2rem] max-w-[12rem] border-[#FF0A0A] text-[#FF0A0A] font-medium text-sm leading-tight uppercase rounded-[25px]"
-          >
-            Contact
-          </button>
+          <Button variant="primary">Message</Button>
         </div>
       </li>
     </>
