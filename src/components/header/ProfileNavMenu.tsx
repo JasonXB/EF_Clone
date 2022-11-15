@@ -57,7 +57,7 @@ const SvgIconLogout = () => (
 );
 
 const ProfileMenu = () => {
-  const { username, isLoggedIn, logout } = useAuth();
+  const { isLoggedIn, logout } = useAuth();
   return (
     <>
       {/* Profile dropdown */}
