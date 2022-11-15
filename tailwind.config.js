@@ -60,6 +60,11 @@ module.exports = {
         'branded-1': '0px 3px 6px #00000029',
         'branded-2': '0px 0px 10px #00000054',
       },
+      dropShadow: {
+        button: {
+          1: '[0_3px_rgba(0,0,0,0.7)]',
+        },
+      },
     },
     screens: {
       xs: '480px',

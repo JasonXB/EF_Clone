@@ -64,7 +64,7 @@ const Login: NextPage = ({}) => {
 
                   <div className="flex ">
                     <Button
-                      variant="tertiary"
+                      variant="simple"
                       icon="google"
                       clickHandler={() =>
                         console.log(

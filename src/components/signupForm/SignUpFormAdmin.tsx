@@ -84,7 +84,7 @@ const SignUpFormAdmin = () => {
             Sign Up as an Admin
           </h1>
           <Button
-            variant="tertiary"
+            variant="simple"
             icon="google"
             clickHandler={() =>
               console.log('will be updated to make a request function')

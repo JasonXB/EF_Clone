@@ -118,7 +118,7 @@ const SignUpFormMentee = () => {
             </h2>
           )}
           <Button
-            variant="tertiary"
+            variant="simple"
             icon="google"
             clickHandler={() =>
               console.log('will be updated to make a request function')
