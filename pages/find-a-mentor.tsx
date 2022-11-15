@@ -35,7 +35,7 @@ export default function FindAMentor() {
                   </svg>
                 </div>
               </div>
-              <Link href={`mentor-list${query ? `?q=${query}` : ''}`}>
+              <Link href={`mentor-search${query ? `?q=${query}` : ''}`}>
                 <button className="bg-gradient-to-r from-secondary-1 to-[#EF4C3A] w-[222px] rounded-[30px] text-white text-[30px] font-semibold">
                   Search
                 </button>

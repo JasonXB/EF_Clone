@@ -19,7 +19,6 @@ interface MentorType {
   goalOfMeeting: string;
 }
 
-//! check if the user is authenticated as an admin (req'd to view this page)
 const AdminPanelDashboard: NextPage = ({}) => {
   const [sortBy, setSortBy] = useState<string>('all');
   const [searchedBy, setSearchedBy] = useState<string>('');
@@ -57,8 +56,6 @@ const AdminPanelDashboard: NextPage = ({}) => {
     );
   };
 
-  //! This component is left unprotected deliberately
-  // Add protection later (need this component visible for presentation on Nov 3rd)
   return (
     <Layout headTitle="Admin Panel" background="none">
       <div className="relative flex items-center justify-center w-full h-screen">

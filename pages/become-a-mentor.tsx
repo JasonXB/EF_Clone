@@ -3,7 +3,7 @@ import Layout from '../src/components/Layout';
 import { GetStaticProps } from 'next';
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  return { props: {} }; // static rendering
+  return { props: {} }; // Statically renders page and sets props equal to an empty object
 };
 
 const becomeAMentor: NextPage = (props) => {

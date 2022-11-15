@@ -4,7 +4,7 @@ import { GetStaticProps } from 'next';
 import Layout from '../src/components/Layout';
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  return { props: {} };
+  return { props: {} }; // Statically renders page and sets props equal to an empty object
 };
 
 const supportOurWork: NextPage = () => {
