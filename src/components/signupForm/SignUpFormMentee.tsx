@@ -171,7 +171,7 @@ const SignUpFormMentee = () => {
 
             {/* Need the route for Terms And Conditions*/}
             <h3 className="mt-5 text-xs font-bold">
-              By logging in, you agree to Empowered Future's{' '}
+              By logging in, you agree to Empowered Futures&apos;{' '}
               <a href="" className="text-secondary-2">
                 Terms And Conditions*
               </a>

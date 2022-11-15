@@ -9,9 +9,6 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        gears: "url('~/src/assets/gears.png')",
-      },
       backgroundSize: {
         150: '150%',
       },
