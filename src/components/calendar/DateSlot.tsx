@@ -7,7 +7,7 @@ import {
   isFuture,
 } from 'date-fns';
 import { utcToZonedTime } from 'date-fns-tz';
-import { DateSlotProps } from '../../interface/book-meeting/book-with-mentor.interface'
+import { DateSlotProps } from '../../interface/book-meeting/book-with-mentor.interface';
 import { CalendarContext } from '../../../state-management/ReactContext/CalendarContext';
 import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
 
@@ -42,7 +42,10 @@ const DateSlot = ({ day, dayIndex, availabilities }: DateSlotProps) => {
         availability.startDatetime,
         IANACounterpart as unknown as string
       ),
-      endDatetime: utcToZonedTime(availability.endDatetime, IANACounterpart as unknown as string),
+      endDatetime: utcToZonedTime(
+        availability.endDatetime,
+        IANACounterpart as unknown as string
+      ),
     };
   });
 

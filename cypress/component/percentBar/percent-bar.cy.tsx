@@ -58,6 +58,6 @@ describe('percent-bar.cy.tsx', () => {
       .find('div')
       .find('div')
       .should('have.attr', 'class')
-      .and('match', /bg-secondary-1/);
+      .and('match', /bg-primary-2/);
   });
 });

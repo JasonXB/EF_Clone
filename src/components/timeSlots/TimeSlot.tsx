@@ -6,7 +6,7 @@ import { useContext } from 'react';
 import { format, isEqual, parseISO } from 'date-fns';
 import { utcToZonedTime } from 'date-fns-tz';
 import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
-import { MeetingProps } from '../../interface/book-meeting/book-with-mentor.interface'
+import { MeetingProps } from '../../interface/book-meeting/book-with-mentor.interface';
 
 function classNames(...classes: (string | boolean)[]) {
   return classes.filter(Boolean).join(' ');
@@ -22,7 +22,10 @@ const TimeSlot = ({ meeting }: MeetingProps) => {
     IANACounterpart as unknown as string
   );
 
-  const convertedEndTime = utcToZonedTime(meeting.endDatetime, IANACounterpart as unknown as string);
+  const convertedEndTime = utcToZonedTime(
+    meeting.endDatetime,
+    IANACounterpart as unknown as string
+  );
 
   const selectTimeSlot = () => {
     setSelectedTimeSlot({
@@ -41,7 +44,7 @@ const TimeSlot = ({ meeting }: MeetingProps) => {
   return (
     <button
       className={classNames(
-        isTimeSlotSelected() && 'border-4 bg-primary-5 font-bold',
+        isTimeSlotSelected() && 'border-4 bg-secondary-1 font-bold',
         !isTimeSlotSelected() && 'border font-medium hover:bg-gray-100',
         `flex items-center px-6 py-6 space-x-4 group rounded-xl focus-within:bg-gray-100  border-primary-1 w-full`
       )}
