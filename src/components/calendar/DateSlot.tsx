@@ -7,7 +7,7 @@ import {
   isFuture,
 } from 'date-fns';
 import { utcToZonedTime } from 'date-fns-tz';
-import { DateSlotProps } from '../../interface/book-meeting/book-with-mentor.interface'
+import { DateBoxProps } from '../../interface/book-meeting/book-with-mentor.interface'
 import { CalendarContext } from '../../../state-management/ReactContext/CalendarContext';
 import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
 
@@ -31,12 +31,12 @@ let colStartClasses = [
   you may use the variable below as a starting point to fix this feature.
   const zonedSelectedTime = utcToZonedTime(selectedTimeSlot.startDatetime, IANACounterpart as unknown as string);
  */
-const DateSlot = ({ day, dayIndex, availabilities }: DateSlotProps) => {
-  const { selectedDay, setSelectedDay } = useContext(CalendarContext);
+const DateSlot = ({ day, dayIndex }: DateBoxProps) => {
+  const { schedule, selectedDay, setSelectedDay } = useContext(CalendarContext);
   const { setSelectedTimeSlot, IANACounterpart, selectedTimeSlot } = useContext(TimezoneContext);
 
   //variable used to adjust the date available based on the timezone
-  const timeZonedAvailabilities = availabilities.map((availability) => {
+  const timeZonedAvailabilities = schedule.specific.map((availability) => {
     return {
       startDatetime: utcToZonedTime(
         availability.startDatetime,

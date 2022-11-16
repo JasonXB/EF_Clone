@@ -1,3 +1,4 @@
+import { useContext, useEffect } from 'react';
 import type { NextPage } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -8,9 +9,11 @@ import Calendar from '../../src/components/calendar/Calendar';
 import TimeZonesDropdown from '../../src/components/timezonesDropdown/TimeZonesDropdown';
 import Button from '../../src/components/buttons/reusable-buttons';
 import { Mentor, CALENDAR_TYPE_CLASSES } from '../../src/interface/book-meeting/book-with-mentor.interface';
+import { CalendarContext } from '../../state-management/ReactContext/CalendarContext';
 
 
 const MentorshipAvailability: NextPage = () => {
+    const { setSchedule } = useContext(CalendarContext);
 
     let thisMentor = mentorsData.find(
         (mentor) => mentor.mentor_id.toString() === '122'
@@ -18,7 +21,10 @@ const MentorshipAvailability: NextPage = () => {
 
     const { meeting_availability } = thisMentor;
 
-  
+    useEffect(() => {
+        setSchedule(meeting_availability)
+    }, [thisMentor]);
+
     return (
         <Layout background="none">
             {/* div for whole page to handle spacing between children*/}
@@ -39,7 +45,7 @@ const MentorshipAvailability: NextPage = () => {
                 {/* div for calendar */}
                 <div>
                     <h4 className="font-bold text-primary-1">Set Available Meeting Time</h4>
-                    <Calendar meeting_availability={meeting_availability} calendarType={CALENDAR_TYPE_CLASSES.large} />
+                    <Calendar calendarType={CALENDAR_TYPE_CLASSES.large} />
                 </div>
                 {/* div for duration */}
                 <div>

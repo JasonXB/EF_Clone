@@ -7,8 +7,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { MeetingAvailabilityProps, CALENDAR_TYPE_CLASSES } from '../../interface/book-meeting/book-with-mentor.interface'
 
 
-
-export default function Calendar({ meeting_availability, calendarType }: MeetingAvailabilityProps) {
+export default function Calendar({ calendarType }: MeetingAvailabilityProps) {
 
   const { setCurrentMonth, firstDayCurrentMonth, days } =
     useContext(CalendarContext);
@@ -22,6 +21,13 @@ export default function Calendar({ meeting_availability, calendarType }: Meeting
     let firstDayNextMonth = add(firstDayCurrentMonth, { months: 1 });
     setCurrentMonth(format(firstDayNextMonth, 'MMM-yyyy'));
   };
+
+  let monthFormat = '';
+  if(calendarType == CALENDAR_TYPE_CLASSES.medium){
+    monthFormat = 'MMM yyyy'
+  } else if (calendarType == CALENDAR_TYPE_CLASSES.large){
+    monthFormat = 'MMMM yyyy'
+  }
 
   return (
     <div className="pt-1 my-2">
@@ -54,7 +60,7 @@ export default function Calendar({ meeting_availability, calendarType }: Meeting
         {/* -- */}
         {/* -- CALENDAR MONTH -- */}
         <h4 className="font-medium">
-          {format(firstDayCurrentMonth, 'MMM yyyy')}
+          {format(firstDayCurrentMonth, monthFormat)}
         </h4>
         {/* -- */}
 
@@ -94,21 +100,19 @@ export default function Calendar({ meeting_availability, calendarType }: Meeting
       </div>
       {/* -- */}
       {/* -- DATE SLOTS -- */}
-      <div className="grid grid-cols-7 grid-rows-6 my-2 text-2xl">
+      <div className="grid grid-cols-7 grid-rows-6 my-10 text-2xl">
         {days.map((day, dayIdx) => {
           if(calendarType == CALENDAR_TYPE_CLASSES.medium){
             return <DateSlot
             key={uuidv4()}
             day={day}
             dayIndex={dayIdx}
-            availabilities={meeting_availability.specific}
             />
           } else if (calendarType == CALENDAR_TYPE_CLASSES.large){
             return <DateBracket
             key={uuidv4()}
             day={day}
             dayIndex={dayIdx}
-            availabilities={meeting_availability.specific}
             />
           }
         })}

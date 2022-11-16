@@ -5,6 +5,13 @@ export enum CALENDAR_TYPE_CLASSES {
   large = 'large',
 }
 
+export interface Schedule {
+  daily: Availability[],
+  weekly: Availability[],
+  monthly: Availability[],
+  specific: Availability[],
+}
+
 //used in book-meeting/[mentorId]  
 export interface Availability {
     startDatetime: string,
@@ -18,9 +25,7 @@ export interface Mentor {
     position: string, 
     company: string, 
     imgUrl: string, 
-    meeting_availability: {
-        specific: Availability[]
-    }
+    meeting_availability: Schedule
   }
 
 export interface MeetingProps {
@@ -30,17 +35,13 @@ export interface MeetingProps {
 
 //used in timeslots and Calendar component
 export interface MeetingAvailabilityProps {
-    meeting_availability: {
-      specific: Availability[]
-    },
     calendarType: CALENDAR_TYPE_CLASSES
 }
 
 //used in DateSlot component
-export interface DateSlotProps {
+export interface DateBoxProps {
     day: Date,
-    dayIndex: number,
-    availabilities: Availability[]
+    dayIndex: number
   }
 
   //used in Timezone component

@@ -3,12 +3,12 @@ import TimeSlot from './TimeSlot';
 import { utcToZonedTime } from 'date-fns-tz';
 import { v4 as uuidv4 } from 'uuid';
 import { isSameDay } from 'date-fns';
-import { MeetingAvailabilityProps, Availability } from '../../interface/book-meeting/book-with-mentor.interface'
+import { Availability } from '../../interface/book-meeting/book-with-mentor.interface'
 import { CalendarContext } from '../../../state-management/ReactContext/CalendarContext';
 import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
 
-const TimeSlots = ({ meeting_availability }: MeetingAvailabilityProps) => {
-  const { selectedDay } = useContext(CalendarContext);
+const TimeSlots = () => {
+  const { schedule, selectedDay } = useContext(CalendarContext);
   const { IANACounterpart } = useContext(TimezoneContext);
 
   //find if the mentor has availabilities on the selected date by comparing the date selected and the date in the json data
@@ -22,7 +22,7 @@ const TimeSlots = ({ meeting_availability }: MeetingAvailabilityProps) => {
     })
   }
 
-  const meetingsOnSelectedDay = selectedDayAvailability(meeting_availability.specific)
+  const meetingsOnSelectedDay = selectedDayAvailability(schedule.specific)
 
   return (
     <div className="mt-4 space-y-3 text-sm">
