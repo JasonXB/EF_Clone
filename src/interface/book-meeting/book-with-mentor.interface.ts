@@ -37,6 +37,9 @@ export interface MeetingProps {
   timeSlotsType: TIMESLOTS_TYPE_CLASSES,
   meeting: Availability
 }
+export interface TimeSlotSetterProps {
+  meeting: Availability
+}
 
 
 //used in timeslots and Calendar component

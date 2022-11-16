@@ -28,7 +28,7 @@ let colStartClasses = [
 ];
 
 const DateBracket = ({ day, dayIndex }: DateBoxProps) => {
-  const { schedule, selectedDay, setSelectedDay } = useContext(CalendarContext);
+  const { schedule, selectedDay, setSelectedDay, setShowScheduleModal } = useContext(CalendarContext);
   const { setSelectedTimeSlot, IANACounterpart } = useContext(TimezoneContext);
   
   //variable used to adjust the date available based on the timezone
@@ -45,7 +45,9 @@ const DateBracket = ({ day, dayIndex }: DateBoxProps) => {
   //select date event handler-----------------
   const selectDate = () => {
     setSelectedDay(day);
-    setSelectedTimeSlot({ startDatetime: '', endDatetime: ''}); //reset the selected time slot whenever a date is clicked so that there is no time slot selected by default
+    //reset the selected time slot whenever a date is clicked so that there is no time slot selected by default
+    setSelectedTimeSlot({ startDatetime: '', endDatetime: ''}); 
+    setShowScheduleModal(true)
   };
 
   return (

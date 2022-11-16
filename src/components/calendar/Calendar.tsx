@@ -5,6 +5,7 @@ import DateBracket from './DateBracket';
 import { CalendarContext } from '../../../state-management/ReactContext/CalendarContext';
 import { v4 as uuidv4 } from 'uuid';
 import { MeetingAvailabilityProps, CALENDAR_TYPE_CLASSES } from '../../interface/book-meeting/book-with-mentor.interface'
+import ScheduleModal from './ScheduleModal';
 
 
 export default function Calendar({ calendarType }: MeetingAvailabilityProps) {
@@ -30,7 +31,12 @@ export default function Calendar({ calendarType }: MeetingAvailabilityProps) {
   }
 
   return (
-    <div className="pt-1 my-2">
+    <div className="pt-1 my-2 relative">
+      {/* SCHEDULE MODAL - used only for CALENDAR_TYPE_CLASSES.large */}
+      <div className='absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 w-1/3'>
+        <ScheduleModal/>
+      </div>
+      <div className='z-10'>
       {/* make the calendar responsive in different devices */}
       {/* <div className="max-w-md px-4 mx-auto sm:px-7 md:max-w-4xl md:px-6 lg:px-0 bg-red-100"> */}
       {/* style for navigation header of calendar */}
@@ -117,6 +123,7 @@ export default function Calendar({ calendarType }: MeetingAvailabilityProps) {
           }
         })}
         {/* -- */}
+      </div>
       </div>
     </div>
   );
