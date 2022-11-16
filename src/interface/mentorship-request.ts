@@ -1,7 +1,13 @@
 import Mentee from './mentee.interface';
 
 interface MentorshipRequest {
-  mentee: Mentee;
+  mentee: string;
+  date: string;
+  goal: string;
+  status: string;
+  id: string;
+  menteeInfo: Mentee;
+  mentor: string;
   // numberOfRequests: number;
 }
 

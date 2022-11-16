@@ -1,7 +1,8 @@
 export default async function responseMentorshipRequest(
   urlPart: string,
   mentorId: string,
-  menteeId: string
+  menteeId: string,
+  accessToken: string
 ) {
   const details = {
     mentor: mentorId,
@@ -14,6 +15,7 @@ export default async function responseMentorshipRequest(
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + accessToken,
     },
     body: JSON.stringify(details),
   });

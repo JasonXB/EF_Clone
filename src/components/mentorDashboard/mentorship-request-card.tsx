@@ -1,37 +1,44 @@
 import Image from 'next/image';
 import MentorshipRequest from '../../interface/mentorship-request';
 import Button from '../buttons/reusable-buttons';
+import profile_path from '../../../public/assets/christina-wocintechchat-com-sw3FSL9hIoI-unsplash.jpg';
 
 import ResponseMentorshipRequest from './functions/response-mentorship-request';
+import { useAuth } from '../../../state-management/ReactContext/AuthContext';
 
 interface MentorshipRequestCardProps {
   mentorshipRequest: MentorshipRequest;
+  setFetchRequest: (arg: boolean) => void;
 }
 
 function MentorshipRequestCard({
   mentorshipRequest,
+  setFetchRequest,
 }: MentorshipRequestCardProps) {
   //avatar will be a future pass
 
+  const { accessToken } = useAuth();
+
   const {
-    id: mentorId,
-    first_name,
-    last_name,
-    job,
-    profile_path,
-    email,
-    bio,
-  } = mentorshipRequest.mentor;
+    // id,
+    menteeInfo: { firstname },
+    menteeInfo: { lastname },
+    menteeInfo: { title },
+    menteeInfo: { email },
+    mentee: menteeId,
+    mentor: mentorId,
+    goal,
+    date: dateString,
+  } = mentorshipRequest;
 
-  // const { profile_path } = mentorshipRequest.mentor;
+  const full_name = `${firstname} ${lastname}`;
+  const date = new Date(dateString);
 
-  const full_name = `${first_name} ${last_name}`;
-
-  /* style logic incase there is only 1-2 request */
+  //  style logic incase there is only 1-2 request */
   const styleForLessThan2 = () => {
-    if (mentorshipRequest.numberOfRequests < 3) {
-      return 'sm:flex-row';
-    }
+    // if (mentorshipRequest.numberOfRequests < 3) {
+    //   return 'sm:flex-row';
+    // }
     return 'sm:flex-col';
   };
 
@@ -54,7 +61,7 @@ function MentorshipRequestCard({
         <span className="text-lg truncate max-w-[13ch] ">{full_name}</span>
         <h2 className="max-w-full text-sm text-center text-smoke-2">
           {/* | divider looks a little weird on certain break points. trying to think of dynamic solution */}
-          {job}
+          {title}
           <br />
         </h2>
         {/* temp option for email? */}
@@ -65,12 +72,12 @@ function MentorshipRequestCard({
       <div className="w-full h-3/4 ">
         <div className="flex px-4 py-2 my-2 bg-white rounded-md shadow-sm wrap ">
           <h3 className="flex flex-wrap pr-2 mx-auto text-sm w-fit">
-            <span>{new Date().toDateString()}</span>
+            <span>{date.toDateString()}</span>
           </h3>
         </div>
         <div className="flex-1 px-4 py-2 my-2 bg-white rounded-md shadow-sm min-h-[120px]">
           <h3 className="text-xl">Goal of the meeting</h3>
-          <p className="text-xs line-clamp-2 sm:line-clamp-3">{bio}</p>
+          <p className="text-xs line-clamp-2 sm:line-clamp-3">{goal}</p>
           {/* still needs 'read more'. not sure what response they want to happen when clicked */}
         </div>
 
@@ -81,7 +88,13 @@ function MentorshipRequestCard({
           <Button
             variant="primary"
             clickHandler={() => {
-              ResponseMentorshipRequest('accept', '9', '12');
+              setFetchRequest(true);
+              ResponseMentorshipRequest(
+                'accept',
+                mentorId,
+                menteeId,
+                accessToken
+              );
             }}
           >
             Accept
@@ -89,7 +102,13 @@ function MentorshipRequestCard({
           <Button
             variant="secondary"
             clickHandler={() => {
-              ResponseMentorshipRequest('reject', '7', '11');
+              setFetchRequest(true);
+              ResponseMentorshipRequest(
+                'reject',
+                mentorId,
+                menteeId,
+                accessToken
+              );
             }}
           >
             Reject

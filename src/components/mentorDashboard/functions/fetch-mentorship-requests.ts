@@ -1,23 +1,26 @@
 import Mentee from '../../../interface/mentee.interface';
 import MentorshipRequest from '../../../interface/mentorship-request';
-import { useAuth } from '../../../../state-management/ReactContext/AuthContext';
 
-export default async function fetchMentorshipRequests(accessToken: string) {
+export default async function fetchMentorshipRequests(
+  accessToken: string,
+  profileId: string
+) {
   const res = await fetch(
-    'https://efback.azurewebsites.net/api/mentorRequests/mymentees/9',
+    `https://efback.azurewebsites.net/api/mentorRequests/mymentees/${profileId}`,
     {
       method: 'GET',
+      headers: {
+        Authorization: 'Bearer ' + accessToken,
+      },
     }
   );
 
   const mentorshipRequestData = await res.json();
 
-  //   console.log(mentorshipRequestData);
-
-  const menteeList: Mentee[] = [];
+  const mentorshipRequestDataWithMenteeInfo: MentorshipRequest[] = [];
 
   for (let i = 0; i < mentorshipRequestData.length; i++) {
-    let menteeInfo = await fetch(
+    let menteeData = await fetch(
       `https://efback.azurewebsites.net/api/mentee/${mentorshipRequestData[i].mentee}`,
       {
         method: 'GET',
@@ -27,12 +30,18 @@ export default async function fetchMentorshipRequests(accessToken: string) {
       }
     );
 
-    let menteeDataObject = await menteeInfo.json();
+    let response = await menteeData.json();
+    let menteeInfo: Mentee = response.mentee;
 
-    menteeList.push(menteeDataObject);
+    mentorshipRequestData[i] = {
+      ...mentorshipRequestData[i],
+      menteeInfo,
+    };
 
-    console.log(menteeList);
+    let temp = mentorshipRequestData[i];
 
-    return menteeList;
+    mentorshipRequestDataWithMenteeInfo.push(temp);
   }
+
+  return mentorshipRequestDataWithMenteeInfo;
 }

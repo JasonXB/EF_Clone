@@ -66,7 +66,7 @@ export async function loginAPI(
   );
   const responseData = await response.json();
   console.log(responseData, '54rm');
-  return responseData.accessToken;
+  return responseData;
 }
 
 export async function isLoggedInAPI(token: string) {

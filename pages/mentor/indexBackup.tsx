@@ -7,12 +7,7 @@ import MentorshipRequest from '../../src/interface/mentorship-request';
 import MockMentorDB from '../../src/tempData/MockMentorDB';
 import getRandomInt from '../../src/util/random-int';
 
-import fetch from '../../src/components/mentorDashboard/functions/fetch-mentorship-requests';
-import Mentee from '../../src/interface/mentee.interface';
-
-//! check whether a user is authenticated as a mentor, otherwise user is redirected to /auth/login
-export default async function MentorDashboard() {
-  let menteeList = await fetch();
+export default function MentorDashboard() {
   let [mentorshipRequests, setMentorshipRequests] = useState<
     MentorshipRequest[]
   >([]);
@@ -22,9 +17,15 @@ export default async function MentorDashboard() {
     for (let i = 1; i < 6; i++) {
       let mentor = MockMentorDB.getByID(i);
 
-      if (menteeList) {
-        setMentorshipRequests(menteeList);
-      }
+      let newMentorshipRequest: MentorshipRequest = {
+        mentor,
+        numberOfRequests: getRandomInt(4) + 1,
+      };
+
+      setMentorshipRequests((oldMentorshipReqs) => [
+        ...oldMentorshipReqs,
+        newMentorshipRequest,
+      ]);
 
       let newMeeting: Meeting = {
         avatar: mentor.profile_path,
@@ -42,7 +43,7 @@ export default async function MentorDashboard() {
 
   return (
     <Layout headTitle="Mentor Dashboard" background="none">
-      <DisplayMentorShipContainer mentorshipRequests={menteeList} />
+      <DisplayMentorShipContainer mentorshipRequests={mentorshipRequests} />
       <hr className="my-6" />
       <UpcomingAvailabilityContainer meetings={meetings} />
     </Layout>
