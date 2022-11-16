@@ -6,39 +6,38 @@ import { dummyMentors } from '../src/temporary/dummyMentors';
 
 declare module 'axios' {
   export interface AxiosRequestConfig {
-    name?: string;
+    name: string;
     id: string;
     protocolProfileBehavior: {};
-    request: {};
+    request: {
+      method: string,
+      header: [],
+      url: string
+    };
     response: [];
   }
 }
 
-const url = 'https://efback.azurewebsites.net/api/mentor/auth/all';
-
 export default function FindAMentor() {
   let [query, setQuery] = useState('');
 
+  // 
   const getUsers = async () => {
     const options: AxiosRequestConfig = {
-      name: "ADMIN: get all mentors' profile",
-      id: '57c19079-77fa-4aad-9ce3-1d93525b1ef2',
-      protocolProfileBehavior: {
-        disableBodyPruning: true,
-      },
-      request: {
-        auth: {
-          type: 'noauth',
-        },
-        method: 'GET',
-        header: [],
-        url: 'https://efback.azurewebsites.net/api/mentor/list/all',
-      },
-      response: [],
+      "name": "Get all mentors' profile",
+			"id": "57c19079-77fa-4aad-9ce3-1d93525b1ef2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://efback.azurewebsites.net/api/mentor/list/all"
+			},
+			"response": []
     };
-
     try {
-      const response: AxiosResponse = await axios(options);
+      const response: AxiosResponse = await axios.get("https://efback.azurewebsites.net/api/mentor/list/all", options);
       console.log(response);
       return response;
     } catch (error) {
@@ -48,7 +47,6 @@ export default function FindAMentor() {
 
   useEffect(() => {
     getUsers();
-    console.log('a');
   }, []);
 
   return (
