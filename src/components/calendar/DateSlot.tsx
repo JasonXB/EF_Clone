@@ -90,7 +90,7 @@ const DateSlot = ({ day, dayIndex, availabilities }: DateSlotProps) => {
           //has availability in the future
           hasFuture() && 'text-black',
           //has no availability in the future
-          !hasFuture() && 'text-smoke-2 line-through',
+          !hasFuture() && 'text-hue-400 line-through',
           // ----- DEFAULT CLASS -------------
           'mx-auto flex h-8 w-8 items-center justify-center rounded py-10 px-9'
         )}
