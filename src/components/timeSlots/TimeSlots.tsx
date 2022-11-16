@@ -3,13 +3,25 @@ import TimeSlot from './TimeSlot';
 import { utcToZonedTime } from 'date-fns-tz';
 import { v4 as uuidv4 } from 'uuid';
 import { isSameDay } from 'date-fns';
-import { Availability } from '../../interface/book-meeting/book-with-mentor.interface'
+import { Availability, TimeSlotsProps, TIMESLOTS_TYPE_CLASSES } from '../../interface/book-meeting/book-with-mentor.interface'
 import { CalendarContext } from '../../../state-management/ReactContext/CalendarContext';
 import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
 
-const TimeSlots = () => {
+const TimeSlots = ({ timeSlotsType, day }: TimeSlotsProps ) => {
   const { schedule, selectedDay } = useContext(CalendarContext);
   const { IANACounterpart } = useContext(TimezoneContext);
+
+  let daySetting: Date;
+
+  /*
+    If timeSlotsType is a list mainly used in DateBracket, it will refer to the day
+    If timeSlotsType is a picker mainly used in Dateslot, it will refer to the selectedDay
+   */
+  if(timeSlotsType == TIMESLOTS_TYPE_CLASSES.list){
+    daySetting = day as Date
+  } else if(timeSlotsType == TIMESLOTS_TYPE_CLASSES.picker){
+    daySetting = selectedDay
+  }
 
   //find if the mentor has availabilities on the selected date by comparing the date selected and the date in the json data
   const selectedDayAvailability = (availabilities: Availability[]) => {
@@ -18,20 +30,22 @@ const TimeSlots = () => {
         availability.startDatetime,
         IANACounterpart as unknown as string
       )
-      return isSameDay(zonedStartTime, selectedDay)
+      return isSameDay(zonedStartTime, daySetting)
     })
   }
 
   const meetingsOnSelectedDay = schedule.specific && selectedDayAvailability(schedule.specific)
 
+  const noTimeSlotMessage = timeSlotsType == TIMESLOTS_TYPE_CLASSES.picker ? "No time slot available" : ''
+
   return (
-    <div className="mt-4 space-y-3 text-sm">
+    <div className="mt-4 space-y-3 text-sm max-h-28 overflow-y-scroll scrollBar">
       {meetingsOnSelectedDay && meetingsOnSelectedDay.length > 0 ? (
         meetingsOnSelectedDay.map((availability: Availability) => (
-          <TimeSlot key={uuidv4()} meeting={availability} />
+          <TimeSlot key={uuidv4()} timeSlotsType={timeSlotsType} meeting={availability}  />
         ))
       ) : (
-        <p>No time slot available</p>
+        <p>{noTimeSlotMessage}</p>
       )}
     </div>
   );

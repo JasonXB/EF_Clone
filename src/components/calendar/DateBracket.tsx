@@ -8,7 +8,7 @@ import {
 } from 'date-fns';
 import TimeSlots from '../../../src/components/timeSlots/TimeSlots';
 import { utcToZonedTime } from 'date-fns-tz';
-import { DateBoxProps, CALENDAR_TYPE_CLASSES } from '../../interface/book-meeting/book-with-mentor.interface'
+import { DateBoxProps, CALENDAR_TYPE_CLASSES, TIMESLOTS_TYPE_CLASSES } from '../../interface/book-meeting/book-with-mentor.interface'
 import { CalendarContext } from '../../../state-management/ReactContext/CalendarContext';
 import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
 
@@ -75,7 +75,7 @@ const DateBracket = ({ day, dayIndex }: DateBoxProps) => {
           </h4>
           {/* timeslots in bracket */}
           <div>
-            <TimeSlots />
+            <TimeSlots timeSlotsType={TIMESLOTS_TYPE_CLASSES.list} day={day}/>
           </div>
         </div>
       </button>
