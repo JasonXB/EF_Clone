@@ -40,6 +40,9 @@ export interface MeetingProps {
 export interface TimeSlotSetterProps {
   meeting: Availability
 }
+export interface TimeTextFieldProps {
+  time: string
+}
 
 
 //used in timeslots and Calendar component

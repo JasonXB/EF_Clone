@@ -13,10 +13,7 @@ function classNames(...classes: (string | boolean)[]) {
 }
 
 const TimeSlot = ({ meeting, timeSlotsType }: MeetingProps) => {
-  const { selectedTimeSlot, setSelectedTimeSlot, IANACounterpart } =
-    useContext(TimezoneContext);
-
-
+  const { selectedTimeSlot, setSelectedTimeSlot, IANACounterpart } = useContext(TimezoneContext);
 
   //converted timezones by referring to the useState variable IANACounterpart-------------
   const convertedStartTime = utcToZonedTime(

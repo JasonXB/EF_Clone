@@ -5,7 +5,7 @@ import Button from '../buttons/reusable-buttons';
 import { Availability } from '../../interface/book-meeting/book-with-mentor.interface'
 import { CalendarContext } from '../../../state-management/ReactContext/CalendarContext';
 import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
-import TimeSlotSetter from '../timeSlots/TimeSlotSetter';
+import TimeSlotSetter from '../timeSlots/timeSlotsSetter/TimeSlotSetter';
 
 
 const ScheduleModal = () => {
