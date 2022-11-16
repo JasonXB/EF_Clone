@@ -1,88 +1,79 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import { useRef, useState } from 'react';
 import Layout from '../../src/components/Layout';
+import Button, { buttonVariants } from '../../src/components/buttons/reusable-buttons'; //  prettier-ignore
+import { loginAPI } from '../../src/api/auth';
+import { useAuth } from '../../state-management/ReactContext/AuthContext';
+import { Roles } from '../../src/enum/role.enum';
+import Router from 'next/router';
+// import useAuthStatusCheck from '../../src/hooks/useAuthStatusCheck';
+// import Spinner from '../../src/components/loadingVisuals/spinner';
 
-import Button, { buttonVariants } from '../../src/components/buttons/reusable-buttons';
+const Login: NextPage = ({}) => {
+  const { clientSideLogin, logout } = useAuth();
 
-// import React, { useRef } from 'react';
-// import { useState } from 'react';
+  const [username, setUsername] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [role, setRole] = useState<Roles>(Roles.mentee);
 
-const login: NextPage = ({}) => {
-  // related to grabbing the values in the username and password input fields; commented out for now
-  // const userName = useRef<HTMLInputElement | null>(null);
-  // const passWord = useRef<HTMLInputElement | null>(null);
-    // function handleLogin() {
-  //   console.log(userName.current?.value);
-  //   console.log(passWord.current?.value);
-  // }
+  async function handleLogin() {
+    const accessToken = await loginAPI(username, email, password);
+    clientSideLogin(email, accessToken);
+    if (role === Roles.mentee) {
+      Router.push('/mentee');
+    } else {
+      Router.push('/mentor');
+    }
+  }
 
-  // mentor mentee choosing login button; when clicked, the blue color stays
-  // const [mentorChosen, setMentorChosen] = useState(false) 
-  // const [menteeChosen, setMenteeChosen] = useState(false)
-  // const handleMentorChoice = () => {
-  //   setMentorChosen(true)
-  //   setMenteeChosen(false)
-  // }
-  // const handleMenteeChoice = () => {
-  //   setMenteeChosen(true)
-  //   setMentorChosen(false)
-  // }
+  function switchSignupRole() {
+    if (role === Roles.mentee) {
+      setRole(Roles.mentor);
+    }
+    if (role === Roles.mentor) {
+      setRole(Roles.mentee);
+    }
+  }
 
   return (
-    <div>
-      <Head>
-        <title>Empowered Futures - Login</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <Layout>
+    <Layout headTitle="Login">
       <div className="outer font-mainFont rounded-5 px-5 pt-[40px]">
-        <div className="outer-border py-4 px-5">
-          <section className="inner-section p-2">
-            <div className="inner h-full">
-              <div className="inner-full flex justify-center items-center flex-wrap h-full">
-                <div className="left-inside text-center"></div>
+        <div className="px-5 py-4 outer-border">
+          <section className="p-2 inner-section">
+            <div className="h-full inner">
+              <div className="flex flex-wrap items-center justify-center h-full inner-full">
+                <div className="text-center left-inside"></div>
 
                 <div className="right-inside xs:w-200 sm:w-[480px]">
                   <span className="text-primary-1 text-[24px] font-semibold">
-                    Login
+                    Login as a {role === Roles.mentee ? 'Mentee' : 'Mentor'}
                   </span>
+                  <p>
+                    Not a {role === Roles.mentee ? 'Mentee' : 'Mentor'}?{' '}
+                    <a
+                      onClick={() => {
+                        switchSignupRole();
+                      }}
+                      className="text-blue-600 underline hover:text-blue-800 visited:text-purple-600"
+                    >
+                      Login as a {role === Roles.mentee ? 'Mentor' : 'Mentee'}
+                    </a>
+                  </p>
 
-                  {/* Mentor Mentee Buttons */}
-                  {/* <span className="block font-medium py-2">
-                    Select your account type
-                  </span> */}
-                  
-                  {/* <div className='flex'>
-                    <div className='pr-2'>
-                    <button 
-                      className={`${mentorChosen ? 'border-primary-1 bg-primary-5 drop-shadow-lg': ''}border border-[3px] h-[50px] w-[110px] rounded-[15px] hover:bg-primary-5 hover:border-primary-1 hover:drop-shadow-lg`}
-                      onClick={handleMentorChoice}
-                      >
-                      Mentor
-                    </button>
-                    </div>
-
-                    <div className=''>
-                    <button 
-                      className={`${menteeChosen ? 'border-primary-1 bg-primary-5 drop-shadow-lg': ''}border border-[3px] h-[50px] w-[110px] rounded-[15px] hover:bg-primary-5 hover:border-primary-1 hover:drop-shadow-lg`}
-                      onClick={handleMenteeChoice}
-                      >
-                      Mentee
-                    </button>
-                    </div>
-                  </div> */}
-
-                  <div className="flex text-[12px] md:text-[70%]">
+                  <div className="flex ">
                     <Button
-                      variant="tertiary"
+                      variant="simple"
                       icon="google"
                       clickHandler={() =>
-                        console.log('will be updated to make a request function')
+                        console.log(
+                          'will be updated to make a request function'
+                        )
                       }
-                      >
+                    >
                       Continue with google
-                      </Button>
+                    </Button>
                   </div>
 
                   <form autoComplete="off" className="">
@@ -92,8 +83,30 @@ const login: NextPage = ({}) => {
                         className="block border-2 rounded-lg h-[34px] w-full px-2"
                         placeholder=""
                         type="text"
+                        name="username"
+                        // ref={userName} // for the function up top
+                        onChange={(e) => {
+                          e.preventDefault();
+                          const username = e.target.value;
+                          setUsername(username);
+                        }}
+                        required
+                        autoFocus
+                      />
+                    </div>
+                    <div className="py-3">
+                      <span className="font-medium">Email</span>
+                      <input
+                        className="block border-2 rounded-lg h-[34px] w-full px-2"
+                        placeholder=""
+                        type="text"
                         name="email"
                         // ref={userName} // for the function up top
+                        onChange={(e) => {
+                          e.preventDefault();
+                          const email = e.target.value;
+                          setEmail(email);
+                        }}
                         required
                         autoFocus
                       />
@@ -105,6 +118,11 @@ const login: NextPage = ({}) => {
                       type="password"
                       name="password"
                       // ref={passWord} //for the function up top
+                      onChange={(e) => {
+                        e.preventDefault();
+                        const pw = e.target.value;
+                        setPassword(pw);
+                      }}
                       required
                       autoFocus
                     />
@@ -112,32 +130,32 @@ const login: NextPage = ({}) => {
                     <div className="py-6">
                       <Button
                         variant="primary"
-                        type= "submit"
-                        clickHandler={() =>
-                          console.log('LOGIN BUTTON will be updated to make a request function')
-                        }
+                        type="submit"
+                        clickHandler={(e) => {
+                          e.preventDefault();
+                          handleLogin();
+                        }}
                       >
-                      Login
+                        Login
                       </Button>
-
                     </div>
 
                     <div className="font-medium">
                       Forgot password?<span> </span>
-                      <span className='text-primary-1 hover:text-primary-2 underline'><a href="#">Click Here.</a></span>
+                      {/* fix hover */}
+                      <span className="underline text-primary-1 hover:text-secondary-3">
+                        <a href="#">Click Here.</a>
+                      </span>
                     </div>
                   </form>
                 </div>
               </div>
-
             </div>
           </section>
         </div>
       </div>
-      </Layout>
-
-    </div>
+    </Layout>
   );
 };
 
-export default login;
+export default Login;

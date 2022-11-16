@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext", "ES2020",],
+    "lib": ["dom", "dom.iterable", "esnext", "ES2020"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -15,6 +15,14 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/become-a-mentor.jsx", "pages/become-a-mentor.jsx", "pages/bubbleTagsTesting.jsx", "pages/book-meeting/[mentorId].tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "pages/become-a-mentor.jsx",
+    "pages/become-a-mentor.jsx",
+    "pages/bubbleTagsTesting.jsx",
+    "pages/book-meeting/[mentorId].tsx"
+  ],
   "exclude": ["node_modules"]
 }

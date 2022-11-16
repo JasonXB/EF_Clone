@@ -1,18 +1,18 @@
 import UpcomingMeetingCard from './upcoming-meetings-card';
-
 import { Tab } from '@headlessui/react';
 import { Fragment } from 'react';
+import Meeting from '../../interface/meeting.interface';
 
-import { UpcomingMeetingCardProps } from './mentor-interface';
+interface UpcomingAvailabilityContainerProps {
+  meetings: Meeting[];
+}
 
-type dataType = {
-  data: UpcomingMeetingCardProps[];
-};
-
-const DisplayUpcomingAvailabilityContainer = (data: dataType) => {
+function UpcomingAvailabilityContainer({
+  meetings,
+}: UpcomingAvailabilityContainerProps) {
   const toggleClasses = (isSelected: boolean) => {
     const classes = {
-      selected: 'bg-primary-5 text-primary-1 rounded-2xl ',
+      selected: 'bg-secondary-1 text-primary-1 rounded-2xl ',
       unselected: 'text-black',
     };
     return `${
@@ -23,7 +23,7 @@ const DisplayUpcomingAvailabilityContainer = (data: dataType) => {
   return (
     <div className="mt-16 max-w-[1400px] mx-auto">
       <Tab.Group>
-        <Tab.List className=" border-[1px] border-smoke-1 rounded-2xl w-11/12 ss:w-1/2  mx-auto flex min-w-[340px]">
+        <Tab.List className=" border-[1px] border-hue-700 rounded-2xl w-11/12 ss:w-1/2  mx-auto flex min-w-[340px]">
           <Tab as={Fragment}>
             {({ selected }) => (
               <button className={toggleClasses(selected)}>
@@ -42,21 +42,21 @@ const DisplayUpcomingAvailabilityContainer = (data: dataType) => {
             {/* Upcoming meeting/availability   toggle */}
             <div className="space-y-4">
               {/* logic to check if there are any upcoming meetings */}
-              {data.data.length === 0 ? (
+              {meetings.length === 0 ? (
                 <div className="w-1/2 mx-auto mt-[10%]">
-                  <p className="font-bold text-center text-smoke-2">
+                  <p className="font-bold text-center text-hue-700">
                     Sorry no upcoming meetings! <br /> Check back later.
                   </p>
                 </div>
               ) : (
-                data.data.map((each, i) => (
-                  <UpcomingMeetingCard key={i} props={each} />
+                meetings.map((meeting, i) => (
+                  <UpcomingMeetingCard key={i} meeting={meeting} />
                 ))
               )}
             </div>
           </Tab.Panel>
           <Tab.Panel className="h-[30vw]">
-            <h4 className="mt-[15%] text-smoke-4 text-center">
+            <h4 className="mt-[15%] text-hue-400 text-center">
               Calendar coming soon
             </h4>
           </Tab.Panel>
@@ -64,6 +64,6 @@ const DisplayUpcomingAvailabilityContainer = (data: dataType) => {
       </Tab.Group>
     </div>
   );
-};
+}
 
-export default DisplayUpcomingAvailabilityContainer;
+export default UpcomingAvailabilityContainer;

@@ -13,19 +13,18 @@ const StatusOptionButton = ({
   index,
   mentorStatus,
   setMentorStatus,
-  UpdateStatusList
+  UpdateStatusList,
 }: OptionType) => {
-
   const UpdateMentorStatus = useCallback(() => {
     setMentorStatus(option);
     // use updateStatus function for sort automatically when you update mentor status
     // updateStatusList(); => need testing once connect with DB
-  },[setMentorStatus, option]);
+  }, [setMentorStatus, option]);
 
   return (
     <li
       className={`cursor-pointer flex items-center gap-1 w-28 px-2 rounded-lg ease-in duration-100 transition-all ${
-        option === mentorStatus ? 'bg-smoke-3' : 'bg-smoke-5'
+        option === mentorStatus ? 'bg-hue-400' : 'bg-hue-300'
       } hover:shadow-md`}
       key={index}
       onClick={UpdateMentorStatus}
