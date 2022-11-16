@@ -3,9 +3,10 @@ import Layout from '../../src/components/Layout';
 import React, { useEffect, useState } from 'react';
 import { placeholderDataForRequest as dummyMentors } from '../../src/tempData/temp-data-mentor';
 import { MentorStatus } from '../../src/enum/MentorStatus.enum';
-import useAuthStatusCheck from '../../src/hooks/useAuthStatusCheck';
-import Spinner from '../../src/components/loadingVisuals/spinner';
-import Router from 'next/router';
+import MentorListEntry from '../../src/components/adminPanel/mentor-list-entry';
+// import useAuthStatusCheck from '../../src/hooks/useAuthStatusCheck';
+// import Spinner from '../../src/components/loadingVisuals/spinner';
+// import Router from 'next/router';
 
 interface MentorType {
   name: string;
