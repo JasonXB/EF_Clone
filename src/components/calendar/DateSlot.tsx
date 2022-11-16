@@ -36,7 +36,7 @@ const DateSlot = ({ day, dayIndex }: DateBoxProps) => {
   const { setSelectedTimeSlot, IANACounterpart, selectedTimeSlot } = useContext(TimezoneContext);
 
   //variable used to adjust the date available based on the timezone
-  const timeZonedAvailabilities = schedule.specific.map((availability) => {
+  const timeZonedAvailabilities = schedule.specific && schedule.specific.map((availability) => {
     return {
       startDatetime: utcToZonedTime(
         availability.startDatetime,

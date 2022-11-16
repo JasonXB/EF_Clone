@@ -181,7 +181,7 @@ const BookMeeting = () => {
                 {/* style to separate the calendar and timeslot blocks in its own grids */}
                 <div className="md:grid md:grid-cols-3">
                   <div className="col-span-2">
-                    <Calendar meeting_availability={meeting_availability} calendarType={CALENDAR_TYPE_CLASSES.medium} />
+                    <Calendar calendarType={CALENDAR_TYPE_CLASSES.medium} />
                   </div>
 
                   {/* available time slots block */}
@@ -215,7 +215,7 @@ const BookMeeting = () => {
                     </div>
                     {/* -- */}
                     {/* -- DISPLAY AVAILABILTIES -- */}
-                    <TimeSlots meeting_availability={meeting_availability} calendarType={CALENDAR_TYPE_CLASSES.medium} />
+                    <TimeSlots />
                     {/* -- */}
                   </div>
                 </div>
