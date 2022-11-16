@@ -47,7 +47,7 @@ const TimeSlot = ({ meeting, timeSlotsType }: MeetingProps) => {
     If timeSlotsType is a picker mainly used in Dateslot, it will refer to the selectedDay
    */
   if(timeSlotsType == TIMESLOTS_TYPE_CLASSES.list){
-    timeSlotDesign = 'text-dark'
+    timeSlotDesign = 'text-dark flex items-start pl-5'
   } else if(timeSlotsType == TIMESLOTS_TYPE_CLASSES.picker){
     timeSlotDesign = classNames(
       isTimeSlotSelected() && 'border-4 bg-primary-5 font-bold',
