@@ -3,7 +3,6 @@ import Head from 'next/head';
 import Navbar from './header/Navbar';
 import LayoutStyle from '../../styles/Layout.module.css';
 import Footer from './footer/Footer';
-import Profilesettings from '../../pages/profileSettings/profile-settings'
 type LayoutProps = {
   headTitle?: string;
   isConfirmedMeetingPg?: boolean;
