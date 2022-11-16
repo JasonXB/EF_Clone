@@ -6,7 +6,7 @@ const FooterLink = ({ url, text, icon }: FooterLinkProps) => {
       {/* If url string includes 'http' (external link), open in new tab */}
       <a
         href={url}
-        className="flex hover:bg-smoke-2 flex-row font-bold text-light cursor-pointer rel='noreferrer'"
+        className="flex hover:bg-hue-400  flex-row font-bold text-light cursor-pointer rel='noreferrer'"
         target={url?.includes('http') ? '_blank ' : ''}
       >
         {/* If 'icon' property exists in link, display icon  */}

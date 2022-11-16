@@ -33,12 +33,7 @@ const TestimonialCard = ({ props }: TestimonialCardProps) => {
   };
   //style for less then 600px needs to be adjusted in future
   return (
-    <div
-      className="my-4 mx-auto sm:mx-4   flex space-y-4 flex-col items-center max-w-[412px] rounded-t-[15%] p-8"
-      style={{
-        boxShadow: ' 0 0.2rem 1.25rem rgba(0, 0, 0, 0.2)',
-      }}
-    >
+    <div className="my-4 shadow-3xl mx-auto sm:mx-4  bg-light flex space-y-4 flex-col items-center max-w-[412px] rounded-t-[15%] p-8">
       <div
         className="rounded-full"
         style={{ clipPath: 'circle(70px at center)' }}
@@ -49,14 +44,14 @@ const TestimonialCard = ({ props }: TestimonialCardProps) => {
       <p>{company}</p>
       <div>
         {' '}
-        <div className="flex items-center mb-4 text-primary-4">
+        <div className="flex items-center mb-4 text-secondary-1">
           {stars(rate)}
         </div>
       </div>
       <div>
         <blockquote
-          className=" flex flex-col before:leading-4  after:self-end before:font-bold before:text-5xl before:text-primary-2
-        after:font-bold after:text-5xl after:text-primary-2 
+          className=" flex flex-col before:leading-4  after:self-end before:font-bold before:text-5xl before:text-primary-1
+        after:font-bold after:text-5xl after:text-primary-1 
          before:content-[open-quote] after:content-[close-quote]  "
         >
           <p className="w-10/12 mx-auto ">{reviewBlurb}</p>

@@ -1,6 +1,8 @@
 import Link from 'next/link';
+import Router from 'next/router';
 import { useState } from 'react';
-import Layout from '../src/components/Layout';
+import Button from '../../src/components/buttons/reusable-buttons';
+import Layout from '../../src/components/Layout';
 
 export default function FindAMentor() {
   let [query, setQuery] = useState('');
@@ -10,12 +12,12 @@ export default function FindAMentor() {
         <div className={`container mx-auto `}>
           <div className="flex flex-col h-[720px]">
             <div className="flex flex-row justify-center">
-              <span className="text-primary-1 text-5xl font-semibold my-20">
+              <span className="my-20 text-5xl font-semibold text-primary-1">
                 Search for the perfect mentor for you!
               </span>
             </div>
             <div className="flex flex-row justify-center space-x-4 max-h-[70px]">
-              <div className="flex flex-row space-x-0 rounded-[23px] shadow-[0px_3px_6px_#00000030] border border-[#707070]">
+              <div className="flex flex-row space-x-0 rounded-[23px] shadow-branded-1 border border-hue-700">
                 <input
                   type="text"
                   className="w-[755px] p-4 text-[28px] rounded-[23px] outline-none"
@@ -35,11 +37,15 @@ export default function FindAMentor() {
                   </svg>
                 </div>
               </div>
-              <Link href={`mentor-list${query ? `?q=${query}` : ''}`}>
-                <button className="bg-gradient-to-r from-secondary-1 to-[#EF4C3A] w-[222px] rounded-[30px] text-white text-[30px] font-semibold">
-                  Search
-                </button>
-              </Link>
+
+              <Button
+                variant="primary"
+                clickHandler={() =>
+                  Router.push(`mentor-list${query ? `?q=${query}` : ''}`)
+                }
+              >
+                Search
+              </Button>
             </div>
           </div>
         </div>

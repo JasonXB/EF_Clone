@@ -35,3 +35,7 @@
 //     }
 //   }
 // }
+
+export {};
+// empty export fixes an error but serves no purpose other than that
+// https://stackoverflow.com/questions/56577201/why-is-isolatedmodules-error-fixed-by-any-import#:~:text=Typescript%20treats%20files%20without%20import/exports%20as%20legacy%20script%20files.%20As%20such%20files%20are%20not%20modules%20and%20any%20definitions%20they%20have%20get%20merged%20in%20the%20global%20namespace.%20isolatedModules%20forbids%20such%20files.

@@ -7,7 +7,6 @@ import MentorshipRequest from '../../src/interface/mentorship-request';
 import MockMentorDB from '../../src/tempData/MockMentorDB';
 import getRandomInt from '../../src/util/random-int';
 
-//! check whether a user is authenticated as a mentor, otherwise user is redirected to /auth/login
 export default function MentorDashboard() {
   let [mentorshipRequests, setMentorshipRequests] = useState<
     MentorshipRequest[]

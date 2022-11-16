@@ -2,6 +2,7 @@ import type { NextPage } from 'next';
 import Layout from '../../src/components/Layout';
 import React, { useEffect, useState } from 'react';
 import { placeholderDataForRequest as dummyMentors } from '../../src/tempData/temp-data-mentor';
+
 import { MentorStatus } from '../../src/enum/MentorStatus.enum';
 import MentorListEntry from '../../src/components/adminPanel/mentor-list-entry';
 // import useAuthStatusCheck from '../../src/hooks/useAuthStatusCheck';
@@ -19,7 +20,6 @@ interface MentorType {
   goalOfMeeting: string;
 }
 
-//! check if the user is authenticated as an admin (req'd to view this page)
 const AdminPanelDashboard: NextPage = ({}) => {
   const [sortBy, setSortBy] = useState<string>('all');
   const [searchedBy, setSearchedBy] = useState<string>('');
@@ -57,12 +57,10 @@ const AdminPanelDashboard: NextPage = ({}) => {
     );
   };
 
-  //! This component is left unprotected deliberately
-  // Add protection later (need this component visible for presentation on Nov 3rd)
   return (
     <Layout headTitle="Admin Panel" background="none">
       <div className="relative flex items-center justify-center w-full h-screen">
-        <div className="absolute top-0 left-0 z-0 w-full bg-smoke-4 h-60"></div>
+        <div className="absolute top-0 left-0 z-0 w-full bg-hue-400 h-60"></div>
         <div className="relative z-50 w-5/6 p-4 m-auto rounded-md bg-light md:w-2/3 h-5/6 drop-shadow-lg">
           <h1 className="text-3xl font-semibold">Dashboard</h1>
           <div className="w-full overflow-scroll">
@@ -107,7 +105,7 @@ const AdminPanelDashboard: NextPage = ({}) => {
           </div>
 
           <div className="bg-light">
-            <div className="flex items-center justify-between p-4 bg-smoke-4">
+            <div className="flex items-center justify-between p-4 bg-hue-400">
               <h4 className="text-lg md:text-xl">Mentor Details</h4>
               <div className="flex h-8 overflow-hidden">
                 <svg

@@ -3,9 +3,8 @@ import Layout from '../src/components/Layout';
 import style from '../styles/aboutUs.module.css';
 import { GetStaticProps } from 'next';
 
-// Statically renders page and sets props equal to an empty object
 export const getStaticProps: GetStaticProps = async (context) => {
-  return { props: {} };
+  return { props: {} }; // Statically renders page and sets props equal to an empty object
 };
 
 const aboutUs: NextPage = ({}) => {

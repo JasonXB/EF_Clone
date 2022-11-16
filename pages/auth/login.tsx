@@ -62,9 +62,9 @@ const Login: NextPage = ({}) => {
                     </a>
                   </p>
 
-                  <div className="flex text-[12px] md:text-[70%]">
+                  <div className="flex ">
                     <Button
-                      variant="tertiary"
+                      variant="simple"
                       icon="google"
                       clickHandler={() =>
                         console.log(
@@ -142,7 +142,8 @@ const Login: NextPage = ({}) => {
 
                     <div className="font-medium">
                       Forgot password?<span> </span>
-                      <span className="underline text-primary-1 hover:text-primary-2">
+                      {/* fix hover */}
+                      <span className="underline text-primary-1 hover:text-secondary-3">
                         <a href="#">Click Here.</a>
                       </span>
                     </div>
