@@ -59,25 +59,25 @@ function MentorshipRequestCard({
           />
         </div>
         <span className="text-lg truncate max-w-[13ch] ">{full_name}</span>
-        <h2 className="max-w-full text-sm text-center text-smoke-2">
+        <h2 className="max-w-full text-sm font-light text-center text-hue-700">
           {/* | divider looks a little weird on certain break points. trying to think of dynamic solution */}
           {title}
           <br />
         </h2>
         {/* temp option for email? */}
-        <a href="mailto:name@email.com" className="text-xs text-primary-2">
+        <a href="mailto:name@email.com" className=" text-primary-1">
           {email}
         </a>
       </div>
       <div className="w-full h-3/4 ">
         <div className="flex px-4 py-2 my-2 bg-white rounded-md shadow-sm wrap ">
-          <h3 className="flex flex-wrap pr-2 mx-auto text-sm w-fit">
+          <h4 className="flex flex-wrap pr-2 mx-auto text-base w-fit">
             <span>{date.toDateString()}</span>
-          </h3>
+          </h4>
         </div>
         <div className="flex-1 px-4 py-2 my-2 bg-white rounded-md shadow-sm min-h-[120px]">
-          <h3 className="text-xl">Goal of the meeting</h3>
-          <p className="text-xs line-clamp-2 sm:line-clamp-3">{goal}</p>
+          <h6 className="text-xl">Goal of the meeting</h6>
+          <p className="line-clamp-2 sm:line-clamp-3">{goal}</p>
           {/* still needs 'read more'. not sure what response they want to happen when clicked */}
         </div>
 

@@ -123,7 +123,7 @@ export default function MentorList() {
             <div className="flex flex-col w-1/5 mr-20 space-y-8">
               <div
                 onClick={() => router.back()}
-                className="flex flex-row cursor-pointer p-2 rounded-[25px] text-white max-w-[115px] bg-gradient-to-r from-secondary-1 to-[#ED493D]"
+                className="flex flex-row cursor-pointer p-2 rounded-[25px] text-white max-w-[115px] bg-gradient-to-r from-gradient-var-1 to-gradient-var-2"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -138,11 +138,11 @@ export default function MentorList() {
               </div>
               <div className="space-y-2">
                 <div className="flex flex-row">
-                  <span className="text-secondary-1 ml-2 font-bold text-[22px]">
+                  <span className="text-primary-2 ml-2 font-bold text-[22px]">
                     Filter Mentor Profiles:
                   </span>
                 </div>
-                <div className="flex flex-row border border-[#707070] max-h-[60px] rounded-[23px]">
+                <div className="flex flex-row border border-hue-700 max-h-[60px] rounded-[23px]">
                   <input
                     type="text"
                     placeholder="Type Keywords"
@@ -207,12 +207,7 @@ export default function MentorList() {
             </div>
             <div className="flex flex-col w-2/3 space-y-10">
               <div className="flex flex-row justify-center">
-                <div
-                  className="text-center mr-20 text-primary-1 font-bold text-[54px]"
-                  style={{
-                    textShadow: '0px 3px 6px #00000029',
-                  }}
-                >
+                <div className="text-center mr-20 text-primary-1 font-bold text-[54px]">
                   Find a Mentor
                 </div>
               </div>
@@ -230,26 +225,26 @@ export default function MentorList() {
                     <div>{''}</div>
                     <div className="flex flex-row justify-center space-x-4">
                       <button
-                        className="text-xl font-semibold text-secondary-1"
+                        className="text-xl font-semibold text-primary-2"
                         disabled={page === 1}
                         onClick={() => setPage(page - 1)}
                       >
                         {'<'}
                       </button>
-                      <div className="w-[60px] h-[45px] pt-2 text-center font-bold text-secondary-1 border rounded-[25px] border-secondary-1">
+                      <div className="w-[60px] h-[45px] pt-2 text-center font-bold text-primary-2 border rounded-[25px] border-primary-2">
                         {page}
                       </div>
                       <button
                         onClick={() => setPage(page + 1)}
                         disabled={page >= maxPages}
-                        className="text-xl font-semibold text-secondary-1"
+                        className="text-xl font-semibold text-primary-2"
                       >
                         {'>'}
                       </button>
                     </div>
                     <div>
                       <a href="#">
-                        <div className="p-2 font-semibold border rounded-xl text-secondary-1 border-secondary-1">
+                        <div className="p-2 font-semibold border rounded-xl text-primary-2 border-primary-2">
                           ^ Top of Page
                         </div>
                       </a>

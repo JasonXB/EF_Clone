@@ -20,17 +20,24 @@
 .primaryBG {
   height: 100vh;
 }
+
 .primaryBG::before {
   content: '';
-  background-image: url(../public/assets/primaryBackground.png);
-  background-size: cover;
+  background: url(../public/assets/gears-left.png) left no-repeat,
+    url(../public/assets/gears-right.png) right top 5% no-repeat;
   position: absolute;
   top: 0px;
   right: 0px;
   bottom: 0px;
   left: 0px;
-  opacity: 0.25;
+  opacity: 0.5;
   z-index: -10;
+}
+
+@media (max-width: 1024px) {
+  .primaryBG::before {
+    background: url(../public/assets/gears-right.png) right top 5% no-repeat;
+  }
 }
 
 .secondaryBG {

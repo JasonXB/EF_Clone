@@ -1,13 +1,7 @@
 import { useContext } from 'react';
-import {
-  format,
-  getDay,
-  isSameDay,
-  isToday,
-  parseISO,
-} from 'date-fns';
+import { format, getDay, isSameDay, isToday, parseISO } from 'date-fns';
 import { utcToZonedTime } from 'date-fns-tz';
-import { DateSlotProps } from '../../interface/book-meeting/book-with-mentor.interface'
+import { DateSlotProps } from '../../interface/book-meeting/book-with-mentor.interface';
 import { CalendarContext } from '../../../state-management/ReactContext/CalendarContext';
 import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
 
@@ -25,8 +19,6 @@ let colStartClasses = [
   'col-start-6',
 ];
 
-
-
 const DateSlot = ({ day, dayIndex, availabilities }: DateSlotProps) => {
   const { selectedDay, setSelectedDay } = useContext(CalendarContext);
   const { setSelectedTimeSlot, IANACounterpart } = useContext(TimezoneContext);
@@ -40,15 +32,20 @@ const DateSlot = ({ day, dayIndex, availabilities }: DateSlotProps) => {
         availability.startDatetime,
         IANACounterpart as unknown as string
       ),
-      endDatetime: utcToZonedTime(availability.endDatetime, IANACounterpart as unknown as string),
+      endDatetime: utcToZonedTime(
+        availability.endDatetime,
+        IANACounterpart as unknown as string
+      ),
     };
   });
 
   //check if there is availability in a date by referring to the availabilities prop
   const isAvailable = timeZonedAvailabilities.some(
     (availability) =>
-      isSameDay(parseISO(availability.startDatetime as unknown as string), day) ||
-      isSameDay(availability.startDatetime, day)
+      isSameDay(
+        parseISO(availability.startDatetime as unknown as string),
+        day
+      ) || isSameDay(availability.startDatetime, day)
   );
 
   //select date event handler-----------------
@@ -69,7 +66,7 @@ const DateSlot = ({ day, dayIndex, availabilities }: DateSlotProps) => {
           // ----- BACKGROUND CONDITIONS -----
           //selected day is today
           isSameDay(zonedDay, selectedDay) &&
-            'bg-primary-5 border-4 border-primary-1 py-9',
+            'bg-secondary-1 border-4 border-primary-1 py-9',
           //not the selected day
           !isSameDay(zonedDay, selectedDay) && 'hover:bg-gray-200 px-10',
           // ----- TEXT CONDITIONS -----------
@@ -78,7 +75,7 @@ const DateSlot = ({ day, dayIndex, availabilities }: DateSlotProps) => {
           //has availability
           isAvailable && 'text-black',
           //has no availability
-          !isAvailable && 'text-smoke-1 line-through',
+          !isAvailable && 'text-hue-700 line-through',
           // ----- DEFAULT CLASS -------------
           'mx-auto flex h-8 w-8 items-center justify-center rounded py-10 px-9'
         )}
