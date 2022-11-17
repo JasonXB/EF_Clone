@@ -16,6 +16,7 @@ import { useAuth } from '../../../state-management/ReactContext/AuthContext';
 import { mentorsData } from '../../../src/tempData/dummyMentorsForCalendar';
 import { Mentor } from '../../../src/interface/book-meeting/book-with-mentor.interface';
 import { getCredentialsFromLocalStorage } from '../../../src/api/localStorage';
+import useWindowDimensions  from '../../../src/hooks/useWindowDimensions'
 
 /*
   AREAS OF IMPROVEMENT IN THE FEATURES: 
@@ -35,6 +36,10 @@ const BookMeeting = () => {
   const router = useRouter();
   const mentorId = router.query.mentorId;
   const [thisMentor, setThisMentor] = useState({} as Mentor);
+  const screen = useWindowDimensions()
+
+  console.log(screen);
+  
 
   // console.log('getCredentialsFromLocalStorage', getCredentialsFromLocalStorage());
   
@@ -103,6 +108,7 @@ const BookMeeting = () => {
       time: formatISO(startTime),
       meetingMethod: 'Google Meets',
     };
+    //variables used in axios post
     const config = {
       headers: { 
         'Content-Type': 'application/json',
@@ -137,34 +143,53 @@ const BookMeeting = () => {
     }
   };
 
+  const determineAvatarSize = () => {
+    switch(screen) {
+      case 'xs':
+      case 'ss':
+        return 'small'
+      case 'sm':
+      case 'md':
+        return 'mediumLarge'
+      case 'lg':
+      case 'xl':
+        return 'large'
+      default:
+        return 'large'
+    }
+  }
+
   return (
     <Layout background="none">
       {meeting_availability?.specific && (
-        <div className="flex flex-row bg-hue-300 m-[-2rem]">
-          {/* left side with basic info */}
-          <div className="flex flex-col items-center w-1/5 h-full">
+        <div className="flex lg:flex-row lg:bg-hue-300 m-[-2rem] xs:flex-col">
+          {/* div for profile picure and with basic info */}
+          <div className="flex lg:flex-col lg:items-center lg:w-1/5 lg:h-full xs:pt-5 xs:pl-5">
             {/* basic info block*/}
-            <div className="absolute flex flex-col items-center top-1/3">
+            <div className="lg:absolute flex lg:flex-col xs:flex-row xs:space-x-10 items-center top-1/3">
               <Avatar
                 imgLocation={
                   imgUrl ||
                   'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNzIyMTJ8MHwxfHNlYXJjaHwxfHxwcm9maWxlJTIwcGljfGVufDB8fHx8MTY2NjA2NTM1Nw&ixlib=rb-1.2.1&q=80&w=400'
                 }
-                displaySize="large"
+                displaySize={determineAvatarSize()}
                 personsName={fullName}
               />
-              <h5 className="mt-2 font-medium text-primary-1">{fullName}</h5>
-              <p className="text-sm">
-                {position} at {company}
-              </p>
+              {/* name and title */}
+              <div>
+                <h5 className="mt-2 font-medium text-primary-1 xs:text-xl md:text-3xl">{fullName}</h5>
+                <p className="text-sm">
+                  {position} at {company}
+                </p>
+              </div>
             </div>
             {/* --- */}
           </div>
           {/* --- */}
 
           {/* right side with meeting questions */}
-          <div className="w-4/5 h-full px-16 bg-white py-28">
-            <h4 className="mb-16 font-semibold text-primary-1">
+          <div className="lg:w-4/5 h-full xs:px-10 xl:px-16 bg-white py-28 bg-red-100 xs:pt-10">
+            <h4 className="mb-16 font-semibold text-primary-1 xs:text-2xl">
               Schedule your Meeting with {firstName}
             </h4>
             <div className="space-y-20">
@@ -243,7 +268,7 @@ const BookMeeting = () => {
               </FormItem>
               {/* ITEM 3: Review meeting information---------------------------------- */}
               <FormItem itemString={'3. Review Meeting Information'}>
-                <div className="flex flex-row justify-between w-11/12 p-4">
+                <div className="flex xl:flex-row md:flex-col justify-between w-11/12 p-4">
                   <div className="flex flex-row space-x-2 font-medium">
                     <p>Meeting with </p>
                     <p className="font-bold">{fullName}</p>
