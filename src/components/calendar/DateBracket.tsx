@@ -11,6 +11,7 @@ import { utcToZonedTime } from 'date-fns-tz';
 import { DateBoxProps, CALENDAR_TYPE_CLASSES, TIMESLOTS_TYPE_CLASSES } from '../../interface/book-meeting/book-with-mentor.interface'
 import { CalendarContext } from '../../../state-management/ReactContext/CalendarContext';
 import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
+import { ScheduleModalContext } from '../../../state-management/ReactContext/ScheduleModalContext';
 
 
 function classNames(...classes: (string | boolean)[]) {
@@ -28,7 +29,8 @@ let colStartClasses = [
 ];
 
 const DateBracket = ({ day, dayIndex }: DateBoxProps) => {
-  const { schedule, selectedDay, setSelectedDay, showScheduleModal, setShowScheduleModal } = useContext(CalendarContext);
+  const { showScheduleModal, setShowScheduleModal } = useContext(ScheduleModalContext);
+  const { schedule, selectedDay, setSelectedDay } = useContext(CalendarContext);
   const { setSelectedTimeSlot, IANACounterpart } = useContext(TimezoneContext);
   
   //variable used to adjust the date available based on the timezone

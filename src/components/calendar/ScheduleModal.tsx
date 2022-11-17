@@ -1,15 +1,23 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { format, isSameDay } from 'date-fns';
 import { utcToZonedTime } from 'date-fns-tz';
 import Button from '../buttons/reusable-buttons';
 import { Availability } from '../../interface/book-meeting/book-with-mentor.interface'
 import { CalendarContext } from '../../../state-management/ReactContext/CalendarContext';
 import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
+import { ScheduleModalContext } from '../../../state-management/ReactContext/ScheduleModalContext';
 import TimeSlotSetter from '../timeSlots/timeSlotsSetter/TimeSlotSetter';
 
 
 const ScheduleModal = () => {
-    const { selectedDay, schedule, showScheduleModal, setShowScheduleModal } = useContext(CalendarContext);
+    const { 
+        showScheduleModal, 
+        setShowScheduleModal, 
+        addNewTentativeTimes, 
+        tentativeTimes, 
+        setTentativeTimes 
+    } = useContext(ScheduleModalContext);
+    const { selectedDay, schedule } = useContext(CalendarContext);
     const { IANACounterpart } = useContext(TimezoneContext);
     
     let dateHeader = format(selectedDay, 'yyyy LLLL do EEEE')
@@ -27,6 +35,11 @@ const ScheduleModal = () => {
 
     const availabilitiesOnSelectedDay = schedule.specific && selectedDayAvailability(schedule.specific)
 
+    const clickDateBracket = () => {
+        setShowScheduleModal(false)
+        setTentativeTimes([{startDatetime: '', endDatetime: ''}])
+    }
+
     return (
         <div>
             {showScheduleModal ? (
@@ -43,7 +56,7 @@ const ScheduleModal = () => {
                     </div>
                     {/* close icon */}
                     <svg 
-                        onClick={() => setShowScheduleModal(false)} 
+                        onClick={clickDateBracket} 
                         className="w-8 h-8 hover:cursor-pointer"
                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" 
                         stroke-width="1.5" stroke="currentColor" >
@@ -64,15 +77,22 @@ const ScheduleModal = () => {
                     <div className='flex justify-between'>
                         <div className="mt-4 space-y-3 text-sm">
                             {availabilitiesOnSelectedDay && availabilitiesOnSelectedDay.length > 0 ? (
-                                availabilitiesOnSelectedDay.map((availability: Availability) => (
-                                <TimeSlotSetter meeting={availability}/>
-                                ))
+                                <>
+                                    {availabilitiesOnSelectedDay.map((availability: Availability) => (
+                                    <TimeSlotSetter meeting={availability}/>
+                                    ))}
+                                    {tentativeTimes.map((availability: Availability, index) => (
+                                        <TimeSlotSetter isTimeNull={true} index={index}/>
+                                    ))}
+                                </>
                             ) : (
-                                <TimeSlotSetter isTimeNull={true}/>
+                                tentativeTimes.map((availability: Availability, index) => (
+                                    <TimeSlotSetter isTimeNull={true} index={index}/>
+                                ))
                             )}
                         </div>
                         {/* add timeSlotSetter icon */}
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" className="w-7 h-7">
+                        <svg onClick={addNewTentativeTimes} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" className="w-7 h-7">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                         </svg>
                     </div>
