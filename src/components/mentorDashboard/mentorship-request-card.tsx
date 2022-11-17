@@ -2,25 +2,22 @@ import Image from 'next/image';
 import MentorshipRequest from '../../interface/mentorship-request';
 import Button from '../buttons/reusable-buttons';
 import profile_path from '../../../public/assets/christina-wocintechchat-com-sw3FSL9hIoI-unsplash.jpg';
-
-import ResponseMentorshipRequest from './functions/response-mentorship-request';
-import { useAuth } from '../../../state-management/ReactContext/AuthContext';
+import ResponseMentorshipRequest from './api/response-mentorship-request';
 
 interface MentorshipRequestCardProps {
   mentorshipRequest: MentorshipRequest;
-  setFetchRequest: (arg: boolean) => void;
+  setRefetchRequest: (arg: boolean) => void;
 }
 
 function MentorshipRequestCard({
   mentorshipRequest,
-  setFetchRequest,
+  setRefetchRequest,
 }: MentorshipRequestCardProps) {
   //avatar will be a future pass
 
-  const { accessToken } = useAuth();
-
+  // With default values in case not getting the correct info from api fetch
   const {
-    // id,
+    id,
     menteeInfo: { firstname },
     menteeInfo: { lastname },
     menteeInfo: { title },
@@ -88,13 +85,8 @@ function MentorshipRequestCard({
           <Button
             variant="primary"
             clickHandler={() => {
-              setFetchRequest(true);
-              ResponseMentorshipRequest(
-                'accept',
-                mentorId,
-                menteeId,
-                accessToken
-              );
+              ResponseMentorshipRequest('accept', mentorId, menteeId);
+              setRefetchRequest(true);
             }}
           >
             Accept
@@ -102,13 +94,8 @@ function MentorshipRequestCard({
           <Button
             variant="secondary"
             clickHandler={() => {
-              setFetchRequest(true);
-              ResponseMentorshipRequest(
-                'reject',
-                mentorId,
-                menteeId,
-                accessToken
-              );
+              ResponseMentorshipRequest('reject', mentorId, menteeId);
+              setRefetchRequest(true);
             }}
           >
             Reject

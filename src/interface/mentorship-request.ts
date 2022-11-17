@@ -8,7 +8,6 @@ interface MentorshipRequest {
   id: string;
   menteeInfo: Mentee;
   mentor: string;
-  // numberOfRequests: number;
 }
 
 export default MentorshipRequest;

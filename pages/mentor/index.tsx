@@ -7,32 +7,24 @@ import MentorshipRequest from '../../src/interface/mentorship-request';
 import MockMentorDB from '../../src/tempData/MockMentorDB';
 import getRandomInt from '../../src/util/random-int';
 
-import fetch from '../../src/components/mentorDashboard/functions/fetch-mentorship-requests';
-import Mentee from '../../src/interface/mentee.interface';
-
-import { useAuth } from '../../state-management/ReactContext/AuthContext';
+import fetchMentorshipRequests from '../../src/components/mentorDashboard/api/fetch-mentorship-requests';
 
 //! check whether a user is authenticated as a mentor, otherwise user is redirected to /auth/login
 export default function MentorDashboard() {
-  const { accessToken, profileId } = useAuth();
-
-  console.log(accessToken);
-
   let [mentorshipRequests, setMentorshipRequests] = useState<
     MentorshipRequest[]
   >([]);
 
-  const [fetchRequest, setFetchRequest] = useState(true);
+  // This prop is used for refetching data after accepting/rejecting the request for updating UI.
+  const [refetchRequest, setRefetchRequest] = useState(true);
 
   let [meetings, setMeetings] = useState<Meeting[]>([]);
 
   useEffect(() => {
-    if (fetchRequest) {
+    if (refetchRequest) {
       const fetchData = async () => {
-        let mentorshipRequestDataWithMenteeInfo = await fetch(
-          accessToken,
-          profileId
-        );
+        let mentorshipRequestDataWithMenteeInfo =
+          await fetchMentorshipRequests();
         setMentorshipRequests(mentorshipRequestDataWithMenteeInfo);
       };
 
@@ -53,15 +45,16 @@ export default function MentorDashboard() {
       }
 
       fetchData();
-      setFetchRequest(false);
+      setRefetchRequest(false);
     }
-  }, [fetchRequest, setFetchRequest]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [refetchRequest, setRefetchRequest]);
 
   return (
     <Layout headTitle="Mentor Dashboard" background="none">
       <DisplayMentorShipContainer
         mentorshipRequests={mentorshipRequests}
-        setFetchRequest={setFetchRequest}
+        setRefetchRequest={setRefetchRequest}
       />
       <hr className="my-6" />
       <UpcomingAvailabilityContainer meetings={meetings} />

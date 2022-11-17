@@ -10,13 +10,13 @@ import MentorshipRequestCard from './mentorship-request-card';
 
 interface ResponsiveSliderProps {
   mentorshipRequests: MentorshipRequest[];
-  setFetchRequest: (arg: boolean) => void;
+  setRefetchRequest: (arg: boolean) => void;
 }
 
 //need to fix arrows adjustment and progress dots
 const ResponsiveSlider = ({
   mentorshipRequests,
-  setFetchRequest,
+  setRefetchRequest,
 }: ResponsiveSliderProps) => {
   const Options: SplideOptions = {
     perPage: 3,
@@ -55,7 +55,7 @@ const ResponsiveSlider = ({
             <SplideSlide key={i}>
               <MentorshipRequestCard
                 mentorshipRequest={request}
-                setFetchRequest={setFetchRequest}
+                setRefetchRequest={setRefetchRequest}
               />
             </SplideSlide>
           ))}
@@ -66,12 +66,12 @@ const ResponsiveSlider = ({
 
 interface DisplayMentorShipContainerProps {
   mentorshipRequests: MentorshipRequest[];
-  setFetchRequest: (arg: boolean) => void;
+  setRefetchRequest: (arg: boolean) => void;
 }
 
 const DisplayMentorShipContainer = ({
   mentorshipRequests,
-  setFetchRequest,
+  setRefetchRequest,
 }: DisplayMentorShipContainerProps) => (
   <>
     <h1 className="py-4 text-4xl text-center md:text-5xl text-primary-1">
@@ -98,7 +98,7 @@ const DisplayMentorShipContainer = ({
             <MentorshipRequestCard
               key={i}
               mentorshipRequest={request}
-              setFetchRequest={setFetchRequest}
+              setRefetchRequest={setRefetchRequest}
             />
           ))}
       </div>
@@ -106,7 +106,7 @@ const DisplayMentorShipContainer = ({
       // display as carousel only if 3 or more
       <ResponsiveSlider
         mentorshipRequests={mentorshipRequests}
-        setFetchRequest={setFetchRequest}
+        setRefetchRequest={setRefetchRequest}
       />
     )}
   </>
