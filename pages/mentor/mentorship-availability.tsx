@@ -41,38 +41,38 @@ const MentorshipAvailability: NextPage = () => {
                     <TimeZonesDropdown />
                 </div>
                 {/* mentorship status */}
-                <h4 className="font-bold text-primary-1">Mentor Status</h4>
+                {/* <h4 className="font-bold text-primary-1">Mentor Status</h4> */}
                 {/* div for calendar */}
                 <div>
                     <h4 className="font-bold text-primary-1">Set Available Meeting Time</h4>
                     <Calendar calendarType={CALENDAR_TYPE_CLASSES.large} />
                 </div>
                 {/* div for duration */}
-                <div>
+                {/* <div>
                     <div className="border-b border-primary-1 py-5">
                         <h4 className="font-bold text-primary-1">Duration For Each Mentorship Session</h4>
                     </div>
                     <div>options</div>
-                </div>
+                </div> */}
                 {/* div for session per day */}
-                <div>
+                {/* <div>
                     <div className="border-b border-primary-1 py-5">
                         <h4 className="font-bold text-primary-1">Maximum Number Of Mentorship Sessions Per Day</h4>
                     </div>
                     <div>input</div>
-                </div>
+                </div> */}
                 {/* div for meeting method */}
-                <div>
+                {/* <div>
                     <div>Meeting Method</div>
-                </div>
+                </div> */}
                 {/* save button */}
-                <Link
+                {/* <Link
                     href={{pathname: '/mentor'}}
                 >
                     <div>
                     <Button variant="primary">Save</Button>
                     </div>
-                </Link>
+                </Link> */}
             </div>
         </Layout>
     );
