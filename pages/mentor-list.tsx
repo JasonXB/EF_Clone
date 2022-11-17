@@ -4,6 +4,8 @@ import MentorCard from '../src/components/MentorCard';
 import MockMentorDB from '../src/tempData/MockMentorDB';
 import Mentor from '../src/interface/mentor.interface';
 import { useRouter } from 'next/router';
+import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
+6
 
 enum FilterDefaults {
   Gender = 'All',
@@ -29,6 +31,55 @@ export default function MentorList() {
   let [query, setQuery] = useState(q as string);
   let [page, setPage] = useState(1);
 
+
+  // 
+  const getUsers = async () => {
+    const options: AxiosRequestConfig = {
+      "name": "Get all mentors' profile",
+			"id": "57c19079-77fa-4aad-9ce3-1d93525b1ef2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://efback.azurewebsites.net/api/mentor/list/all"
+			},
+			"response": []
+    };
+    
+    try {
+      const response: AxiosResponse = await axios.get("https://efback.azurewebsites.net/api/mentor/list/all", options);
+      let newMentors: any = []
+      response.data.mentors.map((mentor: any) => {
+      const newMentor: Mentor = {
+        id: mentor._id,
+        first_name: mentor.firstname,
+        last_name: mentor.lastname,
+        // location: mentor.address,
+        gender: mentor.gender,
+        profile_path: mentor.picture,
+        job: mentor.title,
+        bio: mentor.bio,
+        email: mentor.email,
+        tags: mentor.fields,
+        skills: mentor.skillsets
+      }
+      newMentors.push(newMentor)
+      })
+      console.log(newMentors)
+      setAllMentors(newMentors)
+      return response;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getUsers();
+  }, []);
+
+
   // gender filtering
   let mentors = allMentors.filter((mentor) => {
     if (genderFilter === FilterDefaults.Gender) return true;
@@ -37,11 +88,11 @@ export default function MentorList() {
   });
 
   // location filtering
-  mentors = mentors.filter((mentor) => {
-    if (locationFilter === FilterDefaults.Location) return true;
-    if (mentor.location === locationFilter) return true;
-    return false;
-  });
+  // mentors = mentors.filter((mentor) => {
+  //   if (locationFilter === FilterDefaults.Location) return true;
+  //   if (mentor.location === locationFilter) return true;
+  //   return false;
+  // });
 
   // skill filtering
   mentors = mentors.filter((mentor) => {
@@ -77,36 +128,38 @@ export default function MentorList() {
     return false;
   });
 
-  // simulated backend fetch
-  useEffect(() => {
-    setAllMentors(MockMentorDB.getAll());
-  }, []);
+  // // simulated backend fetch
+  // useEffect(() => {
+  //   setAllMentors(MockMentorDB.getAll());
+  // }, []);
 
   let skillsArray: string[] = [];
   allMentors.forEach((mentor) => {
-    mentor.skills
+    {mentor.skills && mentor.skills
       .map((skill) => skill[0])
       .forEach((skill) => {
         // avoid duplicate skills, only add if not found
         if (!skillsArray.find((skillInArray) => skillInArray === skill))
           skillsArray.push(skill);
       });
-  });
+    }
+    console.log('s')
+  })
   // Place 'All' as first in the array
-  skillsArray = [FilterDefaults.Skill, ...skillsArray];
+ skillsArray = [FilterDefaults.Skill, ...skillsArray];
 
-  let locationsArray: string[] = [];
-  allMentors.forEach((mentor) => {
-    // avoid duplicate locations, only add if not found
-    if (
-      !locationsArray.find(
-        (locationInArray) => locationInArray === mentor.location
-      )
-    )
-      locationsArray.push(mentor.location);
-  });
-  // place 'All' as first in the array
-  locationsArray = [FilterDefaults.Location, ...locationsArray];
+  // let locationsArray: string[] = [];
+  // allMentors.forEach((mentor) => {
+  //   // avoid duplicate locations, only add if not found
+  //   if (
+  //     !locationsArray.find(
+  //       (locationInArray) => locationInArray === mentor.location
+  //     )
+  //   )
+  //     locationsArray.push(mentor.location);
+  // });
+  // // place 'All' as first in the array
+  // locationsArray = [FilterDefaults.Location, ...locationsArray];
 
   // pagination
   let pageLimit = 5;
@@ -177,7 +230,7 @@ export default function MentorList() {
                     </option>
                   ))}
                 </select>
-                <div className="text-[34px]">Location</div>
+                {/* <div className="text-[34px]">Location</div>
                 <select
                   className="p-2 bg-white border border-black rounded-xl"
                   defaultValue={FilterDefaults.Location}
@@ -190,7 +243,7 @@ export default function MentorList() {
                       {location}
                     </option>
                   ))}
-                </select>
+                </select> */}
                 <div className="text-[34px]">Skills</div>
                 <select
                   className="p-2 bg-white border border-black rounded-xl"

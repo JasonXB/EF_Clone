@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import Layout from '../src/components/Layout';
-import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { dummyMentors } from '../src/temporary/dummyMentors';
 
 declare module 'axios' {
@@ -20,34 +19,6 @@ declare module 'axios' {
 
 export default function FindAMentor() {
   let [query, setQuery] = useState('');
-
-  // 
-  const getUsers = async () => {
-    const options: AxiosRequestConfig = {
-      "name": "Get all mentors' profile",
-			"id": "57c19079-77fa-4aad-9ce3-1d93525b1ef2",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": "https://efback.azurewebsites.net/api/mentor/list/all"
-			},
-			"response": []
-    };
-    try {
-      const response: AxiosResponse = await axios.get("https://efback.azurewebsites.net/api/mentor/list/all", options);
-      console.log(response);
-      return response;
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    getUsers();
-  }, []);
 
   return (
     <Layout headTitle="Find a Mentor">

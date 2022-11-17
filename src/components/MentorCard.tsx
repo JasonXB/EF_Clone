@@ -4,7 +4,7 @@ import { BUBBLE_TAG_TYPE_CLASSES } from './BubbleTag';
 import PercentageBar from './percentBar/percent-bar';
 import Button from './buttons/reusable-buttons';
 import { useRouter } from 'next/router';
-import { Mentor } from '../interface/mentor.interface';
+import  Mentor  from '../interface/mentor.interface';
 
 interface MentorsCardProps {
   mentor: Mentor;
@@ -16,7 +16,6 @@ export default function MentorCard({ mentor }: MentorsCardProps) {
     first_name,
     last_name,
     profile_path,
-    location,
     job,
     tags,
     skills,
@@ -53,7 +52,7 @@ export default function MentorCard({ mentor }: MentorsCardProps) {
         </h2>
         <div className="flex flex-col items-start justify-start w-full h-full md:flex-row">
           <div>
-            <h4 className="font-bold text-[17px] leading-[25px]">{location}</h4>
+            <h4 className="font-bold text-[17px] leading-[25px]">cfvdx</h4>
             <h4 className="font-bold text-[17px] leading-[25px] pb-3">{job}</h4>
             <BubbleTags
               tags={tags}

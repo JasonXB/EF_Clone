@@ -4,7 +4,9 @@ interface Mentor {
   id: number;
   first_name: string;
   last_name: string;
-  location: string;
+  // location: {
+  //   city: string
+  // }
   gender: string;
   profile_path: string;
   job: string;
