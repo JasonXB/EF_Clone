@@ -36,8 +36,7 @@ const BookMeeting = () => {
   const mentorId = router.query.mentorId;
   const [thisMentor, setThisMentor] = useState({} as Mentor);
 
-  // const test = getCredentialsFromLocalStorage()
-  // console.log('getCredentialsFromLocalStorage', test && getCredentialsFromLocalStorage());
+  // console.log('getCredentialsFromLocalStorage', getCredentialsFromLocalStorage());
   
   console.log( "accessToken -- > ", accessToken )
   console.log( "profileID -- > ", profileID )
@@ -97,39 +96,35 @@ const BookMeeting = () => {
   }
 
   const postMeeting = async () => {
-    try {
-      const meeting = {
-        mentorID: thisMentor.mentor_id,
-        menteeID: profileID,
-        date: formatISO(startTime),
-        time: formatISO(startTime),
-        meetingMethod: 'Google Meets',
-      };
+    const meeting = {
+      mentorID: thisMentor.mentor_id,
+      menteeID: profileID,
+      date: formatISO(startTime),
+      time: formatISO(startTime),
+      meetingMethod: 'Google Meets',
+    };
+    const config = {
+      headers: { 
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}` }
+    };
+    const bodyParameters = JSON.stringify(meeting)
 
-
-      //accessToken from AuthContext will be used
-      //placeholder token
-      //let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjljZTNhNDkzYzE3NTNiN2UxZGU5MCIsImlhdCI6MTY2Nzg3ODYzMywiZXhwIjoxNjY3OTY1MDMzfQ.0nTpLZgcz3CmirJRSoa1Z2vG7VRQTxmOLoIWYhD94-k"
-      //http://localhost:5200/api/meeting/auth/set_meeting/
-      //https://efback.azurewebsites.net/api/meeting/auth/set_meeting/
-      const response = await axios.post(
-        'https://efback.azurewebsites.net/api/meeting/auth/set_meeting/',
-        {
-          method: 'POST',
-          headers: { 
-            'Content-Type': 'application/json',
-            Authorization: "Bearer " + accessToken,
-        },
-          body: JSON.stringify(meeting),
-        }
-      );
-      const data = await response.data.json()
-      console.log('meeting',meeting);
-      console.log('data',data);
-    } catch (err: any) {
-      //type to be fixed
-      console.log('POST error: ', err.message);
+    //http://localhost:5200/api/meeting/auth/set_meeting/
+    //https://efback.azurewebsites.net/api/meeting/auth/set_meeting/
+    
+    const sendRequest = () => {
+      axios.post(
+          'https://efback.azurewebsites.net/api/meeting/auth/set_meeting/',
+          bodyParameters,
+          config
+        ).then((res) => {
+          console.log(res.data);
+        }).catch((err)=> {
+          console.error(err);
+        })
     }
+    sendRequest();
   };
 
   const [needToChooseTime, setNeedToChooseTime] = useState(false)
