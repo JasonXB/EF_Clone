@@ -1,17 +1,30 @@
 import { useState, ChangeEvent } from 'react';
 import { TimeTextFieldProps } from "../../../interface/book-meeting/book-with-mentor.interface";
 
+function classNames(...classes: (string | boolean)[]) {
+    return classes.filter(Boolean).join(' ');
+  }
 
-const TimeTextField = ({ time }: TimeTextFieldProps) => {
+const TimeTextField = ({ time, isTimeNull }: TimeTextFieldProps) => {
     const [timeInput, setTimeInput] = useState(time)
+    //variable used to set the text color of the time to gray if it is null
+    const [isFieldNull, setIsFieldNull] = useState(isTimeNull) 
 
     const changeTime = (event: ChangeEvent<HTMLInputElement>) => {
         setTimeInput((event.target as HTMLInputElement).value)
+        setIsFieldNull(false)
     }
     
     return (
         <div>
-            <input onChange={changeTime} className="border-2 border-primary-1 rounded-lg text-lg font-bold p-2 w-40" type="time" min="00:00" max="24:00" value={timeInput}/>
+            <input 
+                onChange={changeTime} 
+                className={classNames(
+                    "border-2 border-primary-1 rounded-lg text-lg font-bold p-2 w-40",
+                    (isFieldNull as boolean) && "text-smoke-2"
+                    )} 
+                type="time" min="00:00" max="24:00" value={timeInput}
+            />
         </div>
     )
 }

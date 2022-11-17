@@ -38,10 +38,12 @@ export interface MeetingProps {
   meeting: Availability
 }
 export interface TimeSlotSetterProps {
-  meeting: Availability
+  meeting?: Availability,
+  isTimeNull?: boolean
 }
 export interface TimeTextFieldProps {
-  time: string
+  time: string,
+  isTimeNull?: boolean
 }
 
 

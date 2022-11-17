@@ -30,7 +30,7 @@ const ScheduleModal = () => {
     return (
         <div>
             {showScheduleModal ? (
-            <div className="flex justify-center items-center flex-col w-full rounded-lg drop-shadow-[0_20px_20px_rgba(0,0,0,.30)] h-full border-2 border-smoke-3 bg-white space-y-5 pb-10">
+            <div className="flex justify-center items-center flex-col w-full rounded-lg drop-shadow-[0_20px_20px_rgba(0,0,0,.30)] h-full border-2 border-smoke-3 bg-white space-y-7 pb-10">
                 {/* HEADER with icon, date and close button */}
                 <div className='flex justify-between bg-blue-100 w-full rounded-t-lg py-8 pl-10 pr-7'>
                     <div className='flex space-x-4'>
@@ -60,14 +60,21 @@ const ScheduleModal = () => {
                         </svg>
                         <p className='font-bold text-lg'>My Available Time</p>
                     </div>
-                    <div className="mt-4 space-y-3 text-sm">
-                        {availabilitiesOnSelectedDay && availabilitiesOnSelectedDay.length > 0 ? (
-                            availabilitiesOnSelectedDay.map((availability: Availability) => (
-                            <TimeSlotSetter meeting={availability}/>
-                            ))
-                        ) : (
-                            <p>No Time Yet</p>
-                        )}
+                    {/* my available time body */}
+                    <div className='flex justify-between'>
+                        <div className="mt-4 space-y-3 text-sm">
+                            {availabilitiesOnSelectedDay && availabilitiesOnSelectedDay.length > 0 ? (
+                                availabilitiesOnSelectedDay.map((availability: Availability) => (
+                                <TimeSlotSetter meeting={availability}/>
+                                ))
+                            ) : (
+                                <TimeSlotSetter isTimeNull={true}/>
+                            )}
+                        </div>
+                        {/* add timeSlotSetter icon */}
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" className="w-7 h-7">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                        </svg>
                     </div>
                 </div>
                 {/* NOTES */}
@@ -86,7 +93,6 @@ const ScheduleModal = () => {
                         rows={4} 
                         placeholder="Add Notes..." 
                     />
-
                 </div>
                 {/* SAVE BUTTON */}
                 <Button variant="primary" clickHandler={() => setShowScheduleModal(false)}>Save</Button>

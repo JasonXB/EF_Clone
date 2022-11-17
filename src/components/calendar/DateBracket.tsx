@@ -28,7 +28,7 @@ let colStartClasses = [
 ];
 
 const DateBracket = ({ day, dayIndex }: DateBoxProps) => {
-  const { schedule, selectedDay, setSelectedDay, setShowScheduleModal } = useContext(CalendarContext);
+  const { schedule, selectedDay, setSelectedDay, showScheduleModal, setShowScheduleModal } = useContext(CalendarContext);
   const { setSelectedTimeSlot, IANACounterpart } = useContext(TimezoneContext);
   
   //variable used to adjust the date available based on the timezone
@@ -57,6 +57,7 @@ const DateBracket = ({ day, dayIndex }: DateBoxProps) => {
     >
       <button
         type="button"
+        disabled={showScheduleModal}
         onClick={selectDate}
         className={classNames(
           // ----- BACKGROUND CONDITIONS -----
