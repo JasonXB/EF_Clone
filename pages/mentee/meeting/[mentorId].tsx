@@ -6,6 +6,7 @@ import { formatInTimeZone } from 'date-fns-tz';
 import Calendar from '../../../src/components/calendar/Calendar';
 import TimeSlots from '../../../src/components/timeSlots/TimeSlots';
 import TimeZonesDropdown from '../../../src/components/timezonesDropdown/TimeZonesDropdown';
+import FormItem from '../../../src/components/FormItem';
 import Button from '../../../src/components/buttons/reusable-buttons';
 import Layout from '../../../src/components/Layout';
 import Avatar from '../../../src/components/avatar/avatar';
@@ -168,61 +169,61 @@ const BookMeeting = () => {
             </h4>
             <div className="space-y-20">
               {/* ITEM 1: Choosing the meeting schedule---------------------------------- */}
-              <div>
-                <h5 className="font-medium">1. Select Date And Time</h5>
-                {needToChooseTime && 
-                  <div className="bg-red-100 rounded-lg py-5 px-6 my-6 text-base text-red-700 font-medium inline-flex items-center w-full" role="alert">
-                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times-circle" className="w-4 h-4 mr-2 fill-current" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                      <path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm121.6 313.1c4.7 4.7 4.7 12.3 0 17L338 377.6c-4.7 4.7-12.3 4.7-17 0L256 312l-65.1 65.6c-4.7 4.7-12.3 4.7-17 0L134.4 338c-4.7-4.7-4.7-12.3 0-17l65.6-65-65.6-65.1c-4.7-4.7-4.7-12.3 0-17l39.6-39.6c4.7-4.7 12.3-4.7 17 0l65 65.7 65.1-65.6c4.7-4.7 12.3-4.7 17 0l39.6 39.6c4.7 4.7 4.7 12.3 0 17L312 256l65.6 65.1z"></path>
-                    </svg>
-                    <p>Please select the date and time for the meeting</p>
-                  </div>
-                }
-                {/* style to separate the calendar and timeslot blocks in its own grids */}
-                <div className="md:grid md:grid-cols-3">
-                  <div className="col-span-2">
-                    <Calendar meeting_availability={meeting_availability} />
-                  </div>
+              <FormItem itemString={'1. Select Date And Time'}>
+                <>
+                  {needToChooseTime && 
+                    <div className="bg-red-100 rounded-lg py-5 px-6 my-6 text-base text-red-700 font-medium inline-flex items-center w-full" role="alert">
+                      <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times-circle" className="w-4 h-4 mr-2 fill-current" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm121.6 313.1c4.7 4.7 4.7 12.3 0 17L338 377.6c-4.7 4.7-12.3 4.7-17 0L256 312l-65.1 65.6c-4.7 4.7-12.3 4.7-17 0L134.4 338c-4.7-4.7-4.7-12.3 0-17l65.6-65-65.6-65.1c-4.7-4.7-4.7-12.3 0-17l39.6-39.6c4.7-4.7 12.3-4.7 17 0l65 65.7 65.1-65.6c4.7-4.7 12.3-4.7 17 0l39.6 39.6c4.7 4.7 4.7 12.3 0 17L312 256l65.6 65.1z"></path>
+                      </svg>
+                      <p>Please select the date and time for the meeting</p>
+                    </div>
+                  }
+                  {/* style to separate the calendar and timeslot blocks in its own grids */}
+                  <div className="md:grid md:grid-cols-3">
+                    <div className="col-span-2">
+                      <Calendar meeting_availability={meeting_availability} />
+                    </div>
 
-                  {/* available time slots block */}
-                  <div className="pt-1 mt-12 md:mt-0 md:pl-14 place-items-center">
-                    {/* -- AVAILABILITY HEADER -- */}
-                    <div className="items-center justify-center py-10 border-t border-primary-1">
-                      <div className="flex">
-                        {/* -- clock icon -- */}
-                        <div className="px-2 text-primary-1">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth="2"
-                            stroke="currentColor"
-                            className="w-6 h-6"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                            />
-                          </svg>
+                    {/* available time slots block */}
+                    <div className="pt-1 mt-12 md:mt-0 md:pl-14 place-items-center">
+                      {/* -- AVAILABILITY HEADER -- */}
+                      <div className="items-center justify-center py-10 border-t border-primary-1">
+                        <div className="flex">
+                          {/* -- clock icon -- */}
+                          <div className="px-2 text-primary-1">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              strokeWidth="2"
+                              stroke="currentColor"
+                              className="w-6 h-6"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                              />
+                            </svg>
+                          </div>
+                          {/* -- */}
+                          <p className="font-bold">Available Time Slot</p>
                         </div>
+                        {/* dropdown for timezone */}
+                        <TimeZonesDropdown />
                         {/* -- */}
-                        <p className="font-bold">Available Time Slot</p>
                       </div>
-                      {/* dropdown for timezone */}
-                      <TimeZonesDropdown />
+                      {/* -- */}
+                      {/* -- DISPLAY AVAILABILTIES -- */}
+                      <TimeSlots meeting_availability={meeting_availability} />
                       {/* -- */}
                     </div>
-                    {/* -- */}
-                    {/* -- DISPLAY AVAILABILTIES -- */}
-                    <TimeSlots meeting_availability={meeting_availability} />
-                    {/* -- */}
                   </div>
-                </div>
-              </div>
+                </>
+              </FormItem>
               {/* ITEM 2: Choosing meeting method---------------------------------- */}
-              <div>
-                <h5 className="font-medium">2. Choose Meeting Method</h5>
+              <FormItem itemString={'2. Choose Meeting Method'}>
                 <div className="flex flex-row p-4 space-x-4">
                   <button
                     className={`w-64 flex items-center py-3 group rounded-2xl focus-within:bg-gray-100 hover:bg-gray-100 border-primary-1 border-4 bg-secondary-1 font-bold`}
@@ -239,10 +240,9 @@ const BookMeeting = () => {
                     </div>
                   </button>
                 </div>
-              </div>
+              </FormItem>
               {/* ITEM 3: Review meeting information---------------------------------- */}
-              <div>
-                <h5 className="font-medium">3. Review Meeting Information</h5>
+              <FormItem itemString={'3. Review Meeting Information'}>
                 <div className="flex flex-row justify-between w-11/12 p-4">
                   <div className="flex flex-row space-x-2 font-medium">
                     <p>Meeting with </p>
@@ -261,8 +261,7 @@ const BookMeeting = () => {
                     <p className="font-bold">Google Meet</p>
                   </div>
                 </div>
-              </div>
-              {/* ^ end of item 3 div */}
+              </FormItem>
               {/* SUBMIT BUTTON------------------------------------------------- /meeting/confirmedMeeting*/}
               <Link
                 href={{
