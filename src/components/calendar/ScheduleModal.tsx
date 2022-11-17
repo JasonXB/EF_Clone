@@ -37,7 +37,7 @@ const ScheduleModal = () => {
 
     const clickDateBracket = () => {
         setShowScheduleModal(false)
-        setTentativeTimes([{startDatetime: '', endDatetime: ''}])
+        setTentativeTimes([...availabilitiesOnSelectedDay, {startDatetime: '', endDatetime: ''}]) //checkpoint
     }
 
     return (

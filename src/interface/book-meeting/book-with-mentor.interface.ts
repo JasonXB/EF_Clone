@@ -10,6 +10,11 @@ export enum TIMESLOTS_TYPE_CLASSES {
   list = 'list',
 }
 
+export enum TIMEZONESDROPDOWN_TYPE_CLASSES {
+  plain = 'plain',
+  bold = 'bold',
+}
+
 export interface Schedule {
   daily: Availability[],
   weekly: Availability[],
@@ -45,6 +50,9 @@ export interface TimeSlotSetterProps {
 export interface TimeTextFieldProps {
   time: string,
   isTimeNull?: boolean
+}
+export interface TimeZonesDropdownProps {
+  timezonesDropdownType: TIMEZONESDROPDOWN_TYPE_CLASSES
 }
 
 
