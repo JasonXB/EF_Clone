@@ -1,6 +1,7 @@
 import { useContext, useState, useEffect, SetStateAction } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import axios from 'axios';
 import { format, setDay, formatISO, parseISO } from 'date-fns';
 import { formatInTimeZone } from 'date-fns-tz';
 import Calendar from '../../../src/components/calendar/Calendar';
@@ -107,7 +108,7 @@ const BookMeeting = () => {
       //let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjljZTNhNDkzYzE3NTNiN2UxZGU5MCIsImlhdCI6MTY2Nzg3ODYzMywiZXhwIjoxNjY3OTY1MDMzfQ.0nTpLZgcz3CmirJRSoa1Z2vG7VRQTxmOLoIWYhD94-k"
       //http://localhost:5200/api/meeting/auth/set_meeting/
       //https://efback.azurewebsites.net/api/meeting/auth/set_meeting/
-      const response = await fetch(
+      const response = await axios.post(
         'https://efback.azurewebsites.net/api/meeting/auth/set_meeting/',
         {
           method: 'POST',
@@ -118,7 +119,7 @@ const BookMeeting = () => {
           body: JSON.stringify(meeting),
         }
       );
-      const data = await response.json()
+      const data = await response.data.json()
       console.log('meeting',meeting);
       console.log('data',data);
     } catch (err: any) {
