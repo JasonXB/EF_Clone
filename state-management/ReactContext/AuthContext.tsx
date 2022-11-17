@@ -36,10 +36,10 @@ export function AuthProvider({ children }: AuthContextProps) {
   const [accessToken, setAccessToken] = useState<string>('');
   const [profileID, setProfileID] = useState<string>('');
 
-  function clientSideLogin(email: string, token: string, id: string) {
+  function clientSideLogin(email: string, token: string, profileId: string) {
     setEmail(email);
     setAccessToken(token);
-    setProfileID(id)
+    setProfileID(profileId)
     storeCredentialsInLocalStorage(token);
   }
 

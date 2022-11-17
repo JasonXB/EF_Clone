@@ -15,6 +15,7 @@ import { TimezoneContext } from '../../../state-management/ReactContext/Timezone
 import { useAuth } from '../../../state-management/ReactContext/AuthContext';
 import { mentorsData } from '../../../src/tempData/dummyMentorsForCalendar';
 import { Mentor } from '../../../src/interface/book-meeting/book-with-mentor.interface';
+import { getCredentialsFromLocalStorage } from '../../../src/api/localStorage';
 
 /*
   AREAS OF IMPROVEMENT IN THE FEATURES: 
@@ -35,6 +36,9 @@ const BookMeeting = () => {
   const mentorId = router.query.mentorId;
   const [thisMentor, setThisMentor] = useState({} as Mentor);
 
+  // const test = getCredentialsFromLocalStorage()
+  // console.log('getCredentialsFromLocalStorage', test && getCredentialsFromLocalStorage());
+  
   console.log( "accessToken -- > ", accessToken )
   console.log( "profileID -- > ", profileID )
 

@@ -42,13 +42,17 @@ export default function ApplicationListItem(props: ApplicationData) {
         </div>
       </div>
       <div className="flex flex-col items-center justify-center">
-        <Button
-          clickHandler={() => {}}
-          disabled={props.status === 'Approved' ? false : true} // disable button when applications are not approved
-          className={'max-w-[14rem] noMargins'}
-        >
-          Book Meeting
-        </Button>
+        <Link href='/mentee/meeting/1'>
+          <a>
+            <Button
+              clickHandler={() => {}}
+              disabled={props.status === 'Approved' ? false : true} // disable button when applications are not approved
+              className={'max-w-[14rem] noMargins'}
+            >
+              Book Meeting
+            </Button>
+          </a>
+        </Link>
       </div>
     </li>
   );
