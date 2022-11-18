@@ -1,10 +1,19 @@
 import { useState, useEffect } from 'react';
 
 function getWindowDimensions() {
-  const { innerWidth: width, innerHeight: height } = window;
+  let currentHeight = 0
+  let currentWidth = 0
+  if (typeof window !== 'undefined') {
+    const { innerWidth: width, innerHeight: height } = window;
+    currentHeight = height
+    currentWidth = width
+  } else {
+    console.log('You are on the server')
+  }
+  
   return {
-    width,
-    height
+    currentHeight,
+    currentWidth
   };
 }
 
@@ -38,5 +47,5 @@ export default function useWindowDimensions() {
     }
   }
 
-  return getScreen(windowDimensions.width);
+  return getScreen(windowDimensions.currentWidth);
 }

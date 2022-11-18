@@ -4,9 +4,21 @@ import DateSlot from './DateSlot';
 import { CalendarContext } from '../../../state-management/ReactContext/CalendarContext';
 import { v4 as uuidv4 } from 'uuid';
 import { MeetingAvailabilityProps } from '../../interface/book-meeting/book-with-mentor.interface'
-
+import useWindowDimensions  from '../../../src/hooks/useWindowDimensions'
 
 export default function Calendar({ meeting_availability }: MeetingAvailabilityProps) {
+  const screen = useWindowDimensions()
+
+  const isSingleLetter = (dayWord: string) => {
+    switch(screen) {
+      case 'xs':
+      case 'ss':
+        return dayWord.charAt(0) 
+      default:
+        return dayWord
+    }
+  }
+
   const { setCurrentMonth, firstDayCurrentMonth, days } =
     useContext(CalendarContext);
 
@@ -22,10 +34,8 @@ export default function Calendar({ meeting_availability }: MeetingAvailabilityPr
 
   return (
     <div className="pt-1 my-2">
-      {/* make the calendar responsive in different devices */}
-      {/* <div className="max-w-md px-4 mx-auto sm:px-7 md:max-w-4xl md:px-6 lg:px-0 bg-red-100"> */}
       {/* style for navigation header of calendar */}
-      <div className="flex justify-between border border-primary-1 rounded-md px-6 py-6">
+      <div className="flex justify-between border border-primary-1 rounded-md lg:px-6 lg:py-6 xs:px-4 xs:py-2">
         {/* -- LEFT ARROW -- */}
         {!isPast(firstDayCurrentMonth) ? (<button
           className="hover:text-gray-500"
@@ -50,7 +60,7 @@ export default function Calendar({ meeting_availability }: MeetingAvailabilityPr
         </button>) : <div className="px-5"/>}
         {/* -- */}
         {/* -- CALENDAR MONTH -- */}
-        <h4 className="font-medium">
+        <h4 className="font-medium xs:text-2xl lg:text-3xl xs:mt-1 lg: mt-0">
           {format(firstDayCurrentMonth, 'MMM yyyy')}
         </h4>
         {/* -- */}
@@ -80,14 +90,14 @@ export default function Calendar({ meeting_availability }: MeetingAvailabilityPr
         {/* -- */}
       </div>
       {/* -- DAYS -- */}
-      <div className="grid grid-cols-7 py-8 text-center font-medium border-b border-primary-1">
-        <h5>MON</h5>
-        <h5>TUE</h5>
-        <h5>WED</h5>
-        <h5>THU</h5>
-        <h5>FRI</h5>
-        <h5>SAT</h5>
-        <h5>SUN</h5>
+      <div className="grid grid-cols-7 lg:py-8 xs:py-4 text-center font-medium border-b border-primary-1">
+        <h5 className='xs:text-xl lg:text:2xl'>{isSingleLetter('MON')}</h5>
+        <h5 className='xs:text-xl lg:text:2xl'>{isSingleLetter('TUE')}</h5>
+        <h5 className='xs:text-xl lg:text:2xl'>{isSingleLetter('WED')}</h5>
+        <h5 className='xs:text-xl lg:text:2xl'>{isSingleLetter('THU')}</h5>
+        <h5 className='xs:text-xl lg:text:2xl'>{isSingleLetter('FRI')}</h5>
+        <h5 className='xs:text-xl lg:text:2xl'>{isSingleLetter('SAT')}</h5>
+        <h5 className='xs:text-xl lg:text:2xl'>{isSingleLetter('SUN')}</h5>
       </div>
       {/* -- */}
       {/* -- DATE SLOTS -- */}
