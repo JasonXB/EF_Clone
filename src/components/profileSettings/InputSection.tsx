@@ -4,8 +4,8 @@ const InputSection: NextPage = ({}) => {
   return (
     <>
       <div className="flex">
-        <div className="mb-3 xl:w-96 mr-4 ">
-          <label className="form-label inline-block mb-2 text-gray-700">
+        <div className="mb-3 mr-4 xl:w-96 ">
+          <label className="inline-block mb-2 text-gray-700 form-label">
             First Name
           </label>
           <input
@@ -33,7 +33,7 @@ const InputSection: NextPage = ({}) => {
           />
         </div>
         <div className="mb-3 xl:w-96">
-          <label className="form-label inline-block mb-2 text-gray-700">
+          <label className="inline-block mb-2 text-gray-700 form-label">
             Last Name
           </label>
           <input
@@ -62,8 +62,8 @@ const InputSection: NextPage = ({}) => {
         </div>
       </div>
       <div className="flex">
-        <div className="mb-3 xl:w-96 mr-4">
-          <label className="form-label inline-block mb-2 text-gray-700">
+        <div className="mb-3 mr-4 xl:w-96">
+          <label className="inline-block mb-2 text-gray-700 form-label">
             Email
           </label>
           <input
@@ -88,7 +88,7 @@ const InputSection: NextPage = ({}) => {
           />
         </div>
         <div className="mb-3 xl:w-96">
-          <label className="form-label inline-block mb-2 text-gray-700">
+          <label className="inline-block mb-2 text-gray-700 form-label">
             Linkedin
           </label>
           <input
@@ -117,8 +117,8 @@ const InputSection: NextPage = ({}) => {
       </div>
 
       <div className="flex">
-        <div className="mb-3 xl:w-96 mr-4">
-          <label className="form-label inline-block mb-2 text-gray-700">
+        <div className="mb-3 mr-4 xl:w-96">
+          <label className="inline-block mb-2 text-gray-700 form-label">
             Add your title
           </label>
           <input
@@ -141,8 +141,8 @@ const InputSection: NextPage = ({}) => {
             placeholder="Student"
           />
         </div>
-        <div className="mb-3 xl:w-96 mr-4">
-          <label className="form-label inline-block mb-2 text-gray-700">
+        <div className="mb-3 mr-4 xl:w-96">
+          <label className="inline-block mb-2 text-gray-700 form-label">
             Location
           </label>
           <input
@@ -177,8 +177,7 @@ const InputSection: NextPage = ({}) => {
         </label>
         <select
           name="language"
-          className="mt-1  mb-12 rounded-lg block w-full text-gray-400 rounded-lg-md border border-gray-300 bg-white py-2 px-3 shadow-sm sm:text-sm  w-80
-            "
+          className="block px-3 py-2 mt-1 mb-12 text-gray-400 bg-white border border-gray-300 rounded-lg shadow-sm rounded-lg-md sm:text-sm w-80 "
         >
           <option>English(Canada)</option>
           <option>Franch(Canada)</option>
