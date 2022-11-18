@@ -4,7 +4,7 @@ import { BUBBLE_TAG_TYPE_CLASSES } from './BubbleTag';
 import PercentageBar from './percentBar/percent-bar';
 import Button from './buttons/reusable-buttons';
 import { useRouter } from 'next/router';
-import  Mentor  from '../interface/mentor.interface';
+import Mentor from '../interface/mentor.interface';
 
 interface MentorsCardProps {
   mentor: Mentor;
@@ -16,6 +16,7 @@ export default function MentorCard({ mentor }: MentorsCardProps) {
     first_name,
     last_name,
     profile_path,
+    location,
     job,
     tags,
     skills,
@@ -52,7 +53,9 @@ export default function MentorCard({ mentor }: MentorsCardProps) {
         </h2>
         <div className="flex flex-col items-start justify-start w-full h-full md:flex-row">
           <div>
-            <h4 className="font-bold text-[17px] leading-[25px]">cfvdx</h4>
+            <h4 className="font-bold text-[17px] leading-[25px]">
+              {location.city}, {location.province}, {location.country}
+            </h4>
             <h4 className="font-bold text-[17px] leading-[25px] pb-3">{job}</h4>
             <BubbleTags
               tags={tags}
@@ -69,9 +72,9 @@ export default function MentorCard({ mentor }: MentorsCardProps) {
           <div className="flex flex-col justify-end w-full h-full gap-5 pb-4 items-left md:pb-0 md:items-center">
             {skills.slice(0, 2).map((skill, i) => (
               <div key={i}>
-                <div className="text-xl leading-6 mb-[18px]">{skill[0]}</div>
+                <div className="text-xl leading-6 mb-[18px]">{skill.skill}</div>
                 <PercentageBar
-                  percentage={skill[1]}
+                  percentage={skill.proficiency}
                   color="pink"
                   showPercentageText={false}
                 />

@@ -5,12 +5,25 @@ import MockMentorDB from '../src/tempData/MockMentorDB';
 import Mentor from '../src/interface/mentor.interface';
 import { useRouter } from 'next/router';
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
-6
 
 enum FilterDefaults {
   Gender = 'All',
   Location = 'All',
   Skill = 'All',
+}
+
+declare module 'axios' {
+  export interface AxiosRequestConfig {
+    name: string;
+    id: string;
+    protocolProfileBehavior: {};
+    request: {
+      method: string;
+      header: [];
+      url: string;
+    };
+    response: [];
+  }
 }
 
 const GenderOptions = [FilterDefaults.Gender, 'Male', 'Female'];
@@ -31,54 +44,56 @@ export default function MentorList() {
   let [query, setQuery] = useState(q as string);
   let [page, setPage] = useState(1);
 
-
-  // 
-  const getUsers = async () => {
+  //
+  const getMentors = async () => {
     const options: AxiosRequestConfig = {
-      "name": "Get all mentors' profile",
-			"id": "57c19079-77fa-4aad-9ce3-1d93525b1ef2",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": "https://efback.azurewebsites.net/api/mentor/list/all"
-			},
-			"response": []
+      name: "Get all mentors' profile",
+      id: '57c19079-77fa-4aad-9ce3-1d93525b1ef2',
+      protocolProfileBehavior: {
+        disableBodyPruning: true,
+      },
+      request: {
+        method: 'GET',
+        header: [],
+        url: 'https://efback.azurewebsites.net/api/mentor/list/all',
+      },
+      response: [],
     };
-    
+
     try {
-      const response: AxiosResponse = await axios.get("https://efback.azurewebsites.net/api/mentor/list/all", options);
-      let newMentors: any = []
+      const response: AxiosResponse = await axios.get(
+        'https://efback.azurewebsites.net/api/mentor/list/all',
+        options
+      );
+      // new array of Mentor objects created to change backend property names to match frontend types
+      let newMentors: any = [];
       response.data.mentors.map((mentor: any) => {
-      const newMentor: Mentor = {
-        id: mentor._id,
-        first_name: mentor.firstname,
-        last_name: mentor.lastname,
-        // location: mentor.address,
-        gender: mentor.gender,
-        profile_path: mentor.picture,
-        job: mentor.title,
-        bio: mentor.bio,
-        email: mentor.email,
-        tags: mentor.fields,
-        skills: mentor.skillsets
-      }
-      newMentors.push(newMentor)
-      })
-      console.log(newMentors)
-      setAllMentors(newMentors)
+        const newMentor: Mentor = {
+          id: mentor._id,
+          first_name: mentor.firstname,
+          last_name: mentor.lastname,
+          location: mentor.address,
+          gender: mentor.gender,
+          profile_path: mentor.picture,
+          job: mentor.title,
+          bio: mentor.bio,
+          email: mentor.email,
+          tags: mentor.fields,
+          skills: mentor.skillsets,
+        };
+        newMentors.push(newMentor);
+      });
+      setAllMentors(newMentors);
       return response;
     } catch (error) {
       console.log(error);
     }
   };
 
+  // on page render, get Mentors from backend
   useEffect(() => {
-    getUsers();
+    getMentors();
   }, []);
-
 
   // gender filtering
   let mentors = allMentors.filter((mentor) => {
@@ -88,11 +103,11 @@ export default function MentorList() {
   });
 
   // location filtering
-  // mentors = mentors.filter((mentor) => {
-  //   if (locationFilter === FilterDefaults.Location) return true;
-  //   if (mentor.location === locationFilter) return true;
-  //   return false;
-  // });
+  mentors = mentors.filter((mentor) => {
+    if (locationFilter === FilterDefaults.Location) return true;
+    if (mentor.location.country === locationFilter) return true;
+    return false;
+  });
 
   // skill filtering
   mentors = mentors.filter((mentor) => {
@@ -100,7 +115,7 @@ export default function MentorList() {
     // haven't had much luck using forEach for this for some reason
     // for loop used instead
     for (let i = 0; i < mentor.skills.length; i++) {
-      if (mentor.skills[i][0] === skillFilter) return true;
+      if (mentor.skills[i].skill === skillFilter) return true;
     }
     return false;
   });
@@ -113,9 +128,9 @@ export default function MentorList() {
     let mentorAsArray = [
       first_name,
       last_name,
-      location,
+
       job,
-      ...skills.map((skill) => skill[0]),
+      ...skills.map((skill) => skill.skill),
       ...tags.map((tag) => tag),
     ];
     // make all strings lowercase for ease of search
@@ -135,31 +150,32 @@ export default function MentorList() {
 
   let skillsArray: string[] = [];
   allMentors.forEach((mentor) => {
-    {mentor.skills && mentor.skills
-      .map((skill) => skill[0])
-      .forEach((skill) => {
-        // avoid duplicate skills, only add if not found
-        if (!skillsArray.find((skillInArray) => skillInArray === skill))
-          skillsArray.push(skill);
-      });
+    {
+      mentor.skills &&
+        mentor.skills
+          .map((skill) => skill.skill)
+          .forEach((skill) => {
+            // avoid duplicate skills, only add if not found
+            if (!skillsArray.find((skillInArray) => skillInArray === skill))
+              skillsArray.push(skill);
+          });
     }
-    console.log('s')
-  })
+  });
   // Place 'All' as first in the array
- skillsArray = [FilterDefaults.Skill, ...skillsArray];
+  skillsArray = [FilterDefaults.Skill, ...skillsArray];
 
-  // let locationsArray: string[] = [];
-  // allMentors.forEach((mentor) => {
-  //   // avoid duplicate locations, only add if not found
-  //   if (
-  //     !locationsArray.find(
-  //       (locationInArray) => locationInArray === mentor.location
-  //     )
-  //   )
-  //     locationsArray.push(mentor.location);
-  // });
-  // // place 'All' as first in the array
-  // locationsArray = [FilterDefaults.Location, ...locationsArray];
+  let locationsArray: string[] = [];
+  allMentors.forEach((mentor) => {
+    // avoid duplicate locations, only add if not found
+    if (
+      !locationsArray.find(
+        (locationInArray) => locationInArray === mentor.location.country
+      )
+    )
+      locationsArray.push(mentor.location.country);
+  });
+  // place 'All' as first in the array
+  locationsArray = [FilterDefaults.Location, ...locationsArray];
 
   // pagination
   let pageLimit = 5;
@@ -176,7 +192,7 @@ export default function MentorList() {
             <div className="flex flex-col w-1/5 mr-20 space-y-8">
               <div
                 onClick={() => router.back()}
-                className="flex flex-row cursor-pointer p-2 rounded-[25px] text-white max-w-[115px] bg-gradient-to-r from-secondary-1 to-[#ED493D]"
+                className="flex flex-row cursor-pointer p-2 rounded-[25px] text-white max-w-[115px] bg-gradient-to-r from-gradient-var-1 to-gradient-var-2"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -191,11 +207,11 @@ export default function MentorList() {
               </div>
               <div className="space-y-2">
                 <div className="flex flex-row">
-                  <span className="text-secondary-1 ml-2 font-bold text-[22px]">
+                  <span className="text-primary-2 ml-2 font-bold text-[22px]">
                     Filter Mentor Profiles:
                   </span>
                 </div>
-                <div className="flex flex-row border border-[#707070] max-h-[60px] rounded-[23px]">
+                <div className="flex flex-row border border-hue-700 max-h-[60px] rounded-[23px]">
                   <input
                     type="text"
                     placeholder="Type Keywords"
@@ -230,7 +246,7 @@ export default function MentorList() {
                     </option>
                   ))}
                 </select>
-                {/* <div className="text-[34px]">Location</div>
+                <div className="text-[34px]">Location</div>
                 <select
                   className="p-2 bg-white border border-black rounded-xl"
                   defaultValue={FilterDefaults.Location}
@@ -243,7 +259,7 @@ export default function MentorList() {
                       {location}
                     </option>
                   ))}
-                </select> */}
+                </select>
                 <div className="text-[34px]">Skills</div>
                 <select
                   className="p-2 bg-white border border-black rounded-xl"
@@ -260,12 +276,7 @@ export default function MentorList() {
             </div>
             <div className="flex flex-col w-2/3 space-y-10">
               <div className="flex flex-row justify-center">
-                <div
-                  className="text-center mr-20 text-primary-1 font-bold text-[54px]"
-                  style={{
-                    textShadow: '0px 3px 6px #00000029',
-                  }}
-                >
+                <div className="text-center mr-20 text-primary-1 font-bold text-[54px]">
                   Find a Mentor
                 </div>
               </div>
@@ -283,26 +294,26 @@ export default function MentorList() {
                     <div>{''}</div>
                     <div className="flex flex-row justify-center space-x-4">
                       <button
-                        className="text-xl font-semibold text-secondary-1"
+                        className="text-xl font-semibold text-primary-2"
                         disabled={page === 1}
                         onClick={() => setPage(page - 1)}
                       >
                         {'<'}
                       </button>
-                      <div className="w-[60px] h-[45px] pt-2 text-center font-bold text-secondary-1 border rounded-[25px] border-secondary-1">
+                      <div className="w-[60px] h-[45px] pt-2 text-center font-bold text-primary-2 border rounded-[25px] border-primary-2">
                         {page}
                       </div>
                       <button
                         onClick={() => setPage(page + 1)}
                         disabled={page >= maxPages}
-                        className="text-xl font-semibold text-secondary-1"
+                        className="text-xl font-semibold text-primary-2"
                       >
                         {'>'}
                       </button>
                     </div>
                     <div>
                       <a href="#">
-                        <div className="p-2 font-semibold border rounded-xl text-secondary-1 border-secondary-1">
+                        <div className="p-2 font-semibold border rounded-xl text-primary-2 border-primary-2">
                           ^ Top of Page
                         </div>
                       </a>
