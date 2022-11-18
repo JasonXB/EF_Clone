@@ -81,9 +81,9 @@ const DateSlot = ({ day, dayIndex, availabilities }: DateSlotProps) => {
           // ----- BACKGROUND CONDITIONS -----
           //selected day is today
           isSameDay(day, selectedDay) &&
-            'bg-primary-5 border-4 border-primary-1 py-9',
+            'bg-primary-5 border-4 border-primary-1 xs:py-5 sm:py-7 lg:py-9',
           //not the selected day
-          !isSameDay(day, selectedDay) && 'hover:bg-gray-100 px-10',
+          !isSameDay(day, selectedDay) && 'hover:bg-gray-100 xs:py-6 sm:py-8 lg:px-10',
           // ----- TEXT CONDITIONS -----------
           //today
           isToday(day) && 'font-semibold',
@@ -92,7 +92,7 @@ const DateSlot = ({ day, dayIndex, availabilities }: DateSlotProps) => {
           //has no availability in the future
           !hasFuture() && 'text-hue-400 line-through',
           // ----- DEFAULT CLASS -------------
-          'mx-auto flex h-8 w-8 items-center justify-center rounded py-10 px-9'
+          'mx-auto flex items-center justify-center rounded xs:h-4 xs:w-4 sm:h-6 sm:w-6 lg:h-8 lg:w-8 xs:py-6 xs:px-6 sm:py-8 sm:px-8 lg:py-10 lg:px-9'
         )}
       >
         <time dateTime={format(day, 'yyyy-MM-dd')}>{format(day, 'd')}</time>

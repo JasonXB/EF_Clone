@@ -9,7 +9,7 @@ import useWindowDimensions  from '../../../src/hooks/useWindowDimensions'
 export default function Calendar({ meeting_availability }: MeetingAvailabilityProps) {
   const screen = useWindowDimensions()
 
-  const isSingleLetter = (dayWord: string) => {
+  const responsiveDay = (dayWord: string) => {
     switch(screen) {
       case 'xs':
       case 'ss':
@@ -31,6 +31,7 @@ export default function Calendar({ meeting_availability }: MeetingAvailabilityPr
     let firstDayNextMonth = add(firstDayCurrentMonth, { months: 1 });
     setCurrentMonth(format(firstDayNextMonth, 'MMM-yyyy'));
   };
+  
 
   return (
     <div className="pt-1 my-2">
@@ -60,7 +61,7 @@ export default function Calendar({ meeting_availability }: MeetingAvailabilityPr
         </button>) : <div className="px-5"/>}
         {/* -- */}
         {/* -- CALENDAR MONTH -- */}
-        <h4 className="font-medium xs:text-2xl lg:text-3xl xs:mt-1 lg: mt-0">
+        <h4 className="font-medium xs:text-2xl lg:text-3xl xs:mt-1 lg:mt-0">
           {format(firstDayCurrentMonth, 'MMM yyyy')}
         </h4>
         {/* -- */}
@@ -91,17 +92,17 @@ export default function Calendar({ meeting_availability }: MeetingAvailabilityPr
       </div>
       {/* -- DAYS -- */}
       <div className="grid grid-cols-7 lg:py-8 xs:py-4 text-center font-medium border-b border-primary-1">
-        <h5 className='xs:text-xl lg:text:2xl'>{isSingleLetter('MON')}</h5>
-        <h5 className='xs:text-xl lg:text:2xl'>{isSingleLetter('TUE')}</h5>
-        <h5 className='xs:text-xl lg:text:2xl'>{isSingleLetter('WED')}</h5>
-        <h5 className='xs:text-xl lg:text:2xl'>{isSingleLetter('THU')}</h5>
-        <h5 className='xs:text-xl lg:text:2xl'>{isSingleLetter('FRI')}</h5>
-        <h5 className='xs:text-xl lg:text:2xl'>{isSingleLetter('SAT')}</h5>
-        <h5 className='xs:text-xl lg:text:2xl'>{isSingleLetter('SUN')}</h5>
+        <h5 className='xs:text-xl lg:text:2xl'>{responsiveDay('MON')}</h5>
+        <h5 className='xs:text-xl lg:text:2xl'>{responsiveDay('TUE')}</h5>
+        <h5 className='xs:text-xl lg:text:2xl'>{responsiveDay('WED')}</h5>
+        <h5 className='xs:text-xl lg:text:2xl'>{responsiveDay('THU')}</h5>
+        <h5 className='xs:text-xl lg:text:2xl'>{responsiveDay('FRI')}</h5>
+        <h5 className='xs:text-xl lg:text:2xl'>{responsiveDay('SAT')}</h5>
+        <h5 className='xs:text-xl lg:text:2xl'>{responsiveDay('SUN')}</h5>
       </div>
       {/* -- */}
       {/* -- DATE SLOTS -- */}
-      <div className="grid grid-cols-7 grid-rows-6 my-2 text-2xl">
+      <div className="grid grid-cols-7 grid-rows-6 my-2 sx:text-xl md:text-2xl ">
         {days.map((day, dayIdx) => (
           <DateSlot
             key={uuidv4()}

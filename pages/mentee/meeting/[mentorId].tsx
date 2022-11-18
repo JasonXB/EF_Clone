@@ -146,8 +146,8 @@ const BookMeeting = () => {
         return 'small'
       case 'sm':
       case 'md':
-        return 'mediumLarge'
       case 'lg':
+        return 'mediumLarge'
       case 'xl':
         return 'large'
       default:
@@ -160,9 +160,9 @@ const BookMeeting = () => {
       {meeting_availability?.specific && (
         <div className="flex lg:flex-row lg:bg-hue-300 m-[-2rem] xs:flex-col">
           {/* div for profile picure and with basic info */}
-          <div className="flex lg:flex-col lg:items-center lg:w-1/5 lg:h-full xs:pt-5 xs:pl-5">
+          <div className="flex lg:flex-col lg:items-center lg:w-1/5 lg:h-full xs:pt-5 xs:pl-5 lg:px-4 xs:bg-hue-300 xs:pb-6 lg:pt-40">
             {/* basic info block*/}
-            <div className="lg:absolute flex lg:flex-col xs:flex-row xs:space-x-10 items-center top-1/3">
+            <div className="flex items-center lg:flex-col xs:flex-row xs:space-x-10 ">
               <Avatar
                 imgLocation={
                   imgUrl ||
@@ -172,8 +172,8 @@ const BookMeeting = () => {
                 personsName={fullName}
               />
               {/* name and title */}
-              <div>
-                <h5 className="mt-2 font-medium text-primary-1 xs:text-xl md:text-3xl">{fullName}</h5>
+              <div className='lg:mr-10 lg:w-full'>
+                <h5 className="mt-2 font-medium text-primary-1 xs:text-xl md:text-3xl lg:text-xl">{fullName}</h5>
                 <p className="text-sm">
                   {position} at {company}
                 </p>
@@ -185,7 +185,7 @@ const BookMeeting = () => {
 
           {/* right side with meeting questions */}
           <div className="lg:w-4/5 h-full xs:px-10 xl:px-16 bg-white py-28 xs:pt-10">
-            <h4 className="mb-16 font-semibold text-primary-1 xs:text-2xl">
+            <h4 className="xs:mb-10 lg:mb-10 xl:mb-16 font-semibold text-primary-1 xs:text-2xl md:text-3xl">
               Schedule your Meeting with {firstName}
             </h4>
             <div className="space-y-20">
@@ -207,10 +207,10 @@ const BookMeeting = () => {
                     </div>
 
                     {/* available time slots block */}
-                    <div className="pt-1 mt-12 md:mt-0 md:pl-14 place-items-center">
+                    <div className="lg:pt-1 xs:mt-0 md:mt-2 lg:mt-2 md:pl-8 lg:pl-14">
                       {/* -- AVAILABILITY HEADER -- */}
-                      <div className="items-center justify-center py-10 border-t border-primary-1">
-                        <div className="flex">
+                      <div className="flex flex-col items-center xs:py-6 lg:py-10 border-t border-primary-1">
+                        <div className="flex mr-7">
                           {/* -- clock icon -- */}
                           <div className="px-2 text-primary-1">
                             <svg
@@ -245,16 +245,16 @@ const BookMeeting = () => {
               </FormItem>
               {/* ITEM 2: Choosing meeting method---------------------------------- */}
               <FormItem itemString={'2. Choose Meeting Method'}>
-                <div className="flex flex-row p-4 space-x-4">
+                <div className="flex xs:flex-col md:flex-row p-4 xs:space-x-0 md:space-x-4 xs:space-y-2 md:space-y-0">
                   <button
-                    className={`w-64 flex items-center py-3 group rounded-2xl focus-within:bg-gray-100 hover:bg-gray-100 border-primary-1 border-4 bg-secondary-1 font-bold`}
+                    className={`md:w-64 flex items-center py-3 group rounded-2xl focus-within:bg-gray-100 hover:bg-gray-100 border-primary-1 border-4 bg-secondary-1 font-bold`}
                   >
                     <div className="flex-auto">
                       <p>Google Meet</p>
                     </div>
                   </button>
                   <button
-                    className={`w-64 flex items-center py-3 group rounded-2xl focus-within:bg-gray-100 hover:bg-gray-100 border-primary-1 border font-medium`}
+                    className={`md:w-64 flex items-center py-3 group rounded-2xl focus-within:bg-gray-100 hover:bg-gray-100 border-primary-1 border font-medium`}
                   >
                     <div className="flex-auto">
                       <p>Arrange with Mentor</p>
@@ -264,7 +264,7 @@ const BookMeeting = () => {
               </FormItem>
               {/* ITEM 3: Review meeting information---------------------------------- */}
               <FormItem itemString={'3. Review Meeting Information'}>
-                <div className="flex xl:flex-row md:flex-col justify-between w-11/12 p-4">
+                <div className="flex xl:flex-row xs:flex-col lg:justify-between lg:w-11/12 lg:p-4 xs:pt-4 xs:space-y-2">
                   <div className="flex flex-row space-x-2 font-medium">
                     <p>Meeting with </p>
                     <p className="font-bold">{fullName}</p>
@@ -293,7 +293,7 @@ const BookMeeting = () => {
                   query: meetingDetails,
                 }}
               >
-                <div>
+                <div className='xs:w-44'>
                   <Button variant="primary" clickHandler={bookMeeting}>
                     Book Meeting
                   </Button>
