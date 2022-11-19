@@ -3,6 +3,6 @@ export enum DescriptionOptions{
   d2 = 'Career start',
   d3 = 'Career change',
   d4 = 'Enhance skills',
-  d5 = 'Prefer not like to say',
+  d5 = 'Prefer not to say',
   d6 = 'Other'
 }
