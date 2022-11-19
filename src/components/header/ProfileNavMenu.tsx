@@ -20,13 +20,13 @@ const UserProfileIcon = () => (
 );
 
 const SvgIconProfile = () => (
-  <div className="p-1 rounded-full bg-secondary-1 bg-opacity-10 ">
+  <div className="p-1 rounded-full bg-primary-2 bg-opacity-10 ">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="24"
       height="24"
       fill="currentColor"
-      className="bi bi-person text-secondary-1"
+      className="bi bi-person text-primary-2"
       viewBox="0 0 16 16"
     >
       <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
@@ -57,7 +57,7 @@ const SvgIconLogout = () => (
 );
 
 const ProfileMenu = () => {
-  const { username, isLoggedIn, logout } = useAuth();
+  const { isLoggedIn, logout } = useAuth();
   return (
     <>
       {/* Profile dropdown */}
@@ -79,7 +79,7 @@ const ProfileMenu = () => {
           leaveTo="transform opacity-0 scale-95"
         >
           {isLoggedIn ? (
-            <Menu.Items className="absolute right-0 z-10 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-secondary-1 ring-opacity-5 focus:outline-none">
+            <Menu.Items className="absolute right-0 z-10 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-primary-2 ring-opacity-5 focus:outline-none">
               <Menu.Item>
                 <a
                   href="#"
@@ -97,7 +97,7 @@ const ProfileMenu = () => {
               <Menu.Item>
                 <a
                   href="#"
-                  className="block px-2 py-2 m-2 text-sm rounded-sm text-light bg-secondary-1 hover:underline"
+                  className="block px-2 py-2 m-2 text-sm rounded-sm text-light bg-primary-2 hover:underline"
                   onClick={() => {
                     logout();
                   }}
@@ -110,7 +110,7 @@ const ProfileMenu = () => {
               </Menu.Item>
             </Menu.Items>
           ) : (
-            <Menu.Items className="absolute right-0 z-10 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-secondary-1 ring-opacity-5 focus:outline-none">
+            <Menu.Items className="absolute right-0 z-10 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-primary-2 ring-opacity-5 focus:outline-none">
               <Menu.Item>
                 <a
                   href="#"
@@ -139,7 +139,7 @@ const ProfileNavMenu = () => {
       {/* temp svg solution*/}
       {/* chat*/}
       <Link href="/">
-        <a className="hover:text-secondary-1 ">
+        <a className="hover:text-primary-2 ">
           {' '}
           {/*temp color will swap when design shows */}
           <svg
@@ -157,7 +157,7 @@ const ProfileNavMenu = () => {
       </Link>
 
       <Link href="/">
-        <a className="hover:text-secondary-1">
+        <a className="hover:text-primary-2">
           {/*temp color will swap when design shows */}
           <svg
             xmlns="http://www.w3.org/2000/svg"

@@ -1,4 +1,4 @@
-import NavbarLink from './NavbarLink';
+import NavbarLink from '../components/header/NavbarLink';
 import EfLogo from './EfLogo';
 
 const Navbar = () => {

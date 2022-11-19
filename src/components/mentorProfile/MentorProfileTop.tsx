@@ -45,7 +45,7 @@ const MentorProfileTop = ({
         {/* Right: Name, location etc */}
         <div className="w-full px-10 py-5 mt-4 xl:px-0 xl:w-3/5 ss:h-full h-3/5">
           {/* Mentor name */}
-          <h3 className="mb-6 text-4xl font-bold text-primary-2 xl:text-4xl lg:mb-2 xl:mb-2">
+          <h3 className="mb-6 text-4xl font-bold text-primary-1 xl:text-4xl lg:mb-2 xl:mb-2">
             {name}
           </h3>
           <h5 className="mb-2 text-lg">{title}</h5>

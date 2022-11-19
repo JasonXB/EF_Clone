@@ -133,7 +133,7 @@ const BookMeeting = () => {
   return (
     <Layout background="none">
       {meeting_availability?.specific && (
-        <div className="flex flex-row bg-smoke-5 m-[-2rem]">
+        <div className="flex flex-row bg-hue-300 m-[-2rem]">
           {/* left side with basic info */}
           <div className="flex flex-col items-center w-1/5 h-full">
             {/* basic info block*/}
@@ -212,7 +212,7 @@ const BookMeeting = () => {
                 <h5 className="font-medium">2. Choose Meeting Method</h5>
                 <div className="flex flex-row p-4 space-x-4">
                   <button
-                    className={`w-64 flex items-center py-3 group rounded-2xl focus-within:bg-gray-100 hover:bg-gray-100 border-primary-1 border-4 bg-primary-5 font-bold`}
+                    className={`w-64 flex items-center py-3 group rounded-2xl focus-within:bg-gray-100 hover:bg-gray-100 border-primary-1 border-4 bg-secondary-1 font-bold`}
                   >
                     <div className="flex-auto">
                       <p>Google Meet</p>

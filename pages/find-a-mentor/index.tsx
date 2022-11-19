@@ -1,21 +1,8 @@
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
-import Layout from '../src/components/Layout';
-import { dummyMentors } from '../src/temporary/dummyMentors';
-
-declare module 'axios' {
-  export interface AxiosRequestConfig {
-    name: string;
-    id: string;
-    protocolProfileBehavior: {};
-    request: {
-      method: string,
-      header: [],
-      url: string
-    };
-    response: [];
-  }
-}
+import Router from 'next/router';
+import { useState } from 'react';
+import Button from '../../src/components/buttons/reusable-buttons';
+import Layout from '../../src/components/Layout';
 
 export default function FindAMentor() {
   let [query, setQuery] = useState('');
@@ -31,7 +18,7 @@ export default function FindAMentor() {
               </span>
             </div>
             <div className="flex flex-row justify-center space-x-4 max-h-[70px]">
-              <div className="flex flex-row space-x-0 rounded-[23px] shadow-[0px_3px_6px_#00000030] border border-[#707070]">
+              <div className="flex flex-row space-x-0 rounded-[23px] shadow-branded-1 border border-hue-700">
                 <input
                   type="text"
                   className="w-[755px] p-4 text-[28px] rounded-[23px] outline-none"
@@ -51,11 +38,17 @@ export default function FindAMentor() {
                   </svg>
                 </div>
               </div>
-              <Link href={`mentor-list${query ? `?q=${query}` : ''}`}>
-                <button className="bg-gradient-to-r from-secondary-1 to-[#EF4C3A] w-[222px] rounded-[30px] text-white text-[30px] font-semibold">
-                  Search
-                </button>
-              </Link>
+
+              <Button
+                variant="primary"
+                clickHandler={() =>
+                  Router.push(
+                    `/find-a-mentor/search${query ? `?q=${query}` : ''}`
+                  )
+                }
+              >
+                Search
+              </Button>
             </div>
           </div>
         </div>

@@ -10,7 +10,7 @@ type MentorInfo = {
   UpdateStatusList: () => void;
 };
 
-const MentorList = ({
+const MentorListEntry = ({
   name,
   email,
   status,
@@ -39,10 +39,10 @@ const MentorList = ({
 
   return (
     <ul
-      className="grid w-screen grid-cols-6 p-2 border-b sm:w-full border-b-slate-700 hover:bg-smoke-4"
+      className="grid w-screen grid-cols-6 p-2 border-b sm:w-full border-b-slate-700 hover:bg-hue-400"
       key={index}
     >
-      <li className="col-span-2">{name}</li>
+      <li className="col-span-2 applicantName">{name}</li>
       <li className="col-span-3">
         <div className="flex items-center gap-2">
           {editorIsOn ? (
@@ -95,7 +95,7 @@ const MentorList = ({
         onMouseEnter={() => setStatusOptionIsOn(true)}
         onMouseLeave={() => setStatusOptionIsOn(false)}
       >
-        <button className="flex items-center gap-1 px-2 transition-all duration-100 ease-in rounded-lg w-28 hover:shadow-md hover:bg-smoke-5">
+        <button className="flex items-center gap-1 px-2 transition-all duration-100 ease-in rounded-lg w-28 hover:shadow-md hover:bg-hue-300">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -116,7 +116,7 @@ const MentorList = ({
         </button>
         {/* toggle list */}
         {statusOptionIsOn && (
-          <div className="absolute top-0 left-0 z-50 w-full bg-smoke-4/90">
+          <div className="absolute top-0 left-0 z-50 w-full bg-hue-400/90">
             <ul className="flex flex-col items-start gap-1 p-2">
               {statusOptions.map((option: string, index: number) => (
                 <StatusOptionButton
@@ -136,4 +136,4 @@ const MentorList = ({
   );
 };
 
-export default MentorList;
+export default MentorListEntry;

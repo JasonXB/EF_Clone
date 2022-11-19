@@ -1,6 +1,6 @@
 type MentorSkill = {skill: string, proficiency: number};
 
-interface Mentor {
+export interface Mentor {
   id: number;
   first_name: string;
   last_name: string;

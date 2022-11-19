@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '../../src/components/buttons/reusable-buttons';
 import Layout from '../../src/components/Layout';
 import ApplicationListItem from '../../src/components/menteeHome/ApplicationListItem';
 import MeetingListItem from '../../src/components/menteeHome/MeetingListItem';
@@ -104,7 +105,9 @@ export default function Index() {
             <h6 className="mt-10 text-center">No applications!</h6>
           )}
           {mock.applications.length > 3 && (
-            <OutlinedButton text="See all applications" onClick={() => {}} />
+            <Button variant="secondary" className="mx-auto mt-12">
+              See all applications
+            </Button>
           )}
         </div>
         <div className="mt-10 lg:pl-5">
@@ -130,7 +133,9 @@ export default function Index() {
             )}
           </ul>
           {mock.meetings.length > 3 && (
-            <OutlinedButton text="See all meetings" onClick={() => {}} />
+            <Button variant="secondary" className="mx-auto mt-12">
+              See all meetings
+            </Button>
           )}
         </div>
       </section>

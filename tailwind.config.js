@@ -9,9 +9,6 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        gears: "url('~/src/assets/gears.png')",
-      },
       backgroundSize: {
         150: '150%',
       },
@@ -19,40 +16,54 @@ module.exports = {
         90: '360px',
       },
       colors: {
-        // Shades of blue
-        'primary-1': '#026ABC',
-        'primary-2': '#007AD9',
-        'primary-3': '#1583D8',
-        'primary-4': '#4BA5ED',
-        'primary-5': '#AEDBFF',
-        // Shades of Magenta
-        'secondary-1': '#CE1982',
-        'secondary-2': '#DE325D',
-        // Shades of Red
-        'tertiary-1': '#E43348',
-        'tertiary-2': '#ED493D',
-        'tertiary-3': '#FF5E60',
-        'tertiary-4': '#FF725E',
-        'tertiary-5': '#FC98A4',
-        'tertiary-6': '#FFBCC4',
-        // Shades of yellow
-        'quad-1': '#F8BC0F',
-        'quad-2': '#EBC967',
-        'quad-3': '#FAE4A2',
-        // Shades of purple
-        'royal-1': '#5B1790',
-        'royal-2': '#6A63F6',
-        // Shades of gray
-        'smoke-1': '#52555D',
-        'smoke-2': '#858993',
-        'smoke-3': '#B9C0D3',
-        'smoke-4': '#CED7F0',
-        'smoke-5': '#EEF2FF',
+        primary: {
+          1: '#026ABC', //brand blue
+          2: '#CE1982', //brand magenta
+        },
+        secondary: {
+          1: '#C3E5FF', //light blue
+          2: '#0B066E', // dark blue - click states
+          3: '#4BA5ED', //blue - link hover states
+          4: '#860957', //plum //click state
+          5: '#DB57A3', //pink
+          6: '#F0BADC', //light pink
+        },
+        gradient: {
+          //gradient colors,
+          'var-1': '#CB1488', //dark pink
+          'var-2': '#EF4C3A', //pinky orange
+          'var-3': '#0B066E', //dark blue
+          'var-4': '#8DC3ED', //light blue
+        },
+        hue: {
+          // Shades of Hue
+          800: '#0C0C0C', //dark black
+          700: '#52555D', //dark grey
+          400: '#B9C0D3', //mid grey
+          300: '#EEF2FF', //has been removed in scheme
+          200: '#F6F6F6', //off white
+          100: '#FFFFFF', //white
+        },
+
+        cardBG: '#FFFFFF', //full white
         dark: '#0C0C0C', // black
         light: '#F6F6F6', // white
+
+        error: '#F21A06', //red
       },
       fontFamily: {
         mainFont: ['Montserrat', 'sans-serif'],
+      },
+      boxShadow: {
+        '3xl': '0 0.2rem 1.25rem rgba(0, 0, 0, 0.2)',
+        '4xl': '0px 0px 20px 4px rgb(0 0 0 / 20%)',
+        'branded-1': '0px 3px 6px #00000029',
+        'branded-2': '0px 0px 10px #00000054',
+      },
+      dropShadow: {
+        button: {
+          1: '[0_3px_rgba(0,0,0,0.7)]',
+        },
       },
     },
     screens: {
@@ -64,6 +75,7 @@ module.exports = {
       xl: '1700px',
     },
   },
+
   plugins: [
     require('tw-elements/dist/plugin'),
     require('@tailwindcss/line-clamp'),

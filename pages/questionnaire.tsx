@@ -13,7 +13,7 @@ const questionnaire = ({}) => {
 
           <div className="flex justify-center items-center py-[30px] relative mr-[50px]">
             <input
-              className=" border-2 rounded-[23px] h-[45px] w-[231px] sm:w-[350px] md:w-[500px] md:text-center drop-shadow-md text-[10px] sm:text-[16px] pl-[22px]"
+              className=" border-2 rounded-[23px] h-[45px] w-[231px] sm:w-[350px] md:w-[500px] md:text-center drop-shadow-md text-sm sm:text-[16px] pl-[22px]"
               placeholder="Skills, Mentor name, or Industries"
               type="search"
               name="searchBar"

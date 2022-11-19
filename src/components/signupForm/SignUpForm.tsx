@@ -85,7 +85,7 @@ const SignUpForm = ({ chosenRole }: SignupFormProps) => {
     <div className="backdrop:outer">
       <div className="relative flex flex-wrap items-center justify-center h-full py-20 inner-full">
         <div className="relative w-7/12 px-20 pt-20 pb-20 bg-white shadow-2xl rounded-3xl border-l-1">
-          <h1 className="text-4xl font-bold text-secondary-1">
+          <h1 className="text-4xl font-bold text-primary-2">
             Sign Up as a {role === Roles.mentee ? 'Mentee' : 'Mentor'}
           </h1>
           {role === Roles.mentee ? (
@@ -114,7 +114,7 @@ const SignUpForm = ({ chosenRole }: SignupFormProps) => {
             </h2>
           )}
           <Button
-            variant="tertiary"
+            variant="simple"
             icon="google"
             clickHandler={() =>
               console.log('will be updated to make a request function')
@@ -168,10 +168,7 @@ const SignUpForm = ({ chosenRole }: SignupFormProps) => {
             {/* Need the route for Terms And Conditions*/}
             <h3 className="mt-5 text-xs font-bold">
               By logging in, you agree to Empowered Future's{' '}
-              <Link
-                href="/public/terms-and-conditions"
-                className="text-secondary-2"
-              >
+              <a href="" className="text-secondary-2">
                 Terms And Conditions*
               </Link>
             </h3>
