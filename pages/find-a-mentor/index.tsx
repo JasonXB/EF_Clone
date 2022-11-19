@@ -41,7 +41,9 @@ export default function FindAMentor() {
               <Button
                 variant="primary"
                 clickHandler={() =>
-                  Router.push(`mentor-list${query ? `?q=${query}` : ''}`)
+                  Router.push(
+                    `/find-a-mentor/search${query ? `?q=${query}` : ''}`
+                  )
                 }
               >
                 Search
