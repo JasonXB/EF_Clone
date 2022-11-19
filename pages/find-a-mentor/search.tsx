@@ -26,7 +26,12 @@ declare module 'axios' {
   }
 }
 
-const GenderOptions = [FilterDefaults.Gender, 'Male', 'Female'];
+const GenderOptions = [
+  FilterDefaults.Gender,
+  'Male',
+  'Female',
+  'Prefer not to say',
+];
 
 export default function MentorList() {
   // carry over query from /find-a-mentor page
@@ -142,11 +147,6 @@ export default function MentorList() {
     }
     return false;
   });
-
-  // // simulated backend fetch
-  // useEffect(() => {
-  //   setAllMentors(MockMentorDB.getAll());
-  // }, []);
 
   let skillsArray: string[] = [];
   allMentors.forEach((mentor) => {
