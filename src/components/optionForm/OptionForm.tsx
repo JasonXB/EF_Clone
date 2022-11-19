@@ -14,7 +14,7 @@ export default function OptionForm(props: any) {
       )}
       <select
         id={props.name}
-        className={`my-2 p-1 border rounded-md border-smoke-2 w-1/2 cursor-pointer ${
+        className={`my-2 p-1 border rounded-md border-smoke-2 w-full ss:w-1/2 cursor-pointer ${
           props.blankDescription || props.blankTimeline
             ? 'border-red-500'
             : 'border-smoke-2'

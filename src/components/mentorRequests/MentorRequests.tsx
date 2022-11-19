@@ -73,7 +73,7 @@ const MentorRequests = ({ mentor }: MentorProfileProps) => {
 
   return (
     <div className="flex justify-center items-center w-full">
-      <div className="relative w-3/4 bg-white rounded-2xl drop-shadow-lg p-8">
+      <div className="relative w-full xs:w-3/4 bg-white rounded-2xl drop-shadow-lg p-8">
         <h1 className="text-xl sm:text-2xl md:text-4xl text-primary-1 my-4 md:my-8">
           Apply For {full_name}
         </h1>
@@ -121,7 +121,7 @@ const MentorRequests = ({ mentor }: MentorProfileProps) => {
             blankTimeline={blankTimeline}
           />
 
-          <div className="flex justify-between items-center mx-8 my-16">
+          <div className="flex justify-between items-center ss:mx-8 my-16">
             <Link href={`/mentor/${id}`}>
               <button
                 className={`${buttonVariants.secondary} md:px-16 font-light hover:shadow-md`}
