@@ -6,7 +6,6 @@ import Meeting from '../../src/interface/meeting.interface';
 import MentorshipRequest from '../../src/interface/mentorship-request';
 import MockMentorDB from '../../src/tempData/MockMentorDB';
 import getRandomInt from '../../src/util/random-int';
-
 import fetchMentorshipRequests from '../../src/components/mentorDashboard/api/fetch-mentorship-requests';
 
 //! check whether a user is authenticated as a mentor, otherwise user is redirected to /auth/login

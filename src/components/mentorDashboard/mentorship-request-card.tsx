@@ -9,6 +9,7 @@ interface MentorshipRequestCardProps {
   setRefetchRequest: (arg: boolean) => void;
 }
 
+// todo: a spinner can be placed while waiting the response from api fetch
 function MentorshipRequestCard({
   mentorshipRequest,
   setRefetchRequest,
