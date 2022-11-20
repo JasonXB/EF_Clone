@@ -101,6 +101,9 @@ const BookMeeting = () => {
     };
   }
 
+  console.log("---  ", getCredentialsFromLocalStorage());
+  
+
   const bookMeeting = () => {
     if (JSON.stringify(meetingDetails) === '{}') {
       setNeedToChooseTime(true)
@@ -112,7 +115,7 @@ const BookMeeting = () => {
         time: formatISO(startTime),
         meetingMethod: 'Google Meets',
       };
-      postMeeting(meeting, accessToken);
+      postMeeting(meeting, getCredentialsFromLocalStorage() as string);
     }
   };
 
