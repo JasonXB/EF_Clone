@@ -82,7 +82,7 @@ const SimilarMentorsCarousel = (data: dataType) => (
     {/* logic if there are no requests */}
     {data.data?.length === 0 ? (
       <div className="w-1/2 mx-auto mt-[10%]">
-        <p className="font-bold text-center text-smoke-2">
+        <p className="font-bold text-center text-hue-700">
           No similar mentors found.
         </p>
       </div>

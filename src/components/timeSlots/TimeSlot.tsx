@@ -21,7 +21,10 @@ const TimeSlot = ({ meeting, timeSlotsType }: MeetingProps) => {
     IANACounterpart as unknown as string
   );
 
-  const convertedEndTime = utcToZonedTime(meeting.endDatetime, IANACounterpart as unknown as string);
+  const convertedEndTime = utcToZonedTime(
+    meeting.endDatetime,
+    IANACounterpart as unknown as string
+  );
 
   const selectTimeSlot = () => {
     setSelectedTimeSlot({
@@ -55,8 +58,16 @@ const TimeSlot = ({ meeting, timeSlotsType }: MeetingProps) => {
 
   return (
     <button
+<<<<<<< HEAD
       className={timeSlotDesign}
       disabled={timeSlotsType == TIMESLOTS_TYPE_CLASSES.list}
+=======
+      className={classNames(
+        isTimeSlotSelected() && 'border-4 bg-secondary-1 font-bold',
+        !isTimeSlotSelected() && 'border font-medium hover:bg-gray-100',
+        `flex items-center px-6 py-6 space-x-4 group rounded-xl focus-within:bg-gray-100  border-primary-1 w-full`
+      )}
+>>>>>>> 4f2a201db6048d3982727dc5428c17e71994ecf4
       onClick={selectTimeSlot}
     >
       <div className="flex-auto flex">

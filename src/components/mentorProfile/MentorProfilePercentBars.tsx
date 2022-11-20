@@ -16,7 +16,7 @@ const MentorProfilePercentBars = ({ skills }: PercentBarsProps) => {
       <div className="flex justify-center ml-0 md:mt-20 lg:justify-start xl:justify-start md:ml-10 lg:mt-20 xl:mt-20 lg:ml-20 xl:ml-20">
         <div className="col-span-3 ">
           {/* Map each skill title and corresponding percent bar */}
-          <div className="flex flex-col items-center px-3 py-5 border-2 rounded-lg shadow-xl xs:ml-5 border-smoke-4">
+          <div className="flex flex-col items-center px-3 py-5 border-2 rounded-lg shadow-xl xs:ml-5 border-hue-400">
             {skills.map((skill) => {
               return (
                 <div key={uuidv4()} className="flex flex-col mb-4">

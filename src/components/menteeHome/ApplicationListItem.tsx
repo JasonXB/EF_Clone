@@ -18,7 +18,7 @@ export default function ApplicationListItem(props: ApplicationData) {
 
   return (
     <li className="grid ss:grid-cols-[7fr,_auto] ss:h-[5.875rem] ss:gap-6 ss:mb-4 gap-4 mb-8">
-      <div className="grid grid-cols-[3fr,_7fr] divide-x items-center w-full shadowVariant1 rounded-2xl px-[13px] py-[8px] xs:px-[26px] xs:py-[16px] h-[5.875rem]">
+      <div className="grid grid-cols-[3fr,_7fr] divide-x items-center w-full shadow-branded-1 rounded-2xl px-[13px] py-[8px] xs:px-[26px] xs:py-[16px] h-[5.875rem]">
         <div className="flex flex-col pr-4">
           <div className="relative rounded-[5px] overflow-hidden w-[40px] h-[40px] flex flex-col mx-auto">
             <Image
@@ -28,13 +28,13 @@ export default function ApplicationListItem(props: ApplicationData) {
               objectFit="cover"
             />
           </div>
-          <div className="truncate mx-auto">
-            <span className="text-[12px] text-ellipsis overflow-hidden whitespace-nowrap">
+          <div className="mx-auto truncate">
+            <span className="overflow-hidden text-base text-ellipsis whitespace-nowrap">
               {props.mentorName}
             </span>
           </div>
         </div>
-        <div className="flex flex-col w-full h-full justify-center pl-4 m-auto">
+        <div className="flex flex-col justify-center w-full h-full pl-4 m-auto">
           <p className="mb-2 text-xl">
             <span>Status:</span> {props.status}
           </p>

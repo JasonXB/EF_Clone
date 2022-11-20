@@ -42,7 +42,10 @@ const DateSlot = ({ day, dayIndex }: DateBoxProps) => {
         availability.startDatetime,
         IANACounterpart as unknown as string
       ),
-      endDatetime: utcToZonedTime(availability.endDatetime, IANACounterpart as unknown as string),
+      endDatetime: utcToZonedTime(
+        availability.endDatetime,
+        IANACounterpart as unknown as string
+      ),
     };
   });
 

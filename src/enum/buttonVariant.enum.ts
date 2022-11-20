@@ -2,7 +2,8 @@ export enum ButtonVariant {
   primary = 'primary',
   secondary = 'secondary',
   tertiary = 'tertiary',
-  primaryUnselected = 'primaryUnselected',
-  secondaryUnselected = 'secondaryUnselected',
+  quad = 'quad',
+  simple = 'simple',
   iconOnly = 'iconOnly',
+  calendarDataSelector = 'calendarDataSelector',
 }
