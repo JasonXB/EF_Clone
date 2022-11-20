@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import {
   format,
   getDay,
@@ -10,10 +10,8 @@ import { utcToZonedTime } from 'date-fns-tz';
 import { DateSlotProps } from '../../interface/book-meeting/book-with-mentor.interface';
 import { CalendarContext } from '../../../state-management/ReactContext/CalendarContext';
 import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
+import { classNames } from '../../helperFunctions/class-names'
 
-function classNames(...classes: (string | boolean)[]) {
-  return classes.filter(Boolean).join(' ');
-}
 //grid styling used to align the date with the days
 let colStartClasses = [
   '',

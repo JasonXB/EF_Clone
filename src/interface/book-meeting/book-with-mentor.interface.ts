@@ -7,7 +7,7 @@ export interface Availability {
   }
 
 export interface Mentor {
-    mentor_id: number;
+    mentor_id: string;
     firstName: string; 
     lastName: string; 
     position: string; 
@@ -42,3 +42,16 @@ export  interface TimezoneProps {
     zone: ReactNode;
     setDropdownToggle: Function;
   }
+
+export interface ScheduleSectionProps {
+  needToChooseTime: boolean; 
+  meeting_availability: {
+    specific: Availability[]
+  };
+}
+
+export interface ReviewMeetingInfoSectionProps {
+  fullName: string; 
+  timeReview: string; 
+  hasSelectedATime: boolean;
+}
