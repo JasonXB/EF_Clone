@@ -101,7 +101,7 @@ const BookMeeting = () => {
     };
   }
 
-  console.log("---  ", getCredentialsFromLocalStorage());
+  // console.log("---  ", getCredentialsFromLocalStorage());
   
 
   const bookMeeting = () => {
@@ -115,7 +115,7 @@ const BookMeeting = () => {
         time: formatISO(startTime),
         meetingMethod: 'Google Meets',
       };
-      postMeeting(meeting, getCredentialsFromLocalStorage() as string);
+      postMeeting(meeting, accessToken as string);
     }
   };
 
