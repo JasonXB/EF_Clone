@@ -162,7 +162,7 @@ const BookMeeting = () => {
           {/* div for profile picure and with basic info */}
           <div className="flex lg:flex-col lg:items-center lg:w-1/5 lg:h-full pt-5 pl-5 lg:px-4 bg-hue-300 pb-6 lg:pt-40">
             {/* basic info block*/}
-            <div className="flex items-center lg:flex-col flex-row space-x-10">
+            <div className="flex items-center lg:flex-col flex-row space-x-10 lg:space-x-0 bg-red-100">
               <Avatar
                 imgLocation={
                   imgUrl ||
@@ -172,8 +172,8 @@ const BookMeeting = () => {
                 personsName={fullName}
               />
               {/* name and title */}
-              <div className='lg:mr-10 lg:w-full'>
-                <h5 className="mt-2 font-medium text-primary-1 text-xl md:text-3xl lg:text-xl xl:text-3xl">{fullName}</h5>
+              <div className='flex flex-col items-center lg:mr-10 lg:w-full'>
+                <h5 className="text-center mt-2 font-medium text-primary-1 text-xl md:text-3xl lg:text-xl xl:text-3xl">{fullName}</h5>
                 <p className="text-sm xl:text-xl">
                   {position} at {company}
                 </p>

@@ -49,7 +49,7 @@ export const mentorsData = [
     {
         "mentor_id": 122,
         "firstName": "Shirley Mae",
-        "lastName": "Dizon",
+        "lastName": "Dizon Munoz",
         "position": "Business Analyst",
         "company": "RBC",
         "imgUrl": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNzIyMTJ8MHwxfHNlYXJjaHwyfHxwcm9maWxlJTIwcGljfGVufDB8fHx8MTY2NjA2NTM1Nw&ixlib=rb-1.2.1&q=80&w=400",
