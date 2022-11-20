@@ -25,7 +25,7 @@ const TimeSlots = ({ meeting_availability }: MeetingAvailabilityProps) => {
   const meetingsOnSelectedDay = selectedDayAvailability(meeting_availability.specific)
 
   return (
-    <div className="lg:mt-4 xs:space-y-3">
+    <div className="lg:mt-4 space-y-3">
       {meetingsOnSelectedDay.length > 0 ? (
         meetingsOnSelectedDay.map((availability: Availability) => (
           <TimeSlot key={uuidv4()} meeting={availability} />

@@ -158,11 +158,11 @@ const BookMeeting = () => {
   return (
     <Layout background="none">
       {meeting_availability?.specific && (
-        <div className="flex lg:flex-row lg:bg-hue-300 m-[-2rem] xs:flex-col">
+        <div className="flex lg:flex-row lg:bg-hue-300 m-[-2rem] flex-col">
           {/* div for profile picure and with basic info */}
-          <div className="flex lg:flex-col lg:items-center lg:w-1/5 lg:h-full xs:pt-5 xs:pl-5 lg:px-4 xs:bg-hue-300 xs:pb-6 lg:pt-40">
+          <div className="flex lg:flex-col lg:items-center lg:w-1/5 lg:h-full pt-5 pl-5 lg:px-4 bg-hue-300 pb-6 lg:pt-40">
             {/* basic info block*/}
-            <div className="flex items-center lg:flex-col xs:flex-row xs:space-x-10 ">
+            <div className="flex items-center lg:flex-col flex-row space-x-10">
               <Avatar
                 imgLocation={
                   imgUrl ||
@@ -173,8 +173,8 @@ const BookMeeting = () => {
               />
               {/* name and title */}
               <div className='lg:mr-10 lg:w-full'>
-                <h5 className="mt-2 font-medium text-primary-1 xs:text-xl md:text-3xl lg:text-xl">{fullName}</h5>
-                <p className="text-sm">
+                <h5 className="mt-2 font-medium text-primary-1 text-xl md:text-3xl lg:text-xl xl:text-3xl">{fullName}</h5>
+                <p className="text-sm xl:text-xl">
                   {position} at {company}
                 </p>
               </div>
@@ -184,8 +184,8 @@ const BookMeeting = () => {
           {/* --- */}
 
           {/* right side with meeting questions */}
-          <div className="lg:w-4/5 h-full xs:px-10 xl:px-16 bg-white py-28 xs:pt-10">
-            <h4 className="xs:mb-10 lg:mb-10 xl:mb-16 font-semibold text-primary-1 xs:text-2xl md:text-3xl">
+          <div className="lg:w-4/5 h-full px-10 xl:px-16 bg-white py-28 pt-10">
+            <h4 className="mb-10 lg:mb-10 xl:mb-16 xl:mt-10 font-semibold text-primary-1 text-2xl md:text-3xl xl:text-4xl">
               Schedule your Meeting with {firstName}
             </h4>
             <div className="space-y-20">
@@ -207,9 +207,9 @@ const BookMeeting = () => {
                     </div>
 
                     {/* available time slots block */}
-                    <div className="lg:pt-1 xs:mt-0 md:mt-2 lg:mt-2 md:pl-8 lg:pl-14">
+                    <div className="lg:pt-1 mt-0 md:mt-2 lg:mt-2 md:pl-8 lg:pl-14">
                       {/* -- AVAILABILITY HEADER -- */}
-                      <div className="flex flex-col items-center xs:py-6 lg:py-10 border-t border-primary-1">
+                      <div className="flex flex-col items-center py-6 lg:py-10 border-t border-primary-1">
                         <div className="flex mr-7">
                           {/* -- clock icon -- */}
                           <div className="px-2 text-primary-1">
@@ -245,41 +245,41 @@ const BookMeeting = () => {
               </FormItem>
               {/* ITEM 2: Choosing meeting method---------------------------------- */}
               <FormItem itemString={'2. Choose Meeting Method'}>
-                <div className="flex xs:flex-col md:flex-row p-4 xs:space-x-0 md:space-x-4 xs:space-y-2 md:space-y-0">
+                <div className="flex flex-col md:flex-row p-4 space-x-0 md:space-x-4 space-y-2 md:space-y-0">
                   <button
                     className={`md:w-64 flex items-center py-3 group rounded-2xl focus-within:bg-gray-100 hover:bg-gray-100 border-primary-1 border-4 bg-secondary-1 font-bold`}
                   >
                     <div className="flex-auto">
-                      <p>Google Meet</p>
+                      <p className='xl:text-lg'>Google Meet</p>
                     </div>
                   </button>
                   <button
                     className={`md:w-64 flex items-center py-3 group rounded-2xl focus-within:bg-gray-100 hover:bg-gray-100 border-primary-1 border font-medium`}
                   >
                     <div className="flex-auto">
-                      <p>Arrange with Mentor</p>
+                      <p className='xl:text-lg'>Arrange with Mentor</p>
                     </div>
                   </button>
                 </div>
               </FormItem>
               {/* ITEM 3: Review meeting information---------------------------------- */}
               <FormItem itemString={'3. Review Meeting Information'}>
-                <div className="flex xl:flex-row xs:flex-col lg:justify-between lg:w-11/12 lg:p-4 xs:pt-4 xs:space-y-2">
+                <div className="flex xl:flex-row flex-col lg:justify-between lg:w-11/12 lg:p-4 pt-4 space-y-2 lg:space-y-0">
                   <div className="flex flex-row space-x-2 font-medium">
-                    <p>Meeting with </p>
-                    <p className="font-bold">{fullName}</p>
+                    <p className='xl:text-lg'>Meeting with </p>
+                    <p className="font-bold xl:text-lg">{fullName}</p>
                   </div>
                   <div className="flex flex-row space-x-2 font-medium">
-                    <p>Time: </p>
+                    <p className='xl:text-lg'>Time: </p>
                     {hasSelectedATime ? (
-                      <p className="font-bold">{timeReview}</p>
+                      <p className="font-bold xl:text-lg">{timeReview}</p>
                     ) : (
-                      <p className="font-bold">None</p>
+                      <p className="font-bold xl:text-lg">None</p>
                     )}
                   </div>
                   <div className="flex flex-row space-x-2 font-medium">
-                    <p>Meeting Method:</p>
-                    <p className="font-bold">Google Meet</p>
+                    <p className='xl:text-lg'>Meeting Method:</p>
+                    <p className="font-bold xl:text-lg">Google Meet</p>
                   </div>
                 </div>
               </FormItem>

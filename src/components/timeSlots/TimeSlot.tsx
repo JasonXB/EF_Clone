@@ -46,12 +46,12 @@ const TimeSlot = ({ meeting }: MeetingProps) => {
       className={classNames(
         isTimeSlotSelected() && 'border-4 bg-secondary-1 font-bold',
         !isTimeSlotSelected() && 'border font-medium hover:bg-gray-100',
-        `flex items-center group rounded-xl focus-within:bg-gray-100 border-primary-1 w-full xs:py-2 sm:py-4 lg:py-6`
+        `flex items-center group rounded-xl focus-within:bg-gray-100 border-primary-1 w-full py-2 sm:py-4 lg:py-6`
       )}
       onClick={selectTimeSlot}
     >
       <div className="flex-auto">
-        <p className='xs:text-xs sm:text-base lg:text-lg'>
+        <p className='text-xs sm:text-base lg:text-lg'>
           <time dateTime={format(convertedStartTime, 'hh:mm a')}>
             {format(convertedStartTime, 'hh:mm a')}
           </time>{' '}

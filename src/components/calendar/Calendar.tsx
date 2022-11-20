@@ -36,7 +36,7 @@ export default function Calendar({ meeting_availability }: MeetingAvailabilityPr
   return (
     <div className="pt-1 my-2">
       {/* style for navigation header of calendar */}
-      <div className="flex justify-between border border-primary-1 rounded-md lg:px-6 lg:py-6 xs:px-4 xs:py-2">
+      <div className="flex justify-between border border-primary-1 rounded-md lg:px-6 lg:py-6 px-4 py-2">
         {/* -- LEFT ARROW -- */}
         {!isPast(firstDayCurrentMonth) ? (<button
           className="hover:text-gray-500"
@@ -61,7 +61,7 @@ export default function Calendar({ meeting_availability }: MeetingAvailabilityPr
         </button>) : <div className="px-5"/>}
         {/* -- */}
         {/* -- CALENDAR MONTH -- */}
-        <h4 className="font-medium xs:text-2xl lg:text-3xl xs:mt-1 lg:mt-0">
+        <h4 className="font-medium text-2xl lg:text-3xl xl:text-4xl mt-1 lg:mt-0">
           {format(firstDayCurrentMonth, 'MMM yyyy')}
         </h4>
         {/* -- */}
@@ -91,18 +91,18 @@ export default function Calendar({ meeting_availability }: MeetingAvailabilityPr
         {/* -- */}
       </div>
       {/* -- DAYS -- */}
-      <div className="grid grid-cols-7 lg:py-8 xs:py-4 text-center font-medium border-b border-primary-1">
-        <h5 className='xs:text-xl lg:text:2xl'>{responsiveDay('MON')}</h5>
-        <h5 className='xs:text-xl lg:text:2xl'>{responsiveDay('TUE')}</h5>
-        <h5 className='xs:text-xl lg:text:2xl'>{responsiveDay('WED')}</h5>
-        <h5 className='xs:text-xl lg:text:2xl'>{responsiveDay('THU')}</h5>
-        <h5 className='xs:text-xl lg:text:2xl'>{responsiveDay('FRI')}</h5>
-        <h5 className='xs:text-xl lg:text:2xl'>{responsiveDay('SAT')}</h5>
-        <h5 className='xs:text-xl lg:text:2xl'>{responsiveDay('SUN')}</h5>
+      <div className="grid grid-cols-7 lg:py-8 py-4 text-center font-medium border-b border-primary-1">
+        <h5 className='text-xl lg:text-2xl xl:text-3xl'>{responsiveDay('MON')}</h5>
+        <h5 className='text-xl lg:text-2xl xl:text-3xl'>{responsiveDay('TUE')}</h5>
+        <h5 className='text-xl lg:text-2xl xl:text-3xl'>{responsiveDay('WED')}</h5>
+        <h5 className='text-xl lg:text-2xl xl:text-3xl'>{responsiveDay('THU')}</h5>
+        <h5 className='text-xl lg:text-2xl xl:text-3xl'>{responsiveDay('FRI')}</h5>
+        <h5 className='text-xl lg:text-2xl xl:text-3xl'>{responsiveDay('SAT')}</h5>
+        <h5 className='text-xl lg:text-2xl xl:text-3xl'>{responsiveDay('SUN')}</h5>
       </div>
       {/* -- */}
       {/* -- DATE SLOTS -- */}
-      <div className="grid grid-cols-7 grid-rows-6 my-2 sx:text-xl md:text-2xl ">
+      <div className="grid grid-cols-7 grid-rows-6 my-2 text-xl md:text-2xl">
         {days.map((day, dayIdx) => (
           <DateSlot
             key={uuidv4()}
