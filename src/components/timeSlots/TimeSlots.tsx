@@ -26,7 +26,7 @@ const TimeSlots = ({ timeSlotsType, day }: TimeSlotsProps ) => {
 
   //find if the mentor has availabilities on the selected date by comparing the date selected and the date in the json data
   const selectedDayAvailability = (availabilities: Availability[]) => {
-    return availabilities.filter((availability: Availability)=>{
+    return availabilities && availabilities.filter((availability: Availability)=>{
       const zonedStartTime = utcToZonedTime(
         availability.startDatetime,
         IANACounterpart as unknown as string
