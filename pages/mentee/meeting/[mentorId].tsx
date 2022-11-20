@@ -72,7 +72,10 @@ const BookMeeting = () => {
   const fullName = firstName + ' ' + lastName
   const startTime = parseISO(selectedTimeSlot.startDatetime)
   const endTime = parseISO(selectedTimeSlot.endDatetime)
-  setSchedule(meeting_availability)
+  
+  useEffect(()=>{
+    setSchedule(meeting_availability)
+  },[meeting_availability])
 
   //used for the item 3 review meeting information
   let timeReview = '';

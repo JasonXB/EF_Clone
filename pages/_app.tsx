@@ -17,13 +17,13 @@ function MyApp({ Component, pageProps }: AppProps) {
         {/* SearchProvider: current Context API provider (for filter search functionality) */}
         <SearchProvider>
           <SimilarMentorsProvider>
-          <TimezoneProvider>
             <CalendarProvider>
-              <ScheduleModalProvider>
-              <Component {...pageProps} />
-              </ScheduleModalProvider>
+              <TimezoneProvider>
+                <ScheduleModalProvider>
+                  <Component {...pageProps} />
+                </ScheduleModalProvider>
+              </TimezoneProvider>
             </CalendarProvider>
-          </TimezoneProvider>
           </SimilarMentorsProvider>
         </SearchProvider>
       </AuthProvider>
