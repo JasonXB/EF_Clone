@@ -6,12 +6,13 @@ import { formatInTimeZone } from 'date-fns-tz';
 //data
 import { mentorsData } from '../../../src/tempData/dummyMentorsForCalendar';
 //types
-import { Mentor, CALENDAR_TYPE_CLASSES } from '../../../src/interface/book-meeting/book-with-mentor.interface';
+import { Mentor } from '../../../src/interface/book-meeting/book-with-mentor.interface';
 //hooks
 import { useAuth } from '../../../state-management/ReactContext/AuthContext';
 import useWindowDimensions  from '../../../src/hooks/useWindowDimensions'
 //context
 import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
+import { CalendarContext } from '../../../state-management/ReactContext/CalendarContext';
 //components
 import Button from '../../../src/components/buttons/reusable-buttons';
 import Layout from '../../../src/components/Layout';
@@ -40,9 +41,10 @@ const BookMeeting = () => {
   const { accessToken, profileID } = useAuth();
   const [thisMentor, setThisMentor] = useState({} as Mentor);
   const [needToChooseTime, setNeedToChooseTime] = useState(false)
+  const { selectedTimeSlot, hasSelectedATime, IANACounterpart } = useContext(TimezoneContext);
+  const { setSchedule } = useContext(CalendarContext);
   const router = useRouter();
   const mentorId = router.query.mentorId;
-
   const screen = useWindowDimensions()
 
   // console.log('getCredentialsFromLocalStorage', getCredentialsFromLocalStorage());
@@ -66,12 +68,11 @@ const BookMeeting = () => {
     }
   }, [router.isReady, mentorId]);
 
-  const { firstName, lastName, position, company, imgUrl, meeting_availability } = thisMentor;
-  
+  const { firstName, lastName, position, company, imgUrl, meeting_availability } = thisMentor;  
   const fullName = firstName + ' ' + lastName
-  const { selectedTimeSlot, hasSelectedATime, IANACounterpart } = useContext(TimezoneContext);
   const startTime = parseISO(selectedTimeSlot.startDatetime)
   const endTime = parseISO(selectedTimeSlot.endDatetime)
+  setSchedule(meeting_availability)
 
   //used for the item 3 review meeting information
   let timeReview = '';
@@ -153,7 +154,7 @@ const BookMeeting = () => {
             </h4>
             <div className="space-y-20">
               {/* ITEM 1: Choosing the meeting schedule */}
-              <ScheduleSection needToChooseTime={needToChooseTime} meeting_availability={meeting_availability} />
+              <ScheduleSection needToChooseTime={needToChooseTime} />
               {/* ITEM 2: Choosing meeting method */}
               <MeetingMethodSection />
               {/* ITEM 3: Review meeting information */}

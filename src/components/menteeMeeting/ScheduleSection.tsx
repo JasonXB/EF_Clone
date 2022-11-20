@@ -2,9 +2,9 @@ import FormItem from '../FormItem';
 import Calendar from '../calendar/Calendar';
 import TimeZonesDropdown from '../timezonesDropdown/TimeZonesDropdown';
 import TimeSlots from '../timeSlots/TimeSlots';
-import { ScheduleSectionProps } from '../../interface/book-meeting/book-with-mentor.interface'
+import { ScheduleSectionProps, CALENDAR_TYPE_CLASSES, TIMEZONESDROPDOWN_TYPE_CLASSES, TIMESLOTS_TYPE_CLASSES } from '../../interface/book-meeting/book-with-mentor.interface'
 
-const ScheduleSection = ({needToChooseTime, meeting_availability}: ScheduleSectionProps) => {
+const ScheduleSection = ({needToChooseTime}: ScheduleSectionProps) => {
   return (
     <FormItem itemString={'1. Select Date And Time'}>
         <>
@@ -19,7 +19,7 @@ const ScheduleSection = ({needToChooseTime, meeting_availability}: ScheduleSecti
                 {/* style to separate the calendar and timeslot blocks in its own grids */}
                 <div className="md:grid md:grid-cols-3">
                 <div className="col-span-2">
-                    <Calendar meeting_availability={meeting_availability} />
+                    <Calendar calendarType={CALENDAR_TYPE_CLASSES.medium}/>
                 </div>
 
                 {/* available time slots block */}
@@ -48,12 +48,12 @@ const ScheduleSection = ({needToChooseTime, meeting_availability}: ScheduleSecti
                         <p className="font-bold">Available Time Slot</p>
                     </div>
                     {/* dropdown for timezone */}
-                    <TimeZonesDropdown />
+                    <TimeZonesDropdown timezonesDropdownType={TIMEZONESDROPDOWN_TYPE_CLASSES.plain}/>
                     {/* -- */}
                     </div>
                     {/* -- */}
                     {/* -- DISPLAY AVAILABILTIES -- */}
-                    <TimeSlots meeting_availability={meeting_availability} />
+                    <TimeSlots timeSlotsType={TIMESLOTS_TYPE_CLASSES.picker} />
                     {/* -- */}
                 </div>
             </div>

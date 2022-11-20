@@ -33,7 +33,7 @@ const ScheduleModal = () => {
         })
     }
 
-    const availabilitiesOnSelectedDay = schedule.specific && selectedDayAvailability(schedule.specific)
+    const availabilitiesOnSelectedDay = schedule && selectedDayAvailability(schedule.specific)
 
     const clickDateBracket = () => {
         setShowScheduleModal(false)

@@ -16,39 +16,39 @@ export enum TIMEZONESDROPDOWN_TYPE_CLASSES {
 }
 
 export interface Schedule {
-  daily: Availability[],
-  weekly: Availability[],
-  monthly: Availability[],
-  specific: Availability[],
+  daily: Availability[];
+  weekly: Availability[];
+  monthly: Availability[];
+  specific: Availability[];
 }
 
 //used in book-meeting/[mentorId]  
 export interface Availability {
-    startDatetime: string,
-    endDatetime: string,
+    startDatetime: string;
+    endDatetime: string;
 }
 
 export interface Mentor {
-    mentor_id: string,
-    firstName: string, 
-    lastName: string, 
-    position: string, 
-    company: string, 
-    imgUrl: string, 
+    mentor_id: string;
+    firstName: string; 
+    lastName: string; 
+    position: string; 
+    company: string; 
+    imgUrl: string; 
     meeting_availability: Schedule
 }
 
 export interface MeetingProps {
-  timeSlotsType: TIMESLOTS_TYPE_CLASSES,
+  timeSlotsType: TIMESLOTS_TYPE_CLASSES;
   meeting: Availability
 }
 export interface TimeSlotSetterProps {
-  meeting?: Availability,
-  isTimeNull?: boolean,
+  meeting?: Availability;
+  isTimeNull?: boolean;
   index?: number
 }
 export interface TimeTextFieldProps {
-  time: string,
+  time: string;
   isTimeNull?: boolean
 }
 export interface TimeZonesDropdownProps {
@@ -63,27 +63,24 @@ export interface MeetingAvailabilityProps {
 
 //used in DateSlot component
 export interface DateBoxProps {
-    day: Date,
+    day: Date;
     dayIndex: number
 }
 
 //used in Timezone component
 export interface TimezoneProps {
-    zone: ReactNode,
+    zone: ReactNode;
     setDropdownToggle: Function
 }
 
 //used in Timezone component
 export interface TimeSlotsProps {
-  timeSlotsType: TIMESLOTS_TYPE_CLASSES,
+  timeSlotsType: TIMESLOTS_TYPE_CLASSES;
   day?: Date //day prop is optional and is only used for TIMESLOTS_TYPE_CLASSES.list to accomodate DateBracket in Calendar
 }
 
 export interface ScheduleSectionProps {
   needToChooseTime: boolean; 
-  meeting_availability: {
-    specific: Availability[]
-  };
 }
 
 export interface ReviewMeetingInfoSectionProps {

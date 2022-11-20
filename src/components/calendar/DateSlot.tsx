@@ -34,7 +34,7 @@ const DateSlot = ({ day, dayIndex }: DateBoxProps) => {
   const { setSelectedTimeSlot, IANACounterpart, selectedTimeSlot } = useContext(TimezoneContext);
 
   //variable used to adjust the date available based on the timezone
-  const timeZonedAvailabilities = schedule.specific && schedule.specific.map((availability) => {
+  const timeZonedAvailabilities = schedule && schedule.specific.map((availability) => {
     return {
       startDatetime: utcToZonedTime(
         availability.startDatetime,
@@ -47,14 +47,17 @@ const DateSlot = ({ day, dayIndex }: DateBoxProps) => {
     };
   });
 
+
   //predicate function to check the array if it has any future start dates
   const hasFuture = () => {
     let startTime 
-    for (let i = 0; i < timeZonedAvailabilities.length; i++) {
-      startTime = timeZonedAvailabilities[i].startDatetime
-      if (isSameDay(startTime, day) && isFuture(startTime)) {
-        const zonedSelectedTime = utcToZonedTime(selectedTimeSlot.startDatetime, IANACounterpart as unknown as string);
-          return true
+    if(timeZonedAvailabilities){
+      for (let i = 0; i < timeZonedAvailabilities.length; i++) {
+        startTime = timeZonedAvailabilities[i].startDatetime
+        if (isSameDay(startTime, day) && isFuture(startTime)) {
+          const zonedSelectedTime = utcToZonedTime(selectedTimeSlot.startDatetime, IANACounterpart as unknown as string);
+            return true
+        }
       }
     }
     return false

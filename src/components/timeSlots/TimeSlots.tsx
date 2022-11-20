@@ -6,6 +6,7 @@ import { isSameDay } from 'date-fns';
 import { Availability, TimeSlotsProps, TIMESLOTS_TYPE_CLASSES } from '../../interface/book-meeting/book-with-mentor.interface'
 import { CalendarContext } from '../../../state-management/ReactContext/CalendarContext';
 import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
+import { classNames } from '../../helperFunctions/class-names';
 
 const TimeSlots = ({ timeSlotsType, day }: TimeSlotsProps ) => {
   const { schedule, selectedDay } = useContext(CalendarContext);
@@ -34,12 +35,16 @@ const TimeSlots = ({ timeSlotsType, day }: TimeSlotsProps ) => {
     })
   }
 
-  const meetingsOnSelectedDay = schedule.specific && selectedDayAvailability(schedule.specific)
+  const meetingsOnSelectedDay = schedule && selectedDayAvailability(schedule.specific)
 
   const noTimeSlotMessage = timeSlotsType == TIMESLOTS_TYPE_CLASSES.picker ? "No time slot available" : ''
 
   return (
-    <div className="lg:mt-4 space-y-3 text-sm max-h-28 overflow-y-scroll scrollBar">
+    <div className={classNames(
+      "lg:mt-4 space-y-3 text-sm overflow-y-scroll scrollBar", 
+      timeSlotsType == TIMESLOTS_TYPE_CLASSES.picker && "max-h-96",
+      timeSlotsType == TIMESLOTS_TYPE_CLASSES.list && "max-h-28"
+      )}>
       {meetingsOnSelectedDay && meetingsOnSelectedDay.length > 0 ? (
         meetingsOnSelectedDay.map((availability: Availability) => (
           <TimeSlot key={uuidv4()} timeSlotsType={timeSlotsType} meeting={availability}  />

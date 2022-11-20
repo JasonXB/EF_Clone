@@ -94,20 +94,20 @@ export const mentorsData = [
                     "endDatetime": "2022-11-28T15:00:00-08:00"
                 },
                 {
-                    "startDatetime": "2022-11-22T11:30:00-08:00",
-                    "endDatetime": "2022-11-22T12:00:00-08:00"
+                    "startDatetime": "2022-11-28T11:30:00-08:00",
+                    "endDatetime": "2022-11-28T12:00:00-08:00"
                 },
                 {
-                    "startDatetime": "2022-11-22T15:30:00-08:00",
-                    "endDatetime": "2022-11-22T17:00:00-08:00"
+                    "startDatetime": "2022-11-28T15:30:00-08:00",
+                    "endDatetime": "2022-11-28T17:00:00-08:00"
                 },
                 {
-                    "startDatetime": "2022-11-22T07:30:00-08:00",
-                    "endDatetime": "2022-11-22T08:00:00-08:00"
+                    "startDatetime": "2022-11-28T07:30:00-08:00",
+                    "endDatetime": "2022-11-28T08:00:00-08:00"
                 },
                 {
-                    "startDatetime": "2022-11-22T11:30:00-08:00",
-                    "endDatetime": "2022-11-22T13:00:00-08:00"
+                    "startDatetime": "2022-11-28T11:30:00-08:00",
+                    "endDatetime": "2022-11-28T13:00:00-08:00"
                 },
                 {
                     "startDatetime": "2022-11-15T20:30:00-08:00",
