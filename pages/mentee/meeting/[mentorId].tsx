@@ -1,7 +1,6 @@
 import { useContext, useState, useEffect, SetStateAction } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import axios from 'axios';
 import { formatISO, parseISO } from 'date-fns';
 import { formatInTimeZone } from 'date-fns-tz';
 //data
@@ -101,7 +100,7 @@ const BookMeeting = () => {
     };
   }
 
-  console.log("---  ", getCredentialsFromLocalStorage());
+  // console.log("---  ", getCredentialsFromLocalStorage());
   
 
   const bookMeeting = () => {
@@ -115,7 +114,7 @@ const BookMeeting = () => {
         time: formatISO(startTime),
         meetingMethod: 'Google Meets',
       };
-      postMeeting(meeting, getCredentialsFromLocalStorage() as string);
+      postMeeting(meeting, accessToken as string);
     }
   };
 
