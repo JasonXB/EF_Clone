@@ -39,7 +39,7 @@ const TimeSlots = ({ timeSlotsType, day }: TimeSlotsProps ) => {
   const noTimeSlotMessage = timeSlotsType == TIMESLOTS_TYPE_CLASSES.picker ? "No time slot available" : ''
 
   return (
-    <div className="mt-4 space-y-3 text-sm max-h-28 overflow-y-scroll scrollBar">
+    <div className="lg:mt-4 space-y-3 text-sm max-h-28 overflow-y-scroll scrollBar">
       {meetingsOnSelectedDay && meetingsOnSelectedDay.length > 0 ? (
         meetingsOnSelectedDay.map((availability: Availability) => (
           <TimeSlot key={uuidv4()} timeSlotsType={timeSlotsType} meeting={availability}  />

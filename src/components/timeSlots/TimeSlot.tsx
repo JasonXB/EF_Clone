@@ -7,10 +7,7 @@ import { format, isEqual, parseISO } from 'date-fns';
 import { utcToZonedTime } from 'date-fns-tz';
 import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
 import { MeetingProps, TIMESLOTS_TYPE_CLASSES } from '../../interface/book-meeting/book-with-mentor.interface'
-
-function classNames(...classes: (string | boolean)[]) {
-  return classes.filter(Boolean).join(' ');
-}
+import { classNames } from '../../helperFunctions/class-names'
 
 const TimeSlot = ({ meeting, timeSlotsType }: MeetingProps) => {
   const { selectedTimeSlot, setSelectedTimeSlot, IANACounterpart } = useContext(TimezoneContext);
@@ -50,31 +47,23 @@ const TimeSlot = ({ meeting, timeSlotsType }: MeetingProps) => {
     timeSlotDesign = 'text-dark flex items-start pl-5'
   } else if(timeSlotsType == TIMESLOTS_TYPE_CLASSES.picker){
     timeSlotDesign = classNames(
-      isTimeSlotSelected() && 'border-4 bg-primary-5 font-bold',
+      isTimeSlotSelected() && 'border-4 bg-secondary-1 font-bold',
       !isTimeSlotSelected() && 'border font-medium hover:bg-gray-100',
-      `flex items-center px-6 py-6 space-x-4 group rounded-xl focus-within:bg-gray-100 border-primary-1 w-full`
+      `flex items-center group rounded-xl focus-within:bg-gray-100 border-primary-1 w-full py-2 sm:py-4 lg:py-6`
     )
   }
 
   return (
     <button
-<<<<<<< HEAD
       className={timeSlotDesign}
       disabled={timeSlotsType == TIMESLOTS_TYPE_CLASSES.list}
-=======
-      className={classNames(
-        isTimeSlotSelected() && 'border-4 bg-secondary-1 font-bold',
-        !isTimeSlotSelected() && 'border font-medium hover:bg-gray-100',
-        `flex items-center px-6 py-6 space-x-4 group rounded-xl focus-within:bg-gray-100  border-primary-1 w-full`
-      )}
->>>>>>> 4f2a201db6048d3982727dc5428c17e71994ecf4
       onClick={selectTimeSlot}
     >
       <div className="flex-auto flex">
         <svg height="20" width="20">
           <circle cx="10" cy="10" r="6" className='fill-primary-1' />
         </svg>
-        <p className="ml-2">
+        <p className='text-xs sm:text-base lg:text-lg'>
           <time dateTime={format(convertedStartTime, 'hh:mm a')}>
             {format(convertedStartTime, 'hh:mm a')}
           </time>{' '}

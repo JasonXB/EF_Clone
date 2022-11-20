@@ -1,27 +1,27 @@
 import { ReactNode } from 'react';
 
 export interface Option {
-    timeZoneName: string
+    timeZoneName: string;
   }
 export interface customIntl {
-    supportedValuesOf: Function,
+    supportedValuesOf: Function;
     DateTimeFormat: new (local: string, option: Option) => {
         formatToParts: Function
-    }
+    };
 }
 
 export interface DatePart {
-    type: string,
-    value: string
+    type: string;
+    value: string;
 }
 export interface KeyPairIANA {
-    IANA: string,
-    completeTimezone: string
+    IANA: string;
+    completeTimezone: string;
 }
 export interface SelectedTimeSlot {
-    startDatetime: string,
-    endDatetime: string,
+    startDatetime: string;
+    endDatetime: string;
 }
 export interface Children {
-    children: ReactNode
+    children: ReactNode;
 }

@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import {
   format,
   getDay,
@@ -10,10 +10,8 @@ import { utcToZonedTime } from 'date-fns-tz';
 import { DateBoxProps } from '../../interface/book-meeting/book-with-mentor.interface'
 import { CalendarContext } from '../../../state-management/ReactContext/CalendarContext';
 import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
+import { classNames } from '../../helperFunctions/class-names'
 
-function classNames(...classes: (string | boolean)[]) {
-  return classes.filter(Boolean).join(' ');
-}
 //grid styling used to align the date with the days
 let colStartClasses = [
   '',
@@ -81,18 +79,18 @@ const DateSlot = ({ day, dayIndex }: DateBoxProps) => {
           // ----- BACKGROUND CONDITIONS -----
           //selected day is today
           isSameDay(day, selectedDay) &&
-            'bg-primary-5 border-4 border-primary-1 py-9',
+            'bg-primary-5 border-4 border-primary-1 py-5 sm:py-7 lg:py-9',
           //not the selected day
-          !isSameDay(day, selectedDay) && 'hover:bg-gray-100 px-10',
+          !isSameDay(day, selectedDay) && 'hover:bg-gray-100 py-6 sm:py-8 lg:px-10',
           // ----- TEXT CONDITIONS -----------
           //today
           isToday(day) && 'font-semibold',
           //has availability in the future
           hasFuture() && 'text-black',
           //has no availability in the future
-          !hasFuture() && 'text-smoke-2 line-through',
+          !hasFuture() && 'text-hue-400 line-through',
           // ----- DEFAULT CLASS -------------
-          'mx-auto flex h-8 w-8 items-center justify-center rounded py-10 px-9'
+          'mx-auto flex items-center justify-center rounded h-4 w-4 sm:h-6 sm:w-6 lg:h-8 lg:w-8 py-6 px-6 sm:py-8 sm:px-8 lg:py-10 lg:px-9'
         )}
       >
         <time dateTime={format(day, 'yyyy-MM-dd')}>{format(day, 'd')}</time>

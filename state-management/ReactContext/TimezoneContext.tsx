@@ -189,8 +189,9 @@ export const TimezoneContext = createContext({
   timezones: [] as string[],
   selectedTimezone: '',
   setSelectedTimezone: (() => { }) as Dispatch<any>,
-  selectedTimeSlot: {} as SelectedTimeSlot,
+  hasSelectedATime: false,
   setSelectedTimeSlot: (() => { }) as Dispatch<SetStateAction<SelectedTimeSlot>>,
+  selectedTimeSlot: {} as SelectedTimeSlot,
   IANACounterpart: {} as Promise<string>,
   setIANACounterpart: (() => { }) as Dispatch<SetStateAction<Promise<any>>>
 });
@@ -208,6 +209,8 @@ export const TimezoneProvider = ({ children }: Children) => {
 
   //refers to the timeslot that the user picked
   const [selectedTimeSlot, setSelectedTimeSlot] = useState({ startDatetime: '', endDatetime: '' } as SelectedTimeSlot);
+  //checks if the user has selected a time
+  const hasSelectedATime = JSON.stringify(selectedTimeSlot) !== `{"startDatetime":"","endDatetime":""}`
 
   //variable used in 'utcToZonedTime' from date-fns-tz to convert to a specific timezone
   const [IANACounterpart, setIANACounterpart] = useState(
@@ -226,6 +229,7 @@ export const TimezoneProvider = ({ children }: Children) => {
     setSelectedTimezone,
     selectedTimeSlot,
     setSelectedTimeSlot,
+    hasSelectedATime,
     IANACounterpart,
     setIANACounterpart
   };

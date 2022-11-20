@@ -43,10 +43,10 @@ const TimeZonesDropdown = ( { timezonesDropdownType }: TimeZonesDropdownProps) =
   } 
 
   return (
-    <div className="dropdown relative group w-50 " ref={menuRef}>
+    <div className="dropdown relative group" ref={menuRef}>
       {/* default dropdown */}
       <button
-        className="flex items-center cursor-pointer group-hover:border-grey-light rounded-t-lg py-1 px-2"
+        className="flex items-center cursor-pointer group-hover:border-grey-light rounded-t-lg py-1 px-2 w-full"
         onClick={toggle}
       >
         <p className={timezoneTextStyle}>{selectedTimezone}</p>
