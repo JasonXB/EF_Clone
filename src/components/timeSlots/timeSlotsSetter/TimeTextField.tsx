@@ -20,7 +20,7 @@ const TimeTextField = ({ time, isTimeNull }: TimeTextFieldProps) => {
             <input 
                 onChange={changeTime} 
                 className={classNames(
-                    "border-2 border-primary-1 rounded-lg text-lg font-bold p-2 w-40",
+                    "border-2 border-primary-1 rounded-lg text-xs sm:text-sm md:text-base xl:text-lg font-bold p-1 xl:p-2 xl:w-40",
                     (isFieldNull as boolean) && "text-hue-400"
                     )} 
                 type="time" min="00:00" max="24:00" value={timeInput}

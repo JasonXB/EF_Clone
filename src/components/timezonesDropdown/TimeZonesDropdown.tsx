@@ -39,7 +39,7 @@ const TimeZonesDropdown = ( { timezonesDropdownType }: TimeZonesDropdownProps) =
   if(timezonesDropdownType == TIMEZONESDROPDOWN_TYPE_CLASSES.plain){
     timezoneTextStyle = "font-medium"
   } else if(timezonesDropdownType == TIMEZONESDROPDOWN_TYPE_CLASSES.bold){
-    timezoneTextStyle = "text-xl font-bold text-blue-900"
+    timezoneTextStyle = "text-base xl:text-xl font-bold text-blue-900"
   } 
 
   return (

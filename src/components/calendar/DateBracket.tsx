@@ -55,7 +55,7 @@ const DateBracket = ({ day, dayIndex }: DateBoxProps) => {
   return (
     <div
       key={day.toString()}
-      className={classNames(dayIndex === 0 && colStartClasses[getDay(day)], 'border-[.5px] border-primary-5 p-0 h-52')}
+      className={classNames(dayIndex === 0 && colStartClasses[getDay(day)], 'border-[.5px] border-primary-5 p-0 h-20 xl:h-52')}
     >
       <button
         type="button"
@@ -75,7 +75,7 @@ const DateBracket = ({ day, dayIndex }: DateBoxProps) => {
       >
         <div className='w-full h-full'>
           {/* date bracket header */}
-          <h4 className='bg-primary-5 py-3'>
+          <h4 className='bg-primary-5 py-2 lg:pt-1 lg:pb-0 xl:py-3 text-xl xl:text-4xl'>
             <time dateTime={format(day, 'yyyy-MM-dd')}>{format(day, 'd')}</time>
           </h4>
           {/* timeslots in bracket */}

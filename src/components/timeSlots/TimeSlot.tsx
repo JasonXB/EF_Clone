@@ -62,9 +62,11 @@ const TimeSlot = ({ meeting, timeSlotsType }: MeetingProps) => {
         "flex-auto", 
         //text is not on center if it is TIMESLOTS_TYPE_CLASSES.list
         timeSlotsType == TIMESLOTS_TYPE_CLASSES.list && "flex")}>
-        {timeSlotsType == TIMESLOTS_TYPE_CLASSES.list && <svg height="20" width="20">
-          <circle cx="10" cy="10" r="6" className='fill-primary-1' />
-        </svg>}
+        {timeSlotsType == TIMESLOTS_TYPE_CLASSES.list && 
+          <svg height="20" width="20">
+            <circle cx="10" cy="10" r="6" className='fill-primary-1' />
+          </svg>
+        }
         <p className='text-xs sm:text-base lg:text-lg'>
           <time dateTime={format(convertedStartTime, 'hh:mm a')}>
             {format(convertedStartTime, 'hh:mm a')}

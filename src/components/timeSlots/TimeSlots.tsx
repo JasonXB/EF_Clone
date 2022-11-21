@@ -7,10 +7,12 @@ import { Availability, TimeSlotsProps, TIMESLOTS_TYPE_CLASSES } from '../../inte
 import { CalendarContext } from '../../../state-management/ReactContext/CalendarContext';
 import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
 import { classNames } from '../../helperFunctions/class-names';
+import useWindowDimensions  from '../../hooks/useWindowDimensions'
 
 const TimeSlots = ({ timeSlotsType, day }: TimeSlotsProps ) => {
   const { schedule, selectedDay } = useContext(CalendarContext);
   const { IANACounterpart } = useContext(TimezoneContext);
+  const screen = useWindowDimensions()
 
   let daySetting: Date;
 
@@ -39,16 +41,26 @@ const TimeSlots = ({ timeSlotsType, day }: TimeSlotsProps ) => {
 
   const noTimeSlotMessage = timeSlotsType == TIMESLOTS_TYPE_CLASSES.picker ? "No time slot available" : ''
 
+
   return (
     <div className={classNames(
-      "lg:mt-4 space-y-3 text-sm overflow-y-scroll scrollBar", 
+      "lg:mt-4 space-y-3 text-sm xl:overflow-y-scroll xl:scrollBar", 
       timeSlotsType == TIMESLOTS_TYPE_CLASSES.picker && "max-h-96",
       timeSlotsType == TIMESLOTS_TYPE_CLASSES.list && "max-h-28"
       )}>
-      {meetingsOnSelectedDay && meetingsOnSelectedDay.length > 0 ? (
-        meetingsOnSelectedDay.map((availability: Availability) => (
-          <TimeSlot key={uuidv4()} timeSlotsType={timeSlotsType} meeting={availability}  />
-        ))
+      {/* first condition - if there is availability in this date, show availabilities, otherwise show empty */}
+      {/* second condition - if the screen is xl, show timeslot list, otherwise show a dot */}
+      {meetingsOnSelectedDay && meetingsOnSelectedDay.length > 0 ? 
+        screen == 'xl' ? (
+          meetingsOnSelectedDay.map((availability: Availability) => (
+            <TimeSlot key={uuidv4()} timeSlotsType={timeSlotsType} meeting={availability}  />
+          ))
+        ) : (
+          <div className='w-full flex flex-col items-center'>
+            <svg height="20" width="20">
+              <circle cx="10" cy="10" r="6" className='fill-primary-1' />
+            </svg>
+          </div>
       ) : (
         <p>{noTimeSlotMessage}</p>
       )}

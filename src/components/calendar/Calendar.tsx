@@ -62,12 +62,10 @@ export default function Calendar({ calendarType }: MeetingAvailabilityProps) {
   return (
     <div className="pt-1 my-2 relative">
       {/* SCHEDULE MODAL - used only for CALENDAR_TYPE_CLASSES.large */}
-      <div className='absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 w-1/3'>
+      <div className='absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 w-11/12 ss:w-5/6 md:w-2/3 lg:w-1/2 xl:w-1/3'>
         <ScheduleModal/>
       </div>
       <div className='z-10'>
-      {/* make the calendar responsive in different devices */}
-      {/* <div className="max-w-md px-4 mx-auto sm:px-7 md:max-w-4xl md:px-6 lg:px-0 bg-red-100"> */}
       {/* style for navigation header of calendar */}
       <div className="flex justify-between border border-primary-1 rounded-md lg:px-6 lg:py-6 px-4 py-2">
         {/* -- LEFT ARROW -- */}
