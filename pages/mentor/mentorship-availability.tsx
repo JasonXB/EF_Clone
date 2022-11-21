@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import type { NextPage } from 'next';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
 import Layout from '../../src/components/Layout';
 import calendarImg from '../../public/assets/vectorCalendar.png';
@@ -21,13 +21,12 @@ import useWindowDimensions  from '../../src/hooks/useWindowDimensions'
   - add design for meeting method
 */
 
-const MentorshipAvailability: NextPage = () => {
+const MentorshipAvailability: NextPage = (props) => {
     const { setSchedule } = useContext(CalendarContext);
     const [ mentor, setMentor ] = useState({} as Mentor)
     const screen = useWindowDimensions()
 
     console.log(screen);
-    
 
     //fetch the mentor
     useEffect(() => {
