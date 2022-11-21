@@ -76,7 +76,7 @@ const Footer = () => {
           </div>
         </div>
         {/* The two columns in the middle (non-social media links) have remained a grid. */}
-        <div className="grid w-full grid-cols-1 mb-5 mr-5 sm:gap-8 lg:w-2/4 ss:grid-cols-2">
+        <div className="grid w-full grid-cols-1 my-auto mb-5 mr-5 sm:gap-8 lg:w-2/4 ss:grid-cols-2">
           {footerLinks.map((column, i) => {
             return (
               <div key={i} className="w-full mb-5">
