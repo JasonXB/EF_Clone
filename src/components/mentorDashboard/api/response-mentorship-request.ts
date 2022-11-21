@@ -22,6 +22,7 @@ export default async function responseMentorshipRequest(
       },
       body: JSON.stringify(details),
     });
+    return response;
   } catch (error) {
     // This can be changed with a customized error message.
     console.error(error);

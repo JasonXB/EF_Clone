@@ -6,19 +6,23 @@ import ResponseMentorshipRequest from './api/response-mentorship-request';
 
 interface MentorshipRequestCardProps {
   mentorshipRequest: MentorshipRequest;
-  setRefetchRequest: (arg: boolean) => void;
+  setMentorshipRequests: React.Dispatch<
+    React.SetStateAction<MentorshipRequest[]>
+  >;
+  numberOfRequests: number;
 }
 
 // todo: a spinner can be placed while waiting the response from api fetch
 function MentorshipRequestCard({
   mentorshipRequest,
-  setRefetchRequest,
+  setMentorshipRequests,
+  numberOfRequests,
 }: MentorshipRequestCardProps) {
   //avatar will be a future pass
 
   // With default values in case not getting the correct info from api fetch
   const {
-    id,
+    _id,
     menteeInfo: { firstname },
     menteeInfo: { lastname },
     menteeInfo: { title },
@@ -34,10 +38,24 @@ function MentorshipRequestCard({
 
   //  style logic incase there is only 1-2 request */
   const styleForLessThan2 = () => {
-    // if (mentorshipRequest.numberOfRequests < 3) {
-    //   return 'sm:flex-row';
-    // }
+    if (numberOfRequests) {
+      return 'sm:flex-row';
+    }
     return 'sm:flex-col';
+  };
+
+  const responseToRequest = async (urlPart: string) => {
+    const response = await ResponseMentorshipRequest(
+      urlPart,
+      mentorId,
+      menteeId
+    );
+    // an else statement can be added here to show an error message to mentor user.
+    if (response && response.status === 200) {
+      setMentorshipRequests((prevState: MentorshipRequest[]) => {
+        return prevState.filter((request) => request._id != _id);
+      });
+    }
   };
 
   return (
@@ -86,8 +104,7 @@ function MentorshipRequestCard({
           <Button
             variant="primary"
             clickHandler={() => {
-              ResponseMentorshipRequest('accept', mentorId, menteeId);
-              setRefetchRequest(true);
+              responseToRequest('accept');
             }}
           >
             Accept
@@ -95,8 +112,7 @@ function MentorshipRequestCard({
           <Button
             variant="secondary"
             clickHandler={() => {
-              ResponseMentorshipRequest('reject', mentorId, menteeId);
-              setRefetchRequest(true);
+              responseToRequest('reject');
             }}
           >
             Reject

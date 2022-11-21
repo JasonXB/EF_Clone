@@ -5,7 +5,7 @@ interface MentorshipRequest {
   date: string;
   goal: string;
   status: string;
-  id: string;
+  _id: string;
   menteeInfo: Mentee;
   mentor: string;
 }

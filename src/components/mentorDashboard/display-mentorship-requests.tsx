@@ -9,14 +9,16 @@ import MentorshipRequest from '../../interface/mentorship-request';
 import MentorshipRequestCard from './mentorship-request-card';
 
 interface ResponsiveSliderProps {
-  mentorshipRequests: MentorshipRequest[];
-  setRefetchRequest: (arg: boolean) => void;
+  filteredMentorshipRequests: MentorshipRequest[];
+  setMentorshipRequests: React.Dispatch<
+    React.SetStateAction<MentorshipRequest[]>
+  >;
 }
 
 //need to fix arrows adjustment and progress dots
 const ResponsiveSlider = ({
-  mentorshipRequests,
-  setRefetchRequest,
+  filteredMentorshipRequests,
+  setMentorshipRequests,
 }: ResponsiveSliderProps) => {
   const Options: SplideOptions = {
     perPage: 3,
@@ -24,7 +26,7 @@ const ResponsiveSlider = ({
     pagination: false,
     // padding: { left: '3rem', right: '3rem' },
     lazyLoad: true,
-    arrows: mentorshipRequests.length > 3,
+    arrows: filteredMentorshipRequests.length > 3,
     breakpoints: {
       1024: {
         perPage: 2,
@@ -45,20 +47,15 @@ const ResponsiveSlider = ({
         tag="section"
         id="mentorRequestSplideComponent"
       >
-        {mentorshipRequests
-          .filter(
-            (request) =>
-              request.status !== 'Request Accepted' &&
-              request.status !== 'Request Rejected'
-          )
-          .map((request, i) => (
-            <SplideSlide key={i}>
-              <MentorshipRequestCard
-                mentorshipRequest={request}
-                setRefetchRequest={setRefetchRequest}
-              />
-            </SplideSlide>
-          ))}
+        {filteredMentorshipRequests.map((request) => (
+          <SplideSlide key={request._id}>
+            <MentorshipRequestCard
+              mentorshipRequest={request}
+              setMentorshipRequests={setMentorshipRequests}
+              numberOfRequests={filteredMentorshipRequests.length}
+            />
+          </SplideSlide>
+        ))}
       </Splide>
     </div>
   );
@@ -66,50 +63,54 @@ const ResponsiveSlider = ({
 
 interface DisplayMentorShipContainerProps {
   mentorshipRequests: MentorshipRequest[];
-  setRefetchRequest: (arg: boolean) => void;
+  setMentorshipRequests: React.Dispatch<
+    React.SetStateAction<MentorshipRequest[]>
+  >;
 }
 
 const DisplayMentorShipContainer = ({
   mentorshipRequests,
-  setRefetchRequest,
-}: DisplayMentorShipContainerProps) => (
-  <>
-    <h1 className="py-4 text-4xl text-center md:text-5xl text-primary-1">
-      Mentorship Requests
-    </h1>
+  setMentorshipRequests,
+}: DisplayMentorShipContainerProps) => {
+  const filteredMentorshipRequests = mentorshipRequests.filter(
+    (request) =>
+      request.status !== 'Request Accepted' &&
+      request.status !== 'Request Rejected'
+  );
+  return (
+    <>
+      <h1 className="py-4 text-4xl text-center md:text-5xl text-primary-1">
+        Mentorship Requests
+      </h1>
 
-    {/* logic if there are no requests */}
-    {mentorshipRequests.length === 0 ? (
-      <div className="w-1/2 mx-auto mt-[10%]">
-        <p className="font-bold text-center text-hue-700">
-          No new mentorship requests <br /> Check back later.
-        </p>
-      </div>
-    ) : mentorshipRequests.length < 3 ? (
-      // display if there is 1-2
-      <div className="flex flex-col md:flex-row sm:max-w-[900px] sm:mx-auto">
-        {mentorshipRequests
-          .filter(
-            (request) =>
-              request.status !== 'Request Accepted' &&
-              request.status !== 'Request Rejected'
-          )
-          .map((request, i) => (
+      {/* logic if there are no requests */}
+      {filteredMentorshipRequests.length === 0 ? (
+        <div className="w-1/2 mx-auto mt-[10%]">
+          <p className="font-bold text-center text-hue-700">
+            No new mentorship requests <br /> Check back later.
+          </p>
+        </div>
+      ) : filteredMentorshipRequests.length < 3 ? (
+        // display if there is 1-2
+        <div className="flex flex-col md:flex-row sm:max-w-[900px] sm:mx-auto">
+          {filteredMentorshipRequests.map((request) => (
             <MentorshipRequestCard
-              key={i}
+              key={request._id}
               mentorshipRequest={request}
-              setRefetchRequest={setRefetchRequest}
+              setMentorshipRequests={setMentorshipRequests}
+              numberOfRequests={filteredMentorshipRequests.length}
             />
           ))}
-      </div>
-    ) : (
-      // display as carousel only if 3 or more
-      <ResponsiveSlider
-        mentorshipRequests={mentorshipRequests}
-        setRefetchRequest={setRefetchRequest}
-      />
-    )}
-  </>
-);
+        </div>
+      ) : (
+        // display as carousel only if 3 or more
+        <ResponsiveSlider
+          filteredMentorshipRequests={filteredMentorshipRequests}
+          setMentorshipRequests={setMentorshipRequests}
+        />
+      )}
+    </>
+  );
+};
 
 export default DisplayMentorShipContainer;

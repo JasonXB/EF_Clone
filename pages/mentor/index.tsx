@@ -14,13 +14,10 @@ export default function MentorDashboard() {
     MentorshipRequest[]
   >([]);
 
-  // This prop is used for refetching data after accepting/rejecting the request for updating UI.
-  const [refetchRequest, setRefetchRequest] = useState(true);
-
   let [meetings, setMeetings] = useState<Meeting[]>([]);
 
-  useEffect(() => {
-    if (refetchRequest) {
+  useEffect(
+    () => {
       const fetchData = async () => {
         let mentorshipRequestDataWithMenteeInfo =
           await fetchMentorshipRequests();
@@ -44,16 +41,16 @@ export default function MentorDashboard() {
       }
 
       fetchData();
-      setRefetchRequest(false);
-    }
+    },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [refetchRequest, setRefetchRequest]);
+    []
+  );
 
   return (
     <Layout headTitle="Mentor Dashboard" background="none">
       <DisplayMentorShipContainer
         mentorshipRequests={mentorshipRequests}
-        setRefetchRequest={setRefetchRequest}
+        setMentorshipRequests={setMentorshipRequests}
       />
       <hr className="my-6" />
       <UpcomingAvailabilityContainer meetings={meetings} />
