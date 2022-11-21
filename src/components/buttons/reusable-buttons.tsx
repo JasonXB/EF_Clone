@@ -78,7 +78,7 @@ Button.defaultProps = {
   variant: 'primary',
   disabled: false,
   className: '',
-  clickHandler: () => console.log(`Remember to pass handler Fn`),
+  clickHandler: () => null,
 };
 
 //just to display examples
