@@ -1,16 +1,32 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { add, format, isPast } from 'date-fns';
 import DateSlot from './DateSlot';
 import DateBracket from './DateBracket';
 import { CalendarContext } from '../../../state-management/ReactContext/CalendarContext';
 import { v4 as uuidv4 } from 'uuid';
-import { MeetingAvailabilityProps, CALENDAR_TYPE_CLASSES } from '../../interface/book-meeting/book-with-mentor.interface'
+import { MeetingAvailabilityProps, CALENDAR_TYPE_CLASSES, DayStrings } from '../../interface/book-meeting/book-with-mentor.interface'
 import useWindowDimensions  from '../../../src/hooks/useWindowDimensions'
 import ScheduleModal from './ScheduleModal';
 
 
 export default function Calendar({ calendarType }: MeetingAvailabilityProps) {
   const screen = useWindowDimensions()
+  const [ dayStrings, setDayStrings ] = useState({} as DayStrings)
+
+  //this is inside useEffect to prevent hydration error from responsiveDay > screen > useWindowDimensions
+  useEffect(() => {
+    const days = {
+      monday: responsiveDay('MON'),
+      tuesday: responsiveDay('TUE'),
+      wednesday: responsiveDay('WED'),
+      thursday: responsiveDay('THU'),
+      friday: responsiveDay('FRI'),
+      saturday: responsiveDay('SAT'),
+      sunday: responsiveDay('SUN')
+    }
+
+    setDayStrings(days);
+  }, []);
 
   const responsiveDay = (dayWord: string) => {
     switch(screen) {
@@ -109,13 +125,13 @@ export default function Calendar({ calendarType }: MeetingAvailabilityProps) {
       </div>
       {/* -- DAYS -- */}
       <div className="grid grid-cols-7 lg:py-8 py-4 text-center font-medium border-b border-primary-1">
-        <h5 className='text-xl lg:text-2xl xl:text-3xl'>{responsiveDay('MON')}</h5>
-        <h5 className='text-xl lg:text-2xl xl:text-3xl'>{responsiveDay('TUE')}</h5>
-        <h5 className='text-xl lg:text-2xl xl:text-3xl'>{responsiveDay('WED')}</h5>
-        <h5 className='text-xl lg:text-2xl xl:text-3xl'>{responsiveDay('THU')}</h5>
-        <h5 className='text-xl lg:text-2xl xl:text-3xl'>{responsiveDay('FRI')}</h5>
-        <h5 className='text-xl lg:text-2xl xl:text-3xl'>{responsiveDay('SAT')}</h5>
-        <h5 className='text-xl lg:text-2xl xl:text-3xl'>{responsiveDay('SUN')}</h5>
+        <h5 className='text-xl lg:text-2xl xl:text-3xl'>{dayStrings.monday}</h5>
+        <h5 className='text-xl lg:text-2xl xl:text-3xl'>{dayStrings.tuesday}</h5>
+        <h5 className='text-xl lg:text-2xl xl:text-3xl'>{dayStrings.wednesday}</h5>
+        <h5 className='text-xl lg:text-2xl xl:text-3xl'>{dayStrings.thursday}</h5>
+        <h5 className='text-xl lg:text-2xl xl:text-3xl'>{dayStrings.friday}</h5>
+        <h5 className='text-xl lg:text-2xl xl:text-3xl'>{dayStrings.saturday}</h5>
+        <h5 className='text-xl lg:text-2xl xl:text-3xl'>{dayStrings.sunday}</h5>
       </div>
       {/* -- */}
       {/* -- DATE SLOTS -- */}

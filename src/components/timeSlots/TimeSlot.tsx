@@ -54,10 +54,9 @@ const TimeSlot = ({ meeting, timeSlotsType }: MeetingProps) => {
   }
 
   return (
-    <button
+    <div
       className={timeSlotDesign}
-      disabled={timeSlotsType == TIMESLOTS_TYPE_CLASSES.list}
-      onClick={selectTimeSlot}
+      onClick={timeSlotsType == TIMESLOTS_TYPE_CLASSES.picker ? selectTimeSlot : undefined}
     >
       <div className={classNames(
         "flex-auto", 
@@ -76,7 +75,7 @@ const TimeSlot = ({ meeting, timeSlotsType }: MeetingProps) => {
           </time>
         </p>
       </div>
-    </button>
+    </div>
   );
 };
 

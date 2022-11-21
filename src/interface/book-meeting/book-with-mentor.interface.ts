@@ -15,6 +15,16 @@ export enum TIMEZONESDROPDOWN_TYPE_CLASSES {
   bold = 'bold',
 }
 
+export interface DayStrings {
+  monday: string;
+  tuesday: string;
+  wednesday: string;
+  thursday: string;
+  friday: string;
+  saturday: string;
+  sunday: string;
+}
+
 export interface Schedule {
   daily: Availability[];
   weekly: Availability[];
