@@ -27,7 +27,7 @@ const TimeSlotSetter = ({ meeting, isTimeNull, index }: TimeSlotSetterProps) => 
     }
 
     return (
-        <div className="flex-auto flex">
+        <div className="flex xl:flex-row flex-col">
             {/* start time */}
             {!isTimeNull ? <TimeTextField time={format(startTime as Date, 'HH:mm')} /> : <TimeTextField time={format(startTime as Date, 'HH:mm')} isTimeNull={true}/>}
             {/* dash icon */}

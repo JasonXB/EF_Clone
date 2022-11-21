@@ -38,7 +38,8 @@ const ScheduleModal = () => {
 
     const clickDateBracket = () => {
         setShowScheduleModal(false)
-        setTentativeTimes([...availabilitiesOnSelectedDay, {startDatetime: '', endDatetime: ''}]) //checkpoint
+        //reset tentativeTimes when closing the modal
+        setTentativeTimes([{startDatetime: '', endDatetime: ''}])
     }
 
     return (
@@ -75,7 +76,7 @@ const ScheduleModal = () => {
                         <p className='font-bold text-lg'>My Available Time</p>
                     </div>
                     {/* my available time body */}
-                    <div className='flex justify-between'>
+                    <div className='flex flex-row justify-between'>
                         <div className="mt-4 space-y-3 text-sm">
                             {availabilitiesOnSelectedDay && availabilitiesOnSelectedDay.length > 0 ? (
                                 <>
