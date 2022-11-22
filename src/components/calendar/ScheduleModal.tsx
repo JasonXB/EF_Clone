@@ -2,11 +2,12 @@ import { useContext, useState } from 'react';
 import { format, isSameDay } from 'date-fns';
 import { utcToZonedTime } from 'date-fns-tz';
 import Button from '../buttons/reusable-buttons';
-import { Availability } from '../../interface/book-meeting/book-with-mentor.interface'
+import { Availability, TentativeTime } from '../../interface/book-meeting/book-with-mentor.interface'
 import { CalendarContext } from '../../../state-management/ReactContext/CalendarContext';
 import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
 import { ScheduleModalContext } from '../../../state-management/ReactContext/ScheduleModalContext';
 import TimeSlotSetter from '../timeSlots/timeSlotsSetter/TimeSlotSetter';
+import { selectedDayAvailability } from '../../helperFunctions/calendar/selected-day-availability'
 import { v4 as uuidv4 } from 'uuid';
 
 const ScheduleModal = () => {
@@ -17,29 +18,14 @@ const ScheduleModal = () => {
         tentativeTimes, 
         setTentativeTimes 
     } = useContext(ScheduleModalContext);
-    const { selectedDay, schedule } = useContext(CalendarContext);
-    const { IANACounterpart } = useContext(TimezoneContext);
-    
+    const { selectedDay } = useContext(CalendarContext);
+
     let dateHeader = format(selectedDay, 'yyyy LLLL do EEEE')
 
-    //find if the mentor has availabilities on the selected date by comparing the date selected and the date in the json data
-    const selectedDayAvailability = (availabilities: Availability[]) => {
-
-        return availabilities && availabilities.filter((availability: Availability)=>{
-            const zonedStartTime = utcToZonedTime(
-                availability.startDatetime,
-                IANACounterpart as unknown as string
-            )
-            return isSameDay(zonedStartTime, selectedDay)
-        })
-    }
-
-    const availabilitiesOnSelectedDay = schedule && selectedDayAvailability(schedule.specific)
-
-    const clickDateBracket = () => {
+    const closeModal = () => {
         setShowScheduleModal(false)
         //reset tentativeTimes when closing the modal
-        setTentativeTimes([{startDatetime: '', endDatetime: ''}])
+        setTentativeTimes([{startDatetime: '', endDatetime: '', isNull: true}])
     }
 
     return (
@@ -58,7 +44,7 @@ const ScheduleModal = () => {
                     </div>
                     {/* close icon */}
                     <svg 
-                        onClick={clickDateBracket} 
+                        onClick={closeModal} 
                         className="w-8 h-8 hover:cursor-pointer"
                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" 
                         strokeWidth="1.5" stroke="currentColor" >
@@ -78,20 +64,9 @@ const ScheduleModal = () => {
                     {/* my available time body */}
                     <div className='flex flex-row justify-between'>
                         <div className="mt-4 space-y-3 text-sm w-5/6 xl:w-11/12 xl:overflow-y-scroll scrollBar xl:max-h-80">
-                            {availabilitiesOnSelectedDay && availabilitiesOnSelectedDay.length > 0 ? (
-                                <>
-                                    {availabilitiesOnSelectedDay.map((availability: Availability) => (
-                                    <TimeSlotSetter key={uuidv4()} meeting={availability}/>
-                                    ))}
-                                    {tentativeTimes.map((availability: Availability, index) => (
-                                        <TimeSlotSetter key={uuidv4()} isTimeNull={true} index={index}/>
-                                    ))}
-                                </>
-                            ) : (
-                                tentativeTimes.map((availability: Availability, index) => (
-                                    <TimeSlotSetter key={uuidv4()} isTimeNull={true} index={index}/>
-                                ))
-                            )}
+                            {tentativeTimes.map((tentativeTime: TentativeTime, index) => (
+                                <TimeSlotSetter key={uuidv4()} meeting={tentativeTime} index={index}/>
+                            ))}
                         </div>
                         {/* add timeSlotSetter icon */}
                         <svg onClick={addNewTentativeTimes} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="currentColor" className="w-7 h-7">

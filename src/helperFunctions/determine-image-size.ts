@@ -7,10 +7,10 @@ export function responsiveImageSize(screen: string, sizeInput: number) {
       case 'sm':
       case 'md':
       case 'lg':
-        return sizeInput * .5
+        return sizeInput * .75
       case 'xl':
         return sizeInput
       default:
-        return sizeInput * .25
+        return sizeInput
     }
 }

@@ -6,17 +6,18 @@ import { isSameDay } from 'date-fns';
 import { Availability, TimeSlotsProps, TIMESLOTS_TYPE_CLASSES } from '../../interface/book-meeting/book-with-mentor.interface'
 import { CalendarContext } from '../../../state-management/ReactContext/CalendarContext';
 import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
-import { ScheduleModalContext } from '../../../state-management/ReactContext/ScheduleModalContext';
 import { classNames } from '../../helperFunctions/class-names';
+import { selectedDayAvailability } from '../../helperFunctions/calendar/selected-day-availability'
+
 import useWindowDimensions  from '../../hooks/useWindowDimensions'
 
 const TimeSlots = ({ timeSlotsType, day }: TimeSlotsProps ) => {
-  const { setTentativeTimes } = useContext(ScheduleModalContext);
   const { schedule, selectedDay } = useContext(CalendarContext);
   const { IANACounterpart } = useContext(TimezoneContext);
   const screen = useWindowDimensions()
 
   let daySetting: Date;
+  let meetingsOnSelectedDay;
 
   /*
     If timeSlotsType is a list mainly used in DateBracket, it will refer to the day
@@ -24,24 +25,12 @@ const TimeSlots = ({ timeSlotsType, day }: TimeSlotsProps ) => {
   */
   if(timeSlotsType == TIMESLOTS_TYPE_CLASSES.list){
     daySetting = day as Date
+    meetingsOnSelectedDay = schedule && selectedDayAvailability(schedule.specific, daySetting, IANACounterpart)
   } else if(timeSlotsType == TIMESLOTS_TYPE_CLASSES.picker){
     daySetting = selectedDay
-
+    meetingsOnSelectedDay = schedule && selectedDayAvailability(schedule.specific, daySetting, IANACounterpart)
   }
   
-
-  //find if the mentor has availabilities on the selected date by comparing the date selected and the date in the json data
-  const selectedDayAvailability = (availabilities: Availability[]) => {
-    return availabilities && availabilities.filter((availability: Availability)=>{
-      const zonedStartTime = utcToZonedTime(
-        availability.startDatetime,
-        IANACounterpart as unknown as string
-      )
-      return isSameDay(zonedStartTime, daySetting)
-    })
-  }
-
-  const meetingsOnSelectedDay = schedule && selectedDayAvailability(schedule.specific)
   const noTimeSlotMessage = timeSlotsType == TIMESLOTS_TYPE_CLASSES.picker ? "No time slot available" : ''
 
   return (

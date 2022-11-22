@@ -32,10 +32,15 @@ export interface Schedule {
   specific: Availability[];
 }
 
-//used in book-meeting/[mentorId]  
 export interface Availability {
     startDatetime: string;
     endDatetime: string;
+}
+
+export interface TentativeTime {
+  startDatetime: string;
+  endDatetime: string;
+  isNull: boolean;
 }
 
 export interface Mentor {
@@ -53,9 +58,8 @@ export interface MeetingProps {
   meeting: Availability
 }
 export interface TimeSlotSetterProps {
-  meeting?: Availability;
-  isTimeNull?: boolean;
-  index?: number
+  meeting: TentativeTime;
+  index: number
 }
 export interface TimeTextFieldProps {
   time: string;
