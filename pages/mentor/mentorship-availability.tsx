@@ -26,8 +26,6 @@ const MentorshipAvailability: NextPage = (props) => {
     const [ mentor, setMentor ] = useState({} as Mentor)
     const screen = useWindowDimensions()
 
-    console.log(screen);
-
     //fetch the mentor
     useEffect(() => {
         let foundMentor = mentorsData.find(

@@ -77,7 +77,7 @@ const ScheduleModal = () => {
                     </div>
                     {/* my available time body */}
                     <div className='flex flex-row justify-between'>
-                        <div className="mt-4 space-y-3 text-sm w-5/6">
+                        <div className="mt-4 space-y-3 text-sm w-5/6 xl:w-11/12 xl:overflow-y-scroll scrollBar xl:max-h-80">
                             {availabilitiesOnSelectedDay && availabilitiesOnSelectedDay.length > 0 ? (
                                 <>
                                     {availabilitiesOnSelectedDay.map((availability: Availability) => (
