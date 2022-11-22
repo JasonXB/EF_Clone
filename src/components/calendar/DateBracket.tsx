@@ -29,7 +29,7 @@ let colStartClasses = [
 ];
 
 const DateBracket = ({ day, dayIndex }: DateBoxProps) => {
-  const { showScheduleModal, setShowScheduleModal, setTentativeTimes, tentativeTimes } = useContext(ScheduleModalContext);
+  const { showScheduleModal, setShowScheduleModal, setTentativeTimes, defaultNullMeeting } = useContext(ScheduleModalContext);
   const { schedule, selectedDay, setSelectedDay } = useContext(CalendarContext);
   const { setSelectedTimeSlot, IANACounterpart } = useContext(TimezoneContext);
 
@@ -48,7 +48,7 @@ const DateBracket = ({ day, dayIndex }: DateBoxProps) => {
     setSelectedDay(day);    
     //reset the selected time slot whenever a date is clicked so that there is no time slot selected by default
     setSelectedTimeSlot({ startDatetime: '', endDatetime: ''}); 
-    setTentativeTimes([...tentativeAvailabilities, {startDatetime: '', endDatetime: '', isNull: true}])
+    setTentativeTimes([...tentativeAvailabilities, defaultNullMeeting])
     setShowScheduleModal(true)
   };
 

@@ -1,16 +1,61 @@
-import { useState, ChangeEvent } from 'react';
-import { TimeTextFieldProps } from "../../../interface/book-meeting/book-with-mentor.interface";
+import { useState, useContext, ChangeEvent } from 'react';
+import { format, startOfDay } from 'date-fns';
+import { utcToZonedTime } from 'date-fns-tz';
+import { TentativeTime, TimeTextFieldProps } from "../../../interface/book-meeting/book-with-mentor.interface";
+import { classNames } from '../../../helperFunctions/class-names'
+import { TimezoneContext } from '../../../../state-management/ReactContext/TimezoneContext';
+import { ScheduleModalContext } from '../../../../state-management/ReactContext/ScheduleModalContext';
 
-function classNames(...classes: (string | boolean)[]) {
-    return classes.filter(Boolean).join(' ');
-  }
+const TimeTextField = ({ meeting, whichTime, index }: TimeTextFieldProps) => {
+    const { IANACounterpart } = useContext(TimezoneContext);
+    const { updateTentativeTime } = useContext(ScheduleModalContext);
 
-const TimeTextField = ({ time, isTimeNull }: TimeTextFieldProps) => {
-    const [timeInput, setTimeInput] = useState(time)
+    let timePart: string = '';
+    let zonedTime: Date = new Date()
+
+    //condition to handle start or end time
+    if(whichTime == "start"){
+        timePart = meeting.startDatetime
+    } else if (whichTime == "end"){
+        timePart = meeting.endDatetime
+    }
+
+    //condition to handle null time slots
+    if(meeting.isNull == false){
+        //converted timezones by referring to the useState variable IANACounterpart-------------
+        zonedTime = utcToZonedTime(timePart, IANACounterpart as unknown as string);
+    } else if (meeting.isNull == true) {
+        zonedTime = startOfDay(new Date())
+    }
+
+    const timeString = format(zonedTime, 'HH:mm')
+
+    const [timeInput, setTimeInput] = useState(timeString)
     //variable used to set the text color of the time to gray if it is null
-    const [isFieldNull, setIsFieldNull] = useState(isTimeNull) 
+    const [isFieldNull, setIsFieldNull] = useState(meeting.isNull) 
 
+    const editTimeString = (meetingTime: string, newTime: string) => {
+        const tCharIndex = meetingTime.indexOf("T");
+        //2022-11-15T
+        const datePart = meetingTime.substring(0, tCharIndex + 1)
+        //:00-08:00
+        const lastPart = meetingTime.substring(tCharIndex + 6, meetingTime.length)
+        
+        return datePart +  newTime + lastPart
+    }
+
+    //event handler when changing time
     const changeTime = (event: ChangeEvent<HTMLInputElement>) => {
+        const timeInput = (event.target as HTMLInputElement).value
+        const editedDateTime = editTimeString(timePart, timeInput)
+        let newMeeting = {} as TentativeTime
+        if(whichTime == "start"){
+            newMeeting = {...meeting, startDatetime: editedDateTime }
+        } else if (whichTime == "end"){
+            newMeeting = {...meeting, endDatetime: editedDateTime }
+        }
+
+        updateTentativeTime(index, newMeeting)
         setTimeInput((event.target as HTMLInputElement).value)
         setIsFieldNull(false)
     }

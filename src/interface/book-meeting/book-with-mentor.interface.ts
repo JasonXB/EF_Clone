@@ -62,8 +62,9 @@ export interface TimeSlotSetterProps {
   index: number
 }
 export interface TimeTextFieldProps {
-  time: string;
-  isTimeNull?: boolean
+  meeting: TentativeTime;
+  whichTime: string;
+  index: number
 }
 export interface TimeZonesDropdownProps {
   timezonesDropdownType: TIMEZONESDROPDOWN_TYPE_CLASSES

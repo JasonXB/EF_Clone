@@ -1,17 +1,15 @@
-import { useContext, useState } from 'react';
-import { format, isSameDay } from 'date-fns';
-import { utcToZonedTime } from 'date-fns-tz';
+import { useContext } from 'react';
+import { format, startOfDay, formatISO } from 'date-fns';
 import Button from '../buttons/reusable-buttons';
-import { Availability, TentativeTime } from '../../interface/book-meeting/book-with-mentor.interface'
+import { TentativeTime } from '../../interface/book-meeting/book-with-mentor.interface'
 import { CalendarContext } from '../../../state-management/ReactContext/CalendarContext';
-import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
 import { ScheduleModalContext } from '../../../state-management/ReactContext/ScheduleModalContext';
 import TimeSlotSetter from '../timeSlots/timeSlotsSetter/TimeSlotSetter';
-import { selectedDayAvailability } from '../../helperFunctions/calendar/selected-day-availability'
 import { v4 as uuidv4 } from 'uuid';
 
 const ScheduleModal = () => {
     const { 
+        defaultNullMeeting,
         showScheduleModal, 
         setShowScheduleModal, 
         addNewTentativeTimes, 
@@ -25,7 +23,13 @@ const ScheduleModal = () => {
     const closeModal = () => {
         setShowScheduleModal(false)
         //reset tentativeTimes when closing the modal
-        setTentativeTimes([{startDatetime: '', endDatetime: '', isNull: true}])
+        setTentativeTimes([defaultNullMeeting])
+    }
+
+    const saveAvailabilities = () => {
+        setShowScheduleModal(false)
+        //reset tentativeTimes clicking save
+        setTentativeTimes([defaultNullMeeting])
     }
 
     return (
@@ -92,7 +96,7 @@ const ScheduleModal = () => {
                     />
                 </div>
                 {/* SAVE BUTTON */}
-                <Button variant="primary" clickHandler={() => setShowScheduleModal(false)}>Save</Button>
+                <Button variant="primary" clickHandler={saveAvailabilities}>Save</Button>
             </div>
             ) : null}
         </div>
