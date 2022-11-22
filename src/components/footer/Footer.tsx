@@ -10,18 +10,21 @@ const FooterLink = dynamic(() => import('./FooterLink'), { ssr: false });
 const footerLinks: FooterColumnProps[] = [
   {
     links: [
-      { text: 'Get Involved', url: './public/get-involved' },
-      { text: 'About Us', url: './public/about-us' },
-      { text: 'Contact', url: './public/contact' },
-      { text: 'Login', url: './auth/mentee/login' },
+      // { text: 'Get Involved', url: './get-involved' },
+      { text: 'About Us', url: './about-us' },
+      { text: 'Contact', url: './contact' },
+      { text: 'Login', url: './auth/login' },
     ],
   },
   {
     links: [
-      { text: 'Become A Mentor', url: './public/become-a-mentor' },
-      { text: 'Become A Mentee', url: './public/become-a-mentee' },
-      { text: 'Support Our Work', url: './public/support-our-work' },
-      { text: 'Suggest A Program', url: './public/suggest-a-program' },
+      { text: 'Become A Mentor', url: './become-a-mentor' },
+      { text: 'Become A Mentee', url: './auth/signup' },
+      {
+        text: 'Support Our Work',
+        url: 'https://www.zeffy.com/en-CA/donation-form/c59ee94e-8014-48ab-98a7-bdf1f64a99a7',
+      },
+      // { text: 'Suggest A Program', url: './suggest-a-program' },
     ],
   },
 ];
@@ -73,7 +76,7 @@ const Footer = () => {
           </div>
         </div>
         {/* The two columns in the middle (non-social media links) have remained a grid. */}
-        <div className="grid w-full grid-cols-1 mb-5 mr-5 sm:gap-8 lg:w-2/4 ss:grid-cols-2">
+        <div className="grid w-full grid-cols-1 my-auto mb-5 mr-5 sm:gap-8 lg:w-2/4 ss:grid-cols-2">
           {footerLinks.map((column, i) => {
             return (
               <div key={i} className="w-full mb-5">

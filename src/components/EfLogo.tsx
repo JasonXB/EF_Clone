@@ -9,7 +9,13 @@ const EfLogo = ({ alt, className }: EfLogoProps) => {
       {/* Empowered Futures Logo / Link to the Homepage */}
       <Link href="/">
         <a className="items-center block p-2 ml-6 mr-12 ">
-          <Image className={className} alt={alt} src={eflogo} />
+          <Image
+            className={className}
+            alt={alt}
+            src={eflogo}
+            width={500}
+            height={154}
+          />
         </a>
       </Link>
     </>

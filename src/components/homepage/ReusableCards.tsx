@@ -21,15 +21,15 @@ const ReusableCards = ({
 }: ReusableCardsProps) => {
   return (
     <div className="flex shadow-4xl flex-col-reverse bg-light w-full max-w-[700px] p-4 space-y-3  rounded-lg min-h-[260px] ss:flex-row">
-      <div className="w-full ss:w-1/2">
+      <div className="w-full my-auto ss:w-1/2">
         <h4 className="font-semibold md:text-4xl lg:text-5xl text-primary-1">
           {title}
         </h4>
         <p className="p-2 text-lg h-1/2">{paragraph}</p>
         <span className="block pt-4 mt-4">
-          <Link href={buttonLink}>
+          {/* <Link href={buttonLink}>
             <a className={buttonVariants.primary}>{buttonText}</a>
-          </Link>
+          </Link> */}
         </span>
       </div>
       <div className="mx-auto xl:ml-20 w-fit ss:w-1/2">

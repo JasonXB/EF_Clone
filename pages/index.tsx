@@ -9,7 +9,6 @@ import LatestBlogs from '../src/components/homepage/latestBlogs/LatestBlogs';
 import { AuthProvider } from '../state-management/ReactContext/AuthContext';
 import { GetStaticProps } from 'next';
 
-
 export const getStaticProps: GetStaticProps = async (context) => {
   return { props: {} }; // Statically renders page and sets props equal to an empty object
 };
@@ -59,10 +58,11 @@ const Home: NextPage = ({}) => {
           <h2 className="text-5xl text-center text-primary-1">Testimonials</h2>
           <Testimonials />
         </div>
-        <div className="my-20 lg:my-40 ">
+        {/* Hide for MVP */}
+        {/* <div className="my-20 lg:my-40 ">
           <h2 className="text-5xl text-center text-primary-1">Latest Blogs</h2>
           <LatestBlogs />
-        </div>
+        </div> */}
       </Layout>
     </AuthProvider>
   );
