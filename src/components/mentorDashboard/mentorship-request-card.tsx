@@ -23,10 +23,10 @@ function MentorshipRequestCard({
   // With default values in case not getting the correct info from api fetch
   const {
     _id,
-    menteeInfo: { firstname },
-    menteeInfo: { lastname },
-    menteeInfo: { title },
-    menteeInfo: { email },
+    menteeDetails: { firstname },
+    menteeDetails: { lastname },
+    menteeDetails: { title },
+    menteeDetails: { email },
     mentee: menteeId,
     mentor: mentorId,
     goal,

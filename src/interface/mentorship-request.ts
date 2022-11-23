@@ -6,7 +6,7 @@ interface MentorshipRequest {
   goal: string;
   status: string;
   _id: string;
-  menteeInfo: Mentee;
+  menteeDetails: Mentee;
   mentor: string;
 }
 
