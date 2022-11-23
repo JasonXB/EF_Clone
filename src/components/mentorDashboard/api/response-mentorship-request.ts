@@ -11,7 +11,7 @@ export default async function responseMentorshipRequest(
   };
 
   const accessToken = getCredentialsFromLocalStorage();
-  const apiUrl = `https://efback.azurewebsites.net/api/mentorRequests/${urlPart}`;
+  const apiUrl = `https://efback.azurewebsites.net/api/mentorRequests/auth/${urlPart}`;
 
   try {
     const response = await fetch(apiUrl, {
