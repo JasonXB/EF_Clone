@@ -25,7 +25,7 @@ const Navbar = () => {
   return (
     <Disclosure
       as="nav"
-      className="pt-5 bg-white border-b shadow-md border-slate-200  min-w-[400px] z-20 relative"
+      className="pt-5 bg-white border-b shadow-md border-slate-200  min-w-[360px] z-20 relative"
     >
       {/*handles open close boolean */}
       {({ open }) => (
@@ -70,7 +70,7 @@ const Navbar = () => {
               <div className="flex items-center justify-center flex-1 md:justify-start">
                 {/* Empowered Futures Logo / Link to the Homepage */}
 
-                <div className="flex items-center max-w-[180px] mr-[10%] ss:mr-0 ml-0 sm:ml-[20%] md:ml-0 sm:max-w-[250px] ">
+                <div className="flex items-center   ss:mr-0 ml-2 sm:ml-[20%] md:ml-0 max-w-[300px] ">
                   <EfLogo alt={'Empowered Futures Logo'} />
                 </div>
 
