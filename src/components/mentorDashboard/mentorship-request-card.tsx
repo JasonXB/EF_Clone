@@ -2,7 +2,7 @@ import Image from 'next/image';
 import MentorshipRequest from '../../interface/mentorship-request';
 import Button from '../buttons/reusable-buttons';
 import profile_path from '../../../public/assets/christina-wocintechchat-com-sw3FSL9hIoI-unsplash.jpg';
-import ResponseMentorshipRequest from './api/response-mentorship-request';
+import ResponseMentorshipRequest from '../../api/mentorRequests/response-mentorship-request';
 
 interface MentorshipRequestCardProps {
   mentorshipRequest: MentorshipRequest;

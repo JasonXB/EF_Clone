@@ -1,4 +1,4 @@
-import { getCredentialsFromLocalStorage } from '../../../api/localStorage';
+import { getCredentialsFromLocalStorage } from '../localStorage';
 
 export default async function responseMentorshipRequest(
   urlPart: string,

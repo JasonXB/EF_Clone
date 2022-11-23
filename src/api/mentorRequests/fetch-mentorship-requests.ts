@@ -1,12 +1,14 @@
-import MentorshipRequest from '../../../interface/mentorship-request';
+import MentorshipRequest from '../../interface/mentorship-request';
 import {
   getCredentialsFromLocalStorage,
   getProfileIdInLocalStorage,
-} from '../../../api/localStorage';
+} from '../localStorage';
 
 export default async function fetchMentorshipRequests() {
   const accessToken = getCredentialsFromLocalStorage();
   const profileId = getProfileIdInLocalStorage();
+
+  const mentorshipRequestData: MentorshipRequest[] = [];
 
   try {
     // Fetch request to get all mentor requests for the logged in mentor and related mentee information
@@ -20,10 +22,12 @@ export default async function fetchMentorshipRequests() {
       }
     );
 
-    const mentorshipRequestData: MentorshipRequest[] = await res.json();
-    return mentorshipRequestData;
+    const data = await res.json();
+    mentorshipRequestData.push(...data);
   } catch (error) {
     // This can be changed with a customized error message.
     console.error(error);
+  } finally {
+    return mentorshipRequestData;
   }
 }
