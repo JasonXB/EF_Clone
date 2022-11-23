@@ -1,8 +1,6 @@
 export enum DescriptionOptions{
-  d1 = 'Student',
-  d2 = 'Career start',
-  d3 = 'Career change',
-  d4 = 'Enhance skills',
-  d5 = 'Prefer not to say',
-  d6 = 'Other'
+  d1 = 'I am a student',
+  d2 = 'I need mentoring for career change',
+  d3 = 'I want to enhance my skills',
+  d4 = 'Other'
 }
