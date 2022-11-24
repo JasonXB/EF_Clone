@@ -9,7 +9,6 @@ import { mentorsData } from '../../../src/tempData/dummyMentorsForCalendar';
 //types
 import { Mentor } from '../../../src/interface/book-meeting/book-with-mentor.interface';
 //hooks
-import { useAuth } from '../../../state-management/ReactContext/AuthContext';
 import useWindowDimensions  from '../../../src/hooks/useWindowDimensions'
 //context
 import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
@@ -20,11 +19,10 @@ import Avatar from '../../../src/components/avatar/avatar';
 import ScheduleSection from '../../../src/components/menteeMeeting/ScheduleSection';
 import MeetingMethodSection from '../../../src/components/menteeMeeting/MeetingMethodSection';
 import ReviewMeetingInfoSection from '../../../src/components/menteeMeeting/ReviewMeetingInfoSection';
-//helper functions
-import { determineAvatarSize } from '../../../src/helperFunctions/determine-avatar-size';
-import { getCredentialsFromLocalStorage } from '../../../src/api/localStorage';
-//endpoints
-import { postMeeting } from '../../../src/endpoints/meetings/post-meeting'
+//etc
+import { determineAvatarSize } from '../../../src/util/determine-avatar-size';
+import { postMeeting } from '../../../src/api/meetings/post-meeting'
+import { getProfileIdInLocalStorage } from '../../../src/api/localStorage';
 
 /*
   AREAS OF IMPROVEMENT IN THE FEATURES: 
@@ -37,18 +35,12 @@ import { postMeeting } from '../../../src/endpoints/meetings/post-meeting'
 */
 
 const BookMeeting = () => {
-  //token used for the accessing the APIs
-  const { accessToken, profileID } = useAuth();
   const [thisMentor, setThisMentor] = useState({} as Mentor);
   const [needToChooseTime, setNeedToChooseTime] = useState(false)
   const router = useRouter();
   const mentorId = router.query.mentorId;
 
   const screen = useWindowDimensions()
-
-  // console.log('getCredentialsFromLocalStorage', getCredentialsFromLocalStorage());
-  console.log( "accessToken -- > ", accessToken )
-  console.log( "profileID -- > ", profileID )
 
   useEffect(() => {
     if (router.isReady) {
@@ -62,8 +54,6 @@ const BookMeeting = () => {
         );
       }
       setThisMentor(mentorFound as SetStateAction<Mentor>);
-    } else {
-      console.log('loading');
     }
   }, [router.isReady, mentorId]);
 
@@ -101,21 +91,18 @@ const BookMeeting = () => {
     };
   }
 
-  // console.log("---  ", getCredentialsFromLocalStorage());
-  
-
   const bookMeeting = () => {
     if (JSON.stringify(meetingDetails) === '{}') {
       setNeedToChooseTime(true)
     } else {
       let meeting = {
         mentorID: thisMentor.mentor_id,
-        menteeID: profileID,
+        menteeID: getProfileIdInLocalStorage() as string,
         date: formatISO(startTime),
         time: formatISO(startTime),
         meetingMethod: 'Google Meets',
       };
-      postMeeting(meeting, accessToken as string);
+      postMeeting(meeting);
     }
   };
 

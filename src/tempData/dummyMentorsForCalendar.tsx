@@ -78,12 +78,12 @@ export const mentorsData = [
             ],
             "specific": [
                 {
-                    "startDatetime": "2022-11-28T09:30:00-08:00",
-                    "endDatetime": "2022-11-28T10:00:00-08:00"
+                    "startDatetime": "2022-11-29T09:30:00-08:00",
+                    "endDatetime": "2022-11-29T10:00:00-08:00"
                 },
                 {
-                    "startDatetime": "2022-11-28T13:30:00-08:00",
-                    "endDatetime": "2022-11-28T15:00:00-08:00"
+                    "startDatetime": "2022-11-29T13:30:00-08:00",
+                    "endDatetime": "2022-11-29T15:00:00-08:00"
                 },
                 {
                     "startDatetime": "2022-12-15T20:30:00-08:00",

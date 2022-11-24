@@ -7,7 +7,7 @@ import { format, isEqual, parseISO } from 'date-fns';
 import { utcToZonedTime } from 'date-fns-tz';
 import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
 import { MeetingProps } from '../../interface/book-meeting/book-with-mentor.interface';
-import { classNames } from '../../helperFunctions/class-names'
+import { classNames } from '../../util/class-names'
 
 const TimeSlot = ({ meeting }: MeetingProps) => {
   const { selectedTimeSlot, setSelectedTimeSlot, IANACounterpart } =

@@ -1,7 +1,11 @@
 import axios from 'axios';
 import { MeetingData } from '../../interface/endpoints/post-meeting'
+import { getCredentialsFromLocalStorage } from '../../api/localStorage';
 
-export async function postMeeting (meeting: MeetingData, accessToken: string) {
+export async function postMeeting (meeting: MeetingData) {
+  
+    const accessToken = getCredentialsFromLocalStorage();
+
     const config = {
       headers: { 
         'Content-Type': 'application/json',
