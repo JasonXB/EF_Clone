@@ -10,7 +10,7 @@ import TimeZonesDropdown from '../../src/components/timezonesDropdown/TimeZonesD
 import Button from '../../src/components/buttons/reusable-buttons';
 import { Mentor, CALENDAR_TYPE_CLASSES, TIMEZONESDROPDOWN_TYPE_CLASSES } from '../../src/interface/book-meeting/book-with-mentor.interface';
 import { CalendarContext } from '../../state-management/ReactContext/CalendarContext';
-import { responsiveImageSize } from '../../src/helperFunctions/determine-image-size';
+import { responsiveImageSize } from '../../src/util/responsive-image-size';
 import useWindowDimensions  from '../../src/hooks/useWindowDimensions'
 
 /*
@@ -21,7 +21,7 @@ import useWindowDimensions  from '../../src/hooks/useWindowDimensions'
   - add design for meeting method
 */
 
-const MentorshipAvailability: NextPage = (props) => {
+const MentorshipAvailability: NextPage = () => {
     const { setSchedule } = useContext(CalendarContext);
     const [ mentor, setMentor ] = useState({} as Mentor)
     const screen = useWindowDimensions()
