@@ -31,7 +31,7 @@ let colStartClasses = [
 const DateBracket = ({ day, dayIndex }: DateBoxProps) => {
   const { showScheduleModal, setShowScheduleModal, setNewTimes, defaultNullMeeting, setExistingTimes } = useContext(ScheduleModalContext);
   const { schedule, selectedDay, setSelectedDay } = useContext(CalendarContext);
-  const { setSelectedTimeSlot, IANACounterpart } = useContext(TimezoneContext);
+  const { IANACounterpart } = useContext(TimezoneContext);
 
   const availabilitiesOnSelectedDay = schedule && selectedDayAvailability(schedule.specific, day, IANACounterpart)
   /*
