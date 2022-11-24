@@ -4,14 +4,13 @@ import {
   getDay,
   isSameDay,
   isToday,
-  isFuture,
 } from 'date-fns';
 import TimeSlots from '../../../src/components/timeSlots/TimeSlots';
 import { DateBoxProps, TIMESLOTS_TYPE_CLASSES } from '../../interface/book-meeting/book-with-mentor.interface'
 import { CalendarContext } from '../../../state-management/ReactContext/CalendarContext';
 import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
 import { ScheduleModalContext } from '../../../state-management/ReactContext/ScheduleModalContext';
-import { selectedDayAvailability } from '../../helperFunctions/calendar/selected-day-availability'
+import { selectedDayAvailability } from '../../util/calendar/selected-day-availability'
 
 
 function classNames(...classes: (string | boolean)[]) {
@@ -29,7 +28,7 @@ let colStartClasses = [
 ];
 
 const DateBracket = ({ day, dayIndex }: DateBoxProps) => {
-  const { showScheduleModal, setShowScheduleModal, setTentativeTimes, defaultNullMeeting } = useContext(ScheduleModalContext);
+  const { showScheduleModal, setShowScheduleModal, setTentativeTimes, defaultNullMeeting, setExistingTimes } = useContext(ScheduleModalContext);
   const { schedule, selectedDay, setSelectedDay } = useContext(CalendarContext);
   const { setSelectedTimeSlot, IANACounterpart } = useContext(TimezoneContext);
 
@@ -43,11 +42,17 @@ const DateBracket = ({ day, dayIndex }: DateBoxProps) => {
     return {...availability, isNull: false }
   })
 
+  const existingAvailabilities = availabilitiesOnSelectedDay && availabilitiesOnSelectedDay.map((availability) => {
+    return {...availability, isUpdated: false }
+  })
+
+
   //select date event handler-----------------
   const selectDate = () => {
     setSelectedDay(day);    
     //reset the selected time slot whenever a date is clicked so that there is no time slot selected by default
     setSelectedTimeSlot({ startDatetime: '', endDatetime: ''}); 
+    setExistingTimes(existingAvailabilities)
     setTentativeTimes([...tentativeAvailabilities, defaultNullMeeting])
     setShowScheduleModal(true)
   };

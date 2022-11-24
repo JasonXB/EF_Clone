@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { format, startOfDay, formatISO } from 'date-fns';
 import Button from '../buttons/reusable-buttons';
-import { TentativeTime } from '../../interface/book-meeting/book-with-mentor.interface'
+import { ExistingTime, TIMESLOTSETTER_TYPE_CLASSES } from '../../interface/book-meeting/book-with-mentor.interface'
 import { CalendarContext } from '../../../state-management/ReactContext/CalendarContext';
 import { ScheduleModalContext } from '../../../state-management/ReactContext/ScheduleModalContext';
 import TimeSlotSetter from '../timeSlots/timeSlotsSetter/TimeSlotSetter';
@@ -13,8 +13,9 @@ const ScheduleModal = () => {
         showScheduleModal, 
         setShowScheduleModal, 
         addNewTentativeTimes, 
-        tentativeTimes, 
-        setTentativeTimes 
+        setTentativeTimes,
+        existingTimes,
+        setExistingTimes
     } = useContext(ScheduleModalContext);
     const { selectedDay } = useContext(CalendarContext);
 
@@ -24,12 +25,14 @@ const ScheduleModal = () => {
         setShowScheduleModal(false)
         //reset tentativeTimes when closing the modal
         setTentativeTimes([defaultNullMeeting])
+        setExistingTimes([])
     }
 
     const saveAvailabilities = () => {
         setShowScheduleModal(false)
         //reset tentativeTimes clicking save
         setTentativeTimes([defaultNullMeeting])
+        setExistingTimes([])
     }
 
     return (
@@ -68,8 +71,8 @@ const ScheduleModal = () => {
                     {/* my available time body */}
                     <div className='flex flex-row justify-between'>
                         <div className="mt-4 space-y-3 text-sm w-5/6 xl:w-11/12 xl:overflow-y-scroll scrollBar xl:max-h-80">
-                            {tentativeTimes.map((tentativeTime: TentativeTime, index) => (
-                                <TimeSlotSetter key={uuidv4()} meeting={tentativeTime} index={index}/>
+                            {existingTimes.map((tentativeTime: ExistingTime, index) => (
+                                <TimeSlotSetter key={uuidv4()} meeting={tentativeTime} meetingType={TIMESLOTSETTER_TYPE_CLASSES.existing} index={index}/>
                             ))}
                         </div>
                         {/* add timeSlotSetter icon */}

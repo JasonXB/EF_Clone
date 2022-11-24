@@ -15,6 +15,11 @@ export enum TIMEZONESDROPDOWN_TYPE_CLASSES {
   bold = 'bold',
 }
 
+export enum TIMESLOTSETTER_TYPE_CLASSES {
+  existing = 'existing',
+  new = 'new',
+}
+
 export interface DayStrings {
   monday: string;
   tuesday: string;
@@ -43,6 +48,12 @@ export interface TentativeTime {
   isNull: boolean;
 }
 
+export interface ExistingTime {
+  startDatetime: string;
+  endDatetime: string;
+  isUpdated: boolean;
+}
+
 export interface Mentor {
     mentor_id: string;
     firstName: string; 
@@ -58,11 +69,12 @@ export interface MeetingProps {
   meeting: Availability
 }
 export interface TimeSlotSetterProps {
-  meeting: TentativeTime;
+  meeting: ExistingTime;
+  meetingType: TIMESLOTSETTER_TYPE_CLASSES
   index: number
 }
 export interface TimeTextFieldProps {
-  meeting: TentativeTime;
+  meeting: ExistingTime;
   whichTime: string;
   index: number
 }

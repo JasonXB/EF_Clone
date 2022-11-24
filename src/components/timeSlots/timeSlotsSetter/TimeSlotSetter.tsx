@@ -1,13 +1,17 @@
 import { useContext } from 'react';
-import { TimeSlotSetterProps } from "../../../interface/book-meeting/book-with-mentor.interface";
+import { TimeSlotSetterProps, TIMESLOTSETTER_TYPE_CLASSES } from "../../../interface/book-meeting/book-with-mentor.interface";
 import { ScheduleModalContext } from '../../../../state-management/ReactContext/ScheduleModalContext';
 import TimeTextField from './TimeTextField';
 
-const TimeSlotSetter = ({ meeting, index }: TimeSlotSetterProps) => {
-    const { removeFromTentativeTimes } = useContext(ScheduleModalContext);
+const TimeSlotSetter = ({ meeting, meetingType, index }: TimeSlotSetterProps) => {
+    const { removeFromExistingTimes } = useContext(ScheduleModalContext);
 
     const removeTime = () => {
-        removeFromTentativeTimes(index as number)
+        if(meetingType == TIMESLOTSETTER_TYPE_CLASSES.existing){
+            removeFromExistingTimes(index as number)
+        } else if(meetingType == TIMESLOTSETTER_TYPE_CLASSES.new){
+            //removeFromNewTimes(index as number)
+        }
     }
 
     return (
