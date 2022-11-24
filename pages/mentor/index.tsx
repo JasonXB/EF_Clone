@@ -3,7 +3,6 @@ import Layout from '../../src/components/Layout';
 import DisplayMentorShipContainer from '../../src/components/mentorDashboard/display-mentorship-requests';
 import UpcomingAvailabilityContainer from '../../src/components/mentorDashboard/display-upcoming-availability';
 import Meeting from '../../src/interface/meeting.interface';
-import MentorshipRequest from '../../src/interface/mentorship-request';
 import MockMentorDB from '../../src/tempData/MockMentorDB';
 import getRandomInt from '../../src/util/random-int';
 import fetchMentorshipRequests from '../../src/api/mentorRequests/fetch-mentorship-requests';
@@ -17,12 +16,10 @@ export default function MentorDashboard() {
   useEffect(
     () => {
       const fetchData = async () => {
-        let mentorshipRequestDataWithMenteeInfo =
+        const mentorshipRequestDataWithMenteeInfo =
           await fetchMentorshipRequests();
 
-        setMentorshipRequests(
-          mentorshipRequestDataWithMenteeInfo as MentorshipRequest[]
-        );
+        setMentorshipRequests(mentorshipRequestDataWithMenteeInfo);
       };
 
       for (let i = 1; i < 6; i++) {
