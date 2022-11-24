@@ -6,7 +6,8 @@ import {
   isToday,
 } from 'date-fns';
 import TimeSlots from '../../../src/components/timeSlots/TimeSlots';
-import { DateBoxProps, TIMESLOTS_TYPE_CLASSES } from '../../interface/book-meeting/book-with-mentor.interface'
+import { TIMESLOTS_TYPE_CLASSES } from '../../enum/calendar/calendar.enum';
+import { DateBoxProps } from '../../interface/book-meeting/book-with-mentor.interface'
 import { CalendarContext } from '../../../state-management/ReactContext/CalendarContext';
 import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
 import { ScheduleModalContext } from '../../../state-management/ReactContext/ScheduleModalContext';
@@ -28,7 +29,7 @@ let colStartClasses = [
 ];
 
 const DateBracket = ({ day, dayIndex }: DateBoxProps) => {
-  const { showScheduleModal, setShowScheduleModal, setTentativeTimes, defaultNullMeeting, setExistingTimes } = useContext(ScheduleModalContext);
+  const { showScheduleModal, setShowScheduleModal, setNewTimes, defaultNullMeeting, setExistingTimes } = useContext(ScheduleModalContext);
   const { schedule, selectedDay, setSelectedDay } = useContext(CalendarContext);
   const { setSelectedTimeSlot, IANACounterpart } = useContext(TimezoneContext);
 
@@ -38,10 +39,6 @@ const DateBracket = ({ day, dayIndex }: DateBoxProps) => {
     added property which is 'isNull'. this property is used to handle null timeslots like
     adding a new timeslot which has its text grayed out
   */
-  const tentativeAvailabilities = availabilitiesOnSelectedDay && availabilitiesOnSelectedDay.map((availability) => {
-    return {...availability, isNull: false }
-  })
-
   const existingAvailabilities = availabilitiesOnSelectedDay && availabilitiesOnSelectedDay.map((availability) => {
     return {...availability, isUpdated: false }
   })
@@ -50,10 +47,8 @@ const DateBracket = ({ day, dayIndex }: DateBoxProps) => {
   //select date event handler-----------------
   const selectDate = () => {
     setSelectedDay(day);    
-    //reset the selected time slot whenever a date is clicked so that there is no time slot selected by default
-    setSelectedTimeSlot({ startDatetime: '', endDatetime: ''}); 
     setExistingTimes(existingAvailabilities)
-    setTentativeTimes([...tentativeAvailabilities, defaultNullMeeting])
+    setNewTimes([defaultNullMeeting])
     setShowScheduleModal(true)
   };
 

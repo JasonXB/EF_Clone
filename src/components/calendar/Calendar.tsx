@@ -4,7 +4,8 @@ import DateSlot from './DateSlot';
 import DateBracket from './DateBracket';
 import { CalendarContext } from '../../../state-management/ReactContext/CalendarContext';
 import { v4 as uuidv4 } from 'uuid';
-import { MeetingAvailabilityProps, CALENDAR_TYPE_CLASSES, DayStrings } from '../../interface/book-meeting/book-with-mentor.interface'
+import { CALENDAR_TYPE_CLASSES } from '../../enum/calendar/calendar.enum';
+import { MeetingAvailabilityProps, DayStrings } from '../../interface/book-meeting/book-with-mentor.interface'
 import useWindowDimensions  from '../../../src/hooks/useWindowDimensions'
 import ScheduleModal from './ScheduleModal';
 

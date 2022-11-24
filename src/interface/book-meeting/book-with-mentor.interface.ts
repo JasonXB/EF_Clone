@@ -1,24 +1,11 @@
 import { ReactNode } from 'react';
 
-export enum CALENDAR_TYPE_CLASSES {
-  medium = 'medium', //type of calendar which uses Dateslot component mainly used in mentee/meeting/[mentor-id]
-  large = 'large', //type of calendar with uses DateBracket component mainly used in mentor/mentorship-availability
-}
-
-export enum TIMESLOTS_TYPE_CLASSES {
-  picker = 'picker',
-  list = 'list',
-}
-
-export enum TIMEZONESDROPDOWN_TYPE_CLASSES {
-  plain = 'plain',
-  bold = 'bold',
-}
-
-export enum TIMESLOTSETTER_TYPE_CLASSES {
-  existing = 'existing',
-  new = 'new',
-}
+import {
+  CALENDAR_TYPE_CLASSES, 
+  TIMESLOTS_TYPE_CLASSES, 
+  TIMEZONES_DROPDOWN_TYPE_CLASSES, 
+  TENTATIVE_MEETINGS_TYPE_CLASSES
+} from '../../enum/calendar/calendar.enum'
 
 export interface DayStrings {
   monday: string;
@@ -45,13 +32,8 @@ export interface Availability {
 export interface TentativeTime {
   startDatetime: string;
   endDatetime: string;
-  isNull: boolean;
-}
-
-export interface ExistingTime {
-  startDatetime: string;
-  endDatetime: string;
-  isUpdated: boolean;
+  isUpdated?: boolean;
+  isNull?: boolean;
 }
 
 export interface Mentor {
@@ -69,17 +51,18 @@ export interface MeetingProps {
   meeting: Availability
 }
 export interface TimeSlotSetterProps {
-  meeting: ExistingTime;
-  meetingType: TIMESLOTSETTER_TYPE_CLASSES
+  meeting: TentativeTime;
+  meetingType: TENTATIVE_MEETINGS_TYPE_CLASSES
   index: number
 }
 export interface TimeTextFieldProps {
-  meeting: ExistingTime;
+  meeting: TentativeTime;
+  meetingType: TENTATIVE_MEETINGS_TYPE_CLASSES
   whichTime: string;
   index: number
 }
 export interface TimeZonesDropdownProps {
-  timezonesDropdownType: TIMEZONESDROPDOWN_TYPE_CLASSES
+  timezonesDropdownType: TIMEZONES_DROPDOWN_TYPE_CLASSES
 }
 
 

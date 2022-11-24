@@ -3,7 +3,8 @@ import { useContext, useEffect, useState, useRef, MouseEvent } from 'react';
 import Timezone from './Timezone';
 import { v4 as uuidv4 } from 'uuid';
 import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
-import { TimeZonesDropdownProps, TIMEZONESDROPDOWN_TYPE_CLASSES } from '../../interface/book-meeting/book-with-mentor.interface';
+import { TIMEZONES_DROPDOWN_TYPE_CLASSES } from '../../enum/calendar/calendar.enum';
+import { TimeZonesDropdownProps } from '../../interface/book-meeting/book-with-mentor.interface';
 
 
 /*
@@ -36,9 +37,9 @@ const TimeZonesDropdown = ( { timezonesDropdownType }: TimeZonesDropdownProps) =
 
   let timezoneTextStyle;
 
-  if(timezonesDropdownType == TIMEZONESDROPDOWN_TYPE_CLASSES.plain){
+  if(timezonesDropdownType == TIMEZONES_DROPDOWN_TYPE_CLASSES.plain){
     timezoneTextStyle = "font-medium"
-  } else if(timezonesDropdownType == TIMEZONESDROPDOWN_TYPE_CLASSES.bold){
+  } else if(timezonesDropdownType == TIMEZONES_DROPDOWN_TYPE_CLASSES.bold){
     timezoneTextStyle = "text-base xl:text-xl font-bold text-blue-900"
   } 
 

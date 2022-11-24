@@ -1,7 +1,8 @@
 import { useContext } from 'react';
-import { format, startOfDay, formatISO } from 'date-fns';
+import { format } from 'date-fns';
 import Button from '../buttons/reusable-buttons';
-import { ExistingTime, TIMESLOTSETTER_TYPE_CLASSES } from '../../interface/book-meeting/book-with-mentor.interface'
+import { TENTATIVE_MEETINGS_TYPE_CLASSES } from '../../enum/calendar/calendar.enum';
+import { TentativeTime } from '../../interface/book-meeting/book-with-mentor.interface'
 import { CalendarContext } from '../../../state-management/ReactContext/CalendarContext';
 import { ScheduleModalContext } from '../../../state-management/ReactContext/ScheduleModalContext';
 import TimeSlotSetter from '../timeSlots/timeSlotsSetter/TimeSlotSetter';
@@ -12,8 +13,9 @@ const ScheduleModal = () => {
         defaultNullMeeting,
         showScheduleModal, 
         setShowScheduleModal, 
-        addNewTentativeTimes, 
-        setTentativeTimes,
+        addToNewTimes, 
+        newTimes,
+        setNewTimes,
         existingTimes,
         setExistingTimes
     } = useContext(ScheduleModalContext);
@@ -24,14 +26,14 @@ const ScheduleModal = () => {
     const closeModal = () => {
         setShowScheduleModal(false)
         //reset tentativeTimes when closing the modal
-        setTentativeTimes([defaultNullMeeting])
+        setNewTimes([defaultNullMeeting])
         setExistingTimes([])
     }
 
     const saveAvailabilities = () => {
         setShowScheduleModal(false)
         //reset tentativeTimes clicking save
-        setTentativeTimes([defaultNullMeeting])
+        setNewTimes([defaultNullMeeting])
         setExistingTimes([])
     }
 
@@ -71,12 +73,15 @@ const ScheduleModal = () => {
                     {/* my available time body */}
                     <div className='flex flex-row justify-between'>
                         <div className="mt-4 space-y-3 text-sm w-5/6 xl:w-11/12 xl:overflow-y-scroll scrollBar xl:max-h-80">
-                            {existingTimes.map((tentativeTime: ExistingTime, index) => (
-                                <TimeSlotSetter key={uuidv4()} meeting={tentativeTime} meetingType={TIMESLOTSETTER_TYPE_CLASSES.existing} index={index}/>
+                            {existingTimes.map((existingTime: TentativeTime, index) => (
+                                <TimeSlotSetter key={uuidv4()} meeting={existingTime} meetingType={TENTATIVE_MEETINGS_TYPE_CLASSES.existing} index={index}/>
+                            ))}
+                            {newTimes.map((newTime: TentativeTime, index) => (
+                                <TimeSlotSetter key={uuidv4()} meeting={newTime} meetingType={TENTATIVE_MEETINGS_TYPE_CLASSES.new} index={index}/>
                             ))}
                         </div>
                         {/* add timeSlotSetter icon */}
-                        <svg onClick={addNewTentativeTimes} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="currentColor" className="w-7 h-7">
+                        <svg onClick={addToNewTimes} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="currentColor" className="w-7 h-7">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                         </svg>
                     </div>

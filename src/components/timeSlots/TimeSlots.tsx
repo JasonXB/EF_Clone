@@ -1,13 +1,12 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import TimeSlot from './TimeSlot';
-import { utcToZonedTime } from 'date-fns-tz';
 import { v4 as uuidv4 } from 'uuid';
-import { isSameDay } from 'date-fns';
-import { Availability, TimeSlotsProps, TIMESLOTS_TYPE_CLASSES } from '../../interface/book-meeting/book-with-mentor.interface'
+import { TIMESLOTS_TYPE_CLASSES } from '../../enum/calendar/calendar.enum';
+import { Availability, TimeSlotsProps } from '../../interface/book-meeting/book-with-mentor.interface'
 import { CalendarContext } from '../../../state-management/ReactContext/CalendarContext';
 import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
-import { classNames } from '../../helperFunctions/class-names';
-import { selectedDayAvailability } from '../../helperFunctions/calendar/selected-day-availability'
+import { classNames } from '../../util/class-names';
+import { selectedDayAvailability } from '../../util/calendar/selected-day-availability'
 
 import useWindowDimensions  from '../../hooks/useWindowDimensions'
 

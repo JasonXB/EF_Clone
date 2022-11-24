@@ -6,7 +6,8 @@ import { useContext } from 'react';
 import { format, isEqual, parseISO } from 'date-fns';
 import { utcToZonedTime } from 'date-fns-tz';
 import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
-import { MeetingProps, TIMESLOTS_TYPE_CLASSES } from '../../interface/book-meeting/book-with-mentor.interface'
+import { TIMESLOTS_TYPE_CLASSES } from '../../enum/calendar/calendar.enum';
+import { MeetingProps } from '../../interface/book-meeting/book-with-mentor.interface'
 import { classNames } from '../../util/class-names'
 
 const TimeSlot = ({ meeting, timeSlotsType }: MeetingProps) => {
