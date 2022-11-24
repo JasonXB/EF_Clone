@@ -21,7 +21,7 @@ export default function MentorDashboard() {
         let mentorshipRequestDataWithMenteeInfo= 
           await fetchMentorshipRequests();
         
-        setMentorshipRequests(mentorshipRequestDataWithMenteeInfo as MentorshipRequest[]);
+        setMentorshipRequests(mentorshipRequestDataWithMenteeInfo);
       };
 
       for (let i = 1; i < 6; i++) {
