@@ -12,11 +12,8 @@ import { CalendarContext } from '../../../state-management/ReactContext/Calendar
 import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
 import { ScheduleModalContext } from '../../../state-management/ReactContext/ScheduleModalContext';
 import { selectedDayAvailability } from '../../util/calendar/selected-day-availability'
+import { classNames } from '../../util/class-names'
 
-
-function classNames(...classes: (string | boolean)[]) {
-  return classes.filter(Boolean).join(' ');
-}
 //grid styling used to align the date with the days
 let colStartClasses = [
   '',

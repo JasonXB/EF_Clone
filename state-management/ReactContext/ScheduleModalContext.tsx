@@ -17,6 +17,7 @@ export const ScheduleModalContext = createContext({
   removeFromExistingTimes: (index: number) => {},
   removeFromNewTimes: (index: number) => {},
   updateExistingTime: (index: number, newTime: TentativeTime) => {},
+  updateNewTime: (index: number, newTime: TentativeTime) => {}
 });
 
 interface Children {
@@ -45,8 +46,9 @@ export const ScheduleModalProvider = ({ children }: Children) => {
 
   const updateExistingTime = (index: number, updatedTime: TentativeTime) => {
     existingTimes[index] = updatedTime
-    console.log(existingTimes);
-    
+  }
+  const updateNewTime = (index: number, updatedTime: TentativeTime) => {
+    newTimes[index] = updatedTime
   }
   
   const value = {
@@ -60,7 +62,8 @@ export const ScheduleModalProvider = ({ children }: Children) => {
     addToNewTimes,
     removeFromExistingTimes,
     removeFromNewTimes,
-    updateExistingTime
+    updateExistingTime,
+    updateNewTime
   };
 
   return (
