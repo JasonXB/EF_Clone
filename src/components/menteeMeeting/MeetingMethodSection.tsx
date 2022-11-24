@@ -11,13 +11,13 @@ const MeetingMethodSection = () => {
                 <p className='xl:text-lg'>Google Meet</p>
                 </div>
             </button>
-            <button
+            {/* <button
                 className={`md:w-64 flex items-center py-3 group rounded-2xl focus-within:bg-gray-100 hover:bg-gray-100 border-primary-1 border font-medium`}
             >
                 <div className="flex-auto">
                 <p className='xl:text-lg'>Arrange with Mentor</p>
                 </div>
-            </button>
+            </button> */}
         </div>
     </FormItem>
   )
