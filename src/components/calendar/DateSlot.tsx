@@ -10,7 +10,7 @@ import { utcToZonedTime } from 'date-fns-tz';
 import { DateBoxProps } from '../../interface/book-meeting/book-with-mentor.interface'
 import { CalendarContext } from '../../../state-management/ReactContext/CalendarContext';
 import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
-import { classNames } from '../../helperFunctions/class-names'
+import { classNames } from '../../util/class-names'
 
 //grid styling used to align the date with the days
 let colStartClasses = [

@@ -7,8 +7,6 @@ function getWindowDimensions() {
     const { innerWidth: width, innerHeight: height } = window;
     currentHeight = height
     currentWidth = width
-  } else {
-    console.log('You are on the server')
   }
   
   return {

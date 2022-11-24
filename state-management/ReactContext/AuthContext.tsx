@@ -1,5 +1,5 @@
 import React, { createContext, ReactNode, useContext, useState } from 'react';
-import { storeCredentialsInLocalStorage } from '../../src/api/localStorage';
+import { storeCredentialsInLocalStorage, storeProfileIdInLocalStorage } from '../../src/api/localStorage';
 
 type authContextType = {
   email: string | null;
@@ -41,6 +41,7 @@ export function AuthProvider({ children }: AuthContextProps) {
     setAccessToken(token);
     setProfileID(profileId)
     storeCredentialsInLocalStorage(token);
+    storeProfileIdInLocalStorage(profileId);
   }
 
   const isLoggedIn = () => {
