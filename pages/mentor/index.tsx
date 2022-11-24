@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Layout from '../../src/components/Layout';
 import DisplayMentorShipContainer from '../../src/components/mentorDashboard/display-mentorship-requests';
 import UpcomingAvailabilityContainer from '../../src/components/mentorDashboard/display-upcoming-availability';
@@ -7,21 +7,22 @@ import MentorshipRequest from '../../src/interface/mentorship-request';
 import MockMentorDB from '../../src/tempData/MockMentorDB';
 import getRandomInt from '../../src/util/random-int';
 import fetchMentorshipRequests from '../../src/api/mentorRequests/fetch-mentorship-requests';
+import { MentorshipRequestsContext } from '../../state-management/ReactContext/MentorshipRequestsContext';
 
 //! check whether a user is authenticated as a mentor, otherwise user is redirected to /auth/login
 export default function MentorDashboard() {
-  let [mentorshipRequests, setMentorshipRequests] = useState<
-    MentorshipRequest[]
-  >([]);
-
+  const { setMentorshipRequests } = useContext(MentorshipRequestsContext);
   let [meetings, setMeetings] = useState<Meeting[]>([]);
 
   useEffect(
     () => {
       const fetchData = async () => {
-        const mentorshipRequestDataWithMenteeInfo =
+        let mentorshipRequestDataWithMenteeInfo =
           await fetchMentorshipRequests();
-        setMentorshipRequests(mentorshipRequestDataWithMenteeInfo);
+
+        setMentorshipRequests(
+          mentorshipRequestDataWithMenteeInfo as MentorshipRequest[]
+        );
       };
 
       for (let i = 1; i < 6; i++) {
@@ -48,10 +49,7 @@ export default function MentorDashboard() {
 
   return (
     <Layout headTitle="Mentor Dashboard" background="none">
-      <DisplayMentorShipContainer
-        mentorshipRequests={mentorshipRequests}
-        setMentorshipRequests={setMentorshipRequests}
-      />
+      <DisplayMentorShipContainer />
       <hr className="my-6" />
       <UpcomingAvailabilityContainer meetings={meetings} />
     </Layout>

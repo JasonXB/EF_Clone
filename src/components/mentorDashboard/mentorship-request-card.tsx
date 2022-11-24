@@ -1,24 +1,24 @@
+import { useContext } from 'react';
 import Image from 'next/image';
 import MentorshipRequest from '../../interface/mentorship-request';
 import Button from '../buttons/reusable-buttons';
 import profile_path from '../../../public/assets/christina-wocintechchat-com-sw3FSL9hIoI-unsplash.jpg';
-import ResponseMentorshipRequest from '../../api/mentorRequests/response-mentorship-request';
+import ResponseMentorshipRequest from './api/response-mentorship-request';
+import { MentorshipRequestsContext } from '../../../state-management/ReactContext/MentorshipRequestsContext';
 
 interface MentorshipRequestCardProps {
   mentorshipRequest: MentorshipRequest;
-  setMentorshipRequests: React.Dispatch<
-    React.SetStateAction<MentorshipRequest[]>
-  >;
-  numberOfRequests: number;
 }
 
 // todo: a spinner can be placed while waiting the response from api fetch
 function MentorshipRequestCard({
   mentorshipRequest,
-  setMentorshipRequests,
-  numberOfRequests,
 }: MentorshipRequestCardProps) {
   //avatar will be a future pass
+
+  const { setMentorshipRequests, pendingRequests } = useContext(
+    MentorshipRequestsContext
+  );
 
   // With default values in case not getting the correct info from api fetch
   const {
@@ -38,7 +38,7 @@ function MentorshipRequestCard({
 
   //  style logic incase there is only 1-2 request */
   const styleForLessThan2 = () => {
-    if (numberOfRequests) {
+    if (pendingRequests.length) {
       return 'sm:flex-row';
     }
     return 'sm:flex-col';
