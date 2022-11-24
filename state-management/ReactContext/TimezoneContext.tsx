@@ -79,19 +79,6 @@ const sortedListOfCompleteTimezone = sortedGMTTimezonesPair.map((GMTTimezonePair
   return GMTTimezonePair.completeTimezone
 })
 
-// let localDate = new Date("November 20, 2014 09:00:00")
-// let pst = 'America/Vancouver'
-// let est = 'America/Toronto'
-// let cst = 'America/Winnipeg'
-// let zoneToUTCdate = zonedTimeToUtc(localDate, est)
-// let utcToZonedDate = utcToZonedTime(localDate, cst)
-// console.log('------------------------');
-// console.log('localDate--->', localDate);
-// // console.log('zoneToUTCdate--->', zoneToUTCdate);
-// console.log('utcToZonedDate--->', utcToZonedDate);
-// console.log('------------------------');
-
-
 //helper variables to get the currentTimezone-------------------------------------
 /*
   currentDateInParts returns an array that splites the date into parts indicated below
