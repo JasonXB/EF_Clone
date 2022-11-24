@@ -9,16 +9,16 @@ const Letter = () => {
     setIsReadMore(!isReadMore);
   };
   return (
-    <section className="max-w-5xl py-10 mx-auto rounded-lg bg-hue-200 drop-shadow-lg">
+    <section className="max-w-5xl py-10 mx-auto mb-10 rounded-lg bg-hue-200 drop-shadow-xl">
       <div className="max-w-4xl p-4 mx-auto ">
-        <h4 className="my-2 text-primary-1">A Note From Our Founder</h4>
+        <h4 className="my-2 font-bold text-primary-1">
+          A Note From Our Founder
+        </h4>
         <div className="my-4 ">
           <h5 className="text-xl italic">
             Help me make a powerful contribution to the youth of the new world.
           </h5>
-          <div
-            className={`${isReadMore ? 'max-h-[510px]' : ' '} overflow-hidden`}
-          >
+          <div className={`${isReadMore ? 'line-clamp-[15]' : ' '} mb-4`}>
             {split.map((para, i) => (
               <p key={i} className="my-4 text-lg italic">
                 {para}
@@ -26,9 +26,13 @@ const Letter = () => {
             ))}
           </div>
 
-          <span onClick={toggleReadMore} className="read-or-hide">
+          <a
+            aria-label="displays more or less of the letter on the screen, Not needed for screen readers"
+            onClick={toggleReadMore}
+            className="py-4 cursor-pointer text-primary-2 hover:underline hover:text-secondary-4"
+          >
             {isReadMore ? '...read more' : ' show less'}
-          </span>
+          </a>
         </div>
         <div className="flex justify-end w-full">
           <div className="flex flex-row items-center">
