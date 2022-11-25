@@ -82,7 +82,7 @@ const ScheduleModal = () => {
                     </div>
                     {/* my available time body */}
                     <div className='flex flex-row justify-between'>
-                        <div className="mt-4 space-y-3 text-sm w-5/6 xl:w-11/12 xl:overflow-y-scroll scrollBar xl:max-h-80">
+                        <div className="mt-4 space-y-3 text-sm w-11/12 overflow-y-scroll scrollBar max-h-80">
                             {existingTimes.map((existingTime: TentativeTime, index) => (
                                 <TimeSlotSetter key={uuidv4()} meeting={existingTime} meetingType={TENTATIVE_MEETINGS_TYPE_CLASSES.existing} index={index}/>
                             ))}

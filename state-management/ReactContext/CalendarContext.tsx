@@ -6,7 +6,7 @@ import {
   parse,
   startOfToday,
 } from 'date-fns';
-import { Availability, Schedule } from '../../src/interface/book-meeting/book-with-mentor.interface'
+import { Schedule } from '../../src/interface/book-meeting/book-with-mentor.interface'
 
 const today = startOfToday();
 
