@@ -2,29 +2,24 @@ import { ReactNode } from 'react';
 
 //used in book-meeting/[mentorId]  
 export interface Availability {
-    startDatetime: Date | string,
-    endDatetime: Date | string,
+    startDatetime: string;
+    endDatetime: string;
   }
-
 
 export interface Mentor {
-    mentor_id: number,
-    name: string, 
-    position: string, 
-    company: string, 
-    imgUrl: string, 
+    mentor_id: string;
+    firstName: string; 
+    lastName: string; 
+    position: string; 
+    company: string; 
+    imgUrl: string; 
     meeting_availability: {
         specific: Availability[]
-    }
+    };
   }
 
-//used in timeslot component
-export interface ZonedAvailability {
-  startDatetime: Date,
-  endDatetime: Date,
-}
 export interface MeetingProps {
-    meeting: ZonedAvailability
+    meeting: Availability;
   }
 
 
@@ -32,18 +27,31 @@ export interface MeetingProps {
 export interface MeetingAvailabilityProps {
     meeting_availability: {
       specific: Availability[]
-    }
+    };
 }
 
 //used in DateSlot component
 export interface DateSlotProps {
-    day: Date,
-    dayIndex: number,
-    availabilities: Availability[]
+    day: Date;
+    dayIndex: number;
+    availabilities: Availability[];
   }
 
   //used in Timezone component
 export  interface TimezoneProps {
-    zone: ReactNode,
-    setDropdownToggle: Function
+    zone: ReactNode;
+    setDropdownToggle: Function;
   }
+
+export interface ScheduleSectionProps {
+  needToChooseTime: boolean; 
+  meeting_availability: {
+    specific: Availability[]
+  };
+}
+
+export interface ReviewMeetingInfoSectionProps {
+  fullName: string; 
+  timeReview: string; 
+  hasSelectedATime: boolean;
+}

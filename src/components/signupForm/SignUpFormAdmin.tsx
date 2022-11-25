@@ -26,8 +26,8 @@ const SignUpFormAdmin = () => {
   async function handleSignup() {
     const success = await signupAPI(username, email, password, role);
     if (!success) return; // todo: tell the user their signup failed
-    const token = await loginAPI(username, email, password);
-    clientSideLogin(email, token);
+    const { token, profileId } = await loginAPI(username, email, password);
+    clientSideLogin(email, token, profileId);
     // todo: redirect
     router.push('/admin/admin-panel');
   }

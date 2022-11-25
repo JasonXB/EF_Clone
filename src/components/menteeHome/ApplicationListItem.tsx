@@ -3,6 +3,7 @@ import Image from 'next/image';
 import GradientBar from '../percentBar/gradient-bar';
 import Button from '../buttons/reusable-buttons';
 import { ApplicationData } from '../../interface/mentee/homepage';
+import Link from 'next/link';
 
 export default function ApplicationListItem(props: ApplicationData) {
   // The percentage sent to the Gradient Bar is determined by the status
@@ -17,7 +18,7 @@ export default function ApplicationListItem(props: ApplicationData) {
 
   return (
     <li className="grid ss:grid-cols-[7fr,_auto] ss:h-[5.875rem] ss:gap-6 ss:mb-4 gap-4 mb-8">
-      <div className="grid grid-cols-[3fr,_7fr] divide-x items-center w-full shadow-branded-1 rounded-2xl px-[13px] py-[8px] xs:px-[26px] xs:py-[16px] h-[5.875rem]">
+      <div className="grid grid-cols-[3fr,_7fr] divide-x items-center w-full shadow-branded-1 rounded-2xl px-[13px] py-[8px] xs:p-4 h-[5.875rem]">
         <div className="flex flex-col pr-4">
           <div className="relative rounded-[5px] overflow-hidden w-[40px] h-[40px] flex flex-col mx-auto">
             <Image
@@ -41,13 +42,17 @@ export default function ApplicationListItem(props: ApplicationData) {
         </div>
       </div>
       <div className="flex flex-col items-center justify-center">
-        <Button
-          clickHandler={() => {}}
-          disabled={props.status === 'Approved' ? false : true} // disable button when applications are not approved
-          className={'max-w-[14rem] noMargins'}
-        >
-          Book Meeting
-        </Button>
+        <Link href='/mentee/meeting/1'>
+          <a>
+            <Button
+              clickHandler={() => {}}
+              disabled={props.status === 'Approved' ? false : true} // disable button when applications are not approved
+              className={'max-w-[14rem] noMargins'}
+            >
+              Book Meeting
+            </Button>
+          </a>
+        </Link>
       </div>
     </li>
   );

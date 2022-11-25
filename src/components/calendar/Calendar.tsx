@@ -1,12 +1,24 @@
 import { useContext } from 'react';
-import { add, format } from 'date-fns';
+import { add, format, isPast } from 'date-fns';
 import DateSlot from './DateSlot';
 import { CalendarContext } from '../../../state-management/ReactContext/CalendarContext';
 import { v4 as uuidv4 } from 'uuid';
 import { MeetingAvailabilityProps } from '../../interface/book-meeting/book-with-mentor.interface'
-
+import useWindowDimensions  from '../../../src/hooks/useWindowDimensions'
 
 export default function Calendar({ meeting_availability }: MeetingAvailabilityProps) {
+  const screen = useWindowDimensions()
+
+  const responsiveDay = (dayWord: string) => {
+    switch(screen) {
+      case 'xs':
+      case 'ss':
+        return dayWord.charAt(0) 
+      default:
+        return dayWord
+    }
+  }
+
   const { setCurrentMonth, firstDayCurrentMonth, days } =
     useContext(CalendarContext);
 
@@ -19,15 +31,14 @@ export default function Calendar({ meeting_availability }: MeetingAvailabilityPr
     let firstDayNextMonth = add(firstDayCurrentMonth, { months: 1 });
     setCurrentMonth(format(firstDayNextMonth, 'MMM-yyyy'));
   };
+  
 
   return (
     <div className="pt-1 my-2">
-      {/* make the calendar responsive in different devices */}
-      {/* <div className="max-w-md px-4 mx-auto sm:px-7 md:max-w-4xl md:px-6 lg:px-0 bg-red-100"> */}
       {/* style for navigation header of calendar */}
-      <div className="flex justify-between border border-primary-1 rounded-md px-6 py-6">
+      <div className="flex justify-between border border-primary-1 rounded-md lg:px-6 lg:py-6 px-4 py-2">
         {/* -- LEFT ARROW -- */}
-        <button
+        {!isPast(firstDayCurrentMonth) ? (<button
           className="hover:text-gray-500"
           type="button"
           onClick={previousMonth}
@@ -47,10 +58,10 @@ export default function Calendar({ meeting_availability }: MeetingAvailabilityPr
               d="M15.75 19.5L8.25 12l7.5-7.5"
             />
           </svg>
-        </button>
+        </button>) : <div className="px-5"/>}
         {/* -- */}
         {/* -- CALENDAR MONTH -- */}
-        <h4 className="font-medium">
+        <h4 className="font-medium text-2xl lg:text-3xl xl:text-4xl mt-1 lg:mt-0">
           {format(firstDayCurrentMonth, 'MMM yyyy')}
         </h4>
         {/* -- */}
@@ -80,18 +91,18 @@ export default function Calendar({ meeting_availability }: MeetingAvailabilityPr
         {/* -- */}
       </div>
       {/* -- DAYS -- */}
-      <div className="grid grid-cols-7 py-8 text-center font-medium border-b border-primary-1">
-        <h5>MON</h5>
-        <h5>TUE</h5>
-        <h5>WED</h5>
-        <h5>THU</h5>
-        <h5>FRI</h5>
-        <h5>SAT</h5>
-        <h5>SUN</h5>
+      <div className="grid grid-cols-7 lg:py-8 py-4 text-center font-medium border-b border-primary-1">
+        <h5 className='text-xl lg:text-2xl xl:text-3xl'>{responsiveDay('MON')}</h5>
+        <h5 className='text-xl lg:text-2xl xl:text-3xl'>{responsiveDay('TUE')}</h5>
+        <h5 className='text-xl lg:text-2xl xl:text-3xl'>{responsiveDay('WED')}</h5>
+        <h5 className='text-xl lg:text-2xl xl:text-3xl'>{responsiveDay('THU')}</h5>
+        <h5 className='text-xl lg:text-2xl xl:text-3xl'>{responsiveDay('FRI')}</h5>
+        <h5 className='text-xl lg:text-2xl xl:text-3xl'>{responsiveDay('SAT')}</h5>
+        <h5 className='text-xl lg:text-2xl xl:text-3xl'>{responsiveDay('SUN')}</h5>
       </div>
       {/* -- */}
       {/* -- DATE SLOTS -- */}
-      <div className="grid grid-cols-7 grid-rows-6 my-2 text-2xl">
+      <div className="grid grid-cols-7 grid-rows-6 my-2 text-xl md:text-2xl">
         {days.map((day, dayIdx) => (
           <DateSlot
             key={uuidv4()}

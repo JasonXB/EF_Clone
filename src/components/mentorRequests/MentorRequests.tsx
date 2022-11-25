@@ -27,7 +27,11 @@ const MentorRequests = ({ mentor }: MentorProfileProps) => {
   const [userAchieve, setUserAchieve] = useState<undefined | string>();
   const [userTimeline, setUserTimeline] = useState<undefined | string>();
 
+<<<<<<< HEAD
   const [blankWarn, setBlankWarn] = useState(true);
+=======
+  const [blankWarn, setBlankWarn] = useState(false);
+>>>>>>> a1599427243ae94b5f38ebbd610f71dd3f546ec2
 
   const submitHandler = async (e: any) => {
     e.preventDefault();
@@ -61,9 +65,15 @@ const MentorRequests = ({ mentor }: MentorProfileProps) => {
   };
 
   return (
+<<<<<<< HEAD
     <div className="flex items-center justify-center w-full">
       <div className="relative w-3/4 p-8 bg-white rounded-2xl drop-shadow-lg">
         <h1 className="my-4 text-xl sm:text-2xl md:text-4xl text-primary-1 md:my-8">
+=======
+    <div className="flex justify-center items-center w-full">
+      <div className="relative w-3/4 bg-white rounded-2xl drop-shadow-lg p-8">
+        <h1 className="text-xl sm:text-2xl md:text-4xl text-primary-1 my-4 md:my-8">
+>>>>>>> a1599427243ae94b5f38ebbd610f71dd3f546ec2
           Apply For {full_name}
         </h1>
         <div
@@ -90,7 +100,11 @@ const MentorRequests = ({ mentor }: MentorProfileProps) => {
             id="achieve"
             name="achieve"
             rows={5}
+<<<<<<< HEAD
             className="relative w-full p-1 mt-2 border rounded-md border-smoke-2"
+=======
+            className="relative mt-2 p-1 border rounded-md border-smoke-2 w-full"
+>>>>>>> a1599427243ae94b5f38ebbd610f71dd3f546ec2
             onChange={(e: any) => setUserAchieve(e.target.value)}
           />
 
@@ -102,7 +116,11 @@ const MentorRequests = ({ mentor }: MentorProfileProps) => {
             status={setUserTimeline}
           />
 
+<<<<<<< HEAD
           <div className="flex items-center justify-between mx-8 my-16">
+=======
+          <div className="flex justify-between items-center mx-8 my-16">
+>>>>>>> a1599427243ae94b5f38ebbd610f71dd3f546ec2
             <Link href={`/mentor/${id}`}>
               <button
                 className={`${buttonVariants.secondary} md:px-16 font-light hover:shadow-md`}
@@ -122,7 +140,11 @@ const MentorRequests = ({ mentor }: MentorProfileProps) => {
           </div>
         </form>
 
+<<<<<<< HEAD
         <div className="absolute invisible md:visible top-8 right-8">
+=======
+        <div className="invisible md:visible absolute top-8 right-8">
+>>>>>>> a1599427243ae94b5f38ebbd610f71dd3f546ec2
           <Image
             src={bannerImg}
             alt="graphic of people filling the form"

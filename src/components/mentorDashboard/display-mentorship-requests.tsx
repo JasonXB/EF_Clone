@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import {
   Splide,
   SplideSlide,
@@ -5,22 +6,20 @@ import {
 } from '@splidejs/react-splide';
 // Docs for splide https://splidejs.com/
 import '@splidejs/react-splide/css';
-import MentorshipRequest from '../../interface/mentorship-request';
 import MentorshipRequestCard from './mentorship-request-card';
-
-interface ResponsiveSliderProps {
-  mentorshipRequests: MentorshipRequest[];
-}
+import { MentorshipRequestsContext } from '../../../state-management/ReactContext/MentorshipRequestsContext';
 
 //need to fix arrows adjustment and progress dots
-const ResponsiveSlider = ({ mentorshipRequests }: ResponsiveSliderProps) => {
+const ResponsiveSlider = () => {
+  const { pendingRequests } = useContext(MentorshipRequestsContext)
+
   const Options: SplideOptions = {
     perPage: 3,
     gap: '2em',
     pagination: false,
     // padding: { left: '3rem', right: '3rem' },
     lazyLoad: true,
-    arrows: mentorshipRequests.length > 3,
+    arrows: pendingRequests.length > 3,
     breakpoints: {
       1024: {
         perPage: 2,
@@ -41,9 +40,11 @@ const ResponsiveSlider = ({ mentorshipRequests }: ResponsiveSliderProps) => {
         tag="section"
         id="mentorRequestSplideComponent"
       >
-        {mentorshipRequests.map((request, i) => (
-          <SplideSlide key={i}>
-            <MentorshipRequestCard mentorshipRequest={request} />
+        {pendingRequests.map((request) => (
+          <SplideSlide key={request._id}>
+            <MentorshipRequestCard
+              mentorshipRequest={request}
+            />
           </SplideSlide>
         ))}
       </Splide>
@@ -51,37 +52,38 @@ const ResponsiveSlider = ({ mentorshipRequests }: ResponsiveSliderProps) => {
   );
 };
 
-interface DisplayMentorShipContainerProps {
-  mentorshipRequests: MentorshipRequest[];
-}
+const DisplayMentorShipContainer = () => {
+  const { pendingRequests } = useContext(MentorshipRequestsContext)
 
-const DisplayMentorShipContainer = ({
-  mentorshipRequests,
-}: DisplayMentorShipContainerProps) => (
-  <>
-    <h1 className="py-4 text-4xl text-center md:text-5xl text-primary-1">
-      Mentorship Requests
-    </h1>
+  return (
+    <>
+      <h1 className="py-4 text-4xl text-center md:text-5xl text-primary-1">
+        Mentorship Requests
+      </h1>
 
-    {/* logic if there are no requests */}
-    {mentorshipRequests.length === 0 ? (
-      <div className="w-1/2 mx-auto mt-[10%]">
-        <p className="font-bold text-center text-hue-700">
-          No new mentorship requests <br /> Check back later.
-        </p>
-      </div>
-    ) : mentorshipRequests.length < 3 ? (
-      // display if there is 1-2
-      <div className="flex flex-col md:flex-row sm:max-w-[900px] sm:mx-auto">
-        {mentorshipRequests.map((request, i) => (
-          <MentorshipRequestCard key={i} mentorshipRequest={request} />
-        ))}
-      </div>
-    ) : (
-      // display as carousel only if 3 or more
-      <ResponsiveSlider mentorshipRequests={mentorshipRequests} />
-    )}
-  </>
-);
+      {/* logic if there are no requests */}
+      {pendingRequests.length === 0 ? (
+        <div className="w-1/2 mx-auto mt-[10%]">
+          <p className="font-bold text-center text-hue-700">
+            No new mentorship requests <br /> Check back later.
+          </p>
+        </div>
+      ) : pendingRequests.length < 3 ? (
+        // display if there is 1-2
+        <div className="flex flex-col md:flex-row sm:max-w-[900px] sm:mx-auto">
+          {pendingRequests.map((request) => (
+            <MentorshipRequestCard
+              key={request._id}
+              mentorshipRequest={request}
+            />
+          ))}
+        </div>
+      ) : (
+        // display as carousel only if 3 or more
+        <ResponsiveSlider />
+      )}
+    </>
+  );
+};
 
 export default DisplayMentorShipContainer;

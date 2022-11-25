@@ -1,8 +1,9 @@
-// Placeholder data, delete in future//////
+// Placeholder data for Calendar Page, delete in future//////
 export const mentorsData = [
     {
-        "mentor_id": 412,
-        "name": "Derick Pelayo",
+        "mentor_id": "412",
+        "firstName": "Derick",
+        "lastName": "Pelayo",
         "position": "Clerk",
         "company": "BDO",
         "imgUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNzIyMTJ8MHwxfHNlYXJjaHwxfHxwcm9maWxlJTIwcGljfGVufDB8fHx8MTY2NjA2NTM1Nw&ixlib=rb-1.2.1&q=80&w=400",
@@ -23,88 +24,86 @@ export const mentorsData = [
             ],
             "specific": [
                 {
-                    "startDatetime": "2022-11-11T13:00",
-                    "endDatetime": "2022-11-11T14:30"
+                    "startDatetime": "2022-11-22T09:30:00-08:00",
+                    "endDatetime": "2022-11-22T10:00:00-08:00"
                 },
                 {
-                    "startDatetime": "2022-11-20T09:00",
-                    "endDatetime": "2022-11-20T11:30"
+                    "startDatetime": "2022-11-22T13:30:00-08:00",
+                    "endDatetime": "2022-11-22T15:00:00-08:00"
                 },
                 {
-                    "startDatetime": "2022-11-20T17:00",
-                    "endDatetime": "2022-11-20T18:30"
+                    "startDatetime": "2022-11-15T20:30:00-08:00",
+                    "endDatetime": "2022-11-15T21:00:00-08:00"
                 },
                 {
-                    "startDatetime": "2022-11-09T13:00",
-                    "endDatetime": "2022-11-09T14:30"
+                    "startDatetime": "2022-11-15T16:30:00-08:00",
+                    "endDatetime": "2022-11-15T18:00:00-08:00"
                 },
                 {
-                    "startDatetime": "2022-11-13T14:00",
-                    "endDatetime": "2022-11-13T14:30"
-                }
+                    "startDatetime": "2022-11-18T06:30:00-08:00",
+                    "endDatetime": "2022-11-18T08:00:00-08:00"
+                },
             ]
         }
     },
     {
-        "mentor_id": 122,
-        "name": "Sarah Geronimo",
-        "position": "Voice Actor",
-        "company": "GMA",
+        "mentor_id": "122",
+        "firstName": "Shirley Mae",
+        "lastName": "Dizon Munoz",
+        "position": "Business Analyst",
+        "company": "RBC",
         "imgUrl": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNzIyMTJ8MHwxfHNlYXJjaHwyfHxwcm9maWxlJTIwcGljfGVufDB8fHx8MTY2NjA2NTM1Nw&ixlib=rb-1.2.1&q=80&w=400",
         "meeting_availability": {
             "recurring": [
                 {
-                    "wednesday": [
-                        {
-                            "from": "T05:00",
-                            "to": "T07:30"
-                        },
-                        {
-                            "from": "T09:30",
-                            "to": "T10:00"
-                        }
-                    ]
+                    "startDatetime": "2022-11-22T09:30:00-08:00",
+                    "endDatetime": "2022-11-22T10:00:00-08:00"
                 },
                 {
-                    "saturday": [
-                        {
-                            "from": "T05:00",
-                            "to": "T07:30"
-                        },
-                        {
-                            "from": "T09:30",
-                            "to": "T10:00"
-                        }
-                    ]
-                }
+                    "startDatetime": "2022-11-22T13:30:00-08:00",
+                    "endDatetime": "2022-11-22T15:00:00-08:00"
+                },
+                {
+                    "startDatetime": "2022-11-15T20:30:00-08:00",
+                    "endDatetime": "2022-11-15T21:00:00-08:00"
+                },
+                {
+                    "startDatetime": "2022-11-15T16:30:00-08:00",
+                    "endDatetime": "2022-11-15T18:00:00-08:00"
+                },
+                {
+                    "startDatetime": "2022-11-18T06:30:00-08:00",
+                    "endDatetime": "2022-11-18T08:00:00-08:00"
+                },
             ],
             "specific": [
                 {
-                    "startDatetime": "2022-11-11T13:00",
-                    "endDatetime": "2022-11-11T14:30"
+                    "startDatetime": "2022-11-29T09:30:00-08:00",
+                    "endDatetime": "2022-11-29T10:00:00-08:00"
                 },
                 {
-                    "startDatetime": "2022-11-20T09:00",
-                    "endDatetime": "2022-11-20T11:30"
+                    "startDatetime": "2022-11-29T13:30:00-08:00",
+                    "endDatetime": "2022-11-29T15:00:00-08:00"
                 },
                 {
-                    "startDatetime": "2022-11-20T17:00",
-                    "endDatetime": "2022-11-20T18:30"
+                    "startDatetime": "2022-12-15T20:30:00-08:00",
+                    "endDatetime": "2022-12-15T21:00:00-08:00"
                 },
                 {
-                    "startDatetime": "2022-11-09T13:00",
-                    "endDatetime": "2022-11-09T14:30"
+                    "startDatetime": "2022-12-15T16:30:00-08:00",
+                    "endDatetime": "2022-12-15T18:00:00-08:00"
                 },
                 {
-                    "startDatetime": "2022-11-13T14:00",
-                    "endDatetime": "2022-11-13T14:30"
-                }
+                    "startDatetime": "2022-12-18T06:30:00-08:00",
+                    "endDatetime": "2022-12-18T08:00:00-08:00"
+                },
             ]
         }
     },
     {
         "mentor_id": 300,
-        "name": "Charlotte Pads",
+        "firstName": "Charlotte",
+        "lastName": "Smith",
         "position": "CEO",
         "company": "Accenture",
         "imgUrl": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNzIyMTJ8MHwxfHNlYXJjaHwzfHxwcm9maWxlJTIwcGljfGVufDB8fHx8MTY2NjA2NTM1Nw&ixlib=rb-1.2.1&q=80&w=400",
@@ -125,25 +124,25 @@ export const mentorsData = [
             ],
             "specific": [
                 {
-                    "startDatetime": "2022-10-11T13:00",
-                    "endDatetime": "2022-10-11T14:30"
+                    "startDatetime": "2022-11-22T09:30:00-08:00",
+                    "endDatetime": "2022-11-22T10:00:00-08:00"
                 },
                 {
-                    "startDatetime": "2022-10-20T09:00",
-                    "endDatetime": "2022-10-20T11:30"
+                    "startDatetime": "2022-11-22T13:30:00-08:00",
+                    "endDatetime": "2022-11-22T15:00:00-08:00"
                 },
                 {
-                    "startDatetime": "2022-10-20T17:00",
-                    "endDatetime": "2022-10-20T18:30"
+                    "startDatetime": "2022-11-15T20:30:00-08:00",
+                    "endDatetime": "2022-11-15T21:00:00-08:00"
                 },
                 {
-                    "startDatetime": "2022-10-09T13:00",
-                    "endDatetime": "2022-10-09T14:30"
+                    "startDatetime": "2022-11-15T16:30:00-08:00",
+                    "endDatetime": "2022-11-15T18:00:00-08:00"
                 },
                 {
-                    "startDatetime": "2022-10-13T14:00",
-                    "endDatetime": "2022-10-13T14:30"
-                }
+                    "startDatetime": "2022-11-18T06:30:00-08:00",
+                    "endDatetime": "2022-11-18T08:00:00-08:00"
+                },
             ]
         }
     }
