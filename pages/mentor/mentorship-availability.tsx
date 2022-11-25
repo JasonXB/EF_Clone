@@ -10,7 +10,6 @@ import TimeZonesDropdown from '../../src/components/timezonesDropdown/TimeZonesD
 import { CALENDAR_TYPE_CLASSES, TIMEZONES_DROPDOWN_TYPE_CLASSES } from '../../src/enum/calendar/calendar.enum';
 import { Mentor } from '../../src/interface/book-meeting/book-with-mentor.interface';
 import { CalendarContext } from '../../state-management/ReactContext/CalendarContext';
-import useWindowDimensions  from '../../src/hooks/useWindowDimensions'
 
 /*
   AREAS OF IMPROVEMENT IN THE FEATURES: 
@@ -23,7 +22,6 @@ import useWindowDimensions  from '../../src/hooks/useWindowDimensions'
 const MentorshipAvailability: NextPage = () => {
     const { setSchedule } = useContext(CalendarContext);
     const [ mentor, setMentor ] = useState({} as Mentor)
-    const screen = useWindowDimensions()
 
     //fetch the mentor
     useEffect(() => {
