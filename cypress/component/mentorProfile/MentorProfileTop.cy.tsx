@@ -8,6 +8,7 @@ import { twitterIcon } from '../../../src/components/mentorProfile/ProfileIcons'
 
 // Temporarily displaying dummyMentor data
 const dummyMentorData = {
+  id: 1,
   name: 'Hiba Badran',
   title: 'Founder of Empowered Futures',
   avatar: hiba,
@@ -28,6 +29,7 @@ describe('MentorProfileTop.cy.tsx', () => {
 
     cy.mount(
       <MentorProfileTop
+        id={dummyMentorData.id}
         name={dummyMentorData.name}
         title={dummyMentorData.title}
         // socialMediaIcons={dummyMentorData.socialMediaIcons}

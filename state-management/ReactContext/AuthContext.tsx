@@ -5,20 +5,20 @@ type authContextType = {
   email: string | null;
   setEmail: Function;
   accessToken: string;
-  profileID: string;
   isLoggedIn: Function;
-  clientSideLogin: (username: string, token: string, id: string) => void;
+  clientSideLogin: (username: string, token: string, profileId: string) => void;
   logout: () => void;
+  profileId: string;
 };
 
 const authContextDefaultValues: authContextType = {
   email: null,
   setEmail: () => {},
   accessToken: '',
-  profileID: '',
   isLoggedIn: () => {},
   clientSideLogin: () => {},
   logout: () => {},
+  profileId: '',
 };
 
 const AuthContext = createContext<authContextType>(authContextDefaultValues);
@@ -34,13 +34,13 @@ type AuthContextProps = {
 export function AuthProvider({ children }: AuthContextProps) {
   const [email, setEmail] = useState<string | null>(null);
   const [accessToken, setAccessToken] = useState<string>('');
-  const [profileID, setProfileID] = useState<string>('');
+  const [profileId, setProfileId] = useState<string>('');
 
   function clientSideLogin(email: string, token: string, profileId: string) {
     setEmail(email);
     setAccessToken(token);
-    setProfileID(profileId)
     storeCredentialsInLocalStorage(token);
+    setProfileId(profileId);
     storeProfileIdInLocalStorage(profileId);
   }
 
@@ -51,7 +51,7 @@ export function AuthProvider({ children }: AuthContextProps) {
   function logout() {
     setEmail('');
     setAccessToken('');
-    setProfileID('')
+    setProfileId('')
     // todo: redirect to lander
   }
 
@@ -61,7 +61,7 @@ export function AuthProvider({ children }: AuthContextProps) {
         email,
         setEmail,
         accessToken,
-        profileID,
+        profileId,
         isLoggedIn,
         clientSideLogin,
         logout,
