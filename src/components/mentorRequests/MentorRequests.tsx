@@ -9,7 +9,6 @@ import axios from 'axios';
 import Link from 'next/link';
 import Mentor from '../../interface/mentor.interface';
 import { useAuth } from '../../../state-management/ReactContext/AuthContext';
-import { loginAPI } from '../../api/auth';
 
 interface MentorProfileProps {
   mentor: Mentor;
@@ -33,11 +32,11 @@ const MentorRequests = ({ mentor }: MentorProfileProps) => {
   const [blankAchievement, setBlankAchievement] = useState(false);
   const [blankTimeline, setBlankTimeline] = useState(false);
 
-  const { accessToken, profileID } = useAuth();
+  const { accessToken, profileId } = useAuth();
 
   const submitHandler = async (e: any) => {
     e.preventDefault();
-
+    
     if (userDescription === undefined || userDescription.length <= 0) {
       setBlankDescription(true);
       setBlankAchievement(false);
@@ -55,8 +54,8 @@ const MentorRequests = ({ mentor }: MentorProfileProps) => {
       setBlankAchievement(false);
       setBlankTimeline(false);
       const requestInfo = {
-        mentor: id,
-        mentee: profileID,
+        mentor: id.toString(),
+        mentee: profileId,
         goal: userAchievement,
         hopeFromMentorship: userDescription,
         timeline: userTimeline,

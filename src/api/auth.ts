@@ -21,13 +21,16 @@ export async function signupAPI(
     const encodedValue = encodeURIComponent(value);
     formBody.push(encodedKey + '=' + encodedValue);
   }
-  const response = await fetch('http://localhost:5200/api/users/create', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(details),
-  });
+  const response = await fetch(
+    'https://efback.azurewebsites.net/api/users/create',
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(details),
+    }
+  );
   const responseData = await response.json();
   console.log(responseData, '29rm');
   // todo: check shpae of resp data
@@ -54,26 +57,31 @@ export async function loginAPI(
     const encodedValue = encodeURIComponent(value);
     formBody.push(encodedKey + '=' + encodedValue);
   }
-
-  const response = await fetch("https://efback.azurewebsites.net/api/users/authenticate", {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(details),
-  });
+  const response = await fetch(
+    'https://efback.azurewebsites.net/api/users/authenticate',
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(details),
+    }
+  );
   const responseData = await response.json();
   console.log(responseData, '54rm');
   return responseData;
 }
 
 export async function isLoggedInAPI(token: string) {
-  const res = await fetch('http://localhost:5200/api/users/check/status', {
-    method: 'GET',
-    headers: {
-      Authorization: 'Bearer ' + token,
-    },
-  });
+  const res = await fetch(
+    'https://efback.azurewebsites.net/api/users/check/status',
+    {
+      method: 'GET',
+      headers: {
+        Authorization: 'Bearer ' + token,
+      },
+    }
+  );
   const responseData = await res.json();
   if (responseData.status === 'Mentee' || responseData.status === 'Mentor')
     return true;
