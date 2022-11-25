@@ -1,8 +1,5 @@
 import React, { createContext, ReactNode, useContext, useState } from 'react';
-import {
-  storeCredentialsInLocalStorage,
-  storeProfileIdInLocalStorage,
-} from '../../src/api/localStorage';
+import { storeCredentialsInLocalStorage, storeProfileIdInLocalStorage } from '../../src/api/localStorage';
 
 type authContextType = {
   email: string | null;
@@ -54,6 +51,7 @@ export function AuthProvider({ children }: AuthContextProps) {
   function logout() {
     setEmail('');
     setAccessToken('');
+    setProfileId('')
     // todo: redirect to lander
   }
 
@@ -63,10 +61,10 @@ export function AuthProvider({ children }: AuthContextProps) {
         email,
         setEmail,
         accessToken,
+        profileId,
         isLoggedIn,
         clientSideLogin,
         logout,
-        profileId,
       }}
     >
       {children}

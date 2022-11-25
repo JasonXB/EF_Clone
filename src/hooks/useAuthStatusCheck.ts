@@ -14,7 +14,7 @@ function useInput() {
           'Authorization': 'Bearer ' + token, // prettier-ignore
         };
         const backendResponse = await axios.get(
-          'http://localhost:1992/api/users/check/status',
+          'http://localhost:5200/api/users/check/status',
           { headers }
         );
         // If no errors are returned, it means the user is authenticated as a Mentor or Mentee or Admin
