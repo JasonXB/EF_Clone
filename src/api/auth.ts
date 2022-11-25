@@ -21,16 +21,13 @@ export async function signupAPI(
     const encodedValue = encodeURIComponent(value);
     formBody.push(encodedKey + '=' + encodedValue);
   }
-  const response = await fetch(
-    'https://efback.azurewebsites.net/api/users/create',
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(details),
-    }
-  );
+  const response = await fetch('http://localhost:5200/api/users/create', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(details),
+  });
   const responseData = await response.json();
   console.log(responseData, '29rm');
   // todo: check shpae of resp data

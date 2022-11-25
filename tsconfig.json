@@ -22,7 +22,7 @@
     "pages/become-a-mentor.jsx",
     "pages/become-a-mentor.jsx",
     "pages/bubbleTagsTesting.jsx",
-    "pages/book-meeting/[mentorId].tsx"
+    "pages/mentee/meeting/[mentorId].tsx",
   ],
   "exclude": ["node_modules"]
 }

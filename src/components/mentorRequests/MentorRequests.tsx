@@ -102,17 +102,17 @@ const MentorRequests = ({ mentor }: MentorProfileProps) => {
             blankDescription={blankDescription}
           />
 
-          <div className="mt-4">
-            <label htmlFor="descriptionDetails">
+          <>
+            <label htmlFor="descriptionDetails" className='block text-base mt-4'>
               If you answer &ldquo;Other&rdquo; in the above question, please
               give us your status here.
             </label>
             <input
               type="text"
-              className="w-full ss:w-1/2 border border-hue-400 h-9 rounded-md overflow-scroll"
+              className="w-full p-2 ss:w-1/2 border border-hue-400 h-9 rounded-md overflow-scroll"
               onChange={changeValue}
             />
-          </div>
+          </>
 
           <label htmlFor="achieve" className="block mt-16">
             Describe to {first_name} your goals and what you hope to achieve
@@ -162,7 +162,7 @@ const MentorRequests = ({ mentor }: MentorProfileProps) => {
           </div>
         </form>
 
-        <div className="invisible md:visible absolute top-8 right-8">
+        <div className="invisible lg:visible absolute top-8 right-8">
           <Image
             src={bannerImg}
             alt="graphic of people filling the form"

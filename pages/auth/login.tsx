@@ -19,11 +19,7 @@ const Login: NextPage = ({}) => {
   const [role, setRole] = useState<Roles>(Roles.mentee);
 
   async function handleLogin() {
-    const { accessToken, profileId } = await loginAPI(
-      username,
-      email,
-      password
-    );
+    const { accessToken, profileId } = await loginAPI(username, email, password);
     clientSideLogin(email, accessToken, profileId);
     if (role === Roles.mentee) {
       Router.push('/mentee');
