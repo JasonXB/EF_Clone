@@ -1,18 +1,15 @@
 import { useContext, useEffect, useState } from 'react';
 import type { NextPage } from 'next';
-import Image, { StaticImageData } from 'next/image';
-import Link from 'next/link';
+import Image from 'next/image';
 import Layout from '../../src/components/Layout';
 //not sure how to fix error in server doesnt match client 
 import calendarImg from '../../public/assets/vectorCalendar.png';
 import { mentorsData } from '../../src/tempData/dummyMentorsForCalendar';
 import Calendar from '../../src/components/calendar/Calendar';
 import TimeZonesDropdown from '../../src/components/timezonesDropdown/TimeZonesDropdown';
-import Button from '../../src/components/buttons/reusable-buttons';
 import { CALENDAR_TYPE_CLASSES, TIMEZONES_DROPDOWN_TYPE_CLASSES } from '../../src/enum/calendar/calendar.enum';
 import { Mentor } from '../../src/interface/book-meeting/book-with-mentor.interface';
 import { CalendarContext } from '../../state-management/ReactContext/CalendarContext';
-import { responsiveImageSize } from '../../src/util/responsive-image-size';
 import useWindowDimensions  from '../../src/hooks/useWindowDimensions'
 
 /*
@@ -52,12 +49,10 @@ const MentorshipAvailability: NextPage = () => {
                 <div className='flex flex-col items-center space-y-4'>
                     <h3 className="font-bold text-primary-1 text-xl xl:text-4xl">Mentorship Availability</h3>
                     {/* calendar image */}
-                    <div>
+                    <div className='w-[100px] h-[65px] sm:w-[150px] sm:h-[98px] xl:w-[200px] xl:h-[130px]'>
                         <Image
                             src={calendarImg}
                             alt="calendar image"
-                            width={responsiveImageSize(screen, 200)}
-                            height={responsiveImageSize(screen, 130)}
                         />
                     </div>
                     {/* timezone dropdown div */}
@@ -94,14 +89,6 @@ const MentorshipAvailability: NextPage = () => {
                 {/* <div>
                     <div>Meeting Method</div>
                 </div> */}
-                {/* save button */}
-                {/* <Link
-                    href={{pathname: '/mentor'}}
-                >
-                    <div>
-                    <Button variant="primary">Save</Button>
-                    </div>
-                </Link> */}
             </div>
         </Layout>
     );
