@@ -26,9 +26,10 @@ let colStartClasses = [
 ];
 
 const DateBracket = ({ day, dayIndex }: DateBoxProps) => {
-  const { showScheduleModal, setShowScheduleModal, setNewTimes, defaultNullMeeting, setExistingTimes } = useContext(ScheduleModalContext);
+  const { showScheduleModal, setShowScheduleModal, setNewTimes, getDefaultNullMeeting, setExistingTimes } = useContext(ScheduleModalContext);
   const { schedule, selectedDay, setSelectedDay } = useContext(CalendarContext);
   const { IANACounterpart } = useContext(TimezoneContext);
+  
 
   const availabilitiesOnSelectedDay = schedule && selectedDayAvailability(schedule.specific, day, IANACounterpart)
   /*
@@ -40,12 +41,17 @@ const DateBracket = ({ day, dayIndex }: DateBoxProps) => {
     return {...availability, isUpdated: false }
   })
 
+  let nullMeetingDefault = getDefaultNullMeeting(IANACounterpart)
+
 
   //select date event handler-----------------
   const selectDate = () => {
     setSelectedDay(day);    
     setExistingTimes(existingAvailabilities)
-    setNewTimes([defaultNullMeeting])
+    //handle undefined return of promise
+    if(nullMeetingDefault !== undefined) {
+      setNewTimes([nullMeetingDefault])
+    }
     setShowScheduleModal(true)
   };
 

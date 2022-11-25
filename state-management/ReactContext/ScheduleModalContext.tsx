@@ -3,19 +3,15 @@ import { startOfDay, formatISO, format } from 'date-fns';
 import { formatInTimeZone } from 'date-fns-tz';
 import { TentativeTime } from '../../src/interface/book-meeting/book-with-mentor.interface'
 
-const defaultNullTime = formatISO(startOfDay(new Date()))
-const nullMeeting = {startDatetime: defaultNullTime, endDatetime: defaultNullTime, isNull: true}
-
 export const ScheduleModalContext = createContext({
-  defaultNullMeeting: nullMeeting,
-  getDefaultNullMeeting: (IANACounterpart: Promise<string>) => {},
+  getDefaultNullMeeting: (IANACounterpart: Promise<string>) => { return {} as TentativeTime } ,
   showScheduleModal: false,
   setShowScheduleModal: (() => {}) as Dispatch<SetStateAction<boolean>>,
   existingTimes: [] as TentativeTime[],
   setExistingTimes: (() => {}) as Dispatch<SetStateAction<TentativeTime[]>>,
   newTimes: [] as TentativeTime[],
   setNewTimes: (() => {}) as Dispatch<SetStateAction<TentativeTime[]>>,
-  addToNewTimes: () => {},
+  addToNewTimes: (IANACounterpart: Promise<string>) => {},
   removeFromExistingTimes: (index: number) => {},
   removeFromNewTimes: (index: number) => {},
   updateExistingTime: (index: number, newTime: TentativeTime) => {},
@@ -27,13 +23,12 @@ interface Children {
 }
 
 export const ScheduleModalProvider = ({ children }: Children) => {
-  const defaultNullMeeting = nullMeeting
   //used for the onClick event of DateBracket to show the modal
   const [showScheduleModal, setShowScheduleModal] = useState(false); 
   const [existingTimes, setExistingTimes] = useState<TentativeTime[]>([])
   const [newTimes, setNewTimes] = useState<TentativeTime[]>([])
 
-  const getDefaultNullMeeting = (IANACounterpart: Promise<string>) => {
+  const getDefaultNullMeeting = (IANACounterpart: Promise<string>): TentativeTime => {
     let zonedNullMeeting;
     if (typeof IANACounterpart == 'string') {
         //Thu Nov 24 2022 18:00:00 GMT-0800 (Pacific Standard Time)
@@ -44,11 +39,15 @@ export const ScheduleModalProvider = ({ children }: Children) => {
         
         zonedNullMeeting = {startDatetime: nullDate, endDatetime: nullDate, isNull: true}
     }
-    return zonedNullMeeting
+    return zonedNullMeeting as TentativeTime
   }
 
-  const addToNewTimes = () => {
-    setNewTimes(newTimes => [...newTimes, defaultNullMeeting])
+  const addToNewTimes = (IANACounterpart: Promise<string>) => {
+    let nullMeetingDefault = getDefaultNullMeeting(IANACounterpart)
+    //handle undefined return of promise
+    if(nullMeetingDefault !== undefined) {
+      setNewTimes(newTimes => [...newTimes, nullMeetingDefault])
+    }    
   }
 
   const removeFromExistingTimes = (index: number) => {
@@ -68,7 +67,6 @@ export const ScheduleModalProvider = ({ children }: Children) => {
   }
   
   const value = {
-    defaultNullMeeting,
     getDefaultNullMeeting,
     showScheduleModal, 
     setShowScheduleModal,
