@@ -138,10 +138,10 @@ const ProfileNavMenu = () => {
     <div className="flex space-x-2">
       {/* temp svg solution*/}
       {/* chat*/}
-      <Link href="/">
+      {/* <Link href="/">
         <a className="hover:text-primary-2 ">
           {' '}
-          {/*temp color will swap when design shows */}
+          
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="27"
@@ -154,7 +154,7 @@ const ProfileNavMenu = () => {
             <path d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
           </svg>
         </a>
-      </Link>
+      </Link> */}
 
       <Link href="/">
         <a className="hover:text-primary-2">
