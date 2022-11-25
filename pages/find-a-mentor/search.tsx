@@ -1,29 +1,14 @@
 import Layout from '../../src/components/Layout';
 import { useEffect, useState } from 'react';
 import MentorCard from '../../src/components/MentorCard';
-import MockMentorDB from '../../src/tempData/MockMentorDB';
 import Mentor from '../../src/interface/mentor.interface';
 import { useRouter } from 'next/router';
-import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
+import { getMentors } from '../../src/api/mentorList/mentor-list'
 
 enum FilterDefaults {
   Gender = 'All',
   Location = 'All',
   Skill = 'All',
-}
-
-declare module 'axios' {
-  export interface AxiosRequestConfig {
-    name: string;
-    id: string;
-    protocolProfileBehavior: {};
-    request: {
-      method: string;
-      header: [];
-      url: string;
-    };
-    response: [];
-  }
 }
 
 const GenderOptions = [
@@ -49,56 +34,17 @@ export default function MentorList() {
   let [query, setQuery] = useState(q as string);
   let [page, setPage] = useState(1);
 
-  //
-  const getMentors = async () => {
-    const options: AxiosRequestConfig = {
-      name: "Get all mentors' profile",
-      id: '57c19079-77fa-4aad-9ce3-1d93525b1ef2',
-      protocolProfileBehavior: {
-        disableBodyPruning: true,
-      },
-      request: {
-        method: 'GET',
-        header: [],
-        url: 'https://efback.azurewebsites.net/api/mentor/list/all',
-      },
-      response: [],
-    };
-
-    try {
-      const response: AxiosResponse = await axios.get(
-        'https://efback.azurewebsites.net/api/mentor/list/all',
-        options
-      );
-      // new array of Mentor objects created to change backend property names to match frontend types
-      let newMentors: any = [];
-      response.data.mentors.map((mentor: any) => {
-        const newMentor: Mentor = {
-          id: mentor._id,
-          first_name: mentor.firstname,
-          last_name: mentor.lastname,
-          location: mentor.address,
-          gender: mentor.gender,
-          profile_path: mentor.picture,
-          job: mentor.title,
-          bio: mentor.bio,
-          email: mentor.email,
-          tags: mentor.fields,
-          skills: mentor.skillsets,
-        };
-        newMentors.push(newMentor);
-      });
-      setAllMentors(newMentors);
-      return response;
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   // on page render, get Mentors from backend
   useEffect(() => {
-    getMentors();
+    const getAllMentors = async () => {
+      const mentors = await getMentors()
+      setAllMentors(mentors as Mentor[])
+      
+    }
+    getAllMentors()
   }, []);
+
+  
 
   // gender filtering
   let mentors = allMentors.filter((mentor) => {
