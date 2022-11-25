@@ -29,14 +29,11 @@ const MentorRequests = ({ mentor }: MentorProfileProps) => {
   const [userAchievement, setUserAchievement] = useState<undefined | string>();
   const [userTimeline, setUserTimeline] = useState<undefined | string>();
 
-  // const [blankWarning, setBlankWarning] = useState(false);
   const [blankDescription, setBlankDescription] = useState(false);
   const [blankAchievement, setBlankAchievement] = useState(false);
   const [blankTimeline, setBlankTimeline] = useState(false);
 
   const { accessToken, profileID } = useAuth();
-  console.log( "accessToken -- > ", accessToken )
-  console.log( "profileID -- > ", profileID )
 
   const submitHandler = async (e: any) => {
     e.preventDefault();
@@ -60,9 +57,8 @@ const MentorRequests = ({ mentor }: MentorProfileProps) => {
       const requestInfo = {
         mentor: id,
         mentee: profileID,
-        goal: 'test',
-        description: userDescription,
-        hopeFromMentorship: userAchievement,
+        goal: userAchievement,
+        hopeFromMentorship: userDescription,
         timeline: userTimeline,
       };
 
