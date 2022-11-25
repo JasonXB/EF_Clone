@@ -21,8 +21,7 @@ const determineTimePart = (whichTime: string, meeting: TentativeTime): string =>
 const determineZonedTime = (meetingType: TENTATIVE_MEETINGS_TYPE_CLASSES, meeting: TentativeTime, timePart: string, IANACounterpart: Promise<string>) => {
     //condition to handle null time slots
     if(meetingType == TENTATIVE_MEETINGS_TYPE_CLASSES.new && meeting.isNull == true){
-        const startOfToday = startOfDay(new Date())
-        return utcToZonedTime(startOfToday, IANACounterpart as unknown as string);
+        return startOfDay(new Date())
     } else {
         //converted timezones by referring to the useState variable IANACounterpart-------------
         return utcToZonedTime(timePart, IANACounterpart as unknown as string);
