@@ -1,13 +1,17 @@
 import React, { createContext, ReactNode, useContext, useState } from 'react';
-import { storeCredentialsInLocalStorage } from '../../src/api/localStorage';
+import {
+  storeCredentialsInLocalStorage,
+  storeProfileIdInLocalStorage,
+} from '../../src/api/localStorage';
 
 type authContextType = {
   email: string | null;
   setEmail: Function;
   accessToken: string;
   isLoggedIn: Function;
-  clientSideLogin: (username: string, token: string) => void;
+  clientSideLogin: (username: string, token: string, profileId: string) => void;
   logout: () => void;
+  profileId: string;
 };
 
 const authContextDefaultValues: authContextType = {
@@ -17,6 +21,7 @@ const authContextDefaultValues: authContextType = {
   isLoggedIn: () => {},
   clientSideLogin: () => {},
   logout: () => {},
+  profileId: '',
 };
 
 const AuthContext = createContext<authContextType>(authContextDefaultValues);
@@ -32,11 +37,14 @@ type AuthContextProps = {
 export function AuthProvider({ children }: AuthContextProps) {
   const [email, setEmail] = useState<string | null>(null);
   const [accessToken, setAccessToken] = useState<string>('');
+  const [profileId, setProfileId] = useState<string>('');
 
-  function clientSideLogin(email: string, token: string) {
+  function clientSideLogin(email: string, token: string, profileId: string) {
     setEmail(email);
     setAccessToken(token);
     storeCredentialsInLocalStorage(token);
+    setProfileId(profileId);
+    storeProfileIdInLocalStorage(profileId);
   }
 
   const isLoggedIn = () => {
@@ -58,6 +66,7 @@ export function AuthProvider({ children }: AuthContextProps) {
         isLoggedIn,
         clientSideLogin,
         logout,
+        profileId,
       }}
     >
       {children}

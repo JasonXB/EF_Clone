@@ -4,12 +4,14 @@ import Line from './Line';
 import MentorProfilePercentBars from './MentorProfilePercentBars';
 import Mentor from '../../interface/mentor.interface';
 import SimilarMentors from './similarMentors/SimilarMentors';
+import { id } from 'date-fns/locale';
 
 interface MentorProfileProps {
   mentor: Mentor;
 }
 const MentorProfileMain = ({ mentor }: MentorProfileProps) => {
   const {
+    id,
     first_name,
     last_name,
     location,
@@ -33,6 +35,7 @@ const MentorProfileMain = ({ mentor }: MentorProfileProps) => {
           <div className="flex flex-col items-center lg:items-stretch xl:items-stretch">
             {/* Top-left section  */}
             <MentorProfileTop
+              id={id}
               name={full_name}
               title={job}
               location={location}
