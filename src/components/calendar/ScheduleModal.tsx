@@ -1,6 +1,6 @@
 import { useContext } from 'react';
-import { format, startOfDay, formatISO, addHours } from 'date-fns';
-import { utcToZonedTime } from 'date-fns-tz';
+import { format, startOfDay } from 'date-fns';
+import { formatInTimeZone } from 'date-fns-tz';
 import Button from '../buttons/reusable-buttons';
 import { TENTATIVE_MEETINGS_TYPE_CLASSES } from '../../enum/calendar/calendar.enum';
 import { TentativeTime } from '../../interface/book-meeting/book-with-mentor.interface'
@@ -10,19 +10,10 @@ import { ScheduleModalContext } from '../../../state-management/ReactContext/Sch
 import TimeSlotSetter from '../timeSlots/timeSlotsSetter/TimeSlotSetter';
 import { v4 as uuidv4 } from 'uuid';
 
-const getDefaultNullMeeting = async (IANACounterpart: Promise<string>) => {
-    const dayStart = startOfDay(new Date())
-    //Thu Nov 24 2022 18:00:00 GMT-0800 (Pacific Standard Time)
-    const zonedStartOfToday = await utcToZonedTime(dayStart, IANACounterpart as unknown as string);
-    // //'2022-11-24T18:00:00-08:00'
-    // const formattedStartOfToday = formatISO(zonedStartOfToday)
-    // const zonedNullMeeting = {startDatetime: formattedStartOfToday, endDatetime: formattedStartOfToday, isNull: true}
-    return zonedStartOfToday
-}
-
 const ScheduleModal = () => {
     const { 
         defaultNullMeeting,
+        getDefaultNullMeeting,
         showScheduleModal, 
         setShowScheduleModal, 
         addToNewTimes, 
@@ -36,31 +27,23 @@ const ScheduleModal = () => {
 
     let dateHeader = format(selectedDay, 'yyyy LLLL do EEEE')
 
-    const dayStart = startOfDay(new Date())
-
-    getDefaultNullMeeting(IANACounterpart).then((zonedStartOfToday) => {
-        console.log(zonedStartOfToday);
-        
-        const formattedStartOfToday = formatISO(addHours(zonedStartOfToday, 1))
-        const zonedNullMeeting = {startDatetime: formattedStartOfToday, endDatetime: formattedStartOfToday, isNull: true}
-        console.log('formattedStartOfToday', formattedStartOfToday);
-        
-    })
-    //checkpoint null meeting 
-    // console.log('zonedNullMeeting', );
-    
+    let nullMeetingDefault = getDefaultNullMeeting(IANACounterpart)
 
     const closeModal = () => {
         setShowScheduleModal(false)
         //reset tentativeTimes when closing the modal
-        setNewTimes([defaultNullMeeting])
+        if(nullMeetingDefault !== undefined) {
+            setNewTimes([nullMeetingDefault])
+        }
         setExistingTimes([])
     }
 
     const saveAvailabilities = () => {
         setShowScheduleModal(false)
         //reset tentativeTimes clicking save
-        setNewTimes([defaultNullMeeting])
+        if(nullMeetingDefault !== undefined) {
+            setNewTimes([nullMeetingDefault])
+        }
         setExistingTimes([])
     }
 

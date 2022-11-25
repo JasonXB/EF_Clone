@@ -1,5 +1,6 @@
 import { createContext, useState, ReactNode, Dispatch, SetStateAction } from 'react';
-import { startOfDay, formatISO } from 'date-fns';
+import { startOfDay, formatISO, format } from 'date-fns';
+import { formatInTimeZone } from 'date-fns-tz';
 import { TentativeTime } from '../../src/interface/book-meeting/book-with-mentor.interface'
 
 const defaultNullTime = formatISO(startOfDay(new Date()))
@@ -7,6 +8,7 @@ const nullMeeting = {startDatetime: defaultNullTime, endDatetime: defaultNullTim
 
 export const ScheduleModalContext = createContext({
   defaultNullMeeting: nullMeeting,
+  getDefaultNullMeeting: (IANACounterpart: Promise<string>) => {},
   showScheduleModal: false,
   setShowScheduleModal: (() => {}) as Dispatch<SetStateAction<boolean>>,
   existingTimes: [] as TentativeTime[],
@@ -17,7 +19,7 @@ export const ScheduleModalContext = createContext({
   removeFromExistingTimes: (index: number) => {},
   removeFromNewTimes: (index: number) => {},
   updateExistingTime: (index: number, newTime: TentativeTime) => {},
-  updateNewTime: (index: number, newTime: TentativeTime) => {}
+  updateNewTime: (index: number, newTime: TentativeTime) => {},
 });
 
 interface Children {
@@ -30,6 +32,20 @@ export const ScheduleModalProvider = ({ children }: Children) => {
   const [showScheduleModal, setShowScheduleModal] = useState(false); 
   const [existingTimes, setExistingTimes] = useState<TentativeTime[]>([])
   const [newTimes, setNewTimes] = useState<TentativeTime[]>([])
+
+  const getDefaultNullMeeting = (IANACounterpart: Promise<string>) => {
+    let zonedNullMeeting;
+    if (typeof IANACounterpart == 'string') {
+        //Thu Nov 24 2022 18:00:00 GMT-0800 (Pacific Standard Time)
+        const dayStart = startOfDay(new Date())
+        const timezonePart = formatInTimeZone(dayStart, IANACounterpart, 'XXX') // -04:00
+        const datePart = format(new Date(), 'yyyy-MM-dd')
+        const nullDate = datePart + 'T00:00:00' + timezonePart
+        
+        zonedNullMeeting = {startDatetime: nullDate, endDatetime: nullDate, isNull: true}
+    }
+    return zonedNullMeeting
+  }
 
   const addToNewTimes = () => {
     setNewTimes(newTimes => [...newTimes, defaultNullMeeting])
@@ -53,6 +69,7 @@ export const ScheduleModalProvider = ({ children }: Children) => {
   
   const value = {
     defaultNullMeeting,
+    getDefaultNullMeeting,
     showScheduleModal, 
     setShowScheduleModal,
     existingTimes, 

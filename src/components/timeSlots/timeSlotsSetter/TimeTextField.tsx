@@ -79,17 +79,21 @@ const TimeTextField = ({ meeting, meetingType, whichTime, index }: TimeTextField
 
         //four conditions which handle startTime vs. endTime and existingTime vs. newTime
         if(whichTime == "start"){
+            //startTime and existingTime
             if(meetingType == TENTATIVE_MEETINGS_TYPE_CLASSES.existing){
                 newMeeting = {...meeting, startDatetime: editedDateTime, isUpdated: true }
                 updateExistingTime(index, newMeeting)
+            //startTime and newTime
             } else if (meetingType == TENTATIVE_MEETINGS_TYPE_CLASSES.new) {
                 newMeeting = {...meeting, startDatetime: editedDateTime, isNull: false }
                 updateNewTime(index, newMeeting)
             }
         } else if (whichTime == "end"){
+            //endTime and existingTime
             if(meetingType == TENTATIVE_MEETINGS_TYPE_CLASSES.existing){
                 newMeeting = {...meeting, endDatetime: editedDateTime, isUpdated: true }
                 updateExistingTime(index, newMeeting)
+            //endTime and newTime
             } else if (meetingType == TENTATIVE_MEETINGS_TYPE_CLASSES.new) {
                 newMeeting = {...meeting, endDatetime: editedDateTime, isNull: false }
                 updateNewTime(index, newMeeting)

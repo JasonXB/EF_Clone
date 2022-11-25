@@ -3,6 +3,7 @@ import type { NextPage } from 'next';
 import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
 import Layout from '../../src/components/Layout';
+//not sure how to fix error in server doesnt match client 
 import calendarImg from '../../public/assets/vectorCalendar.png';
 import { mentorsData } from '../../src/tempData/dummyMentorsForCalendar';
 import Calendar from '../../src/components/calendar/Calendar';
