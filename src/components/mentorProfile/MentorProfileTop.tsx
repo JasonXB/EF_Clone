@@ -3,10 +3,7 @@ import Button from '../buttons/reusable-buttons';
 import { linkedInIcon, locationIcon, twitterIcon } from './ProfileIcons';
 import { clockIcon } from './ProfileIcons';
 import { v4 as uuidv4 } from 'uuid';
-<<<<<<< HEAD
-=======
 import Link from 'next/link';
->>>>>>> a1599427243ae94b5f38ebbd610f71dd3f546ec2
 import { useRouter } from 'next/router';
 
 const socialMediaIcons = [
@@ -32,10 +29,6 @@ const MentorProfileTop = ({
   avatar,
 }: MentorProfileTopProps) => {
   const router = useRouter();
-<<<<<<< HEAD
-=======
-
->>>>>>> a1599427243ae94b5f38ebbd610f71dd3f546ec2
   return (
     <>
       {/* Left: Avatar and Request button */}
@@ -43,13 +36,7 @@ const MentorProfileTop = ({
         <div className="flex flex-col items-center w-3/5 md:items-center lg:items-center xl:items-start md:w-3/5 lg:w-4/5 xl:w-2/5">
           <Avatar personsName={name} imgLocation={avatar} displaySize="large" />
           <Button
-<<<<<<< HEAD
-            clickHandler={() => {
-              router.push('/mentee/meeting/book/1');
-            }}
-=======
             clickHandler={() => router.push(`/mentor-requests/${id}`)}
->>>>>>> a1599427243ae94b5f38ebbd610f71dd3f546ec2
             className="px-8 mt-6 mb-6 text-xl w-3/8 xl:ml-14"
           >
             Request

@@ -1,7 +1,6 @@
 import Layout from '../../src/components/Layout';
 import { useEffect, useState } from 'react';
 import MentorCard from '../../src/components/MentorCard';
-import MockMentorDB from '../../src/tempData/MockMentorDB';
 import Mentor from '../../src/interface/mentor.interface';
 import { useRouter } from 'next/router';
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
@@ -88,6 +87,7 @@ export default function MentorList() {
         };
         newMentors.push(newMentor);
       });
+
       setAllMentors(newMentors);
       return response;
     } catch (error) {
