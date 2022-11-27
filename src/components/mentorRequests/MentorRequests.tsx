@@ -68,7 +68,9 @@ const MentorRequests = ({ mentor }: MentorProfileProps) => {
           Authorization: `Bearer ${accessToken}`,
         },
       };
-      await axios
+
+      try {
+        await axios
         .post(
           'https://efback.azurewebsites.net/api/mentorRequests/auth/create',
           requestInfo,
@@ -82,6 +84,9 @@ const MentorRequests = ({ mentor }: MentorProfileProps) => {
         .catch((err) => {
           console.log(err);
         });
+      } catch (error) {
+        console.log(error)
+      }
     }
   };
 
