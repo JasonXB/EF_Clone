@@ -1,14 +1,10 @@
-type MentorSkill = {skill: string, proficiency: number};
+type MentorSkill = [string, number];
 
 export interface Mentor {
   id: number;
   first_name: string;
   last_name: string;
-  location: {
-    city: string,
-    province: string,
-    country: string
-  }
+  location: string;
   gender: string;
   profile_path: string;
   job: string;
