@@ -6,12 +6,13 @@ import Button, { buttonVariants } from '../../src/components/buttons/reusable-bu
 import { loginAPI } from '../../src/api/auth';
 import { useAuth } from '../../state-management/ReactContext/AuthContext';
 import { Roles } from '../../src/enum/role.enum';
-import Router from 'next/router';
+import { useRouter } from 'next/router';
 // import useAuthStatusCheck from '../../src/hooks/useAuthStatusCheck';
 // import Spinner from '../../src/components/loadingVisuals/spinner';
 
 const Login: NextPage = ({}) => {
   const { clientSideLogin, logout } = useAuth();
+  const router = useRouter();
 
   const [username, setUsername] = useState<string>('');
   const [email, setEmail] = useState<string>('');
@@ -22,9 +23,9 @@ const Login: NextPage = ({}) => {
     const { accessToken, profileId } = await loginAPI(username, email, password);
     clientSideLogin(email, accessToken, profileId);
     if (role === Roles.mentee) {
-      Router.push('/mentee');
+      router.push('/mentee');
     } else {
-      Router.push('/mentor');
+      router.push('/mentor');
     }
   }
 

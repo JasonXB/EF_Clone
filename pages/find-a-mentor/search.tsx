@@ -1,9 +1,9 @@
 import Layout from '../../src/components/Layout';
 import { useEffect, useState } from 'react';
 import MentorCard from '../../src/components/MentorCard';
-import MockMentorDB from '../../src/tempData/MockMentorDB';
 import Mentor from '../../src/interface/mentor.interface';
 import { useRouter } from 'next/router';
+import { getMentors } from '../../src/api/mentorList/mentor-list'
 
 enum FilterDefaults {
   Gender = 'All',
@@ -11,7 +11,12 @@ enum FilterDefaults {
   Skill = 'All',
 }
 
-const GenderOptions = [FilterDefaults.Gender, 'Male', 'Female'];
+const GenderOptions = [
+  FilterDefaults.Gender,
+  'Male',
+  'Female',
+  'Prefer not to say',
+];
 
 export default function MentorList() {
   // carry over query from /find-a-mentor page
@@ -29,6 +34,16 @@ export default function MentorList() {
   let [query, setQuery] = useState(q as string);
   let [page, setPage] = useState(1);
 
+  // on page render, get Mentors from backend
+  useEffect(() => {
+    const fetchMentors = async () => {
+      const mentorsData = await getMentors()  
+      setAllMentors(mentorsData as Mentor[])
+    }
+    fetchMentors()
+  }, []);
+
+  
   // gender filtering
   let mentors = allMentors.filter((mentor) => {
     if (genderFilter === FilterDefaults.Gender) return true;
@@ -39,7 +54,7 @@ export default function MentorList() {
   // location filtering
   mentors = mentors.filter((mentor) => {
     if (locationFilter === FilterDefaults.Location) return true;
-    if (mentor.location === locationFilter) return true;
+    if (mentor.location.country === locationFilter) return true;
     return false;
   });
 
@@ -49,7 +64,7 @@ export default function MentorList() {
     // haven't had much luck using forEach for this for some reason
     // for loop used instead
     for (let i = 0; i < mentor.skills.length; i++) {
-      if (mentor.skills[i][0] === skillFilter) return true;
+      if (mentor.skills[i].skill === skillFilter) return true;
     }
     return false;
   });
@@ -62,9 +77,9 @@ export default function MentorList() {
     let mentorAsArray = [
       first_name,
       last_name,
-      location,
+
       job,
-      ...skills.map((skill) => skill[0]),
+      ...skills.map((skill) => skill.skill),
       ...tags.map((tag) => tag),
     ];
     // make all strings lowercase for ease of search
@@ -77,20 +92,18 @@ export default function MentorList() {
     return false;
   });
 
-  // simulated backend fetch
-  useEffect(() => {
-    setAllMentors(MockMentorDB.getAll());
-  }, []);
-
   let skillsArray: string[] = [];
   allMentors.forEach((mentor) => {
-    mentor.skills
-      .map((skill) => skill[0])
-      .forEach((skill) => {
-        // avoid duplicate skills, only add if not found
-        if (!skillsArray.find((skillInArray) => skillInArray === skill))
-          skillsArray.push(skill);
-      });
+    {
+      mentor.skills &&
+        mentor.skills
+          .map((skill) => skill.skill)
+          .forEach((skill) => {
+            // avoid duplicate skills, only add if not found
+            if (!skillsArray.find((skillInArray) => skillInArray === skill))
+              skillsArray.push(skill);
+          });
+    }
   });
   // Place 'All' as first in the array
   skillsArray = [FilterDefaults.Skill, ...skillsArray];
@@ -100,10 +113,10 @@ export default function MentorList() {
     // avoid duplicate locations, only add if not found
     if (
       !locationsArray.find(
-        (locationInArray) => locationInArray === mentor.location
+        (locationInArray) => locationInArray === mentor.location.country
       )
     )
-      locationsArray.push(mentor.location);
+      locationsArray.push(mentor.location.country);
   });
   // place 'All' as first in the array
   locationsArray = [FilterDefaults.Location, ...locationsArray];

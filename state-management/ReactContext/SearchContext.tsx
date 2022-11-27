@@ -26,6 +26,8 @@ type Props = {
   children: ReactNode;
 };
 
+
+
 // currently, only one generic state variable defined for currentFilteredData
 // as more use cases for SearchInput components become apparent, more variables can be defined to handle different kinds of state
 

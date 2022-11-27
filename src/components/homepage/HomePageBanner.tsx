@@ -28,12 +28,12 @@ const HomePageBanner = () => (
           of leaders
         </p>
         <div className="space-x-5 my-7">
-          <Link href="/find-a-mentor">
+          <Link href="/auth/mentee/signup">
             <a className={`${buttonVariants.primary} py-4 px-5 font-light `}>
               Find a mentor
             </a>
           </Link>
-          <Link href="/become-a-mentor">
+          <Link href="/auth/mentor/signup">
             <a className={`${buttonVariants.secondary} py-4 px-5 font-light`}>
               Be a mentor
             </a>

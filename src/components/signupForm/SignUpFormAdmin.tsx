@@ -6,6 +6,7 @@ import TitledInput from '../titledInput/TitledInput';
 import { useAuth } from '../../../state-management/ReactContext/AuthContext';
 import { loginAPI, signupAPI } from '../../api/auth';
 import { Roles } from '../../enum/role.enum';
+import Link from 'next/link';
 
 const SignUpFormAdmin = () => {
   const router = useRouter();
@@ -28,7 +29,7 @@ const SignUpFormAdmin = () => {
     const { token, profileId } = await loginAPI(username, email, password);
     clientSideLogin(email, token, profileId);
     // todo: redirect
-    router.push('/admin-panel');
+    router.push('/admin/admin-panel');
   }
 
   const handleSubmit = (e: any) => {
@@ -73,9 +74,6 @@ const SignUpFormAdmin = () => {
     handleSignup();
   };
 
-  const redirect = () => {
-    router.push('/auth/login');
-  };
   return (
     <div className="backdrop:outer">
       <div className="relative flex flex-wrap items-center justify-center h-full py-20 inner-full">
@@ -140,7 +138,7 @@ const SignUpFormAdmin = () => {
               By logging in, you agree to Empowered Future&apos;s{' '}
               <a href="" className="text-primary-2">
                 Terms And Conditions*
-              </a>
+              </Link>
             </h3>
             <div className="absolute right-0 -bottom-15">
               <Button variant="primary" clickHandler={handleSubmit}>

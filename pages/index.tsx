@@ -20,7 +20,7 @@ const ReusableCardData = [
     paragraph:
       'Join us: Share who you are and show mentors what you need help with.',
     buttonText: 'Learn More',
-    buttonLink: '/',
+    buttonLink: '/auth/mentee/signup',
     img: menteeGraphic,
     imgAlt: 'two people chatting in speech bubbles',
   },
@@ -29,7 +29,7 @@ const ReusableCardData = [
     paragraph:
       'Join us: share who you are and show young adults what you can help them with.',
     buttonText: 'Learn More',
-    buttonLink: '/',
+    buttonLink: '/auth/mentor/signup',
     img: mentorGraphic,
     imgAlt: 'two people connected puzzle pieces together.',
   },
