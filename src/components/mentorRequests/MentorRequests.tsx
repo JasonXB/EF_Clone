@@ -36,7 +36,7 @@ const MentorRequests = ({ mentor }: MentorProfileProps) => {
 
   const submitHandler = async (e: any) => {
     e.preventDefault();
-    
+
     if (userDescription === undefined || userDescription.length <= 0) {
       setBlankDescription(true);
       setBlankAchievement(false);
@@ -61,15 +61,19 @@ const MentorRequests = ({ mentor }: MentorProfileProps) => {
         timeline: userTimeline,
       };
 
-      //connect with backend
+      //   //connect with backend
       const config = {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${accessToken}`
-        }
-      }
+          Authorization: `Bearer ${accessToken}`,
+        },
+      };
       await axios
-        .post('https://efback.azurewebsites.net/api/mentorRequests/auth/create', requestInfo, config)
+        .post(
+          'https://efback.azurewebsites.net/api/mentorRequests/auth/create',
+          requestInfo,
+          config
+        )
         .then((res) => {
           console.log(res);
           console.log('success');
@@ -86,12 +90,19 @@ const MentorRequests = ({ mentor }: MentorProfileProps) => {
     setUserDescription(e.target.value);
   };
 
+  const [descriptionDetails, setDescriptionDetails] = useState(false);
+
   return (
     <div className="flex justify-center items-center w-full">
       <div className="relative w-full xs:w-3/4 bg-white rounded-2xl drop-shadow-lg p-8">
-        <h1 className="text-xl sm:text-2xl md:text-4xl text-primary-1 my-4 md:my-8">
-          Apply For {full_name}
-        </h1>
+        <div className="my-4 md:my-8 md:w-1/2">
+          <p className="font-bold text-md sm:text-lg md:text-2xl text-primary-1">
+            Apply For
+          </p>
+          <h1 className="text-xl sm:text-2xl md:text-4xl text-primary-1">
+            {full_name}
+          </h1>
+        </div>
 
         <form onSubmit={submitHandler}>
           <OptionForm
@@ -99,20 +110,35 @@ const MentorRequests = ({ mentor }: MentorProfileProps) => {
             label="Which describes your status is the best?"
             options={descriptionOptionList}
             status={setUserDescription}
-            blankDescription={blankDescription}
+            blank={blankDescription}
+            details={setDescriptionDetails}
           />
 
-          <>
-            <label htmlFor="descriptionDetails" className='block text-base mt-4'>
-              If you answer &ldquo;Other&rdquo; in the above question, please
-              give us your status here.
-            </label>
-            <input
-              type="text"
-              className="w-full p-2 ss:w-1/2 border border-hue-400 h-9 rounded-md overflow-scroll"
-              onChange={changeValue}
-            />
-          </>
+          {descriptionDetails && (
+            <>
+              <label
+                htmlFor="descriptionDetails"
+                className="block text-base mt-4 md:w-1/2"
+              >
+                If you answer &ldquo;Other&rdquo; in the above question, please
+                give us your status here.
+              </label>
+              {userDescription === 'Other' && (
+                <p className="text-xs text-red-500">
+                  Please fill out this section.
+                </p>
+              )}
+              <input
+                type="text"
+                className={`w-full p-2 ss:w-1/2 border border-hue-400 h-9 rounded-md overflow-scroll outline-primary-1 outline-border-2 ${
+                  userDescription === 'Other'
+                    ? 'border-red-500'
+                    : 'border-smoke-2'
+                }`}
+                onChange={changeValue}
+              />
+            </>
+          )}
 
           <label htmlFor="achieve" className="block mt-16">
             Describe to {first_name} your goals and what you hope to achieve
@@ -129,7 +155,7 @@ const MentorRequests = ({ mentor }: MentorProfileProps) => {
             rows={5}
             className={`relative mt-2 p-1 border rounded-md w-full h-32 overflow-y-scroll ${
               blankAchievement ? 'border-red-500' : 'border-smoke-2'
-            }`}
+            } outline-primary-1 outline-border-2`}
             onChange={(e: any) => setUserAchievement(e.target.value)}
           />
 
@@ -139,7 +165,7 @@ const MentorRequests = ({ mentor }: MentorProfileProps) => {
               your goal?"
             options={timelineOptionList}
             status={setUserTimeline}
-            blankTimeline={blankTimeline}
+            blank={blankTimeline}
           />
 
           <div className="flex justify-between items-center ss:mx-8 my-16">
@@ -150,25 +176,17 @@ const MentorRequests = ({ mentor }: MentorProfileProps) => {
                 Back
               </button>
             </Link>
-            {/* jump to where? */}
-            {/* <Link href=""> */}
             <button
               type="submit"
               className={`${buttonVariants.primary} md:px-16 font-light hover:shadow-md`}
             >
               Submit
             </button>
-            {/* </Link> */}
           </div>
         </form>
 
-        <div className="invisible lg:visible absolute top-8 right-8">
-          <Image
-            src={bannerImg}
-            alt="graphic of people filling the form"
-            width={330}
-            height={280}
-          />
+        <div className="absolute top-8 right-8 invisible md:visible sm:w-52 md:w-56 lg:w-80 flex items-center">
+          <Image src={bannerImg} alt="graphic of people filling the form" />
         </div>
       </div>
     </div>
