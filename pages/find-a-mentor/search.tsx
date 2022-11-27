@@ -36,16 +36,14 @@ export default function MentorList() {
 
   // on page render, get Mentors from backend
   useEffect(() => {
-    const getAllMentors = async () => {
-      const mentors = await getMentors()
-      setAllMentors(mentors as Mentor[])
-      
+    const fetchMentors = async () => {
+      const mentorsData = await getMentors()  
+      setAllMentors(mentorsData as Mentor[])
     }
-    getAllMentors()
+    fetchMentors()
   }, []);
 
   
-
   // gender filtering
   let mentors = allMentors.filter((mentor) => {
     if (genderFilter === FilterDefaults.Gender) return true;
