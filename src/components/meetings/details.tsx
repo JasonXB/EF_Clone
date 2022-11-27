@@ -1,9 +1,5 @@
 import Image, { StaticImageData } from 'next/image';
-<<<<<<<< HEAD:src/components/details.tsx
-import { MeetingDetailType } from '../enum/meetingDetailType.enum';
-========
 import { MeetingDetailType } from '../../enum/meetingDetailType.enum';
->>>>>>>> development:src/components/meetings/details.tsx
 
 interface MeetingDetailProps {
   type: `${MeetingDetailType}`;
