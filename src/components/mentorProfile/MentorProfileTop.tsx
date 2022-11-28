@@ -29,7 +29,6 @@ const MentorProfileTop = ({
   avatar,
 }: MentorProfileTopProps) => {
   const router = useRouter();
-
   return (
     <>
       {/* Left: Avatar and Request button */}
