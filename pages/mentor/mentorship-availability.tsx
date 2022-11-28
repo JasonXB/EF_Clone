@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from 'react';
 import type { NextPage } from 'next';
 import Image from 'next/image';
 import Layout from '../../src/components/Layout';
-//not sure how to fix error in server doesnt match client 
 import calendarImg from '../../public/assets/vectorCalendar.png';
 import { mentorsData } from '../../src/tempData/dummyMentorsForCalendar';
 import Calendar from '../../src/components/calendar/Calendar';
@@ -10,7 +9,7 @@ import TimeZonesDropdown from '../../src/components/timezonesDropdown/TimeZonesD
 import { CALENDAR_TYPE_CLASSES, TIMEZONES_DROPDOWN_TYPE_CLASSES } from '../../src/enum/calendar/calendar.enum';
 import { Mentor } from '../../src/interface/book-meeting/book-with-mentor.interface';
 import { CalendarContext } from '../../state-management/ReactContext/CalendarContext';
-import { getProfileIdInLocalStorage } from '../../src/api/localStorage';
+// import { getProfileIdInLocalStorage } from '../../src/api/localStorage';
 
 /*
   AREAS OF IMPROVEMENT IN THE FEATURES: 
