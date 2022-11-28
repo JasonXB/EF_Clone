@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Navbar from './header/Navbar';
 import LayoutStyle from '../../styles/Layout.module.css';
 import Footer from './footer/Footer';
+import LeftBar from './profileSettings/LeftBar';
 
 enum BackgroundTypes {
   primary = 'primary',
@@ -45,20 +46,26 @@ const Layout = ({
             <link rel="icon" href="/favicon.ico" />
           </Head>
           <Navbar />
-          <div
-            className={
-              //we need to fix this for a more clear solution
-              props.contentCustomClass
-                ? props.contentCustomClass
-                : props.isConfirmedMeetingPg
-                ? ''
-                : props.noBottomPadding
-                ? LayoutStyle.contentV2
-                : LayoutStyle.content
-            }
-          >
-            <main>{props.children}</main>
-          </div>
+          {/*<div className="flex items-start">*/}
+            
+            <div
+              className={
+                //we need to fix this for a more clear solution
+                props.contentCustomClass
+                  ? props.contentCustomClass
+                  : props.isConfirmedMeetingPg
+                  ? ''
+                  : props.noBottomPadding
+                  ? LayoutStyle.contentV2
+                  : LayoutStyle.content
+              }
+            >
+              <LeftBar />
+              <main className={props.noBottomPadding
+                  ? LayoutStyle.mainContentV2
+                  : LayoutStyle.mainContent}>{props.children}</main>
+            </div>
+          {/*</div>*/}
         </div>
         <Footer />
       </div>

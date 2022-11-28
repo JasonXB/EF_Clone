@@ -13,7 +13,12 @@
   font-family: 'Montserrat', sans-serif;
 }
 .content {
+  display: flex;
   grid-column: main-start/main-end;
+  height: 100%;
+}
+
+.mainContent {
   padding: 2rem;
 }
 
@@ -50,7 +55,11 @@
 }
 .contentV2 {
   grid-column: main-start/main-end;
+  display: flex;
+  height: 100%;
+}
+
+.mainContentV2 {
   padding-left: 2rem;
   padding-right: 2rem;
-  padding-top: 2rem;
 }
