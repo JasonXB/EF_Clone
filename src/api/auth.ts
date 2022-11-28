@@ -4,7 +4,7 @@ export async function signupAPI(
   username: string,
   email: string,
   password: string,
-  role: string
+  role: Roles
 ) {
   console.log(email, password, '2rm');
   const details = {

@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import Layout from '../../src/components/Layout';
+import Layout from '../src/components/Layout';
 import { GetStaticProps } from 'next';
 
 export const getStaticProps: GetStaticProps = async (context) => {

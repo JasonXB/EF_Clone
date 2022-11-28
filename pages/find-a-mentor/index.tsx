@@ -6,7 +6,6 @@ import Layout from '../../src/components/Layout';
 
 export default function FindAMentor() {
   let [query, setQuery] = useState('');
-
   return (
     <Layout headTitle="Find a Mentor">
       <div>

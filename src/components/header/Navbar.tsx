@@ -9,30 +9,13 @@ import { useAuth } from '../../../state-management/ReactContext/AuthContext';
 
 //issues when under 440px, logo not being responsive
 
-interface MainLinksProps {
-  isLoggedIn: boolean;
-  isMentee: boolean;
-}
-
-const MainLinks = ({ isLoggedIn, isMentee }: MainLinksProps) => (
+const MainLinks = () => (
   <div className="w-full lg:inline-flex lg:w-auto">
-    {isLoggedIn ? (
-      isMentee ? (
-        <div>
-          <NavbarLink url={'/mentee'} name={'Dashboard'} />
-        </div>
-      ) : (
-        <div>
-          <NavbarLink url={'/mentor'} name={'Dashboard'} />
-        </div>
-      )
-    ) : (
-      <div className="flex flex-col items-start w-full md:inline-flex md:flex-row sm:ml-auto sm:w-auto sm:items-center sm:h-auto">
-        <NavbarLink url={'/public/become-a-mentor'} name={'Become a Mentor'} />
-        <NavbarLink url={'/find-a-mentor'} name={'Find a Mentor'} />
-        <NavbarLink url={'/public/about-us'} name={'About Us'} />
-      </div>
-    )}
+    <div className="flex flex-col items-start w-full md:inline-flex md:flex-row sm:ml-auto sm:w-auto sm:items-center sm:h-auto">
+      <NavbarLink url={'/become-a-mentor'} name={'Become a Mentor'} />
+      <NavbarLink url={'/find-a-mentor'} name={'Find a Mentor'} />
+      <NavbarLink url={'/about-us'} name={'About Us'} />
+    </div>
   </div>
 );
 
@@ -93,13 +76,13 @@ const Navbar = () => {
 
                 {/*desktop nav */}
                 <div className="hidden ml-1 md:ml-6 md:block">
-                  <MainLinks isLoggedIn={isLoggedIn()} isMentee={true} />
+                  <MainLinks />
                 </div>
               </div>
               {/*toggled state login/sign up buttons or profile menu */}
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 {/*hides login from nav when its too crowded */}
-                {isLoggedIn() ? (
+                {isLoggedIn ? (
                   <ProfileNavMenu />
                 ) : (
                   <span className="hidden sm:block">
@@ -113,9 +96,9 @@ const Navbar = () => {
           {/*mobile hamburger nav */}
           <Disclosure.Panel className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1">
-              <MainLinks isLoggedIn={isLoggedIn()} isMentee={true} />
+              <MainLinks />
               {/*displays login/signup buttons in panel when nav runs out of room */}
-              {isLoggedIn() ? null : (
+              {isLoggedIn ? null : (
                 <span className="sm:hidden">
                   <LoginSignup />
                 </span>

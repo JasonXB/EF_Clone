@@ -4,7 +4,7 @@ import { buttonVariants } from '../buttons/reusable-buttons';
 const LoginSignup = () => (
   <div className="flex flex-col items-start w-full lg:inline-flex sm:flex-row lg:ml-auto lg:w-auto lg:items-center lg:h-auto">
     {/*These links are made to look like buttons */}
-    <Link href={'/auth/mentee/login'}>
+    <Link href={'/login'}>
       <a
         className={buttonVariants.secondary}
         aria-label="brings you to login screen"
@@ -12,7 +12,7 @@ const LoginSignup = () => (
         Login
       </a>
     </Link>
-    <Link href={'/auth/mentee/signup'}>
+    <Link href={'/signup'}>
       <a
         className={buttonVariants.primary}
         aria-label="brings you to a different screen to sign up"
