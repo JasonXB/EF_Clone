@@ -4,7 +4,6 @@ import Line from './Line';
 import MentorProfilePercentBars from './MentorProfilePercentBars';
 import Mentor from '../../interface/mentor.interface';
 import SimilarMentors from './similarMentors/SimilarMentors';
-import { id } from 'date-fns/locale';
 
 interface MentorProfileProps {
   mentor: Mentor;
