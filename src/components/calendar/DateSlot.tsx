@@ -55,7 +55,6 @@ const DateSlot = ({ day, dayIndex }: DateBoxProps) => {
       for (let i = 0; i < timeZonedAvailabilities.length; i++) {
         startTime = timeZonedAvailabilities[i].startDatetime
         if (isSameDay(startTime, day) && isFuture(startTime)) {
-          const zonedSelectedTime = utcToZonedTime(selectedTimeSlot.startDatetime, IANACounterpart as unknown as string);
             return true
         }
       }

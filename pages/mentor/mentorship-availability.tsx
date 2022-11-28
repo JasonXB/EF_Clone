@@ -10,6 +10,7 @@ import TimeZonesDropdown from '../../src/components/timezonesDropdown/TimeZonesD
 import { CALENDAR_TYPE_CLASSES, TIMEZONES_DROPDOWN_TYPE_CLASSES } from '../../src/enum/calendar/calendar.enum';
 import { Mentor } from '../../src/interface/book-meeting/book-with-mentor.interface';
 import { CalendarContext } from '../../state-management/ReactContext/CalendarContext';
+import { getProfileIdInLocalStorage } from '../../src/api/localStorage';
 
 /*
   AREAS OF IMPROVEMENT IN THE FEATURES: 
@@ -25,6 +26,9 @@ const MentorshipAvailability: NextPage = () => {
 
     //fetch the mentor
     useEffect(() => {
+        //this is the variable that can be interchanged with the number 122 below which is the mentor's id
+        // const mentorId = getProfileIdInLocalStorage()
+        //this is a placeholder while waiting for the backend api for mentor's availability
         let foundMentor = mentorsData.find(
             (mentor) => mentor.mentor_id.toString() === '122'
         ) as Mentor
