@@ -23,8 +23,8 @@ const MentorProfileMain = ({ mentor }: MentorProfileProps) => {
   const full_name = `${first_name} ${last_name}`;
   const percentBarSkills = skills.map((skill) => {
     return {
-      name: skill[0],
-      percentage: skill[1],
+      name: skill.skill,
+      percentage: skill.proficiency,
     };
   });
   return (
@@ -37,7 +37,7 @@ const MentorProfileMain = ({ mentor }: MentorProfileProps) => {
               id={id}
               name={full_name}
               title={job}
-              location={location}
+              location={`${location.city}, ${location.province}, ${location.country}`}
               // placeholder: replace with real dynamic data when backend is ready
               responseTime={'Responds in a day'}
               avatar={profile_path}
