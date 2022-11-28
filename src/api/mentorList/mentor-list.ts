@@ -1,6 +1,20 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import Mentor from '../../interface/mentor.interface';
 
+declare module 'axios' {
+    export interface AxiosRequestConfig {
+      name: string;
+      id: string;
+      protocolProfileBehavior: {};
+      request: {
+        method: string;
+        header: [];
+        url: string;
+      };
+      response: [];
+    }
+  }
+
   export async function getMentors () {
     const options: AxiosRequestConfig = {
       name: "Get all mentors' profile",

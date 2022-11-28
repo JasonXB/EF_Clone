@@ -11,20 +11,6 @@ enum FilterDefaults {
   Skill = 'All',
 }
 
-declare module 'axios' {
-  export interface AxiosRequestConfig {
-    name: string;
-    id: string;
-    protocolProfileBehavior: {};
-    request: {
-      method: string;
-      header: [];
-      url: string;
-    };
-    response: [];
-  }
-}
-
 const GenderOptions = [
   FilterDefaults.Gender,
   'Male',
