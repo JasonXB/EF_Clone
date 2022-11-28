@@ -31,16 +31,10 @@ const MentorshipAvailability: NextPage = () => {
         let foundMentor = mentorsData.find(
             (mentor) => mentor.mentor_id.toString() === '122'
         ) as Mentor
-
+        const { meeting_availability } = foundMentor;
         setMentor(foundMentor)
-    }, []);
-
-    //set the schedule after fetching mentor
-    useEffect(() => {
-        const { meeting_availability } = mentor;
         setSchedule(meeting_availability)
-    }, [mentor]);
-
+    }, []);
 
     return (
         <Layout background="none">
