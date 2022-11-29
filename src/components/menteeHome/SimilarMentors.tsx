@@ -5,7 +5,7 @@ import Hiba from '../../../public/assets/hiba.png';
 import BubbleTag from '../BubbleTag';
 import { BUBBLE_TAG_TYPE_CLASSES } from '../BubbleTag';
 import { MockData } from '../../interface/mentee/homepage';
-import '@splidejs/react-splide/css';
+// import '@splidejs/react-splide/css';
 
 export default function SimilarMentors(props: {
   data: MockData['similarMentors'];
@@ -18,15 +18,17 @@ export default function SimilarMentors(props: {
       props.data.length >= 3 
         ? 3 
         : props.data.length, //  prettier-ignore
-    gap: '1.5rem',
+    gap: 0,
+    // padding: 20,
     pagination: false,
     // padding: { left: '3rem', right: '3rem' },
     lazyLoad: true,
     arrows: props.data.length > 3, // only show arrows when we have over 3 similar mentors
-    width: props.data.length === 1 ? '48rem' : 'auto', // max width of carousel item
+    // width: '90%',
+    width: props.data.length === 1 ? '48rem' : '90%', // max width of carousel item
     breakpoints: {
       1700: {
-        perPage: props.data.length >= 2 ? 2 : 1,
+        perPage: props.data.length >= 2 ? 3 : 1,
         arrows: props.data.length > 2, // only show arrows when we have over 2 similar mentors
       },
       1200: {
@@ -41,53 +43,54 @@ export default function SimilarMentors(props: {
     );
 
   return (
-    <section className="bg-[#e4e4e4] mt-16 py-6 extendBeyondLayout">
+    <section className="relative bg-[#e4e4e4] w-11/12 mt-16 py-6 bg-blue-500">
       <h4 className="my-8 text-center">
         We think these mentors are a good match for you.
       </h4>
       <Splide
         aria-label="My Favorite Images"
         options={Options}
-        className="px-0 mx-auto carousel"
+        className="carousel bg-pink-500 mx-auto"
         id="similarMentorsSplideComponent"
       >
         {props.data.map((mentor, i) => {
           return (
             <SplideSlide
-              className="slide px-8 lg:px-0 grid grid-cols-[minmax(auto,_37.5rem)] justify-center"
+              className="slide"
               key={i}
             >
-              <div className="grid grid-cols-[minmax(150px,_200px)_1fr] gap-4 h-[14.6875rem] shadow-branded-1 mb-8  p-6 bg-light rounded-[20px]">
-                <Image
-                  src={Hiba}
-                  height="100%"
-                  objectFit="cover"
-                  alt="mentor profile picture"
-                  className="rounded-[20px] max-w-[200px]"
-                />
-                <div className="grid grid-rows-[auto_auto_auto_1fr_26px_26px] gap-2">
-                  <div className="truncate">
-                    <h6 className="mx-1 overflow-hidden font-semibold text-ellipsis">
+              <div className="flex w-90 gap-2 shadow-branded-1 mb-8 p-4 bg-light rounded-3xl">
+                <div className="flex-2 overflow-hidden flex items-center w-32 h-40 rounded-3xl">
+                  <Image
+                    src={Hiba}
+                    // height={40}
+                    objectFit="cover"
+                    alt="mentor profile picture"
+                    className="rounded-3xl max-w-[200px]"
+                  />
+                </div>
+                <div className="flex-3 flex flex-col gap-2 justify-center bg-red-200">
+                  <div className="flex flex-col gap-2">
+                    <p className=" text-lg mx-1 overflow-hidden font-semibold text-ellipsis">
                       {mentor.mentorName}
-                    </h6>
-                  </div>
-                  <div className="truncate">
+                    </p>
                     <p className="mx-1 overflow-hidden font-medium text-ellipsis">
                       {mentor.location}
                     </p>
+                    <p className="mx-1 overflow-hidden font-medium text-ellipsis">
+                      {mentor.mentorPosition}
+                    </p>
                   </div>
-                  <p className="mx-1 overflow-hidden font-medium text-ellipsis">
-                    {mentor.mentorPosition}
-                  </p>
-                  <br />
-                  <BubbleTag
-                    tag="Entrepeneurship"
-                    bubbleTagType={BUBBLE_TAG_TYPE_CLASSES.primaryShaded}
-                  />
-                  <BubbleTag
-                    tag="Management"
-                    bubbleTagType={BUBBLE_TAG_TYPE_CLASSES.primaryShaded}
-                  />
+                  <div className="flex flex-wrap gap-2 bg-red-100">
+                    <BubbleTag
+                      tag="Entrepeneurship"
+                      bubbleTagType={BUBBLE_TAG_TYPE_CLASSES.primaryShaded}
+                    />
+                    <BubbleTag
+                      tag="Management"
+                      bubbleTagType={BUBBLE_TAG_TYPE_CLASSES.primaryShaded}
+                    />
+                  </div>
                 </div>
               </div>
             </SplideSlide>

@@ -18,6 +18,8 @@ type LayoutProps = {
   background?: `${BackgroundTypes}`;
   isConfirmedMeetingPg?: boolean;
   noBottomPadding?: boolean;
+  onLeftNavbar?: boolean;
+  userType?: string;
 };
 //setting background default to be Primary, if someone doesn't add it to layout, it will still include it by default.
 const Layout = ({
@@ -52,15 +54,15 @@ const Layout = ({
               className={
                 //we need to fix this for a more clear solution
                 props.contentCustomClass
-                  ? props.contentCustomClass
-                  : props.isConfirmedMeetingPg
-                  ? ''
-                  : props.noBottomPadding
-                  ? LayoutStyle.contentV2
-                  : LayoutStyle.content
+                ? props.contentCustomClass
+                : props.isConfirmedMeetingPg
+                ? ''
+                : props.noBottomPadding
+                ? LayoutStyle.contentV2
+                : LayoutStyle.content
               }
             >
-              <LeftBar />
+                <LeftBar visible={props.onLeftNavbar} userType={props.userType}/>
               <main className={props.noBottomPadding
                   ? LayoutStyle.mainContentV2
                   : LayoutStyle.mainContent}>{props.children}</main>

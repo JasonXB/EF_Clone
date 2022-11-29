@@ -6,7 +6,7 @@ import Layout from '../../src/components/Layout';
 const ProfileSettings: NextPage = ({}) => {
   return (
     <>
-      <Layout>
+      <Layout onLeftNavbar={true} userType='mentee'>
         <div className="flex">
           <LeftBar />
 

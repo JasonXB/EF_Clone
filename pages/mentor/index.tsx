@@ -45,7 +45,7 @@ export default function MentorDashboard() {
   );
 
   return (
-    <Layout headTitle="Mentor Dashboard" background="none">
+    <Layout headTitle="Mentor Dashboard" background="none" onLeftNavbar={true} userType='mentor'>
       <DisplayMentorShipContainer />
       <hr className="my-6" />
       <UpcomingAvailabilityContainer meetings={meetings} />
