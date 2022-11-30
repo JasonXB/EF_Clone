@@ -15,7 +15,7 @@ function useInput() {
         };
         const backendResponse = await axios.get(
           'http://localhost:5200/api/users/check/status',
-          { headers }
+          { headers } as any
         );
         // If no errors are returned, it means the user is authenticated as a Mentor or Mentee or Admin
         const status = backendResponse.data.status; // "Admin", "Mentor", "Mentee"

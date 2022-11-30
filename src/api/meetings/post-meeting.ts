@@ -15,7 +15,7 @@ export async function postMeeting (meeting: MeetingData) {
   await axios.post(
       'https://efback.azurewebsites.net/api/meeting/auth/set_meeting/',
       meeting,
-      config
+      config as any
   ).catch((err)=> {
     console.error(err);
   })

@@ -11,7 +11,7 @@ const mentorDummyData: Mentor = {
   id: 1,
   first_name: 'Cordy',
   last_name: 'Beardsworth',
-  location: 'Cambodia',
+  location: { country: 'Canada', province: 'ON', city: 'Toronto' },
   gender: 'Female',
   profile_path:
     'https://robohash.org/providentnumquampossimus.png?size=200x200&set=set1',
@@ -20,11 +20,11 @@ const mentorDummyData: Mentor = {
   email: 'afeld0@independent.co.uk',
   tags: ['Synergy', 'Intuitive'],
   skills: [
-    ['Workforce', 74],
-    ['Portal', 66],
-    ['Enhanced', 85],
-    ['stable', 60],
-    ['open system', 66],
+    { skill: 'Workforce', proficiency: 74 },
+    { skill: 'Portal', proficiency: 66 },
+    { skill: 'Enhanced', proficiency: 85 },
+    { skill: 'stable', proficiency: 60 },
+    { skill: 'open system', proficiency: 66 },
   ],
 };
 

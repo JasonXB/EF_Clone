@@ -8,6 +8,7 @@ import Testimonials from '../src/components/homepage/testimonials/Testimonials';
 import LatestBlogs from '../src/components/homepage/latestBlogs/LatestBlogs';
 import { AuthProvider } from '../state-management/ReactContext/AuthContext';
 import { GetStaticProps } from 'next';
+import Letter from '../src/components/homepage/LetterFromHiba/Letter';
 
 export const getStaticProps: GetStaticProps = async (context) => {
   return { props: {} }; // Statically renders page and sets props equal to an empty object
@@ -63,6 +64,7 @@ const Home: NextPage = ({}) => {
           <h2 className="text-5xl text-center text-primary-1">Latest Blogs</h2>
           <LatestBlogs />
         </div> */}
+        <Letter />
       </Layout>
     </AuthProvider>
   );
