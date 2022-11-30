@@ -122,7 +122,7 @@ const MentorRequests = ({ mentor }: MentorProfileProps) => {
         <form onSubmit={submitHandler}>
           <OptionForm
             name="describe"
-            label="Which describes your status is the best?"
+            label="Please select your status."
             options={descriptionOptionList}
             status={setUserDescription}
             blank={blankDescription}
@@ -134,7 +134,7 @@ const MentorRequests = ({ mentor }: MentorProfileProps) => {
                 htmlFor="descriptionDetails"
                 className="block text-base mt-4 md:w-1/2 mb-2"
               >
-                If you answer &ldquo;Other&rdquo; in the above question, please
+                If you answer &ldquo;Other&rdquo;, please
                 give us your status here.
               </label>
               {blankDetails && (
@@ -155,8 +155,7 @@ const MentorRequests = ({ mentor }: MentorProfileProps) => {
             </>
 
           <label htmlFor="achieve" className="block mt-16">
-            Describe to {first_name} your goals and what you hope to achieve
-            from her mentorship?
+            Please describe your goals for {first_name}.
           </label>
           {blankAchievement && (
             <p className="text-xs text-red-500">
@@ -175,8 +174,7 @@ const MentorRequests = ({ mentor }: MentorProfileProps) => {
 
           <OptionForm
             name="timeline"
-            label="What is your timeline in mind for when you would like to achieve
-              your goal?"
+            label="When do you expect to achieve these goals?"
             options={timelineOptionList}
             status={setUserTimeline}
             blank={blankTimeline}
