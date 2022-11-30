@@ -34,7 +34,7 @@ const MentorshipAvailability: NextPage = () => {
         const { meeting_availability } = foundMentor;
         setMentor(foundMentor)
         setSchedule(meeting_availability)
-    }, []);
+    }, [setSchedule]);
 
     return (
         <Layout background="none">
