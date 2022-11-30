@@ -17,7 +17,7 @@ export default function ApplicationListItem(props: ApplicationData) {
       : 0; // this default value should never get used but is needed to complete the triple-ternary operator
 
   return (
-    <li className="flex justify-between ss:grid-cols-5">
+    <li className="flex flex-col ss:flex-row ss:justify-between">
       <div className="grid grid-cols-4 ss:w-2/3 bg-white shadow-md rounded-md p-2">
         <div className="col-start-1 col-end-2 flex flex-col items-center justify-center overflow-hidden">
           <div className="relative rounded-[5px] overflow-hidden w-[40px] h-[40px] flex flex-col mx-auto">
@@ -34,10 +34,10 @@ export default function ApplicationListItem(props: ApplicationData) {
             </span>
           </div>
         </div>
-        <div className="col-start-2 col-end-5 flex flex-col justify-center w-full h-full px-2 m-auto  border-l border-black">
+        <div className="col-start-2 col-end-5 flex flex-col justify-center h-full px-2 border-l border-black">
           <p className="mb-2">
-            <span className="text-sm">Status:</span>&nbsp;
-            <span className="text-lg">{props.status}</span>
+            <span className="text-xs ss:text-sm">Status:</span>&nbsp;
+            <span className="text-base ss:text-lg">{props.status}</span>
           </p>
           <GradientBar status={props.status} />
         </div>
@@ -48,7 +48,7 @@ export default function ApplicationListItem(props: ApplicationData) {
             <Button
               clickHandler={() => {}}
               disabled={props.status === 'Approved' ? false : true} // disable button when applications are not approved
-              className={'max-w-[14rem] noMargins text-sm'}
+              className={'max-w-[14rem] noMargins text-xs ss:text-sm'}
             >
               Book Meeting
             </Button>

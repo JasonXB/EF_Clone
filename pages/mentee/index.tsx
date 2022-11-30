@@ -46,7 +46,7 @@ export default function Index() {
     similarMentors: [
       {
         mentorName: 'Darra Whitney',
-        location: 'USA',
+        location: 'ABC',
         mentorPosition: 'Project Manager at EF',
         bubbleTag1: 'Entrepeneurship',
         bubbleTag2: 'Management',
@@ -54,7 +54,7 @@ export default function Index() {
       },
       {
         mentorName: 'Darra Whitney',
-        location: 'USA',
+        location: 'DEF',
         mentorPosition: 'Project Manager at EF',
         bubbleTag1: 'Entrepeneurship',
         bubbleTag2: 'Management',
@@ -62,7 +62,7 @@ export default function Index() {
       },
       {
         mentorName: 'Darra Whitney',
-        location: 'USA',
+        location: 'GHI',
         mentorPosition: 'Project Manager at EF',
         bubbleTag1: 'Entrepeneurship',
         bubbleTag2: 'Management',
@@ -70,7 +70,7 @@ export default function Index() {
       },
       {
         mentorName: 'Darra Whitney',
-        location: 'USA',
+        location: 'JKL',
         mentorPosition: 'Project Manager at EF',
         bubbleTag1: 'Entrepeneurship',
         bubbleTag2: 'Management',
@@ -86,13 +86,13 @@ export default function Index() {
       onLeftNavbar={true}
       userType="mentee"
     >
-      <h3 className="mt-10 font-semibold text-center text-primary-1">
+      <h3 className="mt-10 text-2xl sm:text-4xl lg:text-5xl font-semibold text-center text-primary-1">
         Welcome back
-        <br className="sm:hidden" /> {mock.username}
+        <br className="ss:hidden" /> {mock.username}
       </h3>
       <section className="flex flex-col lg:flex-row">
         <div className="mt-10 flex-1 flex flex-col justify-between lg:pr-5">
-          <h4 className="mb-6 font-bold text-center text-primary-1">
+          <h4 className="mb-6 font-bold text-center text-xl sm:text-3xl lg:text-4xl text-primary-1">
             My Applications
           </h4>
           <ul className="flex flex-col gap-3">
@@ -113,14 +113,14 @@ export default function Index() {
           </ul>
           {mock.applications.length > 3 && (
             <div className="w-full flex justify-center mt-4">
-              <Button variant="secondary" className="mx-auto">
+              <Button variant="secondary" className="mx-auto text-sm ss:text-base">
                 See all applications
               </Button>
             </div>
           )}
         </div>
-        <div className="mt-10 flex-1 flex flex-col justify-between border-l border-black lg:pl-5">
-          <h4 className="mb-6 font-bold text-center text-primary-1">
+        <div className="mt-10 flex-1 flex flex-col justify-between lg:border-l lg:border-black lg:pl-5">
+          <h4 className="mb-6 font-bold text-center text-xl sm:text-3xl lg:text-4xl text-primary-1">
             Upcoming Meetings
           </h4>
           <ul className="flex flex-col gap-3">
@@ -143,7 +143,7 @@ export default function Index() {
           </ul>
           {mock.meetings.length > 3 && (
             <div className="w-full flex justify-center mt-4">
-              <Button variant="secondary" className="mx-auto">
+              <Button variant="secondary" className="mx-auto text-sm ss:text-base">
                 See all meetings
               </Button>
             </div>

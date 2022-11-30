@@ -1,102 +1,74 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import Image from 'next/image';
 import Hiba from '../../../public/assets/hiba.png';
 import BubbleTag from '../BubbleTag';
 import { BUBBLE_TAG_TYPE_CLASSES } from '../BubbleTag';
 import { MockData } from '../../interface/mentee/homepage';
+import Caroucel from '../carousel/Caroucel';
 // import '@splidejs/react-splide/css';
 
 export default function SimilarMentors(props: {
   data: MockData['similarMentors'];
 }) {
-  // Configured options so carousel looks good on all screen sizes, despite how many similar mentors are found
-  // Ex. On large screens, we can hold 3 carousel items per slide
-  // If we only get 1 similar mentor match, then the carousel will change its look to keep that 1 mentor centered
-  const Options = {
-    perPage:
-      props.data.length >= 3 
-        ? 3 
-        : props.data.length, //  prettier-ignore
-    gap: 0,
-    // padding: 20,
-    pagination: false,
-    // padding: { left: '3rem', right: '3rem' },
-    lazyLoad: true,
-    arrows: props.data.length > 3, // only show arrows when we have over 3 similar mentors
-    // width: '90%',
-    width: props.data.length === 1 ? '48rem' : '90%', // max width of carousel item
-    breakpoints: {
-      1700: {
-        perPage: props.data.length >= 2 ? 3 : 1,
-        arrows: props.data.length > 2, // only show arrows when we have over 2 similar mentors
-      },
-      1200: {
-        perPage: 1,
-        arrows: props.data.length > 1, // only show arrows when we have over 1 similar mentor
-      },
-    },
+  const [currentSlide, setCurrentSlide] = useState<number>(0);
+  const [sliderLocation, setSliderLocation] = useState<number>(0);
+
+  const nextSlide = () => {
+    setCurrentSlide(currentSlide + 1);
+    setSliderLocation(sliderLocation + 21.5);
   };
+
+  const prevSlide = () => {
+    setCurrentSlide(currentSlide - 1);
+    setSliderLocation(sliderLocation - 21.5);
+  };
+
   if (props.data.length === 0)
     return (
       <h5 className="mb-20 text-center mt-28">No similar mentors found!</h5>
     );
 
   return (
-    <section className="relative bg-[#e4e4e4] w-11/12 mt-16 py-6 bg-blue-500">
-      <h4 className="my-8 text-center">
+    <section className="relative bg-[#e4e4e4] w-full my-16 py-6">
+      <p className="text-center font-medium text-primary-1 text-lg sm:text-2xl lg:text-3xl">
         We think these mentors are a good match for you.
-      </h4>
-      <Splide
-        aria-label="My Favorite Images"
-        options={Options}
-        className="carousel bg-pink-500 mx-auto"
-        id="similarMentorsSplideComponent"
-      >
-        {props.data.map((mentor, i) => {
-          return (
-            <SplideSlide
-              className="slide"
-              key={i}
-            >
-              <div className="flex w-90 gap-2 shadow-branded-1 mb-8 p-4 bg-light rounded-3xl">
-                <div className="flex-2 overflow-hidden flex items-center w-32 h-40 rounded-3xl">
-                  <Image
-                    src={Hiba}
-                    // height={40}
-                    objectFit="cover"
-                    alt="mentor profile picture"
-                    className="rounded-3xl max-w-[200px]"
-                  />
-                </div>
-                <div className="flex-3 flex flex-col gap-2 justify-center bg-red-200">
-                  <div className="flex flex-col gap-2">
-                    <p className=" text-lg mx-1 overflow-hidden font-semibold text-ellipsis">
-                      {mentor.mentorName}
-                    </p>
-                    <p className="mx-1 overflow-hidden font-medium text-ellipsis">
-                      {mentor.location}
-                    </p>
-                    <p className="mx-1 overflow-hidden font-medium text-ellipsis">
-                      {mentor.mentorPosition}
-                    </p>
-                  </div>
-                  <div className="flex flex-wrap gap-2 bg-red-100">
-                    <BubbleTag
-                      tag="Entrepeneurship"
-                      bubbleTagType={BUBBLE_TAG_TYPE_CLASSES.primaryShaded}
-                    />
-                    <BubbleTag
-                      tag="Management"
-                      bubbleTagType={BUBBLE_TAG_TYPE_CLASSES.primaryShaded}
-                    />
-                  </div>
-                </div>
-              </div>
-            </SplideSlide>
-          );
-        })}
-      </Splide>
+      </p>
+
+      <div className="relative py-8 px-2 overflow-hidden">
+        <div
+          className={`relative w-[21.5rem] lg:w-[65rem] mx-auto flex justify-start items-center gap-3 pl-2 overflow-hidden`}
+        >
+          {props.data.map((mentor, i) => (
+            <Caroucel
+              key={`mentor-${i}`}
+              mentor={mentor}
+              sliderLocation={sliderLocation}
+            />
+          ))}
+        </div>
+
+        <div
+          className={`absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/50 transition-colors duration-150 ease rounded-full flex justify-center items-center pl-1 ${
+            currentSlide === 0
+              ? 'pointer-events-none bg-black/20'
+              : 'cursor-pointer hover:bg-white/80'
+          }`}
+          onClick={prevSlide}
+        >
+          <div className="w-3 h-3 border-black border-b-2 border-l-2 rotate-45"></div>
+        </div>
+        <div
+          className={`absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/50 transition-colors duration-150 ease rounded-full flex justify-center items-center pr-1 ${
+            currentSlide === props.data.length - 1
+              ? 'pointer-events-none bg-black/20'
+              : 'cursor-pointer hover:bg-white/80'
+          }`}
+          onClick={nextSlide}
+        >
+          <div className="w-3 h-3 border-black border-t-2 border-r-2 rotate-45"></div>
+        </div>
+      </div>
     </section>
   );
 }
