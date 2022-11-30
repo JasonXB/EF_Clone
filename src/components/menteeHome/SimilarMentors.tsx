@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { MockData } from '../../interface/mentee/homepage';
 import Caroucel from '../carousel/Caroucel';
-// import '@splidejs/react-splide/css';
 
 export default function SimilarMentors(props: {
   data: MockData['similarMentors'];
