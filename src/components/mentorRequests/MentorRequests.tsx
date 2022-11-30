@@ -44,7 +44,7 @@ const MentorRequests = ({ mentor }: MentorProfileProps) => {
       setBlankAchievement(false);
       setBlankTimeline(false);
       setBlankDetails(false)
-    } else if(descDetails === undefined || descDetails.length <= 0){
+    } else if(userDescription === 'Other' && descDetails === undefined){
       setBlankDetails(true)
       setBlankDescription(false);
       setBlankAchievement(false);
