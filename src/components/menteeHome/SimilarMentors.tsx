@@ -1,9 +1,4 @@
 import React, { useState } from 'react';
-import { Splide, SplideSlide } from '@splidejs/react-splide';
-import Image from 'next/image';
-import Hiba from '../../../public/assets/hiba.png';
-import BubbleTag from '../BubbleTag';
-import { BUBBLE_TAG_TYPE_CLASSES } from '../BubbleTag';
 import { MockData } from '../../interface/mentee/homepage';
 import Caroucel from '../carousel/Caroucel';
 // import '@splidejs/react-splide/css';
