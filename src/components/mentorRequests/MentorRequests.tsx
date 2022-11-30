@@ -27,10 +27,12 @@ const MentorRequests = ({ mentor }: MentorProfileProps) => {
   const [userDescription, setUserDescription] = useState<undefined | string>();
   const [userAchievement, setUserAchievement] = useState<undefined | string>();
   const [userTimeline, setUserTimeline] = useState<undefined | string>();
+  const [descDetails, setDescDetails] = useState<undefined | string>();
 
   const [blankDescription, setBlankDescription] = useState(false);
   const [blankAchievement, setBlankAchievement] = useState(false);
   const [blankTimeline, setBlankTimeline] = useState(false);
+  const [blankDetails, setBlankDetails] = useState(false);
 
   const { accessToken, profileId } = useAuth();
 
@@ -41,18 +43,28 @@ const MentorRequests = ({ mentor }: MentorProfileProps) => {
       setBlankDescription(true);
       setBlankAchievement(false);
       setBlankTimeline(false);
+      setBlankDetails(false)
+    } else if(descDetails === undefined || descDetails.length <= 0){
+      setBlankDetails(true)
+      setBlankDescription(false);
+      setBlankAchievement(false);
+      setBlankTimeline(false);
     } else if (userAchievement === undefined || userAchievement.length <= 0) {
       setBlankAchievement(true);
       setBlankDescription(false);
       setBlankTimeline(false);
+      setBlankDetails(false)
     } else if (userTimeline === undefined || userTimeline.length <= 0) {
       setBlankTimeline(true);
       setBlankDescription(false);
       setBlankAchievement(false);
+      setBlankDetails(false)
     } else {
       setBlankDescription(false);
       setBlankAchievement(false);
       setBlankTimeline(false);
+      setBlankDetails(false);
+
       const requestInfo = {
         mentor: id.toString(),
         mentee: profileId,
@@ -67,14 +79,14 @@ const MentorRequests = ({ mentor }: MentorProfileProps) => {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${accessToken}`,
         },
+        credentials: 'include'
       };
-
-      try {
+      
         await axios
         .post(
           'https://efback.azurewebsites.net/api/mentorRequests/auth/create',
           requestInfo,
-          config
+          config,
         )
         .then((res) => {
           console.log(res);
@@ -84,15 +96,13 @@ const MentorRequests = ({ mentor }: MentorProfileProps) => {
         .catch((err) => {
           console.log(err);
         });
-      } catch (error) {
-        console.log(error)
-      }
     }
   };
 
   const changeValue = (e: any) => {
     e.preventDefault();
     setUserDescription(e.target.value);
+    setDescDetails(e.target.value)
   };
 
   const [descriptionDetails, setDescriptionDetails] = useState(false);
@@ -119,31 +129,30 @@ const MentorRequests = ({ mentor }: MentorProfileProps) => {
             details={setDescriptionDetails}
           />
 
-          {descriptionDetails && (
             <>
               <label
                 htmlFor="descriptionDetails"
-                className="block text-base mt-4 md:w-1/2"
+                className="block text-base mt-4 md:w-1/2 mb-2"
               >
                 If you answer &ldquo;Other&rdquo; in the above question, please
                 give us your status here.
               </label>
-              {userDescription === 'Other' && (
+              {blankDetails && (
                 <p className="text-xs text-red-500">
                   Please fill out this section.
                 </p>
               )}
               <input
                 type="text"
-                className={`w-full p-2 ss:w-1/2 border border-hue-400 h-9 rounded-md overflow-scroll outline-primary-1 outline-border-2 ${
-                  userDescription === 'Other'
+                disabled={!descriptionDetails}
+                className={`w-full p-2 ss:w-1/2 border-2 rounded-md shadow-sm outline-none h-10 overflow-scroll focus:border-primary-1 focus:border-2 ${
+                  blankDetails
                     ? 'border-red-500'
                     : 'border-smoke-2'
                 }`}
                 onChange={changeValue}
               />
             </>
-          )}
 
           <label htmlFor="achieve" className="block mt-16">
             Describe to {first_name} your goals and what you hope to achieve
@@ -158,7 +167,7 @@ const MentorRequests = ({ mentor }: MentorProfileProps) => {
             id="achieve"
             name="achieve"
             rows={5}
-            className={`relative mt-2 p-1 border rounded-md w-full h-32 overflow-y-scroll ${
+            className={`relative mt-2 p-1 border-2 rounded-md w-full h-32 overflow-y-scroll ${
               blankAchievement ? 'border-red-500' : 'border-smoke-2'
             } outline-primary-1 outline-border-2`}
             onChange={(e: any) => setUserAchievement(e.target.value)}
