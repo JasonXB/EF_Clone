@@ -13,7 +13,7 @@ const RequestsForm: NextPage = () => {
 
   useEffect(() => {
     setMentor(MockMentorDB.getByID(parseInt(`${mentorid}`)));
-  }, []);
+  }, [mentorid]);
 
   return (
     <Layout headTitle="Mentor Requests" background="none">
