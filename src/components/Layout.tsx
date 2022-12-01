@@ -21,7 +21,7 @@ type LayoutProps = {
   onLeftNavbar?: boolean;
   userType?: string;
 };
-//setting background default to be Primary, if someone doesn't add it to layout, it will still include it by default.
+
 const Layout = ({
   background = BackgroundTypes.primary,
   ...props
@@ -48,8 +48,6 @@ const Layout = ({
             <link rel="icon" href="/favicon.ico" />
           </Head>
           <Navbar />
-          {/*<div className="flex items-start">*/}
-            
             <div
               className={
                 //we need to fix this for a more clear solution
@@ -67,7 +65,6 @@ const Layout = ({
                   ? LayoutStyle.mainContentV2
                   : LayoutStyle.mainContent}>{props.children}</main>
             </div>
-          {/*</div>*/}
         </div>
         <Footer />
       </div>
