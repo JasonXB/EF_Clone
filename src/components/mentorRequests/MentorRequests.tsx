@@ -43,9 +43,9 @@ const MentorRequests = ({ mentor }: MentorProfileProps) => {
       setBlankDescription(true);
       setBlankAchievement(false);
       setBlankTimeline(false);
-      setBlankDetails(false)
-    } else if(userDescription === 'Other' && descDetails === undefined){
-      setBlankDetails(true)
+      setBlankDetails(false);
+    } else if (userDescription === 'Other' && descDetails === undefined) {
+      setBlankDetails(true);
       setBlankDescription(false);
       setBlankAchievement(false);
       setBlankTimeline(false);
@@ -53,12 +53,12 @@ const MentorRequests = ({ mentor }: MentorProfileProps) => {
       setBlankAchievement(true);
       setBlankDescription(false);
       setBlankTimeline(false);
-      setBlankDetails(false)
+      setBlankDetails(false);
     } else if (userTimeline === undefined || userTimeline.length <= 0) {
       setBlankTimeline(true);
       setBlankDescription(false);
       setBlankAchievement(false);
-      setBlankDetails(false)
+      setBlankDetails(false);
     } else {
       setBlankDescription(false);
       setBlankAchievement(false);
@@ -73,36 +73,35 @@ const MentorRequests = ({ mentor }: MentorProfileProps) => {
         timeline: userTimeline,
       };
 
-      //   //connect with backend
       const config = {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${accessToken}`,
+          Authorization: 'Bearer ' + accessToken,
         },
-        credentials: 'include'
+        credentials: 'include',
       };
-      
-        await axios
-        .post(
-          'https://efback.azurewebsites.net/api/mentorRequests/auth/create',
-          requestInfo,
-          config,
-        )
-        .then((res) => {
-          console.log(res);
-          console.log('success');
-          //jump to confirmation page
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      //#Shiho: FIX BUILD ERROR INVOLVED WITH THIS ERROR
+      // await axios
+      //   .post(
+      //     'https://efback.azurewebsites.net/api/mentorRequests/auth/create',
+      //     requestInfo,
+      //     config
+      //   )
+      //   .then((res) => {
+      //     console.log(res);
+      //     console.log('success');
+      //     //!# jump to confirmation page which doesn't exist yet
+      //   })
+      //   .catch((err) => {
+      //     console.log(err);
+      //     //!# Use universal error page
+      //   });
     }
   };
-
   const changeValue = (e: any) => {
     e.preventDefault();
     setUserDescription(e.target.value);
-    setDescDetails(e.target.value)
+    setDescDetails(e.target.value);
   };
 
   const [descriptionDetails, setDescriptionDetails] = useState(false);
@@ -129,30 +128,28 @@ const MentorRequests = ({ mentor }: MentorProfileProps) => {
             details={setDescriptionDetails}
           />
 
-            <>
-              <label
-                htmlFor="descriptionDetails"
-                className="block text-base mt-4 md:w-1/2 mb-2"
-              >
-                If you answer &ldquo;Other&rdquo;, please
-                give us your status here.
-              </label>
-              {blankDetails && (
-                <p className="text-xs text-red-500">
-                  Please fill out this section.
-                </p>
-              )}
-              <input
-                type="text"
-                disabled={!descriptionDetails}
-                className={`w-full p-2 ss:w-1/2 border-2 rounded-md shadow-sm outline-none h-10 overflow-scroll focus:border-primary-1 focus:border-2 ${
-                  blankDetails
-                    ? 'border-red-500'
-                    : 'border-smoke-2'
-                }`}
-                onChange={changeValue}
-              />
-            </>
+          <>
+            <label
+              htmlFor="descriptionDetails"
+              className="block text-base mt-4 md:w-1/2 mb-2"
+            >
+              If you answer &ldquo;Other&rdquo;, please give us your status
+              here.
+            </label>
+            {blankDetails && (
+              <p className="text-xs text-red-500">
+                Please fill out this section.
+              </p>
+            )}
+            <input
+              type="text"
+              disabled={!descriptionDetails}
+              className={`w-full p-2 ss:w-1/2 border-2 rounded-md shadow-sm outline-none h-10 overflow-scroll focus:border-primary-1 focus:border-2 ${
+                blankDetails ? 'border-red-500' : 'border-smoke-2'
+              }`}
+              onChange={changeValue}
+            />
+          </>
 
           <label htmlFor="achieve" className="block mt-16">
             Please describe your goals for {first_name}.
