@@ -1,4 +1,3 @@
-import type { NextPage } from 'next';
 import Link from 'next/link';
 import React, { useCallback, useState } from 'react';
 import { NavBar } from '../../util/left-bar';

@@ -42,6 +42,7 @@ export default function SimilarMentors(props: {
           ))}
         </div>
 
+        {/* Carousel buttons */}
         <div
           className={`absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/50 transition-colors duration-150 ease rounded-full flex justify-center items-center pl-1 ${
             currentSlide === 0

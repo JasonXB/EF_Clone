@@ -5,10 +5,6 @@ export const NavBar = {
       path: '/',
     },
     {
-      title: 'Availability',
-      path: '/',
-    },
-    {
       title: 'Settings',
       options: [
         {
