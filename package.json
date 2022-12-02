@@ -13,6 +13,7 @@
     "@headlessui/react": "^1.7.3",
     "@heroicons/react": "^2.0.12",
     "@reduxjs/toolkit": "^1.8.6",
+    "@splidejs/react-splide": "^0.7.12",
     "axios": "^0.27.2",
     "bootstrap-icons": "^1.10.2",
     "date-fns": "^2.29.3",

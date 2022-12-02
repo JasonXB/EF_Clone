@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { MockData } from '../../interface/mentee/homepage';
-import Caroucel from '../carousel/Caroucel';
+import Carousel from '../carousel/Carousel';
 
 export default function SimilarMentors(props: {
   data: MockData['similarMentors'];
@@ -34,7 +34,7 @@ export default function SimilarMentors(props: {
           className={`relative w-[21.5rem] lg:w-[65rem] mx-auto flex justify-start items-center gap-3 pl-2 overflow-hidden`}
         >
           {props.data.map((mentor, i) => (
-            <Caroucel
+            <Carousel
               key={`mentor-${i}`}
               mentor={mentor}
               sliderLocation={sliderLocation}

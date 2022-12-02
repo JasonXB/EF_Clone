@@ -55,12 +55,14 @@ const Layout = ({
                 ? props.contentCustomClass
                 : props.isConfirmedMeetingPg
                 ? ''
-                : props.noBottomPadding
+                : props.onLeftNavbar
                 ? LayoutStyle.contentV2
                 : LayoutStyle.content
               }
             >
+              {props.onLeftNavbar && (
                 <LeftBar visible={props.onLeftNavbar} userType={props.userType}/>
+              )}
               <main className={props.noBottomPadding
                   ? LayoutStyle.mainContentV2
                   : LayoutStyle.mainContent}>{props.children}</main>

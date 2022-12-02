@@ -17,9 +17,7 @@ const LeftBar = ({ visible, userType }: Props) => {
 
   return (
     <div
-      className={`flex relative top-0 left-0 bg-hue-200 w-80 pt-7 ${
-        !visible && 'hidden'
-      }`}
+      className='col-start-1 col-end-2 bg-hue-200 w-[250px] pt-7'
     >
       <ul className="w-full flex flex-col items-center gap-6 text-gray-900  border-gray-200 bg-opacity-20">
         {(userType === 'mentor' ? NavBar.mentor : NavBar.mentee).map(

@@ -16,7 +16,7 @@ type MentorType = {
   sliderLocation: number;
 };
 
-const Caroucel: React.FC<MentorType> = ({ mentor, sliderLocation }) => {
+const Carousel: React.FC<MentorType> = ({ mentor, sliderLocation }) => {
   return (
     <div
       className={`flex -translate-x-[${sliderLocation}rem] transition-all duration-500 ease w-90 gap-2 shadow-branded-1 p-4 bg-light rounded-3xl`}
@@ -56,4 +56,4 @@ const Caroucel: React.FC<MentorType> = ({ mentor, sliderLocation }) => {
   );
 };
 
-export default Caroucel;
+export default Carousel;
