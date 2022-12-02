@@ -14,8 +14,10 @@
 }
 .content {
   display: flex;
+  /* justify-content: center; */
   grid-column: main-start/main-end;
   height: 100%;
+  background: red;
 }
 
 .mainContent {
