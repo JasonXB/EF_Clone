@@ -54,7 +54,7 @@ export const mentorsData = [
         "company": "RBC",
         "imgUrl": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNzIyMTJ8MHwxfHNlYXJjaHwyfHxwcm9maWxlJTIwcGljfGVufDB8fHx8MTY2NjA2NTM1Nw&ixlib=rb-1.2.1&q=80&w=400",
         "meeting_availability": {
-            "recurring": [
+            "daily": [
                 {
                     "startDatetime": "2022-11-22T09:30:00-08:00",
                     "endDatetime": "2022-11-22T10:00:00-08:00"
@@ -63,17 +63,25 @@ export const mentorsData = [
                     "startDatetime": "2022-11-22T13:30:00-08:00",
                     "endDatetime": "2022-11-22T15:00:00-08:00"
                 },
+            ],
+            "weekly": [
                 {
-                    "startDatetime": "2022-11-15T20:30:00-08:00",
-                    "endDatetime": "2022-11-15T21:00:00-08:00"
+                    "startDatetime": "2022-11-22T09:30:00-08:00",
+                    "endDatetime": "2022-11-22T10:00:00-08:00"
                 },
                 {
-                    "startDatetime": "2022-11-15T16:30:00-08:00",
-                    "endDatetime": "2022-11-15T18:00:00-08:00"
+                    "startDatetime": "2022-11-22T13:30:00-08:00",
+                    "endDatetime": "2022-11-22T15:00:00-08:00"
+                },
+            ],
+            "monthly": [
+                {
+                    "startDatetime": "2022-11-22T09:30:00-08:00",
+                    "endDatetime": "2022-11-22T10:00:00-08:00"
                 },
                 {
-                    "startDatetime": "2022-11-18T06:30:00-08:00",
-                    "endDatetime": "2022-11-18T08:00:00-08:00"
+                    "startDatetime": "2022-11-22T13:30:00-08:00",
+                    "endDatetime": "2022-11-22T15:00:00-08:00"
                 },
             ],
             "specific": [
@@ -86,8 +94,24 @@ export const mentorsData = [
                     "endDatetime": "2022-11-29T15:00:00-08:00"
                 },
                 {
-                    "startDatetime": "2022-12-15T20:30:00-08:00",
-                    "endDatetime": "2022-12-15T21:00:00-08:00"
+                    "startDatetime": "2022-11-28T11:30:00-08:00",
+                    "endDatetime": "2022-11-28T12:00:00-08:00"
+                },
+                {
+                    "startDatetime": "2022-11-28T15:30:00-08:00",
+                    "endDatetime": "2022-11-28T17:00:00-08:00"
+                },
+                {
+                    "startDatetime": "2022-11-28T07:30:00-08:00",
+                    "endDatetime": "2022-11-28T08:00:00-08:00"
+                },
+                {
+                    "startDatetime": "2022-11-28T11:30:00-08:00",
+                    "endDatetime": "2022-11-28T13:00:00-08:00"
+                },
+                {
+                    "startDatetime": "2022-11-15T20:30:00-08:00",
+                    "endDatetime": "2022-11-15T21:00:00-08:00"
                 },
                 {
                     "startDatetime": "2022-12-15T16:30:00-08:00",

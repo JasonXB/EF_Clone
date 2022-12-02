@@ -7,7 +7,7 @@ import {
   isFuture,
 } from 'date-fns';
 import { utcToZonedTime } from 'date-fns-tz';
-import { DateSlotProps } from '../../interface/book-meeting/book-with-mentor.interface';
+import { DateBoxProps } from '../../interface/book-meeting/book-with-mentor.interface'
 import { CalendarContext } from '../../../state-management/ReactContext/CalendarContext';
 import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
 import { classNames } from '../../util/class-names'
@@ -29,12 +29,12 @@ let colStartClasses = [
   you may use the variable below as a starting point to fix this feature.
   const zonedSelectedTime = utcToZonedTime(selectedTimeSlot.startDatetime, IANACounterpart as unknown as string);
  */
-const DateSlot = ({ day, dayIndex, availabilities }: DateSlotProps) => {
-  const { selectedDay, setSelectedDay } = useContext(CalendarContext);
+const DateSlot = ({ day, dayIndex }: DateBoxProps) => {
+  const { schedule, selectedDay, setSelectedDay } = useContext(CalendarContext);
   const { setSelectedTimeSlot, IANACounterpart, selectedTimeSlot } = useContext(TimezoneContext);
 
   //variable used to adjust the date available based on the timezone
-  const timeZonedAvailabilities = availabilities.map((availability) => {
+  const timeZonedAvailabilities = schedule && schedule.specific.map((availability) => {
     return {
       startDatetime: utcToZonedTime(
         availability.startDatetime,
@@ -47,14 +47,16 @@ const DateSlot = ({ day, dayIndex, availabilities }: DateSlotProps) => {
     };
   });
 
+
   //predicate function to check the array if it has any future start dates
   const hasFuture = () => {
     let startTime 
-    for (let i = 0; i < timeZonedAvailabilities.length; i++) {
-      startTime = timeZonedAvailabilities[i].startDatetime
-      if (isSameDay(startTime, day) && isFuture(startTime)) {
-        const zonedSelectedTime = utcToZonedTime(selectedTimeSlot.startDatetime, IANACounterpart as unknown as string);
-          return true
+    if(timeZonedAvailabilities){
+      for (let i = 0; i < timeZonedAvailabilities.length; i++) {
+        startTime = timeZonedAvailabilities[i].startDatetime
+        if (isSameDay(startTime, day) && isFuture(startTime)) {
+            return true
+        }
       }
     }
     return false

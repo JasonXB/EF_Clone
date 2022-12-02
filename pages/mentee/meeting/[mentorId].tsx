@@ -1,7 +1,6 @@
 import { useContext, useState, useEffect, SetStateAction } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import axios from 'axios';
 import { formatISO, parseISO } from 'date-fns';
 import { formatInTimeZone } from 'date-fns-tz';
 //data
@@ -12,6 +11,7 @@ import { Mentor } from '../../../src/interface/book-meeting/book-with-mentor.int
 import useWindowDimensions  from '../../../src/hooks/useWindowDimensions'
 //context
 import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
+import { CalendarContext } from '../../../state-management/ReactContext/CalendarContext';
 //components
 import Button from '../../../src/components/buttons/reusable-buttons';
 import Layout from '../../../src/components/Layout';
@@ -37,9 +37,10 @@ import { getProfileIdInLocalStorage } from '../../../src/api/localStorage';
 const BookMeeting = () => {
   const [thisMentor, setThisMentor] = useState({} as Mentor);
   const [needToChooseTime, setNeedToChooseTime] = useState(false)
+  const { selectedTimeSlot, hasSelectedATime, IANACounterpart } = useContext(TimezoneContext);
+  const { setSchedule } = useContext(CalendarContext);
   const router = useRouter();
   const mentorId = router.query.mentorId;
-
   const screen = useWindowDimensions()
 
   useEffect(() => {
@@ -57,12 +58,14 @@ const BookMeeting = () => {
     }
   }, [router.isReady, mentorId]);
 
-  const { firstName, lastName, position, company, imgUrl, meeting_availability } = thisMentor;
-  
+  const { firstName, lastName, position, company, imgUrl, meeting_availability } = thisMentor;  
   const fullName = firstName + ' ' + lastName
-  const { selectedTimeSlot, hasSelectedATime, IANACounterpart } = useContext(TimezoneContext);
   const startTime = parseISO(selectedTimeSlot.startDatetime)
   const endTime = parseISO(selectedTimeSlot.endDatetime)
+  
+  useEffect(()=>{
+    setSchedule(meeting_availability)
+  },[meeting_availability])
 
   //used for the item 3 review meeting information
   let timeReview = '';
@@ -141,7 +144,7 @@ const BookMeeting = () => {
             </h4>
             <div className="space-y-20">
               {/* ITEM 1: Choosing the meeting schedule */}
-              <ScheduleSection needToChooseTime={needToChooseTime} meeting_availability={meeting_availability} />
+              <ScheduleSection needToChooseTime={needToChooseTime} />
               {/* ITEM 2: Choosing meeting method */}
               <MeetingMethodSection />
               {/* ITEM 3: Review meeting information */}

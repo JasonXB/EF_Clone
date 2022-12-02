@@ -3,13 +3,16 @@ import { useContext, useEffect, useState, useRef, MouseEvent } from 'react';
 import Timezone from './Timezone';
 import { v4 as uuidv4 } from 'uuid';
 import { TimezoneContext } from '../../../state-management/ReactContext/TimezoneContext';
+import { TIMEZONES_DROPDOWN_TYPE_CLASSES } from '../../enum/calendar/calendar.enum';
+import { TimeZonesDropdownProps } from '../../interface/book-meeting/book-with-mentor.interface';
+
 
 /*
   AREAS OF IMPROVEMENT IN THE FEATURES: 
   - implement search bar for user experience
 */
 
-const TimeZonesDropdown = () => {
+const TimeZonesDropdown = ( { timezonesDropdownType }: TimeZonesDropdownProps) => {
   const { timezones, selectedTimezone } = useContext(TimezoneContext);
   const [dropdownToggle, setDropdownToggle] = useState(false);
 
@@ -32,6 +35,14 @@ const TimeZonesDropdown = () => {
     }
   })
 
+  let timezoneTextStyle;
+
+  if(timezonesDropdownType == TIMEZONES_DROPDOWN_TYPE_CLASSES.plain){
+    timezoneTextStyle = "font-medium"
+  } else if(timezonesDropdownType == TIMEZONES_DROPDOWN_TYPE_CLASSES.bold){
+    timezoneTextStyle = "text-base xl:text-xl font-bold text-blue-900"
+  } 
+
   return (
     <div className="dropdown relative group" ref={menuRef}>
       {/* default dropdown */}
@@ -39,7 +50,7 @@ const TimeZonesDropdown = () => {
         className="flex items-center cursor-pointer group-hover:border-grey-light rounded-t-lg py-1 px-2 w-full"
         onClick={toggle}
       >
-        <p className="font-medium">{selectedTimezone}</p>
+        <p className={timezoneTextStyle}>{selectedTimezone}</p>
         {/* dropdown icon */}
         <div className="text-primary-1 pl-2">
           <svg
