@@ -61,7 +61,7 @@ const AdminPanelDashboard: NextPage = ({}) => {
     <Layout headTitle="Admin Panel" background="none">
       <div className="relative flex items-center justify-center w-full h-screen">
         <div className="absolute top-0 left-0 z-0 w-full bg-hue-400 h-60"></div>
-        <div className="relative z-50 w-5/6 p-4 m-auto rounded-md bg-light md:w-2/3 h-5/6 drop-shadow-lg">
+        <div className="relative z-50 w-full ss:w-5/6 p-4 m-auto rounded-md bg-light md:w-2/3 h-5/6 drop-shadow-lg">
           <h1 className="text-3xl font-semibold">Dashboard</h1>
           <div className="w-full overflow-scroll">
             <div className="flex gap-1 mt-2 w-max md:gap-4">
