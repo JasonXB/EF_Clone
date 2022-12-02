@@ -87,7 +87,11 @@ const ProfileMenu = () => {
                 >
                   <span className="flex flex-row items-center space-x-4">
                     <SvgIconProfile />
-                    <span className="w-10/12 hover:font-bold">Profile</span>
+                    <Link href='profileSettings/profile-settings'>
+                        <a>
+                          <span className="w-10/12 hover:font-bold">Profile</span>
+                        </a>
+                      </Link>
                     <span className="text-[1.75rem] leading-none self-end pb-2 ">
                       ›
                     </span>

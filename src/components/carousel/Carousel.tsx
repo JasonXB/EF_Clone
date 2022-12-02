@@ -13,13 +13,13 @@ type MentorType = {
     bubbleTag2: string;
     image: string;
   };
-  sliderLocation: number;
+  currentSlide: number;
 };
 
-const Carousel: React.FC<MentorType> = ({ mentor, sliderLocation }) => {
+const Carousel: React.FC<MentorType> = ({ mentor, currentSlide }) => {
   return (
     <div
-      className={`flex -translate-x-[${sliderLocation}rem] transition-all duration-500 ease w-90 gap-2 shadow-branded-1 p-4 bg-light rounded-3xl`}
+      className={`flex -translate-x-[${(currentSlide * 21.5)}rem] transition-all duration-500 ease w-90 gap-2 shadow-branded-1 p-4 bg-light rounded-3xl`}
     >
       <div className="flex-2 overflow-hidden flex items-center w-32 h-40 rounded-3xl">
         <Image

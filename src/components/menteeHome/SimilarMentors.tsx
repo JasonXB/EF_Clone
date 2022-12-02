@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { MockData } from '../../interface/mentee/homepage';
 import Carousel from '../carousel/Carousel';
 
@@ -6,17 +6,16 @@ export default function SimilarMentors(props: {
   data: MockData['similarMentors'];
 }) {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
-  const [sliderLocation, setSliderLocation] = useState<number>(0);
-
+  
   const nextSlide = () => {
     setCurrentSlide(currentSlide + 1);
-    setSliderLocation(sliderLocation + 21.5);
-  };
+    console.log(currentSlide)
+  }
 
   const prevSlide = () => {
     setCurrentSlide(currentSlide - 1);
-    setSliderLocation(sliderLocation - 21.5);
-  };
+    console.log(currentSlide)
+  }
 
   if (props.data.length === 0)
     return (
@@ -28,7 +27,6 @@ export default function SimilarMentors(props: {
       <p className="text-center font-medium text-primary-1 text-lg sm:text-2xl lg:text-3xl">
         We think these mentors are a good match for you.
       </p>
-
       <div className="relative py-8 px-2 overflow-hidden">
         <div
           className={`relative w-[21.5rem] lg:w-[65rem] mx-auto flex justify-start items-center gap-3 pl-2 overflow-hidden`}
@@ -37,7 +35,7 @@ export default function SimilarMentors(props: {
             <Carousel
               key={`mentor-${i}`}
               mentor={mentor}
-              sliderLocation={sliderLocation}
+              currentSlide={currentSlide}
             />
           ))}
         </div>

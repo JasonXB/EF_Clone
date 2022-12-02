@@ -1,10 +1,40 @@
 import { ReactNode } from 'react';
 
-//used in book-meeting/[mentorId]  
+import {
+  CALENDAR_TYPE_CLASSES, 
+  TIMESLOTS_TYPE_CLASSES, 
+  TIMEZONES_DROPDOWN_TYPE_CLASSES, 
+  TENTATIVE_MEETINGS_TYPE_CLASSES
+} from '../../enum/calendar/calendar.enum'
+
+export interface DayStrings {
+  monday: string;
+  tuesday: string;
+  wednesday: string;
+  thursday: string;
+  friday: string;
+  saturday: string;
+  sunday: string;
+}
+
+export interface Schedule {
+  daily: Availability[];
+  weekly: Availability[];
+  monthly: Availability[];
+  specific: Availability[];
+}
+
 export interface Availability {
     startDatetime: string;
     endDatetime: string;
-  }
+}
+
+export interface TentativeTime {
+  startDatetime: string;
+  endDatetime: string;
+  isUpdated?: boolean;
+  isNull?: boolean;
+}
 
 export interface Mentor {
     mentor_id: string;
@@ -13,41 +43,54 @@ export interface Mentor {
     position: string; 
     company: string; 
     imgUrl: string; 
-    meeting_availability: {
-        specific: Availability[]
-    };
-  }
+    meeting_availability: Schedule
+}
 
 export interface MeetingProps {
-    meeting: Availability;
-  }
+  timeSlotsType: TIMESLOTS_TYPE_CLASSES;
+  meeting: Availability
+}
+export interface TimeSlotSetterProps {
+  meeting: TentativeTime;
+  meetingType: TENTATIVE_MEETINGS_TYPE_CLASSES
+  index: number
+}
+export interface TimeTextFieldProps {
+  meeting: TentativeTime;
+  meetingType: TENTATIVE_MEETINGS_TYPE_CLASSES
+  whichTime: string;
+  index: number
+}
+export interface TimeZonesDropdownProps {
+  timezonesDropdownType: TIMEZONES_DROPDOWN_TYPE_CLASSES
+}
 
 
 //used in timeslots and Calendar component
 export interface MeetingAvailabilityProps {
-    meeting_availability: {
-      specific: Availability[]
-    };
+    calendarType: CALENDAR_TYPE_CLASSES
 }
 
 //used in DateSlot component
-export interface DateSlotProps {
+export interface DateBoxProps {
     day: Date;
-    dayIndex: number;
-    availabilities: Availability[];
-  }
+    dayIndex: number
+}
 
-  //used in Timezone component
-export  interface TimezoneProps {
+//used in Timezone component
+export interface TimezoneProps {
     zone: ReactNode;
-    setDropdownToggle: Function;
-  }
+    setDropdownToggle: Function
+}
+
+//used in Timezone component
+export interface TimeSlotsProps {
+  timeSlotsType: TIMESLOTS_TYPE_CLASSES;
+  day?: Date //day prop is optional and is only used for TIMESLOTS_TYPE_CLASSES.list to accomodate DateBracket in Calendar
+}
 
 export interface ScheduleSectionProps {
   needToChooseTime: boolean; 
-  meeting_availability: {
-    specific: Availability[]
-  };
 }
 
 export interface ReviewMeetingInfoSectionProps {

@@ -42,7 +42,7 @@ export default function ApplicationListItem(props: ApplicationData) {
           <GradientBar status={props.status} />
         </div>
       </div>
-      <div className="flex flex-col items-center justify-center">
+      <div className="flex flex-col justify-center items-center">
         <Link href="/mentee/meeting/1">
           <a>
             <Button
