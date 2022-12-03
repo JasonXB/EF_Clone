@@ -60,7 +60,7 @@ function MentorshipRequestCard({
 
   return (
     <div
-      className={` mx-auto flex flex-col w-11/12 p-4 my-4   min-w-[280px] ss:min-w-[240px] overflow-hidden rounded-lg shadow-md ss:flex-row  bg-light sm:mx-2 sm:flex-col`}
+      className={`mx-auto flex flex-col w-11/12 p-4 my-4   min-w-[280px] ss:min-w-[240px] overflow-hidden rounded-lg shadow-md ss:flex-row  bg-light sm:mx-2 sm:flex-col`}
     >
       <div className="flex flex-col items-center pr-2 mt-2 min-h-[190px] ">
         <div className="h-auto">
@@ -86,7 +86,7 @@ function MentorshipRequestCard({
         </a>
       </div>
       <div className="w-full h-3/4 ">
-        <div className="flex px-4 py-2 my-2 bg-white rounded-md shadow-sm wrap ">
+        <div className="flex px-4 py-2 my-2 bg-white rounded-md shadow-sm wrap">
           <h4 className="flex flex-wrap pr-2 mx-auto text-base w-fit">
             <span>{date.toDateString()}</span>
           </h4>

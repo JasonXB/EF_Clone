@@ -14,7 +14,12 @@
 }
 .content {
   grid-column: main-start/main-end;
+  height: 100%;
+}
+
+.mainContent {
   padding: 2rem;
+  grid-column: 2 / 8;
 }
 
 .primaryBG {
@@ -49,8 +54,14 @@
   background: none;
 }
 .contentV2 {
-  grid-column: main-start/main-end;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  height: 100%;
+}
+
+.mainContentV2 {
   padding-left: 2rem;
   padding-right: 2rem;
   padding-top: 2rem;
+  grid-column: 2 / 8;
 }

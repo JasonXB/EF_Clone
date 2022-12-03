@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Navbar from './header/Navbar';
 import LayoutStyle from '../../styles/Layout.module.css';
 import Footer from './footer/Footer';
+import LeftBar from './profileSettings/LeftBar';
 
 enum BackgroundTypes {
   primary = 'primary',
@@ -17,8 +18,10 @@ type LayoutProps = {
   background?: `${BackgroundTypes}`;
   isConfirmedMeetingPg?: boolean;
   noBottomPadding?: boolean;
+  onLeftNavbar?: boolean;
+  userType?: string;
 };
-//setting background default to be Primary, if someone doesn't add it to layout, it will still include it by default.
+
 const Layout = ({
   background = BackgroundTypes.primary,
   ...props
@@ -45,20 +48,25 @@ const Layout = ({
             <link rel="icon" href="/favicon.ico" />
           </Head>
           <Navbar />
-          <div
-            className={
-              //we need to fix this for a more clear solution
-              props.contentCustomClass
+            <div
+              className={
+                //we need to fix this for a more clear solution
+                props.contentCustomClass
                 ? props.contentCustomClass
                 : props.isConfirmedMeetingPg
                 ? ''
-                : props.noBottomPadding
+                : props.onLeftNavbar
                 ? LayoutStyle.contentV2
                 : LayoutStyle.content
-            }
-          >
-            <main>{props.children}</main>
-          </div>
+              }
+            >
+              {props.onLeftNavbar && (
+                <LeftBar visible={props.onLeftNavbar} userType={props.userType}/>
+              )}
+              <main className={props.noBottomPadding
+                  ? LayoutStyle.mainContentV2
+                  : LayoutStyle.mainContent}>{props.children}</main>
+            </div>
         </div>
         <Footer />
       </div>

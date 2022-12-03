@@ -9,7 +9,7 @@ export default function FindAMentor() {
   return (
     <Layout headTitle="Find a Mentor">
       <div>
-        <div className={`container mx-auto `}>
+        <div className={`container mx-auto`}>
           <div className="flex flex-col h-[720px]">
             <div className="flex flex-row justify-center">
               <span className="my-20 text-5xl font-semibold text-primary-1">

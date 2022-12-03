@@ -46,7 +46,7 @@ export default function Index() {
     similarMentors: [
       {
         mentorName: 'Darra Whitney',
-        location: 'USA',
+        location: 'ABC',
         mentorPosition: 'Project Manager at EF',
         bubbleTag1: 'Entrepeneurship',
         bubbleTag2: 'Management',
@@ -54,7 +54,7 @@ export default function Index() {
       },
       {
         mentorName: 'Darra Whitney',
-        location: 'USA',
+        location: 'DEF',
         mentorPosition: 'Project Manager at EF',
         bubbleTag1: 'Entrepeneurship',
         bubbleTag2: 'Management',
@@ -62,7 +62,7 @@ export default function Index() {
       },
       {
         mentorName: 'Darra Whitney',
-        location: 'USA',
+        location: 'GHI',
         mentorPosition: 'Project Manager at EF',
         bubbleTag1: 'Entrepeneurship',
         bubbleTag2: 'Management',
@@ -70,7 +70,7 @@ export default function Index() {
       },
       {
         mentorName: 'Darra Whitney',
-        location: 'USA',
+        location: 'JKL',
         mentorPosition: 'Project Manager at EF',
         bubbleTag1: 'Entrepeneurship',
         bubbleTag2: 'Management',
@@ -80,41 +80,50 @@ export default function Index() {
   };
 
   return (
-    <Layout noBottomPadding={true} background="none">
-      <h3 className="mt-10 font-semibold text-center text-primary-1">
+    <Layout
+      noBottomPadding={true}
+      background="none"
+      onLeftNavbar={true}
+      userType="mentee"
+    >
+      <h3 className="mt-10 text-2xl sm:text-4xl lg:text-5xl font-semibold text-center text-primary-1">
         Welcome back
-        <br className="sm:hidden" /> {mock.username}
+        <br className="ss:hidden" /> {mock.username}
       </h3>
-      <section className="grid grid-cols-1 lg:grid-cols-2 sm:max-w-[80%] sm:mx-auto lg:max-w-full lg:divide-x">
-        <div className="mt-10 lg:pr-5">
-          <h4 className="mb-6 font-bold text-center text-primary-1">
+      <section className="flex flex-col lg:flex-row">
+        <div className="mt-10 flex-1 flex flex-col justify-between lg:pr-5">
+          <h4 className="mb-6 font-bold text-center text-xl sm:text-3xl lg:text-4xl text-primary-1">
             My Applications
           </h4>
-          {mock.applications.length > 0 ? (
-            mock.applications.map((el, i: number) => {
-              if (i > 2) return; // render a max of 3
-              return (
-                <ApplicationListItem
-                  key={i}
-                  mentorName={el.mentorName}
-                  status={el.status}
-                />
-              );
-            })
-          ) : (
-            <h6 className="mt-10 text-center">No applications!</h6>
-          )}
+          <ul className="flex flex-col gap-3">
+            {mock.applications.length > 0 ? (
+              mock.applications.map((el, i: number) => {
+                if (i > 2) return; // render a max of 3
+                return (
+                  <ApplicationListItem
+                    key={i}
+                    mentorName={el.mentorName}
+                    status={el.status}
+                  />
+                );
+              })
+            ) : (
+              <h6 className="mt-10 text-center">No applications!</h6>
+            )}
+          </ul>
           {mock.applications.length > 3 && (
-            <Button variant="secondary" className="mx-auto mt-12">
-              See all applications
-            </Button>
+            <div className="w-full flex justify-center mt-4">
+              <Button variant="secondary" className="mx-auto text-sm ss:text-base">
+                See all applications
+              </Button>
+            </div>
           )}
         </div>
-        <div className="mt-10 lg:pl-5">
-          <h4 className="mb-6 font-bold text-center text-primary-1">
+        <div className="mt-10 flex-1 flex flex-col justify-between lg:border-l lg:border-black lg:pl-5">
+          <h4 className="mb-6 font-bold text-center text-xl sm:text-3xl lg:text-4xl text-primary-1">
             Upcoming Meetings
           </h4>
-          <ul>
+          <ul className="flex flex-col gap-3">
             {mock.meetings.length > 0 ? (
               mock.meetings.map((el, i: number) => {
                 if (i > 2) return; // render a max of 3
@@ -133,9 +142,11 @@ export default function Index() {
             )}
           </ul>
           {mock.meetings.length > 3 && (
-            <Button variant="secondary" className="mx-auto mt-12">
-              See all meetings
-            </Button>
+            <div className="w-full flex justify-center mt-4">
+              <Button variant="secondary" className="mx-auto text-sm ss:text-base">
+                See all meetings
+              </Button>
+            </div>
           )}
         </div>
       </section>

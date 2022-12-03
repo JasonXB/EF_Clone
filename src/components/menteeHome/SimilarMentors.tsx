@@ -26,7 +26,7 @@ export default function SimilarMentors(props: {
     width: props.data.length === 1 ? '48rem' : 'auto', // max width of carousel item
     breakpoints: {
       1700: {
-        perPage: props.data.length >= 2 ? 2 : 1,
+        perPage: props.data.length >= 3 ? 3 : 1,
         arrows: props.data.length > 2, // only show arrows when we have over 2 similar mentors
       },
       1200: {
@@ -41,45 +41,44 @@ export default function SimilarMentors(props: {
     );
 
   return (
-    <section className="bg-[#e4e4e4] mt-16 py-6 extendBeyondLayout">
-      <h4 className="my-8 text-center">
+    <section className="bg-[#e4e4e4] my-16 py-6">
+      <p className="text-center font-medium text-primary-1 text-lg sm:text-2xl lg:text-3xl">
         We think these mentors are a good match for you.
-      </h4>
+      </p>
       <Splide
         aria-label="My Favorite Images"
         options={Options}
-        className="px-0 mx-auto carousel"
+        className="px-0 py-8 mx-auto carousel"
         id="similarMentorsSplideComponent"
       >
         {props.data.map((mentor, i) => {
           return (
             <SplideSlide
-              className="slide px-8 lg:px-0 grid grid-cols-[minmax(auto,_37.5rem)] justify-center"
+              className="slide flex justify-center lg:justify-start w-90 gap-2 shadow-branded-1 p-4 bg-light rounded-3xl"
               key={i}
             >
-              <div className="grid grid-cols-[minmax(150px,_200px)_1fr] gap-4 h-[14.6875rem] shadow-branded-1 mb-8  p-6 bg-light rounded-[20px]">
+              <div className="flex-2 overflow-hidden flex items-center w-32 h-40 rounded-3xl">
                 <Image
                   src={Hiba}
-                  height="100%"
                   objectFit="cover"
                   alt="mentor profile picture"
-                  className="rounded-[20px] max-w-[200px]"
+                  className="rounded-3xl max-w-[200px]"
                 />
-                <div className="grid grid-rows-[auto_auto_auto_1fr_26px_26px] gap-2">
-                  <div className="truncate">
-                    <h6 className="mx-1 overflow-hidden font-semibold text-ellipsis">
-                      {mentor.mentorName}
-                    </h6>
-                  </div>
-                  <div className="truncate">
-                    <p className="mx-1 overflow-hidden font-medium text-ellipsis">
-                      {mentor.location}
-                    </p>
-                  </div>
+              </div>
+
+              <div className="flex-3 flex flex-col gap-2 justify-center">
+                <div className="flex flex-col gap-2">
+                  <p className=" text-lg mx-1 overflow-hidden font-semibold text-ellipsis">
+                    {mentor.mentorName}
+                  </p>
+                  <p className="mx-1 overflow-hidden font-medium text-ellipsis">
+                    {mentor.location}
+                  </p>
                   <p className="mx-1 overflow-hidden font-medium text-ellipsis">
                     {mentor.mentorPosition}
                   </p>
-                  <br />
+                </div>
+                <div className="flex flex-wrap gap-2">
                   <BubbleTag
                     tag="Entrepeneurship"
                     bubbleTagType={BUBBLE_TAG_TYPE_CLASSES.primaryShaded}
