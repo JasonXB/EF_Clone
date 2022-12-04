@@ -5,7 +5,6 @@ import bannerImg from '../../../public/assets/mentorRequestsForm.png';
 import OptionForm from '../optionForm/OptionForm';
 import { DescriptionOptions } from '../../enum/formOptions/descriptionOptions.enum';
 import { TimelineOptions } from '../../enum/formOptions/timelineOptions.enum';
-import axios from 'axios';
 import Link from 'next/link';
 import Mentor from '../../interface/mentor.interface';
 import { useAuth } from '../../../state-management/ReactContext/AuthContext';
@@ -36,7 +35,35 @@ const MentorRequests = ({ mentor }: MentorProfileProps) => {
 
   const { accessToken, profileId } = useAuth();
 
-  const submitHandler = async (e: any) => {
+  const postData = async (url: string, data: {}, method: string) => {
+    await fetch(url, {
+      method,
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + accessToken,
+      },
+      credentials: 'include',
+    })
+    .then(res => {
+      return res.json()
+      .then(() => {
+        console.log('success')
+        //!# jump to confirmation page which doesn't exist yet
+      })
+      .catch(err => {
+        console.log(err)
+        //!# Use universal error page
+      })
+      
+    })
+    .catch(err => {
+      console.log('something went wrong.')
+      //!# Use universal error page
+    })
+  }
+
+  const submitHandler = (e: any) => {
     e.preventDefault();
 
     if (userDescription === undefined || userDescription.length <= 0) {
@@ -73,31 +100,11 @@ const MentorRequests = ({ mentor }: MentorProfileProps) => {
         timeline: userTimeline,
       };
 
-      const config = {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: 'Bearer ' + accessToken,
-        },
-        credentials: 'include',
-      };
-      //#Shiho: FIX BUILD ERROR INVOLVED WITH THIS ERROR
-      // await axios
-      //   .post(
-      //     'https://efback.azurewebsites.net/api/mentorRequests/auth/create',
-      //     requestInfo,
-      //     config
-      //   )
-      //   .then((res) => {
-      //     console.log(res);
-      //     console.log('success');
-      //     //!# jump to confirmation page which doesn't exist yet
-      //   })
-      //   .catch((err) => {
-      //     console.log(err);
-      //     //!# Use universal error page
-      //   });
-    }
+      const uri = 'https://efback.azurewebsites.net/api/mentorRequests/auth/create'
+      postData(uri, requestInfo, 'POST')
+    } 
   };
+
   const changeValue = (e: any) => {
     e.preventDefault();
     setUserDescription(e.target.value);

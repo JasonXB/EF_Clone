@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
-import Layout from '../../src/components/Layout';
+import Layout from '../../../src/components/Layout';
 import { useRouter } from 'next/router';
-import Mentor from '../../src/interface/mentor.interface';
-import MockMentorDB from '../../src/tempData/MockMentorDB';
-import MentorRequests from '../../src/components/mentorRequests/MentorRequests';
+import Mentor from '../../../src/interface/mentor.interface';
+import MockMentorDB from '../../../src/tempData/MockMentorDB';
+import MentorRequests from '../../../src/components/mentorRequests/MentorRequests';
 
 const RequestsForm: NextPage = () => {
   const router = useRouter();
