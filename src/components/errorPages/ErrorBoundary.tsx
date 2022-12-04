@@ -1,12 +1,6 @@
 import React from 'react';
 
-interface PropsObj {
-  children: React.ReactNode;
-  // generic: boolean; // if you want a generic error page, set this to true and no other props are needed
-  // errorNumber?: number;
-  // text?: string;
-  // subtext?: string;
-}
+interface PropsObj { children: React.ReactNode; } // prettier-ignore
 interface StateObj { hasError: boolean;  } // prettier-ignore
 
 class ErrorBoundary extends React.Component<PropsObj, StateObj> {
@@ -17,7 +11,6 @@ class ErrorBoundary extends React.Component<PropsObj, StateObj> {
   }
   static getDerivedStateFromError(error: any) {
     // Update state so the next render will show the fallback UI
-
     return { hasError: true };
   }
   componentDidCatch(error: any, errorInfo: any) {
@@ -41,8 +34,7 @@ class ErrorBoundary extends React.Component<PropsObj, StateObj> {
       );
     }
 
-    // Return children components in case of no error
-
+    // Render component
     return this.props.children;
   }
 }

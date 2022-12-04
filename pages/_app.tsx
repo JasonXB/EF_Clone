@@ -9,28 +9,31 @@ import { ScheduleModalProvider } from '../state-management/ReactContext/Schedule
 import { MentorshipRequestsProvider } from '../state-management/ReactContext/MentorshipRequestsContext';
 import { Provider } from 'react-redux';
 import ReduxStore from '../state-management/ReduxToolkit/store';
+import ErrorBoundary from '../src/components/errorPages/ErrorBoundary';
 
 function MyApp({ Component, pageProps }: AppProps) {
   // Provider: Redux-related tags that let you share state values project-wide
   return (
-    <Provider store={ReduxStore}>
-      <AuthProvider>
-        {/* SearchProvider: current Context API provider (for filter search functionality) */}
-        <SearchProvider>
-          <SimilarMentorsProvider>
-            <MentorshipRequestsProvider>
-              <CalendarProvider>
-                <TimezoneProvider>
-                  <ScheduleModalProvider>
-                    <Component {...pageProps} />
-                  </ScheduleModalProvider>
-                </TimezoneProvider>
-              </CalendarProvider>
-            </MentorshipRequestsProvider>
-          </SimilarMentorsProvider>
-        </SearchProvider>
-      </AuthProvider>
-    </Provider>
+    <ErrorBoundary>
+      <Provider store={ReduxStore}>
+        <AuthProvider>
+          {/* SearchProvider: current Context API provider (for filter search functionality) */}
+          <SearchProvider>
+            <SimilarMentorsProvider>
+              <MentorshipRequestsProvider>
+                <CalendarProvider>
+                  <TimezoneProvider>
+                    <ScheduleModalProvider>
+                      <Component {...pageProps} />
+                    </ScheduleModalProvider>
+                  </TimezoneProvider>
+                </CalendarProvider>
+              </MentorshipRequestsProvider>
+            </SimilarMentorsProvider>
+          </SearchProvider>
+        </AuthProvider>
+      </Provider>
+    </ErrorBoundary>
   );
 }
 
